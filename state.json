@@ -1,0 +1,16 @@
+{
+  "config": {
+    "channel": "Sneaky Deals",
+    "handle": "@SneakyDeals",
+    "publish_days": ["Mon", "Wed", "Fri", "Sun"],
+    "publish_time_pkt": "05:00",
+    "pipeline_buffer": 2
+  },
+  "jobs": {
+    "001-pepsi-submarines": {
+      "status": "published",
+      "title": "Pepsi Got Paid in 17 Soviet Submarines",
+      "note": "made by hand in chat; uploaded manually, scheduled 2026-11-11"
+    }
+  }
+}

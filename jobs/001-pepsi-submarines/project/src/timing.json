@@ -1,0 +1,94 @@
+{
+ "fps": 30,
+ "duration": 55.193,
+ "shots": [
+  {
+   "key": "hook",
+   "start": 0.15,
+   "end": 3.163,
+   "words": 8,
+   "text": "Pepsi got paid in submarines. Seventeen of them."
+  },
+  {
+   "key": "yousee",
+   "start": 3.579,
+   "end": 9.129,
+   "words": 19,
+   "text": "You see, Pepsi had beaten Coke into the Soviet Union, but rubles could not be traded on world markets."
+  },
+  {
+   "key": "vodka",
+   "start": 9.549,
+   "end": 15.253,
+   "words": 15,
+   "text": "Starting in nineteen seventy-two, Pepsi took Stolichnaya vodka as payment and sold it in America."
+  },
+  {
+   "key": "boom",
+   "start": 15.673,
+   "end": 19.71,
+   "words": 14,
+   "text": "It worked. Soviets were soon drinking about a billion servings of Pepsi a year."
+  },
+  {
+   "key": "but",
+   "start": 20.129,
+   "end": 25.147,
+   "words": 17,
+   "text": "But after a boycott over the war in Afghanistan, vodka alone couldn't pay for all that Pepsi."
+  },
+  {
+   "key": "then",
+   "start": 25.567,
+   "end": 29.047,
+   "words": 11,
+   "text": "Then the Soviets offered something they had plenty of: old warships."
+  },
+  {
+   "key": "deal",
+   "start": 29.466,
+   "end": 35.569,
+   "words": 15,
+   "text": "In spring nineteen eighty-nine, Pepsi took seventeen submarines, a cruiser, a frigate, and a destroyer."
+  },
+  {
+   "key": "price",
+   "start": 35.989,
+   "end": 39.715,
+   "words": 12,
+   "text": "The submarines were priced at about one hundred fifty thousand dollars each."
+  },
+  {
+   "key": "middle",
+   "start": 40.135,
+   "end": 43.379,
+   "words": 12,
+   "text": "You see, Pepsi never wanted a navy. It was only the middleman."
+  },
+  {
+   "key": "so",
+   "start": 43.645,
+   "end": 45.571,
+   "words": 8,
+   "text": "So it sold the whole fleet for scrap."
+  },
+  {
+   "key": "big",
+   "start": 45.991,
+   "end": 49.961,
+   "words": 13,
+   "text": "The next year, Pepsi signed a three billion dollar deal with the Soviets."
+  },
+  {
+   "key": "close",
+   "start": 50.381,
+   "end": 54.448,
+   "words": 12,
+   "text": "Then the Soviet Union collapsed in nineteen ninety-one, and the deal vanished."
+  }
+ ],
+ "hookTitle": [
+  "PAID IN",
+  "SUBMARINES?!"
+ ]
+}

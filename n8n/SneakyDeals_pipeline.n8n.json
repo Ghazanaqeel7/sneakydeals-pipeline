@@ -1,0 +1,219 @@
+{
+  "name": "Sneaky Deals pipeline",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 2
+            }
+          ]
+        }
+      },
+      "id": "dfccbbe1-81bc-4250-953a-d3bc44f49d51",
+      "name": "Every 2 minutes",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 1
+            }
+          ]
+        }
+      },
+      "id": "7fdaa2ff-76a5-439c-8004-44fd83f5d302",
+      "name": "Every minute",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "days",
+              "daysInterval": 1,
+              "triggerAtHour": 4,
+              "triggerAtMinute": 40
+            }
+          ]
+        }
+      },
+      "id": "e763b5fc-a274-49e1-8f74-15c6ac5b9c61",
+      "name": "Daily 04:40 PKT",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return [{ json: { mode: 'send' } }];"
+      },
+      "id": "53cf1ba5-d89d-4f80-801f-72005c6d3658",
+      "name": "mode: send",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return [{ json: { mode: 'replies' } }];"
+      },
+      "id": "8b3dec64-ae93-49bf-bc58-536f42431823",
+      "name": "mode: replies",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return [{ json: { mode: 'publish' } }];"
+      },
+      "id": "1e635463-4b03-41a0-9b22-3a80bb622fa4",
+      "name": "mode: publish",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// ===================== FILL THESE IN ONCE =====================\nconst SETTINGS = {\n  github_owner: 'YOUR_GITHUB_USERNAME',\n  github_repo: 'sneakydeals-pipeline',\n  github_token: 'PASTE_GITHUB_FINE_GRAINED_TOKEN',   // repo access: Contents = Read and write\n  telegram_token: 'PASTE_BOT_TOKEN_FROM_BOTFATHER',\n  telegram_chat_id: 'PASTE_YOUR_CHAT_ID',           // only this chat can approve\n};\n// ==============================================================\nreturn [{ json: { mode: $input.first().json.mode, ...SETTINGS } }];\n"
+      },
+      "id": "bb2889ac-6f0b-4b17-a021-fdc78370a2bb",
+      "name": "CONFIG",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        460,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Sneaky Deals pipeline \u2014 n8n side. Modes: \"send\" (every 2 min), \"replies\" (every minute), \"publish\" (daily 04:40 PKT).\nconst cfg = $input.first().json;\nconst mode = cfg.mode;\nconst http = (o) => this.helpers.httpRequest(o);\nconst data = $getWorkflowStaticData('global');\nconst GH = `https://api.github.com/repos/${cfg.github_owner}/${cfg.github_repo}`;\nconst ghHeaders = { Authorization: `Bearer ${cfg.github_token}`, Accept: 'application/vnd.github+json', 'User-Agent': 'sneakydeals-n8n', 'X-GitHub-Api-Version': '2022-11-28' };\nconst TG = `https://api.telegram.org/bot${cfg.telegram_token}`;\nconst log = [];\n\nasync function ghGet(path) {\n  const r = await http({ method: 'GET', url: `${GH}/contents/${path}?ref=main&t=${Date.now()}`, headers: ghHeaders, json: true });\n  return { text: Buffer.from(r.content, 'base64').toString('utf8'), sha: r.sha };\n}\nasync function ghPut(path, text, sha, message) {\n  return http({ method: 'PUT', url: `${GH}/contents/${path}`, headers: ghHeaders, json: true,\n    body: { message, content: Buffer.from(text, 'utf8').toString('base64'), sha, branch: 'main' } });\n}\n// read state.json, apply fn(state) -> true if changed, write back with compare-and-swap; retries on conflict\nasync function updateState(fn, message) {\n  for (let i = 0; i < 4; i++) {\n    const f = await ghGet('state.json');\n    const st = JSON.parse(f.text);\n    const changed = await fn(st);\n    if (!changed) return st;\n    try { await ghPut('state.json', JSON.stringify(st, null, 2) + '\\n', f.sha, message); return st; }\n    catch (e) { if (i === 3) throw e; await new Promise((r) => setTimeout(r, 1500)); }\n  }\n}\nconst now = () => new Date().toISOString().replace(/\\.\\d+Z$/, 'Z');\nasync function tg(method, body) { return http({ method: 'POST', url: `${TG}/${method}`, body, json: true }); }\nconst clip = (s, n) => (s.length > n ? s.slice(0, n - 1) + '\u2026' : s);\n\n// ---------------- SEND: new scripts and new videos to Telegram ----------------\nif (mode === 'send') {\n  const toSend = [];\n  await updateState((st) => {\n    let ch = false;\n    for (const [id, j] of Object.entries(st.jobs)) {\n      if (j.status === 'script_ready') { j.status = 'script_sent'; j.updated = now(); toSend.push(['script', id, j]); ch = true; }\n      else if (j.status === 'video_ready') { j.status = 'video_sent'; j.updated = now(); toSend.push(['video', id, j]); ch = true; }\n    }\n    return ch;\n  }, 'n8n: sending to Telegram');\n  for (const [kind, id, j] of toSend) {\n    try {\n      if (kind === 'script') {\n        let msg; try { msg = (await ghGet(`jobs/${id}/telegram.md`)).text; } catch (e) { msg = `New script ready: ${id}`; }\n        await tg('sendMessage', { chat_id: cfg.telegram_chat_id, text: clip(`\ud83d\udcdd SCRIPT FOR APPROVAL \u2014 ${id}\\n\\n${msg}`, 4000),\n          disable_web_page_preview: true,\n          reply_markup: { inline_keyboard: [[{ text: '\u2705 Approve script', callback_data: `sa|${id}` }, { text: '\u274c Reject', callback_data: `sr|${id}` }]] } });\n      } else {\n        const meta = JSON.parse((await ghGet(`jobs/${id}/meta.json`)).text);\n        await tg('sendVideo', { chat_id: cfg.telegram_chat_id, video: j.video_url, supports_streaming: true,\n          caption: clip(`\ud83c\udfac VIDEO FOR APPROVAL \u2014 ${id}\\n\\nTitle: ${meta.title}\\n\\n${meta.description}`, 1000),\n          reply_markup: { inline_keyboard: [[{ text: '\u2705 Approve & schedule', callback_data: `va|${id}` }, { text: '\u274c Reject', callback_data: `vr|${id}` }]] } });\n      }\n      log.push(`sent ${kind} ${id}`);\n    } catch (e) {\n      log.push(`FAILED to send ${kind} ${id}: ${e.message}`);\n      await updateState((st) => { st.jobs[id].status = kind === 'script' ? 'script_ready' : 'video_ready'; st.jobs[id].send_error = String(e.message).slice(0, 300); return true; }, `n8n: send failed ${id}`);\n    }\n  }\n}\n\n// ---------------- REPLIES: buttons, feedback text, /status ----------------\nif (mode === 'replies') {\n  const r = await http({ method: 'GET', url: `${TG}/getUpdates?timeout=0&offset=${data.offset || 0}&allowed_updates=${encodeURIComponent('[\"message\",\"callback_query\"]')}`, json: true });\n  for (const u of r.result || []) {\n    data.offset = u.update_id + 1;\n    const cq = u.callback_query, m = u.message;\n    const chatId = String((cq && cq.message && cq.message.chat.id) || (m && m.chat.id) || '');\n    if (chatId !== String(cfg.telegram_chat_id)) { log.push(`ignored update from chat ${chatId}`); continue; }\n    if (cq) {\n      const [act, id] = (cq.data || '').split('|');\n      const map = { sa: ['script_sent', 'script_approved'], sr: ['script_sent', 'script_rejected'], va: ['video_sent', 'video_approved'], vr: ['video_sent', 'video_rejected'] };\n      if (!map[act]) continue;\n      let ok = false, cur = '';\n      await updateState((st) => {\n        const j = st.jobs[id]; if (!j) return false; cur = j.status;\n        if (j.status !== map[act][0]) return false;\n        j.status = map[act][1]; j.updated = now(); ok = true; return true;\n      }, `n8n: ${id} -> ${map[act][1]}`);\n      await tg('answerCallbackQuery', { callback_query_id: cq.id, text: ok ? 'Saved \u2705' : `Already handled (status: ${cur})` });\n      if (!ok) continue;\n      try { await tg('editMessageReplyMarkup', { chat_id: chatId, message_id: cq.message.message_id, reply_markup: { inline_keyboard: [] } }); } catch (e) {}\n      const texts = {\n        sa: `\u2705 Script approved: ${id}\\nClaude will make the video in its next daily run, then send it here for a final check.`,\n        va: `\u2705 Video approved: ${id}\\nIt will be published on the next publish day at 05:00 PKT (7 PM US Eastern).`,\n        sr: `\u274c Script rejected: ${id}\\nReply to this chat with what to change (or send \"drop\" to throw this idea away).`,\n        vr: `\u274c Video rejected: ${id}\\nReply with what to fix (be specific: shot, second, what looks wrong).`,\n      };\n      await tg('sendMessage', { chat_id: chatId, text: texts[act] });\n      if (act === 'sr' || act === 'vr') data.awaiting = id;\n      log.push(`${id}: ${map[act][1]}`);\n    } else if (m && m.text) {\n      const t = m.text.trim();\n      if (t === '/status' || t === '/start') {\n        const st = JSON.parse((await ghGet('state.json')).text);\n        const lines = Object.entries(st.jobs).slice(-12).map(([id, j]) => `\u2022 ${id}: ${j.status}`);\n        await tg('sendMessage', { chat_id: chatId, text: `Sneaky Deals pipeline\\n\\n${lines.join('\\n')}\\n\\nChat id: ${chatId}` });\n      } else if (data.awaiting) {\n        const id = data.awaiting; data.awaiting = null;\n        await updateState((st) => {\n          const j = st.jobs[id]; if (!j) return false;\n          if (t.toLowerCase() === 'drop') { j.status = 'dropped'; }\n          j.feedback = ((j.feedback ? j.feedback + '\\n' : '') + `[${now()}] ${t}`).slice(-3000); j.updated = now(); return true;\n        }, `n8n: feedback for ${id}`);\n        await tg('sendMessage', { chat_id: chatId, text: t.toLowerCase() === 'drop' ? `\ud83d\uddd1 Dropped ${id}. Claude will pick a new story.` : `\ud83d\udcdd Got it. Claude will fix ${id} in its next run and send it again.` });\n        log.push(`feedback ${id}`);\n      }\n    }\n  }\n}\n\n// ---------------- PUBLISH: one approved video on publish days, via the RSS feed Zapier watches ----------------\nif (mode === 'publish') {\n  const stNow = JSON.parse((await ghGet('state.json')).text);\n  const days = (stNow.config && stNow.config.publish_days) || ['Mon', 'Wed', 'Fri', 'Sun'];\n  const today = new Date().toLocaleDateString('en-US', { weekday: 'short', timeZone: 'Asia/Karachi' });\n  const pick = Object.entries(stNow.jobs).filter(([, j]) => j.status === 'video_approved').sort((a, b) => (a[1].updated || '').localeCompare(b[1].updated || ''))[0];\n  if (!days.includes(today)) log.push(`not a publish day (${today})`);\n  else if (!pick) {\n    log.push('nothing approved to publish');\n    await tg('sendMessage', { chat_id: cfg.telegram_chat_id, text: `\u26a0\ufe0f Publish day (${today}) but no approved video is waiting. Check Telegram for pending approvals or send /status.` });\n  } else {\n    const [id, j] = pick;\n    const meta = JSON.parse((await ghGet(`jobs/${id}/meta.json`)).text);\n    const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');\n    const item = `<item>\\n<title>${esc(meta.title)}</title>\\n<description><![CDATA[${meta.description.replace(/]]>/g, '')}]]></description>\\n<link>${esc(j.video_url)}</link>\\n<guid isPermaLink=\"false\">${esc(id)}</guid>\\n<pubDate>${new Date().toUTCString()}</pubDate>\\n<enclosure url=\"${esc(j.video_url)}\" type=\"video/mp4\" length=\"0\"/>\\n</item>\\n`;\n    for (let i = 0; i < 3; i++) {\n      const f = await ghGet('feed/youtube.xml');\n      if (f.text.includes(`<guid isPermaLink=\"false\">${esc(id)}</guid>`)) break;\n      try { await ghPut('feed/youtube.xml', f.text.replace('<!--ITEMS-->', '<!--ITEMS-->\\n' + item), f.sha, `publish ${id}`); break; } catch (e) { if (i === 2) throw e; }\n    }\n    await updateState((st) => { st.jobs[id].status = 'published'; st.jobs[id].published_at = now(); return true; }, `n8n: published ${id}`);\n    await tg('sendMessage', { chat_id: cfg.telegram_chat_id, text: `\ud83d\ude80 Publishing now: ${meta.title}\\nZapier will upload it to YouTube within ~15 minutes.\\n\\nAfter it is live, pin this comment:\\n${meta.pinned_comment || ''}` });\n    log.push(`published ${id}`);\n  }\n}\n\nreturn [{ json: { mode, log } }];\n"
+      },
+      "id": "2326683c-7f9b-481e-9429-2651e39ea14c",
+      "name": "Pipeline",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        700,
+        200
+      ]
+    }
+  ],
+  "connections": {
+    "Every 2 minutes": {
+      "main": [
+        [
+          {
+            "node": "mode: send",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Every minute": {
+      "main": [
+        [
+          {
+            "node": "mode: replies",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Daily 04:40 PKT": {
+      "main": [
+        [
+          {
+            "node": "mode: publish",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "mode: send": {
+      "main": [
+        [
+          {
+            "node": "CONFIG",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "mode: replies": {
+      "main": [
+        [
+          {
+            "node": "CONFIG",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "mode: publish": {
+      "main": [
+        [
+          {
+            "node": "CONFIG",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CONFIG": {
+      "main": [
+        [
+          {
+            "node": "Pipeline",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Asia/Karachi",
+    "saveDataSuccessExecution": "none",
+    "saveDataErrorExecution": "all"
+  },
+  "pinData": {}
+}

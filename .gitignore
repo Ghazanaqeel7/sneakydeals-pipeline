@@ -1,0 +1,7 @@
+node_modules/
+out/
+stills/
+*_tmp.wav
+RAW.wav
+hook_sample.wav
+.DS_Store

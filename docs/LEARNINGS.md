@@ -1,0 +1,8 @@
+# Learnings (append one line per lesson; newest last)
+
+- 001 Pepsi: owner said the first version had no hook because it opened with "In nineteen eighty-nine". New rule:
+  brand + shock in the first 1.5 s, big hook text on screen, reveal shot (close-up → wide). Date goes later.
+- 001 Pepsi: render in yuvj420p would not play on Windows/browser. finalize.sh now forces yuv420p + faststart.
+- 001 Pepsi: thumbnail must not show the year or the twist ("TRUE STORY · 1989" was removed at the owner's request).
+- 001 Pepsi: brand names are fine, brand logos are not (trademark risk on a new channel).
+- Owner's laptop has Windows Smart App Control, which blocks Remotion's renderer: never ask him to render locally.

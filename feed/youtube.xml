@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+<title>Sneaky Deals publish queue</title>
+<link>https://www.youtube.com/@SneakyDeals</link>
+<description>Approved Shorts waiting for upload. Zapier (RSS by Zapier) reads this feed and uploads each new item to YouTube.</description>
+<!--ITEMS-->
+</channel>
+</rss>

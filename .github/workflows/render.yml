@@ -1,0 +1,71 @@
+name: render
+# Renders every job whose status in state.json is "render_queued".
+# Runs when Claude pushes a change to state.json, every 30 min as a safety net, or by hand (Actions tab -> render -> Run workflow).
+on:
+  push:
+    branches: [main]
+    paths: ['state.json']
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+    inputs:
+      job:
+        description: 'Job id to (re)render, e.g. 002-disney-swamp (leave empty = all render_queued)'
+        required: false
+
+concurrency:
+  group: render
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 1 }
+
+      - name: Pick jobs
+        id: pick
+        run: |
+          if [ -n "${{ github.event.inputs.job }}" ]; then echo "jobs=${{ github.event.inputs.job }}" >> $GITHUB_OUTPUT; else
+          echo "jobs=$(python3 -c "import json;s=json.load(open('state.json'));print(' '.join(k for k,v in s['jobs'].items() if v.get('status')=='render_queued'))")" >> $GITHUB_OUTPUT; fi
+
+      - name: Nothing to do
+        if: steps.pick.outputs.jobs == ''
+        run: echo "no jobs with status render_queued"
+
+      - uses: actions/setup-node@v4
+        if: steps.pick.outputs.jobs != ''
+        with: { node-version: 20 }
+
+      - name: System packages
+        if: steps.pick.outputs.jobs != ''
+        run: |
+          echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg ttf-mscorefonts-installer fonts-dejavu >/dev/null
+          fc-cache -f >/dev/null
+
+      - name: Render
+        if: steps.pick.outputs.jobs != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "render-bot"; git config user.email "render-bot@users.noreply.github.com"
+          for J in ${{ steps.pick.outputs.jobs }}; do
+            python3 pipeline/scripts/set_status.py "$J" rendering run="${{ github.run_id }}"
+            if bash pipeline/scripts/render_job.sh "jobs/$J" 4; then
+              TITLE=$(python3 -c "import json;print(json.load(open('jobs/$J/meta.json'))['title'])")
+              gh release delete "job-$J" -y --cleanup-tag 2>/dev/null || true
+              ASSETS="jobs/$J/project/out/final.mp4"; [ -f "jobs/$J/thumbnail.jpg" ] && ASSETS="$ASSETS jobs/$J/thumbnail.jpg"
+              gh release create "job-$J" $ASSETS --title "$TITLE" --notes "Pipeline render for $J" --prerelease
+              URL="https://github.com/${{ github.repository }}/releases/download/job-$J/final.mp4"
+              python3 pipeline/scripts/set_status.py "$J" video_ready video_url="$URL"
+            else
+              python3 pipeline/scripts/set_status.py "$J" render_failed run="${{ github.run_id }}"
+            fi
+          done
