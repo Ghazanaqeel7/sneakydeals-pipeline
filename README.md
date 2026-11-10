@@ -59,10 +59,10 @@ Files: `PIPELINE.md` (Claude's rules), `state.json` (job board), `jobs/<id>/` (o
 How it works: the bot posts the script / the video with ✅ and ❌ under it. Tap one. After ❌, type what to change.
 
 ## Slack setup (approvals)
-1. Make a free Slack workspace (slack.com → Create a workspace) if you don't have one, and a channel `#approvals`.
+1. Make a free Slack workspace (slack.com → Create a workspace) if you don't have one, and a channel `#sneaky-deals-approval`.
 2. https://api.slack.com/apps → **Create New App → From a manifest** → pick the workspace → paste
    `n8n/slack_app_manifest.json` → Create → **Install to Workspace** → Allow.
 3. **OAuth & Permissions** → copy **Bot User OAuth Token** (`xoxb-…`) = `slack_bot_token`.
-4. In Slack, open `#approvals` and type `/invite @Sneaky Deals Bot`. Click the channel name → bottom of the About tab
+4. In Slack, open `#sneaky-deals-approval` and type `/invite @Sneaky Deals Bot`. Click the channel name → bottom of the About tab
    → copy **Channel ID** (`C…`) = `slack_channel_id`.
 5. n8n: import `n8n/SneakyDeals_pipeline_SLACK.n8n.json`, fill CONFIG, Save, Active. Type `status` in the channel.
