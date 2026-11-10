@@ -85,6 +85,9 @@ if (mode === 'send') {
     let ch = false;
     for (const [id, j] of Object.entries(st.jobs)) {
       if (j.status === 'script_ready') { j.status = 'script_sent'; j.updated = now(); j.vote_msg = ''; j.vote_kind = ''; toSend.push(['script', id, j]); ch = true; }
+      else if ((j.status === 'video_sent' || j.status === 'script_sent') && !j.vote_msg && j.updated && Date.now() - new Date(j.updated).getTime() > 10 * 60000) {
+        const k = j.status === 'video_sent' ? 'video' : 'script'; j.updated = now(); toSend.push([k, id, j]); ch = true; log.push(`re-sending stuck ${k} ${id}`);
+      }
       else if (j.status === 'video_ready') { j.status = 'video_sent'; j.updated = now(); j.vote_msg = ''; j.vote_kind = ''; toSend.push(['video', id, j]); ch = true; }
     }
     return ch;
@@ -101,12 +104,9 @@ if (mode === 'send') {
       } else {
         const meta = JSON.parse((await ghGet(`jobs/${id}/meta.json`)).text);
         const head = `🎬 *VIDEO FOR APPROVAL — ${id}*\n*Title:* ${meta.title}`;
-        let posted = false;
-        if (j.preview_url) {
-          try { const buf = await http({ method: 'GET', url: j.preview_url, encoding: 'arraybuffer' });
-            await dPostFile(head, `${id}.mp4`, Buffer.from(buf)); posted = true; } catch (e) { log.push(`preview upload failed: ${e.message}`); }
-        }
-        if (!posted) await dPost(`${head}\nWatch: ${j.video_url}`);
+        // the video itself is NOT uploaded to Slack (too slow for n8n's time limit) — watch it on the dashboard
+        const DASH = `https://${cfg.github_owner.toLowerCase()}.github.io/${cfg.github_repo}/`;
+        await dPost(`${head}\n▶️ *Video dekhein (dashboard):* ${DASH}\n⬇️ Full file: ${j.video_url}`);
         await sleep(500);
         try {
           const turl = `https://raw.githubusercontent.com/${cfg.github_owner}/${cfg.github_repo}/main/jobs/${id}/thumbnail.jpg?t=${Date.now()}`;

@@ -374,6 +374,7 @@ function renderMain(){
   renderTab();
 }
 function nextClaudeRun(){const d=new Date();d.setUTCMinutes(8,0,0);if(d<=new Date())d.setUTCHours(d.getUTCHours()+1);return d}
+const LOCKED=()=>`<div class="lbl">Your decision</div><div class="note" style="margin:0 0 12px;color:var(--ink2)">To approve or ask for changes from here, unlock editing once on this device (paste your GitHub token). Until then you can still approve with ✅ in Slack.</div><button class="btn go" style="width:100%;padding:12px" onclick="askToken()">Unlock to approve</button>`;
 function reviewBlock(id,j){
   const s=j.status,lock=!TOKEN?' disabled title="Unlock editing first"':'';
   if(s==='video_ready'||s==='video_sent'){
@@ -381,7 +382,7 @@ function reviewBlock(id,j){
     return `<div class="review">
       <div><div class="lbl">Watch the video</div>${v?`<video controls playsinline preload="metadata" poster="${RAW}/jobs/${esc(id)}/thumbnail.jpg" src="${esc(v)}" onloadedmetadata="this.muted=false;this.volume=1"></video><div class="note">No sound? Click 🔊 in the player, or <a href="${esc(j.video_url||v)}" target="_blank">open the full file ↗</a> and play it on your laptop.</div>`:'<div class="empty">No video file.</div>'}</div>
       <div class="thumbwrap"><div class="lbl">Thumbnail</div><img src="${RAW}/jobs/${esc(id)}/thumbnail.jpg?u=${encodeURIComponent(j.updated||'')}" onclick="zoom(this.src)" onerror="this.outerHTML='<div class=empty>No thumbnail — the logo thumbnail would be used.</div>'"><div class="note" style="margin-top:10px">Video, thumbnail and the YouTube text are approved together.</div></div>
-      <div><div class="lbl">Your decision</div>
+      <div>${!TOKEN?LOCKED():`<div class="lbl">Your decision</div>
         <button class="btn go" style="width:100%;padding:11px"${lock} onclick="decide('${id}','video_approved')">Approve video + thumbnail</button>
         <div class="note" style="margin:10px 0 12px">Goes out ${publishSlots(Object.assign({},S.state,{jobs:{...S.state.jobs,[id]:{...j,status:'video_approved',updated:'9999'}}}))[id]?'on '+pkt(publishSlots(Object.assign({},S.state,{jobs:{...S.state.jobs,[id]:{...j,status:'video_approved',updated:'9999'}}}))[id])+' PKT':'on the next publish slot'} if you approve now.</div>
         <div class="lbl" style="margin-top:6px">Or ask for changes</div>
@@ -389,20 +390,20 @@ function reviewBlock(id,j){
         <textarea id="rv_fb" rows="5" oninput="dirty()" placeholder="Be specific — e.g. 'thumbnail: bigger DISNEY text, show the gator' or 'shot 5 at 0:21: the sign is cut off'"${lock}></textarea>
         <button class="btn pri" style="margin-top:8px"${lock} onclick="sendInline('${id}','video_rejected')">Send changes to Claude</button>
         <div class="note">Thumbnail-only changes do not re-render the video (~10 min). Video fixes need a new render (~1–2 h).</div>
-      </div></div>`;
+      `}</div></div>`;
   }
   if(s==='script_ready'||s==='script_sent'){
     setTimeout(async()=>{try{const md=await cached(`jobs/${id}/script.md`);const m=md.split(/##\s*Voice-over/i)[1];const vo=m?m.split(/\n##\s/)[0].trim():'(open the Script tab)';const el=$('#rv_vo');if(el)el.textContent=vo;const w=$('#rv_wc');if(w)w.textContent=vo.split(/\s+/).length+' words · about '+Math.round(vo.split(/\s+/).length/170*60)+' s';}catch(e){}},0);
     return `<div class="review" style="grid-template-columns:1fr 340px">
       <div><div class="lbl">What the voice will say <span class="counter" id="rv_wc"></span></div><div class="vo" id="rv_vo">Loading…</div><div class="note">Shots, sources and the rulebook check are in the Script tab.</div></div>
-      <div><div class="lbl">Your decision</div>
+      <div>${!TOKEN?LOCKED():`<div class="lbl">Your decision</div>
         <button class="btn go" style="width:100%;padding:11px"${lock} onclick="decide('${id}','script_approved')">Approve script</button>
         <div class="note" style="margin:10px 0 12px">Claude starts building in its next run (by ${hm(nextClaudeRun())} PKT). The video takes ~2 h after that.</div>
         <div class="lbl">Or ask for changes</div>
         <textarea id="rv_fb" rows="6" oninput="dirty()" placeholder="What should change? e.g. 'hook is weak — start with the fake company name'"${lock}></textarea>
         <button class="btn pri" style="margin-top:8px"${lock} onclick="sendInline('${id}','script_rejected')">Send changes to Claude</button>
         <button class="btn danger" style="margin-top:8px"${lock} onclick="askFeedback('${id}','dropped','Drop this story? Claude will pick a new one.',true)">Drop story</button>
-      </div></div>`;
+      `}</div></div>`;
   }
   if((s==='script_rejected'||s==='video_rejected')){
     const note=(j.feedback||'').split('\n').slice(-1)[0].replace(/^\[[^\]]+\]\s*/,'');
