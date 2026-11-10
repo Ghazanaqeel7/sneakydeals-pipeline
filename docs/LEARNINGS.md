@@ -6,3 +6,5 @@
 - 001 Pepsi: thumbnail must not show the year or the twist ("TRUE STORY · 1989" was removed at the owner's request).
 - 001 Pepsi: brand names are fine, brand logos are not (trademark risk on a new channel).
 - Owner's laptop has Windows Smart App Control, which blocks Remotion's renderer: never ask him to render locally.
+- 002 Disney: progress.py/set_status.py do `git reset --hard FETCH_HEAD`. If your own push failed (n8n pushed first), that wipes your unpushed commit. Always `git pull --rebase origin main && git push` and check it succeeded BEFORE calling them (recover with git reflog + cherry-pick).
+- 002 Disney: in the first check round the camera flew through a background extra and foreground bushes hid the main character. Keep extras and bushes off the camera path.
