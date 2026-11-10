@@ -88,6 +88,7 @@ if (mode === 'send') {
     }
     return ch;
   }, 'n8n: sending to Slack');
+  if (!toSend.length) log.push('nothing new to send (no job is script_ready / video_ready)');
   for (const [kind, id, j] of toSend) {
     try {
       let vote;
