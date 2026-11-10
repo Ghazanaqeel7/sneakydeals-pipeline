@@ -75,6 +75,10 @@ install anything, or research. If another job is already `building`, do not star
 "🎙 Voice ban rahi hai…", "🎙 Voice tayyar (NN s)", "🎬 Scenes: N locations plan — <names>", one line per location
 built ("🏗 Scene 2/6 tayyar: land office"), "🔍 Check frames round 1: <what you are fixing>", "✅ Check frames clean",
 "🖼 Thumbnail tayyar". Keep it to ~6-12 updates per build, simple words, no tech jargon.
+**Show the owner the scenes:** after each check-frames round, save the contact sheet as
+`jobs/<id>/review/roundN.jpg` (JPG, ≤ 1600 px wide, < 1 MB), commit + push it, then
+`progress.py <id> --image jobs/<id>/review/roundN.jpg "🔍 Check frames round N: <what you see / will fix>"`.
+Also post the final thumbnail the same way (`--image jobs/<id>/thumbnail.jpg`).
 
 1. Voice: `python3 pipeline/scripts/make_voice.py jobs/<id>` → `RAW.wav`, then
    `python3 pipeline/scripts/prepare_voice.py jobs/<id>/RAW.wav jobs/<id>/SHOTS.txt jobs/<id>/project`.

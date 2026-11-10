@@ -167,7 +167,18 @@ if (mode === 'replies') {
     const done = data.prog[id] || 0;
     if (total > done) {
       const fresh = (j.progress || []).slice(-(total - done));
-      for (const p of fresh) { await dPost(`*${id}* — ${p.msg}`); await sleep(400); }
+      for (const p of fresh) {
+        let done1 = false;
+        if (p.image) {
+          try {
+            const url = `https://raw.githubusercontent.com/${cfg.github_owner}/${cfg.github_repo}/main/${p.image}`;
+            const buf = Buffer.from(await http({ method: 'GET', url, encoding: 'arraybuffer' }));
+            await dPostFile(`*${id}* — ${p.msg}`, p.image.split('/').pop(), buf); done1 = true;
+          } catch (e) { log.push(`image post failed: ${e.message}`); }
+        }
+        if (!done1) await dPost(`*${id}* — ${p.msg}`);
+        await sleep(400);
+      }
       data.prog[id] = total;
     }
   }
