@@ -120,6 +120,16 @@ Also post the final thumbnail the same way (`--image jobs/<id>/thumbnail.jpg`).
 5. Do not commit `node_modules/`, `out/`, `stills/`, `RAW.wav` (see .gitignore). Commit + push, then
    `set_status <id> render_queued`.
 
+## Instagram + Facebook Reels
+
+On publish day, right after the YouTube feed item, n8n also adds the same video to `feed/reels.xml` (caption =
+`meta.json.reels_caption` if you wrote one, otherwise the YouTube description with `#shorts` removed, max 5
+hashtags, "Follow" instead of "Subscribe", plus the pinned-comment question). Two Zapier Zaps post it:
+RSS → Instagram for Business "Publish Video" (Reel) and RSS → Facebook Pages "Create Page Video". The job gets
+`reels_at`. `config.reels: false` in state.json switches this off. Reels need: 9:16, 3-90 s (Facebook API limit),
+≥ 540x960 — our 720x1280, 45-60 s files already fit. Keep big text and captions out of the bottom ~third of the
+frame where IG/FB put their caption and buttons. You still never publish anything yourself.
+
 ## Weekly review (vidIQ → Slack → LEARNINGS.md)
 
 Budget: at most ~25 vidIQ credits per review (check `vidiq_balance` first; if fewer than 25 are left, post a

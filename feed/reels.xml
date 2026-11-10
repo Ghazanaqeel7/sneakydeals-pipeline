@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+<title>Sneaky Deals reels queue</title>
+<link>https://www.youtube.com/@SneakyDeals</link>
+<description>Approved videos for Instagram Reels + Facebook Reels. Two Zaps (RSS by Zapier → Instagram for Business / Facebook Pages) read this feed. n8n adds one item on each publish day, right after feed/youtube.xml.</description>
+<!--ITEMS-->
+<item>
+<title>SETUP SAMPLE - do not post</title>
+<description><![CDATA[SETUP SAMPLE - do not post. This item only exists so Zapier can see the feed's fields. In Zapier click "Skip test" on the Instagram/Facebook step.]]></description>
+<link>https://raw.githubusercontent.com/Ghazanaqeel7/sneakydeals-pipeline/main/jobs/001-pepsi-submarines/thumbnail.jpg</link>
+<guid isPermaLink="false">reels-setup-sample</guid>
+<pubDate>Tue, 10 Nov 2026 19:00:00 GMT</pubDate>
+<enclosure url="https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-002-disney-secret-swamp/final.mp4" type="video/mp4" length="0"/>
+</item>
+
+</channel>
+</rss>
