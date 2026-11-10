@@ -101,6 +101,14 @@ def channel_details(ids):
             }
     return out
 
+def safe_items(playlist, n):
+    # A channel with no public videos yet has no uploads playlist: YouTube answers 404, which is not an error for us.
+    if not playlist: return []
+    try:
+        return yt('playlistItems', part='contentDetails', playlistId=playlist, maxResults=n).get('items', [])
+    except Exception as e:
+        print('uploads not readable', playlist, str(e)[:120]); return []
+
 def resolve(ref):
     if ref.startswith('UC'): return ref
     r = yt('channels', part='id', forHandle=ref if ref.startswith('@') else '@' + ref)
@@ -147,13 +155,19 @@ def scan(kind):
 
 def competitors(prev):
     prev_c = {x['id']: x for x in (prev.get('competitors') or [])}
-    ids = [i for i in (resolve(r) for r in CFG['competitors']) if i]
+    ids = []
+    for r in CFG['competitors']:
+        try:
+            i = resolve(r)
+            if i: ids.append(i)
+        except Exception as e:
+            print('competitor not found', r, str(e)[:120])
     chans = channel_details(ids)
     out = []
     for cid in ids:
         ch = chans.get(cid)
         if not ch: continue
-        items = yt('playlistItems', part='contentDetails', playlistId=ch['uploads'], maxResults=30).get('items', []) if ch['uploads'] else []
+        items = safe_items(ch['uploads'], 30)
         vids = list(video_details([i['contentDetails']['videoId'] for i in items]).values())
         views = sorted(v['views'] for v in vids)
         median = views[len(views) // 2] if views else 0
@@ -280,7 +294,7 @@ def track_own_videos(own):
     path = os.path.join(OUT_DIR, 'own_videos.json')
     data = json.load(open(path)) if os.path.exists(path) else {'videos': {}}
     if not own or not own.get('uploads'): return data
-    items = yt('playlistItems', part='contentDetails', playlistId=own['uploads'], maxResults=50).get('items', [])
+    items = safe_items(own['uploads'], 50)
     vids = video_details([i['contentDetails']['videoId'] for i in items])
     stamp = NOW.strftime('%Y-%m-%dT%H:%M:%SZ')
     for vid, v in vids.items():
@@ -321,11 +335,13 @@ def main():
         res['long'] = scan('long')
         res['competitors'] = competitors(prev)
         res['own'] = own_channel(prev)
-        track_own_videos(res['own'])
+        try: track_own_videos(res['own'])
+        except Exception as e: print('own video tracking failed (continuing):', e)
         res['hot_words'] = {'shorts': hot_words(res['shorts']), 'long': hot_words(res['long'])}
         res['suggestions'] = {s: suggest(s) for s in CFG.get('suggest_seeds', [])}
         res['full_run'] = NOW.strftime('%Y-%m-%dT%H:%M:%SZ')
-        tr = update_trends(res)
+        try: tr = update_trends(res)
+        except Exception as e: print('trends failed (continuing):', e); tr = None
         res['units_used'] = UNITS['used']
     res['title_checks'] = title_checks()
     res['updated'] = NOW.strftime('%Y-%m-%dT%H:%M:%SZ')
