@@ -23,7 +23,14 @@
       "title": "Disney Secretly Bought a Swamp Using Fake Names",
       "send_error": "",
       "vote_msg": "1794298945.670169",
-      "approved_via": "chat"
+      "approved_via": "chat",
+      "progress": [
+        {
+          "t": "2026-11-10T12:13:34Z",
+          "msg": "🎙 Voice ban rahi hai… (~60 min baqi, phir render ~40 min)"
+        }
+      ],
+      "progress_count": 1
     }
   }
 }
