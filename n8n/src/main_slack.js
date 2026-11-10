@@ -3,7 +3,18 @@
 // Approvals: the bot posts in your #approvals channel and adds ✅ and ❌ reactions; you tap one. After ❌ type what to change.
 const cfg = $input.first().json;
 const mode = cfg.mode;
-const http = (o) => this.helpers.httpRequest(o);
+// network calls retry on timeouts / dropped connections (laptop wifi hiccups), not on real API errors
+const _req = (o) => this.helpers.httpRequest(o);
+async function http(o) {
+  for (let i = 0; ; i++) {
+    try { return await _req(o); }
+    catch (e) {
+      const msg = String((e && (e.code || e.message)) || e);
+      if (i >= 3 || !/ETIMEDOUT|ECONNRESET|ECONNREFUSED|EAI_AGAIN|ENOTFOUND|socket hang up|timeout/i.test(msg)) throw e;
+      await new Promise((r) => setTimeout(r, 2000 * (i + 1)));
+    }
+  }
+}
 const data = $getWorkflowStaticData('global');
 const GH = `https://api.github.com/repos/${cfg.github_owner}/${cfg.github_repo}`;
 const ghHeaders = { Authorization: `Bearer ${cfg.github_token}`, Accept: 'application/vnd.github+json', 'User-Agent': 'sneakydeals-n8n', 'X-GitHub-Api-Version': '2022-11-28' };
