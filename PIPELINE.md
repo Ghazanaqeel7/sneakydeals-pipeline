@@ -55,8 +55,8 @@ install anything, or research. If another job is already `building`, do not star
 3. **`script_rejected` with feedback**: rewrite `script.md`, `SHOTS.txt`, `telegram.md`, `meta.json` per the
    feedback, push, `set_status <id> script_ready feedback=`. No feedback yet → leave it.
 4. **`script_approved`** (oldest first, one per run): `set_status <id> building`, then BUILD (below).
-5. **New story** — only in the run that starts between 11:00 and 11:59 Asia/Karachi time: count jobs whose status
-   is not `published`/`dropped`. If it is below `config.pipeline_buffer`, research and write ONE new script (below)
+5. **New story** — only in the run that starts between 11:00 and 11:59 Asia/Karachi time: count jobs (ids that start
+   with a number; `research` / `weekly-review` are not jobs) whose status is not `published`/`dropped`. If it is below `config.pipeline_buffer`, research and write ONE new script (below)
    and `set_status <id> script_ready`. **Owner ideas first:** run `python3 pipeline/scripts/pop_idea.py`; if it
    prints an idea (queued by the owner on the dashboard), that is the story — research it, and if it is not true or
    not usable, say so in the script message and pick your own instead.
@@ -65,6 +65,15 @@ install anything, or research. If another job is already `building`, do not star
 7. End with a short summary of what you did (it is shown to the owner).
 
 ## New story (script stage)
+
+- **Research first:** read `docs/research/latest.json` (made weekly by the research bot, also shown on the dashboard
+  Research page). `shorts` / `long` = videos doing many times better than their channel's normal (`score`);
+  `hot_words` = words that keep showing up in those titles; `suggestions` = what people type into YouTube search.
+  Prefer a story whose topic matches what is breaking out right now, told our own way: never copy a competitor's
+  script, title or angle. Owner ideas from the Research page arrive in the ideas queue as
+  "<their title> — <channel> (views, score)": that is a topic signal, so research the true story behind it.
+- **Title check:** `title_checks.<id>.suggestions` lists real searches for the brand in the title; reuse their words
+  in the title/description where it reads naturally.
 
 - Pick a story not already in `state.json` (check every job title/id). Prefer famous US brands and people's
   money stories (Disney, Costco, McDonald's, Nike, Coca-Cola, Apple, Amazon, IKEA, Lego, Netflix...). Ideas already

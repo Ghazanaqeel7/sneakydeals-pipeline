@@ -1,0 +1,53 @@
+{
+  "_help": "Research bot settings. Edit freely: add/remove keywords or competitor channels (channel id UC... or @handle). Runs on GitHub Actions; results go to docs/research/latest.json and the dashboard Research page.",
+  "own_channel": "UCyNCq5TQLEzCU87Qb7XMfEA",
+  "region": "US",
+  "language": "en",
+  "shorts": {
+    "days": 90,
+    "min_views": 100000,
+    "max_seconds": 180,
+    "keywords": [
+      "business story",
+      "genius business trick",
+      "worst business deal",
+      "company secret",
+      "loophole money glitch",
+      "brand marketing trick",
+      "how this company made billions",
+      "coca cola pepsi history"
+    ]
+  },
+  "long": {
+    "days": 365,
+    "min_views": 50000,
+    "min_seconds": 240,
+    "keywords": [
+      "business history documentary",
+      "rise and fall of company",
+      "whatever happened to brand",
+      "entire history of company",
+      "worst business deals in history",
+      "how a company secretly"
+    ]
+  },
+  "competitors": [
+    "UCrVKjyaxfIOps6f1xV5D1nQ",
+    "@NEBBY",
+    "UCVTa-xGtH9LozVUs1Nx6fcw",
+    "UCnk3OhCAQrsiAO7dotCjeRA",
+    "UC5QESDRf1F0v1Ig8KHpCVCQ",
+    "UCWmvDrNbROEj_Bl6vgDc8bg",
+    "UCBQRwRylrI-I-CH4IcFGpiw",
+    "UCxDgDZTADoIDno8KD8kiGgQ",
+    "UCCYKLFBPkmUZ76VjRVVNIfg",
+    "UC6i4-GuVpkcR_1UbgfldM_g",
+    "UCNaq5Jh4SQ1oBAjhQ0KPhoA",
+    "UC4GYgpgZzfMhYr9y6rs5O6Q"
+  ],
+  "suggest_seeds": [
+    "coca cola", "pepsi", "mcdonalds", "disney", "costco", "nike", "apple", "amazon",
+    "walmart", "ikea", "lego", "netflix", "blockbuster", "sears", "toys r us", "burger king",
+    "why did", "how did", "whatever happened to", "worst deal"
+  ]
+}

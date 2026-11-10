@@ -225,6 +225,17 @@ audio{width:100%;filter:invert(.88) hue-rotate(180deg);border-radius:999px}
   .box{padding:18px}
   textarea.code{min-height:60vh}
 }
+.rv{display:grid;grid-template-columns:132px 1fr 74px 74px 74px 86px;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.rv img{width:132px;aspect-ratio:16/9;object-fit:cover;border-radius:8px;display:block;background:var(--bg2)}
+.rv .t,.rc .t{color:var(--ink);font-weight:500;text-decoration:none;line-height:1.35}
+.rv .m,.rc .m{display:flex;flex-wrap:wrap;gap:4px 12px;color:var(--ink3);font-size:12px;margin-top:6px}
+.rn{text-align:right}.rn b{display:block;font:500 16px var(--mono)}.rn span{font-size:10.5px;color:var(--ink3);text-transform:uppercase;letter-spacing:.6px}
+.rn b.hot{color:var(--gold2)}
+.rsort{display:flex;gap:6px;flex-wrap:wrap;align-items:center;font-size:12px;color:var(--ink3);margin-bottom:6px}
+.rc{padding:16px 0;border-bottom:1px solid var(--line)}.rch{display:flex;gap:12px;align-items:center}.rch img{width:44px;height:44px;border-radius:50%}
+.rw{display:inline-block;margin:0 6px 8px 0;padding:5px 10px;border-radius:999px;background:var(--gold-bg);color:var(--gold2);font-size:13px}.rw i{font-style:normal;color:var(--ink3);margin-left:4px}
+.rsug{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;margin-top:8px}.rsug ul{margin:6px 0 0;padding-left:16px;color:var(--ink2);font-size:13px}.rsug li.hit{color:var(--mint)}
+@media (max-width:900px){.rv{grid-template-columns:96px 1fr 58px 58px;gap:10px}.rv img{width:96px}.rv .rd{display:none}.rv>div:last-child{grid-column:2/5}}
 </style>
 </head>
 <body>
@@ -317,7 +328,7 @@ async function load(){
     if(runs.status==='fulfilled')S.runs=runs.value.workflow_runs||[];
     if(commits.status==='fulfilled')S.commits=commits.value||[];
     if(feed.status==='fulfilled')S.feed=parseFeed(feed.value);
-    if(S.sel!=='__desk'&&(!S.sel||!S.state.jobs[S.sel])){const ids=Object.keys(S.state.jobs);const open=ids.filter(i=>!['published','dropped'].includes(S.state.jobs[i].status));S.sel=(open.length?open:ids).slice(-1)[0]||null}
+    if(!String(S.sel).startsWith('__')&&(!S.sel||!S.state.jobs[S.sel])){const ids=Object.keys(S.state.jobs).filter(isJob);const open=ids.filter(i=>!['published','dropped'].includes(S.state.jobs[i].status));S.sel=(open.length?open:ids).slice(-1)[0]||null}
     render();
   }catch(e){$('#sync').textContent='offline';if(!S.state)$('#main').innerHTML=`<div class="empty">Could not read the pipeline: ${esc(e.message)}</div>`}
 }
@@ -327,7 +338,7 @@ function whoOf(c){const m=c.commit.message,a=c.commit.author.name;
   if(a==='render-bot'||/github-actions/.test(a))return['render','Render'];if(a==='claude-pipeline'||/claude/i.test(a))return['claude','Claude'];return['you',a]}
 
 // ---------- render ----------
-function sigOf(){const j=S.state&&S.state.jobs[S.sel];return JSON.stringify([S.sel,S.tab,!!TOKEN,j&&j.status,j&&j.updated,j&&j.progress_count,S.sel==='__desk'&&S.state&&[S.state.config,S.state.ideas]])}
+function sigOf(){const j=S.state&&S.state.jobs[S.sel];return JSON.stringify([S.sel,S.tab,!!TOKEN,j&&j.status,j&&j.updated,j&&j.progress_count,S.sel==='__desk'&&S.state&&[S.state.config,S.state.ideas],S.sel==='__research'&&[S.rtab,S.rsort,(S.state.jobs.research||{}).progress_count,(S.state.ideas||[]).length]])}
 function render(force){renderChrome();if(S.editing)return;const sg=sigOf();if(!force&&sg===S.sig)return;S.sig=sg;renderMain()}
 function renderChrome(){
   const st=S.state;$('#sync').textContent=S.lastSync?'synced '+hm(S.lastSync):'';
@@ -343,20 +354,22 @@ function renderChrome(){
     ['Zapier → YouTube',live?'ok':'',live?esc(live.title).slice(0,26)+'…':'Nothing sent yet',live?'Handed over '+ago(live.date):`Next slot ${nextSlotText(st)}`],
   ].map(([k,d,v,s])=>`<div class="sys"><div class="k"><i class="dot ${d}"></i>${k}</div><div class="v">${v}</div><div class="s">${s}</div></div>`).join('');
   $('#auth').innerHTML=TOKEN?`<span class="chip c-ok">Edit on</span><button class="btn sm" onclick="signOut()">Lock</button>`:`<button class="btn sm pri" onclick="askToken()">Unlock editing</button>`;
-  const ids=Object.keys(st.jobs).reverse();
+  const ids=Object.keys(st.jobs).filter(isJob).reverse();
   const slots=publishSlots(st);
   $('#jobs').innerHTML=ids.map(id=>{const j=st.jobs[id];
     const when=slots[id]?'Goes live '+pkt(slots[id]):j.live_at?(new Date(j.live_at)>new Date()?'Goes live ':'Live since ')+pkt(j.live_at):j.published_at?'Sent '+pkt(j.published_at):'';
     return `<button class="job ${id===S.sel?'sel':''}" onclick="pick('${id}')"><img class="jt" loading="lazy" src="${RAW}/jobs/${esc(id)}/thumbnail.jpg?u=${encodeURIComponent(j.updated||'')}" onerror="this.style.visibility='hidden'"><div><div class="id">${esc(id)}</div><div class="t">${esc(j.title||titleFromId(id))}</div><div class="meta">${chip(j)}<span>${when}</span></div></div></button>`}).join('')
-    +`<div style="padding:12px 16px;border-top:1px solid var(--rule2)"><button class="btn sm" onclick="pick('__desk')">Desk settings &amp; story ideas</button></div>`;
+    +`<div style="padding:12px 16px;border-top:1px solid var(--rule2);display:flex;gap:8px;flex-wrap:wrap"><button class="btn sm ${S.sel==='__research'?'pri':''}" onclick="pick('__research')">🔎 Research</button><button class="btn sm" onclick="pick('__desk')">Desk settings &amp; story ideas</button></div>`;
   $('#feed').innerHTML=S.commits.slice(0,18).map(c=>{const [w,n]=whoOf(c);return `<li><time>${pkt(c.commit.author.date,{month:undefined})}</time><span class="who ${w}">${esc(n)}</span><span>${esc(c.commit.message.split('\n')[0]).slice(0,70)}</span></li>`}).join('');
 }
+const isJob=(id)=>/^\d/.test(id);
 const titleFromId=(id)=>id.replace(/^\d+-/,'').replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
 function nextSlotText(st){const days=(st.config&&st.config.publish_days)||[];return days.join('/')+' '+((st.config&&st.config.publish_time_pkt)||'05:00')}
 function pick(id){if(S.editing&&!confirm('Discard unsaved edits?'))return;S.editing=false;S.sel=id;S.tab='progress';render(true);window.scrollTo(0,0)}
 
 function renderMain(){
   if(S.sel==='__desk')return renderDesk();
+  if(S.sel==='__research')return renderResearch();
   const id=S.sel,j=S.state.jobs[id];if(!j){$('#main').innerHTML='<div class="empty">No jobs yet.</div>';return}
   const [idx,label,,attn,err]=info(j);const slots=publishSlots(S.state);
   const track=STAGES.map((s,i)=>`<div class="st ${i<idx?'done':''} ${i===idx?'now'+(attn?' attn':'')+(err?' err':''):''}"><div class="n">${i<idx?'✓':i+1}</div>${s}</div>`).join('');
@@ -488,7 +501,7 @@ function dirty(){S.editing=true}
 
 // ---------- desk ----------
 async function renderDesk(){
-  const st=S.state,c=st.config||{},jobs=Object.values(st.jobs);
+  const st=S.state,c=st.config||{},jobs=Object.entries(st.jobs).filter(([k])=>isJob(k)).map(([,v])=>v);
   const n=(f)=>jobs.filter(f).length;
   const ideas=st.ideas||[];
   $('#main').innerHTML=`<h1>Desk settings</h1><div class="sub">Changes here are read by Claude and n8n on their next check.</div>
@@ -511,6 +524,63 @@ async function renderDesk(){
   <div class="panel" style="margin-top:22px"><div class="lbl">What Claude has learned (docs/LEARNINGS.md)</div><div class="md" id="learn">Loading…</div></div>`;
   try{$('#learn').innerHTML=DOMPurify.sanitize(marked.parse(await readText('docs/LEARNINGS.md')))}catch(e){$('#learn').textContent='Not available.'}
 }
+
+
+// ---------- research ----------
+const fmtN=(n)=>{n=n||0;return n>=1e6?(n/1e6).toFixed(n>=1e7?0:1)+'M':n>=1e3?Math.round(n/1e3)+'K':String(n)};
+const durT=(s)=>s>=3600?Math.floor(s/3600)+'h '+Math.floor(s%3600/60)+'m':Math.floor(s/60)+':'+String(s%60).padStart(2,'0');
+async function renderResearch(){
+  S.rtab=S.rtab||'shorts';S.rsort=S.rsort||'smart';
+  let R=null;try{R=JSON.parse(await readText('docs/research/latest.json'))}catch(e){}
+  if(!R||!R.full_run){$('#main').innerHTML=`<h1>Research</h1><div class="sub">Free research bot: YouTube Data API + YouTube search suggestions, every Monday 06:00 PKT.</div>
+    <div class="panel"><div class="lbl">Not run yet</div><p>The bot needs the free YouTube API key saved as the repo secret <b>YT_API_KEY</b>.
+    Then open <a href="https://github.com/${OWNER}/${REPO}/actions/workflows/research.yml" target="_blank">Actions → research ↗</a> and press <b>Run workflow</b> (mode: full), or wait for Monday.</p></div>`;return}
+  const o=R.own||{},ideas=S.state.ideas||[];
+  const tabs=[['shorts','🔥 Viral Shorts ('+(R.shorts||[]).length+')'],['long','🎬 Viral long videos ('+(R.long||[]).length+')'],['comp','👀 Competitors ('+(R.competitors||[]).length+')'],['words','🏷 Hot words & searches'],['titles','✍️ Title check']];
+  $('#main').innerHTML=`<h1>Research</h1>
+  <div class="sub"><span>Last full scan ${ago(R.full_run)} (${pkt(R.full_run)} PKT)</span><span>Next: Monday 06:00 PKT</span><span>${R.units_used||0} of 10,000 free API units</span><a href="https://github.com/${OWNER}/${REPO}/actions/workflows/research.yml" target="_blank">Run now ↗</a></div>
+  <div class="overview">
+    <div><div class="lbl">Sneaky Deals subs</div><div class="big">${fmtN(o.subs)}</div><div class="note">${o.subs_change!=null?(o.subs_change>=0?'+':'')+o.subs_change+' since last scan':'first scan'}</div></div>
+    <div><div class="lbl">Channel views</div><div class="big">${fmtN(o.views)}</div><div class="note">${o.views_change!=null?'+'+fmtN(o.views_change)+' since last scan':'&nbsp;'}</div></div>
+    <div><div class="lbl">Hits found</div><div class="big">${(R.shorts||[]).length+(R.long||[]).length}</div><div class="note">US, English, last ${R.config.shorts.days} d Shorts / ${R.config.long.days} d long</div></div>
+    <div><div class="lbl">Ideas queued</div><div class="big">${ideas.length}</div><div class="note">Claude uses them first</div></div>
+  </div>
+  <div class="note">How to read it: <b>x score</b> = views ÷ that channel's normal views. 20x on a small channel means the <i>topic</i> pulled the views, not the channel's size. Use these as topic signals — we always tell the story our own way, with our own facts check.</div>
+  <div class="tabs">${tabs.map(([k,n])=>`<button class="tab ${S.rtab===k?'on':''}" onclick="S.rtab='${k}';renderResearch()">${n}</button>`).join('')}</div>
+  <div class="panel" id="rpanel"></div>`;
+  const P=$('#rpanel');
+  const idea=(v)=>TOKEN?`<button class="btn sm" onclick='addResearchIdea(${JSON.stringify(v.title+' — '+v.channel+' ('+fmtN(v.views)+' views, '+v.score+'x)')})'>➕ Idea</button>`:'';
+  const inQ=(v)=>ideas.some(x=>x.startsWith(v.title));
+  const vrow=(v)=>`<div class="rv"><a href="https://youtu.be/${esc(v.id)}" target="_blank"><img loading="lazy" src="${esc(v.thumb)}"></a><div class="rt">
+     <a class="t" href="https://youtu.be/${esc(v.id)}" target="_blank">${esc(v.title)}</a>
+     <div class="m"><span>${esc(v.channel)}${v.subs?' · '+fmtN(v.subs)+' subs':''}</span><span>${durT(v.seconds)}</span><span>${ago(v.published)}</span>${(v.keywords||[]).length?`<span>search: ${esc(v.keywords.join(', '))}</span>`:''}</div></div>
+     <div class="rn"><b>${fmtN(v.views)}</b><span>views</span></div><div class="rn"><b class="${v.score>=10?'hot':''}">${v.score}x</b><span>breakout</span></div><div class="rn rd"><b>${fmtN(v.per_day)}</b><span>/ day</span></div>
+     <div>${inQ(v)?'<span class="chip c-ok">queued</span>':idea(v)}</div></div>`;
+  const sorter={smart:()=>0,score:(a,b)=>b.score-a.score,views:(a,b)=>b.views-a.views,new:(a,b)=>b.published.localeCompare(a.published),day:(a,b)=>b.per_day-a.per_day};
+  const sortBar=`<div class="rsort">Sort: ${[['smart','Best'],['score','Breakout'],['views','Views'],['day','Views/day'],['new','Newest']].map(([k,n])=>`<button class="btn sm ${S.rsort===k?'pri':''}" onclick="S.rsort='${k}';renderResearch()">${n}</button>`).join('')}</div>`;
+  if(S.rtab==='shorts'||S.rtab==='long'){
+    const rows=(R[S.rtab]||[]).slice().sort(sorter[S.rsort]);
+    P.innerHTML=sortBar+(rows.length?rows.map(vrow).join(''):'<div class="empty">Nothing found this week.</div>');
+  }else if(S.rtab==='comp'){
+    P.innerHTML=(R.competitors||[]).map(c=>`<div class="rc"><div class="rch"><img src="${esc(c.thumb)}" onerror="this.style.visibility='hidden'"><div><a class="t" href="https://youtube.com/channel/${esc(c.id)}" target="_blank">${esc(c.title)}</a>
+      <div class="m"><span>${fmtN(c.subs)} subs${c.subs_change!=null?` (${c.subs_change>=0?'+':'-'}${fmtN(Math.abs(c.subs_change))} this week)`:''}</span><span>${c.uploads_30d} uploads / 30 d</span><span>${Math.round(c.shorts_share*100)}% Shorts</span><span>normal video: ${fmtN(c.recent_median)} views</span><span>last upload ${ago(c.last_upload)}</span></div></div></div>
+      ${(c.hits||[]).length?`<div class="lbl" style="margin-top:12px">Recent hits (3x+ their normal)</div>${c.hits.map(vrow).join('')}`:`<div class="note">No recent video beat their normal by 3x.</div>`}</div>`).join('')||'<div class="empty">No competitors set (research/config.json).</div>';
+  }else if(S.rtab==='words'){
+    const chips=(a)=>(a||[]).map(w=>`<span class="rw">${esc(w.word)} <i>${w.count}</i></span>`).join('')||'<span class="note">—</span>';
+    P.innerHTML=`<div class="lbl">Words that keep showing up in viral Shorts titles</div><div>${chips(R.hot_words&&R.hot_words.shorts)}</div>
+      <div class="lbl" style="margin-top:18px">…and in viral long videos</div><div>${chips(R.hot_words&&R.hot_words.long)}</div>
+      <div class="lbl" style="margin-top:22px">What people type into YouTube search (US)</div>
+      <div class="rsug">${Object.entries(R.suggestions||{}).map(([q,a])=>`<div><b>${esc(q)}</b><ul>${a.map(x=>`<li>${esc(x)}</li>`).join('')||'<li class="note">—</li>'}</ul></div>`).join('')}</div>`;
+  }else{
+    const tc=Object.entries(R.title_checks||{});
+    P.innerHTML=`<div class="note">For every script still in production: what people actually search for its brand. If our title uses words from these lists, YouTube search can find it. Checked daily 05:30 PKT.</div>`+
+      (tc.length?tc.map(([id,t])=>{const words=new Set(t.title.toLowerCase().match(/[a-z']+/g)||[]);
+        return `<div class="rc"><div class="lbl">${esc(id)}</div><div class="t" style="font-size:16px">${esc(t.title)}</div>
+        <div class="rsug">${Object.entries(t.suggestions||{}).map(([q,a])=>`<div><b>${esc(q)} …</b><ul>${a.map(x=>{const hit=(x.toLowerCase().match(/[a-z']+/g)||[]).some(w=>w.length>3&&words.has(w)&&!q.includes(w));return `<li class="${hit?'hit':''}">${esc(x)}</li>`}).join('')||'<li class="note">—</li>'}</ul></div>`).join('')}</div>
+        <div class="note">Highlighted = shares a word with our title.</div></div>`}).join(''):'<div class="empty">No scripts in production right now.</div>');
+  }
+}
+async function addResearchIdea(t){try{await updateState(st=>{st.ideas=st.ideas||[];if(st.ideas.includes(t))return false;st.ideas.push(t)},'dashboard: idea from research');toast('Added to ideas — Claude will research the true story.');load();renderResearch()}catch(e){toast(e.message,true)}}
 
 // ---------- actions ----------
 function toast(t,err){const d=document.createElement('div');d.className='toast'+(err?' err':'');d.textContent=t;document.body.appendChild(d);setTimeout(()=>d.remove(),err?7000:3500)}
