@@ -433,6 +433,7 @@ function signOut(){TOKEN=null;store.set('sd_token',null);render(true)}
 function addNote(j,msg){j.progress=(j.progress||[]).concat([{t:nowIso(),msg}]).slice(-15);j.progress_count=(j.progress_count||0)+1}
 const DECIDE_NOTE={script_approved:'✅ Aap ne dashboard se script approve kiya. Claude agle run mein video banana shuru karega.',video_approved:'✅ Aap ne dashboard se video + thumbnail approve kiya. Agle publish slot par YouTube par jayegi.'};
 async function decide(id,next){
+  if(BUSY)return;BUSY=true;setTimeout(()=>BUSY=false,4000);
   S.editing=false;
   try{let ok=false;await updateState(st=>{const j=st.jobs[id];if(!j||!/_(ready|sent)$/.test(j.status))return false;j.status=next;addNote(j,DECIDE_NOTE[next]);j.updated=nowIso();j.decided_via='dashboard';j.decided_at=j.updated;ok=true},`dashboard: ${id} -> ${next}`);
     toast(ok?'Done — Slack gets the same note within a minute.':'Status already changed — refreshed.');load()}catch(e){toast(e.message,true)}}
@@ -440,7 +441,9 @@ function askFeedback(id,next,q,isDrop,prefix=''){
   modal(`<h3>${esc(isDrop?'Drop this story':'Your note for Claude')}</h3><p>${esc(q)}</p>${isDrop?'':`<textarea id="fb" rows="5" placeholder="${prefix?'e.g. bigger text, red box, show the swamp':'Be specific: shot number or second, and what to change'}"></textarea>`}<div class="row"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn ${isDrop?'danger':'pri'}" onclick="sendFeedback('${id}','${next}','${prefix}')">${isDrop?'Drop it':'Send to Claude'}</button></div>`);
 }
 async function sendFeedback(id,next,prefix){const t=$('#fb')?$('#fb').value.trim():'drop';if(!t)return toast('Write a note first.',true);closeModal();doFeedback(id,next,prefix+t)}
+let BUSY=false;
 async function doFeedback(id,next,text){
+  if(BUSY)return;BUSY=true;setTimeout(()=>BUSY=false,4000);
   S.editing=false;
   try{await updateState(st=>{const j=st.jobs[id];if(!j)return false;j.status=next;j.updated=nowIso();j.decided_via='dashboard';j.decided_at=j.updated;
     j.feedback=((j.feedback?j.feedback+'\n':'')+`[${nowIso()}] ${text}`).slice(-3000);
