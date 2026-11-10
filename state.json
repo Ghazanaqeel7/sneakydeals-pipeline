@@ -36,9 +36,13 @@
         {
           "t": "2026-11-10T12:17:16Z",
           "msg": "🎬 Scenes: 8 locations plan — swamp, cattle ranch, drawing office, land office, lawyer office, map room, California press trip, printing press + Orlando ballroom (~45 min baqi)"
+        },
+        {
+          "t": "2026-11-10T12:26:01Z",
+          "msg": "🏗 Scenes 9/9 ka pehla draft tayyar: swamp, ranch, drawing office, land office, lawyer office, map room, press trip, printing press, Orlando hall (~30 min baqi, phir render ~40 min)"
         }
       ],
-      "progress_count": 3
+      "progress_count": 4
     }
   }
 }
