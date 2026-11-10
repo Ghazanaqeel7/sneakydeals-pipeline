@@ -234,6 +234,10 @@ audio{width:100%;filter:invert(.88) hue-rotate(180deg);border-radius:999px}
 .rsort{display:flex;gap:6px;flex-wrap:wrap;align-items:center;font-size:12px;color:var(--ink3);margin-bottom:6px}
 .rc{padding:16px 0;border-bottom:1px solid var(--line)}.rch{display:flex;gap:12px;align-items:center}.rch img{width:44px;height:44px;border-radius:50%}
 .rw{display:inline-block;margin:0 6px 8px 0;padding:5px 10px;border-radius:999px;background:var(--gold-bg);color:var(--gold2);font-size:13px}.rw i{font-style:normal;color:var(--ink3);margin-left:4px}
+.rw.up{background:var(--ok-bg);color:var(--mint)}.rw.down{background:var(--bad-bg);color:var(--coral)}
+.ptab{border-collapse:collapse;width:100%;font-size:13px;margin-top:8px}.ptab th,.ptab td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}.ptab th{color:var(--ink3);font:500 10.5px var(--mono);text-transform:uppercase;letter-spacing:.8px}
+.ptab.own td:not(:first-child){font-family:var(--mono);white-space:nowrap}.ptab a{color:var(--ink)}
+.pbar{position:relative;height:18px;background:var(--bg2);border-radius:6px;min-width:120px;overflow:hidden}.pbar i{position:absolute;inset:0 auto 0 0;background:var(--gold-bg);border-right:2px solid var(--gold)}.pbar span{position:relative;font:500 11px var(--mono);padding-left:6px;line-height:18px}
 .rsug{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;margin-top:8px}.rsug ul{margin:6px 0 0;padding-left:16px;color:var(--ink2);font-size:13px}.rsug li.hit{color:var(--mint)}
 @media (max-width:900px){.rv{grid-template-columns:96px 1fr 58px 58px;gap:10px}.rv img{width:96px}.rv .rd{display:none}.rv>div:last-child{grid-column:2/5}}
 </style>
@@ -536,9 +540,9 @@ async function renderResearch(){
     <div class="panel"><div class="lbl">Not run yet</div><p>The bot needs the free YouTube API key saved as the repo secret <b>YT_API_KEY</b>.
     Then open <a href="https://github.com/${OWNER}/${REPO}/actions/workflows/research.yml" target="_blank">Actions → research ↗</a> and press <b>Run workflow</b> (mode: full), or wait for Monday.</p></div>`;return}
   const o=R.own||{},ideas=S.state.ideas||[];
-  const tabs=[['shorts','🔥 Viral Shorts ('+(R.shorts||[]).length+')'],['long','🎬 Viral long videos ('+(R.long||[]).length+')'],['comp','👀 Competitors ('+(R.competitors||[]).length+')'],['words','🏷 Hot words & searches'],['titles','✍️ Title check']];
+  const tabs=[['shorts','🔥 Viral Shorts ('+(R.shorts||[]).length+')'],['long','🎬 Viral long videos ('+(R.long||[]).length+')'],['comp','👀 Competitors ('+(R.competitors||[]).length+')'],['words','🏷 Hot words & searches'],['titles','✍️ Title check'],['trends','📈 Trends (30 days)'],['learn','🧠 Learning']];
   $('#main').innerHTML=`<h1>Research</h1>
-  <div class="sub"><span>Last full scan ${ago(R.full_run)} (${pkt(R.full_run)} PKT)</span><span>Next: Monday 06:00 PKT</span><span>${R.units_used||0} of 10,000 free API units</span><a href="https://github.com/${OWNER}/${REPO}/actions/workflows/research.yml" target="_blank">Run now ↗</a></div>
+  <div class="sub"><span>Last full scan ${ago(R.full_run)} (${pkt(R.full_run)} PKT)</span><span>Runs daily 06:00 PKT</span><span>${R.units_used||0} of 10,000 free API units</span><a href="https://github.com/${OWNER}/${REPO}/actions/workflows/research.yml" target="_blank">Run now ↗</a></div>
   <div class="overview">
     <div><div class="lbl">Sneaky Deals subs</div><div class="big">${fmtN(o.subs)}</div><div class="note">${o.subs_change!=null?(o.subs_change>=0?'+':'')+o.subs_change+' since last scan':'first scan'}</div></div>
     <div><div class="lbl">Channel views</div><div class="big">${fmtN(o.views)}</div><div class="note">${o.views_change!=null?'+'+fmtN(o.views_change)+' since last scan':'&nbsp;'}</div></div>
@@ -571,6 +575,35 @@ async function renderResearch(){
       <div class="lbl" style="margin-top:18px">…and in viral long videos</div><div>${chips(R.hot_words&&R.hot_words.long)}</div>
       <div class="lbl" style="margin-top:22px">What people type into YouTube search (US)</div>
       <div class="rsug">${Object.entries(R.suggestions||{}).map(([q,a])=>`<div><b>${esc(q)}</b><ul>${a.map(x=>`<li>${esc(x)}</li>`).join('')||'<li class="note">—</li>'}</ul></div>`).join('')}</div>`;
+  }else if(S.rtab==='trends'){
+    let T=null;try{T=JSON.parse(await readText('docs/research/trends.json'))}catch(e){}
+    if(!T){P.innerHTML='<div class="empty">Trend memory starts with the next daily scan.</div>';return}
+    const days=T.days_of_memory||0,ready=days>=8;
+    const mv=(a,cls)=>(a||[]).map(m=>`<span class="rw ${cls}">${esc(m.name)} <i>${m.change>0?'+':''}${m.change}</i></span>`).join('')||'<span class="note">—</span>';
+    const st=(a)=>(a||[]).map(m=>`<span class="rw">${esc(m.name)} <i>${m.now}</i></span>`).join('')||'<span class="note">—</span>';
+    const pt=T.patterns||{},rowsP=[['brand','Famous brand in title'],['why_how','Starts with Why / How'],['caps_word','A CAPS word (SECRET…)'],['number','Has a number'],['money','Mentions money ($, million)'],['question','Ends with a question'],['emoji','Has an emoji']];
+    const bar=(x)=>`<div class="pbar"><i style="width:${Math.round((x||0)*100)}%"></i><span>${Math.round((x||0)*100)}%</span></div>`;
+    P.innerHTML=`<div class="note">The bot remembers ${days} day${days===1?'':'s'} of scans (keeps 30). ${ready?'Rising / falling = last 7 days vs the 7 days before.':`Rising/falling needs 8+ days — ready in about ${8-days} day${8-days===1?'':'s'}. Until then this shows what is big right now.`}</div>
+      ${ready?`<div class="lbl" style="margin-top:14px">📈 Brands rising in viral videos</div><div>${mv(T.rising.brands.rising,'up')}</div>
+      <div class="lbl" style="margin-top:14px">📉 Brands cooling down</div><div>${mv(T.rising.brands.falling,'down')}</div>
+      <div class="lbl" style="margin-top:14px">📈 Title words rising</div><div>${mv(T.rising.words.rising,'up')}</div>`:''}
+      <div class="lbl" style="margin-top:18px">Brands in viral videos right now (last 7 days)</div><div>${st(T.rising&&T.rising.brands.steady)}</div>
+      <div class="lbl" style="margin-top:22px">How today's hit titles are written</div>
+      <table class="ptab"><tr><th></th><th>Viral Shorts (${(pt.shorts||{}).count||0})</th><th>Viral long (${(pt.long||{}).count||0})</th></tr>
+      ${rowsP.map(([k,n])=>`<tr><td>${n}</td><td>${bar((pt.shorts||{})[k])}</td><td>${bar((pt.long||{})[k])}</td></tr>`).join('')}
+      <tr><td>Typical title length</td><td>${(pt.shorts||{}).median_words||'—'} words</td><td>${(pt.long||{}).median_words||'—'} words</td></tr>
+      <tr><td>Typical video length</td><td>${durT((pt.shorts||{}).median_seconds||0)}</td><td>${durT((pt.long||{}).median_seconds||0)}</td></tr></table>`;
+  }else if(S.rtab==='learn'){
+    let O=null,PB='';try{O=JSON.parse(await readText('docs/research/own_videos.json'))}catch(e){}
+    try{const t=await readText('docs/playbook.md');PB=(window.marked&&window.DOMPurify)?DOMPurify.sanitize(marked.parse(t)):`<pre style="white-space:pre-wrap">${esc(t)}</pre>`}catch(e){PB='<div class="note">Playbook not found.</div>'}
+    const vs=Object.entries((O&&O.videos)||{}).map(([id,v])=>({id,...v})).sort((a,b)=>(b.published||'').localeCompare(a.published||''));
+    const c=(x)=>x==null?'<span class="note">—</span>':fmtN(x);
+    P.innerHTML=`<div class="lbl">Our videos — same-age comparison (the fairest way to compare)</div>
+      ${vs.length?`<table class="ptab own"><tr><th>Video</th><th>Age</th><th>Day 1</th><th>Day 3</th><th>Day 7</th><th>Now</th><th>Likes</th></tr>
+      ${vs.map(v=>`<tr><td><a href="https://youtu.be/${esc(v.id)}" target="_blank">${esc(v.title)}</a> <span class="note">${v.short?'Short':'Long'} · ${durT(v.seconds||0)}</span></td><td>${v.age_days} d</td><td>${c(v.views_1d)}</td><td>${c(v.views_3d)}</td><td>${c(v.views_7d)}</td><td><b>${fmtN(v.views)}</b></td><td>${Math.round((v.like_rate||0)*1000)/10}%</td></tr>`).join('')}</table>`
+      :'<div class="empty">No public videos yet — they appear here the day after they go live.</div>'}
+      <div class="note">Every Monday Claude compares these numbers with the niche trends and rewrites the playbook below. Labels: <b>[proven]</b> our numbers · <b>[signal]</b> niche data · <b>[start]</b> untested.</div>
+      <div class="md" style="margin-top:14px">${PB}</div>`;
   }else{
     const tc=Object.entries(R.title_checks||{});
     P.innerHTML=`<div class="note">For every script still in production: what people actually search for its brand. If our title uses words from these lists, YouTube search can find it. Checked daily 05:30 PKT.</div>`+

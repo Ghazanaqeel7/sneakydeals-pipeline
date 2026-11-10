@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 """Sneaky Deals research bot (free: YouTube Data API v3 + YouTube search suggestions).
 
-Usage (GitHub Actions runs these; env YT_API_KEY needed for --full):
-  python3 pipeline/research/research.py --full     # weekly: outliers, competitors, hot words, suggestions, title checks
-  python3 pipeline/research/research.py --titles   # daily: search suggestions for scripts waiting on the owner (no key)
+Usage (GitHub Actions runs this daily; env YT_API_KEY needed for --full):
+  python3 pipeline/research/research.py --full     # daily: outliers, competitors, hot words, suggestions, title checks,
+                                                   #        trend memory (30 days) and our own videos' growth
+  python3 pipeline/research/research.py --titles   # only search suggestions for scripts waiting on the owner (no key)
 Writes docs/research/latest.json (read by the dashboard and by Claude's story run),
-a dated copy in docs/research/history/, and docs/research/summary.txt (lines for Slack).
+a dated copy in docs/research/history/ (last 30 days kept), docs/research/trends.json (what is rising / falling and
+which title patterns the hits use), docs/research/own_videos.json (our videos' views over time) and
+docs/research/summary.txt (lines for Slack). Claude's Monday "weekly learning" turns these into docs/playbook.md.
 
 Outlier score = video views / the channel's average views per video (same idea as vidIQ's breakout score).
 Quota: a full run uses roughly 1,500 of the free 10,000 units per day.
@@ -207,6 +210,105 @@ def own_channel(prev):
     ch['views_change'] = ch['views'] - p['views'] if p.get('views') is not None else None
     return ch
 
+BRANDS = ['coca-cola', 'coke', 'pepsi', 'mcdonald', 'disney', 'costco', 'nike', 'apple', 'amazon', 'walmart', 'ikea',
+          'lego', 'netflix', 'blockbuster', 'sears', 'toys r us', 'burger king', 'starbucks', 'tesla', 'google', 'microsoft',
+          'nintendo', 'sony', 'samsung', 'nokia', 'kodak', 'ferrari', 'lamborghini', 'rolex', 'heinz', 'kfc', 'subway',
+          'wendy', 'taco bell', 'domino', 'red bull', 'monster', 'hershey', 'mars', 'kellogg', 'ford', 'toyota', 'honda',
+          'boeing', 'gucci', 'louis vuitton', 'chick-fil-a', 'popeyes', 'tupperware', 'kmart', 'radioshack', 'yahoo']
+
+def title_patterns(rows):
+    """Share of hit titles that use each pattern, so we learn what packaging works right now."""
+    n = len(rows) or 1
+    has = lambda f: round(sum(1 for r in rows if f(r['title'])) / n, 2)
+    secs = sorted(r['seconds'] for r in rows)
+    return {
+        'count': len(rows),
+        'question': has(lambda t: '?' in t),
+        'why_how': has(lambda t: re.match(r'(?i)^(why|how)\b', t.strip()) is not None),
+        'number': has(lambda t: re.search(r'\d', t) is not None),
+        'money': has(lambda t: re.search(r'[$£€]|\bmillion|\bbillion', t, re.I) is not None),
+        'caps_word': has(lambda t: re.search(r'\b[A-Z]{3,}\b', t) is not None),
+        'emoji': has(lambda t: re.search(r'[\U0001F300-\U0001FAFF☀-➿]', t) is not None),
+        'brand': has(lambda t: any(b in t.lower() for b in BRANDS)),
+        'median_seconds': secs[len(secs) // 2] if secs else 0,
+        'median_words': sorted(len(r['title'].split()) for r in rows)[len(rows) // 2] if rows else 0,
+    }
+
+def brand_counts(rows):
+    c = Counter()
+    for r in rows:
+        t = r['title'].lower()
+        for b in BRANDS:
+            if b in t: c[b] += 1
+    return dict(c)
+
+def update_trends(res):
+    """30-day memory: one entry per day with word + brand counts; rising/falling = last 7 days vs the 7 before."""
+    path = os.path.join(OUT_DIR, 'trends.json')
+    tr = json.load(open(path)) if os.path.exists(path) else {'days': []}
+    today = NOW.strftime('%Y-%m-%d')
+    rows = res.get('shorts', []) + res.get('long', [])
+    words = {w['word']: w['count'] for w in hot_words(rows)}
+    entry = {'date': today, 'words': words, 'brands': brand_counts(rows)}
+    tr['days'] = [d for d in tr['days'] if d['date'] != today] + [entry]
+    tr['days'] = [d for d in tr['days'] if (NOW - datetime.datetime.fromisoformat(d['date'] + 'T00:00:00+00:00')).days <= 30]
+    def window(a, b, key):
+        tot = Counter()
+        for d in tr['days']:
+            age = (NOW - datetime.datetime.fromisoformat(d['date'] + 'T00:00:00+00:00')).days
+            if a <= age < b: tot.update(d[key])
+        return tot
+    out = {}
+    for key in ('words', 'brands'):
+        now7, prev7 = window(0, 7, key), window(7, 14, key)
+        moves = []
+        for k in set(now7) | set(prev7):
+            moves.append({'name': k, 'now': now7[k], 'before': prev7[k], 'change': now7[k] - prev7[k]})
+        moves.sort(key=lambda x: x['change'], reverse=True)
+        out[key] = {'rising': [m for m in moves if m['change'] > 0][:12],
+                    'falling': [m for m in reversed(moves) if m['change'] < 0][:8],
+                    'steady': sorted([m for m in moves if m['now'] >= 2], key=lambda m: -m['now'])[:12]}
+    tr['rising'] = out
+    tr['patterns'] = {'shorts': title_patterns(res.get('shorts', [])), 'long': title_patterns(res.get('long', []))}
+    tr['days_of_memory'] = len(tr['days'])
+    tr['updated'] = NOW.strftime('%Y-%m-%dT%H:%M:%SZ')
+    json.dump(tr, open(path, 'w'), indent=1, ensure_ascii=False)
+    return tr
+
+def track_own_videos(own):
+    """Daily snapshot of every public Sneaky Deals video, so we can compare our videos at the same age (1/3/7 days)."""
+    path = os.path.join(OUT_DIR, 'own_videos.json')
+    data = json.load(open(path)) if os.path.exists(path) else {'videos': {}}
+    if not own or not own.get('uploads'): return data
+    items = yt('playlistItems', part='contentDetails', playlistId=own['uploads'], maxResults=50).get('items', [])
+    vids = video_details([i['contentDetails']['videoId'] for i in items])
+    stamp = NOW.strftime('%Y-%m-%dT%H:%M:%SZ')
+    for vid, v in vids.items():
+        rec = data['videos'].setdefault(vid, {'snaps': []})
+        rec.update({k: v[k] for k in ('title', 'published', 'seconds', 'thumb')})
+        rec['short'] = v['seconds'] <= 180
+        rec['snaps'] = [s for s in rec['snaps'] if s['t'][:10] != stamp[:10]] + [{'t': stamp, 'views': v['views'], 'likes': v['likes'], 'comments': v['comments']}]
+        age = days_since(v['published'])
+        rec['age_days'] = round(age, 1)
+        def at(d):   # views from a snapshot taken when the video was d to d+1.5 days old (None if we have none)
+            for s in rec['snaps']:
+                snap_age = days_since(v['published']) - days_since(s['t'])
+                if d <= snap_age < d + 1.5: return s['views']
+            return None
+        rec['views_1d'], rec['views_3d'], rec['views_7d'] = at(1), at(3), at(7)
+        rec['views'] = v['views']
+        rec['like_rate'] = round(v['likes'] / v['views'], 3) if v['views'] else 0
+    data['updated'] = stamp
+    json.dump(data, open(path, 'w'), indent=1, ensure_ascii=False)
+    return data
+
+def prune_history(days=30):
+    h = os.path.join(OUT_DIR, 'history')
+    for f in os.listdir(h):
+        try:
+            if (NOW.date() - datetime.date.fromisoformat(f[:10])).days > days: os.remove(os.path.join(h, f))
+        except ValueError: pass
+
 def main():
     args = sys.argv[1:]
     full = '--full' in args
@@ -219,9 +321,11 @@ def main():
         res['long'] = scan('long')
         res['competitors'] = competitors(prev)
         res['own'] = own_channel(prev)
+        track_own_videos(res['own'])
         res['hot_words'] = {'shorts': hot_words(res['shorts']), 'long': hot_words(res['long'])}
         res['suggestions'] = {s: suggest(s) for s in CFG.get('suggest_seeds', [])}
         res['full_run'] = NOW.strftime('%Y-%m-%dT%H:%M:%SZ')
+        tr = update_trends(res)
         res['units_used'] = UNITS['used']
     res['title_checks'] = title_checks()
     res['updated'] = NOW.strftime('%Y-%m-%dT%H:%M:%SZ')
@@ -229,7 +333,8 @@ def main():
     json.dump(res, open(LATEST, 'w'), indent=1, ensure_ascii=False)
     if full:
         json.dump(res, open(os.path.join(OUT_DIR, 'history', NOW.strftime('%Y-%m-%d') + '.json'), 'w'), ensure_ascii=False)
-        lines = summary(res)
+        prune_history()
+        lines = summary(res, tr)
         open(os.path.join(OUT_DIR, 'summary.txt'), 'w').write('\n'.join(lines) + '\n')
         print('\n'.join(lines))
     print(f"done: shorts={len(res.get('shorts', []))} long={len(res.get('long', []))} competitors={len(res.get('competitors', []))} units={UNITS['used']}")
@@ -238,8 +343,8 @@ def fmt(n):
     n = n or 0
     return f'{n/1e6:.1f}M' if n >= 1e6 else f'{n/1e3:.0f}K' if n >= 1e3 else str(n)
 
-def summary(res):
-    L = ['🔎 Research hafta tayyar (dashboard → Research)']
+def summary(res, tr=None):
+    L = ['🔎 Research update tayyar (dashboard → Research)']
     if res.get('shorts'):
         t = res['shorts'][0]; L.append(f"🔥 Top Short: \"{t['title'][:70]}\" — {fmt(t['views'])} views, {t['score']}x apne channel se zyada")
     if res.get('long'):
@@ -249,8 +354,10 @@ def summary(res):
     comp = [c for c in res.get('competitors', []) if c.get('hits')]
     if comp:
         c = comp[0]; h = c['hits'][0]; L.append(f"👀 {c['title']}: \"{h['title'][:60]}\" {h['score']}x chali")
+    up = ((tr or {}).get('rising') or {}).get('brands', {}).get('rising') or []
+    if up and (tr or {}).get('days_of_memory', 0) >= 8: L.append('📈 Barh rahe topics (7 din): ' + ', '.join(f"{m['name']} (+{m['change']})" for m in up[:5]))
     o = res.get('own')
-    if o: L.append(f"📈 Sneaky Deals: {fmt(o['subs'])} subs" + (f" ({o['subs_change']:+d} is hafte)" if o.get('subs_change') is not None else ''))
+    if o: L.append(f"📈 Sneaky Deals: {fmt(o['subs'])} subs" + (f" ({o['subs_change']:+d} pichle scan se)" if o.get('subs_change') is not None else ''))
     return L
 
 if __name__ == '__main__':

@@ -60,14 +60,17 @@ install anything, or research. If another job is already `building`, do not star
    and `set_status <id> script_ready`. **Owner ideas first:** run `python3 pipeline/scripts/pop_idea.py`; if it
    prints an idea (queued by the owner on the dashboard), that is the story — research it, and if it is not true or
    not usable, say so in the script message and pick your own instead.
-6. **Weekly review** — only in the Monday story-hour run (Monday 11:00-11:59 Asia/Karachi), and only once
-   at least 3 Shorts are public on the channel (count with vidIQ). See "Weekly review" below.
+6. **Weekly learning** — only in the Monday story-hour run (Monday 11:00-11:59 Asia/Karachi). See "Weekly learning"
+   below. Runs from the first week; with few videos everything is labelled "early signal".
 7. End with a short summary of what you did (it is shown to the owner).
 
 ## New story (script stage)
 
-- **Research first:** read `docs/research/latest.json` (made weekly by the research bot, also shown on the dashboard
-  Research page). `shorts` / `long` = videos doing many times better than their channel's normal (`score`);
+- **Playbook first:** read `docs/playbook.md` and follow it (topics, titles, hooks, length). It is the system's
+  learned rulebook; where it conflicts with the older bullets below, the playbook wins (except fact-checking and the
+  Never list).
+- **Research:** read `docs/research/latest.json` (made daily 06:00 PKT by the research bot, also shown on the dashboard
+  Research page) and `docs/research/trends.json` (`rising.brands` / `rising.words` = what grew over the last 7 days). `shorts` / `long` = videos doing many times better than their channel's normal (`score`);
   `hot_words` = words that keep showing up in those titles; `suggestions` = what people type into YouTube search.
   Prefer a story whose topic matches what is breaking out right now, told our own way: never copy a competitor's
   script, title or angle. Owner ideas from the Research page arrive in the ideas queue as
@@ -129,23 +132,25 @@ Also post the final thumbnail the same way (`--image jobs/<id>/thumbnail.jpg`).
 5. Do not commit `node_modules/`, `out/`, `stills/`, `RAW.wav` (see .gitignore). Commit + push, then
    `set_status <id> render_queued`.
 
-## Weekly review (vidIQ → Slack → LEARNINGS.md)
+## Weekly learning (research data → playbook → Slack)
 
-Budget: at most ~25 vidIQ credits per review (check `vidiq_balance` first; if fewer than 25 are left, post a
-one-line note and skip). Steps:
-1. `vidiq_user_channels` → channel id of **Sneaky Deals** (UCyNCq5TQLEzCU87Qb7XMfEA, @sneakydeals). `vidiq_channel_analytics` with `report: top_videos`,
-   last 28 days, metrics views, engagedViews, averageViewPercentage, averageViewDuration, likes, comments,
-   subscribersGained, shares. Optionally one `audience_retention` call for the best and the worst Short.
-2. Compare our own videos with each other (use engagedViews). Look for patterns: hook type (brand + shock?),
-   brand, topic, length, first-second visual, title. Read a few comments if cheap. Only claim what the numbers
-   support; with few videos say "early signal", not "proven".
-3. Write `docs/reviews/<YYYY-MM-DD>.md` (table of videos + 3-6 lessons + 2-3 concrete changes for next week's
-   scripts). Append the lessons that are well supported to `docs/LEARNINGS.md` (one line each, dated). If a lesson
-   contradicts an older one, update the older line instead of adding a conflicting one.
+This is how the system trains itself. Free data first; vidIQ only if credits are left (`vidiq_balance` ≥ 25).
+1. Read `docs/research/own_videos.json` (our videos: views at 1/3/7 days, like rate, length), `docs/research/trends.json`
+   (30-day memory: rising/falling brands and words, title patterns of this week's hits) and `docs/research/latest.json`.
+   If vidIQ credits allow: `vidiq_channel_analytics` top_videos for the last 28 days (averageViewPercentage,
+   engagedViews, subscribersGained) — retention is the one thing the free data does not have.
+2. Compare our videos with each other at the same age (views_3d is the fairest). Look for patterns: topic, brand,
+   hook type, title pattern, length. Compare our titles with the niche's hit patterns. Only claim what the numbers
+   support; with fewer than ~6 videos say "early signal".
+3. Write `docs/reviews/<YYYY-MM-DD>.md` (table of our videos + 3-6 lessons + 2-3 concrete changes for next week).
+   **Rewrite `docs/playbook.md`**: keep it short; every rule labelled [proven] (our numbers), [signal] (niche data)
+   or [start] (untested); upgrade/downgrade labels as evidence arrives; drop rules the data contradicts; update the
+   "Last updated" line. Keep owner-written lines unless the owner removed them. Append the strongest lessons to
+   `docs/LEARNINGS.md` (one dated line each; update a conflicting older line instead of adding a second one).
 4. Commit + push, then post 5-8 short lines to the owner with
    `python3 pipeline/scripts/progress.py weekly-review "<line>"` — e.g. "📊 Hafta: 4 Shorts, 12.4K views, +86 subs",
-   "🥇 Best: Disney swamp — 81% dekha gaya (hook: brand + secret)", "⚠️ Kamzor: … — log 2nd second par swipe",
-   "🧠 Agle hafte: …". Simple Roman Urdu/English.
+   "🥇 Best: Disney swamp — 3 din mein 8K views (hook: brand + secret)", "📈 Niche mein barh raha: Pepsi, Sears",
+   "🧠 Playbook update: …", "🧪 Agle hafte test: …". Simple Roman Urdu/English.
 
 ## Never
 - publish, upload, or change anything on YouTube/Instagram/Facebook
