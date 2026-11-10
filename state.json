@@ -20,8 +20,8 @@
       "live_at": "2026-11-11T00:00:00Z"
     },
     "002-disney-secret-swamp": {
-      "status": "video_approved",
-      "updated": "2026-11-10T14:23:39Z",
+      "status": "video_ready",
+      "updated": "2026-11-10T14:24:07Z",
       "title": "Disney Secretly Bought a Swamp Using Fake Names",
       "send_error": "",
       "vote_msg": "1794298945.670169",
@@ -92,7 +92,8 @@
       "run": "42817432233",
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-002-disney-secret-swamp/final.mp4",
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-002-disney-secret-swamp/preview.mp4",
-      "decided_via": "slack"
+      "decided_via": "dashboard",
+      "decided_at": "2026-11-10T14:24:07Z"
     }
   }
 }
