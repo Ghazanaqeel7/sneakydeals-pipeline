@@ -51,7 +51,7 @@ async function sl(method, body) {   // write methods: JSON body
   if (!r.ok && r.error !== 'already_reacted') throw new Error(`slack ${method}: ${r.error}`); return r;
 }
 async function slGet(method, qs) {  // read methods: query string
-  const r = await http({ method: 'GET', url: `${SL}/${method}?${new URLSearchParams(qs).toString()}`, headers: slHeaders, json: true });
+  const r = await http({ method: 'GET', url: `${SL}/${method}?${Object.entries(qs).map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`).join('&')}`, headers: slHeaders, json: true });
   if (!r.ok) throw new Error(`slack ${method}: ${r.error}`); return r;
 }
 const dPost = async (text) => { const r = await sl('chat.postMessage', { channel: CH, text, unfurl_links: false, unfurl_media: false }); return { id: r.ts }; };
