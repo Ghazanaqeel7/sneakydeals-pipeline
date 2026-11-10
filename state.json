@@ -20,8 +20,8 @@
       "live_at": "2026-11-11T00:00:00Z"
     },
     "002-disney-secret-swamp": {
-      "status": "video_rejected",
-      "updated": "2026-11-10T15:02:57Z",
+      "status": "video_ready",
+      "updated": "2026-11-10T16:11:21Z",
       "title": "Disney Secretly Bought a Swamp Using Fake Names",
       "send_error": "",
       "vote_msg": "",
@@ -100,7 +100,7 @@
       "decided_via": "dashboard",
       "decided_at": "2026-11-10T15:02:57Z",
       "vote_kind": "",
-      "feedback": "[2026-11-10T15:02:54Z] in thumbnail Land for sale ka jo board h thora bara or visible kardo ta k woh bhi attention seek kare logon ki\n[2026-11-10T15:02:57Z] in thumbnail Land for sale ka jo board h thora bara or visible kardo ta k woh bhi attention seek kare logon ki"
+      "feedback": ""
     }
   }
 }
