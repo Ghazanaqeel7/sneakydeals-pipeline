@@ -4,8 +4,11 @@
     "handle": "@SneakyDeals",
     "publish_days": [
       "Mon",
+      "Tue",
       "Wed",
+      "Thu",
       "Fri",
+      "Sat",
       "Sun"
     ],
     "publish_time_pkt": "05:00",
