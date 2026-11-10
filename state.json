@@ -28,10 +28,6 @@
       "approved_via": "chat",
       "progress": [
         {
-          "t": "2026-11-10T12:17:16Z",
-          "msg": "🎬 Scenes: 8 locations plan — swamp, cattle ranch, drawing office, land office, lawyer office, map room, California press trip, printing press + Orlando ballroom (~45 min baqi)"
-        },
-        {
           "t": "2026-11-10T12:26:01Z",
           "msg": "🏗 Scenes 9/9 ka pehla draft tayyar: swamp, ranch, drawing office, land office, lawyer office, map room, press trip, printing press, Orlando hall (~30 min baqi, phir render ~40 min)"
         },
@@ -90,9 +86,14 @@
         {
           "t": "2026-11-10T15:13:59Z",
           "msg": "🛠 Aapke changes laga raha hoon: thumbnail mein LAND FOR SALE board bara aur saaf kar raha hoon, video wahi rahegi (~15 min)"
+        },
+        {
+          "t": "2026-11-10T16:11:19Z",
+          "msg": "✅ Naya thumbnail tayyar: LAND FOR SALE board ab bara aur saaf hai (video wahi hai). Review ke liye abhi bhej raha hoon.",
+          "image": "jobs/002-disney-secret-swamp/thumbnail.jpg"
         }
       ],
-      "progress_count": 17,
+      "progress_count": 18,
       "run": "42817432233",
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-002-disney-secret-swamp/final.mp4",
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-002-disney-secret-swamp/preview.mp4",
