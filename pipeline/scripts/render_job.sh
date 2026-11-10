@@ -7,6 +7,6 @@ CH=$(command -v google-chrome || command -v chromium || command -v chromium-brow
 cd "$P"; npm ci --no-audit --no-fund >/dev/null 2>&1 || npm install --no-audit --no-fund >/dev/null
 mkdir -p out; rm -f out/full_silent.mp4
 npx remotion render src/index.jsx Story out/full_silent.mp4 --gl=swangle ${CH:+--browser-executable=$CH} \
-  --concurrency=$C --image-format=jpeg --jpeg-quality=92 --crf=17 --log=error
+  --concurrency=$C --image-format=jpeg --jpeg-quality=92 --crf=17
 cd - >/dev/null
 bash pipeline/scripts/finalize.sh "$J"

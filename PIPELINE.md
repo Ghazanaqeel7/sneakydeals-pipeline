@@ -75,6 +75,9 @@ install anything, or research. If another job is already `building`, do not star
 "🎙 Voice ban rahi hai…", "🎙 Voice tayyar (NN s)", "🎬 Scenes: N locations plan — <names>", one line per location
 built ("🏗 Scene 2/6 tayyar: land office"), "🔍 Check frames round 1: <what you are fixing>", "✅ Check frames clean",
 "🖼 Thumbnail tayyar". Keep it to ~6-12 updates per build, simple words, no tech jargon.
+**End every progress line with the time left**, e.g. "(~45 min baqi, phir render ~40 min)". Typical budget:
+voice 3-5 min, scenes 30-60 min (≈5-8 min per location), check-frame rounds 10-20 min, thumbnail 3 min, then
+GitHub render 30-50 min. Update the estimate as you go; if something takes longer, say so and why.
 **Show the owner the scenes:** after each check-frames round, save the contact sheet as
 `jobs/<id>/review/roundN.jpg` (JPG, ≤ 1600 px wide, < 1 MB), commit + push it, then
 `progress.py <id> --image jobs/<id>/review/roundN.jpg "🔍 Check frames round N: <what you see / will fix>"`.

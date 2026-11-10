@@ -148,8 +148,8 @@ if (mode === 'replies') {
   // typed messages
   // status changes + Claude's progress notes -> Slack (so the owner sees the video being made)
   const ANNOUNCE = {
-    building: '🛠 Video banana shuru: voice, scenes, check frames. Har step ki update yahan aayegi.',
-    render_queued: '🎞 Scenes tayyar. GitHub par render shuru hone wala hai (~30-60 min).',
+    building: '🛠 Video banana shuru: voice, scenes, check frames. Andaza: scenes ~45-75 min + render ~30-50 min = video ~1.5-2 ghante mein. Har step ki update yahan aayegi.',
+    render_queued: '🎞 Scenes tayyar. GitHub par render 30 min ke andar shuru hoga, phir ~30-50 min lagenge.',
     rendering: '⏳ Render chal raha hai (GitHub Actions)...',
     render_failed: '⚠️ Render fail hua. Claude agle check mein theek karega.',
     script_ready: '📝 Naya / updated script tayyar, abhi bhejta hoon.',

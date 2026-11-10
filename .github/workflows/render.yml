@@ -58,7 +58,23 @@ jobs:
           git config user.name "render-bot"; git config user.email "render-bot@users.noreply.github.com"
           for J in ${{ steps.pick.outputs.jobs }}; do
             python3 pipeline/scripts/set_status.py "$J" rendering run="${{ github.run_id }}"
-            if bash pipeline/scripts/render_job.sh "jobs/$J" 4; then
+            python3 pipeline/scripts/progress.py "$J" "🎞 Render shuru (GitHub). Andaza: ~30-50 min."
+            bash pipeline/scripts/render_job.sh "jobs/$J" 4 > "/tmp/render_$J.log" 2>&1 &
+            RPID=$!; NEXT=25
+            while kill -0 $RPID 2>/dev/null; do
+              sleep 60
+              LINE=$(tr '\r' '\n' < "/tmp/render_$J.log" | grep -o 'Rendered [0-9]*/[0-9]*.*' | tail -1)
+              DONE=$(echo "$LINE" | sed -n 's/Rendered \([0-9]*\)\/\([0-9]*\).*/\1/p'); TOTAL=$(echo "$LINE" | sed -n 's/Rendered \([0-9]*\)\/\([0-9]*\).*/\2/p')
+              if [ -n "$DONE" ] && [ -n "$TOTAL" ] && [ "$TOTAL" -gt 0 ]; then
+                PCT=$(( DONE * 100 / TOTAL )); ETA=$(echo "$LINE" | sed -n 's/.*time remaining: \(.*\)/\1/p')
+                if [ "$PCT" -ge "$NEXT" ] && [ "$NEXT" -le 75 ]; then
+                  python3 pipeline/scripts/progress.py "$J" "⏳ Render ${PCT}% (${DONE}/${TOTAL} frames). Baqi waqt: ${ETA:-calculating}" || true
+                  NEXT=$(( NEXT + 25 ))
+                fi
+              fi
+            done
+            tail -5 "/tmp/render_$J.log"
+            if wait $RPID; then
               TITLE=$(python3 -c "import json;print(json.load(open('jobs/$J/meta.json'))['title'])")
               gh release delete "job-$J" -y --cleanup-tag 2>/dev/null || true
               ASSETS="jobs/$J/project/out/final.mp4 jobs/$J/project/out/preview.mp4"; [ -f "jobs/$J/thumbnail.jpg" ] && ASSETS="$ASSETS jobs/$J/thumbnail.jpg"
