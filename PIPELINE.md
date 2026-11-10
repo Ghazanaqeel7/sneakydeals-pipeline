@@ -55,16 +55,34 @@ install anything, or research. If another job is already `building`, do not star
 3. **`script_rejected` with feedback**: rewrite `script.md`, `SHOTS.txt`, `telegram.md`, `meta.json` per the
    feedback, push, `set_status <id> script_ready feedback=`. No feedback yet → leave it.
 4. **`script_approved`** (oldest first, one per run): `set_status <id> building`, then BUILD (below).
-5. **New story** — only in the run that starts between 11:00 and 11:59 Asia/Karachi time: count jobs whose status
-   is not `published`/`dropped`. If it is below `config.pipeline_buffer`, research and write ONE new script (below)
+5. **New story** — only in the run that starts between 11:00 and 11:59 Asia/Karachi time: count jobs (ids that start
+   with a number; `research` / `weekly-review` are not jobs) whose status is not `published`/`dropped`. If it is below `config.pipeline_buffer`, research and write ONE new script (below)
    and `set_status <id> script_ready`. **Owner ideas first:** run `python3 pipeline/scripts/pop_idea.py`; if it
    prints an idea (queued by the owner on the dashboard), that is the story — research it, and if it is not true or
    not usable, say so in the script message and pick your own instead.
-6. **Weekly review** — only in the Monday story-hour run (Monday 11:00-11:59 Asia/Karachi), and only once
-   at least 3 Shorts are public on the channel (count with vidIQ). See "Weekly review" below.
+   **Then the content calendar:** if no owner idea, open `docs/calendar.json` and take the first item (top to bottom)
+   with `status: "planned"` — its topic/angle/title are the brief (still fact-check; the title is a draft). After you
+   push the script, set that item's `status` to `"scripted"` and `"job": "<id>"`, commit + push. If the item is
+   `format: "long"`, make it as a Short for now (long-form production does not exist yet) and keep its long idea in
+   `long_later`. Only if the calendar has no planned item, pick your own story.
+6. **Weekly learning** — only in the Monday story-hour run (Monday 11:00-11:59 Asia/Karachi). See "Weekly learning"
+   below. Runs from the first week; with few videos everything is labelled "early signal".
+   **On Mondays do step 6 before step 5**, so the day's new story already comes from the new calendar.
 7. End with a short summary of what you did (it is shown to the owner).
 
 ## New story (script stage)
+
+- **Playbook first:** read `docs/playbook.md` and follow it (topics, titles, hooks, length). It is the system's
+  learned rulebook; where it conflicts with the older bullets below, the playbook wins (except fact-checking and the
+  Never list).
+- **Research:** read `docs/research/latest.json` (made daily 06:00 PKT by the research bot, also shown on the dashboard
+  Research page) and `docs/research/trends.json` (`rising.brands` / `rising.words` = what grew over the last 7 days). `shorts` / `long` = videos doing many times better than their channel's normal (`score`);
+  `hot_words` = words that keep showing up in those titles; `suggestions` = what people type into YouTube search.
+  Prefer a story whose topic matches what is breaking out right now, told our own way: never copy a competitor's
+  script, title or angle. Owner ideas from the Research page arrive in the ideas queue as
+  "<their title> — <channel> (views, score)": that is a topic signal, so research the true story behind it.
+- **Title check:** `title_checks.<id>.suggestions` lists real searches for the brand in the title; reuse their words
+  in the title/description where it reads naturally.
 
 - Pick a story not already in `state.json` (check every job title/id). Prefer famous US brands and people's
   money stories (Disney, Costco, McDonald's, Nike, Coca-Cola, Apple, Amazon, IKEA, Lego, Netflix...). Ideas already
@@ -130,23 +148,33 @@ RSS → Instagram for Business "Publish Video" (Reel) and RSS → Facebook Pages
 ≥ 540x960 — our 720x1280, 45-60 s files already fit. Keep big text and captions out of the bottom ~third of the
 frame where IG/FB put their caption and buttons. You still never publish anything yourself.
 
-## Weekly review (vidIQ → Slack → LEARNINGS.md)
+## Weekly learning (research data → playbook → Slack)
 
-Budget: at most ~25 vidIQ credits per review (check `vidiq_balance` first; if fewer than 25 are left, post a
-one-line note and skip). Steps:
-1. `vidiq_user_channels` → channel id of **Sneaky Deals** (UCyNCq5TQLEzCU87Qb7XMfEA, @sneakydeals). `vidiq_channel_analytics` with `report: top_videos`,
-   last 28 days, metrics views, engagedViews, averageViewPercentage, averageViewDuration, likes, comments,
-   subscribersGained, shares. Optionally one `audience_retention` call for the best and the worst Short.
-2. Compare our own videos with each other (use engagedViews). Look for patterns: hook type (brand + shock?),
-   brand, topic, length, first-second visual, title. Read a few comments if cheap. Only claim what the numbers
-   support; with few videos say "early signal", not "proven".
-3. Write `docs/reviews/<YYYY-MM-DD>.md` (table of videos + 3-6 lessons + 2-3 concrete changes for next week's
-   scripts). Append the lessons that are well supported to `docs/LEARNINGS.md` (one line each, dated). If a lesson
-   contradicts an older one, update the older line instead of adding a conflicting one.
-4. Commit + push, then post 5-8 short lines to the owner with
+This is how the system trains itself. Free data first; vidIQ only if credits are left (`vidiq_balance` ≥ 25).
+1. Read `docs/research/own_videos.json` (our videos: views at 1/3/7 days, like rate, length), `docs/research/trends.json`
+   (30-day memory: rising/falling brands and words, title patterns of this week's hits) and `docs/research/latest.json`.
+   If vidIQ credits allow: `vidiq_channel_analytics` top_videos for the last 28 days (averageViewPercentage,
+   engagedViews, subscribersGained) — retention is the one thing the free data does not have.
+2. Compare our videos with each other at the same age (views_3d is the fairest). Look for patterns: topic, brand,
+   hook type, title pattern, length. Compare our titles with the niche's hit patterns. Only claim what the numbers
+   support; with fewer than ~6 videos say "early signal".
+3. Write `docs/reviews/<YYYY-MM-DD>.md` (table of our videos + 3-6 lessons + 2-3 concrete changes for next week).
+   **Rewrite `docs/playbook.md`**: keep it short; every rule labelled [proven] (our numbers), [signal] (niche data)
+   or [start] (untested); upgrade/downgrade labels as evidence arrives; drop rules the data contradicts; update the
+   "Last updated" line. Keep owner-written lines unless the owner removed them. Append the strongest lessons to
+   `docs/LEARNINGS.md` (one dated line each; update a conflicting older line instead of adding a second one).
+4. **Write this week's content calendar** in `docs/calendar.json` (move the old file to
+   `docs/calendar/<its week>.json` first). `week` = this Monday's date. One item per publish day in
+   `config.publish_days`, in order; pattern: Shorts on Mon/Wed/Fri/Sun, long-form on Tue/Thu/Sat (owner's plan). Each
+   item: `day` ("Mon 16 Nov"), `format` ("short"/"long"), `topic` (the true story in one line), `angle`, `title`
+   (draft, playbook rules), `why` (the data behind it: research score / trend / our own results, one line),
+   `status: "planned"`. Owner ideas still in the queue go first. Never repeat a story already in `state.json`.
+   Keep a planned item from last week that was never scripted only if it is still a good fit.
+5. Commit + push, then post 5-8 short lines to the owner with
    `python3 pipeline/scripts/progress.py weekly-review "<line>"` — e.g. "📊 Hafta: 4 Shorts, 12.4K views, +86 subs",
-   "🥇 Best: Disney swamp — 81% dekha gaya (hook: brand + secret)", "⚠️ Kamzor: … — log 2nd second par swipe",
-   "🧠 Agle hafte: …". Simple Roman Urdu/English.
+   "🥇 Best: Disney swamp — 3 din mein 8K views (hook: brand + secret)", "📈 Niche mein barh raha: Pepsi, Sears",
+   "🧠 Playbook update: …", "🧪 Agle hafte test: …", and the calendar in 2-3 lines
+   ("📅 Is hafte: Mon Pudding Guy · Tue (long) Blockbuster …"). Simple Roman Urdu/English.
 
 ## Never
 - publish, upload, or change anything on YouTube/Instagram/Facebook

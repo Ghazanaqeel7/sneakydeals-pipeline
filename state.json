@@ -4,8 +4,11 @@
     "handle": "@SneakyDeals",
     "publish_days": [
       "Mon",
+      "Tue",
       "Wed",
+      "Thu",
       "Fri",
+      "Sat",
       "Sun"
     ],
     "publish_time_pkt": "05:00",
@@ -101,6 +104,59 @@
       "decided_at": "2026-11-10T17:19:48Z",
       "vote_kind": "",
       "feedback": ""
+    },
+    "research": {
+      "progress": [
+        {
+          "t": "2026-11-10T21:42:09Z",
+          "msg": "🔎 Research hafta tayyar (dashboard → Research)"
+        },
+        {
+          "t": "2026-11-10T21:42:10Z",
+          "msg": "🔥 Top Short: \"Brocode beer story How business formed best wine in india\" — 4.0M views, 231.2x apne channel se zyada"
+        },
+        {
+          "t": "2026-11-10T21:42:12Z",
+          "msg": "🎬 Top lambi video: \"The Thinking Game | Full documentary | Tribeca Film Festival official \" — 442.9M views, 250.3x"
+        },
+        {
+          "t": "2026-11-10T21:42:13Z",
+          "msg": "🏷 Garam words: pepsi, coca-cola, coke, marketing, crore, code, exposed, evolution"
+        },
+        {
+          "t": "2026-11-10T21:42:14Z",
+          "msg": "👀 RankZilla: \"DON'T CHECK THE SOUND 😭😭\" 18.5x chali"
+        },
+        {
+          "t": "2026-11-10T21:42:16Z",
+          "msg": "📈 Sneaky Deals: 0 subs"
+        },
+        {
+          "t": "2026-11-10T22:12:45Z",
+          "msg": "🔎 Research update tayyar (dashboard → Research)"
+        },
+        {
+          "t": "2026-11-10T22:12:46Z",
+          "msg": "🔥 Top Short: \"Engineer vs. Mathematician Which solution is better? #Math #Engineerin\" — 8.3M views, 59.0x apne channel se zyada"
+        },
+        {
+          "t": "2026-11-10T22:12:48Z",
+          "msg": "🎬 Top lambi video: \"The North Korean Operatives Hiding Inside U.S. Companies | WSJ Documen\" — 10.4M views, 112.9x"
+        },
+        {
+          "t": "2026-11-10T22:12:49Z",
+          "msg": "🏷 Garam words: products, billions, doing, trick, viral, became, storytime, everyone"
+        },
+        {
+          "t": "2026-11-10T22:12:50Z",
+          "msg": "👀 RankZilla: \"DON'T CHECK THE SOUND 😭😭\" 18.5x chali"
+        },
+        {
+          "t": "2026-11-10T22:12:51Z",
+          "msg": "📈 Sneaky Deals: 0 subs (+0 pichle scan se)"
+        }
+      ],
+      "progress_count": 12
     }
   }
 }

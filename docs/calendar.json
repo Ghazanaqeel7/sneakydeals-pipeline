@@ -1,0 +1,45 @@
+{
+  "week": "2026-11-09",
+  "made": "2026-11-11T03:30:00+05:00",
+  "note": "First calendar, made mid-week from the first research scans. Long-form days are listed but produced as Shorts until the long-form system exists. The full weekly calendar arrives Monday 16 Nov.",
+  "items": [
+    {
+      "day": "Thu 12 Nov",
+      "format": "short",
+      "topic": "The Pudding Guy: a man bought thousands of pudding cups to collect a mountain of airline miles",
+      "angle": "Ordinary person beats a big company with its own promotion (loophole)",
+      "title": "This Man Bought $3,000 of Pudding for Free Flights",
+      "why": "Loophole / genius-trick Shorts are the strongest signal this week (e.g. 'The Craziest Supermarket Loophole', 4.7M views). The Pudding Guy itself broke out at ~100x on another channel.",
+      "status": "planned"
+    },
+    {
+      "day": "Fri 13 Nov",
+      "format": "short",
+      "topic": "Pepsi's Harrier jet: a Pepsi Points ad showed a fighter jet as a prize and a student tried to collect it",
+      "angle": "Brand's own ad backfires; ordinary person calls the bluff",
+      "title": "Pepsi Accidentally Offered a Fighter Jet",
+      "why": "Pepsi is the most frequent brand in this week's hit titles; brand + shock title pattern.",
+      "status": "planned"
+    },
+    {
+      "day": "Sat 14 Nov",
+      "format": "short",
+      "topic": "Hoover's free-flights promotion: buy a vacuum, get two free flights — and it cost the company a fortune",
+      "angle": "Promotion loophole; the company loses, the customers win",
+      "title": "Hoover Gave Away Free Flights. It Cost Them Millions.",
+      "why": "Same loophole signal; titles with money words are in ~38% of this week's hit Shorts.",
+      "status": "planned",
+      "long_later": "Long version idea: People Who Beat Giant Companies at Their Own Game (Pudding Guy, Pepsi jet, Hoover)"
+    },
+    {
+      "day": "Sun 15 Nov",
+      "format": "short",
+      "topic": "Blockbuster laughed at the chance to buy Netflix for $50 million",
+      "angle": "Everyone laughed at it — then it became worth billions",
+      "title": "Blockbuster Laughed at Netflix for $50 Million",
+      "why": "'Products everyone made fun of, later made billions' broke out at ~15x this week; 'rise and fall' is the top long-form pattern.",
+      "status": "planned",
+      "long_later": "Long version idea: Whatever Happened to Blockbuster?"
+    }
+  ]
+}
