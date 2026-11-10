@@ -71,8 +71,8 @@ export function buildWorld() {
   // close: empty director's chair, castle rising, 1966
   const chair = S.dirChair(); chair.position.set(SW - 1.1, 0.12, 2.8); chair.rotation.y = -0.4; W.add(chair); only(chair, 'close');
   const castle = S.castle(); castle.scale.setScalar(2.0); castle.position.set(SW, 0, -78); W.add(castle); only(castle, 'close');
-  const y66 = big('1966', 1.1, 0.5, '#f2e6cc'); y66.position.set(SW + 1.6, 1.5, 1.2); W.add(y66); only(y66, 'close');
-  W.add(cyl(0.05, 0.05, 1.3, '#6b4a36', {x: SW + 1.6, y: 0.6, z: 1.15, seg: 6}));
+  const y66 = big('1966', 1.1, 0.5, '#f2e6cc'); y66.position.set(SW + 0.9, 1.5, 1.2); W.add(y66); only(y66, 'close');
+  W.add(cyl(0.05, 0.05, 1.3, '#6b4a36', {x: SW + 0.9, y: 0.6, z: 1.15, seg: 6}));
 
   // ======================= RANCH / FLATWOODS (cheap) =======================
   const RA = LOC.ranch;
@@ -204,7 +204,7 @@ export function buildWorld() {
   W.add(P.at(P.poster('LAND', 0.9, 1.2, '#e6d39a'), LW + 6.9, 2.8, -5.42), P.at(P.wallClock(), LW + 3.7, 3.9, -5.42), potPlant(LW + 7.0, -3.6), potPlant(LW - 7.0, 2.8));
   const d3 = P.desk(2.0, '#7a4f33'); d3.position.set(LW - 5.0, 0.05, 1.2); W.add(d3);
   W.add(P.at(P.papers(6, 33), LW - 5.2, 1.08, 1.2), P.at(P.radio(), LW - 4.4, 1.08, 1.0));
-  person('clerk', 'none', LW - 5.0, 0.05, 0.2, 82); person('mustard', 'fedora', LW + 6.9, 0.05, -4.0, 83); person('teal', 'none', LW - 5.2, 0.05, -2.6, 84);
+  person('clerk', 'none', LW - 5.0, 0.05, 0.2, 82); person('mustard', 'fedora', LW + 2.4, 0.05, -3.9, 83); person('teal', 'none', LW - 5.2, 0.05, -2.6, 84);
   windowPane(W, LW - 7.9, 2.6, 0.5, 2.0, 1.5, Math.PI / 2);
 
   // ======================= MAP ROOM (ladder, size) =======================
@@ -268,7 +268,7 @@ export function buildWorld() {
   W.add(box(9, 0.5, 3.2, '#5a3a26', {x: BR, y: 0.25, z: -5.2, thick: 0.02}));
   const pod = S.podium(); pod.position.set(BR, 0.5, -4.3); W.add(pod);
   person('suit', 'none', BR - 1.4, 0.5, -5.1, 111); person('navy', 'none', BR, 0.5, -5.0, 112, {glasses: true}); person('official', 'none', BR + 1.4, 0.5, -5.1, 113);
-  const ban = big('ORLANDO · NOV 1965', 8.4, 1.3, '#2f5d62', '#fff4dc'); ban.position.set(BR, 4.7, -6.85); W.add(ban);
+  const ban = sign('ORLANDO', 5.0, 1.8, {bg: '#2f5d62', fg: '#fff4dc', w: 1000, h: 360, font: 'bold 170px Arial, sans-serif', sub: 'NOVEMBER 1965'}); ban.position.set(BR, 4.7, -6.85); W.add(ban);
   for (const [x, c] of [[-3.6, '#c43d32'], [3.6, '#2f6db3'], [-4.4, '#f2e6cc'], [4.4, '#d9a441']]) { const f = P.flag(c); f.position.set(BR + x, 0.5, -6.2); f.scale.setScalar(1.6); W.add(f); }
   for (let i = 0; i < 4; i++) W.add(box(0.9, 6.4, 0.9, '#c8b48a', {x: BR - 10 + i * 6.66, y: 3.2, z: -6.5, thick: 0.04}));
   const rcol = ['clerk', 'mustard', 'navy', 'teal', 'red', 'student', 'official', 'pink', 'welder', 'engineer'], rhat = ['fedora', 'none', 'bowler', 'fedora', 'none', 'cap'];
@@ -316,7 +316,7 @@ export function buildWorld() {
       const mk = ease(t, wordT('yousee', 7.6), wordT('yousee', 8.4));
       model.scale.set(1, Math.max(0.001, mk), 1); model.visible = mk > 0.02;
       wheel.rotation.z = t * 0.8;
-      drawMap(ease(t, wordT('yousee', 11.4), wordT('yousee', 12.8)));
+      drawMap(ease(t, wordT('yousee', 10.8), wordT('yousee', 12.2)));
       planner.userData.armR.rotation.z = 0.7 + Math.sin(t * 3) * 0.1;
     }
     // but: DISNEY?! on "Disney", price explodes on "fortune"
@@ -348,7 +348,7 @@ export function buildWorld() {
       if (shot === 'ladder') { y64.visible = pop(y64, t, wordT('ladder', 1.5), 0.3); const n = Math.floor(27000 * ease(t, wordT('ladder', 7.5), wordT('ladder', 12.4)) / 13) * 13; drawA(t >= wordT('ladder', 12.4) ? 27000 : n, t >= wordT('ladder', 12.4)); }
       else { y64.scale.setScalar(1); drawA(27000, true); }
     } else tiles.forEach(({m}) => m.color.set('#f7f2e2'));
-    if (shot === 'size') mans.forEach((g, i) => { const t0 = wordT('size', i ? 7.6 : 3.6); const k = ease(t, t0, t0 + 0.45); g.visible = t >= t0; g.position.set(g.userData.x, lerp(2.6, 1.13, k), -1); g.rotation.y = (1 - k) * 0.8; });
+    if (shot === 'size') mans.forEach((g, i) => { const t0 = wordT('size', i ? 6.8 : 3.6); const k = ease(t, t0, t0 + 0.35); g.visible = t >= t0; g.position.set(g.userData.x, lerp(2.6, 1.13, k), -1); g.rotation.y = (1 - k) * 0.8; });
     // reveal: press rolls, papers fly, front page slams in on "front page"
     press.userData.rollers.forEach((r, i) => { r.rotation.y = t * (i % 2 ? 6 : -6); });
     if (shot === 'reveal') {
