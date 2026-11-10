@@ -5,3 +5,4 @@ stills/
 RAW.wav
 hook_sample.wav
 .DS_Store
+__pycache__/

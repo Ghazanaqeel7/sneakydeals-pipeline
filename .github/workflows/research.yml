@@ -1,0 +1,64 @@
+name: research
+# Research bot (free): YouTube Data API v3 + YouTube search suggestions -> docs/research/latest.json -> dashboard "Research".
+# Weekly full scan Monday 06:00 PKT; daily 05:30 PKT quick title checks for scripts waiting on the owner.
+# Needs repo secret YT_API_KEY for the full scan. Never touches jobs, feeds or publishing.
+on:
+  schedule:
+    - cron: '0 1 * * 1'     # Monday 01:00 UTC = 06:00 PKT: full scan
+    - cron: '30 0 * * *'    # daily 00:30 UTC = 05:30 PKT: title checks only
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'full = whole research, titles = only title checks'
+        default: 'full'
+        type: choice
+        options: [full, titles]
+
+concurrency:
+  group: research
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 1 }
+
+      - name: Pick mode
+        id: m
+        run: |
+          MODE="${{ github.event.inputs.mode }}"
+          if [ -z "$MODE" ]; then
+            if [ "${{ github.event.schedule }}" = "0 1 * * 1" ]; then MODE=full; else MODE=titles; fi
+          fi
+          echo "mode=$MODE" >> $GITHUB_OUTPUT; echo "mode: $MODE"
+
+      - name: Run research
+        env:
+          YT_API_KEY: ${{ secrets.YT_API_KEY }}
+        run: python3 pipeline/research/research.py --${{ steps.m.outputs.mode }}
+
+      - name: Save results
+        run: |
+          git config user.name "research-bot"; git config user.email "research-bot@users.noreply.github.com"
+          git add docs/research
+          git diff --cached --quiet && { echo "no changes"; exit 0; }
+          git commit -m "research: ${{ steps.m.outputs.mode }} $(date -u +%F)"
+          for i in 1 2 3 4 5; do
+            git pull --rebase -q origin main && git push -q origin HEAD:main && exit 0
+            sleep $((i * 5))
+          done
+          exit 1
+
+      - name: Tell the owner in Slack
+        if: steps.m.outputs.mode == 'full'
+        run: |
+          [ -f docs/research/summary.txt ] || exit 0
+          head -6 docs/research/summary.txt | while IFS= read -r line; do
+            [ -n "$line" ] && python3 pipeline/scripts/progress.py research "$line" || true
+          done
