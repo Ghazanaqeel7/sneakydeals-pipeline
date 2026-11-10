@@ -44,7 +44,9 @@ install anything, or research. If another job is already `building`, do not star
 5. **New story** — only in the run that starts between 11:00 and 11:59 Asia/Karachi time: count jobs whose status
    is not `published`/`dropped`. If it is below `config.pipeline_buffer`, research and write ONE new script (below)
    and `set_status <id> script_ready`.
-6. End with a short summary of what you did (it is shown to the owner).
+6. **Weekly review** — only in the Monday story-hour run (Monday 11:00-11:59 Asia/Karachi), and only once
+   at least 3 Shorts are public on the channel (count with vidIQ). See "Weekly review" below.
+7. End with a short summary of what you did (it is shown to the owner).
 
 ## New story (script stage)
 
@@ -100,6 +102,24 @@ Also post the final thumbnail the same way (`--image jobs/<id>/thumbnail.jpg`).
    `python3 pipeline/thumbnail/make_thumb.py jobs/<id>`, look at the result. No year, no twist on the thumbnail.
 5. Do not commit `node_modules/`, `out/`, `stills/`, `RAW.wav` (see .gitignore). Commit + push, then
    `set_status <id> render_queued`.
+
+## Weekly review (vidIQ → Slack → LEARNINGS.md)
+
+Budget: at most ~25 vidIQ credits per review (check `vidiq_balance` first; if fewer than 25 are left, post a
+one-line note and skip). Steps:
+1. `vidiq_user_channels` → channel id of **Sneaky Deals**. `vidiq_channel_analytics` with `report: top_videos`,
+   last 28 days, metrics views, engagedViews, averageViewPercentage, averageViewDuration, likes, comments,
+   subscribersGained, shares. Optionally one `audience_retention` call for the best and the worst Short.
+2. Compare our own videos with each other (use engagedViews). Look for patterns: hook type (brand + shock?),
+   brand, topic, length, first-second visual, title. Read a few comments if cheap. Only claim what the numbers
+   support; with few videos say "early signal", not "proven".
+3. Write `docs/reviews/<YYYY-MM-DD>.md` (table of videos + 3-6 lessons + 2-3 concrete changes for next week's
+   scripts). Append the lessons that are well supported to `docs/LEARNINGS.md` (one line each, dated). If a lesson
+   contradicts an older one, update the older line instead of adding a conflicting one.
+4. Commit + push, then post 5-8 short lines to the owner with
+   `python3 pipeline/scripts/progress.py weekly-review "<line>"` — e.g. "📊 Hafta: 4 Shorts, 12.4K views, +86 subs",
+   "🥇 Best: Disney swamp — 81% dekha gaya (hook: brand + secret)", "⚠️ Kamzor: … — log 2nd second par swipe",
+   "🧠 Agle hafte: …". Simple Roman Urdu/English.
 
 ## Never
 - publish, upload, or change anything on YouTube/Instagram/Facebook
