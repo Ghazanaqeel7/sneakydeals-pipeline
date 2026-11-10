@@ -18,11 +18,12 @@
       "note": "made by hand in chat; uploaded manually, scheduled 2026-11-11"
     },
     "002-disney-secret-swamp": {
-      "status": "script_sent",
-      "updated": "2026-11-10T08:22:19Z",
+      "status": "script_approved",
+      "updated": "2026-11-10T12:02:11Z",
       "title": "Disney Secretly Bought a Swamp Using Fake Names",
       "send_error": "",
-      "vote_msg": "1794298945.670169"
+      "vote_msg": "1794298945.670169",
+      "approved_via": "chat"
     }
   }
 }
