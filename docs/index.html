@@ -317,7 +317,7 @@ async function load(){
     if(runs.status==='fulfilled')S.runs=runs.value.workflow_runs||[];
     if(commits.status==='fulfilled')S.commits=commits.value||[];
     if(feed.status==='fulfilled')S.feed=parseFeed(feed.value);
-    if(!S.sel||!S.state.jobs[S.sel]){const ids=Object.keys(S.state.jobs);const open=ids.filter(i=>!['published','dropped'].includes(S.state.jobs[i].status));S.sel=(open.length?open:ids).slice(-1)[0]||null}
+    if(S.sel!=='__desk'&&(!S.sel||!S.state.jobs[S.sel])){const ids=Object.keys(S.state.jobs);const open=ids.filter(i=>!['published','dropped'].includes(S.state.jobs[i].status));S.sel=(open.length?open:ids).slice(-1)[0]||null}
     render();
   }catch(e){$('#sync').textContent='offline';if(!S.state)$('#main').innerHTML=`<div class="empty">Could not read the pipeline: ${esc(e.message)}</div>`}
 }
@@ -500,13 +500,13 @@ async function renderDesk(){
   </div>
   <div class="grid2"><div class="panel">
     <div class="lbl">Publish days</div>
-    <div class="days">${['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(d=>`<label><input type="checkbox" value="${d}" ${(c.publish_days||[]).includes(d)?'checked':''} ${TOKEN?'':'disabled'}>${d}</label>`).join('')}</div>
+    <div class="days">${['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(d=>`<label><input type="checkbox" onchange="dirty()" value="${d}" ${(c.publish_days||[]).includes(d)?'checked':''} ${TOKEN?'':'disabled'}>${d}</label>`).join('')}</div>
     <div class="note">Time: ${esc(c.publish_time_pkt||'05:00')} PKT (7 PM US Eastern). Claude keeps ${esc(c.pipeline_buffer??2)} videos ready ahead.</div>
     ${TOKEN?`<button class="btn pri" onclick="saveDays()">Save publish days</button>`:''}
   </div><div class="panel">
     <div class="lbl">Story ideas for Claude (used first, top to bottom)</div>
     ${ideas.length?`<ol style="padding-left:18px;margin:0 0 10px">${ideas.map((x,i)=>`<li style="margin-bottom:4px">${esc(x)} ${TOKEN?`<button class="btn sm" onclick="dropIdea(${i})">remove</button>`:''}</li>`).join('')}</ol>`:'<div class="empty" style="padding:6px 0 12px">No ideas queued — Claude researches its own.</div>'}
-    ${TOKEN?`<textarea id="idea" rows="2" placeholder="e.g. How McDonald's is really a real-estate company"></textarea><div style="margin-top:8px"><button class="btn pri" onclick="addIdea()">Add idea</button></div>`:''}
+    ${TOKEN?`<textarea id="idea" rows="2" oninput="dirty()" placeholder="e.g. How McDonald's is really a real-estate company"></textarea><div style="margin-top:8px"><button class="btn pri" onclick="addIdea()">Add idea</button></div>`:''}
   </div></div>
   <div class="panel" style="margin-top:22px"><div class="lbl">What Claude has learned (docs/LEARNINGS.md)</div><div class="md" id="learn">Loading…</div></div>`;
   try{$('#learn').innerHTML=DOMPurify.sanitize(marked.parse(await readText('docs/LEARNINGS.md')))}catch(e){$('#learn').textContent='Not available.'}
@@ -552,9 +552,9 @@ async function saveMeta(){const id=S.sel;try{const f=await readJson(`jobs/${id}/
   if(!m.title)throw new Error('Title cannot be empty.');if(m.title.length>100)throw new Error('YouTube titles max 100 characters.');
   await writeFile(`jobs/${id}/meta.json`,JSON.stringify(m,null,2)+'\n',f.sha,`dashboard: edit YouTube details ${id}`);
   await updateState(st=>{st.jobs[id].title=m.title},`dashboard: title ${id}`);S.editing=false;S.cache={};toast('Saved — this is what YouTube will get.');load()}catch(e){toast(e.message,true)}}
-async function saveDays(){const d=[...document.querySelectorAll('.days input:checked')].map(x=>x.value);if(!d.length)return toast('Pick at least one day.',true);
+async function saveDays(){S.editing=false;const d=[...document.querySelectorAll('.days input:checked')].map(x=>x.value);if(!d.length)return toast('Pick at least one day.',true);
   try{await updateState(st=>{st.config=st.config||{};st.config.publish_days=d},'dashboard: publish days');toast('Publish days saved.');load()}catch(e){toast(e.message,true)}}
-async function addIdea(){const t=$('#idea').value.trim();if(!t)return;try{await updateState(st=>{st.ideas=st.ideas||[];st.ideas.push(t)},'dashboard: add story idea');toast('Idea queued for Claude.');load()}catch(e){toast(e.message,true)}}
+async function addIdea(){S.editing=false;const t=$('#idea').value.trim();if(!t)return;try{await updateState(st=>{st.ideas=st.ideas||[];st.ideas.push(t)},'dashboard: add story idea');toast('Idea queued for Claude.');load()}catch(e){toast(e.message,true)}}
 async function dropIdea(i){try{await updateState(st=>{(st.ideas||[]).splice(i,1)},'dashboard: remove story idea');load()}catch(e){toast(e.message,true)}}
 
 try{if(matchMedia('(max-width:900px)').matches)$('#feedwrap').removeAttribute('open')}catch(e){}
