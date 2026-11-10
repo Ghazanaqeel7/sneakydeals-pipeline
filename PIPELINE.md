@@ -36,7 +36,10 @@ install anything, or research. If another job is already `building`, do not star
 0. Setup: `git config user.name "claude-pipeline"`, `git config user.email "claude-pipeline@users.noreply.github.com"`.
 1. **`render_failed`**: open the failed Actions run log (`gh run view <run> --log` if `gh` works, otherwise reproduce
    with a few frames locally), fix, push, `set_status <id> render_queued`.
-2. **`video_rejected` with feedback**: apply the owner's feedback exactly (it is about this video only), re-check
+2. **`video_rejected` with feedback that is ONLY about the thumbnail** (starts with `thumbnail:`): change only
+   `meta.json.thumb` / the frame, re-run `make_thumb.py`, look at it, push, then
+   `set_status <id> video_ready feedback=` — do NOT re-render; n8n re-posts the video with the new thumbnail.
+   **`video_rejected` with any other feedback**: apply the owner's feedback exactly (it is about this video only), re-check
    stills, push, `set_status <id> render_queued feedback=` (clear it). No feedback yet → leave it for the next run.
 3. **`script_rejected` with feedback**: rewrite `script.md`, `SHOTS.txt`, `telegram.md`, `meta.json` per the
    feedback, push, `set_status <id> script_ready feedback=`. No feedback yet → leave it.

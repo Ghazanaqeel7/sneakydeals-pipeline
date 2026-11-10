@@ -108,7 +108,13 @@ if (mode === 'send') {
         if (!posted) await dPost(`${head}\nWatch: ${j.video_url}`);
         await sleep(500);
         for (const p of chunks(`*Description:*\n${meta.description}`)) { await dPost(p); await sleep(500); }
-        vote = await dPost(`👆 *${id}* — tap ✅ to approve & schedule, or ❌ to reject (then type what to fix).\nFull quality file: ${j.video_url}`);
+        try {
+          const turl = `https://raw.githubusercontent.com/${cfg.github_owner}/${cfg.github_repo}/main/jobs/${id}/thumbnail.jpg?t=${Date.now()}`;
+          const tb = Buffer.from(await http({ method: 'GET', url: turl, encoding: 'arraybuffer' }));
+          await dPostFile(`🖼 *Thumbnail — ${id}* (YouTube par yahi lagega)`, `${id}_thumbnail.jpg`, tb);
+        } catch (e) { await dPost(`⚠️ *${id}* ka thumbnail nahi mila — approve karne par default (logo) thumbnail lagega.`); }
+        await sleep(500);
+        vote = await dPost(`👆 *${id}* — ✅ = video + thumbnail dono approve (publish day par upload hoga).\n❌ = reject, phir likhein kya theek karna hai. Sirf thumbnail badalna ho to likhein: \`thumbnail: <kya change>\` — video dobara nahi banegi, sirf naya thumbnail aayega.\nFull quality file: ${j.video_url}`);
       }
       await react(vote.id, YES); await react(vote.id, NO);
       await updateState((st) => { st.jobs[id].vote_msg = vote.id; return true; }, `n8n: vote message ${id}`);
