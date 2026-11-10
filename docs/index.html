@@ -290,7 +290,7 @@ function reviewBlock(id,j){
   if(s==='video_ready'||s==='video_sent'){
     const v=j.preview_url||j.video_url;
     return `<div class="review">
-      <div><div class="lbl">Watch the video</div>${v?`<video controls playsinline preload="metadata" src="${esc(v)}"></video>`:'<div class="empty">No video file.</div>'}</div>
+      <div><div class="lbl">Watch the video</div>${v?`<video controls playsinline preload="metadata" src="${esc(v)}" onloadedmetadata="this.muted=false;this.volume=1"></video><div class="note">No sound? Click 🔊 in the player, or <a href="${esc(j.video_url||v)}" target="_blank">open the full file ↗</a> and play it on your laptop.</div>`:'<div class="empty">No video file.</div>'}</div>
       <div><div class="lbl">Thumbnail</div><img src="${RAW}/jobs/${esc(id)}/thumbnail.jpg?u=${encodeURIComponent(j.updated||'')}" onclick="zoom(this.src)" onerror="this.outerHTML='<div class=empty>No thumbnail — the logo thumbnail would be used.</div>'"><div class="note" style="margin-top:10px">Video, thumbnail and the YouTube text are approved together.</div></div>
       <div><div class="lbl">Your decision</div>
         <button class="btn go" style="width:100%;padding:11px"${lock} onclick="decide('${id}','video_approved')">Approve video + thumbnail</button>
