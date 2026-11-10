@@ -136,7 +136,7 @@ if (mode === 'replies') {
     await updateState((st) => { const j = st.jobs[id]; if (j.status !== from) return false; j.status = next; j.updated = now(); ok = true; return true; }, `n8n: ${id} -> ${next}`);
     if (!ok) continue;
     const texts = {
-      script_approved: `✅ Script approved: *${id}*. Claude will build the video in its next daily run (11:23 PKT) and post it here.`,
+      script_approved: `✅ Script approved: *${id}*. Claude ek ghante ke andar video banana shuru karega, aur har step ki update yahin aayegi.`,
       video_approved: `✅ Video approved: *${id}*. It goes live on the next publish day at 05:00 PKT (7 PM US Eastern).`,
       script_rejected: `❌ Script rejected: *${id}*. Type what to change in your next message (or type \`drop\` to throw this idea away).`,
       video_rejected: `❌ Video rejected: *${id}*. Type what to fix (shot / second / what looks wrong).`,
@@ -146,6 +146,32 @@ if (mode === 'replies') {
     log.push(`${id}: ${next}`);
   }
   // typed messages
+  // status changes + Claude's progress notes -> Slack (so the owner sees the video being made)
+  const ANNOUNCE = {
+    building: '🛠 Video banana shuru: voice, scenes, check frames. Har step ki update yahan aayegi.',
+    render_queued: '🎞 Scenes tayyar. GitHub par render shuru hone wala hai (~30-60 min).',
+    rendering: '⏳ Render chal raha hai (GitHub Actions)...',
+    render_failed: '⚠️ Render fail hua. Claude agle check mein theek karega.',
+    script_ready: '📝 Naya / updated script tayyar, abhi bhejta hoon.',
+  };
+  const stP = JSON.parse((await ghGet('state.json')).text);
+  data.seen = data.seen || {}; data.prog = data.prog || {};
+  const seeded = data.seeded; data.seeded = true;
+  for (const [id, j] of Object.entries(stP.jobs)) {
+    const total = j.progress_count || 0;
+    if (!seeded) { data.seen[id] = j.status; data.prog[id] = total; continue; }   // first run: no flood of old news
+    if (data.seen[id] !== j.status) {
+      data.seen[id] = j.status;
+      if (ANNOUNCE[j.status]) { await dPost(`*${id}* — ${ANNOUNCE[j.status]}`); await sleep(400); }
+    }
+    const done = data.prog[id] || 0;
+    if (total > done) {
+      const fresh = (j.progress || []).slice(-(total - done));
+      for (const p of fresh) { await dPost(`*${id}* — ${p.msg}`); await sleep(400); }
+      data.prog[id] = total;
+    }
+  }
+
   // typed messages since the last check (Slack ts = seconds.micro)
   if (!data.lastTs) data.lastTs = (Date.now() / 1000).toFixed(6);
   if (!BOT_ID) BOT_ID = (await sl('auth.test', {})).user_id;

@@ -28,6 +28,11 @@ your files. Never hand-edit state.json and never force-push (n8n writes to it th
 
 ## Every run, in this order (do at most ONE build per run)
 
+The task runs **every hour**, so an approved script starts building within an hour of the owner's ✅.
+**Quick exit first:** read `state.json`. If no job is `script_approved`, `render_failed`, or `*_rejected` with
+`feedback`, AND it is not the story hour (step 5), stop right away with a one-line summary — do not load the skill,
+install anything, or research. If another job is already `building`, do not start a second build.
+
 0. Setup: `git config user.name "claude-pipeline"`, `git config user.email "claude-pipeline@users.noreply.github.com"`.
 1. **`render_failed`**: open the failed Actions run log (`gh run view <run> --log` if `gh` works, otherwise reproduce
    with a few frames locally), fix, push, `set_status <id> render_queued`.
@@ -36,8 +41,9 @@ your files. Never hand-edit state.json and never force-push (n8n writes to it th
 3. **`script_rejected` with feedback**: rewrite `script.md`, `SHOTS.txt`, `telegram.md`, `meta.json` per the
    feedback, push, `set_status <id> script_ready feedback=`. No feedback yet → leave it.
 4. **`script_approved`** (oldest first, one per run): `set_status <id> building`, then BUILD (below).
-5. **New story**: count jobs whose status is not `published`/`dropped`. If it is below `config.pipeline_buffer`,
-   research and write ONE new script (below) and `set_status <id> script_ready`.
+5. **New story** — only in the run that starts between 11:00 and 11:59 Asia/Karachi time: count jobs whose status
+   is not `published`/`dropped`. If it is below `config.pipeline_buffer`, research and write ONE new script (below)
+   and `set_status <id> script_ready`.
 6. End with a short summary of what you did (it is shown to the owner).
 
 ## New story (script stage)
@@ -63,6 +69,12 @@ your files. Never hand-edit state.json and never force-push (n8n writes to it th
 - Commit + push, then `set_status <id> script_ready title="<title>"`.
 
 ## Build (after `script_approved`)
+
+**Progress updates:** the owner watches the build in Slack. After each milestone run
+`python3 pipeline/scripts/progress.py <id> "<one short line>"` (commit/push your files first). Post at least:
+"🎙 Voice ban rahi hai…", "🎙 Voice tayyar (NN s)", "🎬 Scenes: N locations plan — <names>", one line per location
+built ("🏗 Scene 2/6 tayyar: land office"), "🔍 Check frames round 1: <what you are fixing>", "✅ Check frames clean",
+"🖼 Thumbnail tayyar". Keep it to ~6-12 updates per build, simple words, no tech jargon.
 
 1. Voice: `python3 pipeline/scripts/make_voice.py jobs/<id>` → `RAW.wav`, then
    `python3 pipeline/scripts/prepare_voice.py jobs/<id>/RAW.wav jobs/<id>/SHOTS.txt jobs/<id>/project`.
