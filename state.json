@@ -21,16 +21,12 @@
     },
     "002-disney-secret-swamp": {
       "status": "video_rejected",
-      "updated": "2026-11-10T15:02:54Z",
+      "updated": "2026-11-10T15:02:57Z",
       "title": "Disney Secretly Bought a Swamp Using Fake Names",
       "send_error": "",
       "vote_msg": "",
       "approved_via": "chat",
       "progress": [
-        {
-          "t": "2026-11-10T12:13:34Z",
-          "msg": "🎙 Voice ban rahi hai… (~60 min baqi, phir render ~40 min)"
-        },
         {
           "t": "2026-11-10T12:17:08Z",
           "msg": "🎙 Voice tayyar (55 s) (~50 min baqi, phir render ~40 min)"
@@ -90,16 +86,20 @@
         {
           "t": "2026-11-10T15:02:54Z",
           "msg": "🛠 Changes note ho gaye (dashboard): \"in thumbnail Land for sale ka jo board h thora bara or visible kardo ta k woh bhi attention seek kare logon ki\" — Claude agle run mein (by 20:08 PKT) inhe lagana shuru karega."
+        },
+        {
+          "t": "2026-11-10T15:02:57Z",
+          "msg": "🛠 Changes note ho gaye (dashboard): \"in thumbnail Land for sale ka jo board h thora bara or visible kardo ta k woh bhi attention seek kare logon ki\" — Claude agle run mein (by 20:08 PKT) inhe lagana shuru karega."
         }
       ],
-      "progress_count": 15,
+      "progress_count": 16,
       "run": "42817432233",
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-002-disney-secret-swamp/final.mp4",
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-002-disney-secret-swamp/preview.mp4",
       "decided_via": "dashboard",
-      "decided_at": "2026-11-10T15:02:54Z",
+      "decided_at": "2026-11-10T15:02:57Z",
       "vote_kind": "",
-      "feedback": "[2026-11-10T15:02:54Z] in thumbnail Land for sale ka jo board h thora bara or visible kardo ta k woh bhi attention seek kare logon ki"
+      "feedback": "[2026-11-10T15:02:54Z] in thumbnail Land for sale ka jo board h thora bara or visible kardo ta k woh bhi attention seek kare logon ki\n[2026-11-10T15:02:57Z] in thumbnail Land for sale ka jo board h thora bara or visible kardo ta k woh bhi attention seek kare logon ki"
     }
   }
 }
