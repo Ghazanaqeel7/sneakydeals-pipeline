@@ -61,10 +61,11 @@ jobs:
             if bash pipeline/scripts/render_job.sh "jobs/$J" 4; then
               TITLE=$(python3 -c "import json;print(json.load(open('jobs/$J/meta.json'))['title'])")
               gh release delete "job-$J" -y --cleanup-tag 2>/dev/null || true
-              ASSETS="jobs/$J/project/out/final.mp4"; [ -f "jobs/$J/thumbnail.jpg" ] && ASSETS="$ASSETS jobs/$J/thumbnail.jpg"
+              ASSETS="jobs/$J/project/out/final.mp4 jobs/$J/project/out/preview.mp4"; [ -f "jobs/$J/thumbnail.jpg" ] && ASSETS="$ASSETS jobs/$J/thumbnail.jpg"
               gh release create "job-$J" $ASSETS --title "$TITLE" --notes "Pipeline render for $J" --prerelease
               URL="https://github.com/${{ github.repository }}/releases/download/job-$J/final.mp4"
-              python3 pipeline/scripts/set_status.py "$J" video_ready video_url="$URL"
+              PURL="https://github.com/${{ github.repository }}/releases/download/job-$J/preview.mp4"
+              python3 pipeline/scripts/set_status.py "$J" video_ready video_url="$URL" preview_url="$PURL"
             else
               python3 pipeline/scripts/set_status.py "$J" render_failed run="${{ github.run_id }}"
             fi

@@ -12,3 +12,7 @@ ffmpeg -y -hide_banner -loglevel error -i "$P/out/full_silent.mp4" -i "$A" -map 
   -af "loudnorm=I=-16:TP=-1.5:LRA=11" -ar 48000 -c:a aac -b:a 160k -shortest -movflags +faststart "$P/out/final.mp4"
 ffprobe -v error -show_entries stream=codec_type,width,height,pix_fmt:format=duration,size -of compact "$P/out/final.mp4"
 SIZE=$(stat -c %s "$P/out/final.mp4"); [ "$SIZE" -lt 20000000 ] || { echo "final.mp4 is over 20 MB ($SIZE)"; exit 1; }
+# small preview for Discord (bots can attach files up to ~10 MB)
+ffmpeg -y -hide_banner -loglevel error -i "$P/out/final.mp4" -vf "scale=540:960" -c:v libx264 -preset medium -crf 28 -maxrate 1100k -bufsize 2200k \
+  -pix_fmt yuv420p -c:a aac -b:a 96k -movflags +faststart "$P/out/preview.mp4"
+ls -la "$P/out/preview.mp4"

@@ -26,7 +26,9 @@ Files: `PIPELINE.md` (Claude's rules), `state.json` (job board), `jobs/<id>/` (o
    Workflow permissions → **Read and write permissions** → Save.
 2. **GitHub token for n8n**: Settings → Developer settings → Fine-grained tokens → Generate. Repository access: only
    `sneakydeals-pipeline`. Permissions: **Contents: Read and write**. Copy the token.
-3. **Telegram bot**: in Telegram open @BotFather → `/newbot` → name `Sneaky Deals Studio` → copy the token. Open your
+3. **Approvals app — Discord (recommended)**: see "Discord setup" below and import
+   `n8n/SneakyDeals_pipeline_DISCORD.n8n.json` in step 4. (Telegram version: `n8n/SneakyDeals_pipeline.n8n.json`.)
+   **Telegram (alternative)**: in Telegram open @BotFather → `/newbot` → name `Sneaky Deals Studio` → copy the token. Open your
    new bot and press Start, send "hi". In a browser open `https://api.telegram.org/bot<TOKEN>/getUpdates` and copy
    `"chat":{"id": ...}` — that number is your chat id. (Do this before step 4 is switched on.)
 4. **n8n**: Workflows → Import from file → `n8n/SneakyDeals_pipeline.n8n.json`. Open the **CONFIG** node and fill the
@@ -43,3 +45,15 @@ Files: `PIPELINE.md` (Claude's rules), `state.json` (job board), `jobs/<id>/` (o
 - Telegram: approve / reject scripts and videos. After ❌ reply with what to change. `/status` shows the board.
 - Publish days: `state.json → config.publish_days` (default Mon, Wed, Fri, Sun) at 05:00 PKT = 7 PM US Eastern.
 - After a video goes live: pin the comment the bot sends you, and answer comments in the first hour.
+
+## Discord setup (approvals)
+1. Discord app/website → make an account → **+ (Add a Server) → Create My Own → For me and my friends**, name it
+   `Sneaky Deals Studio`. Create a text channel `approvals`.
+2. https://discord.com/developers/applications → **New Application** `Sneaky Deals Bot` → **Bot** tab → **Reset Token**
+   → copy it (this is `discord_bot_token`). On the same page switch ON **Message Content Intent** → Save.
+3. Invite the bot: open (replace APP_ID with the Application ID from **General Information**)
+   `https://discord.com/oauth2/authorize?client_id=APP_ID&scope=bot&permissions=117824` → pick your server → Authorize.
+4. Discord **Settings → Advanced → Developer Mode ON**. Right-click the `approvals` channel → **Copy Channel ID**
+   (this is `discord_channel_id`).
+5. In n8n: import `n8n/SneakyDeals_pipeline_DISCORD.n8n.json`, fill CONFIG, Save, Active. Type `!status` in the channel.
+How it works: the bot posts the script / the video with ✅ and ❌ under it. Tap one. After ❌, type what to change.
