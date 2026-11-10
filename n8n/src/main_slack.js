@@ -224,7 +224,11 @@ if (mode === 'publish') {
     const [id, j] = pick;
     const meta = JSON.parse((await ghGet(`jobs/${id}/meta.json`)).text);
     const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-    const item = `<item>\n<title>${esc(meta.title)}</title>\n<description><![CDATA[${meta.description.replace(/]]>/g, '')}]]></description>\n<link>${esc(j.video_url)}</link>\n<guid isPermaLink="false">${esc(id)}</guid>\n<pubDate>${new Date().toUTCString()}</pubDate>\n<enclosure url="${esc(j.video_url)}" type="video/mp4" length="0"/>\n</item>\n`;
+    const RAW = `https://raw.githubusercontent.com/${cfg.github_owner}/${cfg.github_repo}/main`;
+    let thumbUrl = `${RAW}/assets/default_thumbnail.jpg`;
+    try { await http({ method: 'GET', url: `${GH}/contents/jobs/${id}/thumbnail.jpg?ref=main`, headers: ghHeaders, json: true }); thumbUrl = `${RAW}/jobs/${id}/thumbnail.jpg`; }
+    catch (e) { log.push(`no thumbnail for ${id}, using default`); }
+    const item = `<item>\n<title>${esc(meta.title)}</title>\n<description><![CDATA[${meta.description.replace(/]]>/g, '')}]]></description>\n<link>${esc(thumbUrl)}</link>\n<guid isPermaLink="false">${esc(id)}</guid>\n<pubDate>${new Date().toUTCString()}</pubDate>\n<enclosure url="${esc(j.video_url)}" type="video/mp4" length="0"/>\n</item>\n`;
     for (let i = 0; i < 3; i++) {
       const f = await ghGet('feed/youtube.xml');
       if (f.text.includes(`<guid isPermaLink="false">${esc(id)}</guid>`)) break;

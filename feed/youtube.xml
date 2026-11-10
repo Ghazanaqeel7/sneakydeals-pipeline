@@ -8,7 +8,7 @@
 <item>
 <title>SETUP SAMPLE - do not upload</title>
 <description><![CDATA[This sample item only exists so Zapier can see the feed's fields during setup. Zapier ignores items that already exist when the Zap is turned on.]]></description>
-<link>https://github.com/Ghazanaqeel7/sneakydeals-pipeline</link>
+<link>https://raw.githubusercontent.com/Ghazanaqeel7/sneakydeals-pipeline/main/jobs/001-pepsi-submarines/thumbnail.jpg</link>
 <guid isPermaLink="false">setup-sample</guid>
 <pubDate>Tue, 10 Nov 2026 12:00:00 GMT</pubDate>
 <enclosure url="https://raw.githubusercontent.com/Ghazanaqeel7/sneakydeals-pipeline/main/jobs/001-pepsi-submarines/thumbnail.jpg" type="video/mp4" length="0"/>

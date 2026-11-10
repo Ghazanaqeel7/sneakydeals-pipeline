@@ -100,6 +100,7 @@ Also post the final thumbnail the same way (`--image jobs/<id>/thumbnail.jpg`).
    busy, facts right). Iterate until clean. Do not render the full video yourself — Actions does it.
 4. Thumbnail: choose a hook-shot frame, fill `meta.json.thumb` {frame, box, line1, line2, box_color}, run
    `python3 pipeline/thumbnail/make_thumb.py jobs/<id>`, look at the result. No year, no twist on the thumbnail.
+   The thumbnail must be a JPG under 2 MB: on publish day n8n puts its raw URL in the feed item <link>, and Zapier sets it as the YouTube thumbnail (if missing, assets/default_thumbnail.jpg is used).
 5. Do not commit `node_modules/`, `out/`, `stills/`, `RAW.wav` (see .gitignore). Commit + push, then
    `set_status <id> render_queued`.
 
