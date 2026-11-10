@@ -21,7 +21,7 @@ def main():
     if git('status', '--porcelain', '--untracked-files=no').stdout.strip():
         sys.exit('working tree has uncommitted changes: commit and push them first')
     for attempt in range(8):
-        git('fetch', 'origin', 'main'); git('reset', '--hard', 'origin/main')
+        git('fetch', 'origin', 'main'); git('reset', '--hard', 'FETCH_HEAD')
         st = json.load(open('state.json'))
         j = st['jobs'].setdefault(job, {})
         p = j.setdefault('progress', [])
