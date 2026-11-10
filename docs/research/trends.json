@@ -1,0 +1,265 @@
+{
+ "days": [
+  {
+   "date": "2026-11-10",
+   "words": {
+    "documentary": 18,
+    "fall": 17,
+    "rise": 17,
+    "full": 10,
+    "worst": 6,
+    "entire": 4,
+    "ceo": 4,
+    "products": 3,
+    "billions": 3,
+    "doing": 3,
+    "trick": 3,
+    "viral": 3,
+    "money": 3,
+    "america's": 3,
+    "famous": 3,
+    "family": 3,
+    "russell": 3,
+    "became": 2,
+    "storytime": 2,
+    "everyone": 2,
+    "minutes": 2,
+    "greatest": 2,
+    "invented": 2,
+    "coca-cola": 2,
+    "genius": 2
+   },
+   "brands": {
+    "coca-cola": 2,
+    "mars": 1,
+    "heinz": 1,
+    "wendy": 1,
+    "nike": 1
+   }
+  }
+ ],
+ "rising": {
+  "words": {
+   "rising": [
+    {
+     "name": "documentary",
+     "now": 18,
+     "before": 0,
+     "change": 18
+    },
+    {
+     "name": "rise",
+     "now": 17,
+     "before": 0,
+     "change": 17
+    },
+    {
+     "name": "fall",
+     "now": 17,
+     "before": 0,
+     "change": 17
+    },
+    {
+     "name": "full",
+     "now": 10,
+     "before": 0,
+     "change": 10
+    },
+    {
+     "name": "worst",
+     "now": 6,
+     "before": 0,
+     "change": 6
+    },
+    {
+     "name": "entire",
+     "now": 4,
+     "before": 0,
+     "change": 4
+    },
+    {
+     "name": "ceo",
+     "now": 4,
+     "before": 0,
+     "change": 4
+    },
+    {
+     "name": "trick",
+     "now": 3,
+     "before": 0,
+     "change": 3
+    },
+    {
+     "name": "products",
+     "now": 3,
+     "before": 0,
+     "change": 3
+    },
+    {
+     "name": "russell",
+     "now": 3,
+     "before": 0,
+     "change": 3
+    },
+    {
+     "name": "viral",
+     "now": 3,
+     "before": 0,
+     "change": 3
+    },
+    {
+     "name": "money",
+     "now": 3,
+     "before": 0,
+     "change": 3
+    }
+   ],
+   "falling": [],
+   "steady": [
+    {
+     "name": "documentary",
+     "now": 18,
+     "before": 0,
+     "change": 18
+    },
+    {
+     "name": "rise",
+     "now": 17,
+     "before": 0,
+     "change": 17
+    },
+    {
+     "name": "fall",
+     "now": 17,
+     "before": 0,
+     "change": 17
+    },
+    {
+     "name": "full",
+     "now": 10,
+     "before": 0,
+     "change": 10
+    },
+    {
+     "name": "worst",
+     "now": 6,
+     "before": 0,
+     "change": 6
+    },
+    {
+     "name": "entire",
+     "now": 4,
+     "before": 0,
+     "change": 4
+    },
+    {
+     "name": "ceo",
+     "now": 4,
+     "before": 0,
+     "change": 4
+    },
+    {
+     "name": "trick",
+     "now": 3,
+     "before": 0,
+     "change": 3
+    },
+    {
+     "name": "products",
+     "now": 3,
+     "before": 0,
+     "change": 3
+    },
+    {
+     "name": "russell",
+     "now": 3,
+     "before": 0,
+     "change": 3
+    },
+    {
+     "name": "viral",
+     "now": 3,
+     "before": 0,
+     "change": 3
+    },
+    {
+     "name": "money",
+     "now": 3,
+     "before": 0,
+     "change": 3
+    }
+   ]
+  },
+  "brands": {
+   "rising": [
+    {
+     "name": "coca-cola",
+     "now": 2,
+     "before": 0,
+     "change": 2
+    },
+    {
+     "name": "wendy",
+     "now": 1,
+     "before": 0,
+     "change": 1
+    },
+    {
+     "name": "heinz",
+     "now": 1,
+     "before": 0,
+     "change": 1
+    },
+    {
+     "name": "nike",
+     "now": 1,
+     "before": 0,
+     "change": 1
+    },
+    {
+     "name": "mars",
+     "now": 1,
+     "before": 0,
+     "change": 1
+    }
+   ],
+   "falling": [],
+   "steady": [
+    {
+     "name": "coca-cola",
+     "now": 2,
+     "before": 0,
+     "change": 2
+    }
+   ]
+  }
+ },
+ "patterns": {
+  "shorts": {
+   "count": 21,
+   "question": 0.05,
+   "why_how": 0.1,
+   "number": 0.33,
+   "money": 0.38,
+   "caps_word": 0.33,
+   "emoji": 0.38,
+   "brand": 0.05,
+   "median_seconds": 68,
+   "median_words": 10
+  },
+  "long": {
+   "count": 60,
+   "question": 0.1,
+   "why_how": 0.07,
+   "number": 0.27,
+   "money": 0.08,
+   "caps_word": 0.28,
+   "emoji": 0.02,
+   "brand": 0.08,
+   "median_seconds": 1641,
+   "median_words": 10
+  }
+ },
+ "days_of_memory": 1,
+ "updated": "2026-11-10T22:12:27Z"
+}
