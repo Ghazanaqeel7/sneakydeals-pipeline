@@ -107,7 +107,7 @@ Also post the final thumbnail the same way (`--image jobs/<id>/thumbnail.jpg`).
 
 Budget: at most ~25 vidIQ credits per review (check `vidiq_balance` first; if fewer than 25 are left, post a
 one-line note and skip). Steps:
-1. `vidiq_user_channels` → channel id of **Sneaky Deals**. `vidiq_channel_analytics` with `report: top_videos`,
+1. `vidiq_user_channels` → channel id of **Sneaky Deals** (UCyNCq5TQLEzCU87Qb7XMfEA, @sneakydeals). `vidiq_channel_analytics` with `report: top_videos`,
    last 28 days, metrics views, engagedViews, averageViewPercentage, averageViewDuration, likes, comments,
    subscribersGained, shares. Optionally one `audience_retention` call for the best and the worst Short.
 2. Compare our own videos with each other (use engagedViews). Look for patterns: hook type (brand + shock?),
