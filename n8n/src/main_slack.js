@@ -4,7 +4,8 @@
 const cfg = $input.first().json;
 const mode = cfg.mode;
 // network calls retry on timeouts / dropped connections (laptop wifi hiccups), not on real API errors
-const _req = (o) => this.helpers.httpRequest(o);
+const _H = (typeof helpers !== 'undefined' && helpers) ? helpers : this.helpers;   // loader passes helpers in
+const _req = (o) => _H.httpRequest(o);
 async function http(o) {
   for (let i = 0; ; i++) {
     try { return await _req(o); }
