@@ -94,6 +94,7 @@ def channel_details(ids):
                 'videos': vids, 'avg_views': int(st.get('viewCount', 0) or 0) / vids,
                 'uploads': it['contentDetails']['relatedPlaylists'].get('uploads'),
                 'thumb': it['snippet']['thumbnails'].get('default', {}).get('url', ''),
+                'country': it['snippet'].get('country', ''),
             }
     return out
 
@@ -112,7 +113,7 @@ def scan(kind):
     after = (NOW - datetime.timedelta(days=c['days'])).strftime('%Y-%m-%dT%H:%M:%SZ')
     found = {}
     for kw in c['keywords']:
-        p = dict(part='snippet', q=kw, type='video', order='viewCount', publishedAfter=after, maxResults=25,
+        p = dict(part='snippet', q=kw, type='video', order='relevance', publishedAfter=after, maxResults=50,
                  regionCode=CFG.get('region', 'US'), relevanceLanguage=CFG.get('language', 'en'))
         if kind == 'shorts': p['videoDuration'] = 'short'
         try:
@@ -124,11 +125,14 @@ def scan(kind):
     chans = channel_details([v['channel_id'] for v in vids.values()])
     rows = []
     for vid, v in vids.items():
-        if kind == 'shorts' and v['seconds'] > c.get('max_seconds', 180): continue
+        if kind == 'shorts' and not (c.get('min_seconds', 0) <= v['seconds'] <= c.get('max_seconds', 180)): continue
         if kind == 'long' and v['seconds'] < c.get('min_seconds', 240): continue
         if v['views'] < c['min_views'] or not english(v['title']): continue
         if v['channel_id'] == CFG.get('own_channel'): continue
         ch = chans.get(v['channel_id'], {})
+        if ch.get('country') in CFG.get('exclude_countries', []): continue
+        tl = v['title'].lower()
+        if any(w in tl for w in CFG.get('exclude_words', [])): continue
         v['subs'] = ch.get('subs', 0)
         v['score'] = round(v['views'] / max(ch.get('avg_views', 1), 1), 1)
         v['per_day'] = int(v['views'] / days_since(v['published']))

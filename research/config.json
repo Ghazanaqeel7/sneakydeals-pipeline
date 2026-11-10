@@ -16,15 +16,16 @@
       "brand marketing trick",
       "how this company made billions",
       "coca cola pepsi history"
-    ]
+    ],
+    "min_seconds": 15
   },
   "long": {
     "days": 365,
     "min_views": 50000,
     "min_seconds": 240,
     "keywords": [
-      "business history documentary",
-      "rise and fall of company",
+      "company history documentary",
+      "rise and fall of a company",
       "whatever happened to brand",
       "entire history of company",
       "worst business deals in history",
@@ -46,8 +47,58 @@
     "UC4GYgpgZzfMhYr9y6rs5O6Q"
   ],
   "suggest_seeds": [
-    "coca cola", "pepsi", "mcdonalds", "disney", "costco", "nike", "apple", "amazon",
-    "walmart", "ikea", "lego", "netflix", "blockbuster", "sears", "toys r us", "burger king",
-    "why did", "how did", "whatever happened to", "worst deal"
+    "coca cola",
+    "pepsi",
+    "mcdonalds",
+    "disney",
+    "costco",
+    "nike",
+    "apple",
+    "amazon",
+    "walmart",
+    "ikea",
+    "lego",
+    "netflix",
+    "blockbuster",
+    "sears",
+    "toys r us",
+    "burger king",
+    "why did",
+    "how did",
+    "whatever happened to",
+    "worst deal"
+  ],
+  "exclude_countries": [
+    "IN",
+    "PK",
+    "BD",
+    "NP",
+    "LK",
+    "ID",
+    "PH",
+    "NG"
+  ],
+  "exclude_words": [
+    "crore",
+    "lakh",
+    "lakhon",
+    "rupees",
+    "₹",
+    "hindi",
+    "urdu",
+    "tutorial",
+    "how to make",
+    "iran",
+    "israel",
+    "gaza",
+    "ukraine",
+    "election",
+    "trump",
+    "biden",
+    "war",
+    "prank",
+    "meme",
+    "sarcasm",
+    "reaction"
   ]
 }
