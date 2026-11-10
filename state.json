@@ -50,9 +50,14 @@
           "t": "2026-11-10T12:35:57Z",
           "msg": "🔍 Check frames round 2: zyada tar saaf. Chhoti fixes: Orlando banner kat raha tha, 1966 sign kinare pe, Manhattan ka doosra tukra der se gir raha tha (~15 min baqi, phir render ~40 min)",
           "image": "jobs/002-disney-secret-swamp/review/round2.jpg"
+        },
+        {
+          "t": "2026-11-10T12:38:00Z",
+          "msg": "✅ Check frames clean (round 3) (~5 min baqi, phir render ~40 min)",
+          "image": "jobs/002-disney-secret-swamp/review/round3.jpg"
         }
       ],
-      "progress_count": 6
+      "progress_count": 7
     }
   }
 }
