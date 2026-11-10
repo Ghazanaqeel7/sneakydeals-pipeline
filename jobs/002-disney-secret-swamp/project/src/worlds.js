@@ -1,75 +1,17 @@
 import * as THREE from 'three';
-import {INK, rng, toon, box, cyl, sign, signTex, facade, tower, lampPost, crate, ground, sidewalk, arrow, cloud, paintTex, ink} from './kit.js';
+import {INK, rng, toon, box, cyl, sign, facade, ground, cloud, paintTex, ink} from './kit.js';
 import {character} from './char.js';
 import {wordT} from './camera.js';
-import {dressStreet, dressPlaza, dressOffice, dressYard, dressJoint, dressWeather} from './dress.js';
+import * as P from './props.js';
+import * as S from './swamp-props.js';
 
-export const LOC = {night: 0, day: 300, office: 600, yard: 700, joint: 800, weather: 900};
+export const LOC = {swamp: 0, ranch: 200, press: 400, studio: 600, landoff: 700, law: 800, maproom: 900, printing: 1000, ballroom: 1100};
 
-// smooth 0..1 between a and b (seconds)
 export const ease = (t, a, b) => { const x = Math.min(1, Math.max(0, (t - a) / (b - a))); return x * x * (3 - 2 * x); };
-
-function street(ox, {lit = false, seed = 1} = {}) {
-  const g = new THREE.Group();
-  g.add(ground(260, 200, lit ? '#3b3a48' : '#9c958a', {x: ox, z: -30, seed: seed + 2, repeat: 20}));
-  // road stripe
-  const road = new THREE.Mesh(new THREE.BoxGeometry(260, 0.05, 9), toon(lit ? '#34303e' : '#6e6670'));
-  road.position.set(ox, 0.03, 12); g.add(road);
-  for (let i = 0; i < 8; i++) g.add(box(0.7, 0.06, 7.6, '#efe7d2', {x: ox - 15.5 + (i % 4) * 1.1 + (i < 4 ? 0 : 31), y: 0.07, z: 12, edges: false, thick: 0.001}));
-  for (let i = -12; i < 12; i++) g.add(box(3, 0.06, 0.35, '#e8d28a', {x: ox + i * 10, y: 0.08, z: 12, edges: false, thick: 0.001}));
-  g.add(sidewalk(260, {x: ox, z: 5.5, w: 4}));
-  g.add(sidewalk(260, {x: ox, z: 18.5, w: 4}));
-  // low buildings along the street (both sides of the plaza)
-  const cols = ['#c98f6b', '#b8775e', '#d1a47a', '#a86f5c', '#c4a27c', '#9e7b66'];
-  const r = rng(seed);
-  for (let i = 0; i < 7; i++) {
-    for (const side of [-1, 1]) {
-      const w = 9 + r() * 3, h = 9 + r() * 10;
-      const f = facade({w, h, color: cols[(i + (side > 0 ? 2 : 0)) % cols.length], cols: 3, rows: Math.floor(h / 3.6), seed: seed + i * 7 + side, lit, interior: lit ? '#ffcf7d' : '#3b2b33'});
-      f.position.set(ox + side * (18 + i * 12.5), 0, 3);
-      g.add(f);
-      // side wall + roof to give depth
-      g.add(box(w, h, 8, '#8f6c5e', {x: ox + side * (18 + i * 12.5), y: h / 2, z: -1.4, thick: 0.04}));
-    }
-  }
-  // far side of the street
-  for (let i = -6; i < 7; i++) {
-    const w = 10 + r() * 3, h = 8 + r() * 9;
-    const f = facade({w, h, color: cols[(i + 9) % cols.length], cols: 3, rows: Math.floor(h / 3.6), seed: seed + 100 + i, lit, interior: lit ? '#ffcf7d' : '#3b2b33'});
-    f.position.set(ox + i * 13, 0, 22); f.rotation.y = Math.PI; g.add(f);
-    g.add(box(w, h, 8, '#8f6c5e', {x: ox + i * 13, y: h / 2, z: 26.4, thick: 0.04}));
-  }
-  // lamp posts
-  for (let i = -5; i <= 5; i++) g.add(lampPost(ox + i * 11 + 4, 6.8, 5.5));
-  // distant skyline blocks behind the tower
-  for (let i = 0; i < 14; i++) {
-    const h = 25 + r() * 45, w = 10 + r() * 10;
-    g.add(box(w, h, 10, lit ? '#3a3658' : '#b9c3c9', {x: ox - 90 + i * 14 + r() * 4, y: h / 2, z: -80 - r() * 30, thick: 0.08}));
-  }
-  return g;
-}
-
-function sparks(seed, count = 120) {
-  const geo = new THREE.BufferGeometry();
-  const pos = new Float32Array(count * 3); geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-  const mat = new THREE.PointsMaterial({color: '#ffcc55', size: 1.1, sizeAttenuation: true, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false});
-  const pts = new THREE.Points(geo, mat);
-  const r = rng(seed);
-  const seeds = Array.from({length: count}, () => [r(), r(), r(), r()]);
-  pts.userData.update = (t, origins, on = 1) => {
-    mat.opacity = on;
-    for (let i = 0; i < count; i++) {
-      const [a, b, c, d] = seeds[i];
-      const o = origins[i % origins.length];
-      const life = (t * (1.2 + a) + d) % 1;
-      pos[i * 3] = o[0] + (b - 0.5) * 3 * life;
-      pos[i * 3 + 1] = o[1] + (0.6 - life * 1.6) * 1.8 * c;
-      pos[i * 3 + 2] = o[2] + life * 1.5 * a;
-    }
-    geo.attributes.position.needsUpdate = true;
-  };
-  return pts;
-}
+const lerp = (a, b, k) => a + (b - a) * k;
+// pop an object in at time t0 (only inside shot `on`)
+const pop = (o, t, t0, d = 0.35, s = 1) => { o.scale.setScalar(Math.max(0.001, ease(t, t0, t0 + d) * (1 + 0.12 * Math.sin(Math.min(1, (t - t0) / d) * Math.PI)) * s)); return t >= t0; };
+const big = (txt, w, h, bg, fg = INK, o = {}) => sign(txt, w, h, {bg, fg, w: Math.round(w * 200), h: Math.round(h * 200), font: 'bold 140px Arial, sans-serif', ...o});
 
 function room(ox, {w = 14, h = 5, d = 10, wall = '#efe0c4', floor = '#a7764e', seed = 4} = {}) {
   const g = new THREE.Group();
@@ -79,232 +21,344 @@ function room(ox, {w = 14, h = 5, d = 10, wall = '#efe0c4', floor = '#a7764e', s
   const ft = paintTex(floor, {seed: seed + 1, stripes: (gg, W, H) => { gg.strokeStyle = 'rgba(60,30,15,0.35)'; gg.lineWidth = 2; for (let i = 0; i < 10; i++) { gg.beginPath(); gg.moveTo(0, i * H / 10); gg.lineTo(W, i * H / 10); gg.stroke(); } }});
   ft.repeat.set(3, 2);
   const fl = new THREE.Mesh(new THREE.BoxGeometry(w - 0.02, 0.1, d - 0.02), toon('#ffffff', ft)); fl.position.set(ox, 0.0, 0); fl.receiveShadow = true; g.add(fl);
-  // skirting + ceiling beam for depth
   g.add(box(w, 0.25, 0.15, '#6b4a36', {x: ox, y: 0.12, z: -d / 2 + 0.1, thick: 0.01}));
   return g;
 }
+const hang = (W, x, z, y = 4.6) => {
+  W.add(cyl(0.02, 0.02, 0.8, '#2b2b2e', {x, y: y + 0.4, z})); W.add(cyl(0.15, 0.45, 0.35, '#2f5d62', {x, y, z, seg: 14}));
+  const b = new THREE.Mesh(new THREE.SphereGeometry(0.14, 10, 8), new THREE.MeshBasicMaterial({color: '#fff1c0'})); b.position.set(x, y - 0.15, z); W.add(b);
+};
+const windowPane = (W, x, y, z, w = 1.8, h = 1.4, ry = 0) => {
+  const f = new THREE.Group();
+  f.add(box(w + 0.2, h + 0.2, 0.08, '#f2ead8', {thick: 0.015}));
+  const gl = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshBasicMaterial({color: '#bfe6ff'})); gl.position.z = 0.05; f.add(gl);
+  f.add(box(0.06, h, 0.04, '#f2ead8', {z: 0.07, thick: 0.004}), box(w, 0.06, 0.04, '#f2ead8', {z: 0.07, thick: 0.004}));
+  f.position.set(x, y, z); f.rotation.y = ry; W.add(f);
+};
+const potPlant = (x, z) => { const p = new THREE.Group(); p.add(cyl(0.3, 0.24, 0.6, '#b35a3a', {y: 0.3})); for (let i = 0; i < 6; i++) { const l = new THREE.Mesh(new THREE.SphereGeometry(0.3, 10, 8), toon('#4f8a4a')); l.position.set(Math.cos(i) * 0.26, 0.8 + (i % 3) * 0.22, Math.sin(i) * 0.26); ink(l, 0.02, false); p.add(l); } p.position.set(x, 0.05, z); return p; };
 
 export function buildWorld() {
   const W = new THREE.Group();
-  const up = []; // per-frame updaters (t, cam)
   const chars = [];
+  const person = (pal, hat, x, y, z, seed, extra = {}) => { const c = character({palette: pal, hat, seed, ...extra}); c.position.set(x, y, z); W.add(c); chars.push(c); return c; };
+  const shown = []; // [obj, shotKeys]
+  const only = (o, ...keys) => { shown.push([o, keys]); return o; };
 
-  // ======== NIGHT CITY ========
-  W.add(street(LOC.night, {lit: true, seed: 11}));
-  const towerN = tower({lit: true}); towerN.position.set(LOC.night, 0, -40); W.add(towerN);
-  const moon = new THREE.Mesh(new THREE.CircleGeometry(6, 32), new THREE.MeshBasicMaterial({color: '#f6ecc8', fog: false}));
-  moon.position.set(LOC.night - 60, 120, -150); W.add(moon);
-  const trafficN = dressStreet(W, LOC.night, {lit: true, seed: 11, chars, avoid: [LOC.night - 3]});
-  const welder1 = character({palette: 'welder', hat: 'cap', seed: 31}); welder1.position.set(LOC.night - 3, 0.25, 6.2); W.add(welder1); chars.push(welder1);
-  const spN = sparks(5, 160); W.add(spN);
-  // spark origins on the front face of the tower (z = -40 + 11)
-  const sparkOrigins = [[LOC.night - 5, 62, -28.6], [LOC.night + 6, 48, -28.6], [LOC.night - 2, 36, -28.6], [LOC.night + 4, 74, -28.6], [LOC.night + 11.2, 55, -36]];
-  for (let i = 0; i < 6; i++) { const c = cloud(LOC.night - 70 + i * 30, 95 + (i % 2) * 12, -120, 6, '#3d3f6b'); W.add(c); }
+  // ======================= SWAMP (hook + close) =======================
+  const SW = LOC.swamp;
+  const water = ground(240, 220, '#3f6e5e', {x: SW, z: -70, seed: 11, repeat: 20}); water.position.y -= 0.14; W.add(water);
+  const bank = (x, z, sx, sz, c = '#7d7a45') => { const m = new THREE.Mesh(new THREE.SphereGeometry(1, 20, 10), toon(c)); m.scale.set(sx, 0.18, sz); m.position.set(SW + x, -0.04, z); ink(m, 0.03, false); W.add(m); };
+  bank(0.6, 1.0, 5.2, 3.8); bank(-9, -6, 4, 3, '#6f7040'); bank(9, -9, 5, 3.5); bank(-4, -18, 6, 3, '#6f7040'); bank(14, -3, 3, 2.5); bank(-16, -14, 5, 4); bank(4, -28, 8, 4, '#6f7040'); bank(-6, 6.5, 3, 1.6);
+  // LAND FOR SALE sign
+  const forSale = big('LAND FOR SALE', 1.6, 0.8, '#f2e6cc'); forSale.position.set(SW, 1.25, 0); forSale.rotation.z = 0.05; W.add(forSale); only(forSale, 'hook');
+  const posts = new THREE.Group(); posts.add(cyl(0.05, 0.06, 1.3, '#6b4a36', {x: SW - 0.6, y: 0.6, z: -0.06, seg: 6}), cyl(0.05, 0.06, 1.3, '#6b4a36', {x: SW + 0.6, y: 0.6, z: -0.06, seg: 6})); W.add(posts);
+  const log = cyl(0.14, 0.16, 1.4, '#7a5a40', {x: SW - 0.45, y: 0.12, z: 0.5, seg: 10}); log.rotation.z = Math.PI / 2; log.rotation.y = 0.3; W.add(log);
+  const frog = S.frog(1.1); frog.position.set(SW - 0.5, 0.24, 0.52); frog.rotation.y = -1.2; W.add(frog);
+  const gator = S.gator(0.9); gator.position.set(SW - 2.6, -0.16, 2.2); gator.rotation.y = 0.5; W.add(gator);
+  const gator2 = S.gator(1.1); gator2.position.set(SW + 7, -0.16, -4); gator2.rotation.y = 2.6; W.add(gator2);
+  const r0 = rng(5);
+  for (let i = 0; i < 26; i++) { const x = (r0() - 0.5) * 60, z = -4 - r0() * 50; if (Math.abs(x) < 3 && z > -8) continue; W.add(P.at(S.cypress(7 + r0() * 6, i + 1), SW + x, 0, z)); }
+  for (const [x, z] of [[-4.5, 2.5], [5.5, 1.5], [-7, -1], [8, -2.5]]) W.add(P.at(S.cypress(9, Math.abs(x * 3)), SW + x, 0, z));
+  for (let i = 0; i < 30; i++) { const x = (r0() - 0.5) * 30, z = 4 - r0() * 30; if (Math.abs(x - 1) < 2.2 && z > -2 && z < 3) continue; W.add(P.at(S.reeds(8, i + 3, 1.3 + r0()), SW + x, 0, z)); }
+  for (const [x, z] of [[-1.6, 0.4], [1.4, 0.9], [-2.2, -1.2], [3.2, 0.2]]) W.add(P.at(S.reeds(10, Math.abs(x * 9 + 1), 1.4), SW + x, 0, z));
+  for (let i = 0; i < 18; i++) W.add(P.at(S.lilyPad(0.35 + r0() * 0.3), SW + (r0() - 0.5) * 16, -0.12, 3 - r0() * 12));
+  for (let i = 0; i < 4; i++) W.add(P.at(S.mist(i + 2, 8, 40), SW + (i - 1.5) * 30, 0.5, -30 - i * 8));
+  for (let i = 0; i < 7; i++) W.add(cloud(SW - 80 + i * 28, 55 + (i % 3) * 8, -150, 7));
+  // the sneaky buyer
+  const buyer = person('trench', 'fedora', SW + 2.1, 0.12, -0.5, 11, {shades: true});
+  const bc = S.briefcase(); bc.position.set(0.09, -0.5, 0.03); buyer.userData.armR.add(bc);
+  only(buyer, 'hook');
+  // close: empty director's chair, castle rising, 1966
+  const chair = S.dirChair(); chair.position.set(SW - 1.1, 0.12, 2.8); chair.rotation.y = -0.4; W.add(chair); only(chair, 'close');
+  const castle = S.castle(); castle.scale.setScalar(2.0); castle.position.set(SW, 0, -78); W.add(castle); only(castle, 'close');
+  const y66 = big('1966', 1.1, 0.5, '#f2e6cc'); y66.position.set(SW + 1.6, 1.5, 1.2); W.add(y66); only(y66, 'close');
+  W.add(cyl(0.05, 0.05, 1.3, '#6b4a36', {x: SW + 1.6, y: 0.6, z: 1.15, seg: 6}));
 
-  // ======== DAY CITY ========
-  W.add(street(LOC.day, {seed: 23}));
-  const towerD = tower(); towerD.position.set(LOC.day, 0, -40); W.add(towerD);
-  const trafficD = dressStreet(W, LOC.day, {seed: 23, chars, avoid: [LOC.day - 35, LOC.day + 20.5, LOC.day + 18.3]});
-  dressPlaza(W, LOC.day, chars);
-  // plaza + NOW OPEN banner on two poles
-  W.add(ground(40, 30, '#d8cdb8', {x: LOC.day, z: -22, seed: 5, repeat: 5}));
-  const banner = sign('NOW OPEN', 9, 2.4, {bg: '#c43d32', fg: '#fff4dc', font: 'bold 120px Arial, sans-serif', w: 768, h: 200});
-  banner.position.set(LOC.day, 6.2, -6); W.add(banner);
-  W.add(cyl(0.12, 0.14, 7.4, '#3a3a3a', {x: LOC.day - 4.7, y: 3.7, z: -6}), cyl(0.12, 0.14, 7.4, '#3a3a3a', {x: LOC.day + 4.7, y: 3.7, z: -6}));
-  for (let i = 0; i < 7; i++) W.add(cloud(LOC.day - 80 + i * 28, 100 + (i % 3) * 10, -130, 7));
-  // CTA billboard by the street (in-world label)
-  const bill = sign('LIKE  +  SUBSCRIBE', 7.5, 2.6, {bg: '#f2e6cc', w: 900, h: 300, font: 'bold 104px Arial, sans-serif'});
-  bill.position.set(LOC.day - 35.5, 4.2, 4.2); W.add(bill);
-  W.add(cyl(0.1, 0.1, 3, '#3a3a3a', {x: LOC.day - 38.5, y: 1.5, z: 4.2}), cyl(0.1, 0.1, 3, '#3a3a3a', {x: LOC.day - 32.5, y: 1.5, z: 4.2}));
-  const host = character({palette: 'clerk', hat: 'bowler', seed: 41}); host.position.set(LOC.day - 35.0, 0.25, 6.4); W.add(host); chars.push(host);
-  // storm: rain + dark clouds (only during the storm shot)
-  const rainGeo = new THREE.BufferGeometry(); const RN = 900; const rp = new Float32Array(RN * 6); rainGeo.setAttribute('position', new THREE.BufferAttribute(rp, 3));
-  const rain = new THREE.LineSegments(rainGeo, new THREE.LineBasicMaterial({color: '#d7e3ef', transparent: true, opacity: 0.55}));
-  const rr = rng(77); const rs = Array.from({length: RN}, () => [rr(), rr(), rr()]);
-  W.add(rain);
-  const stormClouds = new THREE.Group(); for (let i = 0; i < 9; i++) stormClouds.add(cloud(LOC.day - 70 + i * 18, 60 + (i % 3) * 10, -70 + (i % 2) * 10, 8, '#59606e')); W.add(stormClouds);
-  // newsstand for the closing shot (morning)
-  const stand = new THREE.Group();
-  stand.add(box(4, 2.4, 1.6, '#2f5d62', {y: 1.2}));
-  stand.add(box(4.6, 0.2, 2.2, '#c43d32', {y: 2.5}));
-  const mag = sign('1995', 1.3, 1.7, {bg: '#f4ead4', w: 260, h: 340, font: 'bold 92px Arial, sans-serif', sub: 'THE SECRET FIX'});
-  mag.position.set(-0.8, 1.4, 0.86); stand.add(mag);
-  const mag2 = sign('NEWS', 1.1, 1.5, {bg: '#e6d39a', w: 220, h: 300, font: 'bold 70px Arial, sans-serif'}); mag2.position.set(0.9, 1.3, 0.86); stand.add(mag2);
-  stand.position.set(LOC.day + 20.5, 0.25, 5.8); W.add(stand);
-  const reader = character({palette: 'official', hat: 'none', glasses: true, seed: 51}); reader.position.set(LOC.day + 18.3, 0.25, 7.2); W.add(reader); chars.push(reader);
+  // ======================= RANCH / FLATWOODS (cheap) =======================
+  const RA = LOC.ranch;
+  W.add(ground(190, 160, '#a6a35c', {x: RA, z: -45, seed: 21, repeat: 18}));
+  W.add(box(6, 0.04, 4, '#3f6e5e', {x: RA - 6.5, y: 0.02, z: -1.5, thick: 0.01, edges: false}));
+  for (let i = 0; i < 8; i++) W.add(P.at(S.reeds(8, 40 + i, 1.4), RA - 9.5 + (i % 4) * 2, 0, -3.8 + Math.floor(i / 4) * 4.4));
+  W.add(P.at(S.lilyPad(0.4), RA - 6, 0.05, -1.2), P.at(S.lilyPad(0.3), RA - 7.4, 0.05, -2));
+  const r1 = rng(9);
+  for (let i = 0; i < 40; i++) { const x = -8 + r1() * 30, z = 1.5 - r1() * 16; if (x > -9.5 && x < -3.5 && z > -4 && z < 1) continue; W.add(P.at(S.palmetto(0.8 + r1() * 0.7, i), RA + x, 0, z)); }
+  for (let i = 0; i < 24; i++) W.add(P.at(S.cypress(8 + r1() * 7, 60 + i), RA - 30 + r1() * 70, 0, -14 - r1() * 30));
+  const cows = [];
+  for (const [x, z, ry] of [[3.5, -4, 0.3], [6.2, -6.5, -0.4], [9.5, -4.6, 2.8], [12.5, -7.5, 0.2], [5, -10, 1.2], [15, -5, 3.0]]) { const c = S.cow(x * 3); c.position.set(RA + x, 0, z); c.rotation.y = ry; W.add(c); cows.push(c); }
+  W.add(P.at(S.railFence(14), RA + 1, 0, -2.2), P.at(S.railFence(10), RA + 16.5, 0, -2.2));
+  W.add(P.at(S.ranchGate(4.4), RA + 10, 0, -2.2));
+  const s200 = big('UNDER $200 / ACRE', 3.4, 0.9, '#c43d32', '#fff4dc'); s200.position.set(RA + 10, 3.4, -2.2); W.add(s200); only(s200, 'cheap');
+  person('denim', 'straw', RA + 7.6, 0.05, 0.2, 21);
+  person('welder', 'cap', RA + 12.6, 0.05, -0.6, 22);
+  W.add(P.at(P.barrel('#9a5a3c'), RA + 1.2, 0.05, 0.6), P.at(P.barrel('#6a7a5a'), RA + 2.0, 0.05, 1.1));
+  for (let i = 0; i < 6; i++) W.add(cloud(RA - 70 + i * 28, 55 + (i % 3) * 8, -150, 7));
 
-  // ======== OFFICE (rules + student) ========
-  const O = LOC.office;
-  W.add(room(O, {w: 16, h: 5.5, d: 11, wall: '#bfe0db', seed: 8}));
-  const desk = new THREE.Group();
-  desk.add(box(4.2, 0.18, 2, '#8a5a3b', {y: 1.05}));
-  for (const [x, z] of [[-1.9, -0.8], [1.9, -0.8], [-1.9, 0.8], [1.9, 0.8]]) desk.add(box(0.15, 1.0, 0.15, '#6b4430', {x, y: 0.5, z}));
-  desk.position.set(O - 2.5, 0, 0.5); W.add(desk);
-  // open rule book: page drawing shows a square with arrows at its flat sides
-  const bookTex = (() => {
-    const c = document.createElement('canvas'); c.width = 512; c.height = 320; const g = c.getContext('2d');
-    g.fillStyle = '#f7f0de'; g.fillRect(0, 0, 512, 320); g.strokeStyle = INK; g.lineWidth = 6; g.beginPath(); g.moveTo(256, 0); g.lineTo(256, 320); g.stroke();
-    g.fillStyle = INK; g.font = 'bold 34px Arial, sans-serif'; g.textAlign = 'center'; g.fillText('BUILDING', 128, 52); g.fillText('CODE', 128, 92);
-    g.font = 'bold 24px Arial'; g.fillText('WIND: FLAT SIDES', 384, 44);
-    g.strokeRect(344, 120, 80, 80); g.fillStyle = '#e0533d';
-    const ar = (x, y, rot) => { g.save(); g.translate(x, y); g.rotate(rot); g.beginPath(); g.moveTo(-30, -7); g.lineTo(10, -7); g.lineTo(10, -16); g.lineTo(30, 0); g.lineTo(10, 16); g.lineTo(10, 7); g.lineTo(-30, 7); g.fill(); g.restore(); };
-    ar(310, 160, 0); ar(458, 160, Math.PI); ar(384, 90, Math.PI / 2); ar(384, 230, -Math.PI / 2);
-    for (let i = 0; i < 6; i++) { g.fillStyle = '#bcae92'; g.fillRect(30, 130 + i * 26, 190, 8); }
-    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; return t;
-  })();
-  const book = new THREE.Mesh(new THREE.BoxGeometry(1.6, 0.06, 1.0), [toon('#7a3b33'), toon('#7a3b33'), toon('#ffffff', bookTex), toon('#7a3b33'), toon('#7a3b33'), toon('#7a3b33')]);
-  ink(book, 0.01, true); book.position.set(O - 3.4, 1.18, 0.7); book.rotation.y = 0.15; W.add(book);
-  // model tower on the desk
-  const MX = O - 1.6, MY = 1.14, MZ = 0.4;
-  const model = tower(); model.scale.setScalar(0.008); model.position.set(MX, MY, MZ); W.add(model);
-  const AY = MY + 0.55;
-  const sideArrows = new THREE.Group();
-  for (const [x, z] of [[-0.62, 0], [0.62, 0], [0, 0.62], [0, -0.62]]) {
-    const a = arrow('#4f86b8', 0.4); a.position.set(MX + x, AY, MZ + z);
-    a.lookAt(new THREE.Vector3(MX, AY, MZ)); a.rotateY(-Math.PI / 2);
-    sideArrows.add(a);
+  // ======================= CALIFORNIA PRESS TRIP (then) =======================
+  const PR = LOC.press;
+  W.add(ground(190, 140, '#dcc9a3', {x: PR, z: -40, seed: 31, repeat: 22}));
+  const pastel = ['#f2d3ae', '#f0c0b0', '#d8e4c0', '#f4e2a4'];
+  for (let i = -3; i <= 3; i++) { const f = facade({w: 9, h: 7 + (i % 2) * 2, color: pastel[(i + 4) % 4], cols: 3, rows: 2, seed: 300 + i}); f.position.set(PR + i * 9.5, 0, -12); W.add(f); W.add(box(9, 7 + (i % 2) * 2, 5, '#c9a582', {x: PR + i * 9.5, y: (7 + (i % 2) * 2) / 2, z: -14.8, thick: 0.03})); }
+  for (let i = -5; i <= 5; i++) W.add(P.at(S.palmTree(7 + (i % 3), i + 20), PR + i * 5 + 1.5, 0, -8));
+  for (const x of [-6, 7.5]) W.add(P.at(S.palmTree(8, x + 50), PR + x, 0, 2.5));
+  W.add(box(6, 0.4, 2.6, '#c43d32', {x: PR + 3, y: 0.2, z: -4, thick: 0.02}));
+  const banner = big('PRESS TRIP · CALIFORNIA', 7.4, 1.2, '#2f5d62', '#fff4dc'); banner.position.set(PR + 1.5, 4.4, -6); W.add(banner);
+  W.add(cyl(0.08, 0.08, 4.4, '#3a3a3a', {x: PR - 2.2, y: 2.2, z: -6.05}), cyl(0.08, 0.08, 4.4, '#3a3a3a', {x: PR + 5.2, y: 2.2, z: -6.05}));
+  const host = person('suit', 'none', PR + 3, 0.4, -4.2, 31);
+  person('navy', 'none', PR + 4.8, 0.4, -4.6, 32); person('official', 'none', PR + 1.2, 0.4, -4.6, 33);
+  const emily = person('pink', 'none', PR - 1.5, 0.05, 0.6, 34);
+  const pad = box(0.16, 0.22, 0.02, '#f7f0de', {x: -0.09, y: -0.48, z: 0.04, thick: 0.004}); emily.userData.armL.add(pad);
+  const reps = [['clerk', 'fedora', -3.2, 0.2], ['mustard', 'fedora', 0.4, -0.4], ['navy', 'bowler', 1.6, 1.2], ['teal', 'none', 4.6, 0.2], ['red', 'fedora', 6.4, 1.0], ['student', 'none', -5, 1.2], ['official', 'fedora', 2.8, 2.4]];
+  reps.forEach(([pal, hat, x, z], i) => { const c = person(pal, hat, PR + x, 0.05, z, 40 + i); c.userData.armL.add(box(0.16, 0.22, 0.02, '#f7f0de', {x: -0.09, y: -0.48, z: 0.04, thick: 0.004})); });
+  const cams = [[-3.8, -0.8], [1.0, 1.9], [5.6, -0.6]].map(([x, z]) => { const c = S.pressCam(); c.position.set(PR + x, 0.05, z); c.rotation.y = -0.4 - x * 0.03; W.add(c); return c; });
+  const qmark = big('?', 0.6, 0.6, '#c43d32', '#ffffff'); qmark.position.set(PR - 1.5, 2.45, 0.6); W.add(qmark); only(qmark, 'then');
+  W.add(P.at(P.car('#e6d9b8', {seed: 3}), PR - 12, 0.05, -4, 0.3), P.at(P.car('#2f8f8a', {seed: 4}), PR + 13, 0.05, -3.5, -0.4), P.at(P.bench(), PR - 8, 0.05, -2));
+  for (let i = 0; i < 6; i++) W.add(cloud(PR - 70 + i * 28, 55 + (i % 3) * 8, -150, 7));
+
+  // ======================= DRAWING OFFICE (yousee) =======================
+  const ST = LOC.studio;
+  W.add(room(ST, {w: 16, h: 5, d: 11, wall: '#bfe0dc', floor: '#a7764e', seed: 61}));
+  hang(W, ST - 3, -0.5); hang(W, ST + 3, -0.5);
+  // Florida map with a red circle that draws itself
+  const mc = document.createElement('canvas'); mc.width = 512; mc.height = 640; const mg = mc.getContext('2d');
+  const mTex = new THREE.CanvasTexture(mc); mTex.colorSpace = THREE.SRGBColorSpace; mTex.anisotropy = 8;
+  const FL = [[40, 70], [300, 60], [330, 95], [395, 92], [420, 140], [455, 250], [490, 360], [500, 460], [470, 560], [430, 600], [395, 560], [350, 470], [320, 400], [300, 300], [285, 210], [255, 160], [200, 150], [130, 160], [60, 140], [40, 110]];
+  let lastMap = -1;
+  const drawMap = (k) => {
+    const kk = Math.round(k * 40) / 40; if (kk === lastMap) return; lastMap = kk;
+    mg.fillStyle = '#9fd0e6'; mg.fillRect(0, 0, 512, 640);
+    mg.fillStyle = '#f0dca0'; mg.strokeStyle = INK; mg.lineWidth = 6; mg.beginPath(); FL.forEach(([x, y], i) => (i ? mg.lineTo(x, y) : mg.moveTo(x, y))); mg.closePath(); mg.fill(); mg.stroke();
+    mg.fillStyle = INK; mg.font = 'bold 54px Arial'; mg.textAlign = 'center'; mg.fillText('FLORIDA', 256, 600 - 0);
+    if (kk > 0) { mg.strokeStyle = '#c43d32'; mg.lineWidth = 14; mg.beginPath(); mg.ellipse(395, 300, 62, 52, 0, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * kk); mg.stroke(); }
+    mTex.needsUpdate = true;
+  };
+  drawMap(0);
+  const mapB = box(3.0, 3.75, 0.1, '#ffffff', {thick: 0.03});
+  mapB.material = [toon('#6b4a36'), toon('#6b4a36'), toon('#6b4a36'), toon('#6b4a36'), new THREE.MeshBasicMaterial({map: mTex}), toon('#6b4a36')];
+  mapB.position.set(ST + 3.6, 2.55, -5.38); W.add(mapB);
+  // drafting table with a blueprint
+  const bpT = paintTex('#2f5d9e', {seed: 6, stains: 2, chips: 0, scratches: 0, stripes: (gg, w, h) => { gg.strokeStyle = 'rgba(255,255,255,0.8)'; gg.lineWidth = 3; for (let i = 1; i < 8; i++) { gg.beginPath(); gg.moveTo(i * w / 8, 0); gg.lineTo(i * w / 8, h); gg.stroke(); gg.beginPath(); gg.moveTo(0, i * h / 8); gg.lineTo(w, i * h / 8); gg.stroke(); } gg.lineWidth = 6; gg.strokeRect(40, 50, 120, 90); gg.beginPath(); gg.arc(180, 170, 50, 0, 7); gg.stroke(); }});
+  const dt = new THREE.Group(); const top = new THREE.Mesh(new THREE.BoxGeometry(2.0, 0.06, 1.3), [toon('#8a5a3b'), toon('#8a5a3b'), toon('#ffffff', bpT), toon('#8a5a3b'), toon('#8a5a3b'), toon('#8a5a3b')]); top.position.y = 1.15; top.rotation.x = 0.45; ink(top, 0.015, true); dt.add(top);
+  for (const x of [-0.85, 0.85]) dt.add(box(0.08, 1.1, 0.08, '#5a3a26', {x, y: 0.55, thick: 0.008}));
+  dt.position.set(ST - 2.2, 0.05, -1.6); W.add(dt);
+  const planner = person('engineer', 'none', ST - 1.2, 0.05, -0.7, 61, {glasses: true});
+  // park model on a table
+  W.add(box(2.2, 0.9, 1.3, '#7a4f33', {x: ST + 0.6, y: 0.5, z: 0.3, thick: 0.02}));
+  const model = new THREE.Group();
+  model.add(box(2.0, 0.06, 1.1, '#7fbf5a', {y: 0, thick: 0.01}));
+  const mcol = ['#c43d32', '#2f6db3', '#d9a441', '#d77a9c', '#2f8f8a'];
+  for (let i = 0; i < 7; i++) { const x = -0.8 + i * 0.27, h = 0.2 + (i % 3) * 0.15; model.add(box(0.18, h, 0.18, mcol[i % 5], {x, y: h / 2 + 0.03, z: -0.3 + (i % 2) * 0.35, thick: 0.006})); model.add(S.cone(0.13, 0.2, mcol[(i + 2) % 5], {x, y: h + 0.13, z: -0.3 + (i % 2) * 0.35, seg: 8, thick: 0.005})); }
+  const wheel = new THREE.Mesh(new THREE.TorusGeometry(0.28, 0.025, 6, 20), toon('#f2c12e')); wheel.position.set(0.7, 0.4, 0.15); ink(wheel, 0.008, false); model.add(wheel);
+  model.add(cyl(0.025, 0.025, 0.4, '#5a3a26', {x: 0.7, y: 0.2, z: 0.15, seg: 5, thick: 0.003}));
+  model.position.set(ST + 0.6, 0.98, 0.3); W.add(model);
+  W.add(P.at(P.bookshelf(3), ST - 5.6, 0.05, -5.15), P.at(P.filingCabinet(), ST - 7.3, 0.05, -3.8), P.at(P.filingCabinet('#8f7d6a'), ST + 6.6, 0.05, -5.0));
+  W.add(P.at(P.wallClock(), ST + 0.4, 4.1, -5.42), P.at(P.poster('PLANS', 1.0, 1.4, '#e6d39a'), ST - 1.6, 3.1, -5.42), P.at(P.poster('IDEAS', 1.0, 1.4, '#f0c0b0'), ST + 6.4, 3.3, -5.42));
+  windowPane(W, ST - 7.9, 2.6, -1.2, 2.2, 1.6, Math.PI / 2);
+  for (let i = 0; i < 4; i++) { const rl = cyl(0.07, 0.07, 1.0, ['#cfe3f0', '#f7f0de'][i % 2], {seg: 10, thick: 0.006}); rl.rotation.z = Math.PI / 2; rl.position.set(ST - 2.4 + i * 0.12, 0.25 + i * 0.13, 0.9); W.add(rl); }
+  W.add(potPlant(ST + 7.0, 2.6), P.at(P.chair(), ST - 1.5, 0.05, 0.4, Math.PI));
+  person('teal', 'none', ST + 5.2, 0.05, -2.6, 62); person('student', 'none', ST - 5.8, 0.05, -2.2, 63);
+  const d2 = P.desk(2.0, '#7a4f33'); d2.position.set(ST + 5.0, 0.05, -3.6); W.add(d2); W.add(P.at(P.papers(5, 9), ST + 4.8, 1.08, -3.6), P.at(P.deskLamp(), ST + 5.6, 1.08, -3.9));
+
+  // ======================= LAND OFFICE (but) =======================
+  const LO = LOC.landoff;
+  W.add(room(LO, {w: 14, h: 4.8, d: 10, wall: '#cfe3cf', floor: '#9a6a44', seed: 71}));
+  hang(W, LO - 2.5, -0.5, 4.3); hang(W, LO + 2.5, -0.5, 4.3);
+  W.add(box(5.4, 1.1, 0.8, '#8a5a3b', {x: LO, y: 0.55, z: -1.6, thick: 0.02}), box(5.6, 0.08, 0.95, '#6b4430', {x: LO, y: 1.14, z: -1.6, thick: 0.01}));
+  const farmer = person('denim', 'straw', LO + 0.6, 0.05, -2.6, 71);
+  const plot = new THREE.Group(); plot.add(box(0.9, 0.08, 0.6, '#7fbf5a', {thick: 0.008}));
+  for (let i = 0; i < 6; i++) plot.add(cyl(0.012, 0.012, 0.12, '#6b4a36', {x: -0.42 + i * 0.168, y: 0.08, z: 0.28, seg: 4, thick: 0.002}));
+  plot.add(S.palmetto(0.18, 3)); plot.position.set(LO - 1.4, 1.22, -1.5); W.add(plot);
+  W.add(cyl(0.015, 0.015, 0.55, '#3a3a3a', {x: LO - 1.4, y: 1.5, z: -1.35, seg: 5, thick: 0.002}));
+  const tag1 = big('$200', 0.8, 0.42, '#f2e6cc'); tag1.position.set(LO - 1.4, 1.95, -1.33); W.add(tag1); only(tag1, 'but');
+  const tag2 = big('$$$$$', 1.2, 0.55, '#3f8f4a', '#ffffff'); tag2.position.set(LO - 1.4, 2.0, -1.3); W.add(tag2); only(tag2, 'but');
+  const bubble = big('DISNEY?!', 1.5, 0.55, '#ffffff', '#c43d32'); bubble.position.set(LO + 0.7, 2.75, -2.4); W.add(bubble); only(bubble, 'but');
+  W.add(P.at(P.poster('FARMS', 1.0, 1.3, '#e6d39a'), LO - 3.6, 2.9, -4.92), P.at(P.poster('ACRES', 1.0, 1.3, '#f0c0b0'), LO + 3.4, 2.9, -4.92), P.at(P.wallClock(), LO + 0.4, 3.9, -4.92));
+  windowPane(W, LO - 1.6, 2.6, -4.94, 1.6, 1.2);
+  W.add(P.at(P.bookshelf(7, 2.2, 2.4), LO + 5.3, 0.05, -4.6), P.at(P.filingCabinet(), LO - 5.6, 0.05, -4.5), P.at(P.filingCabinet('#8f7d6a'), LO - 4.8, 0.05, -4.5));
+  W.add(P.at(P.papers(6, 21), LO + 1.6, 1.2, -1.6), P.at(P.phone(), LO + 2.3, 1.2, -1.7), P.at(P.mug(), LO + 0.9, 1.2, -1.5), P.at(P.deskLamp(), LO + 2.6, 1.18, -1.9));
+  W.add(P.at(P.bench(), LO - 4.2, 0.05, 1.6, 0.3), potPlant(LO + 5.6, 2.6));
+  person('mustard', 'cap', LO - 4.4, 0.05, -2.6, 72); person('trench', 'fedora', LO + 2.8, 0.05, 0.4, 73, {shades: true});
+
+  // ======================= LAWYER'S OFFICE (shells, lott) =======================
+  const LW = LOC.law;
+  W.add(room(LW, {w: 16, h: 5, d: 11, wall: '#c6d4ea', floor: '#8a5a3b', seed: 81}));
+  hang(W, LW - 2.5, -0.5); hang(W, LW + 3.5, -1);
+  W.add(P.at(P.rug(6, 3.6, '#7a3b3b', '#e0b04a'), LW - 1.5, 0, -0.6));
+  const ld = P.desk(2.6, '#6b4430'); ld.position.set(LW - 1.5, 0.05, -1.6); W.add(ld);
+  const lawyer = person('suit', 'none', LW - 1.5, 0.05, -2.6, 81, {glasses: true});
+  W.add(P.at(P.deskLamp(), LW - 2.6, 1.08, -1.9), P.at(P.phone(), LW - 0.4, 1.08, -1.9));
+  const fcols = ['#d9a441', '#2f8f8a', '#c8463a', '#7a4f73', '#4f79a8'];
+  const folders = fcols.map((c, i) => { const f = box(0.42, 0.05, 0.32, c, {thick: 0.006}); f.position.set(LW - 0.8, 1.08 + i * 0.055, -1.45); f.rotation.y = (i % 2 - 0.5) * 0.25; W.add(f); return f; });
+  const deed = big('LAND DEED', 0.55, 0.34, '#f7f0de', INK, {font: 'bold 60px Georgia, serif'}); deed.position.set(LW - 2.0, 1.08, -1.35); deed.rotation.x = -Math.PI / 2 + 0.25; W.add(deed); only(deed, 'shells');
+  const plate = sign('REEDY CREEK RANCH CORP.', 1.4, 0.26, {bg: '#d9b44a', fg: INK, w: 1120, h: 210, font: 'bold 80px Georgia, serif'}); plate.position.set(LW - 1.5, 1.2, -1.2); plate.rotation.x = -0.25; W.add(plate); only(plate, 'shells');
+  // wall of company binders
+  const binders = new THREE.Group();
+  ['CORP. 1', 'CORP. 2', 'CORP. 3', 'CORP. 4', 'CORP. 5', 'CORP. 6'].forEach((tx, i) => { const b = big(tx, 0.62, 0.9, fcols[i % 5], '#ffffff', {font: 'bold 50px Arial'}); b.position.set((i - 2.5) * 0.7, 0, 0); binders.add(b); });
+  binders.position.set(LW - 1.5, 3.0, -5.35); W.add(binders);
+  W.add(box(4.6, 0.08, 0.4, '#6b4430', {x: LW - 1.5, y: 2.5, z: -5.3, thick: 0.01}));
+  W.add(P.at(P.bookshelf(11, 2.4, 2.6), LW - 6.4, 0.05, -5.15), P.at(P.filingCabinet(), LW + 2.2, 0.05, -5.1), P.at(P.filingCabinet('#8f7d6a'), LW + 3.0, 0.05, -5.1));
+  // door with the M.T. LOTT sign
+  W.add(box(1.5, 2.8, 0.12, '#7a4f33', {x: LW + 5.2, y: 1.4, z: -5.42, thick: 0.02}), box(1.15, 1.1, 0.04, '#cfe6ee', {x: LW + 5.2, y: 2.0, z: -5.34, thick: 0.005}));
+  W.add(cyl(0.05, 0.05, 0.08, '#d9b44a', {x: LW + 4.65, y: 1.2, z: -5.32, seg: 8}));
+  const lottA = sign('M.T. LOTT', 1.05, 0.62, {bg: '#f2e6cc', fg: INK, w: 520, h: 300, font: 'bold 110px Georgia, serif', sub: 'REAL ESTATE'}); lottA.position.set(LW + 5.2, 2.0, -5.3); W.add(lottA); only(lottA, 'lott');
+  const lottB = big('EMPTY LOT', 1.7, 0.62, '#c43d32', '#fff4dc'); lottB.position.set(LW + 5.2, 2.0, -5.2); W.add(lottB); only(lottB, 'lott');
+  W.add(P.at(P.poster('LAND', 0.9, 1.2, '#e6d39a'), LW + 6.9, 2.8, -5.42), P.at(P.wallClock(), LW + 3.7, 3.9, -5.42), potPlant(LW + 7.0, -3.6), potPlant(LW - 7.0, 2.8));
+  const d3 = P.desk(2.0, '#7a4f33'); d3.position.set(LW + 3.6, 0.05, 0.6); W.add(d3);
+  W.add(P.at(P.papers(6, 33), LW + 3.4, 1.08, 0.6), P.at(P.radio(), LW + 4.2, 1.08, 0.4));
+  person('clerk', 'none', LW + 3.4, 0.05, -0.4, 82); person('mustard', 'fedora', LW + 6.6, 0.05, -2.2, 83); person('teal', 'none', LW - 5.2, 0.05, -2.6, 84);
+  windowPane(W, LW - 7.9, 2.6, 0.5, 2.0, 1.5, Math.PI / 2);
+
+  // ======================= MAP ROOM (ladder, size) =======================
+  const MR = LOC.maproom;
+  W.add(room(MR, {w: 16, h: 5.2, d: 12, wall: '#bcd3e0', floor: '#a7764e', seed: 91}));
+  hang(W, MR - 1.6, -1, 4.7); hang(W, MR + 1.6, -1, 4.7);
+  W.add(box(5.2, 0.14, 4.0, '#6b4430', {x: MR, y: 1.0, z: -1, thick: 0.02}));
+  for (const x of [-2.4, 2.4]) for (const z of [-2.8, 0.8]) W.add(box(0.16, 0.95, 0.16, '#4a3020', {x: MR + x, y: 0.48, z, thick: 0.01}));
+  W.add(box(4.8, 0.03, 3.6, '#d8cfa6', {x: MR, y: 1.085, z: -1, thick: 0.006}));
+  for (const [x, z, rr] of [[-1.9, -2.3, 0.3], [1.95, 0.3, 0.25], [-1.9, 0.4, 0.2], [2.0, -2.4, 0.22]]) W.add(cyl(rr, rr, 0.02, '#7fbfe0', {x: MR + x, y: 1.1, z: -1 + z + 1, seg: 14, thick: 0.004}));
+  const TS = 0.42, NX = 8, NZ = 6; const tiles = []; const rt = rng(4);
+  for (let i = 0; i < NX; i++) for (let j = 0; j < NZ; j++) {
+    const m = new THREE.MeshToonMaterial({color: '#f7f2e2', gradientMap: toon('#fff').gradientMap});
+    const tl = new THREE.Mesh(new THREE.BoxGeometry(TS - 0.03, 0.025, TS - 0.03), m); tl.position.set(MR + (i - (NX - 1) / 2) * TS, 1.11, -1 + (j - (NZ - 1) / 2) * TS); ink(tl, 0.004, true); W.add(tl);
+    tiles.push({m, k: rt()});
   }
-  W.add(sideArrows);
-  const cornerArrow = arrow('#e0533d', 0.55); cornerArrow.position.set(MX + 0.62, AY, MZ + 0.62); cornerArrow.lookAt(new THREE.Vector3(MX, AY, MZ)); cornerArrow.rotateY(-Math.PI / 2); W.add(cornerArrow);
-  // chalkboard with +40%
-  const chalk = document.createElement('canvas'); chalk.width = 640; chalk.height = 360; const cg = chalk.getContext('2d');
-  const chalkTex = new THREE.CanvasTexture(chalk); chalkTex.colorSpace = THREE.SRGBColorSpace;
-  const drawChalk = (p) => {
-    cg.fillStyle = '#2f4a3a'; cg.fillRect(0, 0, 640, 360); cg.strokeStyle = '#8a5a3b'; cg.lineWidth = 22; cg.strokeRect(0, 0, 640, 360);
-    cg.fillStyle = '#f2ead6'; cg.font = 'bold 40px Arial, sans-serif'; cg.textAlign = 'center'; cg.fillText('CORNER WINDS', 320, 80);
-    cg.save(); cg.globalAlpha = p; cg.font = 'bold 150px Arial, sans-serif'; cg.fillStyle = '#ffd66b'; cg.fillText('+40%', 320, 250); cg.restore();
-    chalkTex.needsUpdate = true;
-  };
-  drawChalk(0);
-  const board = box(4.4, 2.5, 0.12, '#ffffff', {thick: 0.02});
-  board.material = [toon('#5a3a26'), toon('#5a3a26'), toon('#5a3a26'), toon('#5a3a26'), new THREE.MeshBasicMaterial({map: chalkTex}), toon('#5a3a26')];
-  board.position.set(O + 3.2, 2.9, -5.35); W.add(board);
-  dressOffice(W, O, chars);
-  const student = character({palette: 'student', hat: 'cap', glasses: true, seed: 61}); student.position.set(O + 1.2, 0.05, -3.2); W.add(student); chars.push(student);
-  // window + plant (foreground blur object)
-  const win = sign('', 2.4, 2.0, {bg: '#bfe3f5', border: true}); win.position.set(O - 5, 3.1, -5.4); W.add(win);
-  const plant = new THREE.Group(); plant.add(cyl(0.35, 0.28, 0.7, '#b35a3a', {y: 0.35})); for (let i = 0; i < 6; i++) { const l = new THREE.Mesh(new THREE.SphereGeometry(0.35, 10, 8), toon('#4f8a4a')); l.position.set(Math.cos(i) * 0.3, 0.9 + (i % 3) * 0.25, Math.sin(i) * 0.3); ink(l, 0.02, false); plant.add(l); }
-  plant.position.set(O - 5.6, 0.05, 3.2); W.add(plant);
+  const ac = document.createElement('canvas'); ac.width = 800; ac.height = 340; const ag = ac.getContext('2d');
+  const aTex = new THREE.CanvasTexture(ac); aTex.colorSpace = THREE.SRGBColorSpace; aTex.anisotropy = 8;
+  let lastA = -1;
+  const drawA = (n, plus) => { const key = n + (plus ? '+' : ''); if (key === lastA) return; lastA = key; ag.fillStyle = '#1d2326'; ag.fillRect(0, 0, 800, 340); ag.strokeStyle = '#d9a441'; ag.lineWidth = 14; ag.strokeRect(7, 7, 786, 326); ag.fillStyle = '#ffd66b'; ag.font = 'bold 130px Arial'; ag.textAlign = 'center'; ag.fillText(n.toLocaleString('en-US') + (plus ? '+' : ''), 400, 190); ag.fillStyle = '#f2e6cc'; ag.font = 'bold 64px Arial'; ag.fillText('ACRES', 400, 290); aTex.needsUpdate = true; };
+  drawA(0, false);
+  const aBoard = box(4.2, 1.8, 0.12, '#ffffff', {thick: 0.03}); aBoard.material = [toon('#2b2b2e'), toon('#2b2b2e'), toon('#2b2b2e'), toon('#2b2b2e'), new THREE.MeshBasicMaterial({map: aTex}), toon('#2b2b2e')];
+  aBoard.position.set(MR + 1.2, 3.2, -5.88); W.add(aBoard);
+  const y64 = big('1964', 1.5, 0.75, '#f2e6cc'); y64.position.set(MR - 2.6, 3.4, -5.85); W.add(y64); only(y64, 'ladder', 'size');
+  // two Manhattan-sized cut-outs (generic long island shape)
+  const shp = new THREE.Shape(); const ML = 2.3, MW = 1.45;
+  shp.moveTo(-MW * 0.3, -ML / 2); shp.lineTo(MW * 0.25, -ML / 2 + 0.1); shp.lineTo(MW * 0.5, 0); shp.lineTo(MW * 0.42, ML / 2 - 0.2); shp.lineTo(MW * 0.05, ML / 2); shp.lineTo(-MW * 0.5, ML * 0.15); shp.lineTo(-MW * 0.45, -ML * 0.3); shp.closePath();
+  const mans = [0, 1].map((i) => {
+    const grp = new THREE.Group();
+    const m = new THREE.Mesh(new THREE.ExtrudeGeometry(shp, {depth: 0.04, bevelEnabled: false}), toon(i ? '#f2c14e' : '#f29a4e')); m.rotation.x = -Math.PI / 2; ink(m, 0.006, true); grp.add(m);
+    const lb = sign('MANHATTAN', 1.3, 0.3, {bg: i ? '#f2c14e' : '#f29a4e', fg: INK, w: 520, h: 120, font: 'bold 80px Arial', border: false}); lb.rotation.x = -Math.PI / 2; lb.position.y = 0.06; grp.add(lb);
+    grp.userData.x = MR + (i ? 0.85 : -0.85); W.add(grp); only(grp, 'size'); return grp;
+  });
+  W.add(P.at(P.bookshelf(13, 2.4, 2.6), MR - 6.4, 0.05, -5.75), P.at(P.filingCabinet(), MR + 5.2, 0.05, -5.6), P.at(P.filingCabinet('#8f7d6a'), MR + 6.0, 0.05, -5.6), P.at(P.wallClock(), MR - 2.6, 4.5, -5.9));
+  W.add(P.at(P.poster('COUNTY MAP', 1.2, 1.5, '#e6d39a'), MR + 4.6, 3.2, -5.9), potPlant(MR + 7.0, 2.0));
+  for (let i = 0; i < 3; i++) W.add(P.at(P.chair(['#5a3a26', '#3e5a7a', '#5a3a26'][i]), MR - 2.0 + i * 2, 0.05, 1.6, Math.PI));
+  person('suit', 'none', MR - 2.9, 0.05, -3.4, 91, {glasses: true}); person('navy', 'bowler', MR + 2.9, 0.05, -3.2, 92); person('official', 'none', MR + 3.3, 0.05, 0.2, 93); person('clerk', 'none', MR - 3.4, 0.05, 0.4, 94);
 
-  // ======== YARD (bolts instead of welds) ========
-  const Y = LOC.yard;
-  W.add(ground(60, 50, '#b39a72', {x: Y, z: -5, seed: 14, repeat: 8}));
-  W.add(facade({w: 20, h: 9, color: '#a86f5c', cols: 4, rows: 2, door: true, seed: 71}).translateX(Y).translateZ(-8));
-  W.add(box(20, 9, 10, '#8f6c5e', {x: Y, y: 4.5, z: -13.2, thick: 0.04}));
-  for (let i = 0; i < 3; i++) for (let j = 0; j < 2 + (i % 2); j++) W.add(crate('BOLTS', {x: Y + 1.4 + i * 1.3, y: 0.6 + j * 1.2, z: -2.2 + (i % 2) * 0.2, ry: (i - 1) * 0.08}));
-  W.add(crate('WELDS', {x: Y - 2.6, y: 0.6, z: -1.6, ry: 0.25, color: '#9a8a7a', stamp: 'SWAPPED'}));
-  const costSign = sign('BOLTS COST LESS', 3.8, 1.0, {bg: '#e6d39a', w: 760, h: 200, font: 'bold 78px Arial, sans-serif'}); costSign.position.set(Y + 2.7, 4.6, -2.0); W.add(costSign);
-  W.add(cyl(0.07, 0.07, 4.1, '#3a3a3a', {x: Y + 1.0, y: 2.05, z: -2.05}), cyl(0.07, 0.07, 4.1, '#3a3a3a', {x: Y + 4.4, y: 2.05, z: -2.05}));
-  dressYard(W, Y, chars);
-  const engineer = character({palette: 'engineer', hat: 'bowler', glasses: true, seed: 71}); engineer.position.set(Y + 0.0, 0.05, 0.6); W.add(engineer); chars.push(engineer);
-  const clip = box(0.35, 0.45, 0.03, '#d8c9a8', {thick: 0.01}); clip.position.set(0.18, -0.4, 0.06); engineer.userData.armR.add(clip);
+  // ======================= PRINTING ROOM (reveal) =======================
+  const PT = LOC.printing;
+  W.add(room(PT, {w: 20, h: 6, d: 12, wall: '#c9d8d4', floor: '#7d8587', seed: 101}));
+  for (const x of [-5, 0, 5]) hang(W, PT + x, -0.5, 5.4);
+  const press = S.printingPress(); press.position.set(PT - 2, 0.05, -2.4); W.add(press);
+  for (let i = 0; i < 5; i++) W.add(box(0.8, 0.3 + (i % 3) * 0.25, 0.6, '#f4ecd8', {x: PT + 1.6 + (i % 3) * 0.95, y: 0.2 + (i % 3) * 0.12, z: 0.2 + Math.floor(i / 3) * 0.9, thick: 0.01}));
+  for (let i = 0; i < 6; i++) W.add(cyl(0.45, 0.45, 0.9, '#efe6d0', {x: PT - 7.5 + (i % 3) * 1.0, y: 0.5, z: -4.8 + Math.floor(i / 3) * 1.0, seg: 16, thick: 0.02}));
+  const pTex = S.paperTex('MYSTERY BUYER IS DISNEY', {date: 'OCTOBER 1965', name: 'MORNING EDITION'});
+  const page = new THREE.Group(); page.add(box(3.1, 4.1, 0.08, '#6b4a36', {thick: 0.02, z: -0.05})); const pg = S.newspaper(pTex, 2.95); page.add(pg);
+  page.position.set(PT + 3.4, 3.0, -5.85); W.add(page); only(page, 'reveal');
+  const smallTex = S.paperTex('EXTRA EXTRA', {date: '', name: 'MORNING EDITION'});
+  const flyers = Array.from({length: 12}, (_, i) => { const n = S.newspaper(i % 2 ? pTex : smallTex, 0.5); n.userData.k = [rng(i + 5)(), rng(i + 15)(), rng(i + 25)()]; W.add(n); only(n, 'reveal'); return n; });
+  const oct = big('OCT 1965', 2.0, 0.7, '#c43d32', '#fff4dc'); oct.position.set(PT - 3.2, 4.7, -5.85); W.add(oct); only(oct, 'reveal');
+  W.add(P.at(P.poster('PRESS', 1.0, 1.4, '#e6d39a'), PT + 7.2, 3.0, -5.9), P.at(P.wallClock(), PT + 0.2, 4.8, -5.9), P.at(P.toolRack(5), PT - 8.6, 0.05, -1.4, Math.PI / 2));
+  person('welder', 'cap', PT - 3.8, 0.05, -0.6, 101); person('mustard', 'cap', PT + 0.4, 0.05, -1.0, 102); person('teal', 'none', PT + 5.4, 0.05, -2.8, 103, {glasses: true}); person('red', 'cap', PT + 6.6, 0.05, 0.8, 104);
+  W.add(P.at(P.barrel('#2f6db3'), PT - 6, 0.05, 1.4), P.at(P.barrel('#c43d32'), PT + 8.2, 0.05, -4));
 
-  // ======== JOINT close-up ========
-  const J = LOC.joint;
-  W.add(room(J, {w: 22, h: 8, d: 12, wall: '#8a8fa3', floor: '#6a6570', seed: 19}));
-  const joint = (x, welded) => {
-    const g = new THREE.Group();
-    g.add(box(0.9, 7, 0.9, '#8d9199', {y: 3.5, thick: 0.03}));            // column
-    const b1 = box(0.7, 4.6, 0.7, '#9aa0a8', {thick: 0.03}); b1.position.set(-1.35, 2.2, 0); b1.rotation.z = -0.62; g.add(b1);
-    const b2 = box(0.7, 4.6, 0.7, '#9aa0a8', {thick: 0.03}); b2.position.set(1.35, 2.2, 0); b2.rotation.z = 0.62; g.add(b2);
-    g.add(box(2.6, 1.8, 0.14, '#b3b8bf', {y: 4.2, z: 0.5, thick: 0.02}));  // gusset plate
-    const bolts = [];
-    if (welded) {
-      const beadMat = new THREE.MeshBasicMaterial({color: '#e8902e'});
-      const bead = new THREE.Group();
-      for (const [bw, bh, bx, by] of [[2.7, 0.1, 0, 0.92], [2.7, 0.1, 0, -0.92], [0.1, 1.9, 1.32, 0], [0.1, 1.9, -1.32, 0], [0.1, 1.2, -0.45, -0.3], [0.1, 1.2, 0.45, -0.3]]) {
-        const m = new THREE.Mesh(new THREE.BoxGeometry(bw, bh, 0.08), beadMat); m.position.set(bx, by, 0); bead.add(m);
-      }
-      bead.position.set(0, 4.2, 0.6); g.add(bead); bead.material = beadMat; g.userData.bead = bead;
-    } else {
-      for (let i = 0; i < 4; i++) for (let j = 0; j < 3; j++) { const b = cyl(0.11, 0.11, 0.14, '#4b4e55', {x: -0.9 + i * 0.6, y: 3.6 + j * 0.55, z: 0.62, seg: 6, thick: 0.012}); b.rotation.x = Math.PI / 2; g.add(b); bolts.push(b); }
-    }
-    g.userData.bolts = bolts;
-    g.position.set(x, 0, -3); return g;
-  };
-  dressJoint(W, J, chars);
-  const jW = joint(J - 3.2, true), jB = joint(J + 3.2, false); W.add(jW, jB);
-  const sW = sign('WELDED', 2.6, 0.8, {bg: '#e6d39a', w: 600, h: 180, font: 'bold 96px Arial, sans-serif'}); sW.position.set(J - 3.2, 6.6, -2.4); W.add(sW);
-  const sB = sign('BOLTED', 2.6, 0.8, {bg: '#e6d39a', w: 600, h: 180, font: 'bold 96px Arial, sans-serif'}); sB.position.set(J + 3.2, 6.6, -2.4); W.add(sB);
-  const lampJ = new THREE.Mesh(new THREE.SphereGeometry(0.35, 12, 8), new THREE.MeshBasicMaterial({color: '#ffe2a6'})); lampJ.position.set(J, 7.0, -1); W.add(lampJ); W.add(cyl(0.03, 0.03, 1.2, '#2a2a2a', {x: J, y: 7.6, z: -1}));
+  // ======================= BALLROOM (announce) =======================
+  const BR = LOC.ballroom;
+  W.add(room(BR, {w: 22, h: 6.5, d: 14, wall: '#d6c6e0', floor: '#6b4430', seed: 111}));
+  W.add(P.at(P.rug(3, 12, '#a8433a', '#e0b04a'), BR, 0, 0.5));
+  for (const x of [-6, 0, 6]) for (const z of [-2, 3]) hang(W, BR + x, z, 5.6);
+  W.add(box(9, 0.5, 3.2, '#5a3a26', {x: BR, y: 0.25, z: -5.2, thick: 0.02}));
+  const pod = S.podium(); pod.position.set(BR, 0.5, -4.3); W.add(pod);
+  person('suit', 'none', BR - 1.4, 0.5, -5.1, 111); person('navy', 'none', BR, 0.5, -5.0, 112, {glasses: true}); person('official', 'none', BR + 1.4, 0.5, -5.1, 113);
+  const ban = big('ORLANDO · NOV 1965', 8.4, 1.3, '#2f5d62', '#fff4dc'); ban.position.set(BR, 4.7, -6.85); W.add(ban);
+  for (const [x, c] of [[-3.6, '#c43d32'], [3.6, '#2f6db3'], [-4.4, '#f2e6cc'], [4.4, '#d9a441']]) { const f = P.flag(c); f.position.set(BR + x, 0.5, -6.2); f.scale.setScalar(1.6); W.add(f); }
+  for (let i = 0; i < 4; i++) W.add(box(0.9, 6.4, 0.9, '#c8b48a', {x: BR - 10 + i * 6.66, y: 3.2, z: -6.5, thick: 0.04}));
+  const rcol = ['clerk', 'mustard', 'navy', 'teal', 'red', 'student', 'official', 'pink', 'welder', 'engineer'], rhat = ['fedora', 'none', 'bowler', 'fedora', 'none', 'cap'];
+  let si = 0; const rr = rng(12);
+  for (let row = 0; row < 3; row++) for (const side of [-1, 1]) for (let k = 0; k < 4; k++) {
+    const x = BR + side * (1.6 + k * 1.15 + rr() * 0.3), z = -1.6 + row * 1.6 + rr() * 0.4;
+    W.add(P.at(P.chair('#c43d32'), x, 0.05, z + 0.3, Math.PI));
+    const c = person(rcol[si % 10], rhat[si % 6], x, 0.05, z, 120 + si); si++;
+    if (si % 3 === 0) c.userData.armL.add(box(0.16, 0.22, 0.02, '#f7f0de', {x: -0.09, y: -0.48, z: 0.04, thick: 0.004}));
+  }
+  const bcams = [[-4.2, -2.6], [4.4, -2.4], [-6.6, 2.4], [6.4, 1.6]].map(([x, z]) => { const c = S.pressCam(); c.position.set(BR + x, 0.05, z); c.rotation.y = x < 0 ? -0.5 : 0.5; W.add(c); return c; });
 
-  // ======== WEATHER ROOM ========
-  const R = LOC.weather;
-  W.add(room(R, {w: 16, h: 5.5, d: 11, wall: '#c9dbef', floor: '#8a6a4e', seed: 27}));
-  const mapC = document.createElement('canvas'); mapC.width = 800; mapC.height = 520; const mg = mapC.getContext('2d');
-  const mapTex = new THREE.CanvasTexture(mapC); mapTex.colorSpace = THREE.SRGBColorSpace; mapTex.anisotropy = 8;
-  const drawMap = (pIn, pTurn, t) => {
-    mg.fillStyle = '#7fb3cf'; mg.fillRect(0, 0, 800, 520);
-    mg.fillStyle = '#e8dcb8'; mg.strokeStyle = INK; mg.lineWidth = 5;
-    mg.beginPath(); mg.moveTo(0, 0); mg.lineTo(420, 0); mg.lineTo(400, 70); mg.lineTo(360, 130); mg.lineTo(330, 160); mg.lineTo(300, 230); mg.lineTo(250, 300); mg.lineTo(230, 380); mg.lineTo(170, 470); mg.lineTo(120, 520); mg.lineTo(0, 520); mg.closePath(); mg.fill(); mg.stroke();
-    mg.fillStyle = '#c43d32'; mg.beginPath(); mg.arc(335, 150, 12, 0, 7); mg.fill(); mg.stroke();
-    mg.fillStyle = INK; mg.font = 'bold 30px Arial, sans-serif'; mg.textAlign = 'right'; mg.fillText('NEW YORK', 318, 150);
-    mg.textAlign = 'center'; mg.font = 'bold 40px Arial, sans-serif'; mg.fillText('FORECAST', 620, 52);
-    // storm path: from south-east toward New York, then bending east (away)
-    const start = [600, 480], mid = [430, 230], away = [720, 90];
-    const sx = start[0] + (mid[0] - start[0]) * pIn + (away[0] - mid[0]) * pTurn;
-    const sy = start[1] + (mid[1] - start[1]) * pIn + (away[1] - mid[1]) * pTurn;
-    mg.strokeStyle = '#c43d32'; mg.lineWidth = 6; mg.setLineDash([16, 12]); mg.beginPath(); mg.moveTo(start[0], start[1]); mg.lineTo(start[0] + (mid[0] - start[0]) * pIn, start[1] + (mid[1] - start[1]) * pIn);
-    if (pTurn > 0) mg.lineTo(sx, sy); mg.stroke(); mg.setLineDash([]);
-    mg.save(); mg.translate(sx, sy); mg.rotate(-t * 3);
-    mg.fillStyle = '#ffffff'; mg.strokeStyle = INK; mg.lineWidth = 4;
-    for (let k = 0; k < 3; k++) { mg.rotate(2.09); mg.beginPath(); mg.arc(14, 0, 26, Math.PI * 0.9, Math.PI * 1.9); mg.lineWidth = 12; mg.strokeStyle = '#ffffff'; mg.stroke(); }
-    mg.beginPath(); mg.arc(0, 0, 12, 0, 7); mg.fillStyle = '#ffffff'; mg.fill(); mg.lineWidth = 4; mg.strokeStyle = INK; mg.stroke(); mg.restore();
-    mg.fillStyle = INK; mg.font = 'bold 26px Arial, sans-serif'; mg.textAlign = 'left'; mg.fillText('HURRICANE ELLA', sx + 34, sy + 10);
-    mapTex.needsUpdate = true;
-  };
-  drawMap(0, 0, 0);
-  const mapBoard = box(6.2, 4.0, 0.12, '#ffffff', {thick: 0.03});
-  mapBoard.material = [toon('#4a3a2e'), toon('#4a3a2e'), toon('#4a3a2e'), toon('#4a3a2e'), new THREE.MeshBasicMaterial({map: mapTex}), toon('#4a3a2e')];
-  mapBoard.position.set(R - 1.0, 2.9, -5.35); W.add(mapBoard);
-  const evac = sign('EVACUATION', 2.0, 1.4, {bg: '#f4ead4', w: 480, h: 336, font: 'bold 62px Arial, sans-serif', sub: 'PLAN'});
-  evac.position.set(R + 4.6, 1.75, -2.4); evac.rotation.y = -0.35; W.add(evac);
-  // easel legs
-  const legs = new THREE.Group(); legs.add(cyl(0.05, 0.05, 1.1, '#6b4430', {x: R + 4.15, y: 0.55, z: -2.55}), cyl(0.05, 0.05, 1.1, '#6b4430', {x: R + 5.05, y: 0.55, z: -2.85})); W.add(legs);
-  dressWeather(W, R, chars);
-  const off1 = character({palette: 'official', hat: 'top', seed: 81}); off1.position.set(R - 2.4, 0.05, 0.0); W.add(off1); chars.push(off1);
-  const eng2 = character({palette: 'engineer', hat: 'bowler', glasses: true, seed: 72}); eng2.position.set(R + 1.2, 0.05, 0.4); W.add(eng2); chars.push(eng2);
-  const plant2 = plant.clone(); plant2.position.set(R + 6.2, 0.05, 3.4); W.add(plant2);
-
-  // ======== per-frame update ========
+  // ======================= per-frame =======================
   const update = (t, cam, shot) => {
     for (const c of chars) c.userData.update(t, cam.position);
-    trafficN(t, cam); trafficD(t, cam);
-    // hook: sparks on tower; night shot: sparks after "welders"
-    const sparkOn = shot === 'hook' ? 1 : shot === 'night' ? ease(t, wordT('night', 6), wordT('night', 6) + 0.5) : 0;
-    spN.visible = sparkOn > 0.01; spN.userData.update(t, sparkOrigins, sparkOn);
-    // office windows go dark after "offices emptied"
-    towerN.userData.sideMat.emissiveIntensity = shot === 'night' ? 0.55 - 0.45 * ease(t, wordT('night', 5), wordT('night', 5) + 0.8) : 0.55;
-    // rules: only side arrows; but: corner arrow + +40%
-    cornerArrow.visible = t > wordT('but', 5);
-    cornerArrow.scale.setScalar(Math.max(0.001, ease(t, wordT('but', 5), wordT('but', 5) + 0.5)));
-    drawChalkIf(t);
-    // storm
-    const storm = shot === 'storm';
-    rain.visible = storm; stormClouds.visible = storm;
-    if (storm) {
-      for (let i = 0; i < RN; i++) {
-        const [a, b, c] = rs[i];
-        const x = cam.position.x + (a - 0.5) * 40, z = cam.position.z - 2 - b * 30;
-        const y = ((c * 40 - t * 22) % 40 + 40) % 40;
-        rp[i * 6] = x; rp[i * 6 + 1] = y; rp[i * 6 + 2] = z; rp[i * 6 + 3] = x - 0.15; rp[i * 6 + 4] = y + 0.9; rp[i * 6 + 5] = z;
-      }
-      rainGeo.attributes.position.needsUpdate = true;
-      towerD.rotation.z = Math.sin(t * 2.3) * 0.004;
-    } else towerD.rotation.z = 0;
-    // joint: weld glow pulses; bolts tremble on "only as strong as the bolts"
-    jW.userData.bead.material.color.setHSL(0.075, 0.85, 0.5 + Math.sin(t * 6) * 0.05);
-    const shake = ease(t, wordT('yousee', 11), wordT('yousee', 11) + 0.4) * (1 - ease(t, wordT('yousee', 19) - 0.4, wordT('yousee', 19)));
-    jB.userData.bolts.forEach((b, i) => { b.position.z = 0.62 + Math.sin(t * 40 + i) * 0.03 * shake; });
-    // weather map
-    if (shot === 'ella' || shot === 'so') drawMap(ease(t, wordT('ella', 3), wordT('ella', 8)), ease(t, wordT('so', 6), wordT('so', 10)), t);
-    evac.visible = t > wordT('ella', 10); legs.visible = evac.visible; evac.scale.setScalar(Math.max(0.001, ease(t, wordT('ella', 10), wordT('ella', 10) + 0.5)));
-    // host waves during CTA
-    host.userData.armR.rotation.z = shot === 'cta' ? 2.4 + Math.sin(t * 8) * 0.35 : 0;
-    student.userData.armR.rotation.z = (shot === 'but') ? 1.9 : 0;
+    for (const [o, keys] of shown) o.visible = keys.includes(shot);
+    // hook: frog bob, gators drift
+    frog.position.y = 0.24 + Math.abs(Math.sin(t * 3)) * 0.04;
+    gator.position.x = SW - 2.6 + Math.sin(t * 0.5) * 0.15; gator2.position.y = -0.16 + Math.sin(t * 0.8) * 0.02;
+    if (shot === 'hook') {
+      buyer.userData.armR.rotation.z = 0.05;
+      forSale.rotation.z = 0.05 + Math.sin(t * 1.5) * 0.015;
+    }
+    // close: castle rises out of the mist on "swamp become", windows light on "Walt Disney World"
+    if (shot === 'close') {
+      const k = ease(t, wordT('close', 8.5), wordT('close', 11.5));
+      castle.position.y = lerp(-46, 0, k);
+      const on = t >= wordT('close', 11);
+      castle.userData.wins.forEach((w, i) => { w.visible = on && t >= wordT('close', 11) + (i % 7) * 0.06; });
+      y66.visible = pop(y66, t, wordT('close', 3), 0.3);
+    }
+    // cheap: price sign on "two hundred"
+    if (shot === 'cheap') s200.visible = pop(s200, t, wordT('cheap', 9), 0.35);
+    cows.forEach((c, i) => { c.rotation.z = Math.sin(t * 1.4 + i) * 0.01; });
+    // then: reporter raises her hand on "asked", question mark on "mystery"
+    if (shot === 'then') {
+      emily.userData.armR.rotation.z = 2.6 * ease(t, wordT('then', 5), wordT('then', 5.8));
+      qmark.visible = pop(qmark, t, wordT('then', 9), 0.3);
+      qmark.position.y = 2.45 + Math.sin(t * 4) * 0.04;
+      host.userData.armL.rotation.z = -0.5 * ease(t, wordT('then', 6), wordT('then', 7));
+      cams.forEach((c, i) => { c.userData.bulb.material.color.set(Math.sin(t * 7 + i * 2.3) > 0.9 ? '#ffffff' : '#9a9a90'); });
+    }
+    // yousee: park model pops on "huge new park", circle on "Florida"
+    if (shot === 'yousee') {
+      const mk = ease(t, wordT('yousee', 7.6), wordT('yousee', 8.4));
+      model.scale.set(1, Math.max(0.001, mk), 1);
+      wheel.rotation.z = t * 0.8;
+      drawMap(ease(t, wordT('yousee', 11.4), wordT('yousee', 12.8)));
+      planner.userData.armR.rotation.z = 0.7 + Math.sin(t * 3) * 0.1;
+    }
+    // but: DISNEY?! on "Disney", price explodes on "fortune"
+    if (shot === 'but') {
+      bubble.visible = pop(bubble, t, wordT('but', 6), 0.3);
+      const f = wordT('but', 11.8);
+      tag1.visible = t < f; tag2.visible = pop(tag2, t, f, 0.3, 1 + 0.25 * ease(t, f + 0.3, f + 1.2));
+      farmer.userData.armR.rotation.z = t >= f ? 2.2 : 0;
+    }
+    // shells: deed on "bought", folders on "companies", name plate on "Reedy Creek"
+    if (shot === 'shells') {
+      deed.visible = pop(deed, t, wordT('shells', 3), 0.3);
+      folders.forEach((f, i) => { f.visible = t >= wordT('shells', 5.5 + i * 0.5); });
+      binders.children.forEach((b, i) => { b.visible = pop(b, t, wordT('shells', 6 + i * 0.4), 0.25); });
+      plate.visible = pop(plate, t, wordT('shells', 10), 0.35);
+      lawyer.userData.armR.rotation.z = 0.8 + ease(t, wordT('shells', 3), wordT('shells', 4)) * 0.4;
+    } else { folders.forEach((f) => { f.visible = true; }); binders.children.forEach((b) => { b.visible = true; b.scale.setScalar(1); }); }
+    // lott: the name flips to EMPTY LOT on "fast"
+    if (shot === 'lott') {
+      const f = wordT('lott', 9.6);
+      lottA.visible = t < f; lottB.visible = pop(lottB, t, f, 0.35);
+      lottA.rotation.z = t > wordT('lott', 8) ? Math.sin(t * 30) * 0.03 : 0;
+    }
+    // ladder: parcels go green one by one, counter + 1964
+    if (shot === 'ladder' || shot === 'size') {
+      const a = wordT('ladder', 3.6), b = wordT('ladder', 13);
+      const k = shot === 'size' ? 1 : ease(t, a, b) * 1.02;
+      tiles.forEach(({m, k: kk}, i) => { m.color.set(kk * 0.98 < k ? '#5fae52' : '#f7f2e2'); });
+      if (shot === 'ladder') { y64.visible = pop(y64, t, wordT('ladder', 1.5), 0.3); const n = Math.floor(27000 * ease(t, wordT('ladder', 7.5), wordT('ladder', 12.4)) / 13) * 13; drawA(t >= wordT('ladder', 12.4) ? 27000 : n, t >= wordT('ladder', 12.4)); }
+      else { y64.scale.setScalar(1); drawA(27000, true); }
+    } else tiles.forEach(({m}) => m.color.set('#f7f2e2'));
+    if (shot === 'size') mans.forEach((g, i) => { const t0 = wordT('size', i ? 7.6 : 3.6); const k = ease(t, t0, t0 + 0.45); g.visible = t >= t0; g.position.set(g.userData.x, lerp(2.6, 1.13, k), -1); g.rotation.y = (1 - k) * 0.8; });
+    // reveal: press rolls, papers fly, front page slams in on "front page"
+    press.userData.rollers.forEach((r, i) => { r.rotation.y = t * (i % 2 ? 6 : -6); });
+    if (shot === 'reveal') {
+      page.visible = pop(page, t, wordT('reveal', 10), 0.35);
+      oct.visible = pop(oct, t, wordT('reveal', 1), 0.3);
+      flyers.forEach((n, i) => { const [a, b, c] = n.userData.k; const life = ((t * 0.45 + a) % 1); n.position.set(PT - 2 + (b - 0.3) * 6 * life + 0.5, 1.8 + Math.sin(life * Math.PI) * (2 + c * 1.5), -2 + life * 3 * (c - 0.2)); n.rotation.set(life * 5 * a, life * 6 + b, life * 3 * c); });
+    }
+    // announce: camera flashes on "announced"
+    if (shot === 'announce') bcams.forEach((c, i) => { c.userData.bulb.material.color.set(t > wordT('announce', 9.6) && Math.sin(t * 9 + i * 2.1) > 0.7 ? '#ffffff' : '#9a9a90'); });
   };
-  let lastChalk = -1;
-  function drawChalkIf(t) { const p = ease(t, wordT('but', 12), wordT('but', 12) + 0.5); if (Math.abs(p - lastChalk) > 0.02) { drawChalk(p); lastChalk = p; } }
 
   return {group: W, update};
 }
