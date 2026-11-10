@@ -8,6 +8,14 @@ publish, never touch YouTube, and never set an approval status yourself.**
 Read this file, `docs/LEARNINGS.md` and `state.json` at the start of every run. Follow the `3d-story-shorts` skill
 for story rules, look and build technique; this file overrides it where they differ (voice, folders, publishing).
 
+## Dashboard
+
+The owner also has a web dashboard (`docs/index.html`, GitHub Pages). From it they can approve/reject exactly like
+the Slack buttons (the job gets `decided_via: dashboard`), edit `script.md` before approval (`script_edited` is set —
+build from the edited file), edit `meta.json` title/description/tags/pinned comment (never overwrite those edits
+later), change `config.publish_days`, and queue story ideas in `state.json["ideas"]`. Treat all of these as the
+owner's instructions.
+
 ## State machine (`state.json` → `jobs.<id>.status`)
 
 | status | set by | meaning |
@@ -46,7 +54,9 @@ install anything, or research. If another job is already `building`, do not star
 4. **`script_approved`** (oldest first, one per run): `set_status <id> building`, then BUILD (below).
 5. **New story** — only in the run that starts between 11:00 and 11:59 Asia/Karachi time: count jobs whose status
    is not `published`/`dropped`. If it is below `config.pipeline_buffer`, research and write ONE new script (below)
-   and `set_status <id> script_ready`.
+   and `set_status <id> script_ready`. **Owner ideas first:** run `python3 pipeline/scripts/pop_idea.py`; if it
+   prints an idea (queued by the owner on the dashboard), that is the story — research it, and if it is not true or
+   not usable, say so in the script message and pick your own instead.
 6. **Weekly review** — only in the Monday story-hour run (Monday 11:00-11:59 Asia/Karachi), and only once
    at least 3 Shorts are public on the channel (count with vidIQ). See "Weekly review" below.
 7. End with a short summary of what you did (it is shown to the owner).

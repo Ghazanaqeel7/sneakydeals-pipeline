@@ -140,7 +140,7 @@ if (mode === 'replies') {
   }
   for (const [id, kind, next, from] of decided) {
     let ok = false;
-    await updateState((st) => { const j = st.jobs[id]; if (j.status !== from) return false; j.status = next; j.updated = now(); ok = true; return true; }, `n8n: ${id} -> ${next}`);
+    await updateState((st) => { const j = st.jobs[id]; if (j.status !== from) return false; j.status = next; j.updated = now(); j.decided_via = 'slack'; ok = true; return true; }, `n8n: ${id} -> ${next}`);
     if (!ok) continue;
     const texts = {
       script_approved: `✅ Script approved: *${id}*. Claude ek ghante ke andar video banana shuru karega, aur har step ki update yahin aayegi.`,
@@ -161,6 +161,14 @@ if (mode === 'replies') {
     render_failed: '⚠️ Render fail hua. Claude agle check mein theek karega.',
     script_ready: '📝 Naya / updated script tayyar, abhi bhejta hoon.',
   };
+  const DASH = {
+    script_approved: '✅ Script dashboard se approve hua. Claude ek ghante ke andar video banana shuru karega.',
+    script_rejected: '❌ Script dashboard se wapas bheja gaya. Aapka note:',
+    video_approved: '✅ Video dashboard se approve hua. Agle publish din 05:00 PKT par jayegi.',
+    video_rejected: '❌ Video dashboard se wapas bheja gaya. Aapka note:',
+    video_ready: '↩️ Video dashboard se wapas review mein aaya (abhi publish nahi hoga) — naya review message aa raha hai.',
+    dropped: '🗑 Story dashboard se drop ki gayi.',
+  };
   const stP = JSON.parse((await ghGet('state.json')).text);
   data.seen = data.seen || {}; data.prog = data.prog || {};
   const seeded = data.seeded; data.seeded = true;
@@ -170,6 +178,7 @@ if (mode === 'replies') {
     if (data.seen[id] !== j.status) {
       data.seen[id] = j.status;
       if (ANNOUNCE[j.status]) { await dPost(`*${id}* — ${ANNOUNCE[j.status]}`); await sleep(400); }
+      else if (j.decided_via === 'dashboard' && j.decided_at === j.updated && DASH[j.status]) { await dPost(`*${id}* — ${DASH[j.status]}${j.status.endsWith('_rejected') && j.feedback ? '\n> ' + j.feedback.split('\n').slice(-1)[0] : ''}`); await sleep(400); }
     }
     const done = data.prog[id] || 0;
     if (total > done) {

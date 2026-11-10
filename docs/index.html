@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sneaky Deals — Production desk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js"></script>
+<style>
+:root{
+  --paper:#f3f0e8; --sheet:#fbfaf6; --ink:#1c1b18; --ink2:#55524a; --ink3:#8a867b;
+  --rule:#d8d2c3; --rule2:#e7e2d6; --sig:#c2410c; --sig-bg:#fbeee5; --ok:#2d6a3e; --ok-bg:#e7f0e6;
+  --warn:#9a6a00; --warn-bg:#f8f0d8; --bad:#a3201b; --bad-bg:#f8e3e1; --info:#24527a; --info-bg:#e4edf5;
+  --mono:"IBM Plex Mono",ui-monospace,monospace; --sans:"IBM Plex Sans",system-ui,sans-serif; --serif:"IBM Plex Serif",Georgia,serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--paper);color:var(--ink);font:13.5px/1.5 var(--sans)}
+a{color:inherit}
+button,input,textarea,select{font:inherit;color:inherit}
+.mono{font-family:var(--mono)}
+.top{display:flex;align-items:stretch;border-bottom:1px solid var(--ink);background:var(--sheet);position:sticky;top:0;z-index:5}
+.brand{padding:12px 18px;border-right:1px solid var(--rule);display:flex;flex-direction:column;justify-content:center;min-width:250px}
+.brand b{font:500 17px/1.1 var(--serif);letter-spacing:.2px}
+.brand span{font:11px var(--mono);color:var(--ink3);text-transform:uppercase;letter-spacing:.8px;margin-top:3px}
+.systems{display:flex;flex:1;overflow-x:auto}
+.sys{padding:9px 16px;border-right:1px solid var(--rule2);min-width:150px;white-space:nowrap}
+.sys .k{font:10.5px var(--mono);text-transform:uppercase;letter-spacing:.8px;color:var(--ink3);display:flex;align-items:center;gap:6px}
+.sys .v{font-weight:500;margin-top:2px}
+.sys .s{color:var(--ink2);font-size:12px}
+.dot{width:7px;height:7px;display:inline-block;background:var(--ink3)}
+.dot.ok{background:var(--ok)}.dot.warn{background:#d39b00}.dot.bad{background:var(--bad)}.dot.run{background:var(--info);animation:pulse 1.2s infinite}
+@keyframes pulse{50%{opacity:.25}}
+.auth{display:flex;align-items:center;gap:8px;padding:0 16px;border-left:1px solid var(--rule)}
+.layout{display:grid;grid-template-columns:330px 1fr;min-height:calc(100vh - 58px)}
+aside{border-right:1px solid var(--rule);background:var(--sheet)}
+.sect{font:10.5px var(--mono);text-transform:uppercase;letter-spacing:.9px;color:var(--ink3);padding:14px 16px 6px;display:flex;justify-content:space-between}
+.job{display:block;width:100%;text-align:left;border:0;border-top:1px solid var(--rule2);background:none;padding:11px 16px;cursor:pointer}
+.job:hover{background:#f6f3ec}
+.job.sel{background:var(--ink);color:var(--paper)}
+.job.sel .meta,.job.sel .id{color:#bdb7a8}
+.job .id{font:11px var(--mono);color:var(--ink3)}
+.job .t{font-weight:500;margin:1px 0 4px;line-height:1.3}
+.job .meta{display:flex;justify-content:space-between;font-size:12px;color:var(--ink2)}
+.chip{font:10.5px var(--mono);text-transform:uppercase;letter-spacing:.5px;padding:1px 6px;border:1px solid currentColor;white-space:nowrap}
+.c-wait{color:var(--sig);background:var(--sig-bg)}.c-work{color:var(--info);background:var(--info-bg)}
+.c-ok{color:var(--ok);background:var(--ok-bg)}.c-bad{color:var(--bad);background:var(--bad-bg)}.c-mute{color:var(--ink3);background:transparent}
+.job.sel .chip{background:transparent}
+main{padding:22px 28px 60px;max-width:1180px}
+h1{font:500 25px/1.2 var(--serif);margin:4px 0 6px}
+.sub{color:var(--ink2);display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px}
+.track{display:grid;grid-template-columns:repeat(7,1fr);margin:20px 0 4px;border:1px solid var(--ink)}
+.st{padding:8px 10px;border-right:1px solid var(--rule);font-size:12px;background:var(--sheet);position:relative}
+.st:last-child{border-right:0}
+.st .n{font:10.5px var(--mono);color:var(--ink3)}
+.st.done{background:#ebe7dc;color:var(--ink2)}
+.st.now{background:var(--ink);color:var(--paper)}.st.now .n{color:#bdb7a8}
+.st.now.attn{background:var(--sig);border-color:var(--sig)}
+.st.now.err{background:var(--bad)}
+.actionbar{margin:18px 0 6px;border:1px solid var(--ink);background:var(--sheet);padding:14px 16px;display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap}
+.actionbar .msg{flex:1;min-width:260px}
+.actionbar .msg b{display:block;font-size:14px}
+.actionbar .msg span{color:var(--ink2);font-size:12.5px}
+.btn{border:1px solid var(--ink);background:var(--sheet);padding:7px 13px;cursor:pointer;font-weight:500}
+.btn:hover{background:#eee9dd}
+.btn.pri{background:var(--ink);color:var(--paper)}.btn.pri:hover{background:#000}
+.btn.go{background:var(--ok);border-color:var(--ok);color:#fff}
+.btn.danger{color:var(--bad);border-color:var(--bad)}
+.btn.sm{padding:3px 9px;font-size:12px}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.tabs{display:flex;border-bottom:1px solid var(--ink);margin-top:22px;gap:0}
+.tab{border:1px solid transparent;border-bottom:0;background:none;padding:7px 14px;cursor:pointer;color:var(--ink2);margin-bottom:-1px}
+.tab.on{border-color:var(--ink);background:var(--sheet);color:var(--ink);font-weight:500}
+.panel{background:var(--sheet);border:1px solid var(--ink);border-top:0;padding:18px 20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.lbl{font:10.5px var(--mono);text-transform:uppercase;letter-spacing:.8px;color:var(--ink3);margin:0 0 6px}
+.log{list-style:none;margin:0;padding:0}
+.log li{display:grid;grid-template-columns:92px 1fr;gap:12px;padding:8px 0;border-top:1px solid var(--rule2)}
+.log li:first-child{border-top:0}
+.log time{font:11.5px var(--mono);color:var(--ink3)}
+.log img{max-width:180px;display:block;margin-top:6px;border:1px solid var(--rule);cursor:zoom-in}
+.md{max-width:760px}
+.md h1,.md h2,.md h3{font-family:var(--serif);font-weight:500}
+.md h1{font-size:20px}.md h2{font-size:16px;border-bottom:1px solid var(--rule);padding-bottom:4px;margin-top:26px}
+.md table{border-collapse:collapse;font-size:12.5px;width:100%;margin:10px 0}
+.md th,.md td{border:1px solid var(--rule);padding:5px 7px;vertical-align:top;text-align:left}
+.md th{background:#efebe1;font-weight:500}
+.md code{font-family:var(--mono);font-size:12px;background:#efebe1;padding:0 3px}
+textarea,input[type=text],input[type=password]{width:100%;border:1px solid var(--rule);background:#fff;padding:7px 9px;border-radius:0}
+textarea:focus,input:focus{outline:2px solid var(--ink);outline-offset:-1px}
+textarea.code{font:12.5px/1.55 var(--mono);min-height:520px}
+.field{margin-bottom:14px}
+.counter{font:11px var(--mono);color:var(--ink3);float:right}
+.media video{width:100%;max-width:300px;background:#000;display:block;border:1px solid var(--ink)}
+.media img.thumb{width:100%;max-width:300px;display:block;border:1px solid var(--ink)}
+.frames{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.frames figure{margin:0}.frames img{width:100%;border:1px solid var(--rule);cursor:zoom-in;display:block}
+.frames figcaption{font:11px var(--mono);color:var(--ink3);margin-top:3px}
+.kv{display:grid;grid-template-columns:150px 1fr;border-top:1px solid var(--rule2)}
+.kv>div{padding:7px 0;border-bottom:1px solid var(--rule2)}
+.kv>div:nth-child(odd){color:var(--ink3);font:11.5px var(--mono);text-transform:uppercase;letter-spacing:.5px;padding-top:9px}
+.empty{color:var(--ink3);padding:24px 0;font-style:italic}
+.feed{list-style:none;margin:0;padding:0}
+.feed li{display:grid;grid-template-columns:auto 1fr;column-gap:10px;padding:7px 16px;border-top:1px solid var(--rule2);font-size:12.5px}
+.feed li>span:last-child{grid-column:1/-1;color:var(--ink2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.feed time{font:11.5px var(--mono);color:var(--ink3)}
+.who{font:10.5px var(--mono);text-transform:uppercase}
+.who.claude{color:var(--sig)}.who.n8n{color:var(--info)}.who.render{color:var(--ok)}.who.you{color:var(--ink)}
+.toast{position:fixed;right:18px;bottom:18px;background:var(--ink);color:var(--paper);padding:10px 14px;max-width:380px;z-index:20;font-size:13px}
+.toast.err{background:var(--bad)}
+.modal{position:fixed;inset:0;background:rgba(28,27,24,.55);display:flex;align-items:center;justify-content:center;z-index:30}
+.box{background:var(--sheet);border:1px solid var(--ink);width:min(560px,92vw);padding:20px}
+.box h3{font:500 18px var(--serif);margin:0 0 6px}
+.box p{color:var(--ink2);margin:0 0 12px}
+.row{display:flex;gap:8px;justify-content:flex-end;margin-top:12px}
+.zoom{position:fixed;inset:0;background:rgba(0,0,0,.85);display:flex;align-items:center;justify-content:center;z-index:40;cursor:zoom-out}
+.zoom img{max-width:92vw;max-height:92vh}
+.days{display:flex;gap:6px;flex-wrap:wrap}
+.days label{border:1px solid var(--rule);padding:4px 10px;cursor:pointer;background:#fff}
+.days input{margin-right:5px}
+.note{font-size:12px;color:var(--ink2);border-left:3px solid var(--rule);padding:2px 10px;margin:8px 0}
+.overview{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--ink);margin:16px 0}
+.overview>div{padding:12px 14px;border-right:1px solid var(--rule);background:var(--sheet)}
+.overview>div:last-child{border-right:0}
+.overview .big{font:500 26px/1 var(--serif)}
+.overview .lbl{margin-bottom:8px}
+@media (max-width:900px){.layout{grid-template-columns:1fr}aside{border-right:0;border-bottom:1px solid var(--rule)}.grid2,.grid3{grid-template-columns:1fr}.track{grid-template-columns:repeat(4,1fr)}.overview{grid-template-columns:1fr 1fr}.brand{min-width:0}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="brand"><b>Sneaky Deals</b><span>Production desk</span></div>
+  <div class="systems" id="systems"></div>
+  <div class="auth" id="auth"></div>
+</header>
+<div class="layout">
+  <aside>
+    <div class="sect"><span>Jobs</span><span id="sync" class="mono"></span></div>
+    <div id="jobs"></div>
+    <div class="sect" style="margin-top:14px"><span>Activity</span><span>all systems</span></div>
+    <ul class="feed" id="feed"></ul>
+  </aside>
+  <main id="main"><div class="empty">Loading pipeline…</div></main>
+</div>
+<div id="layer"></div>
+<script>
+const OWNER='Ghazanaqeel7', REPO='sneakydeals-pipeline', BR='main';
+const API=`https://api.github.com/repos/${OWNER}/${REPO}`, RAW=`https://raw.githubusercontent.com/${OWNER}/${REPO}/${BR}`;
+const DAYS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const S={state:null,runs:[],commits:[],feed:[],sel:null,tab:'progress',cache:{},editing:false,lastSync:null};
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{v==null?localStorage.removeItem(k):localStorage.setItem(k,v)}catch(e){}}};
+let TOKEN=store.get('sd_token');
+const $=(s)=>document.querySelector(s);
+const esc=(s)=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const ago=(t)=>{if(!t)return'—';const s=(Date.now()-new Date(t))/1000;if(s<60)return'just now';if(s<3600)return Math.floor(s/60)+' min ago';if(s<86400)return Math.floor(s/3600)+' h ago';return Math.floor(s/86400)+' d ago'};
+const pkt=(t,o={})=>t?new Date(t).toLocaleString('en-GB',{timeZone:'Asia/Karachi',day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit',hour12:false,...o}):'—';
+const hm=(t)=>pkt(t,{day:undefined,month:undefined});
+const b64d=(s)=>new TextDecoder().decode(Uint8Array.from(atob(s.replace(/\n/g,'')),c=>c.charCodeAt(0)));
+const b64e=(s)=>{const b=new TextEncoder().encode(s);let o='';for(let i=0;i<b.length;i+=8192)o+=String.fromCharCode.apply(null,b.subarray(i,i+8192));return btoa(o)};
+function hdr(extra={}){const h={Accept:'application/vnd.github+json',...extra};if(TOKEN)h.Authorization='Bearer '+TOKEN;return h}
+async function api(path,opt={}){const r=await fetch(API+path,{...opt,headers:hdr(opt.headers)});if(!r.ok){const t=await r.text();throw new Error(`GitHub ${r.status}: ${t.slice(0,160)}`)}return r.status===204?null:r.json()}
+async function readText(path){
+  if(TOKEN){const r=await fetch(`${API}/contents/${path}?ref=${BR}&t=${Date.now()}`,{headers:hdr({Accept:'application/vnd.github.raw'})});if(!r.ok)throw new Error(path+' '+r.status);return r.text()}
+  const r=await fetch(`${RAW}/${path}?t=${Date.now()}`,{cache:'no-store'});if(!r.ok)throw new Error(path+' '+r.status);return r.text();
+}
+async function readJson(path){const f=await api(`/contents/${path}?ref=${BR}&t=${Date.now()}`);return{text:b64d(f.content),sha:f.sha}}
+async function writeFile(path,text,sha,message){return api(`/contents/${path}`,{method:'PUT',body:JSON.stringify({message,content:b64e(text),sha,branch:BR})})}
+async function updateState(fn,message){
+  for(let i=0;i<4;i++){
+    const f=await readJson('state.json');const st=JSON.parse(f.text);
+    if(fn(st)===false)return st;
+    try{await writeFile('state.json',JSON.stringify(st,null,2)+'\n',f.sha,message);S.state=st;return st}
+    catch(e){if(i===3||!String(e.message).includes('409'))throw e;await new Promise(r=>setTimeout(r,1200))}
+  }
+}
+const nowIso=()=>new Date().toISOString().replace(/\.\d+Z$/,'Z');
+
+// ---------- status model ----------
+const STAGES=['Script','Your OK','Build','Render','Review','Scheduled','Live'];
+const STAT={
+  script_ready:[1,'Script waiting','wait',true],script_sent:[1,'Script — your call','wait',true],
+  script_rejected:[0,'Script rewrite','work'],script_approved:[2,'Queued to build','work'],
+  building:[2,'Building','work'],render_queued:[3,'Render queued','work'],rendering:[3,'Rendering','work'],
+  render_failed:[3,'Render failed','bad',false,true],video_ready:[4,'Video waiting','wait',true],video_sent:[4,'Video — your call','wait',true],
+  video_rejected:[2,'Fixing video','work'],video_approved:[5,'Scheduled','ok'],published:[6,'Live','ok'],dropped:[-1,'Dropped','mute'],
+};
+const info=(j)=>STAT[j.status]||[0,j.status,'mute'];
+function chip(j){const [, label, c]=info(j);return `<span class="chip c-${c}">${esc(label)}</span>`}
+
+function publishSlots(st){
+  const days=(st.config&&st.config.publish_days)||['Mon','Wed','Fri','Sun'];
+  const [hh,mm]=((st.config&&st.config.publish_time_pkt)||'05:00').split(':').map(Number);
+  const queue=Object.entries(st.jobs).filter(([,j])=>j.status==='video_approved').sort((a,b)=>(a[1].updated||'').localeCompare(b[1].updated||''));
+  const out={};let cursor=new Date();
+  for(const [id] of queue){
+    for(let d=0;d<21;d++){
+      const k=new Date(cursor.getTime()+d*86400000);
+      const pk=new Date(k.toLocaleString('en-US',{timeZone:'Asia/Karachi'}));
+      const dayName=DAYS[pk.getDay()];
+      const slotUtc=Date.UTC(pk.getFullYear(),pk.getMonth(),pk.getDate(),hh-5,mm);
+      if(days.includes(dayName)&&slotUtc>cursor.getTime()){out[id]=new Date(slotUtc);cursor=new Date(slotUtc+60000);break}
+    }
+  }
+  return out;
+}
+
+// ---------- loading ----------
+async function load(){
+  try{
+    S.state=JSON.parse(await readText('state.json'));
+    S.lastSync=new Date();
+    S.n=(S.n||0)+1;const heavy=TOKEN||S.n%4===1;
+    const [runs,commits,feed]=await Promise.allSettled([heavy?api('/actions/runs?per_page=6'):Promise.reject(0),heavy?api('/commits?per_page=40'):Promise.reject(0),readText('feed/youtube.xml')]);
+    if(runs.status==='fulfilled')S.runs=runs.value.workflow_runs||[];
+    if(commits.status==='fulfilled')S.commits=commits.value||[];
+    if(feed.status==='fulfilled')S.feed=parseFeed(feed.value);
+    if(!S.sel||!S.state.jobs[S.sel]){const ids=Object.keys(S.state.jobs);const open=ids.filter(i=>!['published','dropped'].includes(S.state.jobs[i].status));S.sel=(open.length?open:ids).slice(-1)[0]||null}
+    render();
+  }catch(e){$('#sync').textContent='offline';if(!S.state)$('#main').innerHTML=`<div class="empty">Could not read the pipeline: ${esc(e.message)}</div>`}
+}
+function parseFeed(x){const d=new DOMParser().parseFromString(x,'text/xml');return[...d.querySelectorAll('item')].map(i=>({title:i.querySelector('title')?.textContent,guid:i.querySelector('guid')?.textContent,date:i.querySelector('pubDate')?.textContent})).filter(i=>i.guid!=='setup-sample')}
+function whoOf(c){const m=c.commit.message,a=c.commit.author.name;
+  if(/^dashboard/i.test(m))return['you','You'];if(/^n8n|^publish /i.test(m))return['n8n','n8n'];
+  if(a==='render-bot'||/github-actions/.test(a))return['render','Render'];if(a==='claude-pipeline'||/claude/i.test(a))return['claude','Claude'];return['you',a]}
+
+// ---------- render ----------
+function render(){if(S.editing)return renderChrome();renderChrome();renderMain()}
+function renderChrome(){
+  const st=S.state;$('#sync').textContent=S.lastSync?'synced '+hm(S.lastSync):'';
+  const lastBy=(k)=>S.commits.find(c=>whoOf(c)[0]===k);
+  const cl=lastBy('claude'),n8=lastBy('n8n'),run=S.runs[0];
+  const runState=run?(run.status!=='completed'?['run','Running']:run.conclusion==='success'?['ok','Passed']:['bad',run.conclusion]):['','—'];
+  const live=S.feed[0];
+  const nextBuild=Object.values(st.jobs).some(j=>['script_approved','render_failed','script_rejected','video_rejected'].includes(j.status));
+  $('#systems').innerHTML=[
+    ['Claude',cl?'ok':'warn',cl?'Last work '+ago(cl.commit.author.date):'No commits yet',nextBuild?'Has work queued — checks hourly':'Checks hourly · new story 11:00'],
+    ['n8n → Slack',n8?'ok':'warn',n8?'Last write '+ago(n8.commit.author.date):'No writes yet','Polls every 1–2 min (laptop on)'],
+    ['GitHub render',runState[0],run?`${runState[1]} · ${ago(run.updated_at)}`:'No runs',run?`<a href="${run.html_url}" target="_blank">open run ↗</a>`:''],
+    ['Zapier → YouTube',live?'ok':'',live?esc(live.title).slice(0,26)+'…':'Nothing sent yet',live?'Handed over '+ago(live.date):`Next slot ${nextSlotText(st)}`],
+  ].map(([k,d,v,s])=>`<div class="sys"><div class="k"><i class="dot ${d}"></i>${k}</div><div class="v">${v}</div><div class="s">${s}</div></div>`).join('');
+  $('#auth').innerHTML=TOKEN?`<span class="mono" style="font-size:11px;color:var(--ok)">● EDIT ON</span><button class="btn sm" onclick="signOut()">Lock</button>`:`<button class="btn sm pri" onclick="askToken()">Unlock editing</button>`;
+  const ids=Object.keys(st.jobs).reverse();
+  const slots=publishSlots(st);
+  $('#jobs').innerHTML=ids.map(id=>{const j=st.jobs[id];
+    const when=slots[id]?'Goes live '+pkt(slots[id]):j.published_at?'Live '+pkt(j.published_at,{hour:undefined,minute:undefined}):ago(j.updated);
+    return `<button class="job ${id===S.sel?'sel':''}" onclick="pick('${id}')"><div class="id">${esc(id)}</div><div class="t">${esc(j.title||titleFromId(id))}</div><div class="meta">${chip(j)}<span>${when}</span></div></button>`}).join('')
+    +`<div style="padding:12px 16px;border-top:1px solid var(--rule2)"><button class="btn sm" onclick="pick('__desk')">Desk settings &amp; story ideas</button></div>`;
+  $('#feed').innerHTML=S.commits.slice(0,18).map(c=>{const [w,n]=whoOf(c);return `<li><time>${pkt(c.commit.author.date,{month:undefined})}</time><span class="who ${w}">${esc(n)}</span><span>${esc(c.commit.message.split('\n')[0]).slice(0,70)}</span></li>`}).join('');
+}
+const titleFromId=(id)=>id.replace(/^\d+-/,'').replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
+function nextSlotText(st){const days=(st.config&&st.config.publish_days)||[];return days.join('/')+' '+((st.config&&st.config.publish_time_pkt)||'05:00')}
+function pick(id){if(S.editing&&!confirm('Discard unsaved edits?'))return;S.editing=false;S.sel=id;S.tab='progress';render();window.scrollTo(0,0)}
+
+function renderMain(){
+  if(S.sel==='__desk')return renderDesk();
+  const id=S.sel,j=S.state.jobs[id];if(!j){$('#main').innerHTML='<div class="empty">No jobs yet.</div>';return}
+  const [idx,label,,attn,err]=info(j);const slots=publishSlots(S.state);
+  const track=STAGES.map((s,i)=>`<div class="st ${i<idx?'done':''} ${i===idx?'now'+(attn?' attn':'')+(err?' err':''):''}"><div class="n">${String(i+1).padStart(2,'0')}</div>${s}</div>`).join('');
+  const lastP=(j.progress||[]).slice(-1)[0];
+  $('#main').innerHTML=`
+    <div class="sub mono" style="font-size:11.5px">${esc(id)}</div>
+    <h1>${esc(j.title||titleFromId(id))}</h1>
+    <div class="sub"><span>${chip(j)}</span><span>Updated ${ago(j.updated)} (${pkt(j.updated)} PKT)</span>${slots[id]?`<span><b>Goes live ${pkt(slots[id])} PKT</b></span>`:''}${j.video_url?`<a href="${esc(j.video_url)}" target="_blank">Full-quality file ↗</a>`:''}</div>
+    ${j.status==='dropped'?'':`<div class="track">${track}</div>`}
+    ${actionBar(id,j,lastP)}
+    <div class="tabs">${[['progress','Progress'],['script','Script'],['media','Voice · Video · Thumbnail'],['publish','YouTube details'],['frames','Check frames']].map(([k,n])=>`<button class="tab ${S.tab===k?'on':''}" onclick="setTab('${k}')">${n}</button>`).join('')}</div>
+    <div class="panel" id="panel"><div class="empty">Loading…</div></div>`;
+  renderTab();
+}
+function actionBar(id,j,lastP){
+  const s=j.status;let msg='',btns='';
+  const lock=!TOKEN?' disabled title="Unlock editing first"':'';
+  if(s==='script_ready'||s==='script_sent'){msg=`<b>The script is waiting for you.</b><span>Read it in the Script tab. Approve and Claude starts building within the hour. Same as ✅ in Slack.</span>`;
+    btns=`<button class="btn go"${lock} onclick="decide('${id}','script_approved')">Approve script</button><button class="btn"${lock} onclick="askFeedback('${id}','script_rejected','What should change in the script?')">Request changes</button><button class="btn danger"${lock} onclick="askFeedback('${id}','dropped','Drop this story? Claude will pick a new one.',true)">Drop</button>`}
+  else if(s==='video_ready'||s==='video_sent'){msg=`<b>The video is ready for review.</b><span>Watch it and check the thumbnail in the media tab. Approve and it goes out on the next publish slot.</span>`;
+    btns=`<button class="btn go"${lock} onclick="decide('${id}','video_approved')">Approve video + thumbnail</button><button class="btn"${lock} onclick="askFeedback('${id}','video_rejected','What should change in the thumbnail? (the video stays as it is)',false,'thumbnail: ')">Change thumbnail only</button><button class="btn"${lock} onclick="askFeedback('${id}','video_rejected','What should be fixed in the video? (shot, second, what looks wrong)')">Request video fixes</button>`}
+  else if(s==='script_rejected'||s==='video_rejected'){msg=`<b>Changes requested — Claude is on it.</b><span>${j.feedback?'Your note: '+esc(j.feedback.split('\n').slice(-1)[0]):'Waiting for your note. Add one so Claude knows what to fix.'}</span>`;
+    btns=j.feedback?'':`<button class="btn pri"${lock} onclick="askFeedback('${id}','${s}','What should change?')">Add note</button>`}
+  else if(s==='video_approved'){msg=`<b>Approved and scheduled.</b><span>On the publish day at ${esc((S.state.config||{}).publish_time_pkt||'05:00')} PKT n8n hands it to Zapier, which uploads it to YouTube within ~15 min.</span>`;
+    btns=`<button class="btn"${lock} onclick="unapprove('${id}')">Pull back to review</button>`}
+  else if(s==='published'){msg=`<b>Handed to YouTube.</b><span>Pin this comment once it is live: ${esc('')}<i id="pinned"></i></span>`;btns=`<a class="btn" href="https://studio.youtube.com" target="_blank">Open YouTube Studio ↗</a>`}
+  else if(s==='render_failed'){msg=`<b>Render failed.</b><span>Claude retries in its next hourly run. ${j.render_error?esc(j.render_error):''}</span>`;btns=j.run?`<a class="btn" target="_blank" href="https://github.com/${OWNER}/${REPO}/actions/runs/${j.run}">See the log ↗</a>`:''}
+  else if(s==='dropped'){msg=`<b>Dropped.</b><span>This story will not be made.</span>`}
+  else{msg=`<b>${esc(info(j)[1])}…</b><span>${lastP?esc(lastP.msg)+' · '+ago(lastP.t):'Nothing to do — this updates live.'}</span>`}
+  return `<div class="actionbar"><div class="msg">${msg}</div>${btns}</div>`;
+}
+function setTab(t){if(S.editing&&!confirm('Discard unsaved edits?'))return;S.editing=false;S.tab=t;renderMain()}
+
+async function cached(path,kind='text'){
+  const key=path+'|'+(S.state.jobs[S.sel]||{}).updated;if(S.cache[key])return S.cache[key];
+  let v;if(kind==='json')v=JSON.parse(await readText(path));else v=await readText(path);S.cache[key]=v;return v}
+
+async function renderTab(){
+  const id=S.sel,j=S.state.jobs[id],P=$('#panel');
+  try{
+  if(S.tab==='progress'){
+    const items=(j.progress||[]).slice().reverse();
+    const fb=j.feedback?`<div class="lbl" style="margin-top:20px">Your notes</div><div class="note mono" style="white-space:pre-wrap">${esc(j.feedback)}</div>`:'';
+    P.innerHTML=(items.length?`<ul class="log">${items.map(p=>`<li><time>${pkt(p.t,{month:undefined})}</time><div>${esc(p.msg)}${p.image?`<img loading="lazy" src="${RAW}/${esc(p.image)}" onclick="zoom(this.src)">`:''}</div></li>`).join('')}</ul>`:`<div class="empty">No progress notes yet. Claude posts one at every step of the build.</div>`)+fb
+      +(j.progress_count>items.length?`<div class="note">Showing the latest ${items.length} of ${j.progress_count} updates.</div>`:'');
+  }
+  if(S.tab==='script'){
+    const md=await cached(`jobs/${id}/script.md`);
+    const canEdit=TOKEN&&['script_ready','script_sent','script_rejected'].includes(j.status);
+    P.innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><div class="lbl" style="margin:0">jobs/${esc(id)}/script.md</div>${canEdit?`<button class="btn sm" onclick="editScript()">Edit script</button>`:`<span class="mono" style="font-size:11px;color:var(--ink3)">${TOKEN?'Editable only before the script is approved':'Unlock editing to change it'}</span>`}</div><div class="md" id="mdv">${DOMPurify.sanitize(marked.parse(md))}</div>`;
+  }
+  if(S.tab==='media'){
+    const v=j.preview_url||j.video_url;
+    P.innerHTML=`<div class="grid3 media">
+      <div><div class="lbl">Voice-over</div><audio id="aud" controls preload="none" style="width:100%"></audio><div class="note" id="audn">Loading voice…</div></div>
+      <div><div class="lbl">Video ${j.preview_url?'(preview)':''}</div>${v?`<video controls preload="metadata" src="${esc(v)}"></video>`:'<div class="empty">Appears after the render.</div>'}</div>
+      <div><div class="lbl">Thumbnail</div><img class="thumb" src="${RAW}/jobs/${esc(id)}/thumbnail.jpg?u=${encodeURIComponent(j.updated||'')}" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'empty',textContent:'Made near the end of the build.'}))" onclick="zoom(this.src)"></div></div>`;
+    try{const r=await fetch(`${RAW}/jobs/${id}/project/voiceover.mp3`);if(!r.ok)throw 0;const b=await r.blob();$('#aud').src=URL.createObjectURL(new Blob([b],{type:'audio/mpeg'}));$('#audn').textContent=`${(b.size/1024).toFixed(0)} KB · Kokoro voice`}
+    catch(e){const n=$('#audn');if(n)n.textContent='No voice yet — made at the start of the build.'}
+  }
+  if(S.tab==='publish'){
+    let meta;try{meta=await cached(`jobs/${id}/meta.json`,'json')}catch(e){P.innerHTML='<div class="empty">meta.json not written yet.</div>';return}
+    const canEdit=TOKEN&&j.status!=='published';
+    P.innerHTML=`<div class="grid2"><div>
+      <div class="field"><div class="lbl">Title <span class="counter" id="tc"></span></div><input type="text" id="m_title" value="${esc(meta.title)}" ${canEdit?'':'disabled'} oninput="dirty();count()"></div>
+      <div class="field"><div class="lbl">Description <span class="counter" id="dc"></span></div><textarea id="m_desc" rows="16" ${canEdit?'':'disabled'} oninput="dirty();count()">${esc(meta.description)}</textarea></div>
+      <div class="field"><div class="lbl">Tags (comma separated)</div><textarea id="m_tags" rows="3" ${canEdit?'':'disabled'} oninput="dirty()">${esc((meta.tags||[]).join(', '))}</textarea></div>
+      <div class="field"><div class="lbl">Pinned comment</div><input type="text" id="m_pin" value="${esc(meta.pinned_comment||'')}" ${canEdit?'':'disabled'} oninput="dirty()"></div>
+      ${canEdit?`<button class="btn pri" onclick="saveMeta()">Save YouTube details</button>`:`<div class="note">${TOKEN?'Already handed to YouTube — edit it in YouTube Studio.':'Unlock editing to change these.'}</div>`}
+    </div><div>
+      <div class="lbl">How it will go out</div>
+      <div class="kv"><div>Privacy</div><div>Public</div><div>Category</div><div>Education</div><div>Made for kids</div><div>No</div><div>Publish slot</div><div>${publishSlots(S.state)[id]?pkt(publishSlots(S.state)[id])+' PKT':esc(nextSlotText(S.state))+' PKT'}</div><div>Thumbnail text</div><div>${meta.thumb?esc([meta.thumb.box,meta.thumb.line1,meta.thumb.line2].filter(Boolean).join(' / ')):'—'}</div><div>Uploader</div><div>n8n → feed → Zapier → YouTube</div></div>
+      <div class="note" style="margin-top:14px">Title edits are used as-is on upload. Keep it under 70 characters so it is not cut on phones.</div>
+    </div></div>`;count();
+  }
+  if(S.tab==='frames'){
+    let files=[];try{files=(await api(`/contents/jobs/${id}/review?ref=${BR}`)).filter(f=>/\.(jpe?g|png)$/i.test(f.name))}catch(e){}
+    P.innerHTML=files.length?`<div class="frames">${files.map(f=>`<figure><img loading="lazy" src="${RAW}/jobs/${esc(id)}/review/${esc(f.name)}" onclick="zoom(this.src)"><figcaption>${esc(f.name)}</figcaption></figure>`).join('')}</div><div class="note" style="margin-top:12px">Claude renders these still frames to check every scene before the full render.</div>`:'<div class="empty">No check frames yet.</div>';
+  }
+  if(j.status==='published'){const pin=$('#pinned');if(pin){try{const m=await cached(`jobs/${id}/meta.json`,'json');pin.textContent='“'+(m.pinned_comment||'')+'”'}catch(e){}}}
+  }catch(e){P.innerHTML=`<div class="empty">Could not load: ${esc(e.message)}</div>`}
+}
+function count(){const t=$('#m_title'),d=$('#m_desc');if(t)$('#tc').textContent=t.value.length+' / 100';if(d)$('#dc').textContent=d.value.length+' / 5000'}
+function dirty(){S.editing=true}
+
+// ---------- desk ----------
+async function renderDesk(){
+  const st=S.state,c=st.config||{},jobs=Object.values(st.jobs);
+  const n=(f)=>jobs.filter(f).length;
+  const ideas=st.ideas||[];
+  $('#main').innerHTML=`<h1>Desk settings</h1><div class="sub">Changes here are read by Claude and n8n on their next check.</div>
+  <div class="overview">
+    <div><div class="lbl">Live</div><div class="big">${n(j=>j.status==='published')}</div></div>
+    <div><div class="lbl">Scheduled</div><div class="big">${n(j=>j.status==='video_approved')}</div></div>
+    <div><div class="lbl">In production</div><div class="big">${n(j=>!['published','dropped','video_approved'].includes(j.status))}</div></div>
+    <div><div class="lbl">Waiting on you</div><div class="big" style="color:var(--sig)">${n(j=>info(j)[3])}</div></div>
+  </div>
+  <div class="grid2"><div class="panel" style="border-top:1px solid var(--ink)">
+    <div class="lbl">Publish days</div>
+    <div class="days">${['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(d=>`<label><input type="checkbox" value="${d}" ${(c.publish_days||[]).includes(d)?'checked':''} ${TOKEN?'':'disabled'}>${d}</label>`).join('')}</div>
+    <div class="note">Time: ${esc(c.publish_time_pkt||'05:00')} PKT (7 PM US Eastern). Claude keeps ${esc(c.pipeline_buffer??2)} videos ready ahead.</div>
+    ${TOKEN?`<button class="btn pri" onclick="saveDays()">Save publish days</button>`:''}
+  </div><div class="panel" style="border-top:1px solid var(--ink)">
+    <div class="lbl">Story ideas for Claude (used first, top to bottom)</div>
+    ${ideas.length?`<ol style="padding-left:18px;margin:0 0 10px">${ideas.map((x,i)=>`<li style="margin-bottom:4px">${esc(x)} ${TOKEN?`<button class="btn sm" onclick="dropIdea(${i})">remove</button>`:''}</li>`).join('')}</ol>`:'<div class="empty" style="padding:6px 0 12px">No ideas queued — Claude researches its own.</div>'}
+    ${TOKEN?`<textarea id="idea" rows="2" placeholder="e.g. How McDonald's is really a real-estate company"></textarea><div style="margin-top:8px"><button class="btn pri" onclick="addIdea()">Add idea</button></div>`:''}
+  </div></div>
+  <div class="panel" style="border-top:1px solid var(--ink);margin-top:22px"><div class="lbl">What Claude has learned (docs/LEARNINGS.md)</div><div class="md" id="learn">Loading…</div></div>`;
+  try{$('#learn').innerHTML=DOMPurify.sanitize(marked.parse(await readText('docs/LEARNINGS.md')))}catch(e){$('#learn').textContent='Not available.'}
+}
+
+// ---------- actions ----------
+function toast(t,err){const d=document.createElement('div');d.className='toast'+(err?' err':'');d.textContent=t;document.body.appendChild(d);setTimeout(()=>d.remove(),err?7000:3500)}
+function zoom(src){$('#layer').innerHTML=`<div class="zoom" onclick="this.remove()"><img src="${src}"></div>`}
+function modal(html){$('#layer').innerHTML=`<div class="modal" onclick="if(event.target===this)this.remove()"><div class="box">${html}</div></div>`}
+function closeModal(){$('#layer').innerHTML=''}
+function askToken(){modal(`<h3>Unlock editing</h3><p>Paste a GitHub fine-grained token for <b>${REPO}</b> with <b>Contents: Read and write</b> (and Actions: Read). It stays only in this browser.</p><input type="password" id="tok" placeholder="github_pat_…"><div class="row"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn pri" onclick="saveToken()">Unlock</button></div>`);setTimeout(()=>$('#tok').focus(),50)}
+async function saveToken(){const t=$('#tok').value.trim();if(!t)return;TOKEN=t;try{const r=await api('');if(!r.permissions||!r.permissions.push)throw new Error('This token cannot write to the repo.');store.set('sd_token',t);closeModal();toast('Editing unlocked.');load()}catch(e){TOKEN=null;toast(e.message,true)}}
+function signOut(){TOKEN=null;store.set('sd_token',null);render()}
+async function decide(id,next){
+  try{let ok=false;await updateState(st=>{const j=st.jobs[id];if(!j||!/_(ready|sent)$/.test(j.status))return false;j.status=next;j.updated=nowIso();j.decided_via='dashboard';j.decided_at=j.updated;ok=true},`dashboard: ${id} -> ${next}`);
+    toast(ok?'Done. Slack gets a note within a minute.':'Status already changed — refreshed.');load()}catch(e){toast(e.message,true)}}
+function askFeedback(id,next,q,isDrop,prefix=''){
+  modal(`<h3>${esc(isDrop?'Drop this story':'Your note for Claude')}</h3><p>${esc(q)}</p>${isDrop?'':`<textarea id="fb" rows="5" placeholder="${prefix?'e.g. bigger text, red box, show the swamp':'Be specific: shot number or second, and what to change'}"></textarea>`}<div class="row"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn ${isDrop?'danger':'pri'}" onclick="sendFeedback('${id}','${next}','${prefix}')">${isDrop?'Drop it':'Send to Claude'}</button></div>`);
+}
+async function sendFeedback(id,next,prefix){
+  const t=$('#fb')?$('#fb').value.trim():'drop';if(!t)return toast('Write a note first.',true);
+  try{await updateState(st=>{const j=st.jobs[id];if(!j)return false;j.status=next;j.updated=nowIso();j.decided_via='dashboard';j.decided_at=j.updated;
+    j.feedback=((j.feedback?j.feedback+'\n':'')+`[${nowIso()}] ${prefix}${t}`).slice(-3000)},`dashboard: feedback for ${id}`);
+    closeModal();toast('Sent. Claude picks it up in its next hourly run.');load()}catch(e){toast(e.message,true)}}
+async function unapprove(id){if(!confirm('Move this video back to review? It will not be published until you approve it again.'))return;
+  try{await updateState(st=>{const j=st.jobs[id];if(j.status!=='video_approved')return false;j.status='video_ready';j.updated=nowIso();j.decided_via='dashboard';j.decided_at=j.updated},`dashboard: ${id} back to review`);load()}catch(e){toast(e.message,true)}}
+async function editScript(){
+  const id=S.sel;const f=await readJson(`jobs/${id}/script.md`);S.editing=true;
+  $('#panel').innerHTML=`<div class="note">Edit the words freely. Keep the shot table and "## Voice-over" section — Claude builds from them. After saving, approve the script as usual.</div><textarea class="code" id="scr">${esc(f.text)}</textarea><div class="row"><button class="btn" onclick="S.editing=false;renderTab()">Cancel</button><button class="btn pri" onclick="saveScript('${f.sha}')">Save script</button></div>`;
+}
+async function saveScript(sha){const id=S.sel;try{await writeFile(`jobs/${id}/script.md`,$('#scr').value,sha,`dashboard: edit script ${id}`);
+  await updateState(st=>{st.jobs[id].updated=nowIso();st.jobs[id].script_edited=nowIso()},`dashboard: script edited ${id}`);S.editing=false;S.cache={};toast('Script saved.');load()}catch(e){toast(e.message,true)}}
+async function saveMeta(){const id=S.sel;try{const f=await readJson(`jobs/${id}/meta.json`);const m=JSON.parse(f.text);
+  m.title=$('#m_title').value.trim();m.description=$('#m_desc').value;m.tags=$('#m_tags').value.split(',').map(s=>s.trim()).filter(Boolean);m.pinned_comment=$('#m_pin').value.trim();
+  if(!m.title)throw new Error('Title cannot be empty.');if(m.title.length>100)throw new Error('YouTube titles max 100 characters.');
+  await writeFile(`jobs/${id}/meta.json`,JSON.stringify(m,null,2)+'\n',f.sha,`dashboard: edit YouTube details ${id}`);
+  await updateState(st=>{st.jobs[id].title=m.title},`dashboard: title ${id}`);S.editing=false;S.cache={};toast('Saved — this is what YouTube will get.');load()}catch(e){toast(e.message,true)}}
+async function saveDays(){const d=[...document.querySelectorAll('.days input:checked')].map(x=>x.value);if(!d.length)return toast('Pick at least one day.',true);
+  try{await updateState(st=>{st.config=st.config||{};st.config.publish_days=d},'dashboard: publish days');toast('Publish days saved.');load()}catch(e){toast(e.message,true)}}
+async function addIdea(){const t=$('#idea').value.trim();if(!t)return;try{await updateState(st=>{st.ideas=st.ideas||[];st.ideas.push(t)},'dashboard: add story idea');toast('Idea queued for Claude.');load()}catch(e){toast(e.message,true)}}
+async function dropIdea(i){try{await updateState(st=>{(st.ideas||[]).splice(i,1)},'dashboard: remove story idea');load()}catch(e){toast(e.message,true)}}
+
+load();setInterval(()=>{if(!document.hidden)load()},TOKEN?15000:45000);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)load()});
+</script>
+</body>
+</html>
