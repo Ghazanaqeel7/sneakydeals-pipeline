@@ -103,10 +103,10 @@ export function dirChair() {
 // a generic storybook castle, lit windows (not modelled on any real castle)
 export function castle() {
   const a = g(); const r = rng(77);
-  const wall = '#c7b3c9', roof = '#5b4a8a';
+  const wall = '#dcc6a2', roof = '#b5523b';
   a.add(box(18, 5, 6, wall, {y: 2.5, thick: 0.05}));
   for (let i = 0; i < 9; i++) a.add(box(1, 0.8, 6.2, wall, {x: -8 + i * 2, y: 5.4, thick: 0.03}));
-  const T = [[-9, 9, 1.6], [9, 9, 1.6], [-4.5, 12, 1.4], [4.5, 11, 1.4], [0, 17, 2.2], [-2, 14, 1.1], [2.4, 13.5, 1.0]];
+  const T = [[-9, 9, 1.6], [9, 9, 1.6], [-5, 10, 1.5], [4.5, 11, 1.4], [0, 12.5, 2.0], [-2, 14, 1.1], [2.4, 13.5, 1.0]];
   for (const [x, h, rr] of T) {
     a.add(cyl(rr, rr, h, wall, {x, y: h / 2, z: x === 0 ? 0.5 : 0, seg: 14, thick: 0.04}));
     a.add(cone(rr * 1.3, rr * 2.6, roof, {x, y: h + rr * 1.3, z: x === 0 ? 0.5 : 0, seg: 14, thick: 0.04}));

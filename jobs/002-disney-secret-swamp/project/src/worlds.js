@@ -59,8 +59,8 @@ export function buildWorld() {
   const r0 = rng(5);
   for (let i = 0; i < 26; i++) { const x = (r0() - 0.5) * 60, z = -4 - r0() * 50; if (Math.abs(x) < 3 && z > -8) continue; W.add(P.at(S.cypress(7 + r0() * 6, i + 1), SW + x, 0, z)); }
   for (const [x, z] of [[-4.5, 2.5], [5.5, 1.5], [-7, -1], [8, -2.5]]) W.add(P.at(S.cypress(9, Math.abs(x * 3)), SW + x, 0, z));
-  for (let i = 0; i < 30; i++) { const x = (r0() - 0.5) * 30, z = 4 - r0() * 30; if (Math.abs(x - 1) < 2.2 && z > -2 && z < 3) continue; W.add(P.at(S.reeds(8, i + 3, 1.3 + r0()), SW + x, 0, z)); }
-  for (const [x, z] of [[-1.6, 0.4], [1.4, 0.9], [-2.2, -1.2], [3.2, 0.2]]) W.add(P.at(S.reeds(10, Math.abs(x * 9 + 1), 1.4), SW + x, 0, z));
+  for (let i = 0; i < 30; i++) { const x = (r0() - 0.5) * 30, z = 4 - r0() * 30; if (x > -2.5 && x < 4.5 && z > -3 && z < 6) continue; W.add(P.at(S.reeds(8, i + 3, 1.3 + r0()), SW + x, 0, z)); }
+  for (const [x, z] of [[-1.6, 0.4], [-2.2, -1.2], [3.6, -1.6]]) W.add(P.at(S.reeds(10, Math.abs(x * 9 + 1), 1.4), SW + x, 0, z));
   for (let i = 0; i < 18; i++) W.add(P.at(S.lilyPad(0.35 + r0() * 0.3), SW + (r0() - 0.5) * 16, -0.12, 3 - r0() * 12));
   for (let i = 0; i < 4; i++) W.add(P.at(S.mist(i + 2, 8, 40), SW + (i - 1.5) * 30, 0.5, -30 - i * 8));
   for (let i = 0; i < 7; i++) W.add(cloud(SW - 80 + i * 28, 55 + (i % 3) * 8, -150, 7));
@@ -81,7 +81,7 @@ export function buildWorld() {
   for (let i = 0; i < 8; i++) W.add(P.at(S.reeds(8, 40 + i, 1.4), RA - 9.5 + (i % 4) * 2, 0, -3.8 + Math.floor(i / 4) * 4.4));
   W.add(P.at(S.lilyPad(0.4), RA - 6, 0.05, -1.2), P.at(S.lilyPad(0.3), RA - 7.4, 0.05, -2));
   const r1 = rng(9);
-  for (let i = 0; i < 40; i++) { const x = -8 + r1() * 30, z = 1.5 - r1() * 16; if (x > -9.5 && x < -3.5 && z > -4 && z < 1) continue; W.add(P.at(S.palmetto(0.8 + r1() * 0.7, i), RA + x, 0, z)); }
+  for (let i = 0; i < 40; i++) { const x = -8 + r1() * 30, z = 1.5 - r1() * 16; if (x > -9.5 && x < -3.5 && z > -4 && z < 1) continue; if (x > -1 && z > -11) continue; W.add(P.at(S.palmetto(0.8 + r1() * 0.7, i), RA + x, 0, z)); }
   for (let i = 0; i < 24; i++) W.add(P.at(S.cypress(8 + r1() * 7, 60 + i), RA - 30 + r1() * 70, 0, -14 - r1() * 30));
   const cows = [];
   for (const [x, z, ry] of [[3.5, -4, 0.3], [6.2, -6.5, -0.4], [9.5, -4.6, 2.8], [12.5, -7.5, 0.2], [5, -10, 1.2], [15, -5, 3.0]]) { const c = S.cow(x * 3); c.position.set(RA + x, 0, z); c.rotation.y = ry; W.add(c); cows.push(c); }
@@ -107,9 +107,9 @@ export function buildWorld() {
   person('navy', 'none', PR + 4.8, 0.4, -4.6, 32); person('official', 'none', PR + 1.2, 0.4, -4.6, 33);
   const emily = person('pink', 'none', PR - 1.5, 0.05, 0.6, 34);
   const pad = box(0.16, 0.22, 0.02, '#f7f0de', {x: -0.09, y: -0.48, z: 0.04, thick: 0.004}); emily.userData.armL.add(pad);
-  const reps = [['clerk', 'fedora', -3.2, 0.2], ['mustard', 'fedora', 0.4, -0.4], ['navy', 'bowler', 1.6, 1.2], ['teal', 'none', 4.6, 0.2], ['red', 'fedora', 6.4, 1.0], ['student', 'none', -5, 1.2], ['official', 'fedora', 2.8, 2.4]];
+  const reps = [['clerk', 'fedora', -3.2, 0.2], ['mustard', 'fedora', 0.4, -0.4], ['navy', 'bowler', 2.8, 1.4], ['teal', 'none', 4.6, 0.2], ['red', 'fedora', 6.4, 1.0], ['student', 'none', -5, 1.2], ['official', 'fedora', 2.8, 2.4]];
   reps.forEach(([pal, hat, x, z], i) => { const c = person(pal, hat, PR + x, 0.05, z, 40 + i); c.userData.armL.add(box(0.16, 0.22, 0.02, '#f7f0de', {x: -0.09, y: -0.48, z: 0.04, thick: 0.004})); });
-  const cams = [[-3.8, -0.8], [1.0, 1.9], [5.6, -0.6]].map(([x, z]) => { const c = S.pressCam(); c.position.set(PR + x, 0.05, z); c.rotation.y = -0.4 - x * 0.03; W.add(c); return c; });
+  const cams = [[-3.8, -0.8], [4.6, 2.0], [5.6, -0.6]].map(([x, z]) => { const c = S.pressCam(); c.position.set(PR + x, 0.05, z); c.rotation.y = -0.4 - x * 0.03; W.add(c); return c; });
   const qmark = big('?', 0.6, 0.6, '#c43d32', '#ffffff'); qmark.position.set(PR - 1.5, 2.45, 0.6); W.add(qmark); only(qmark, 'then');
   W.add(P.at(P.car('#e6d9b8', {seed: 3}), PR - 12, 0.05, -4, 0.3), P.at(P.car('#2f8f8a', {seed: 4}), PR + 13, 0.05, -3.5, -0.4), P.at(P.bench(), PR - 8, 0.05, -2));
   for (let i = 0; i < 6; i++) W.add(cloud(PR - 70 + i * 28, 55 + (i % 3) * 8, -150, 7));
@@ -202,9 +202,9 @@ export function buildWorld() {
   const lottA = sign('M.T. LOTT', 1.05, 0.62, {bg: '#f2e6cc', fg: INK, w: 520, h: 300, font: 'bold 110px Georgia, serif', sub: 'REAL ESTATE'}); lottA.position.set(LW + 5.2, 2.0, -5.3); W.add(lottA); only(lottA, 'lott');
   const lottB = big('EMPTY LOT', 1.7, 0.62, '#c43d32', '#fff4dc'); lottB.position.set(LW + 5.2, 2.0, -5.2); W.add(lottB); only(lottB, 'lott');
   W.add(P.at(P.poster('LAND', 0.9, 1.2, '#e6d39a'), LW + 6.9, 2.8, -5.42), P.at(P.wallClock(), LW + 3.7, 3.9, -5.42), potPlant(LW + 7.0, -3.6), potPlant(LW - 7.0, 2.8));
-  const d3 = P.desk(2.0, '#7a4f33'); d3.position.set(LW + 3.6, 0.05, 0.6); W.add(d3);
-  W.add(P.at(P.papers(6, 33), LW + 3.4, 1.08, 0.6), P.at(P.radio(), LW + 4.2, 1.08, 0.4));
-  person('clerk', 'none', LW + 3.4, 0.05, -0.4, 82); person('mustard', 'fedora', LW + 6.6, 0.05, -2.2, 83); person('teal', 'none', LW - 5.2, 0.05, -2.6, 84);
+  const d3 = P.desk(2.0, '#7a4f33'); d3.position.set(LW - 5.0, 0.05, 1.2); W.add(d3);
+  W.add(P.at(P.papers(6, 33), LW - 5.2, 1.08, 1.2), P.at(P.radio(), LW - 4.4, 1.08, 1.0));
+  person('clerk', 'none', LW - 5.0, 0.05, 0.2, 82); person('mustard', 'fedora', LW + 6.9, 0.05, -4.0, 83); person('teal', 'none', LW - 5.2, 0.05, -2.6, 84);
   windowPane(W, LW - 7.9, 2.6, 0.5, 2.0, 1.5, Math.PI / 2);
 
   // ======================= MAP ROOM (ladder, size) =======================
@@ -314,7 +314,7 @@ export function buildWorld() {
     // yousee: park model pops on "huge new park", circle on "Florida"
     if (shot === 'yousee') {
       const mk = ease(t, wordT('yousee', 7.6), wordT('yousee', 8.4));
-      model.scale.set(1, Math.max(0.001, mk), 1);
+      model.scale.set(1, Math.max(0.001, mk), 1); model.visible = mk > 0.02;
       wheel.rotation.z = t * 0.8;
       drawMap(ease(t, wordT('yousee', 11.4), wordT('yousee', 12.8)));
       planner.userData.armR.rotation.z = 0.7 + Math.sin(t * 3) * 0.1;

@@ -29,7 +29,7 @@ export const LIGHTS = {
   joint: {sun: '#ffe0b0', si: 2.3, sky: '#c4c8dc', gnd: '#5a5662', hi: 1.3, fog: '#4a4a58', near: 30, far: 80, sunOff: [-7, 12, 9], shadow: 12, top: '#222', hor: '#333', pt: {c: '#ffb066', i: 16, p: [-3.2, 4.6, -1.5], d: 12}},
   weather: {sun: '#eef2ff', si: 1.4, sky: '#eef3f6', gnd: '#8f7b66', hi: 1.1, fog: '#e3e7e1', near: 30, far: 90, sunOff: [-6, 9, 7], shadow: 10, top: '#56606e', hor: '#9aa4b0', pt: {c: '#ffd58a', i: 5, p: [0, 3.8, 0], d: 14}},
   swamp: {sun: '#fff0cf', si: 2.4, sky: '#bfe3d0', gnd: '#7a7a45', hi: 1.15, fog: '#d8e8d8', near: 45, far: 260, sunOff: [-50, 90, 60], shadow: 40, top: '#4a9ad8', hor: '#d6ecd8', pt: null},
-  dusk: {sun: '#ffae80', si: 1.9, sky: '#b49ad0', gnd: '#5a4060', hi: 1.05, fog: '#c48aa0', near: 70, far: 330, sunOff: [-30, 14, -80], shadow: 40, top: '#3a3a7a', hor: '#ffb07a', pt: null},
+  dusk: {sun: '#ffb88a', si: 2.1, sky: '#c4a8e0', gnd: '#7a5a70', hi: 1.45, fog: '#c48aa0', near: 70, far: 330, sunOff: [-40, 30, 50], shadow: 40, top: '#3a3a7a', hor: '#ffb07a', pt: null},
   morning: {sun: '#ffbf7a', si: 2.5, sky: '#ffe0bd', gnd: '#c08a5a', hi: 1.0, fog: '#f6d9b8', near: 160, far: 650, sunOff: [-60, 40, 50], shadow: 80, top: '#6fa6dd', hor: '#ffd3a1', pt: null},
 };
 
@@ -37,8 +37,8 @@ const v = (a) => new THREE.Vector3(...a);
 // camera plan: per shot, location light, anchor (for the light), path keys {p, l}, optional beat times
 export const PLAN = {
   hook: {light: 'swamp', anchor: [0, 0, -4], keys: [{p: [0, 1.25, 1.95], l: [0, 1.22, 0]}, {p: [0.8, 1.9, 4.6], l: [0.9, 1.25, -1.4]}, {p: [1.5, 1.95, 5.0], l: [1.4, 1.3, -2.2]}], beats: 'words:hook:0,4,8'},
-  yousee: {light: 'office', anchor: [600, 0, 0], keys: [{p: [597.6, 1.7, 3.0], l: [599.0, 1.3, -0.7]}, {p: [600.2, 1.8, 3.1], l: [600.8, 1.15, 0.1]}, {p: [603.3, 2.55, -1.0], l: [603.6, 2.55, -5.4]}], beats: 'words:yousee:0,8.5,13'},
-  but: {light: 'office', anchor: [700, 0, 0], keys: [{p: [697.6, 1.65, 2.4], l: [699.0, 1.55, -1.6]}, {p: [699.7, 1.85, 2.0], l: [700.4, 2.0, -2.4]}, {p: [698.7, 1.8, 0.6], l: [698.6, 1.8, -1.4]}], beats: 'words:but:0,6.5,13'},
+  yousee: {light: 'office', anchor: [600, 0, 0], keys: [{p: [597.9, 1.7, 2.8], l: [598.7, 1.3, -0.7]}, {p: [600.2, 1.8, 3.1], l: [600.8, 1.15, 0.1]}, {p: [603.3, 2.55, -1.0], l: [603.6, 2.55, -5.4]}], beats: 'words:yousee:0,8.5,13'},
+  but: {light: 'office', anchor: [700, 0, 0], keys: [{p: [697.6, 1.65, 2.4], l: [699.0, 1.55, -1.6]}, {p: [700.2, 1.9, 0.7], l: [700.5, 1.95, -2.6]}, {p: [698.7, 1.8, 0.6], l: [698.6, 1.8, -1.4]}], beats: 'words:but:0,6.5,13'},
   shells: {light: 'office', anchor: [800, 0, 0], keys: [{p: [796.6, 1.75, 2.6], l: [798.4, 1.45, -2.2]}, {p: [797.6, 2.1, 1.4], l: [798.6, 1.6, -3.4]}, {p: [798.5, 1.45, 0.75], l: [798.5, 1.2, -1.2]}], beats: 'words:shells:0,7,14'},
   lott: {light: 'office', anchor: [804, 0, -2], keys: [{p: [801.8, 1.8, 2.4], l: [804.6, 1.9, -5.3]}, {p: [803.5, 1.95, -0.9], l: [805.0, 1.95, -5.3]}, {p: [804.6, 2.0, -2.9], l: [805.2, 2.0, -5.3]}], beats: 'words:lott:0,7.5,11'},
   cheap: {light: 'yard', anchor: [204, 0, -3], keys: [{p: [193.0, 1.6, 4.0], l: [193.5, 0.8, -1.5]}, {p: [197.5, 1.7, 4.4], l: [198.8, 1.0, -2.0]}, {p: [203.6, 1.9, 4.6], l: [205.0, 1.2, -4.5]}, {p: [209.0, 2.1, 5.2], l: [210.0, 2.6, -2.2]}, {p: [210.0, 2.4, 4.4], l: [210.0, 2.9, -2.2]}], beats: 'words:cheap:0,1.5,4,9.5,14'},
