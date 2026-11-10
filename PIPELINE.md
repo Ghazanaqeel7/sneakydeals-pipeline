@@ -44,7 +44,10 @@ install anything, or research. If another job is already `building`, do not star
 0. Setup: `git config user.name "claude-pipeline"`, `git config user.email "claude-pipeline@users.noreply.github.com"`.
 1. **`render_failed`**: open the failed Actions run log (`gh run view <run> --log` if `gh` works, otherwise reproduce
    with a few frames locally), fix, push, `set_status <id> render_queued`.
-2. **`video_rejected` with feedback that is ONLY about the thumbnail** (starts with `thumbnail:`): change only
+2. **Before touching any `*_rejected` job, tell the owner you started:** `python3 pipeline/scripts/progress.py <id>
+   "🛠 Aapke changes laga raha hoon: <1-line summary of what you will change> (~<eta>)"`, then post a progress line at
+   each step (fixed shots → check frames image → render queued). The owner sees these in Slack and on the dashboard.
+   **`video_rejected` with feedback that is ONLY about the thumbnail** (starts with `thumbnail:`): change only
    `meta.json.thumb` / the frame, re-run `make_thumb.py`, look at it, push, then
    `set_status <id> video_ready feedback=` — do NOT re-render; n8n re-posts the video with the new thumbnail.
    **`video_rejected` with any other feedback**: apply the owner's feedback exactly (it is about this video only), re-check

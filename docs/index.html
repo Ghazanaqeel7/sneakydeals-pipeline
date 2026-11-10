@@ -58,6 +58,18 @@ h1{font:500 25px/1.2 var(--serif);margin:4px 0 6px}
 .st.now{background:var(--ink);color:var(--paper)}.st.now .n{color:#bdb7a8}
 .st.now.attn{background:var(--sig);border-color:var(--sig)}
 .st.now.err{background:var(--bad)}
+
+.review{display:grid;grid-template-columns:minmax(220px,300px) minmax(160px,220px) 1fr;gap:20px;border:1px solid var(--ink);border-top:0;background:var(--sheet);padding:16px}
+.review video{width:100%;background:#000;border:1px solid var(--ink);display:block;aspect-ratio:9/16}
+.review img{width:100%;border:1px solid var(--ink);display:block;cursor:zoom-in}
+.review .vo{max-height:430px;overflow:auto;font:15px/1.65 var(--serif);border:1px solid var(--rule);background:#fff;padding:14px 16px}
+.choice{display:flex;gap:0;margin-bottom:10px}
+.choice label{flex:1;border:1px solid var(--ink);padding:7px 8px;text-align:center;cursor:pointer;font-size:12.5px;background:#fff}
+.choice label+label{border-left:0}
+.choice input{display:none}
+.choice label:has(input:checked){background:var(--ink);color:var(--paper)}
+.waitbox{border:1px solid var(--ink);border-top:0;background:var(--warn-bg);padding:12px 16px;font-size:13px}
+@media (max-width:900px){.review{grid-template-columns:1fr}}
 .actionbar{margin:18px 0 6px;border:1px solid var(--ink);background:var(--sheet);padding:14px 16px;display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap}
 .actionbar .msg{flex:1;min-width:260px}
 .actionbar .msg b{display:block;font-size:14px}
@@ -200,7 +212,8 @@ function publishSlots(st){
       const pk=new Date(k.toLocaleString('en-US',{timeZone:'Asia/Karachi'}));
       const dayName=DAYS[pk.getDay()];
       const slotUtc=Date.UTC(pk.getFullYear(),pk.getMonth(),pk.getDate(),hh-5,mm);
-      if(days.includes(dayName)&&slotUtc>cursor.getTime()){out[id]=new Date(slotUtc);cursor=new Date(slotUtc+60000);break}
+      const taken=Object.values(st.jobs).some(j=>[j.live_at,j.published_at].some(t=>t&&Math.abs(new Date(t)-slotUtc)<12*3600000));
+      if(days.includes(dayName)&&slotUtc>cursor.getTime()&&!taken){out[id]=new Date(slotUtc);cursor=new Date(slotUtc+60000);break}
     }
   }
   return out;
@@ -226,7 +239,8 @@ function whoOf(c){const m=c.commit.message,a=c.commit.author.name;
   if(a==='render-bot'||/github-actions/.test(a))return['render','Render'];if(a==='claude-pipeline'||/claude/i.test(a))return['claude','Claude'];return['you',a]}
 
 // ---------- render ----------
-function render(){if(S.editing)return renderChrome();renderChrome();renderMain()}
+function sigOf(){const j=S.state&&S.state.jobs[S.sel];return JSON.stringify([S.sel,S.tab,!!TOKEN,j&&j.status,j&&j.updated,j&&j.progress_count,S.sel==='__desk'&&S.state&&[S.state.config,S.state.ideas]])}
+function render(force){renderChrome();if(S.editing)return;const sg=sigOf();if(!force&&sg===S.sig)return;S.sig=sg;renderMain()}
 function renderChrome(){
   const st=S.state;$('#sync').textContent=S.lastSync?'synced '+hm(S.lastSync):'';
   const lastBy=(k)=>S.commits.find(c=>whoOf(c)[0]===k);
@@ -251,7 +265,7 @@ function renderChrome(){
 }
 const titleFromId=(id)=>id.replace(/^\d+-/,'').replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
 function nextSlotText(st){const days=(st.config&&st.config.publish_days)||[];return days.join('/')+' '+((st.config&&st.config.publish_time_pkt)||'05:00')}
-function pick(id){if(S.editing&&!confirm('Discard unsaved edits?'))return;S.editing=false;S.sel=id;S.tab='progress';render();window.scrollTo(0,0)}
+function pick(id){if(S.editing&&!confirm('Discard unsaved edits?'))return;S.editing=false;S.sel=id;S.tab='progress';render(true);window.scrollTo(0,0)}
 
 function renderMain(){
   if(S.sel==='__desk')return renderDesk();
@@ -265,17 +279,58 @@ function renderMain(){
     <div class="sub"><span>${chip(j)}</span><span>Updated ${ago(j.updated)} (${pkt(j.updated)} PKT)</span>${slots[id]?`<span><b>Goes live ${pkt(slots[id])} PKT</b></span>`:''}${j.video_url?`<a href="${esc(j.video_url)}" target="_blank">Full-quality file ↗</a>`:''}</div>
     ${j.status==='dropped'?'':`<div class="track">${track}</div>`}
     ${actionBar(id,j,lastP)}
+    ${reviewBlock(id,j)}
     <div class="tabs">${[['progress','Progress'],['script','Script'],['media','Voice · Video · Thumbnail'],['publish','YouTube details'],['frames','Check frames']].map(([k,n])=>`<button class="tab ${S.tab===k?'on':''}" onclick="setTab('${k}')">${n}</button>`).join('')}</div>
     <div class="panel" id="panel"><div class="empty">Loading…</div></div>`;
   renderTab();
 }
+function nextClaudeRun(){const d=new Date();d.setUTCMinutes(8,0,0);if(d<=new Date())d.setUTCHours(d.getUTCHours()+1);return d}
+function reviewBlock(id,j){
+  const s=j.status,lock=!TOKEN?' disabled title="Unlock editing first"':'';
+  if(s==='video_ready'||s==='video_sent'){
+    const v=j.preview_url||j.video_url;
+    return `<div class="review">
+      <div><div class="lbl">Watch the video</div>${v?`<video controls playsinline preload="metadata" src="${esc(v)}"></video>`:'<div class="empty">No video file.</div>'}</div>
+      <div><div class="lbl">Thumbnail</div><img src="${RAW}/jobs/${esc(id)}/thumbnail.jpg?u=${encodeURIComponent(j.updated||'')}" onclick="zoom(this.src)" onerror="this.outerHTML='<div class=empty>No thumbnail — the logo thumbnail would be used.</div>'"><div class="note" style="margin-top:10px">Video, thumbnail and the YouTube text are approved together.</div></div>
+      <div><div class="lbl">Your decision</div>
+        <button class="btn go" style="width:100%;padding:11px"${lock} onclick="decide('${id}','video_approved')">Approve video + thumbnail</button>
+        <div class="note" style="margin:10px 0 12px">Goes out ${publishSlots(Object.assign({},S.state,{jobs:{...S.state.jobs,[id]:{...j,status:'video_approved',updated:'9999'}}}))[id]?'on '+pkt(publishSlots(Object.assign({},S.state,{jobs:{...S.state.jobs,[id]:{...j,status:'video_approved',updated:'9999'}}}))[id])+' PKT':'on the next publish slot'} if you approve now.</div>
+        <div class="lbl" style="margin-top:6px">Or ask for changes</div>
+        <div class="choice"><label><input type="radio" name="fx" value="thumbnail: " checked>Thumbnail only</label><label><input type="radio" name="fx" value="">Video</label></div>
+        <textarea id="rv_fb" rows="5" oninput="dirty()" placeholder="Be specific — e.g. 'thumbnail: bigger DISNEY text, show the gator' or 'shot 5 at 0:21: the sign is cut off'"${lock}></textarea>
+        <button class="btn pri" style="margin-top:8px"${lock} onclick="sendInline('${id}','video_rejected')">Send changes to Claude</button>
+        <div class="note">Thumbnail-only changes do not re-render the video (~10 min). Video fixes need a new render (~1–2 h).</div>
+      </div></div>`;
+  }
+  if(s==='script_ready'||s==='script_sent'){
+    setTimeout(async()=>{try{const md=await cached(`jobs/${id}/script.md`);const m=md.split(/##\s*Voice-over/i)[1];const vo=m?m.split(/\n##\s/)[0].trim():'(open the Script tab)';const el=$('#rv_vo');if(el)el.textContent=vo;const w=$('#rv_wc');if(w)w.textContent=vo.split(/\s+/).length+' words · about '+Math.round(vo.split(/\s+/).length/170*60)+' s';}catch(e){}},0);
+    return `<div class="review" style="grid-template-columns:1fr 340px">
+      <div><div class="lbl">What the voice will say <span class="counter" id="rv_wc"></span></div><div class="vo" id="rv_vo">Loading…</div><div class="note">Shots, sources and the rulebook check are in the Script tab.</div></div>
+      <div><div class="lbl">Your decision</div>
+        <button class="btn go" style="width:100%;padding:11px"${lock} onclick="decide('${id}','script_approved')">Approve script</button>
+        <div class="note" style="margin:10px 0 12px">Claude starts building in its next run (by ${hm(nextClaudeRun())} PKT). The video takes ~2 h after that.</div>
+        <div class="lbl">Or ask for changes</div>
+        <textarea id="rv_fb" rows="6" oninput="dirty()" placeholder="What should change? e.g. 'hook is weak — start with the fake company name'"${lock}></textarea>
+        <button class="btn pri" style="margin-top:8px"${lock} onclick="sendInline('${id}','script_rejected')">Send changes to Claude</button>
+        <button class="btn danger" style="margin-top:8px"${lock} onclick="askFeedback('${id}','dropped','Drop this story? Claude will pick a new one.',true)">Drop story</button>
+      </div></div>`;
+  }
+  if((s==='script_rejected'||s==='video_rejected')){
+    const note=(j.feedback||'').split('\n').slice(-1)[0].replace(/^\[[^\]]+\]\s*/,'');
+    const since=(j.feedback||'').match(/\[([^\]]+)\][^\n]*$/);const after=(j.progress||[]).filter(p=>since&&p.t>=since[1]);
+    return `<div class="waitbox"><b>Your note:</b> ${esc(note)||'—'}<br>${after.length?`Claude is working on it — latest: ${esc(after.slice(-1)[0].msg)}`:`Claude picks this up in its next run, by ${hm(nextClaudeRun())} PKT. Every step it takes shows up here and in Slack.`}</div>`;
+  }
+  return '';
+}
+function sendInline(id,next){const t=($('#rv_fb')||{}).value?.trim();if(!t)return toast('Write what should change first.',true);
+  const pre=next==='video_rejected'?(document.querySelector('input[name=fx]:checked')||{}).value||'':'';doFeedback(id,next,pre+t)}
 function actionBar(id,j,lastP){
   const s=j.status;let msg='',btns='';
   const lock=!TOKEN?' disabled title="Unlock editing first"':'';
-  if(s==='script_ready'||s==='script_sent'){msg=`<b>The script is waiting for you.</b><span>Read it in the Script tab. Approve and Claude starts building within the hour. Same as ✅ in Slack.</span>`;
-    btns=`<button class="btn go"${lock} onclick="decide('${id}','script_approved')">Approve script</button><button class="btn"${lock} onclick="askFeedback('${id}','script_rejected','What should change in the script?')">Request changes</button><button class="btn danger"${lock} onclick="askFeedback('${id}','dropped','Drop this story? Claude will pick a new one.',true)">Drop</button>`}
-  else if(s==='video_ready'||s==='video_sent'){msg=`<b>The video is ready for review.</b><span>Watch it and check the thumbnail in the media tab. Approve and it goes out on the next publish slot.</span>`;
-    btns=`<button class="btn go"${lock} onclick="decide('${id}','video_approved')">Approve video + thumbnail</button><button class="btn"${lock} onclick="askFeedback('${id}','video_rejected','What should change in the thumbnail? (the video stays as it is)',false,'thumbnail: ')">Change thumbnail only</button><button class="btn"${lock} onclick="askFeedback('${id}','video_rejected','What should be fixed in the video? (shot, second, what looks wrong)')">Request video fixes</button>`}
+  if(s==='script_ready'||s==='script_sent'){msg=`<b>The script is waiting for you.</b><span>Read the voice-over below (full shot list in the Script tab). Deciding here is the same as ✅ / ❌ in Slack.</span>`;
+    btns=''}
+  else if(s==='video_ready'||s==='video_sent'){msg=`<b>The video is ready for review.</b><span>Play it below, check the thumbnail, then approve or ask for changes. Same as ✅ / ❌ in Slack.</span>`;
+    btns=''}
   else if(s==='script_rejected'||s==='video_rejected'){msg=`<b>Changes requested — Claude is on it.</b><span>${j.feedback?'Your note: '+esc(j.feedback.split('\n').slice(-1)[0]):'Waiting for your note. Add one so Claude knows what to fix.'}</span>`;
     btns=j.feedback?'':`<button class="btn pri"${lock} onclick="askFeedback('${id}','${s}','What should change?')">Add note</button>`}
   else if(s==='video_approved'){msg=`<b>Approved and scheduled.</b><span>On the publish day at ${esc((S.state.config||{}).publish_time_pkt||'05:00')} PKT n8n hands it to Zapier, which uploads it to YouTube within ~15 min.</span>`;
@@ -287,7 +342,7 @@ function actionBar(id,j,lastP){
   else{msg=`<b>${esc(info(j)[1])}…</b><span>${lastP?esc(lastP.msg)+' · '+ago(lastP.t):'Nothing to do — this updates live.'}</span>`}
   return `<div class="actionbar"><div class="msg">${msg}</div>${btns}</div>`;
 }
-function setTab(t){if(S.editing&&!confirm('Discard unsaved edits?'))return;S.editing=false;S.tab=t;renderMain()}
+function setTab(t){if(S.editing&&!confirm('Discard unsaved edits?'))return;S.editing=false;S.tab=t;S.sig=sigOf();renderMain()}
 
 async function cached(path,kind='text'){
   const key=path+'|'+(S.state.jobs[S.sel]||{}).updated;if(S.cache[key])return S.cache[key];
@@ -374,20 +429,25 @@ function modal(html){$('#layer').innerHTML=`<div class="modal" onclick="if(event
 function closeModal(){$('#layer').innerHTML=''}
 function askToken(){modal(`<h3>Unlock editing</h3><p>Paste a GitHub fine-grained token for <b>${REPO}</b> with <b>Contents: Read and write</b> (and Actions: Read). It stays only in this browser.</p><input type="password" id="tok" placeholder="github_pat_…"><div class="row"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn pri" onclick="saveToken()">Unlock</button></div>`);setTimeout(()=>$('#tok').focus(),50)}
 async function saveToken(){const t=$('#tok').value.trim();if(!t)return;TOKEN=t;try{const r=await api('');if(!r.permissions||!r.permissions.push)throw new Error('This token cannot write to the repo.');store.set('sd_token',t);closeModal();toast('Editing unlocked.');load()}catch(e){TOKEN=null;toast(e.message,true)}}
-function signOut(){TOKEN=null;store.set('sd_token',null);render()}
+function signOut(){TOKEN=null;store.set('sd_token',null);render(true)}
+function addNote(j,msg){j.progress=(j.progress||[]).concat([{t:nowIso(),msg}]).slice(-15);j.progress_count=(j.progress_count||0)+1}
+const DECIDE_NOTE={script_approved:'✅ Aap ne dashboard se script approve kiya. Claude agle run mein video banana shuru karega.',video_approved:'✅ Aap ne dashboard se video + thumbnail approve kiya. Agle publish slot par YouTube par jayegi.'};
 async function decide(id,next){
-  try{let ok=false;await updateState(st=>{const j=st.jobs[id];if(!j||!/_(ready|sent)$/.test(j.status))return false;j.status=next;j.updated=nowIso();j.decided_via='dashboard';j.decided_at=j.updated;ok=true},`dashboard: ${id} -> ${next}`);
-    toast(ok?'Done. Slack gets a note within a minute.':'Status already changed — refreshed.');load()}catch(e){toast(e.message,true)}}
+  S.editing=false;
+  try{let ok=false;await updateState(st=>{const j=st.jobs[id];if(!j||!/_(ready|sent)$/.test(j.status))return false;j.status=next;addNote(j,DECIDE_NOTE[next]);j.updated=nowIso();j.decided_via='dashboard';j.decided_at=j.updated;ok=true},`dashboard: ${id} -> ${next}`);
+    toast(ok?'Done — Slack gets the same note within a minute.':'Status already changed — refreshed.');load()}catch(e){toast(e.message,true)}}
 function askFeedback(id,next,q,isDrop,prefix=''){
   modal(`<h3>${esc(isDrop?'Drop this story':'Your note for Claude')}</h3><p>${esc(q)}</p>${isDrop?'':`<textarea id="fb" rows="5" placeholder="${prefix?'e.g. bigger text, red box, show the swamp':'Be specific: shot number or second, and what to change'}"></textarea>`}<div class="row"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn ${isDrop?'danger':'pri'}" onclick="sendFeedback('${id}','${next}','${prefix}')">${isDrop?'Drop it':'Send to Claude'}</button></div>`);
 }
-async function sendFeedback(id,next,prefix){
-  const t=$('#fb')?$('#fb').value.trim():'drop';if(!t)return toast('Write a note first.',true);
+async function sendFeedback(id,next,prefix){const t=$('#fb')?$('#fb').value.trim():'drop';if(!t)return toast('Write a note first.',true);closeModal();doFeedback(id,next,prefix+t)}
+async function doFeedback(id,next,text){
+  S.editing=false;
   try{await updateState(st=>{const j=st.jobs[id];if(!j)return false;j.status=next;j.updated=nowIso();j.decided_via='dashboard';j.decided_at=j.updated;
-    j.feedback=((j.feedback?j.feedback+'\n':'')+`[${nowIso()}] ${prefix}${t}`).slice(-3000)},`dashboard: feedback for ${id}`);
-    closeModal();toast('Sent. Claude picks it up in its next hourly run.');load()}catch(e){toast(e.message,true)}}
+    j.feedback=((j.feedback?j.feedback+'\n':'')+`[${nowIso()}] ${text}`).slice(-3000);
+    addNote(j,next==='dropped'?'🗑 Aap ne dashboard se ye story drop ki.':`🛠 Changes note ho gaye (dashboard): "${text.slice(0,180)}" — Claude agle run mein (by ${hm(nextClaudeRun())} PKT) inhe lagana shuru karega.`)},`dashboard: feedback for ${id}`);
+    toast(next==='dropped'?'Dropped.':'Sent. Claude starts on it by '+hm(nextClaudeRun())+' PKT — updates appear here and in Slack.');load()}catch(e){toast(e.message,true)}}
 async function unapprove(id){if(!confirm('Move this video back to review? It will not be published until you approve it again.'))return;
-  try{await updateState(st=>{const j=st.jobs[id];if(j.status!=='video_approved')return false;j.status='video_ready';j.updated=nowIso();j.decided_via='dashboard';j.decided_at=j.updated},`dashboard: ${id} back to review`);load()}catch(e){toast(e.message,true)}}
+  try{await updateState(st=>{const j=st.jobs[id];if(j.status!=='video_approved')return false;j.status='video_ready';j.updated=nowIso();j.decided_via='dashboard';j.decided_at=j.updated;addNote(j,'↩️ Aap ne dashboard se video wapas review mein bulaya — abhi publish nahi hogi. Naya review message aa raha hai.')},`dashboard: ${id} back to review`);load()}catch(e){toast(e.message,true)}}
 async function editScript(){
   const id=S.sel;const f=await readJson(`jobs/${id}/script.md`);S.editing=true;
   $('#panel').innerHTML=`<div class="note">Edit the words freely. Keep the shot table and "## Voice-over" section — Claude builds from them. After saving, approve the script as usual.</div><textarea class="code" id="scr">${esc(f.text)}</textarea><div class="row"><button class="btn" onclick="S.editing=false;renderTab()">Cancel</button><button class="btn pri" onclick="saveScript('${f.sha}')">Save script</button></div>`;

@@ -83,8 +83,8 @@ if (mode === 'send') {
   await updateState((st) => {
     let ch = false;
     for (const [id, j] of Object.entries(st.jobs)) {
-      if (j.status === 'script_ready') { j.status = 'script_sent'; j.updated = now(); toSend.push(['script', id, j]); ch = true; }
-      else if (j.status === 'video_ready') { j.status = 'video_sent'; j.updated = now(); toSend.push(['video', id, j]); ch = true; }
+      if (j.status === 'script_ready') { j.status = 'script_sent'; j.updated = now(); j.vote_msg = ''; j.vote_kind = ''; toSend.push(['script', id, j]); ch = true; }
+      else if (j.status === 'video_ready') { j.status = 'video_sent'; j.updated = now(); j.vote_msg = ''; j.vote_kind = ''; toSend.push(['video', id, j]); ch = true; }
     }
     return ch;
   }, 'n8n: sending to Slack');
@@ -107,17 +107,17 @@ if (mode === 'send') {
         }
         if (!posted) await dPost(`${head}\nWatch: ${j.video_url}`);
         await sleep(500);
-        for (const p of chunks(`*Description:*\n${meta.description}`)) { await dPost(p); await sleep(500); }
         try {
           const turl = `https://raw.githubusercontent.com/${cfg.github_owner}/${cfg.github_repo}/main/jobs/${id}/thumbnail.jpg?t=${Date.now()}`;
           const tb = Buffer.from(await http({ method: 'GET', url: turl, encoding: 'arraybuffer' }));
           await dPostFile(`🖼 *Thumbnail — ${id}* (YouTube par yahi lagega)`, `${id}_thumbnail.jpg`, tb);
         } catch (e) { await dPost(`⚠️ *${id}* ka thumbnail nahi mila — approve karne par default (logo) thumbnail lagega.`); }
         await sleep(500);
+        for (const p of chunks(`*Description:*\n${meta.description}`)) { await dPost(p); await sleep(500); }
         vote = await dPost(`👆 *${id}* — ✅ = video + thumbnail dono approve (publish day par upload hoga).\n❌ = reject, phir likhein kya theek karna hai. Sirf thumbnail badalna ho to likhein: \`thumbnail: <kya change>\` — video dobara nahi banegi, sirf naya thumbnail aayega.\nFull quality file: ${j.video_url}`);
       }
       await react(vote.id, YES); await react(vote.id, NO);
-      await updateState((st) => { st.jobs[id].vote_msg = vote.id; return true; }, `n8n: vote message ${id}`);
+      await updateState((st) => { st.jobs[id].vote_msg = vote.id; st.jobs[id].vote_kind = kind; return true; }, `n8n: vote message ${id}`);
       log.push(`sent ${kind} ${id}`);
     } catch (e) {
       log.push(`FAILED to send ${kind} ${id}: ${e.message}`);
@@ -132,6 +132,7 @@ if (mode === 'replies') {
   const decided = [];
   for (const [id, j] of Object.entries(st0.jobs)) {
     if (!j.vote_msg || !['script_sent', 'video_sent'].includes(j.status)) continue;
+    if (j.vote_kind !== (j.status === 'script_sent' ? 'script' : 'video')) continue;   // old/other-stage message: ignore its ✅
     const yes = (await reactors(j.vote_msg, YES)).length > 0; await sleep(300);
     const no = !yes && (await reactors(j.vote_msg, NO)).length > 0; await sleep(300);
     if (!yes && !no) continue;
@@ -161,14 +162,6 @@ if (mode === 'replies') {
     render_failed: '⚠️ Render fail hua. Claude agle check mein theek karega.',
     script_ready: '📝 Naya / updated script tayyar, abhi bhejta hoon.',
   };
-  const DASH = {
-    script_approved: '✅ Script dashboard se approve hua. Claude ek ghante ke andar video banana shuru karega.',
-    script_rejected: '❌ Script dashboard se wapas bheja gaya. Aapka note:',
-    video_approved: '✅ Video dashboard se approve hua. Agle publish din 05:00 PKT par jayegi.',
-    video_rejected: '❌ Video dashboard se wapas bheja gaya. Aapka note:',
-    video_ready: '↩️ Video dashboard se wapas review mein aaya (abhi publish nahi hoga) — naya review message aa raha hai.',
-    dropped: '🗑 Story dashboard se drop ki gayi.',
-  };
   const stP = JSON.parse((await ghGet('state.json')).text);
   data.seen = data.seen || {}; data.prog = data.prog || {};
   const seeded = data.seeded; data.seeded = true;
@@ -178,7 +171,6 @@ if (mode === 'replies') {
     if (data.seen[id] !== j.status) {
       data.seen[id] = j.status;
       if (ANNOUNCE[j.status]) { await dPost(`*${id}* — ${ANNOUNCE[j.status]}`); await sleep(400); }
-      else if (j.decided_via === 'dashboard' && j.decided_at === j.updated && DASH[j.status]) { await dPost(`*${id}* — ${DASH[j.status]}${j.status.endsWith('_rejected') && j.feedback ? '\n> ' + j.feedback.split('\n').slice(-1)[0] : ''}`); await sleep(400); }
     }
     const done = data.prog[id] || 0;
     if (total > done) {
@@ -219,7 +211,7 @@ if (mode === 'replies') {
         if (t.toLowerCase() === 'drop') j.status = 'dropped';
         j.feedback = ((j.feedback ? j.feedback + '\n' : '') + `[${now()}] ${t}`).slice(-3000); j.updated = now(); return true;
       }, `n8n: feedback for ${id}`);
-      await dPost(t.toLowerCase() === 'drop' ? `🗑 Dropped *${id}*. Claude will pick a new story.` : `📝 Got it. Claude will fix *${id}* in its next run and post it again.`);
+      await dPost(t.toLowerCase() === 'drop' ? `🗑 Dropped *${id}*. Claude will pick a new story.` : `🛠 Changes note ho gaye: *${id}*. Claude agle hourly run mein (zyada se zyada ~1 ghanta) inhe lagana shuru karega — har step ki update yahan aur dashboard par aayegi.`);
       log.push(`feedback ${id}`);
     }
   }
@@ -231,7 +223,11 @@ if (mode === 'publish') {
   const days = (stNow.config && stNow.config.publish_days) || ['Mon', 'Wed', 'Fri', 'Sun'];
   const today = new Date().toLocaleDateString('en-US', { weekday: 'short', timeZone: 'Asia/Karachi' });
   const pick = Object.entries(stNow.jobs).filter(([, j]) => j.status === 'video_approved').sort((a, b) => (a[1].updated || '').localeCompare(b[1].updated || ''))[0];
+  const dayKey = (t) => new Date(t).toLocaleDateString('en-CA', { timeZone: 'Asia/Karachi' });
+  const todayKey = dayKey(Date.now());
+  const takenBy = Object.entries(stNow.jobs).find(([, j]) => (j.live_at && dayKey(j.live_at) === todayKey) || (j.published_at && dayKey(j.published_at) === todayKey));
   if (!days.includes(today)) log.push(`not a publish day (${today})`);
+  else if (takenBy) log.push(`today's slot already used by ${takenBy[0]}`);
   else if (!pick) {
     log.push('nothing approved to publish');
     await dPost(`⚠️ Publish day (${today}) but no approved video is waiting. Type \`!status\` to see the board.`);
