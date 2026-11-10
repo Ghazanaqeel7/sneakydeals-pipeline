@@ -60,8 +60,14 @@ install anything, or research. If another job is already `building`, do not star
    and `set_status <id> script_ready`. **Owner ideas first:** run `python3 pipeline/scripts/pop_idea.py`; if it
    prints an idea (queued by the owner on the dashboard), that is the story — research it, and if it is not true or
    not usable, say so in the script message and pick your own instead.
+   **Then the content calendar:** if no owner idea, open `docs/calendar.json` and take the first item (top to bottom)
+   with `status: "planned"` — its topic/angle/title are the brief (still fact-check; the title is a draft). After you
+   push the script, set that item's `status` to `"scripted"` and `"job": "<id>"`, commit + push. If the item is
+   `format: "long"`, make it as a Short for now (long-form production does not exist yet) and keep its long idea in
+   `long_later`. Only if the calendar has no planned item, pick your own story.
 6. **Weekly learning** — only in the Monday story-hour run (Monday 11:00-11:59 Asia/Karachi). See "Weekly learning"
    below. Runs from the first week; with few videos everything is labelled "early signal".
+   **On Mondays do step 6 before step 5**, so the day's new story already comes from the new calendar.
 7. End with a short summary of what you did (it is shown to the owner).
 
 ## New story (script stage)
@@ -147,10 +153,18 @@ This is how the system trains itself. Free data first; vidIQ only if credits are
    or [start] (untested); upgrade/downgrade labels as evidence arrives; drop rules the data contradicts; update the
    "Last updated" line. Keep owner-written lines unless the owner removed them. Append the strongest lessons to
    `docs/LEARNINGS.md` (one dated line each; update a conflicting older line instead of adding a second one).
-4. Commit + push, then post 5-8 short lines to the owner with
+4. **Write this week's content calendar** in `docs/calendar.json` (move the old file to
+   `docs/calendar/<its week>.json` first). `week` = this Monday's date. One item per publish day in
+   `config.publish_days`, in order; pattern: Shorts on Mon/Wed/Fri/Sun, long-form on Tue/Thu/Sat (owner's plan). Each
+   item: `day` ("Mon 16 Nov"), `format` ("short"/"long"), `topic` (the true story in one line), `angle`, `title`
+   (draft, playbook rules), `why` (the data behind it: research score / trend / our own results, one line),
+   `status: "planned"`. Owner ideas still in the queue go first. Never repeat a story already in `state.json`.
+   Keep a planned item from last week that was never scripted only if it is still a good fit.
+5. Commit + push, then post 5-8 short lines to the owner with
    `python3 pipeline/scripts/progress.py weekly-review "<line>"` — e.g. "📊 Hafta: 4 Shorts, 12.4K views, +86 subs",
    "🥇 Best: Disney swamp — 3 din mein 8K views (hook: brand + secret)", "📈 Niche mein barh raha: Pepsi, Sears",
-   "🧠 Playbook update: …", "🧪 Agle hafte test: …". Simple Roman Urdu/English.
+   "🧠 Playbook update: …", "🧪 Agle hafte test: …", and the calendar in 2-3 lines
+   ("📅 Is hafte: Mon Pudding Guy · Tue (long) Blockbuster …"). Simple Roman Urdu/English.
 
 ## Never
 - publish, upload, or change anything on YouTube/Instagram/Facebook
