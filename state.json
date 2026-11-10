@@ -32,9 +32,13 @@
         {
           "t": "2026-11-10T12:17:08Z",
           "msg": "🎙 Voice tayyar (55 s) (~50 min baqi, phir render ~40 min)"
+        },
+        {
+          "t": "2026-11-10T12:17:16Z",
+          "msg": "🎬 Scenes: 8 locations plan — swamp, cattle ranch, drawing office, land office, lawyer office, map room, California press trip, printing press + Orlando ballroom (~45 min baqi)"
         }
       ],
-      "progress_count": 2
+      "progress_count": 3
     }
   }
 }
