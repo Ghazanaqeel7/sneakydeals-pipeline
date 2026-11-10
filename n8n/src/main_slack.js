@@ -249,7 +249,46 @@ if (mode === 'publish') {
     await updateState((st) => { st.jobs[id].status = 'published'; st.jobs[id].published_at = now(); return true; }, `n8n: published ${id}`);
     await dPost(`🚀 Publishing now: *${meta.title}*\nZapier will upload it to YouTube within ~15 minutes.\n\nAfter it is live, pin this comment:\n> ${meta.pinned_comment || ''}`);
     log.push(`published ${id}`);
+
+    // ---- Instagram + Facebook Reels (added Nov 2026). Separate feed, separate Zaps; YouTube above is untouched.
+    // Any error here only posts a Slack warning — it can never undo or block the YouTube publish.
+    if (!(stNow.config && stNow.config.reels === false)) {
+      try {
+        const cap = reelsCaption(meta);
+        const rItem = `<item>\n<title>${esc(meta.title)}</title>\n<description><![CDATA[${cap.replace(/]]>/g, '')}]]></description>\n<link>${esc(thumbUrl)}</link>\n<guid isPermaLink="false">${esc(id)}</guid>\n<pubDate>${new Date().toUTCString()}</pubDate>\n<enclosure url="${esc(j.video_url)}" type="video/mp4" length="0"/>\n</item>\n`;
+        for (let i = 0; i < 3; i++) {
+          const f = await ghGet('feed/reels.xml');
+          if (f.text.includes(`<guid isPermaLink="false">${esc(id)}</guid>`)) break;
+          try { await ghPut('feed/reels.xml', f.text.replace('<!--ITEMS-->', '<!--ITEMS-->\n' + rItem), f.sha, `reels ${id}`); break; } catch (e) { if (i === 2) throw e; await sleep(1500); }
+        }
+        await updateState((st) => { st.jobs[id].reels_at = now(); return true; }, `n8n: reels ${id}`);
+        await dPost(`📱 Instagram + Facebook Reels: *${meta.title}* queue ho gaya — Zapier ~15 min mein post karega.`);
+        log.push(`reels ${id}`);
+      } catch (e) {
+        log.push(`reels failed ${id}: ${String(e.message || e).slice(0, 200)}`);
+        await dPost(`⚠️ YouTube theek hai, lekin IG/FB Reels feed update nahi hua (${id}). Claude se kahein check kare.`);
+      }
+    }
   }
+}
+
+// Caption for IG/FB: meta.reels_caption if set, else the YouTube description without #shorts,
+// max 5 hashtags, "follow" instead of "subscribe", plus the pinned-comment question. IG limit 2200 chars.
+function reelsCaption(meta) {
+  if (meta.reels_caption) return String(meta.reels_caption).slice(0, 2200);
+  const parts = String(meta.description || '').split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean);
+  const out = [];
+  let tags = [];
+  for (const p of parts) {
+    if (/^(#\w+\s*)+$/.test(p)) { tags = p.match(/#\w+/g).filter((t) => t.toLowerCase() !== '#shorts'); continue; }
+    if (/^🔔/.test(p) || /subscribe/i.test(p)) { out.push('🔔 Follow for a new sneaky deal every week.'); continue; }
+    out.push(p);
+  }
+  if (meta.pinned_comment) out.push('💬 ' + meta.pinned_comment);
+  if (tags.length) out.push(tags.slice(0, 5).join(' '));
+  let c = out.join('\n\n');
+  if (c.length > 2200) c = c.slice(0, 2190).replace(/\s+\S*$/, '') + '…';
+  return c;
 }
 
 return [{ json: { mode, log } }];
