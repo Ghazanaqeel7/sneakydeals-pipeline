@@ -99,7 +99,9 @@ install anything, or research. If another job is already `building`, do not star
   - `SHOTS.txt` — `key | exact spoken text`, one line per shot, first key `hook`
   - `meta.json` — `title` (≤ 60 chars, brand + shock, no year), `description` (story in 2 short paragraphs,
     "⚠️ Dramatised…" line, `Sources:` list, subscribe line, 5-7 hashtags incl. #shorts), `tags` (8-10),
-    `pinned_comment` (a question that invites an opinion), `thumb` (filled at build stage)
+    `pinned_comment` (a question that invites an opinion), `thumb` (filled at build stage),
+    `instagram` {`caption`, `hashtags`} and `facebook` {`title`, `description`, `hashtags`} — written for each
+    platform, not copied from YouTube (see "Instagram + Facebook" below)
   - `telegram.md` — what the owner reads to approve (≤ 3500 chars, plain text): title, hook, the full narration
     shot by shot, 3-5 key facts each with its 2 sources, what you left out and why. Write it in simple English.
 - Commit + push, then `set_status <id> script_ready title="<title>"`.
@@ -138,21 +140,38 @@ Also post the final thumbnail the same way (`--image jobs/<id>/thumbnail.jpg`).
 5. Do not commit `node_modules/`, `out/`, `stills/`, `RAW.wav` (see .gitignore). Commit + push, then
    `set_status <id> render_queued`.
 
-## Instagram + Facebook Reels
+## Instagram + Facebook
 
-On publish day, right after the YouTube feed item, n8n also adds the same video to `feed/reels.xml` (caption =
-`meta.json.reels_caption` if you wrote one, otherwise the YouTube description with `#shorts` removed, max 5
-hashtags, "Follow" instead of "Subscribe", plus the pinned-comment question). Two Zapier Zaps post it:
-RSS → Instagram for Business "Publish Video" (Reel) and RSS → Facebook Pages "Create Page Video". The job gets
-`reels_at`. `config.reels: false` in state.json switches this off. Reels need: 9:16, 3-90 s (Facebook API limit),
-≥ 540x960 — our 720x1280, 45-60 s files already fit. Keep big text and captions out of the bottom ~third of the
-frame where IG/FB put their caption and buttons. You still never publish anything yourself.
+On publish day, right after the YouTube feed item, n8n adds the same video to `feed/reels.xml` (Zap → Instagram
+Reel on @sneakydealstv) and `feed/facebook.xml` (Zap → Sneaky Deals Facebook Page), and sets `ig_at` / `fb_at` on
+the job. `config.reels: false` switches both off. The owner sees the three platforms on each job page and can edit
+the Instagram/Facebook text in the "Instagram · Facebook" tab until it is sent (never overwrite those edits).
+
+**Write `meta.json.instagram` and `meta.json.facebook` at the script stage** (and rewrite them when a script is
+rejected). Each platform has its own audience and search, so research them for this story — a few web searches on
+current Instagram Reels / Facebook Reels caption and hashtag practice for business/history content, plus the
+playbook's Instagram/Facebook rules; use the `ig-caption` skill if it is available.
+- `instagram.caption`: first line = the hook, ≤ 125 characters (that is all people see before "more"), with the
+  brand + key words people search for (Instagram captions are searchable). Then 2-4 short lines of story, one
+  question that invites comments, one CTA (follow / save / share). No links (not clickable), no "#shorts",
+  no "subscribe". Plain line breaks, ≤ 2,200 characters.
+- `instagram.hashtags`: 3-5 precise tags (Instagram allows at most 5): 1-2 topic/brand tags + 1-2 niche tags
+  (e.g. #businesshistory) + #sneakydeals. No giant generic tags only.
+- `facebook.title`: brand + shock, ≤ 80 characters. `facebook.description`: 2-3 short sentences, end with a question;
+  `facebook.hashtags`: 0-3.
+- Same facts as the YouTube script, no new claims. The dramatisation note may be shortened to one line.
+
+Reels need: 9:16, 3-90 s (Facebook API limit), ≥ 540x960 — our 720x1280, 45-60 s files fit. Keep big text and
+captions out of the bottom ~third of the frame where IG/FB put their caption and buttons. You never publish anything
+yourself.
 
 ## Weekly learning (research data → playbook → Slack)
 
 This is how the system trains itself. Free data first; vidIQ only if credits are left (`vidiq_balance` ≥ 25).
 1. Read `docs/research/own_videos.json` (our videos: views at 1/3/7 days, like rate, length), `docs/research/trends.json`
    (30-day memory: rising/falling brands and words, title patterns of this week's hits) and `docs/research/latest.json`.
+   Instagram/Facebook numbers are not readable automatically yet: use what the owner shares (screenshots/notes in
+   Slack or the ideas queue) and keep the playbook's Instagram/Facebook rules at [start]/[signal] until then.
    If vidIQ credits allow: `vidiq_channel_analytics` top_videos for the last 28 days (averageViewPercentage,
    engagedViews, subscribersGained) — retention is the one thing the free data does not have.
 2. Compare our videos with each other at the same age (views_3d is the fairest). Look for patterns: topic, brand,
