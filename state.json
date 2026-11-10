@@ -104,6 +104,15 @@
       "decided_at": "2026-11-10T17:19:48Z",
       "vote_kind": "",
       "feedback": ""
+    },
+    "research": {
+      "progress": [
+        {
+          "t": "2026-11-10T21:42:09Z",
+          "msg": "🔎 Research hafta tayyar (dashboard → Research)"
+        }
+      ],
+      "progress_count": 1
     }
   }
 }
