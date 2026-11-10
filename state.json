@@ -21,7 +21,8 @@
       "status": "script_sent",
       "updated": "2026-11-10T08:05:09Z",
       "title": "Disney Secretly Bought a Swamp Using Fake Names",
-      "send_error": "connect ETIMEDOUT 20.207.73.85:443"
+      "send_error": "connect ETIMEDOUT 20.207.73.85:443",
+      "vote_msg": "1794297917.121689"
     }
   }
 }
