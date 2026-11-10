@@ -57,9 +57,12 @@ export const PALETTES = {
   mustard: {jacket: '#d9a441', jacket2: '#bf8f36', tie: '#3e5a7a', hair: '#5a3a26'},
   pink: {jacket: '#d77a9c', jacket2: '#bf6687', tie: '#2f5d62', hair: '#6b4430'},
   navy: {jacket: '#2e3f6b', jacket2: '#26355a', tie: '#e0533d', hair: '#1f1a18'},
+  trench: {jacket: '#b8915c', jacket2: '#9c7a4a', tie: '#3a3a3f', hair: '#2b1d17'},
+  denim: {jacket: '#4f79a8', jacket2: '#3f6590', tie: '#c8463a', hair: '#8a5a3b'},
+  suit: {jacket: '#3a3f4a', jacket2: '#30343d', tie: '#c8463a', hair: '#3b2a22'},
 };
 
-export function character({palette = 'engineer', hat = 'none', glasses = false, seed = 1, scale = 1} = {}) {
+export function character({palette = 'engineer', hat = 'none', glasses = false, shades = false, seed = 1, scale = 1} = {}) {
   const P = PALETTES[palette];
   const root = new THREE.Group();
   const body = new THREE.Group(); root.add(body);
@@ -103,6 +106,18 @@ export function character({palette = 'engineer', hat = 'none', glasses = false, 
       const ring = new THREE.Mesh(new THREE.RingGeometry(0.075, 0.095, 24), inkMat); ring.position.set(ex, -0.0, 0.03); head.add(ring);
     }
     const br = stick(-0.035, 0.0, 0.035, 0.0, 0.01, 0.01); br.position.z = 0.03; head.add(br);
+  }
+  if (shades) {
+    for (const ex of [-0.11, 0.11]) { const d = new THREE.Mesh(new THREE.CircleGeometry(0.095, 20), new THREE.MeshBasicMaterial({color: '#1a1414'})); d.position.set(ex, 0.0, 0.032); head.add(d); }
+    const br = stick(-0.03, 0.02, 0.03, 0.02, 0.012, 0.012); br.position.z = 0.033; head.add(br);
+  }
+  if (hat === 'fedora') {
+    head.add(flat(circlePts(0, 0.2, 0.25, 0.17, 20, 0, Math.PI), '#6b4f33', 0.035, 0.02, seed + 19));
+    head.add(flat([[-0.24, 0.27], [0.24, 0.27], [0.24, 0.24], [-0.24, 0.24]], '#2e2a2b', 0.037, 0.02, seed + 20));
+    head.add(flat([[-0.42, 0.2], [0.42, 0.2], [0.4, 0.15], [-0.4, 0.15]], '#6b4f33', 0.036, 0.02, seed + 21));
+  } else if (hat === 'straw') {
+    head.add(flat(circlePts(0, 0.2, 0.22, 0.15, 20, 0, Math.PI), '#e3c37a', 0.035, 0.02, seed + 22));
+    head.add(flat([[-0.48, 0.21], [0.48, 0.21], [0.44, 0.15], [-0.44, 0.15]], '#d9b465', 0.036, 0.02, seed + 23));
   }
   if (hat === 'cap') {
     head.add(flat(circlePts(0, 0.17, 0.3, 0.13, 20, 0, Math.PI), P.jacket2, 0.035, 0.02, seed + 13));

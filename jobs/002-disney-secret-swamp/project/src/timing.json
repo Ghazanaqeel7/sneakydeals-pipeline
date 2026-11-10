@@ -1,90 +1,94 @@
 {
  "fps": 30,
- "duration": 63.23,
+ "duration": 55.44,
  "shots": [
   {
    "key": "hook",
    "start": 0.15,
-   "end": 5.582,
-   "words": 15,
-   "text": "In nineteen seventy-eight, welders secretly patched a brand new New York skyscraper, every single night."
-  },
-  {
-   "key": "cta",
-   "start": 5.974,
-   "end": 11.538,
-   "words": 23,
-   "text": "Before we go deep into today's story, take a second to like this video and subscribe if you haven't. Let's get into it."
-  },
-  {
-   "key": "tower",
-   "start": 11.93,
-   "end": 16.684,
-   "words": 13,
-   "text": "It stood fifty-nine stories high on giant stilts, and it had just opened."
-  },
-  {
-   "key": "rules",
-   "start": 17.077,
-   "end": 20.643,
-   "words": 11,
-   "text": "The building rules only asked about wind hitting the flat sides."
-  },
-  {
-   "key": "but",
-   "start": 21.036,
-   "end": 26.334,
-   "words": 16,
-   "text": "But a student asked about corner winds, and the numbers showed about forty percent more force."
-  },
-  {
-   "key": "then",
-   "start": 26.726,
-   "end": 31.59,
-   "words": 16,
-   "text": "Then the engineer learned the builders had swapped his welded joints for bolts to save money."
-  },
-  {
-   "key": "storm",
-   "start": 31.983,
-   "end": 35.961,
-   "words": 14,
-   "text": "A big enough storm could snap those bolts, right in the middle of Manhattan."
+   "end": 2.607,
+   "words": 8,
+   "text": "Disney bought a secret swamp using fake names."
   },
   {
    "key": "yousee",
-   "start": 36.353,
-   "end": 42.624,
-   "words": 19,
-   "text": "You see, a weld turns a joint into one solid piece. Bolts are only as strong as the bolts."
+   "start": 3.027,
+   "end": 6.225,
+   "words": 13,
+   "text": "You see, Walt Disney wanted to build a huge new park in Florida."
   },
   {
-   "key": "night",
-   "start": 43.017,
-   "end": 48.297,
+   "key": "but",
+   "start": 6.645,
+   "end": 10.016,
+   "words": 13,
+   "text": "But if sellers heard the name Disney, every acre would cost a fortune."
+  },
+  {
+   "key": "shells",
+   "start": 10.436,
+   "end": 14.824,
    "words": 14,
-   "text": "Every night after the offices emptied, welders covered the bolted joints with steel plates."
+   "text": "So his team bought land through companies with names like Reedy Creek Ranch Corporation."
   },
   {
-   "key": "ella",
-   "start": 48.69,
-   "end": 53.756,
-   "words": 15,
-   "text": "During the repair, Hurricane Ella headed for New York, and evacuation plans were drawn up."
+   "key": "lott",
+   "start": 15.244,
+   "end": 18.918,
+   "words": 11,
+   "text": "One company was even called M. T. Lott. Say it fast."
   },
   {
-   "key": "so",
-   "start": 54.148,
-   "end": 58.165,
-   "words": 10,
-   "text": "So everyone watched the forecasts, until the storm turned away."
+   "key": "cheap",
+   "start": 19.338,
+   "end": 23.335,
+   "words": 14,
+   "text": "Swamp, scrub and cattle pasture went for less than two hundred dollars an acre."
+  },
+  {
+   "key": "ladder",
+   "start": 23.755,
+   "end": 29.18,
+   "words": 14,
+   "text": "Starting in nineteen sixty-four, parcel by parcel, they gathered more than twenty-seven thousand acres."
+  },
+  {
+   "key": "size",
+   "start": 29.6,
+   "end": 32.343,
+   "words": 9,
+   "text": "You see, that's about twice the size of Manhattan."
+  },
+  {
+   "key": "then",
+   "start": 32.763,
+   "end": 37.864,
+   "words": 17,
+   "text": "Then a reporter, Emily Bavar, asked Walt about the mystery buyer on a press trip in California."
+  },
+  {
+   "key": "reveal",
+   "start": 38.284,
+   "end": 43.741,
+   "words": 17,
+   "text": "In October nineteen sixty-five, her newspaper put it on the front page: the mystery buyer is Disney."
+  },
+  {
+   "key": "announce",
+   "start": 44.161,
+   "end": 48.86,
+   "words": 14,
+   "text": "So weeks later, Walt, his brother Roy and Florida's governor announced it in Orlando."
   },
   {
    "key": "close",
-   "start": 58.558,
-   "end": 62.476,
-   "words": 13,
-   "text": "The repair worked, and the public didn't hear about it until nineteen ninety-five."
+   "start": 49.28,
+   "end": 54.694,
+   "words": 14,
+   "text": "Walt died in nineteen sixty-six. He never saw that swamp become Walt Disney World."
   }
+ ],
+ "hookTitle": [
+  "SECRET",
+  "SWAMP?!"
  ]
 }
