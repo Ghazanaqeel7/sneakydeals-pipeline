@@ -28,9 +28,13 @@
         {
           "t": "2026-11-10T12:13:34Z",
           "msg": "🎙 Voice ban rahi hai… (~60 min baqi, phir render ~40 min)"
+        },
+        {
+          "t": "2026-11-10T12:17:08Z",
+          "msg": "🎙 Voice tayyar (55 s) (~50 min baqi, phir render ~40 min)"
         }
       ],
-      "progress_count": 1
+      "progress_count": 2
     }
   }
 }
