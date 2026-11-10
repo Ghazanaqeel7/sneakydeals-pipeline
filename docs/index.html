@@ -33,8 +33,11 @@ button,input,textarea,select{font:inherit;color:inherit}
 .dot.ok{background:var(--ok)}.dot.warn{background:#d39b00}.dot.bad{background:var(--bad)}.dot.run{background:var(--info);animation:pulse 1.2s infinite}
 @keyframes pulse{50%{opacity:.25}}
 .auth{display:flex;align-items:center;gap:8px;padding:0 16px;border-left:1px solid var(--rule)}
-.layout{display:grid;grid-template-columns:330px 1fr;min-height:calc(100vh - 58px)}
-aside{border-right:1px solid var(--rule);background:var(--sheet)}
+.layout{display:grid;grid-template-columns:330px minmax(0,1fr);grid-template-rows:auto 1fr;grid-template-areas:"jobs main" "feed main";min-height:calc(100vh - 58px)}
+.a-jobs{grid-area:jobs}.a-feed{grid-area:feed;border-top:0}#main{grid-area:main;min-width:0}
+details>summary{list-style:none;cursor:pointer}details>summary::-webkit-details-marker{display:none}
+.track-m{display:none}
+aside{border-right:1px solid var(--rule);background:var(--sheet);min-width:0}
 .sect{font:10.5px var(--mono);text-transform:uppercase;letter-spacing:.9px;color:var(--ink3);padding:14px 16px 6px;display:flex;justify-content:space-between}
 .job{display:block;width:100%;text-align:left;border:0;border-top:1px solid var(--rule2);background:none;padding:11px 16px;cursor:pointer}
 .job:hover{background:#f6f3ec}
@@ -138,7 +141,55 @@ textarea.code{font:12.5px/1.55 var(--mono);min-height:520px}
 .overview>div:last-child{border-right:0}
 .overview .big{font:500 26px/1 var(--serif)}
 .overview .lbl{margin-bottom:8px}
-@media (max-width:900px){.layout{grid-template-columns:1fr}aside{border-right:0;border-bottom:1px solid var(--rule)}.grid2,.grid3{grid-template-columns:1fr}.track{grid-template-columns:repeat(4,1fr)}.overview{grid-template-columns:1fr 1fr}.brand{min-width:0}}
+@media (max-width:900px){
+  html,body{overflow-x:hidden;font-size:14px}
+  .top{flex-wrap:wrap;position:static}
+  .brand{min-width:0;flex:1;border-right:0;padding:12px 14px}
+  .auth{border-left:0;padding:0 14px}
+  .systems{order:3;flex-basis:100%;display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--rule);overflow:visible}
+  .sys{min-width:0;white-space:normal;border-bottom:1px solid var(--rule2);padding:8px 12px}
+  .sys:nth-child(2n){border-right:0}
+  .sys .v{font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .sys .s{font-size:11.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .layout{grid-template-columns:minmax(0,1fr);grid-template-areas:"jobs" "main" "feed";grid-template-rows:auto}
+  aside{border-right:0}
+  .a-jobs{border-bottom:1px solid var(--ink)}
+  .a-jobs .sect{padding:10px 14px 4px}
+  .job{padding:10px 14px}
+  .job .meta{flex-wrap:wrap;gap:4px 10px}
+  .a-feed{border-top:1px solid var(--ink)}
+  main{padding:16px 14px 40px}
+  h1{font-size:21px}
+  .track{display:none}
+  .track-m{display:block;margin:14px 0 2px}
+  .track-m .bar{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+  .track-m .bar i{height:6px;background:var(--rule)}
+  .track-m .bar i.done{background:var(--ink2)}.track-m .bar i.now{background:var(--ink)}.track-m .bar i.now.attn{background:var(--sig)}.track-m .bar i.now.err{background:var(--bad)}
+  .track-m .lab{display:flex;justify-content:space-between;font:11px var(--mono);color:var(--ink3);margin-top:5px;text-transform:uppercase;letter-spacing:.5px}
+  .actionbar{padding:12px 14px;margin-top:14px}
+  .actionbar .msg{min-width:0}
+  .actionbar .btn{flex:1}
+  .review{grid-template-columns:1fr !important;padding:14px;gap:16px}
+  .review video{max-height:72vh;width:auto;max-width:100%;margin:0 auto}
+  .review .thumbwrap img{max-width:220px}
+  .review .btn{width:100%;padding:12px}
+  .review .vo{max-height:none}
+  .tabs{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{white-space:nowrap;padding:8px 12px}
+  .panel{padding:14px}
+  .grid2,.grid3{grid-template-columns:1fr}
+  .log li{grid-template-columns:1fr;gap:2px}
+  .log img{max-width:100%}
+  .md table{display:block;overflow-x:auto}
+  .kv{grid-template-columns:110px 1fr}
+  .overview{grid-template-columns:1fr 1fr}
+  .overview>div:nth-child(2){border-right:0}.overview>div:nth-child(-n+2){border-bottom:1px solid var(--rule)}
+  .feed li{padding:7px 14px}
+  .box{padding:16px}
+  textarea.code{min-height:60vh}
+  .sub{gap:6px 12px}
+}
 </style>
 </head>
 <body>
@@ -148,13 +199,15 @@ textarea.code{font:12.5px/1.55 var(--mono);min-height:520px}
   <div class="auth" id="auth"></div>
 </header>
 <div class="layout">
-  <aside>
+  <aside class="a-jobs">
     <div class="sect"><span>Jobs</span><span id="sync" class="mono"></span></div>
     <div id="jobs"></div>
-    <div class="sect" style="margin-top:14px"><span>Activity</span><span>all systems</span></div>
-    <ul class="feed" id="feed"></ul>
   </aside>
   <main id="main"><div class="empty">Loading pipeline…</div></main>
+  <aside class="a-feed">
+    <details id="feedwrap" open><summary class="sect"><span>Activity</span><span>all systems</span></summary>
+    <ul class="feed" id="feed"></ul></details>
+  </aside>
 </div>
 <div id="layer"></div>
 <script>
@@ -235,7 +288,7 @@ async function load(){
 }
 function parseFeed(x){const d=new DOMParser().parseFromString(x,'text/xml');return[...d.querySelectorAll('item')].map(i=>({title:i.querySelector('title')?.textContent,guid:i.querySelector('guid')?.textContent,date:i.querySelector('pubDate')?.textContent})).filter(i=>i.guid!=='setup-sample')}
 function whoOf(c){const m=c.commit.message,a=c.commit.author.name;
-  if(/^dashboard/i.test(m))return['you','You'];if(/^n8n|^publish /i.test(m))return['n8n','n8n'];
+  if(/^dashboard: /.test(m))return['you','You'];if(/^n8n: |^publish /.test(m))return['n8n','n8n'];
   if(a==='render-bot'||/github-actions/.test(a))return['render','Render'];if(a==='claude-pipeline'||/claude/i.test(a))return['claude','Claude'];return['you',a]}
 
 // ---------- render ----------
@@ -277,7 +330,7 @@ function renderMain(){
     <div class="sub mono" style="font-size:11.5px">${esc(id)}</div>
     <h1>${esc(j.title||titleFromId(id))}</h1>
     <div class="sub"><span>${chip(j)}</span><span>Updated ${ago(j.updated)} (${pkt(j.updated)} PKT)</span>${slots[id]?`<span><b>Goes live ${pkt(slots[id])} PKT</b></span>`:''}${j.video_url?`<a href="${esc(j.video_url)}" target="_blank">Full-quality file ↗</a>`:''}</div>
-    ${j.status==='dropped'?'':`<div class="track">${track}</div>`}
+    ${j.status==='dropped'?'':`<div class="track">${track}</div><div class="track-m"><div class="bar">${STAGES.map((x,i)=>`<i class="${i<idx?'done':''} ${i===idx?'now'+(attn?' attn':'')+(err?' err':''):''}"></i>`).join('')}</div><div class="lab"><span>Step ${idx+1} of 7 · ${STAGES[Math.max(idx,0)]}</span><span>${idx<6?'Next: '+STAGES[idx+1]:''}</span></div></div>`}
     ${actionBar(id,j,lastP)}
     ${reviewBlock(id,j)}
     <div class="tabs">${[['progress','Progress'],['script','Script'],['media','Voice · Video · Thumbnail'],['publish','YouTube details'],['frames','Check frames']].map(([k,n])=>`<button class="tab ${S.tab===k?'on':''}" onclick="setTab('${k}')">${n}</button>`).join('')}</div>
@@ -291,7 +344,7 @@ function reviewBlock(id,j){
     const v=j.preview_url||j.video_url;
     return `<div class="review">
       <div><div class="lbl">Watch the video</div>${v?`<video controls playsinline preload="metadata" src="${esc(v)}" onloadedmetadata="this.muted=false;this.volume=1"></video><div class="note">No sound? Click 🔊 in the player, or <a href="${esc(j.video_url||v)}" target="_blank">open the full file ↗</a> and play it on your laptop.</div>`:'<div class="empty">No video file.</div>'}</div>
-      <div><div class="lbl">Thumbnail</div><img src="${RAW}/jobs/${esc(id)}/thumbnail.jpg?u=${encodeURIComponent(j.updated||'')}" onclick="zoom(this.src)" onerror="this.outerHTML='<div class=empty>No thumbnail — the logo thumbnail would be used.</div>'"><div class="note" style="margin-top:10px">Video, thumbnail and the YouTube text are approved together.</div></div>
+      <div class="thumbwrap"><div class="lbl">Thumbnail</div><img src="${RAW}/jobs/${esc(id)}/thumbnail.jpg?u=${encodeURIComponent(j.updated||'')}" onclick="zoom(this.src)" onerror="this.outerHTML='<div class=empty>No thumbnail — the logo thumbnail would be used.</div>'"><div class="note" style="margin-top:10px">Video, thumbnail and the YouTube text are approved together.</div></div>
       <div><div class="lbl">Your decision</div>
         <button class="btn go" style="width:100%;padding:11px"${lock} onclick="decide('${id}','video_approved')">Approve video + thumbnail</button>
         <div class="note" style="margin:10px 0 12px">Goes out ${publishSlots(Object.assign({},S.state,{jobs:{...S.state.jobs,[id]:{...j,status:'video_approved',updated:'9999'}}}))[id]?'on '+pkt(publishSlots(Object.assign({},S.state,{jobs:{...S.state.jobs,[id]:{...j,status:'video_approved',updated:'9999'}}}))[id])+' PKT':'on the next publish slot'} if you approve now.</div>
@@ -331,7 +384,7 @@ function actionBar(id,j,lastP){
     btns=''}
   else if(s==='video_ready'||s==='video_sent'){msg=`<b>The video is ready for review.</b><span>Play it below, check the thumbnail, then approve or ask for changes. Same as ✅ / ❌ in Slack.</span>`;
     btns=''}
-  else if(s==='script_rejected'||s==='video_rejected'){msg=`<b>Changes requested — Claude is on it.</b><span>${j.feedback?'Your note: '+esc(j.feedback.split('\n').slice(-1)[0]):'Waiting for your note. Add one so Claude knows what to fix.'}</span>`;
+  else if(s==='script_rejected'||s==='video_rejected'){msg=`<b>Changes requested — Claude is on it.</b><span>${j.feedback?'Progress updates appear below and in Slack.':'Waiting for your note. Add one so Claude knows what to fix.'}</span>`;
     btns=j.feedback?'':`<button class="btn pri"${lock} onclick="askFeedback('${id}','${s}','What should change?')">Add note</button>`}
   else if(s==='video_approved'){msg=`<b>Approved and scheduled.</b><span>On the publish day at ${esc((S.state.config||{}).publish_time_pkt||'05:00')} PKT n8n hands it to Zapier, which uploads it to YouTube within ~15 min.</span>`;
     btns=`<button class="btn"${lock} onclick="unapprove('${id}')">Pull back to review</button>`}
@@ -467,6 +520,7 @@ async function saveDays(){const d=[...document.querySelectorAll('.days input:che
 async function addIdea(){const t=$('#idea').value.trim();if(!t)return;try{await updateState(st=>{st.ideas=st.ideas||[];st.ideas.push(t)},'dashboard: add story idea');toast('Idea queued for Claude.');load()}catch(e){toast(e.message,true)}}
 async function dropIdea(i){try{await updateState(st=>{(st.ideas||[]).splice(i,1)},'dashboard: remove story idea');load()}catch(e){toast(e.message,true)}}
 
+try{if(matchMedia('(max-width:900px)').matches)$('#feedwrap').removeAttribute('open')}catch(e){}
 load();setInterval(()=>{if(!document.hidden)load()},TOKEN?15000:45000);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)load()});
 </script>

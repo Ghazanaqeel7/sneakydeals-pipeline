@@ -19,6 +19,14 @@
     "box": "DISNEY",
     "line1": "BOUGHT A",
     "line2": "SECRET SWAMP?!",
-    "box_color": "#3f8f4a"
+    "box_color": "#3f8f4a",
+    "sign": {
+      "text": "LAND FOR SALE",
+      "x": 12,
+      "y": 870,
+      "w": 500,
+      "size": 100,
+      "rotate": -3
+    }
   }
 }
