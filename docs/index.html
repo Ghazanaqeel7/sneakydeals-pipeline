@@ -245,6 +245,9 @@ audio{width:100%;filter:invert(.88) hue-rotate(180deg);border-radius:999px}
 .cm{font-size:12.5px;color:var(--ink2);margin-top:6px}.cm span{font:500 10px var(--mono);text-transform:uppercase;letter-spacing:.8px;color:var(--ink3);margin-right:8px}
 .cs{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
 @media (max-width:900px){.ci{grid-template-columns:1fr}.cd{display:flex;gap:10px;align-items:center}.cd b{margin:0}}
+.plats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 4px}.pl{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 12px 6px 8px;font-size:13px}
+.pl .pi{width:22px;text-align:center}.pl a{font-size:12px;color:var(--ink3)}
+.igprev{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:13.5px;line-height:1.45;margin-top:6px}
 .rsug{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;margin-top:8px}.rsug ul{margin:6px 0 0;padding-left:16px;color:var(--ink2);font-size:13px}.rsug li.hit{color:var(--mint)}
 @media (max-width:900px){.rv{grid-template-columns:96px 1fr 58px 58px;gap:10px}.rv img{width:96px}.rv .rd{display:none}.rv>div:last-child{grid-column:2/5}}
 </style>
@@ -392,9 +395,10 @@ function renderMain(){
     <h1>${esc(j.title||titleFromId(id))}</h1>
     <div class="sub"><span>${chip(j)}</span><span>Updated ${ago(j.updated)}</span>${slots[id]?`<span style="color:var(--gold2)">Goes live ${pkt(slots[id])} PKT</span>`:''}${j.video_url?`<a href="${esc(j.video_url)}" target="_blank">Full-quality file ↗</a>`:''}</div></div></div>
     ${j.status==='dropped'?'':`<div class="track">${track}</div><div class="track-m"><div class="bar">${STAGES.map((x,i)=>`<i class="${i<idx?'done':''} ${i===idx?'now'+(attn?' attn':'')+(err?' err':''):''}"></i>`).join('')}</div><div class="lab"><span>Step ${idx+1} of 7 · ${STAGES[Math.max(idx,0)]}</span><span>${idx<6?'Next: '+STAGES[idx+1]:''}</span></div></div>`}
+    ${platformStrip(id,j)}
     ${actionBar(id,j,lastP)}
     ${reviewBlock(id,j)}
-    <div class="tabs">${[['progress','Progress'],['script','Script'],['media','Voice · Video · Thumbnail'],['publish','YouTube details'],['frames','Check frames']].map(([k,n])=>`<button class="tab ${S.tab===k?'on':''}" onclick="setTab('${k}')">${n}</button>`).join('')}</div>
+    <div class="tabs">${[['progress','Progress'],['script','Script'],['media','Voice · Video · Thumbnail'],['publish','YouTube details'],['social','Instagram · Facebook'],['frames','Check frames']].map(([k,n])=>`<button class="tab ${S.tab===k?'on':''}" onclick="setTab('${k}')">${n}</button>`).join('')}</div>
     <div class="panel" id="panel"><div class="empty">Loading…</div></div>`;
   renderTab();
 }
@@ -501,6 +505,29 @@ async function renderTab(){
       <div class="note" style="margin-top:14px">Title edits are used as-is on upload. Keep it under 70 characters so it is not cut on phones.</div>
     </div></div>`;count();
   }
+  if(S.tab==='social'){
+    let meta;try{meta=await cached(`jobs/${id}/meta.json`,'json')}catch(e){P.innerHTML='<div class="empty">meta.json not written yet.</div>';return}
+    const ig=meta.instagram||{},fb=meta.facebook||{},auto=!ig.caption;
+    const igLock=TOKEN&&!j.ig_at,fbLock=TOKEN&&!j.fb_at,dis=(ok)=>ok?'':'disabled';
+    const tags=(t)=>Array.isArray(t)?t.join(' '):(t||'');
+    P.innerHTML=`<div class="grid2"><div>
+      <div class="lbl" style="font-size:12px;color:var(--ink)">📸 Instagram Reel · @sneakydealstv</div>
+      ${auto?'<div class="note">Claude has not written an Instagram caption for this video yet — the YouTube description is adapted automatically. Write your own below to override it.</div>':''}
+      <div class="field"><div class="lbl">Caption <span class="counter" id="igc"></span></div><textarea id="ig_cap" rows="11" ${dis(igLock)} oninput="dirty();countS()" placeholder="First line = the hook (shows before 'more'). Then the story, the question, the CTA.">${esc(ig.caption||'')}</textarea></div>
+      <div class="field"><div class="lbl">Hashtags (max 5) <span class="counter" id="igh"></span></div><input type="text" id="ig_tags" value="${esc(tags(ig.hashtags))}" ${dis(igLock)} oninput="dirty();countS()" placeholder="#business #disney #history"></div>
+      <div class="lbl" style="font-size:12px;color:var(--ink);margin-top:22px">📘 Facebook Reel · Sneaky Deals Page</div>
+      <div class="field"><div class="lbl">Title <span class="counter" id="fbt"></span></div><input type="text" id="fb_title" value="${esc(fb.title||meta.title)}" ${dis(fbLock)} oninput="dirty();countS()"></div>
+      <div class="field"><div class="lbl">Description</div><textarea id="fb_desc" rows="7" ${dis(fbLock)} oninput="dirty()" placeholder="Empty = use the Instagram caption">${esc(fb.description||'')}</textarea></div>
+      <div class="field"><div class="lbl">Hashtags (max 3)</div><input type="text" id="fb_tags" value="${esc(tags(fb.hashtags))}" ${dis(fbLock)} oninput="dirty()"></div>
+      ${TOKEN&&(igLock||fbLock)?`<button class="btn pri" onclick="saveSocial()">Save Instagram + Facebook</button>`:`<div class="note">${TOKEN?'Already sent to Instagram/Facebook — edit the post in the app.':'Unlock editing to change these.'}</div>`}
+    </div><div>
+      <div class="lbl">How it goes out</div>
+      <div class="kv"><div>When</div><div>Same morning as YouTube, right after it (${publishSlots(S.state)[id]?pkt(publishSlots(S.state)[id])+' PKT':esc(nextSlotText(S.state))+' PKT'})</div><div>Instagram</div><div>n8n → feed/reels.xml → Zapier → Reel</div><div>Facebook</div><div>n8n → feed/facebook.xml → Zapier → Page video</div><div>Video</div><div>Same file as YouTube (9:16)</div></div>
+      <div class="lbl" style="margin-top:20px">Instagram preview</div>
+      <div class="igprev"><b>sneakydealstv</b> <span id="ig_prev"></span></div>
+      <div class="note" style="margin-top:14px">Instagram shows only the first ~125 characters before "more" — put the hook there. Instagram now favours a few precise hashtags (max 5) and keyword-rich captions (they are searchable). Facebook: short title, end with a question to get comments.</div>
+    </div></div>`;countS();
+  }
   if(S.tab==='frames'){
     let files=[];try{files=(await api(`/contents/jobs/${id}/review?ref=${BR}`)).filter(f=>/\.(jpe?g|png)$/i.test(f.name))}catch(e){}
     P.innerHTML=files.length?`<div class="frames">${files.map(f=>`<figure><img loading="lazy" src="${RAW}/jobs/${esc(id)}/review/${esc(f.name)}" onclick="zoom(this.src)"><figcaption>${esc(f.name)}</figcaption></figure>`).join('')}</div><div class="note" style="margin-top:12px">Claude renders these still frames to check every scene before the full render.</div>`:'<div class="empty">No check frames yet.</div>';
@@ -508,6 +535,17 @@ async function renderTab(){
   if(j.status==='published'){const pin=$('#pinned');if(pin){try{const m=await cached(`jobs/${id}/meta.json`,'json');pin.textContent='“'+(m.pinned_comment||'')+'”'}catch(e){}}}
   }catch(e){P.innerHTML=`<div class="empty">Could not load: ${esc(e.message)}</div>`}
 }
+function countS(){const c=$('#ig_cap'),h=$('#ig_tags'),t=$('#fb_title');if(!c)return;
+  const n=(h.value.match(/#?\w+/g)||[]).length;$('#igc').textContent=c.value.length+' / 2200';$('#igh').textContent=n+' / 5';$('#igh').style.color=n>5?'var(--coral)':'';
+  if(t)$('#fbt').textContent=t.value.length+' / 250';
+  const first=(c.value||'').split('\n')[0];$('#ig_prev').textContent=first.length>125?first.slice(0,125)+'… more':first||'(YouTube description is used)'}
+function platformStrip(id,j){
+  const slot=publishSlots(S.state)[id],reelsOn=!(S.state.config&&S.state.config.reels===false);
+  const yt=j.live_at?(new Date(j.live_at)>new Date()?['wait','Scheduled '+pkt(j.live_at)]:['ok','Live since '+pkt(j.live_at)]):j.published_at?['ok','Sent '+pkt(j.published_at)]:slot?['wait','Goes '+pkt(slot)]:['mute','Not scheduled'];
+  const soc=(at)=>{if(!reelsOn)return['mute','Off'];if(at)return['ok','Sent '+pkt(at)+' · posts ~15 min later'];if(j.published_at||j.live_at)return['mute','Not sent (before IG/FB setup)'];return slot?['wait','Goes with YouTube']:['mute','Waiting']};
+  const ig=soc(j.ig_at||j.reels_at),fb=soc(j.fb_at||j.reels_at);
+  const row=(icon,name,[c,t],link)=>`<div class="pl"><span class="pi">${icon}</span><b>${name}</b><span class="chip c-${c}">${esc(t)}</span>${link?`<a href="${link}" target="_blank">open ↗</a>`:''}</div>`;
+  return `<div class="plats">${row('▶','YouTube',yt,'https://www.youtube.com/@SneakyDeals/shorts')}${row('📸','Instagram',ig,'https://www.instagram.com/sneakydealstv/')}${row('📘','Facebook',fb,'')}</div>`}
 function count(){const t=$('#m_title'),d=$('#m_desc');if(t)$('#tc').textContent=t.value.length+' / 100';if(d)$('#dc').textContent=d.value.length+' / 5000'}
 function dirty(){S.editing=true}
 
@@ -688,6 +726,13 @@ async function saveMeta(){const id=S.sel;try{const f=await readJson(`jobs/${id}/
   if(!m.title)throw new Error('Title cannot be empty.');if(m.title.length>100)throw new Error('YouTube titles max 100 characters.');
   await writeFile(`jobs/${id}/meta.json`,JSON.stringify(m,null,2)+'\n',f.sha,`dashboard: edit YouTube details ${id}`);
   await updateState(st=>{st.jobs[id].title=m.title},`dashboard: title ${id}`);S.editing=false;S.cache={};toast('Saved — this is what YouTube will get.');load()}catch(e){toast(e.message,true)}}
+async function saveSocial(){const id=S.sel;try{const f=await readJson(`jobs/${id}/meta.json`);const m=JSON.parse(f.text);
+  const tg=(v)=>(v.match(/#?[\w]+/g)||[]).map(x=>x.startsWith('#')?x:'#'+x);
+  const j=S.state.jobs[id]||{};
+  if(!j.ig_at){const cap=$('#ig_cap').value.trim(),h=tg($('#ig_tags').value);if(h.length>5)throw new Error('Instagram: max 5 hashtags.');if(cap.length>2200)throw new Error('Instagram caption max 2200 characters.');m.instagram={...(m.instagram||{}),caption:cap,hashtags:h};if(!cap&&!h.length)delete m.instagram}
+  if(!j.fb_at){const t=$('#fb_title').value.trim(),d=$('#fb_desc').value.trim(),h=tg($('#fb_tags').value).slice(0,3);m.facebook={...(m.facebook||{}),title:t||m.title,description:d,hashtags:h}}
+  await writeFile(`jobs/${id}/meta.json`,JSON.stringify(m,null,2)+'\n',f.sha,`dashboard: edit Instagram/Facebook ${id}`);
+  S.editing=false;S.cache={};toast('Saved — this is what Instagram and Facebook will get.');load()}catch(e){toast(e.message,true)}}
 async function saveDays(){S.editing=false;const d=[...document.querySelectorAll('.days input:checked')].map(x=>x.value);if(!d.length)return toast('Pick at least one day.',true);
   try{await updateState(st=>{st.config=st.config||{};st.config.publish_days=d},'dashboard: publish days');toast('Publish days saved.');load()}catch(e){toast(e.message,true)}}
 async function addIdea(){S.editing=false;const t=$('#idea').value.trim();if(!t)return;try{await updateState(st=>{st.ideas=st.ideas||[];st.ideas.push(t)},'dashboard: add story idea');toast('Idea queued for Claude.');load()}catch(e){toast(e.message,true)}}

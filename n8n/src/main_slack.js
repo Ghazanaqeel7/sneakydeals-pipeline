@@ -250,26 +250,51 @@ if (mode === 'publish') {
     await dPost(`🚀 Publishing now: *${meta.title}*\nZapier will upload it to YouTube within ~15 minutes.\n\nAfter it is live, pin this comment:\n> ${meta.pinned_comment || ''}`);
     log.push(`published ${id}`);
 
-    // ---- Instagram + Facebook Reels (added Nov 2026). Separate feed, separate Zaps; YouTube above is untouched.
+    // ---- Instagram + Facebook (added Nov 2026). Own feeds, own Zaps; YouTube above is untouched.
+    // feed/reels.xml -> Zap "Sneaky Deals -> Instagram"; feed/facebook.xml -> Zap "Sneaky Deals -> Facebook".
     // Any error here only posts a Slack warning — it can never undo or block the YouTube publish.
     if (!(stNow.config && stNow.config.reels === false)) {
-      try {
-        const cap = reelsCaption(meta);
-        const rItem = `<item>\n<title>${esc(meta.title)}</title>\n<description><![CDATA[${cap.replace(/]]>/g, '')}]]></description>\n<link>${esc(thumbUrl)}</link>\n<guid isPermaLink="false">${esc(id)}</guid>\n<pubDate>${new Date().toUTCString()}</pubDate>\n<enclosure url="${esc(j.video_url)}" type="video/mp4" length="0"/>\n</item>\n`;
+      const item = (title, body) => `<item>\n<title>${esc(title)}</title>\n<description><![CDATA[${String(body).replace(/]]>/g, '')}]]></description>\n<link>${esc(thumbUrl)}</link>\n<guid isPermaLink="false">${esc(id)}</guid>\n<pubDate>${new Date().toUTCString()}</pubDate>\n<enclosure url="${esc(j.video_url)}" type="video/mp4" length="0"/>\n</item>\n`;
+      const addTo = async (path, xml, label) => {
         for (let i = 0; i < 3; i++) {
-          const f = await ghGet('feed/reels.xml');
-          if (f.text.includes(`<guid isPermaLink="false">${esc(id)}</guid>`)) break;
-          try { await ghPut('feed/reels.xml', f.text.replace('<!--ITEMS-->', '<!--ITEMS-->\n' + rItem), f.sha, `reels ${id}`); break; } catch (e) { if (i === 2) throw e; await sleep(1500); }
+          let f;
+          try { f = await ghGet(path); } catch (e) { if (i === 2) throw e; await sleep(1500); continue; }
+          if (f.text.includes(`<guid isPermaLink="false">${esc(id)}</guid>`)) return;
+          try { await ghPut(path, f.text.replace('<!--ITEMS-->', '<!--ITEMS-->\n' + xml), f.sha, `${label} ${id}`); return; } catch (e) { if (i === 2) throw e; await sleep(1500); }
         }
-        await updateState((st) => { st.jobs[id].reels_at = now(); return true; }, `n8n: reels ${id}`);
-        await dPost(`📱 Instagram + Facebook Reels: *${meta.title}* queue ho gaya — Zapier ~15 min mein post karega.`);
-        log.push(`reels ${id}`);
-      } catch (e) {
-        log.push(`reels failed ${id}: ${String(e.message || e).slice(0, 200)}`);
-        await dPost(`⚠️ YouTube theek hai, lekin IG/FB Reels feed update nahi hua (${id}). Claude se kahein check kare.`);
-      }
+      };
+      const sent = [];
+      try { await addTo('feed/reels.xml', item(meta.title, igCaption(meta)), 'instagram'); sent.push('ig'); }
+      catch (e) { log.push(`instagram feed failed ${id}: ${String(e.message || e).slice(0, 160)}`); }
+      try { const fb = fbPost(meta); await addTo('feed/facebook.xml', item(fb.title, fb.body), 'facebook'); sent.push('fb'); }
+      catch (e) { log.push(`facebook feed failed ${id}: ${String(e.message || e).slice(0, 160)}`); }
+      try {
+        await updateState((st) => { const J = st.jobs[id]; const t = now(); if (sent.includes('ig')) J.ig_at = t; if (sent.includes('fb')) J.fb_at = t; if (sent.length) J.reels_at = t; return true; }, `n8n: social ${id}`);
+      } catch (e) { log.push(`social state failed ${id}`); }
+      if (sent.length === 2) await dPost(`📱 Instagram + Facebook: *${meta.title}* queue ho gaya — Zapier ~15 min mein post karega.`);
+      else await dPost(`⚠️ YouTube theek hai, lekin ${sent.includes('ig') ? 'Facebook' : sent.includes('fb') ? 'Instagram' : 'Instagram aur Facebook'} feed update nahi hua (${id}). Claude se kahein check kare.`);
+      log.push(`social ${id}: ${sent.join('+') || 'none'}`);
     }
   }
+}
+
+const tagLine = (tags, max) => (Array.isArray(tags) ? tags : String(tags || '').split(/[\s,]+/))
+  .map((t) => String(t).trim()).filter(Boolean).map((t) => (t.startsWith('#') ? t : '#' + t)).slice(0, max).join(' ');
+const cap2200 = (c) => (c.length > 2200 ? c.slice(0, 2190).replace(/\s+\S*$/, '') + '…' : c);
+
+// Instagram caption: meta.instagram {caption, hashtags} written by Claude / edited on the dashboard;
+// older jobs fall back to meta.reels_caption or an automatic version of the YouTube description.
+function igCaption(meta) {
+  const ig = meta.instagram || {};
+  if (ig.caption) return cap2200([String(ig.caption).trim(), tagLine(ig.hashtags, 5)].filter(Boolean).join('\n\n'));
+  return reelsCaption(meta);
+}
+
+// Facebook: meta.facebook {title, description, hashtags}; falls back to the Instagram caption.
+function fbPost(meta) {
+  const fb = meta.facebook || {};
+  const body = fb.description ? [String(fb.description).trim(), tagLine(fb.hashtags, 3)].filter(Boolean).join('\n\n') : igCaption(meta);
+  return { title: String(fb.title || meta.title).slice(0, 250), body: cap2200(body) };
 }
 
 // Caption for IG/FB: meta.reels_caption if set, else the YouTube description without #shorts,
