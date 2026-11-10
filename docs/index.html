@@ -186,7 +186,7 @@ const STAT={
   render_failed:[3,'Render failed','bad',false,true],video_ready:[4,'Video waiting','wait',true],video_sent:[4,'Video — your call','wait',true],
   video_rejected:[2,'Fixing video','work'],video_approved:[5,'Scheduled','ok'],published:[6,'Live','ok'],dropped:[-1,'Dropped','mute'],
 };
-const info=(j)=>STAT[j.status]||[0,j.status,'mute'];
+const info=(j)=>{if(j.status==='published'&&j.live_at&&new Date(j.live_at)>new Date())return[5,'On YouTube · scheduled','ok'];return STAT[j.status]||[0,j.status,'mute']};
 function chip(j){const [, label, c]=info(j);return `<span class="chip c-${c}">${esc(label)}</span>`}
 
 function publishSlots(st){
@@ -244,7 +244,7 @@ function renderChrome(){
   const ids=Object.keys(st.jobs).reverse();
   const slots=publishSlots(st);
   $('#jobs').innerHTML=ids.map(id=>{const j=st.jobs[id];
-    const when=slots[id]?'Goes live '+pkt(slots[id]):j.published_at?'Live '+pkt(j.published_at,{hour:undefined,minute:undefined}):ago(j.updated);
+    const when=slots[id]?'Goes live '+pkt(slots[id]):j.live_at?(new Date(j.live_at)>new Date()?'Goes live ':'Live since ')+pkt(j.live_at):j.published_at?'Sent '+pkt(j.published_at):'';
     return `<button class="job ${id===S.sel?'sel':''}" onclick="pick('${id}')"><div class="id">${esc(id)}</div><div class="t">${esc(j.title||titleFromId(id))}</div><div class="meta">${chip(j)}<span>${when}</span></div></button>`}).join('')
     +`<div style="padding:12px 16px;border-top:1px solid var(--rule2)"><button class="btn sm" onclick="pick('__desk')">Desk settings &amp; story ideas</button></div>`;
   $('#feed').innerHTML=S.commits.slice(0,18).map(c=>{const [w,n]=whoOf(c);return `<li><time>${pkt(c.commit.author.date,{month:undefined})}</time><span class="who ${w}">${esc(n)}</span><span>${esc(c.commit.message.split('\n')[0]).slice(0,70)}</span></li>`}).join('');
@@ -280,6 +280,7 @@ function actionBar(id,j,lastP){
     btns=j.feedback?'':`<button class="btn pri"${lock} onclick="askFeedback('${id}','${s}','What should change?')">Add note</button>`}
   else if(s==='video_approved'){msg=`<b>Approved and scheduled.</b><span>On the publish day at ${esc((S.state.config||{}).publish_time_pkt||'05:00')} PKT n8n hands it to Zapier, which uploads it to YouTube within ~15 min.</span>`;
     btns=`<button class="btn"${lock} onclick="unapprove('${id}')">Pull back to review</button>`}
+  else if(s==='published'&&j.live_at&&new Date(j.live_at)>new Date()){msg=`<b>On YouTube, scheduled for ${pkt(j.live_at)} PKT.</b><span>It is uploaded and set to go public by itself. Pin this comment once it is live: <i id="pinned"></i></span>`;btns=`<a class="btn" href="https://studio.youtube.com" target="_blank">Open YouTube Studio ↗</a>`}
   else if(s==='published'){msg=`<b>Handed to YouTube.</b><span>Pin this comment once it is live: ${esc('')}<i id="pinned"></i></span>`;btns=`<a class="btn" href="https://studio.youtube.com" target="_blank">Open YouTube Studio ↗</a>`}
   else if(s==='render_failed'){msg=`<b>Render failed.</b><span>Claude retries in its next hourly run. ${j.render_error?esc(j.render_error):''}</span>`;btns=j.run?`<a class="btn" target="_blank" href="https://github.com/${OWNER}/${REPO}/actions/runs/${j.run}">See the log ↗</a>`:''}
   else if(s==='dropped'){msg=`<b>Dropped.</b><span>This story will not be made.</span>`}
