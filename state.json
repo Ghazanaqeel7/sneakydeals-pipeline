@@ -184,9 +184,14 @@
         {
           "t": "2026-11-11T08:28:02Z",
           "msg": "🏗 Saari 9 jagah tayyar: supermarket, ghar, post office, discount stores wali sarak, garage, Salvation Army hall, tax office, airport, film set (~35 min baqi, phir render ~40 min)"
+        },
+        {
+          "t": "2026-11-11T08:28:04Z",
+          "msg": "🔍 Check frames round 1: hook mein shelf ki khaali pusht nazar aa rahi hai, aisle mein spotlight bohot tez, sarak wala shot door hai, film set mein ek aadmi camera ke bohot qareeb aur thora dark — sab fix kar raha hoon (~25 min baqi, phir render ~40 min)",
+          "image": "jobs/003-pudding-guy-free-flights/review/round1.jpg"
         }
       ],
-      "progress_count": 5,
+      "progress_count": 6,
       "decided_via": "dashboard",
       "decided_at": "2026-11-11T07:50:24Z"
     }
