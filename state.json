@@ -166,10 +166,6 @@
       "vote_kind": "",
       "progress": [
         {
-          "t": "2026-11-11T08:12:36Z",
-          "msg": "🎙 Voice tayyar (56 s) (~1h 15m baqi, phir render ~40 min)"
-        },
-        {
           "t": "2026-11-11T08:12:38Z",
           "msg": "🎬 Scenes: 9 locations plan — supermarket, ghar ka office/kitchen, post office, sarak, garage, community hall, tax office, airport, film set (~1h 10m baqi, phir render ~40 min)"
         },
@@ -228,9 +224,13 @@
         {
           "t": "2026-11-11T11:47:29Z",
           "msg": "🛠 Changes note ho gaye (dashboard): \"thumbnail: Can we use cups image too with 12150 cups ta k audience ki attnetion cup se bhi grab ho or acha hook lagay curiosity paida ho\" — Claude agle run mein (by 17:08 PKT) inhe lagana shuru karega."
+        },
+        {
+          "t": "2026-11-11T12:13:49Z",
+          "msg": "🛠 Aapke changes laga raha hoon: thumbnail mein pudding cups ka bara dher aur '12,150 CUPS!' board saath, video wahi rahegi (~25 min)"
         }
       ],
-      "progress_count": 17,
+      "progress_count": 18,
       "decided_via": "dashboard",
       "decided_at": "2026-11-11T11:47:29Z",
       "run": "42988317343",
