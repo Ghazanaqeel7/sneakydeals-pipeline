@@ -32,7 +32,7 @@ jobs:
         id: pick
         run: |
           if [ -n "${{ github.event.inputs.job }}" ]; then echo "jobs=${{ github.event.inputs.job }}" >> $GITHUB_OUTPUT; else
-          echo "jobs=$(python3 -c "import json;s=json.load(open('state.json'));print(' '.join(k for k,v in s['jobs'].items() if v.get('status')=='render_queued'))")" >> $GITHUB_OUTPUT; fi
+          echo "jobs=$(python3 -c "import json;s=json.load(open('state.json'));print(' '.join(k for k,v in s['jobs'].items() if v.get('status')=='render_queued' and v.get('type')!='long'))")" >> $GITHUB_OUTPUT; fi
 
       - name: Nothing to do
         if: steps.pick.outputs.jobs == ''

@@ -1,0 +1,152 @@
+name: render_long
+# Renders long-form (type "long") jobs whose status is "render_queued". Only runs when config.longform_enabled is true.
+# prepare (voice, music, images) -> chunks in parallel (matrix) -> final (join, audio, release, status video_ready).
+on:
+  push:
+    branches: [main]
+    paths: ['state.json']
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+    inputs:
+      job:
+        description: 'Long job id to (re)render (leave empty = first render_queued long job)'
+        required: false
+
+concurrency:
+  group: render-long
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    outputs:
+      job: ${{ steps.pick.outputs.job }}
+      chunks: ${{ steps.plan.outputs.chunks }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pick long job
+        id: pick
+        run: |
+          J=$(python3 - <<'PY'
+          import json,os
+          s=json.load(open('state.json')); inp=os.environ.get('INPUT_JOB','').strip()
+          if not s.get('config',{}).get('longform_enabled') and not inp: print(''); raise SystemExit
+          for k,v in s['jobs'].items():
+              if v.get('type')=='long' and ((inp and k==inp) or (not inp and v.get('status')=='render_queued')): print(k); break
+          else: print('')
+          PY
+          )
+          echo "job=$J" >> $GITHUB_OUTPUT; echo "picked: '$J'"
+        env:
+          INPUT_JOB: ${{ github.event.inputs.job }}
+      - uses: actions/setup-node@v4
+        if: steps.pick.outputs.job != ''
+        with: { node-version: 20 }
+      - name: System packages
+        if: steps.pick.outputs.job != ''
+        run: |
+          echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections
+          sudo apt-get update -qq; sudo apt-get install -y -qq ffmpeg ttf-mscorefonts-installer fonts-dejavu >/dev/null; fc-cache -f >/dev/null
+      - name: Prepare (validate, images, voice, music)
+        if: steps.pick.outputs.job != ''
+        env: { GH_TOKEN: '${{ github.token }}' }
+        run: |
+          J=${{ steps.pick.outputs.job }}; git config user.name "render-bot"; git config user.email "render-bot@users.noreply.github.com"
+          python3 pipeline/scripts/set_status.py "$J" rendering run="${{ github.run_id }}"
+          python3 pipeline/scripts/progress.py "$J" "🎞 Long video prepare: images, voice aur music ban rahe hain (~10-20 min)" || true
+          python3 pipeline/longform/validate_long.py "jobs/$J"
+          python3 pipeline/longform/fetch_assets.py "jobs/$J"
+          (cd jobs/$J/project && (npm ci --no-audit --no-fund >/dev/null 2>&1 || npm install --no-audit --no-fund >/dev/null) && CH=$(command -v google-chrome || command -v chromium || true) && npx remotion still src/index.jsx Thumb ../thumbnail.jpg --image-format=jpeg --jpeg-quality=92 --gl=swangle ${CH:+--browser-executable=$CH} || echo thumbnail failed)
+          python3 pipeline/longform/make_voice_long.py "jobs/$J"
+          bash pipeline/longform/mix_audio.sh "jobs/$J"
+          python3 pipeline/longform/chapters.py "jobs/$J"
+      - name: Plan chunks
+        id: plan
+        if: steps.pick.outputs.job != ''
+        run: |
+          J=${{ steps.pick.outputs.job }}
+          python3 - <<PY >> $GITHUB_OUTPUT
+          import json,math
+          d=json.load(open('jobs/$J/project/src/timing.json'))['duration']; n=int(round(d*30)); per=2700
+          k=max(1,math.ceil(n/per)); sz=math.ceil(n/k)
+          ch=[{'i':i,'a':i*sz,'b':min(n-1,(i+1)*sz-1)} for i in range(k)]
+          print('chunks='+json.dumps(ch))
+          PY
+      - name: Pack prepared project
+        if: steps.pick.outputs.job != ''
+        run: tar czf prep.tgz --exclude=node_modules --exclude=out -C jobs/${{ steps.pick.outputs.job }} .
+      - uses: actions/upload-artifact@v4
+        if: steps.pick.outputs.job != ''
+        with: { name: prep, path: prep.tgz, retention-days: 3 }
+      - name: Mark failed
+        if: failure() && steps.pick.outputs.job != ''
+        run: python3 pipeline/scripts/set_status.py "${{ steps.pick.outputs.job }}" render_failed run="${{ github.run_id }}"
+
+  chunks:
+    needs: prepare
+    if: needs.prepare.outputs.job != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    strategy:
+      fail-fast: true
+      matrix:
+        c: ${{ fromJson(needs.prepare.outputs.chunks) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - uses: actions/download-artifact@v4
+        with: { name: prep }
+      - name: System packages
+        run: |
+          echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections
+          sudo apt-get update -qq; sudo apt-get install -y -qq ffmpeg ttf-mscorefonts-installer fonts-dejavu >/dev/null; fc-cache -f >/dev/null
+      - name: Render chunk
+        run: |
+          J=${{ needs.prepare.outputs.job }}; mkdir -p jobs/$J && tar xzf prep.tgz -C jobs/$J
+          bash pipeline/longform/render_chunk.sh jobs/$J ${{ matrix.c.a }} ${{ matrix.c.b }} out/chunk.mp4 4
+          mkdir -p /tmp/chunk && cp jobs/$J/project/out/chunk.mp4 /tmp/chunk/chunk_$(printf %03d ${{ matrix.c.i }}).mp4
+      - uses: actions/upload-artifact@v4
+        with: { name: 'chunk-${{ matrix.c.i }}', path: /tmp/chunk, retention-days: 3 }
+
+  final:
+    needs: [prepare, chunks]
+    if: always() && needs.prepare.outputs.job != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fail path
+        if: needs.chunks.result != 'success'
+        env: { GH_TOKEN: '${{ github.token }}' }
+        run: |
+          git config user.name "render-bot"; git config user.email "render-bot@users.noreply.github.com"
+          python3 pipeline/scripts/set_status.py "${{ needs.prepare.outputs.job }}" render_failed run="${{ github.run_id }}"; exit 1
+      - uses: actions/download-artifact@v4
+        with: { path: dl }
+      - name: Join, mix, release
+        env: { GH_TOKEN: '${{ github.token }}' }
+        run: |
+          sudo apt-get update -qq; sudo apt-get install -y -qq ffmpeg >/dev/null
+          J=${{ needs.prepare.outputs.job }}; git config user.name "render-bot"; git config user.email "render-bot@users.noreply.github.com"
+          mkdir -p jobs/$J && tar xzf dl/prep/prep.tgz -C jobs/$J
+          CH=$(ls dl/chunk-*/chunk_*.mp4 | sort -t_ -k2); 
+          bash pipeline/longform/finalize_long.sh jobs/$J $CH
+          TITLE=$(python3 -c "import json;print(json.load(open('jobs/$J/meta.json'))['title'])")
+          gh release delete "job-$J" -y --cleanup-tag 2>/dev/null || true
+          ASSETS="jobs/$J/project/out/final.mp4 jobs/$J/project/out/preview.mp4"
+          [ -f jobs/$J/thumbnail.jpg ] && ASSETS="$ASSETS jobs/$J/thumbnail.jpg"
+          gh release create "job-$J" $ASSETS --title "$TITLE" --notes "Long-form render for $J" --prerelease
+          # persist upload helper data + credits on main (small text files), then flip status
+          git add jobs/$J/upload.json jobs/$J/credits.txt 2>/dev/null || true
+          git commit -m "$J: upload helper data" || true
+          git checkout -- . ; git clean -fdq jobs/$J/project jobs/$J/review 2>/dev/null || true
+          for a in 1 2 3 4 5; do git pull --rebase origin main && git push origin HEAD:main && break || sleep 4; done
+          URL="https://github.com/${{ github.repository }}/releases/download/job-$J/final.mp4"
+          PURL="https://github.com/${{ github.repository }}/releases/download/job-$J/preview.mp4"
+          python3 pipeline/scripts/set_status.py "$J" video_ready video_url="$URL" preview_url="$PURL"
