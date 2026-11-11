@@ -172,9 +172,13 @@
         {
           "t": "2026-11-11T08:11:02Z",
           "msg": "🎙 Voice ban rahi hai… (~1.5 ghante baqi, phir render ~40 min)"
+        },
+        {
+          "t": "2026-11-11T08:12:36Z",
+          "msg": "🎙 Voice tayyar (56 s) (~1h 15m baqi, phir render ~40 min)"
         }
       ],
-      "progress_count": 2,
+      "progress_count": 3,
       "decided_via": "dashboard",
       "decided_at": "2026-11-11T07:50:24Z"
     }
