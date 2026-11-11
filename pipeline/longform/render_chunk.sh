@@ -1,7 +1,7 @@
 #!/bin/bash
 # Render one frame range of the Doc composition. usage: render_chunk.sh jobs/<id> <from> <to> <outfile> [concurrency]
 set -e
-J="$1"; A="$2"; B="$3"; OUT="$4"; C="${5:-4}"; P="$J/project"
+J="$1"; A="$2"; B="$3"; OUT="$4"; C="${5:-4}"; P="$J/project"; NP=$(nproc); [ "$C" -gt "$NP" ] && C=$NP
 CH=$(command -v google-chrome || command -v chromium || command -v chromium-browser)
 cd "$P"; [ -d node_modules ] || { npm ci --no-audit --no-fund >/dev/null 2>&1 || npm install --no-audit --no-fund >/dev/null; }
 mkdir -p out
