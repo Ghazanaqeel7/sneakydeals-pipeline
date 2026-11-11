@@ -180,9 +180,13 @@
         {
           "t": "2026-11-11T08:12:38Z",
           "msg": "🎬 Scenes: 9 locations plan — supermarket, ghar ka office/kitchen, post office, sarak, garage, community hall, tax office, airport, film set (~1h 10m baqi, phir render ~40 min)"
+        },
+        {
+          "t": "2026-11-11T08:28:02Z",
+          "msg": "🏗 Saari 9 jagah tayyar: supermarket, ghar, post office, discount stores wali sarak, garage, Salvation Army hall, tax office, airport, film set (~35 min baqi, phir render ~40 min)"
         }
       ],
-      "progress_count": 4,
+      "progress_count": 5,
       "decided_via": "dashboard",
       "decided_at": "2026-11-11T07:50:24Z"
     }
