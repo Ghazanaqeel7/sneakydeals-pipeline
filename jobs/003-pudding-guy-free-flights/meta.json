@@ -22,11 +22,18 @@
     "box_color": "#2e8b3e",
     "sign": {
       "text": "12,150 CUPS!",
-      "x": 440,
-      "y": 1530,
-      "w": 540,
-      "size": 100,
+      "x": 555,
+      "y": 1480,
+      "w": 420,
+      "size": 96,
       "rotate": 3
+    },
+    "cups": {
+      "x": 10,
+      "y": 1330,
+      "rows": 4,
+      "size": 150,
+      "label": "PUDDING"
     }
   },
   "instagram": {
