@@ -159,8 +159,8 @@
       "progress_count": 12
     },
     "003-pudding-guy-free-flights": {
-      "status": "video_sent",
-      "updated": "2026-11-11T10:30:50Z",
+      "status": "video_rejected",
+      "updated": "2026-11-11T10:55:10Z",
       "title": "This Man Bought $3,000 of Pudding for Free Flights",
       "vote_msg": "",
       "vote_kind": "",
@@ -215,14 +215,19 @@
         {
           "t": "2026-11-11T10:04:55Z",
           "msg": "⏳ Render 75% (1270/1687 frames). Baqi waqt: 1h 55m 25s"
+        },
+        {
+          "t": "2026-11-11T10:55:10Z",
+          "msg": "🛠 Changes note ho gaye (dashboard): \"thumbnail: Use more stronger hook for the thumnail eye cataching and attention grabber\" — Claude agle run mein (by 16:08 PKT) inhe lagana shuru karega."
         }
       ],
-      "progress_count": 12,
+      "progress_count": 13,
       "decided_via": "dashboard",
-      "decided_at": "2026-11-11T07:50:24Z",
+      "decided_at": "2026-11-11T10:55:10Z",
       "run": "42988317343",
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-003-pudding-guy-free-flights/final.mp4",
-      "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-003-pudding-guy-free-flights/preview.mp4"
+      "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-003-pudding-guy-free-flights/preview.mp4",
+      "feedback": "[2026-11-11T10:55:10Z] thumbnail: Use more stronger hook for the thumnail eye cataching and attention grabber"
     }
   }
 }
