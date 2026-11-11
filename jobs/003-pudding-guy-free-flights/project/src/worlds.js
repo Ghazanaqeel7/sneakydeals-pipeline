@@ -95,9 +95,9 @@ export function buildWorld() {
   // the pudding mountain behind the lanes
   const mount = new THREE.Group();
   for (let lvl = 0; lvl < 7; lvl++) { const n = 7 - lvl; const s = Q.caseStack(n, 1, 2, lvl + 5); s.position.set(-n * 0.26, lvl * 0.265, -0.4); mount.add(s); }
-  mount.position.set(ST - 4.0, 0.05, -0.4); W.add(mount);
-  const mount2 = mount.clone(); mount2.position.set(ST + 1.8, 0.05, -1.0); mount2.scale.setScalar(0.8); W.add(mount2);
-  const sale = big('PUDDING SALE', 2.6, 0.6, '#c43d32', '#fff4dc'); sale.position.set(ST - 4.0, 2.55, -0.2); W.add(sale);
+  mount.position.set(ST + 0.2, 0.05, -1.6); W.add(mount);
+  
+  const sale = big('PUDDING SALE', 2.6, 0.6, '#c43d32', '#fff4dc'); sale.position.set(ST + 0.2, 2.55, -1.3); W.add(sale);
   // promo plane mobile (hook): swoops across on "free flights"
   const plane = Q.jet(0.09); plane.position.set(ST - 6, 3.4, 1.5); W.add(plane);
   const fly = big('FLY FREE!', 1.2, 0.4, '#2f6db3', '#ffffff'); W.add(fly);
@@ -116,17 +116,18 @@ export function buildWorld() {
   person('pink', 'none', ST + 4.3, 0.05, -2.2, 31); person('mustard', 'cap', ST + 8.4, 0.05, -1.9, 32);
   W.add(P.at(Q.cart(), ST + 3.6, 0.05, -1.2, 0.6), P.at(Q.cart(), ST + 9.2, 0.05, -2.6, -0.4));
   // pudding aisle (but)
-  for (let i = 0; i < 3; i++) W.add(P.at(Q.storeShelf(3, 20 + i, 2.4), ST - 10 + i * 3.05, 0.05, -3.4));
-  for (let i = 0; i < 3; i++) { const s = Q.storeShelf(3, 30 + i, 2.4); s.position.set(ST - 10 + i * 3.05, 0.05, 1.0); s.rotation.y = Math.PI; W.add(s); }
+  for (let i = 0; i < 2; i++) W.add(P.at(Q.storeShelf(3, 20 + i, 2.4), ST - 10 + i * 3.05, 0.05, -3.4));
+  for (let i = 0; i < 3; i++) { const s = Q.storeShelf(3, 30 + i, 2.4); s.position.set(ST - 10 + i * 3.05, 0.05, 1.0); s.rotation.y = Math.PI; W.add(s); W.add(P.at(Q.storeShelf(3, 50 + i, 2.4), ST - 10 + i * 3.05, 0.05, 1.62)); }
   const pudShelf = new THREE.Group();
-  for (let k = 0; k < 3; k++) for (let i = 0; i < 9; i++) pudShelf.add(P.at(Q.puddingCup(1.5), -0.6 + i * 0.15, 0.2 + k * 0.62, (i % 2) * 0.12));
-  pudShelf.position.set(ST - 3.95, 0.05, -3.55); W.add(pudShelf);
+  pudShelf.add(box(3, 2.4, 0.08, '#e9e3d6', {y: 1.2, z: -0.3, thick: 0.01}));
+  for (let k = 0; k < 4; k++) { const y = 0.15 + k * 0.583; pudShelf.add(box(3, 0.04, 0.6, '#cfc8b8', {y, thick: 0.006}), box(3, 0.07, 0.02, '#f7f0de', {y: y - 0.02, z: 0.31, thick: 0.002})); for (let r = 0; r < 2; r++) for (let i = 0; i < 13; i++) pudShelf.add(P.at(Q.puddingCup(2.2), -1.32 + i * 0.22 + r * 0.11, y + 0.02, 0.12 - r * 0.24)); }
+  pudShelf.position.set(ST - 3.85, 0.05, -3.4); W.add(pudShelf);
   const pudLbl = big('PUDDING', 1.3, 0.3, '#7a4a2a', '#f4e3bf'); pudLbl.position.set(ST - 3.95, 2.45, -3.6); W.add(pudLbl);
-  const spot = Q.spotCone(3.6, 1.0); spot.position.set(ST - 3.95, 4.2, -3.0); W.add(spot); only(spot, 'but');
+  const spot = Q.spotCone(3.6, 0.8, '#fff3c4', 0.12); spot.position.set(ST - 3.95, 4.2, -3.0); W.add(spot); only(spot, 'but');
   const tag25 = big('25¢', 0.8, 0.5, '#f2c12e', INK); tag25.position.set(ST - 3.95, 1.75, -3.0); tag25.rotation.z = 0.08; W.add(tag25); only(tag25, 'but');
   const butMan = hero(ST - 6.2, 0.05, -2.2, 8);
   const butCart = Q.cart(); butCart.position.set(ST - 7.0, 0.05, -1.7); butCart.rotation.y = 0.3; W.add(butCart);
-  person('red', 'none', ST - 9.4, 0.05, -1.4, 33); person('student', 'cap', ST - 2.0, 0.05, -0.6, 34);
+  person('red', 'none', ST - 8.4, 0.05, -2.6, 33); person('student', 'cap', ST - 2.0, 0.05, -0.6, 34);
   W.add(potPlant(ST + 12, 7), potPlant(ST - 12, 7));
 
   // ======================= HOME: office corner (yousee) + kitchen (then) =======================
@@ -174,11 +175,11 @@ export function buildWorld() {
   const poMan = hero(PO - 1.2, 0.05, -1.1, 11);
   const env = new THREE.Group(); env.add(box(0.32, 0.22, 0.02, '#f7f0de', {thick: 0.004})); const eb = Q.barcode(0.12); eb.position.set(0.05, 0, 0.012); env.add(eb); env.position.set(0.12, -0.5, 0.06); poMan.userData.armR.add(env);
   const poSign = big('POST OFFICE', 3.2, 0.6, '#2f5d9e', '#ffffff'); poSign.position.set(PO - 3.6, 3.9, -4.88); W.add(poSign);
-  const calA = sign('APRIL', 1.2, 1.0, {bg: '#ffffff', fg: '#c43d32', w: 360, h: 300, font: 'bold 110px Arial'}); calA.position.set(PO + 0.2, 2.85, -4.85); W.add(calA); only(calA, 'double');
-  const calM = sign('MAY', 1.2, 1.0, {bg: '#ffffff', fg: '#c43d32', w: 360, h: 300, font: 'bold 150px Arial', sub: 'LAST DAY: 31'}); calM.position.set(PO + 0.2, 2.85, -4.8); W.add(calM); only(calM, 'double');
-  const m500 = big('500 MILES', 1.8, 0.6, '#f2e6cc'); m500.position.set(PO + 2.4, 2.9, -4.85); W.add(m500); only(m500, 'double');
-  const m1000 = big('1,000 MILES', 2.1, 0.7, '#3f8f4a', '#ffffff'); m1000.position.set(PO + 2.4, 2.9, -4.75); W.add(m1000); only(m1000, 'double');
-  const x2 = big('x2', 0.6, 0.6, '#c43d32', '#ffffff'); x2.position.set(PO + 3.65, 3.45, -4.7); W.add(x2); only(x2, 'double');
+  const calA = sign('APRIL', 1.2, 1.0, {bg: '#ffffff', fg: '#c43d32', w: 360, h: 300, font: 'bold 110px Arial'}); calA.position.set(PO - 0.2, 2.85, -4.85); W.add(calA); only(calA, 'double');
+  const calM = sign('MAY', 1.2, 1.0, {bg: '#ffffff', fg: '#c43d32', w: 360, h: 300, font: 'bold 150px Arial', sub: 'LAST DAY: 31'}); calM.position.set(PO - 0.2, 2.85, -4.8); W.add(calM); only(calM, 'double');
+  const m500 = big('500 MILES', 1.8, 0.6, '#f2e6cc'); m500.position.set(PO + 1.6, 2.9, -4.85); W.add(m500); only(m500, 'double');
+  const m1000 = big('1,000 MILES', 2.1, 0.7, '#3f8f4a', '#ffffff'); m1000.position.set(PO + 1.6, 2.9, -4.75); W.add(m1000); only(m1000, 'double');
+  const x2 = big('x2', 0.6, 0.6, '#c43d32', '#ffffff'); x2.position.set(PO + 2.85, 3.45, -4.7); W.add(x2); only(x2, 'double');
   for (let i = 0; i < 7; i++) W.add(P.at(Q.mailBag(['#a08a62', '#8f7d5a', '#b39a6e'][i % 3], i), PO + 4.5 + (i % 4) * 0.7, 0.05, -3.8 + Math.floor(i / 4) * 0.9));
   for (let i = 0; i < 5; i++) W.add(P.at(Q.mailBag('#a08a62', i + 3), PO - 6.5 + (i % 3) * 0.7, 0.05, -3.6 + Math.floor(i / 3) * 0.9));
   const pob = new THREE.Group(); for (let i = 0; i < 6; i++) for (let j = 0; j < 4; j++) pob.add(box(0.36, 0.3, 0.05, '#c9a24a', {x: i * 0.4, y: j * 0.34, thick: 0.004})); pob.position.set(PO - 6.8, 1.6, -4.9); W.add(pob);
@@ -288,14 +289,14 @@ export function buildWorld() {
   const ped = cyl(0.45, 0.55, 0.9, '#f2e6cc', {x: FS, y: 0.95, z: -3.6, seg: 18, thick: 0.02}); W.add(ped);
   const starCup = Q.puddingCup(7, {bar: true}); starCup.position.set(FS, 1.4, -3.6); W.add(starCup);
   const sCone = Q.spotCone(5.2, 1.4, '#fff3c4', 0.18); sCone.position.set(FS, 6.6, -3.6); W.add(sCone);
-  const dChair = S.dirChair(); dChair.position.set(FS - 3.6, 0.05, 2.6); dChair.rotation.y = -0.5; W.add(dChair);
+  const dChair = S.dirChair(); dChair.position.set(FS - 3.4, 0.05, 0.6); dChair.rotation.y = -0.5; W.add(dChair);
   const fcam = Q.filmCamera(); fcam.position.set(FS - 2.4, 0.05, 1.4); fcam.rotation.y = Math.PI + 0.3; W.add(fcam);
   const clap = Q.clapper(); clap.position.set(FS + 1.3, 1.3, -1.2); W.add(clap);
   const clapper = person('student', 'cap', FS + 1.6, 0.05, -0.9, 120);
   for (const [x, z, ry] of [[-4.2, -1.0, 0.6], [4.2, -0.8, -0.6], [-6.5, -3.5, 0.9], [6.5, -3.5, -0.9]]) { const l = Q.filmLight(); l.position.set(FS + x, 0.05, z); l.rotation.y = ry; W.add(l); }
-  const hw = big('HOLLYWOOD', 2.4, 0.6, '#f2c12e', INK); hw.position.set(FS, 5.4, -6.8); W.add(hw); only(hw, 'close');
+  const hw = big('HOLLYWOOD', 3.4, 0.85, '#f2c12e', INK); hw.position.set(FS, 4.6, -6.8); W.add(hw); only(hw, 'close');
   W.add(big('QUIET ON SET', 2.2, 0.5, '#c43d32', '#ffffff').translateX(FS - 6.5).translateY(4.4).translateZ(-6.85));
-  person('suit', 'none', FS - 3.4, 0.05, 2.2, 121, {shades: true}); person('welder', 'cap', FS + 3.4, 0.05, 1.8, 122); person('teal', 'none', FS + 5.2, 0.05, -1.4, 123); person('pink', 'none', FS - 5.2, 0.05, 0.4, 124);
+  person('suit', 'none', FS - 4.6, 0.05, -0.6, 121, {shades: true}); person('welder', 'cap', FS + 3.4, 0.05, 1.8, 122); person('teal', 'none', FS + 5.2, 0.05, -1.4, 123); person('pink', 'none', FS - 5.2, 0.05, 0.4, 124);
   W.add(P.at(Q.caseStack(2, 3, 1, 130), FS + 7.5, 0.05, -5.6), P.at(P.toolbox(), FS + 6.0, 0.05, 1.8), P.at(P.ladder(3), FS - 8.5, 0.05, -5.2));
 
   // ======================= per-frame =======================
@@ -323,18 +324,18 @@ export function buildWorld() {
     if (shot === 'double') {
       const fM = wordT('double', 7);
       calA.visible = t < fM; calM.visible = pop(calM, t, fM, 0.3);
-      const fD = wordT('double', 11);
+      const fD = wordT('double', 10.5);
       m500.visible = t < fD; m1000.visible = pop(m1000, t, fD, 0.3); x2.visible = pop(x2, t, fD + 0.1, 0.3);
       poMan.userData.armR.rotation.z = 1.2 * ease(t, wordT('double', 0), wordT('double', 1.5));
     }
     if (shot === 'but') {
       const k = ease(t, wordT('but', 9), wordT('but', 9.6));
-      spot.visible = k > 0.02; spot.material.opacity = 0.25 * k; spot.scale.set(1, 1, 1);
+      spot.visible = k > 0.02; spot.material.opacity = 0.1 * k; spot.scale.set(1, 1, 1);
       tag25.visible = pop(tag25, t, wordT('but', 12), 0.3);
       butMan.userData.armR.rotation.z = t > wordT('but', 9) ? 2.0 : 0;
     }
     if (shot === 'so') {
-      wagon.position.set(lerp(SR - 20, SR + 12, ease(t, wordT('so', 0) - 0.3, wordT('so', 12.5))), 0, 9.6);
+      wagon.position.set(lerp(SR - 16, SR + 12, ease(t, wordT('so', 0) - 0.3, wordT('so', 12.5))), 0, 9.6);
       sCarts.forEach(({c, x, k}, i) => { const t0 = wordT('so', [4.5, 7.5, 10.5][k]) + (i % 2) * 0.25; const kk = ease(t, t0, t0 + 1.2); c.position.set(x, 0.25, lerp(4.0, 6.4, kk)); c.visible = t > t0 - 0.05; });
     }
     if (shot === 'ladder') {
