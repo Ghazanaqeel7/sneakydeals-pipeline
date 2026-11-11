@@ -166,10 +166,6 @@
       "vote_kind": "",
       "progress": [
         {
-          "t": "2026-11-11T08:12:38Z",
-          "msg": "🎬 Scenes: 9 locations plan — supermarket, ghar ka office/kitchen, post office, sarak, garage, community hall, tax office, airport, film set (~1h 10m baqi, phir render ~40 min)"
-        },
-        {
           "t": "2026-11-11T08:28:02Z",
           "msg": "🏗 Saari 9 jagah tayyar: supermarket, ghar, post office, discount stores wali sarak, garage, Salvation Army hall, tax office, airport, film set (~35 min baqi, phir render ~40 min)"
         },
@@ -228,9 +224,14 @@
         {
           "t": "2026-11-11T12:13:49Z",
           "msg": "🛠 Aapke changes laga raha hoon: thumbnail mein pudding cups ka bara dher aur '12,150 CUPS!' board saath, video wahi rahegi (~25 min)"
+        },
+        {
+          "t": "2026-11-11T12:15:52Z",
+          "msg": "✅ Naya thumbnail tayyar: neeche pudding cups ka bara dher (barcode ke saath) aur saath '12,150 CUPS!' board (video wahi hai). Review ke liye abhi bhej raha hoon.",
+          "image": "jobs/003-pudding-guy-free-flights/thumbnail.jpg"
         }
       ],
-      "progress_count": 18,
+      "progress_count": 19,
       "decided_via": "dashboard",
       "decided_at": "2026-11-11T11:47:29Z",
       "run": "42988317343",
