@@ -159,8 +159,8 @@
       "progress_count": 12
     },
     "003-pudding-guy-free-flights": {
-      "status": "render_queued",
-      "updated": "2026-11-11T08:35:54Z",
+      "status": "rendering",
+      "updated": "2026-11-11T08:36:43Z",
       "title": "This Man Bought $3,000 of Pudding for Free Flights",
       "vote_msg": "1794377936.645779",
       "vote_kind": "script",
@@ -203,7 +203,8 @@
       ],
       "progress_count": 8,
       "decided_via": "dashboard",
-      "decided_at": "2026-11-11T07:50:24Z"
+      "decided_at": "2026-11-11T07:50:24Z",
+      "run": "42988317343"
     }
   }
 }
