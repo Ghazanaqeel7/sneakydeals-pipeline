@@ -646,7 +646,7 @@ async function renderTab(){
     let files=[];try{files=(await api(`/contents/jobs/${id}/review?ref=${BR}`)).filter(f=>/\.(jpe?g|png)$/i.test(f.name))}catch(e){}
     P.innerHTML=files.length?`<div class="frames">${files.map(f=>`<figure><img loading="lazy" src="${RAW}/jobs/${esc(id)}/review/${esc(f.name)}" onclick="zoom(this.src)"><figcaption>${esc(f.name)}</figcaption></figure>`).join('')}</div><div class="note" style="margin-top:12px">Claude renders these still frames to check every scene before the full render.</div>`:'<div class="empty">No check frames yet.</div>';
   }
-  if(j.status==='published'){const pin=$('#pinned');if(pin){try{const m=await cached(`jobs/${id}/meta.json`,'json');pin.textContent='“'+(m.pinned_comment||'')+'”'}catch(e){}}}
+  if(j.status==='published'){const pin=$('#pinned');if(pin){try{const m=await cached(`jobs/${id}/meta.json`,'json');pin.textContent='"'+(m.pinned_comment||'')+'"'}catch(e){}}}
   }catch(e){P.innerHTML=`<div class="empty">Could not load: ${esc(e.message)}</div>`}
 }
 function countS(){const c=$('#ig_cap'),h=$('#ig_tags'),t=$('#fb_title');if(!c)return;
@@ -713,7 +713,7 @@ async function renderToday(){
     const it=(C.items||[]).slice(0,7);const el=$('#t_week');if(el)el.innerHTML=it.length?`<div class="week">${it.map(x=>{const j=x.job&&st.jobs[x.job];return `<div class="wd ${x.format==='long'?'long':''} ${tdy&&(x.day||'').replace(/\s+/g,' ')===tdy?'today':''}"><div class="d">${esc(x.day||'')}${x.format==='long'?' · long':''}</div><div class="x">${esc(x.title||x.topic||'')}</div>${j?`<div style="margin-top:6px">${chip(j)}</div>`:''}</div>`}).join('')}</div>`:'<div class="empty" style="padding:6px">No calendar yet — Claude writes one on Monday.</div>'}catch(e){const el=$('#t_week');if(el)el.innerHTML='<div class="empty" style="padding:6px">No calendar yet — Claude writes one on Monday.</div>'}
   try{const R=await cachedDaily('docs/research/latest.json');let T=null;try{T=await cachedDaily('docs/research/trends.json')}catch(e){}
     const top=(R.shorts||[])[0];const up=T&&T.days_of_memory>=8?(T.rising.brands.rising||[]).slice(0,3).map(m=>'↑ '+m.name):((R.hot_words||{}).shorts||[]).slice(0,3).map(w=>w.word);
-    const el=$('#t_res');if(el)el.innerHTML=`${top?`<p>Top Short in our niche right now: “${esc(top.title.slice(0,80))}” — <b style="color:var(--gold2)">${fmtN(top.views)}</b> views, ${top.score}× its channel’s normal.</p>`:'<p>No research yet.</p>'}<div>${up.map(w=>`<span class="rw up">${esc(w)}</span>`).join('')}</div><div class="note" style="margin:0">Updated ${ago(R.full_run)} · runs daily 06:00</div>`}catch(e){const el=$('#t_res');if(el)el.innerHTML='<p class="note">Research appears after the first daily scan.</p>'}
+    const el=$('#t_res');if(el)el.innerHTML=`${top?`<p>Top Short in our niche right now: "${esc(top.title.slice(0,80))}" — <b style="color:var(--gold2)">${fmtN(top.views)}</b> views, ${top.score}× its channel's normal.</p>`:'<p>No research yet.</p>'}<div>${up.map(w=>`<span class="rw up">${esc(w)}</span>`).join('')}</div><div class="note" style="margin:0">Updated ${ago(R.full_run)} · runs daily 06:00</div>`}catch(e){const el=$('#t_res');if(el)el.innerHTML='<p class="note">Research appears after the first daily scan.</p>'}
 }
 
 function pipelineBoard(entries){
@@ -763,26 +763,120 @@ function bigChart(snaps,key,label){const p=(snaps||[]).filter(x=>x[key]!=null).s
   const line=xy.map(([x,y])=>`${x.toFixed(1)},${y.toFixed(1)}`).join(' ');
   return `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" preserveAspectRatio="none" role="img" aria-label="${label} over time"><polygon points="0,${H} ${line} ${W},${H}" fill="#E8EEFF"/><polyline points="${line}" fill="none" stroke="#1F4FE0" stroke-width="2.2" vector-effect="non-scaling-stroke"/></svg>
     <div style="display:flex;justify-content:space-between;font:11px var(--mono);color:var(--ink3);margin-top:6px"><span>${pkt(p[0].t)}</span><span>${fmtN(mn)} → ${fmtN(mx)}</span><span>${pkt(p[p.length-1].t)}</span></div>`}
-async function renderStats(){
-  let O=S.own;try{O=JSON.parse(await readText('docs/research/own_videos.json'));S.own=O}catch(e){}
-  if(!O||!O.channel){$('#main').innerHTML=`<div class="pagehead"><div><div class="kicker">YouTube · @SneakyDeals</div><h1 style="margin:6px 0 0">Stats</h1><p class="lead">The stats bot fetches subscribers and every video’s views each hour. The first numbers appear within an hour of it starting.</p></div></div>`;return}
-  const c=O.channel,vids=Object.entries(O.videos||{}).map(([id,v])=>({id,...v})).sort((a,b)=>(b.published||'').localeCompare(a.published||''));
-  const v24=vids.reduce((a,v)=>a+(v.views_24h||0),0);
-  const d=(n,suf='in 24 h')=>n==null?'<div class="note" style="margin:0">first day of data</div>':`<div class="note" style="margin:0;color:${n>0?'var(--mint)':'var(--ink3)'}">${n>=0?'+':''}${fmtN(n)} ${suf}</div>`;
-  const cell=(x)=>x==null?'<span class="dim">—</span>':fmtN(x);
-  $('#main').innerHTML=`<div class="pagehead"><div><div class="kicker">YouTube · @SneakyDeals</div><h1 style="margin:6px 0 0">Stats</h1><p class="lead">Updated ${ago(O.updated)} · refreshes every hour</p></div>
-    <div class="stats"><div class="stat"><div class="kicker">Subscribers</div><b>${fmtN(c.subs)}</b>${d(c.subs_24h)}</div><div class="stat"><div class="kicker">Channel views</div><b>${fmtN(c.views)}</b>${d(c.views_24h)}</div><div class="stat"><div class="kicker">Views · 24 h</div><b>${fmtN(v24)}</b><div class="note" style="margin:0">all videos</div></div><div class="stat"><div class="kicker">Public videos</div><b>${vids.length}</b><div class="note" style="margin:0">${vids.filter(v=>v.short).length} Short${vids.filter(v=>v.short).length===1?'':'s'}</div></div></div></div>
-    <div class="tgrid"><div class="card chartbox"><div class="sec" style="margin:0 0 12px"><h2>Channel views</h2></div>${bigChart(c.snaps,'views','views')}</div>
-      <div class="card chartbox"><div class="sec" style="margin:0 0 12px"><h2>Subscribers</h2></div>${bigChart(c.snaps,'subs','subscribers')}</div></div>
-    <div class="sec"><h2>Every video</h2><a href="https://studio.youtube.com/channel/${esc(c.id||'')}/analytics" target="_blank">YouTube Studio analytics ↗</a></div>
-    <div class="card" style="overflow-x:auto">${vids.length?`<table class="vt"><thead><tr><th>Video</th><th>Views</th><th>24 h</th><th>Trend</th><th>Day 1</th><th>Day 3</th><th>Day 7</th><th>Likes</th><th>Comments</th><th></th></tr></thead><tbody>
-      ${vids.map(v=>`<tr><td><div class="vv"><img alt="" src="${esc(v.thumb)}" onerror="this.onerror=null;this.src='logo.png'"><div><a href="https://youtu.be/${esc(v.id)}" target="_blank">${esc(v.title)}</a><div class="note" style="margin:3px 0 0">${v.short?'Short':'Long'} · ${durT(v.seconds||0)} · ${ago(v.published)}</div></div></div></td>
-        <td><b>${fmtN(v.views)}</b></td><td class="${v.views_24h>0?'up':'dim'}">${v.views_24h==null?'—':'+'+fmtN(v.views_24h)}</td><td>${spark(v.snaps)}</td><td>${cell(v.views_1d)}</td><td>${cell(v.views_3d)}</td><td>${cell(v.views_7d)}</td>
-        <td>${fmtN(v.likes||0)} <span class="dim">${v.views?Math.round((v.likes||0)/v.views*1000)/10+'%':''}</span></td><td>${fmtN(v.comments||0)}</td>
-        <td><a href="https://studio.youtube.com/video/${esc(v.id)}/analytics" target="_blank" style="font-family:var(--sans)">Analytics ↗</a></td></tr>`).join('')}</tbody></table>`:'<div class="empty" style="padding:20px">No public videos yet. They appear here within an hour of going live.</div>'}</div>
-    <div class="note" style="margin-top:12px">Public numbers from the YouTube Data API, refreshed hourly. YouTube rounds subscriber counts. Watch time, retention and subscribers gained per video are private to the channel owner — open “Analytics ↗” for those (or ask Claude: the Monday learning run reads them when vidIQ credits allow).</div>`;
-}
 
+/* bigChartWithPrediction: draws historical line + 30-day forward dashed prediction */
+function bigChartWithPrediction(snaps,key,label,predDays){predDays=predDays||30;
+  var p=(snaps||[]).filter(function(x){return x[key]!=null}).slice(-200);
+  if(p.length<2)return '<div class="empty" style="padding:24px 0">The '+label+' chart fills in as hourly numbers come in.</div>';
+  var n=p.length,ys=p.map(function(x){return x[key]});
+  var sumX=0,sumY=0,sumXY=0,sumXX=0;
+  for(var i=0;i<n;i++){sumX+=i;sumY+=ys[i];sumXY+=i*ys[i];sumXX+=i*i;}
+  var slope=(n*sumXY-sumX*sumY)/(n*sumXX-sumX*sumX||1);
+  var intercept=(sumY-slope*sumX)/n;
+  var futureN=predDays*24;
+  var futureYs=[];
+  for(var j=0;j<=predDays;j++){futureYs.push(intercept+slope*(n-1+j*(futureN/predDays)));}
+  var allY=ys.concat(futureYs),mn=Math.min.apply(null,allY),mxY=Math.max.apply(null,allY),r=mxY-mn||1;
+  var W=1100,H=200;
+  function toX(i,total){return i/(total-1||1)*W;}
+  function toY(v){return H-10-(v-mn)/r*(H-30);}
+  var histXY=p.map(function(x,i){return [toX(i,n),toY(x[key])];});
+  var histLine=histXY.map(function(pt){return pt[0].toFixed(1)+','+pt[1].toFixed(1);}).join(' ');
+  var predStartX=toX(n-1,n);
+  var predLine=futureYs.map(function(fy,j){var px=predStartX+(j/predDays)*(W-predStartX);return px.toFixed(1)+','+toY(fy).toFixed(1);}).join(' ');
+  var lastHistY=toY(ys[n-1]);
+  var pred30=Math.round(intercept+slope*(n-1+futureN));
+  var diff=pred30-ys[n-1],sign=diff>=0?'+':'';
+  return '<svg viewBox="0 0 '+W+' '+H+'" width="100%" height="'+H+'" preserveAspectRatio="none" role="img" aria-label="'+label+' with 30-day prediction">'+
+    '<defs><linearGradient id="hg_'+key+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1F4FE0" stop-opacity="0.18"/><stop offset="100%" stop-color="#1F4FE0" stop-opacity="0.02"/></linearGradient>'+
+    '<linearGradient id="pg_'+key+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.12"/><stop offset="100%" stop-color="#8B5CF6" stop-opacity="0.01"/></linearGradient></defs>'+
+    '<polygon points="0,'+H+' '+histLine+' '+toX(n-1,n).toFixed(1)+','+H+'" fill="url(#hg_'+key+')"/>'+
+    '<polyline points="'+histLine+'" fill="none" stroke="#1F4FE0" stroke-width="2.4" vector-effect="non-scaling-stroke"/>'+
+    '<line x1="'+predStartX.toFixed(1)+'" y1="0" x2="'+predStartX.toFixed(1)+'" y2="'+H+'" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="4,3" vector-effect="non-scaling-stroke"/>'+
+    '<polygon points="'+predStartX.toFixed(1)+','+H+' '+predLine+' '+W+','+H+'" fill="url(#pg_'+key+')"/>'+
+    '<polyline points="'+predStartX.toFixed(1)+','+lastHistY.toFixed(1)+' '+predLine+'" fill="none" stroke="#8B5CF6" stroke-width="2" stroke-dasharray="6,4" vector-effect="non-scaling-stroke"/>'+
+    '<text x="'+(predStartX+8).toFixed(1)+'" y="16" font-size="11" fill="#8B5CF6" font-family="var(--mono)">30-day forecast -&gt;</text>'+
+    '</svg>'+
+    '<div style="display:flex;justify-content:space-between;align-items:center;font:11px var(--mono);color:var(--ink3);margin-top:6px">'+
+    '<span>'+pkt(p[0].t)+'</span>'+
+    '<span style="color:#8B5CF6;font-weight:600">Forecast: '+fmtN(pred30)+' ('+sign+fmtN(diff)+' from now)</span>'+
+    '<span>Now: '+fmtN(ys[n-1])+'</span></div>';}
+
+function engRate(v){if(!v.views||v.views<10)return '--';var r=((v.likes||0)+(v.comments||0))/v.views*100;return r.toFixed(1)+'%';}
+
+function splitBar(shorts,longs){
+  var total=shorts+longs||1,sp=Math.round(shorts/total*100),lp=100-sp;
+  return '<div style="margin:10px 0 4px;display:flex;gap:0;border-radius:6px;overflow:hidden;height:10px">'+
+    '<div style="width:'+sp+'%;background:#1F4FE0" title="'+shorts+' Shorts"></div>'+
+    '<div style="width:'+lp+'%;background:#F59E0B" title="'+longs+' Long videos"></div></div>'+
+    '<div style="display:flex;gap:16px;font:11px var(--mono);color:var(--ink3)">'+
+    '<span style="color:#1F4FE0">Shorts '+sp+'% ('+shorts+')</span>'+
+    '<span style="color:#F59E0B">Long '+lp+'% ('+longs+')</span></div>';}
+
+async function renderStats(){
+  var O=S.own;try{O=JSON.parse(await readText('docs/research/own_videos.json'));S.own=O;}catch(e){}
+  if(!O||!O.channel){$('#main').innerHTML='<div class="pagehead"><div><div class="kicker">YouTube · @SneakyDeals</div><h1 style="margin:6px 0 0">Stats</h1><p class="lead">The stats bot fetches subscribers and every video&#39;s views each hour. The first numbers appear within an hour of it starting.</p></div></div>';return;}
+  var c=O.channel,vids=Object.entries(O.videos||{}).map(function(e){return Object.assign({id:e[0]},e[1]);}).sort(function(a,b){return (b.published||'').localeCompare(a.published||'');});
+  var shorts=vids.filter(function(v){return v.short;}),longs=vids.filter(function(v){return !v.short;});
+  var v24=vids.reduce(function(a,v){return a+(v.views_24h||0);},0);
+  var sv24=shorts.reduce(function(a,v){return a+(v.views_24h||0);},0);
+  var lv24=longs.reduce(function(a,v){return a+(v.views_24h||0);},0);
+  var topShorts=[].concat(shorts).sort(function(a,b){return (b.views||0)-(a.views||0);}).slice(0,3);
+  var topLongs=[].concat(longs).sort(function(a,b){return (b.views||0)-(a.views||0);}).slice(0,3);
+  function d(n,suf){suf=suf||'in 24 h';return n==null?'<div class="note" style="margin:0">first day of data</div>':'<div class="note" style="margin:0;color:'+(n>0?'var(--mint)':'var(--ink3)')+'">'+(n>=0?'+':'')+fmtN(n)+' '+suf+'</div>';}
+  function cell(x){return x==null?'<span class="dim">—</span>':fmtN(x);}
+  function topCard(v,badge){
+    return '<div style="display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--rule)">'+
+      '<img src="'+esc(v.thumb)+'" style="width:80px;height:45px;object-fit:cover;border-radius:4px;flex-shrink:0" onerror="this.onerror=null;this.src=\'logo.png\'">'+
+      '<div style="flex:1;min-width:0">'+
+      '<div style="font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+
+      '<span class="chip '+(badge==='Short'?'c-ok':'c-work')+'" style="font-size:10px;padding:1px 5px;margin-right:4px">'+badge+'</span>'+
+      '<a href="https://youtu.be/'+esc(v.id)+'" target="_blank">'+esc(v.title)+'</a></div>'+
+      '<div style="font:11px var(--mono);color:var(--ink3);margin-top:2px">'+
+      fmtN(v.views||0)+' views · '+fmtN(v.likes||0)+' likes · '+fmtN(v.comments||0)+' comments · '+
+      '<b style="color:var(--ink)">'+engRate(v)+' engagement</b></div></div></div>';}
+  var topShortsHtml=topShorts.length?topShorts.map(function(v){return topCard(v,'Short');}).join(''):'<div class="empty" style="padding:12px 0">No Shorts yet.</div>';
+  var topLongsHtml=topLongs.length?topLongs.map(function(v){return topCard(v,'Long');}).join(''):'<div class="empty" style="padding:12px 0">No long videos yet.</div>';
+  var rowsHtml=vids.length?'<table class="vt"><thead><tr><th>Video</th><th>Type</th><th>Views</th><th>24 h</th><th>Trend</th><th>Likes</th><th>Comments</th><th>Engagement</th><th>Day 1</th><th>Day 7</th><th></th></tr></thead><tbody>'+
+    vids.map(function(v){
+      return '<tr><td><div class="vv"><img alt="" src="'+esc(v.thumb)+'" onerror="this.onerror=null;this.src=\'logo.png\'"><div>'+
+        '<a href="https://youtu.be/'+esc(v.id)+'" target="_blank">'+esc(v.title)+'</a>'+
+        '<div class="note" style="margin:3px 0 0">'+durT(v.seconds||0)+' · '+ago(v.published)+'</div></div></div></td>'+
+        '<td><span class="chip '+(v.short?'c-ok':'c-work')+'" style="font-size:10px">'+(v.short?'Short':'Long')+'</span></td>'+
+        '<td><b>'+fmtN(v.views)+'</b></td>'+
+        '<td class="'+(v.views_24h>0?'up':'dim')+'">'+(v.views_24h==null?'—':'+'+fmtN(v.views_24h))+'</td>'+
+        '<td>'+spark(v.snaps)+'</td>'+
+        '<td>'+fmtN(v.likes||0)+'</td>'+
+        '<td>'+fmtN(v.comments||0)+'</td>'+
+        '<td><b style="color:'+(parseFloat(engRate(v))>3?'var(--mint)':'var(--ink)')+'">'+engRate(v)+'</b></td>'+
+        '<td>'+cell(v.views_1d)+'</td><td>'+cell(v.views_7d)+'</td>'+
+        '<td><a href="https://studio.youtube.com/video/'+esc(v.id)+'/analytics" target="_blank" style="font-family:var(--sans)">Analytics ↗</a></td></tr>';
+    }).join('')+'</tbody></table>':'<div class="empty" style="padding:20px">No public videos yet. They appear here within an hour of going live.</div>';
+  var channelId=esc(c.id||'');
+  document.getElementById('main').innerHTML=
+    '<div class="pagehead"><div><div class="kicker">YouTube · @SneakyDeals</div>'+
+    '<h1 style="margin:6px 0 0">Stats</h1>'+
+    '<p class="lead">Updated '+ago(O.updated)+' · refreshes every hour</p></div>'+
+    '<div class="stats">'+
+      '<div class="stat"><div class="kicker">Subscribers</div><b>'+fmtN(c.subs)+'</b>'+d(c.subs_24h)+'</div>'+
+      '<div class="stat"><div class="kicker">Total views</div><b>'+fmtN(c.views)+'</b>'+d(c.views_24h)+'</div>'+
+      '<div class="stat"><div class="kicker">Views 24 h</div><b>'+fmtN(v24)+'</b><div class="note" style="margin:0">all videos</div></div>'+
+      '<div class="stat"><div class="kicker">Shorts views 24 h</div><b style="color:#1F4FE0">'+fmtN(sv24)+'</b><div class="note" style="margin:0">'+shorts.length+' Short'+(shorts.length===1?'':'s')+'</div></div>'+
+      '<div class="stat"><div class="kicker">Long views 24 h</div><b style="color:#F59E0B">'+fmtN(lv24)+'</b><div class="note" style="margin:0">'+longs.length+' Long video'+(longs.length===1?'':'s')+'</div></div>'+
+    '</div>'+
+    '<div style="margin-top:10px">'+splitBar(shorts.length,longs.length)+'</div></div>'+
+    '<div class="tgrid">'+
+      '<div class="card chartbox"><div class="sec" style="margin:0 0 4px"><h2>Channel views <span style="font-size:12px;font-weight:400;color:#8B5CF6">+ 30-day forecast</span></h2></div>'+bigChartWithPrediction(c.snaps,'views','views')+'</div>'+
+      '<div class="card chartbox"><div class="sec" style="margin:0 0 4px"><h2>Subscribers <span style="font-size:12px;font-weight:400;color:#8B5CF6">+ 30-day forecast</span></h2></div>'+bigChartWithPrediction(c.snaps,'subs','subscribers')+'</div>'+
+    '</div>'+
+    '<div class="tgrid" style="margin-top:18px">'+
+      '<div class="card" style="padding:16px 18px"><div class="sec" style="margin:0 0 10px"><h2>Top Shorts</h2></div>'+topShortsHtml+'</div>'+
+      '<div class="card" style="padding:16px 18px"><div class="sec" style="margin:0 0 10px"><h2>Top Long videos</h2></div>'+topLongsHtml+'</div>'+
+    '</div>'+
+    '<div class="sec" style="margin-top:22px"><h2>All videos</h2><a href="https://studio.youtube.com/channel/'+channelId+'/analytics" target="_blank">YouTube Studio analytics ↗</a></div>'+
+    '<div class="card" style="overflow-x:auto">'+rowsHtml+'</div>'+
+    '<div class="note" style="margin-top:12px">Public numbers from the YouTube Data API, refreshed hourly. Forecast is a linear trend from historical snapshots — actual growth may vary. Watch time and retention: open Studio analytics.</div>';
+}
 // ---------- settings ----------
 async function renderSettings(){
   await renderDesk();
