@@ -24,7 +24,7 @@
       "live_at": "2026-11-11T00:00:00Z"
     },
     "002-disney-secret-swamp": {
-      "status": "video_approved",
+      "status": "published",
       "updated": "2026-11-10T17:19:48Z",
       "title": "Disney Secretly Bought a Swamp Using Fake Names",
       "send_error": "",
@@ -104,7 +104,8 @@
       "decided_via": "dashboard",
       "decided_at": "2026-11-10T17:19:48Z",
       "vote_kind": "",
-      "feedback": ""
+      "feedback": "",
+      "published_at": "2026-11-11T23:40:39Z"
     },
     "research": {
       "progress": [
