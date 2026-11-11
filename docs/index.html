@@ -161,6 +161,11 @@ h1{font:400 40px/1.08 var(--display);margin:6px 0 12px;letter-spacing:.1px}
 .lf-grid{display:grid;gap:14px}.lf-card{padding:16px}.lf-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
 .lf-step{display:flex;gap:10px;margin:8px 0;font-size:14px;line-height:1.45}.lf-step b{color:var(--gold2);min-width:22px}
 .lf-hook{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding:10px 0;border-top:1px solid var(--line)}.lf-hook .t{font-weight:500}.lf-hook .m{font:11px var(--mono);color:var(--ink3);margin-top:3px}
+.vbadge{display:inline-block;font:600 10.5px var(--mono);text-transform:uppercase;letter-spacing:.4px;padding:2px 8px;border-radius:999px;margin-top:5px}
+.vbadge.v-strong{background:#dff3e6;color:#0E7A54}.vbadge.v-good{background:#e6eefc;color:#2255a3}.vbadge.v-moderate{background:#f2f2ef;color:#6b6b63}.vbadge.v-early{background:#f7f0e3;color:#8A5A00}
+.vwords{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px}.vwords span{font:10px var(--mono);background:var(--bg2);border-radius:6px;padding:1px 6px;color:var(--ink3)}
+.vex{font-size:11.5px;color:var(--ink3);margin-top:4px}
+.qcard{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:12px 0;border-top:1px solid var(--line)}.qcard:first-child{border-top:0}
 .lf-copy{display:grid;gap:8px;margin-top:10px}.lf-copy .r{display:flex;gap:10px;justify-content:space-between;align-items:center;border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:13px}.lf-copy .r span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink2)}
 .lf-thumb{width:200px;aspect-ratio:16/9;object-fit:cover;border-radius:10px;background:var(--bg2)}
 .review video{width:100%;background:#000;border-radius:12px;display:block;aspect-ratio:9/16}
@@ -434,7 +439,7 @@ function whoOf(c){const m=c.commit.message,a=c.commit.author.name;
   if(a==='research-bot')return['render','Research'];if(/^Merge pull request/.test(m)||a===OWNER)return['you','You'];if(a==='render-bot'||/github-actions/.test(a))return['render','Render'];if(a==='claude-pipeline'||/claude/i.test(a))return['claude','Claude'];return['you',a]}
 
 // ---------- render ----------
-function sigOf(){const j=S.state&&S.state.jobs[S.sel];return JSON.stringify([S.view,S.detail,S.own&&S.own.updated,S.view==='today'&&S.state&&Object.entries(S.state.jobs).map(([k,v])=>k+v.status+(v.progress_count||0)+(v.updated||'')+(v.ig_at||'')).join(),S.view==='settings'&&S.commits.length&&S.commits[0].sha,S.sel,S.tab,!!TOKEN,j&&j.status,j&&j.updated,j&&j.progress_count,S.view==='settings'&&S.state&&[S.state.config,S.state.ideas],S.view==='calendar'&&Object.values(S.state.jobs).map(j=>j.status).join(),S.view==='long'&&[(S.state.config||{}).longform_enabled,(S.state.ideas||[]).length,Object.entries(S.state.jobs).filter(([k,v])=>v.type==='long').map(([k,v])=>k+v.status+(v.progress_count||0)).join()],S.view==='research'&&[S.rtab,S.rsort,(S.state.jobs.research||{}).progress_count,(S.state.ideas||[]).length]])}
+function sigOf(){const j=S.state&&S.state.jobs[S.sel];return JSON.stringify([S.view,S.detail,S.own&&S.own.updated,S.view==='today'&&S.state&&Object.entries(S.state.jobs).map(([k,v])=>k+v.status+(v.progress_count||0)+(v.updated||'')+(v.ig_at||'')).join()+'|'+(S.state&&(S.state.ideas||[]).join('~')),S.view==='settings'&&S.commits.length&&S.commits[0].sha,S.sel,S.tab,!!TOKEN,j&&j.status,j&&j.updated,j&&j.progress_count,S.view==='settings'&&S.state&&[S.state.config,S.state.ideas],S.view==='calendar'&&Object.values(S.state.jobs).map(j=>j.status).join(),S.view==='long'&&[(S.state.config||{}).longform_enabled,(S.state.ideas||[]).length,Object.entries(S.state.jobs).filter(([k,v])=>v.type==='long').map(([k,v])=>k+v.status+(v.progress_count||0)).join()],S.view==='research'&&[S.rtab,S.rsort,(S.state.jobs.research||{}).progress_count,(S.state.ideas||[]).length]])}
 function render(force){renderChrome();if(S.editing)return;const sg=sigOf();if(!force&&sg===S.sig)return;S.sig=sg;renderMain()}
 const ICONS={
   today:'<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
@@ -695,6 +700,7 @@ async function renderToday(){
     <div class="tgrid"><div><div class="sec" style="margin-top:0"><h2 class="hot">Needs you${needs.length?' · '+needs.length:''}</h2>${TOKEN?'':'<a href="#" onclick="askToken();return false">Unlock to approve here</a>'}</div>
       ${needs.length?needs.map(needCard).join(''):`<div class="allclear"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E7A54" stroke-width="2" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>All clear. Claude writes the next script at 11:00 and posts it in Slack.</div>`}</div>
       <div><div class="sec" style="margin-top:0"><h2>Next post</h2></div>${nextHtml}</div></div>
+    ${longQueued(st).length?`<div class="sec"><h2>Long-form queued · ${longQueued(st).length}</h2><a href="#" onclick="go('long');return false">Long tab →</a></div><div class="card" style="padding:0 14px">${longQueued(st).map(queuedLongCard).join('')}</div>`:''}
     <div class="sec"><h2>Pipeline</h2><a href="#" onclick="go('videos');return false">All videos →</a></div>
     ${pipelineBoard(entries)}
     <div class="sec"><h2>In production · ${prod.length}</h2><a href="#" onclick="go('videos');return false">All videos →</a></div>
@@ -984,24 +990,35 @@ const LONG_STEPS=[
  ['4','Script approve hote hi GitHub video banata hai (voice, images, music, render): ~2-4 ghante. Aap ko kuch nahi karna.'],
  ['5','Video review ke liye ayegi: preview dekhein (480p), thumbnail dekhein, approve ya changes likhein.'],
  ['6','Approve ke baad yahan "Upload helper" ata hai: file download, title/description/tags copy, YouTube Studio mein upload, phir "Mark published".']];
+function longQueued(st){return (st.ideas||[]).map((x,i)=>({x,i})).filter(o=>/^\[LONG\]/i.test(o.x))}
+function queuedLongCard(o){const text=o.x.replace(/^\[LONG\]\s*/i,'').split('|')[0].trim();
+  return `<div class="qcard"><div style="min-width:0"><span class="chip c-wait">Queued</span><div style="margin-top:6px;font-weight:500">${esc(text)}</div><div class="note">Claude agle run mein (by ${esc(hm(nextClaudeRun()))} PKT) research + script shuru karega.</div></div>${TOKEN?`<button class="btn sm" onclick="dropIdea(${o.i})">Remove</button>`:''}</div>`}
 function renderLong(){
   const st=S.state,c=st.config||{},on=!!c.longform_enabled;
   const longs=Object.entries(st.jobs).filter(([k,j])=>isJob(k)&&j.type==='long').reverse();
+  const queued=longQueued(st);
   const lock=!TOKEN?' disabled title="Unlock editing first"':'';
   const card=([id,j])=>`<div class="card lf-card"><div class="lf-row"><img class="lf-thumb" loading="lazy" alt="" src="${RAW}/jobs/${esc(id)}/thumbnail.jpg?u=${encodeURIComponent(j.updated||'')}" onerror="this.onerror=null;this.src='logo.png'"><div style="flex:1;min-width:200px"><div class="eyebrow">${esc(id)}</div><div style="font-weight:600;margin:4px 0">${esc(j.title||titleFromId(id))}</div><div>${chip(j)} <span class="note">${ago(j.updated)}</span></div></div><button class="btn pri" onclick="pick('${esc(id)}')">Open</button></div>${j.status==='video_approved'?`<div id="uh-${esc(id)}" style="margin-top:12px">Loading upload helper…</div>`:''}</div>`;
   $('#main').innerHTML=`<div class="lf-grid">
    <div class="card lf-card"><div class="lf-row"><div style="flex:1;min-width:220px"><div class="eyebrow">Long-form videos</div><h1 style="margin:4px 0">${on?'ON — Claude long videos bana raha hai':'OFF — abhi sirf Shorts'}</h1><div class="note">12-15 min documentary style (news hook + evergreen kahani). Shorts par koi asar nahi parta.</div></div><button class="btn ${on?'':'go'}"${lock} onclick="setLongFlag(${!on})">${on?'Turn OFF':'Turn ON'}</button></div></div>
    <div class="card lf-card"><div class="lbl">Aap ko kya karna hai</div>${LONG_STEPS.map(([n,t])=>`<div class="lf-step"><b>${n}</b><span>${t}</span></div>`).join('')}</div>
-   ${longs.length?`<div class="sect"><span>Long videos · ${longs.length}</span></div>${longs.map(card).join('')}`:`<div class="card lf-card"><div class="empty">Abhi koi long video nahi. Toggle ON karein aur topic chunein.</div></div>`}
+   ${queued.length?`<div class="card lf-card">${queued.map(queuedLongCard).join('')}</div>`:''}
+   ${longs.length?`<div class="sect"><span>Long videos · ${longs.length}</span></div>${longs.map(card).join('')}`:(queued.length?'':`<div class="card lf-card"><div class="empty">Abhi koi long video nahi. Toggle ON karein aur topic chunein.</div></div>`)}
    <div class="card lf-card"><div class="lbl">Apna long-video idea</div><div class="lf-row"><input id="lidea" style="flex:1;min-width:220px;padding:10px;border:1px solid var(--line);border-radius:10px" placeholder="e.g. Why did Blockbuster really die?"><button class="btn pri"${lock} onclick="addLongIdea()">Queue it</button></div></div>
    <div class="card lf-card" id="lhooks"><div class="lbl">Aaj ki news hooks (US + UK)</div><div class="empty">Loading…</div></div></div>`;
   longs.filter(([,j])=>j.status==='video_approved').forEach(([id])=>fillHelper(id));
   cachedDaily('docs/research/news_hooks.json').then(H=>{S.hooks=H.hooks||[];const el=$('#lhooks');if(!el)return;
-    el.innerHTML=`<div class="lbl">Aaj ki news hooks (US + UK) · ${esc(hm(new Date(H.updated)))} PKT</div>`+(S.hooks.length?S.hooks.slice(0,12).map((h,i)=>`<div class="lf-hook"><div><div class="t">${esc(h.title)}</div><div class="m">${esc(h.source)} · ${esc(h.region)} · ${ago(h.date)}</div></div><button class="btn sm"${lock} onclick="queueHook(${i})">Is par long video banao</button></div>`).join(''):'<div class="empty">Koi strong hook nahi mila.</div>')}).catch(()=>{const el=$('#lhooks');if(el)el.innerHTML='<div class="lbl">News hooks</div><div class="empty">Research run ke baad yahan ayenge (roz 06:00 PKT).</div>'});
+    el.innerHTML=`<div class="lbl">Aaj ki news hooks (US + UK) · ${esc(hm(new Date(H.updated)))} PKT</div><div class="note">Har hook ke saath ek research signal hai: kitna recent/strong hook hai + isi niche ki purani long videos mein yeh angle kitna chala hai. Yeh andaza hai, guarantee nahi.</div>`+(S.hooks.length?S.hooks.slice(0,12).map((h,i)=>`<div class="lf-hook"><div style="min-width:0"><div class="t">${esc(h.title)}</div><div class="m">${esc(h.source)} · ${esc(h.region)} · ${ago(h.date)}</div>${hookViralHtml(h)}</div><button class="btn sm"${lock} onclick="queueHook(${i})">Is par long video banao</button></div>`).join(''):'<div class="empty">Koi strong hook nahi mila.</div>')}).catch(()=>{const el=$('#lhooks');if(el)el.innerHTML='<div class="lbl">News hooks</div><div class="empty">Research run ke baad yahan ayenge (roz 06:00 PKT).</div>'});
 }
+function hookViralHtml(h){const v=h.viral;if(!v)return'';
+  const cls={Strong:'v-strong',Good:'v-good',Moderate:'v-moderate','Early / unproven':'v-early'}[v.label]||'v-moderate';
+  const words=(v.matched_words||[]).length?`<div class="vwords">${v.matched_words.map(w=>`<span>${esc(w)}</span>`).join('')}</div>`:'';
+  const ex=(v.examples||[])[0];
+  const exHtml=ex?`<div class="vex">Milta-julta pehle chala: "${esc(ex.title.slice(0,60))}" — ${fmtN(ex.views)} views, ${ex.score}× channel avg</div>`:'';
+  return `<span class="vbadge ${cls}">${esc(v.label)} signal</span>${words}${exHtml}`}
 async function setLongFlag(v){if(!TOKEN)return askToken();try{await updateState(st=>{st.config=st.config||{};st.config.longform_enabled=v},'dashboard: long-form '+(v?'on':'off'));toast(v?'Long-form ON.':'Long-form OFF.');load()}catch(e){toast(e.message,true)}}
 async function addLongIdea(){if(!TOKEN)return askToken();const t=$('#lidea').value.trim();if(!t)return;try{await updateState(st=>{st.ideas=st.ideas||[];st.ideas.push('[LONG] '+t)},'dashboard: add long idea');toast('Long idea queued for Claude.');load()}catch(e){toast(e.message,true)}}
-async function queueHook(i){if(!TOKEN)return askToken();const h=(S.hooks||[])[i];if(!h)return;try{await updateState(st=>{st.ideas=st.ideas||[];st.ideas.push(`[LONG] ${h.title} | hook: ${h.url} | ${h.source} ${h.region}`)},'dashboard: long idea from news hook');toast('Queued — Claude backstory research karega.');load()}catch(e){toast(e.message,true)}}
+async function queueHook(i){if(!TOKEN)return askToken();const h=(S.hooks||[])[i];if(!h)return;try{await updateState(st=>{st.ideas=st.ideas||[];st.ideas.push(`[LONG] ${h.title} | hook: ${h.url} | ${h.source} ${h.region}${h.viral?' | signal: '+h.viral.label:''}`)},'dashboard: long idea from news hook');toast('Queued — Claude backstory research karega.');load()}catch(e){toast(e.message,true)}}
 async function fillHelper(id){
   const el=document.getElementById('uh-'+id);if(!el)return;const j=S.state.jobs[id]||{};let U=null;
   try{U=JSON.parse(await readText(`jobs/${id}/upload.json`))}catch(e){}
