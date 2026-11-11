@@ -85,6 +85,18 @@ button,input,textarea,select{font:inherit;color:inherit}
 .mini{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:9px;max-width:420px}
 .mini i{height:5px;border-radius:99px;background:var(--line)}
 .mini i.done{background:#16A36B}.mini i.now{background:var(--ink)}.mini i.now.attn{background:var(--gold)}.mini i.now.err{background:var(--coral)}
+.board{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.col{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:12px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px;min-width:0}
+.col .ch{display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:13.5px;padding:2px 4px 4px}
+.col .ch span{font:500 11px var(--mono);color:var(--ink3);background:var(--bg2);border-radius:999px;padding:1px 8px}
+.bc{display:flex;gap:10px;align-items:center;width:100%;text-align:left;background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:9px;cursor:pointer;min-width:0}
+.bc:hover{border-color:var(--line2);background:var(--bg2)}
+.bc img{width:32px;height:44px;border-radius:6px;object-fit:cover;flex-shrink:0;background:var(--bg2)}
+.bc .bt{font-size:13px;font-weight:500;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.bc .bs{font-size:11.5px;color:var(--ink3);margin-top:3px}
+.bc .bs.wait{color:var(--gold2);font-weight:500}.bc .bs.bad{color:var(--coral);font-weight:500}.bc .bs.work{color:var(--blue)}
+.bc.plan{background:none;border-style:dashed;cursor:default}
+.colempty{border:1px dashed var(--line2);border-radius:12px;padding:10px;font-size:12px;color:var(--ink3)}
 .week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
 .wd{padding:10px;border-radius:12px;background:var(--card2);border:1px solid var(--line);font-size:12.5px;line-height:1.35;min-height:78px}
 .wd .d{color:var(--ink3);font:500 10.5px var(--mono);text-transform:uppercase;letter-spacing:.6px}
@@ -269,6 +281,7 @@ audio{width:100%;border-radius:999px}
   .prod img{width:44px;height:60px}
   .prod>.chip,.prod>span.chip{display:none}
   .week{grid-template-columns:repeat(7,minmax(92px,1fr));overflow-x:auto;padding-bottom:4px}
+  .board{grid-template-columns:repeat(5,minmax(200px,1fr));overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory}.col{scroll-snap-align:start}
   .vids{grid-template-columns:1fr}
   .vids.has .vlist{display:none}
   .vids:not(.has) #detail{display:none}
@@ -652,15 +665,49 @@ async function renderToday(){
     <div class="tgrid"><div><div class="sec" style="margin-top:0"><h2 class="hot">Needs you${needs.length?' · '+needs.length:''}</h2>${TOKEN?'':'<a href="#" onclick="askToken();return false">Unlock to approve here</a>'}</div>
       ${needs.length?needs.map(needCard).join(''):`<div class="allclear"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E7A54" stroke-width="2" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>All clear. Claude writes the next script at 11:00 and posts it in Slack.</div>`}</div>
       <div><div class="sec" style="margin-top:0"><h2>Next post</h2></div>${nextHtml}</div></div>
+    <div class="sec"><h2>Pipeline</h2><a href="#" onclick="go('videos');return false">All videos →</a></div>
+    ${pipelineBoard(entries)}
     <div class="sec"><h2>In production · ${prod.length}</h2><a href="#" onclick="go('videos');return false">All videos →</a></div>
     <div class="card">${prod.length?prod.map(prodRow).join(''):'<div class="empty" style="padding:18px">Nothing in production right now.</div>'}</div>
     <div class="tgrid" style="margin-top:6px"><div><div class="sec"><h2>This week</h2><a href="#" onclick="go('calendar');return false">Open calendar →</a></div><div class="card" style="padding:14px" id="t_week"><div class="empty" style="padding:6px">Loading…</div></div></div>
       <div><div class="sec"><h2>Research says</h2><a href="#" onclick="go('research');return false">More →</a></div><div class="card insight" id="t_res"><div class="empty" style="padding:0">Loading…</div></div></div></div>`;
   try{const C=await cachedDaily('docs/calendar.json');const tdy=new Date().toLocaleDateString('en-GB',{timeZone:'Asia/Karachi',weekday:'short',day:'numeric',month:'short'}).replace(',','');
+    const planned=(C.items||[]).filter(x=>x.status==='planned'&&!x.job).slice(0,2),bp=$('#b_plan');
+    if(bp)bp.innerHTML=planned.map((x,i)=>`<div class="bc plan"><div style="min-width:0"><div class="bt">${esc(x.title||x.topic||'')}</div><div class="bs">${i===0?'Next up · Claude writes at 11:00':'Planned · '+esc(x.day||'')}</div></div></div>`).join('')||(bp.parentElement.querySelector('.bc')?'':'<div class="colempty">Claude writes the next one at 11:00</div>');
     const it=(C.items||[]).slice(0,7);const el=$('#t_week');if(el)el.innerHTML=it.length?`<div class="week">${it.map(x=>{const j=x.job&&st.jobs[x.job];return `<div class="wd ${x.format==='long'?'long':''} ${tdy&&(x.day||'').replace(/\s+/g,' ')===tdy?'today':''}"><div class="d">${esc(x.day||'')}${x.format==='long'?' · long':''}</div><div class="x">${esc(x.title||x.topic||'')}</div>${j?`<div style="margin-top:6px">${chip(j)}</div>`:''}</div>`}).join('')}</div>`:'<div class="empty" style="padding:6px">No calendar yet — Claude writes one on Monday.</div>'}catch(e){const el=$('#t_week');if(el)el.innerHTML='<div class="empty" style="padding:6px">No calendar yet — Claude writes one on Monday.</div>'}
   try{const R=await cachedDaily('docs/research/latest.json');let T=null;try{T=await cachedDaily('docs/research/trends.json')}catch(e){}
     const top=(R.shorts||[])[0];const up=T&&T.days_of_memory>=8?(T.rising.brands.rising||[]).slice(0,3).map(m=>'↑ '+m.name):((R.hot_words||{}).shorts||[]).slice(0,3).map(w=>w.word);
     const el=$('#t_res');if(el)el.innerHTML=`${top?`<p>Top Short in our niche right now: “${esc(top.title.slice(0,80))}” — <b style="color:var(--gold2)">${fmtN(top.views)}</b> views, ${top.score}× its channel’s normal.</p>`:'<p>No research yet.</p>'}<div>${up.map(w=>`<span class="rw up">${esc(w)}</span>`).join('')}</div><div class="note" style="margin:0">Updated ${ago(R.full_run)} · runs daily 06:00</div>`}catch(e){const el=$('#t_res');if(el)el.innerHTML='<p class="note">Research appears after the first daily scan.</p>'}
+}
+
+function pipelineBoard(entries){
+  const cols=[['script','Script'],['making','Making'],['review','Review'],['sched','Scheduled'],['live','Live']];
+  const colOf=(j)=>{const s=j.status;if(s==='dropped')return null;
+    if(['script_ready','script_sent','script_rejected'].includes(s))return'script';
+    if(['script_approved','building','render_queued','rendering','render_failed','video_rejected'].includes(s))return'making';
+    if(['video_ready','video_sent'].includes(s))return'review';
+    if(s==='video_approved'||(s==='published'&&j.live_at&&new Date(j.live_at)>new Date()))return'sched';
+    if(s==='published')return'live';return'making'};
+  const slots=publishSlots(S.state);
+  const sub=(id,j)=>{const s=j.status;
+    if(s==='script_ready'||s==='script_sent')return['wait','Waiting on you'];
+    if(s==='script_rejected')return['work','Claude is rewriting'];
+    if(s==='video_ready'||s==='video_sent')return['wait','Waiting on you'];
+    if(s==='render_failed')return['bad','Render failed — retrying'];
+    if(s==='video_rejected')return['work','Fixing your notes'];
+    if(s==='script_approved')return['work','Starts within the hour'];
+    if(['building','render_queued','rendering'].includes(s)){const lp=(j.progress||[]).slice(-1)[0];return['work',info(j)[1]+(lp?' · '+ago(lp.t):'')]}
+    if(slots[id])return['','Goes '+pkt(slots[id])];
+    if(j.live_at)return['',(new Date(j.live_at)>new Date()?'Goes ':'Live ')+pkt(j.live_at)];
+    return['',j.published_at?'Sent '+pkt(j.published_at):''];};
+  const by={};cols.forEach(([k])=>by[k]=[]);
+  entries.forEach(([id,j])=>{const c=colOf(j);if(c)by[c].push([id,j])});
+  by.live.sort((a,b)=>(b[1].live_at||b[1].published_at||'').localeCompare(a[1].live_at||a[1].published_at||''));
+  const card=([id,j],c)=>{const [cls,t]=sub(id,j);const img=c==='script'?'':`<img alt="" src="${RAW}/jobs/${esc(id)}/thumbnail.jpg?u=${encodeURIComponent(j.updated||'')}" onerror="this.onerror=null;this.src='logo.png'">`;
+    return `<button class="bc" onclick="pick('${id}')">${img}<div style="min-width:0"><div class="bt">${esc(j.title||titleFromId(id))}</div><div class="bs ${cls}">${esc(t)}</div></div></button>`};
+  const empty={script:'Claude writes the next one at 11:00',making:'Starts within an hour of your OK',review:'Nothing to watch',sched:'Approve a video to schedule it',live:'Nothing live yet'};
+  return `<div class="board">${cols.map(([k,n])=>{const list=k==='live'?by[k].slice(0,4):by[k];
+    return `<div class="col"><div class="ch">${n}<span>${by[k].length}</span></div>${list.map(e=>card(e,k)).join('')}${k==='script'?'<div id="b_plan"></div>':''}${!by[k].length&&k!=='script'?`<div class="colempty">${empty[k]}</div>`:''}${k==='live'&&by[k].length>4?`<a href="#" onclick="go('videos');return false" style="font-size:12.5px;padding:2px 4px">+${by[k].length-4} more</a>`:''}</div>`}).join('')}</div>`;
 }
 
 // ---------- settings ----------
