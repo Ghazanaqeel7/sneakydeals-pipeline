@@ -159,16 +159,12 @@
       "progress_count": 12
     },
     "003-pudding-guy-free-flights": {
-      "status": "video_sent",
-      "updated": "2026-11-11T11:22:50Z",
+      "status": "video_rejected",
+      "updated": "2026-11-11T11:47:13Z",
       "title": "This Man Bought $3,000 of Pudding for Free Flights",
       "vote_msg": "",
       "vote_kind": "",
       "progress": [
-        {
-          "t": "2026-11-11T07:50:24Z",
-          "msg": "✅ Aap ne dashboard se script approve kiya. Claude agle run mein video banana shuru karega."
-        },
         {
           "t": "2026-11-11T08:11:02Z",
           "msg": "🎙 Voice ban rahi hai… (~1.5 ghante baqi, phir render ~40 min)"
@@ -228,15 +224,19 @@
           "t": "2026-11-11T11:22:08Z",
           "msg": "✅ Naya thumbnail tayyar: bara hara '$3,000 OF PUDDING → FREE FLIGHTS?!' hook aur '12,150 CUPS!' ka board (video wahi hai). Review ke liye abhi bhej raha hoon.",
           "image": "jobs/003-pudding-guy-free-flights/thumbnail.jpg"
+        },
+        {
+          "t": "2026-11-11T11:47:13Z",
+          "msg": "🛠 Changes note ho gaye (dashboard): \"thumbnail: Can we use cups image too with 12150 cups ta k audience ki attnetion cup se bhi grab ho or acha hook lagay curiosity paida ho\" — Claude agle run mein (by 17:08 PKT) inhe lagana shuru karega."
         }
       ],
-      "progress_count": 15,
+      "progress_count": 16,
       "decided_via": "dashboard",
-      "decided_at": "2026-11-11T10:55:10Z",
+      "decided_at": "2026-11-11T11:47:13Z",
       "run": "42988317343",
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-003-pudding-guy-free-flights/final.mp4",
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-003-pudding-guy-free-flights/preview.mp4",
-      "feedback": ""
+      "feedback": "[2026-11-11T11:47:13Z] thumbnail: Can we use cups image too with 12150 cups ta k audience ki attnetion cup se bhi grab ho or acha hook lagay curiosity paida ho"
     }
   }
 }
