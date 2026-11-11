@@ -199,9 +199,13 @@
           "t": "2026-11-11T08:35:52Z",
           "msg": "🖼 Thumbnail tayyar — ab GitHub par render shuru hoga (~40 min)",
           "image": "jobs/003-pudding-guy-free-flights/thumbnail.jpg"
+        },
+        {
+          "t": "2026-11-11T08:36:45Z",
+          "msg": "🎞 Render shuru (GitHub). Andaza: ~30-50 min."
         }
       ],
-      "progress_count": 8,
+      "progress_count": 9,
       "decided_via": "dashboard",
       "decided_at": "2026-11-11T07:50:24Z",
       "run": "42988317343"
