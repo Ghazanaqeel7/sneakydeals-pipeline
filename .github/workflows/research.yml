@@ -43,6 +43,10 @@ jobs:
           YT_API_KEY: ${{ secrets.YT_API_KEY }}
         run: python3 pipeline/research/research.py --${{ steps.m.outputs.mode }}
 
+      - name: News hooks (long-form topics)
+        continue-on-error: true
+        run: python3 pipeline/research/news.py
+
       - name: Save results
         run: |
           git config user.name "research-bot"; git config user.email "research-bot@users.noreply.github.com"

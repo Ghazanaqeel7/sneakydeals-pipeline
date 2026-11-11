@@ -156,6 +156,13 @@ h1{font:400 40px/1.08 var(--display);margin:6px 0 12px;letter-spacing:.1px}
 .actionbar .msg b{display:block;font-size:15px;font-weight:600}
 .actionbar .msg span{color:var(--ink2);font-size:13px}
 .review{display:grid;grid-template-columns:minmax(220px,290px) minmax(160px,210px) 1fr;gap:24px;border:1px solid var(--line);border-top:0;border-radius:0 0 var(--r) var(--r);background:var(--card);padding:20px}
+.hero .poster.wide{width:260px;aspect-ratio:16/9}
+.review video.wide{aspect-ratio:16/9}
+.lf-grid{display:grid;gap:14px}.lf-card{padding:16px}.lf-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.lf-step{display:flex;gap:10px;margin:8px 0;font-size:14px;line-height:1.45}.lf-step b{color:var(--gold2);min-width:22px}
+.lf-hook{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding:10px 0;border-top:1px solid var(--line)}.lf-hook .t{font-weight:500}.lf-hook .m{font:11px var(--mono);color:var(--ink3);margin-top:3px}
+.lf-copy{display:grid;gap:8px;margin-top:10px}.lf-copy .r{display:flex;gap:10px;justify-content:space-between;align-items:center;border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:13px}.lf-copy .r span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink2)}
+.lf-thumb{width:200px;aspect-ratio:16/9;object-fit:cover;border-radius:10px;background:var(--bg2)}
 .review video{width:100%;background:#000;border-radius:12px;display:block;aspect-ratio:9/16}
 .review img{width:100%;border-radius:12px;display:block;cursor:zoom-in;box-shadow:0 0 0 1px var(--line)}
 .review .vo{max-height:440px;overflow:auto;font:400 21px/1.5 var(--display);border:1px solid var(--line);border-radius:12px;background:var(--card2);padding:18px 22px;color:var(--ink)}
@@ -274,7 +281,7 @@ audio{width:100%;border-radius:999px}
   .brand b{font-size:21px}.brand span{display:none}
   .nav,.health .hl{display:none}
   .health{margin-left:auto}
-  .bnav{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));position:fixed;left:0;right:0;bottom:0;z-index:6;background:rgba(255,255,255,.96);backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:6px 6px calc(10px + env(safe-area-inset-bottom))}
+  .bnav{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));position:fixed;left:0;right:0;bottom:0;z-index:6;background:rgba(255,255,255,.96);backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:6px 6px calc(10px + env(safe-area-inset-bottom))}
   .bnav button{border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:3px;min-height:52px;justify-content:center;color:var(--ink3);font-size:10.5px;padding:0;font-weight:500;position:relative;cursor:pointer}
   .bnav button.on{color:var(--ink)}
   .bnav button.on svg{stroke:var(--ink)}
@@ -385,13 +392,13 @@ const STAT={
   render_failed:[3,'Render failed','bad',false,true],video_ready:[4,'Video waiting','wait',true],video_sent:[4,'Video — your call','wait',true],
   video_rejected:[2,'Fixing video','work'],video_approved:[5,'Scheduled','ok'],published:[6,'Live','ok'],dropped:[-1,'Dropped','mute'],
 };
-const info=(j)=>{if(j.status==='published'&&j.live_at&&new Date(j.live_at)>new Date())return[5,'On YouTube · scheduled','ok'];return STAT[j.status]||[0,j.status,'mute']};
+const info=(j)=>{if(j.type==='long'&&j.status==='video_approved')return[5,'Upload it yourself','wait',true];if(j.status==='published'&&j.live_at&&new Date(j.live_at)>new Date())return[5,'On YouTube · scheduled','ok'];return STAT[j.status]||[0,j.status,'mute']};
 function chip(j){const [, label, c]=info(j);return `<span class="chip c-${c}">${esc(label)}</span>`}
 
 function publishSlots(st){
   const days=(st.config&&st.config.publish_days)||['Mon','Wed','Fri','Sun'];
   const [hh,mm]=((st.config&&st.config.publish_time_pkt)||'05:00').split(':').map(Number);
-  const queue=Object.entries(st.jobs).filter(([,j])=>j.status==='video_approved').sort((a,b)=>(a[1].updated||'').localeCompare(b[1].updated||''));
+  const queue=Object.entries(st.jobs).filter(([,j])=>j.status==='video_approved'&&j.type!=='long').sort((a,b)=>(a[1].updated||'').localeCompare(b[1].updated||''));
   const out={};let cursor=new Date();
   for(const [id] of queue){
     for(let d=0;d<21;d++){
@@ -427,17 +434,18 @@ function whoOf(c){const m=c.commit.message,a=c.commit.author.name;
   if(a==='research-bot')return['render','Research'];if(/^Merge pull request/.test(m)||a===OWNER)return['you','You'];if(a==='render-bot'||/github-actions/.test(a))return['render','Render'];if(a==='claude-pipeline'||/claude/i.test(a))return['claude','Claude'];return['you',a]}
 
 // ---------- render ----------
-function sigOf(){const j=S.state&&S.state.jobs[S.sel];return JSON.stringify([S.view,S.detail,S.own&&S.own.updated,S.view==='today'&&S.state&&Object.entries(S.state.jobs).map(([k,v])=>k+v.status+(v.progress_count||0)+(v.updated||'')+(v.ig_at||'')).join(),S.view==='settings'&&S.commits.length&&S.commits[0].sha,S.sel,S.tab,!!TOKEN,j&&j.status,j&&j.updated,j&&j.progress_count,S.view==='settings'&&S.state&&[S.state.config,S.state.ideas],S.view==='calendar'&&Object.values(S.state.jobs).map(j=>j.status).join(),S.view==='research'&&[S.rtab,S.rsort,(S.state.jobs.research||{}).progress_count,(S.state.ideas||[]).length]])}
+function sigOf(){const j=S.state&&S.state.jobs[S.sel];return JSON.stringify([S.view,S.detail,S.own&&S.own.updated,S.view==='today'&&S.state&&Object.entries(S.state.jobs).map(([k,v])=>k+v.status+(v.progress_count||0)+(v.updated||'')+(v.ig_at||'')).join(),S.view==='settings'&&S.commits.length&&S.commits[0].sha,S.sel,S.tab,!!TOKEN,j&&j.status,j&&j.updated,j&&j.progress_count,S.view==='settings'&&S.state&&[S.state.config,S.state.ideas],S.view==='calendar'&&Object.values(S.state.jobs).map(j=>j.status).join(),S.view==='long'&&[(S.state.config||{}).longform_enabled,(S.state.ideas||[]).length,Object.entries(S.state.jobs).filter(([k,v])=>v.type==='long').map(([k,v])=>k+v.status+(v.progress_count||0)).join()],S.view==='research'&&[S.rtab,S.rsort,(S.state.jobs.research||{}).progress_count,(S.state.ideas||[]).length]])}
 function render(force){renderChrome();if(S.editing)return;const sg=sigOf();if(!force&&sg===S.sig)return;S.sig=sg;renderMain()}
 const ICONS={
   today:'<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
   videos:'<rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z"/>',
   calendar:'<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/>',
   research:'<circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/>',
+  long:'<rect x="2.5" y="5.5" width="19" height="13" rx="2.5"/><path d="M10 9.5l5 2.5-5 2.5z"/>',
   stats:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
   settings:'<circle cx="12" cy="12" r="3"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/>'};
 const svg=(k,sz=18)=>`<svg width="${sz}" height="${sz}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[k]}</svg>`;
-const VIEWS=[['today','Today'],['videos','Videos'],['stats','Stats'],['calendar','Calendar'],['research','Research'],['settings','Settings']];
+const VIEWS=[['today','Today'],['videos','Videos'],['long','Long'],['stats','Stats'],['calendar','Calendar'],['research','Research'],['settings','Settings']];
 const needsYou=()=>Object.entries(S.state.jobs).filter(([k,j])=>isJob(k)&&(info(j)[3]||j.status==='render_failed'));
 function systemsInfo(){
   const st=S.state;const lastBy=(k)=>S.commits.find(c=>whoOf(c)[0]===k);
@@ -480,13 +488,14 @@ function renderMain(){
   if(S.view==='research')return renderResearch();
   if(S.view==='stats')return renderStats();
   if(S.view==='calendar')return renderCalendar();
+  if(S.view==='long')return renderLong();
   $('#main').innerHTML=`<div class="vids ${S.detail?'has':''}"><aside class="vlist" id="jobs">${jobsListHtml()}</aside><section id="detail" style="min-width:0"></section></div>`;
   const id=S.sel,j=S.state.jobs[id];if(!j){$('#detail').innerHTML='<div class="empty">No videos yet.</div>';return}
   const [idx,label,,attn,err]=info(j);const slots=publishSlots(S.state);
   const track=STAGES.map((s,i)=>`<div class="st ${i<idx?'done':''} ${i===idx?'now'+(attn?' attn':'')+(err?' err':''):''}"><div class="n">${i<idx?'✓':i+1}</div>${s}</div>`).join('');
   const lastP=(j.progress||[]).slice(-1)[0];
   $('#detail').innerHTML=`<button class="btn sm back" onclick="back()">← All videos</button>
-    <div class="hero"><img class="poster" src="${RAW}/jobs/${esc(id)}/thumbnail.jpg?u=${encodeURIComponent(j.updated||'')}" onclick="zoom(this.src)" onerror="this.onerror=null;this.src='logo.png'"><div>
+    <div class="hero"><img class="poster${j.type==='long'?' wide':''}" src="${RAW}/jobs/${esc(id)}/thumbnail.jpg?u=${encodeURIComponent(j.updated||'')}" onclick="zoom(this.src)" onerror="this.onerror=null;this.src='logo.png'"><div>
     <div class="eyebrow">${esc(id)}</div>
     <h1>${esc(j.title||titleFromId(id))}</h1>
     <div class="sub"><span>${chip(j)}</span><span>Updated ${ago(j.updated)}</span>${slots[id]?`<span style="color:var(--gold2)">Goes live ${pkt(slots[id])} PKT</span>`:''}${j.video_url?`<a href="${esc(j.video_url)}" target="_blank">Full-quality file ↗</a>`:''}</div></div></div>
@@ -494,10 +503,12 @@ function renderMain(){
     ${platformStrip(id,j)}
     ${ytLine(j)}
     ${actionBar(id,j,lastP)}
+    ${j.type==='long'&&j.status==='video_approved'?`<div class="card lf-card" id="uh-${esc(id)}">Loading upload helper…</div>`:''}
     ${reviewBlock(id,j)}
     <div class="tabs">${[['progress','Progress'],['script','Script'],['media','Voice · Video · Thumbnail'],['publish','YouTube details'],['social','Instagram · Facebook'],['frames','Check frames']].map(([k,n])=>`<button class="tab ${S.tab===k?'on':''}" onclick="setTab('${k}')">${n}</button>`).join('')}</div>
     <div class="panel" id="panel"><div class="empty">Loading…</div></div>`;
   renderTab();
+  if(j.type==='long'&&j.status==='video_approved')fillHelper(id);
 }
 function nextClaudeRun(){const d=new Date();d.setUTCMinutes(8,0,0);if(d<=new Date())d.setUTCHours(d.getUTCHours()+1);return d}
 const LOCKED=()=>`<div class="lbl">Your decision</div><div class="note" style="margin:0 0 12px;color:var(--ink2)">To approve or ask for changes from here, unlock editing once on this device (paste your GitHub token). Until then you can still approve with ✅ in Slack.</div><button class="btn go" style="width:100%;padding:12px" onclick="askToken()">Unlock to approve</button>`;
@@ -506,7 +517,7 @@ function reviewBlock(id,j){
   if(s==='video_ready'||s==='video_sent'){
     const v=j.preview_url||j.video_url;
     return `<div class="review">
-      <div><div class="lbl">Watch the video</div>${v?`<video controls playsinline preload="metadata" poster="${RAW}/jobs/${esc(id)}/thumbnail.jpg" src="${esc(v)}" onloadedmetadata="this.muted=false;this.volume=1"></video><div class="note">No sound? Click 🔊 in the player, or <a href="${esc(j.video_url||v)}" target="_blank">open the full file ↗</a> and play it on your laptop.</div>`:'<div class="empty">No video file.</div>'}</div>
+      <div><div class="lbl">Watch the video</div>${v?`<video class="${j.type==='long'?'wide':''}" controls playsinline preload="metadata" poster="${RAW}/jobs/${esc(id)}/thumbnail.jpg" src="${esc(v)}" onloadedmetadata="this.muted=false;this.volume=1"></video><div class="note">No sound? Click 🔊 in the player, or <a href="${esc(j.video_url||v)}" target="_blank">open the full file ↗</a> and play it on your laptop.</div>`:'<div class="empty">No video file.</div>'}</div>
       <div class="thumbwrap"><div class="lbl">Thumbnail</div><img src="${RAW}/jobs/${esc(id)}/thumbnail.jpg?u=${encodeURIComponent(j.updated||'')}" onclick="zoom(this.src)" onerror="this.outerHTML='<div class=empty>No thumbnail — the logo thumbnail would be used.</div>'"><div class="note" style="margin-top:10px">Video, thumbnail and the YouTube text are approved together.</div></div>
       <div>${!TOKEN?LOCKED():`<div class="lbl">Your decision</div>
         <button class="btn go" style="width:100%;padding:11px"${lock} onclick="decide('${id}','video_approved')">Approve video + thumbnail</button>
@@ -549,6 +560,7 @@ function actionBar(id,j,lastP){
     btns=''}
   else if(s==='script_rejected'||s==='video_rejected'){msg=`<b>Changes requested — Claude is on it.</b><span>${j.feedback?'Progress updates appear below and in Slack.':'Waiting for your note. Add one so Claude knows what to fix.'}</span>`;
     btns=j.feedback?'':`<button class="btn pri"${lock} onclick="askFeedback('${id}','${s}','What should change?')">Add note</button>`}
+  else if(s==='video_approved'&&j.type==='long'){msg=`<b>Approved. Ab upload aap ko karni hai.</b><span>Neeche helper se file download karein, YouTube Studio mein upload karein, phir "Mark published" dabayein.</span>`;btns=`<button class="btn"${lock} onclick="unapprove('${id}')">Pull back to review</button>`}
   else if(s==='video_approved'){msg=`<b>Approved and scheduled.</b><span>On the publish day at ${esc((S.state.config||{}).publish_time_pkt||'05:00')} PKT n8n hands it to Zapier, which uploads it to YouTube within ~15 min.</span>`;
     btns=`<button class="btn"${lock} onclick="unapprove('${id}')">Pull back to review</button>`}
   else if(s==='published'&&j.live_at&&new Date(j.live_at)>new Date()){msg=`<b>On YouTube, scheduled for ${pkt(j.live_at)} PKT.</b><span>It is uploaded and set to go public by itself. Pin this comment once it is live: <i id="pinned"></i></span>`;btns=`<a class="btn" href="https://studio.youtube.com" target="_blank">Open YouTube Studio ↗</a>`}
@@ -963,6 +975,49 @@ async function saveSocial(){const id=S.sel;try{const f=await readJson(`jobs/${id
   S.editing=false;S.cache={};toast('Saved — this is what Instagram and Facebook will get.');load()}catch(e){toast(e.message,true)}}
 async function saveDays(){S.editing=false;const d=[...document.querySelectorAll('.days input:checked')].map(x=>x.value);if(!d.length)return toast('Pick at least one day.',true);
   try{await updateState(st=>{st.config=st.config||{};st.config.publish_days=d},'dashboard: publish days');toast('Publish days saved.');load()}catch(e){toast(e.message,true)}}
+
+// ---------- long-form ----------
+const LONG_STEPS=[
+ ['1','Toggle ON karein (neeche). Jab tak OFF hai, Claude sirf Shorts banata hai.'],
+ ['2','News hooks mein se topic chunein ("Is par long video banao") ya apna idea likhein. Ya kuch na karein: Claude khud bhi hooks se topic uthata hai.'],
+ ['3','Script aap ko Slack + Videos tab mein ayegi. Parhein, ✅ approve ya ❌ + note. (Yahan 12-15 min ki script hoti hai, 2 sources har fact ke.)'],
+ ['4','Script approve hote hi GitHub video banata hai (voice, images, music, render): ~2-4 ghante. Aap ko kuch nahi karna.'],
+ ['5','Video review ke liye ayegi: preview dekhein (480p), thumbnail dekhein, approve ya changes likhein.'],
+ ['6','Approve ke baad yahan "Upload helper" ata hai: file download, title/description/tags copy, YouTube Studio mein upload, phir "Mark published".']];
+function renderLong(){
+  const st=S.state,c=st.config||{},on=!!c.longform_enabled;
+  const longs=Object.entries(st.jobs).filter(([k,j])=>isJob(k)&&j.type==='long').reverse();
+  const lock=!TOKEN?' disabled title="Unlock editing first"':'';
+  const card=([id,j])=>`<div class="card lf-card"><div class="lf-row"><img class="lf-thumb" loading="lazy" alt="" src="${RAW}/jobs/${esc(id)}/thumbnail.jpg?u=${encodeURIComponent(j.updated||'')}" onerror="this.onerror=null;this.src='logo.png'"><div style="flex:1;min-width:200px"><div class="eyebrow">${esc(id)}</div><div style="font-weight:600;margin:4px 0">${esc(j.title||titleFromId(id))}</div><div>${chip(j)} <span class="note">${ago(j.updated)}</span></div></div><button class="btn pri" onclick="pick('${esc(id)}')">Open</button></div>${j.status==='video_approved'?`<div id="uh-${esc(id)}" style="margin-top:12px">Loading upload helper…</div>`:''}</div>`;
+  $('#main').innerHTML=`<div class="lf-grid">
+   <div class="card lf-card"><div class="lf-row"><div style="flex:1;min-width:220px"><div class="eyebrow">Long-form videos</div><h1 style="margin:4px 0">${on?'ON — Claude long videos bana raha hai':'OFF — abhi sirf Shorts'}</h1><div class="note">12-15 min documentary style (news hook + evergreen kahani). Shorts par koi asar nahi parta.</div></div><button class="btn ${on?'':'go'}"${lock} onclick="setLongFlag(${!on})">${on?'Turn OFF':'Turn ON'}</button></div></div>
+   <div class="card lf-card"><div class="lbl">Aap ko kya karna hai</div>${LONG_STEPS.map(([n,t])=>`<div class="lf-step"><b>${n}</b><span>${t}</span></div>`).join('')}</div>
+   ${longs.length?`<div class="sect"><span>Long videos · ${longs.length}</span></div>${longs.map(card).join('')}`:`<div class="card lf-card"><div class="empty">Abhi koi long video nahi. Toggle ON karein aur topic chunein.</div></div>`}
+   <div class="card lf-card"><div class="lbl">Apna long-video idea</div><div class="lf-row"><input id="lidea" style="flex:1;min-width:220px;padding:10px;border:1px solid var(--line);border-radius:10px" placeholder="e.g. Why did Blockbuster really die?"><button class="btn pri"${lock} onclick="addLongIdea()">Queue it</button></div></div>
+   <div class="card lf-card" id="lhooks"><div class="lbl">Aaj ki news hooks (US + UK)</div><div class="empty">Loading…</div></div></div>`;
+  longs.filter(([,j])=>j.status==='video_approved').forEach(([id])=>fillHelper(id));
+  cachedDaily('docs/research/news_hooks.json').then(H=>{S.hooks=H.hooks||[];const el=$('#lhooks');if(!el)return;
+    el.innerHTML=`<div class="lbl">Aaj ki news hooks (US + UK) · ${esc(hm(new Date(H.updated)))} PKT</div>`+(S.hooks.length?S.hooks.slice(0,12).map((h,i)=>`<div class="lf-hook"><div><div class="t">${esc(h.title)}</div><div class="m">${esc(h.source)} · ${esc(h.region)} · ${ago(h.date)}</div></div><button class="btn sm"${lock} onclick="queueHook(${i})">Is par long video banao</button></div>`).join(''):'<div class="empty">Koi strong hook nahi mila.</div>')}).catch(()=>{const el=$('#lhooks');if(el)el.innerHTML='<div class="lbl">News hooks</div><div class="empty">Research run ke baad yahan ayenge (roz 06:00 PKT).</div>'});
+}
+async function setLongFlag(v){if(!TOKEN)return askToken();try{await updateState(st=>{st.config=st.config||{};st.config.longform_enabled=v},'dashboard: long-form '+(v?'on':'off'));toast(v?'Long-form ON.':'Long-form OFF.');load()}catch(e){toast(e.message,true)}}
+async function addLongIdea(){if(!TOKEN)return askToken();const t=$('#lidea').value.trim();if(!t)return;try{await updateState(st=>{st.ideas=st.ideas||[];st.ideas.push('[LONG] '+t)},'dashboard: add long idea');toast('Long idea queued for Claude.');load()}catch(e){toast(e.message,true)}}
+async function queueHook(i){if(!TOKEN)return askToken();const h=(S.hooks||[])[i];if(!h)return;try{await updateState(st=>{st.ideas=st.ideas||[];st.ideas.push(`[LONG] ${h.title} | hook: ${h.url} | ${h.source} ${h.region}`)},'dashboard: long idea from news hook');toast('Queued — Claude backstory research karega.');load()}catch(e){toast(e.message,true)}}
+async function fillHelper(id){
+  const el=document.getElementById('uh-'+id);if(!el)return;const j=S.state.jobs[id]||{};let U=null;
+  try{U=JSON.parse(await readText(`jobs/${id}/upload.json`))}catch(e){}
+  if(!U){el.innerHTML='<div class="note">Upload data abhi nahi mila (render ke baad aata hai).</div>';return}
+  S.uh=S.uh||{};S.uh[id]={title:U.title,desc:U.description,tags:(U.tags||[]).join(', '),chap:(U.chapters||[]).join('\n'),pin:U.pinned_comment||''};
+  const row=(k,l,v)=>`<div class="r"><div style="min-width:0"><b>${l}</b> <span>${esc(String(v).replace(/\n/g,' ').slice(0,70))}</span></div><button class="btn sm" onclick="copyUH('${esc(id)}','${k}')">Copy</button></div>`;
+  const u=S.uh[id];
+  el.innerHTML=`<div class="lbl">Upload helper</div><div class="note">YouTube Studio > Create > Upload > file select karein, phir neeche se copy-paste karein. Thumbnail alag se upload hota hai.</div>
+   <div class="lf-row" style="margin:10px 0"><a class="btn pri" href="${esc(j.video_url||'#')}" target="_blank">⬇ Video file</a><a class="btn" href="${RAW}/jobs/${esc(id)}/thumbnail.jpg" target="_blank">🖼 Thumbnail</a><a class="btn" href="https://studio.youtube.com" target="_blank">YouTube Studio ↗</a></div>
+   <div class="lf-copy">${row('title','Title',u.title)}${row('desc','Description (chapters + credits included)',u.desc)}${row('tags','Tags',u.tags)}${u.pin?row('pin','Pinned comment',u.pin):''}</div>
+   <div class="lf-row" style="margin-top:14px"><button class="btn go"${TOKEN?'':' disabled'} onclick="markPublished('${esc(id)}')">Mark published</button><span class="note">Upload ke baad dabayein.</span></div>`;
+}
+function copyUH(id,k){const u=(S.uh||{})[id];if(!u)return;const v={title:u.title,desc:u.desc,tags:u.tags,pin:u.pin,chap:u.chap}[k]||'';
+  (navigator.clipboard?navigator.clipboard.writeText(v):Promise.reject()).then(()=>toast('Copied.')).catch(()=>{const t=document.createElement('textarea');t.value=v;document.body.appendChild(t);t.select();try{document.execCommand('copy');toast('Copied.')}catch(e){toast('Copy nahi hua — manually select karein.',true)}t.remove()})}
+async function markPublished(id){if(!TOKEN)return askToken();const url=prompt('YouTube video ka link (optional, khali chor sakte hain):','')||'';
+  try{await updateState(st=>{const j=st.jobs[id];if(!j||j.status!=='video_approved')return false;j.status='published';j.published_at=nowIso();j.updated=j.published_at;if(url)j.yt_url=url;addNote(j,'✅ Aap ne long video YouTube par upload karke published mark ki.')},`dashboard: ${id} published (manual upload)`);toast('Marked published.');load()}catch(e){toast(e.message,true)}}
 async function addIdea(){S.editing=false;const t=$('#idea').value.trim();if(!t)return;try{await updateState(st=>{st.ideas=st.ideas||[];st.ideas.push(t)},'dashboard: add story idea');toast('Idea queued for Claude.');load()}catch(e){toast(e.message,true)}}
 async function dropIdea(i){try{await updateState(st=>{(st.ideas||[]).splice(i,1)},'dashboard: remove story idea');load()}catch(e){toast(e.message,true)}}
 

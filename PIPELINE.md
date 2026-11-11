@@ -63,7 +63,7 @@ install anything, or research. If another job is already `building`, do not star
    **Then the content calendar:** if no owner idea, open `docs/calendar.json` and take the first item (top to bottom)
    with `status: "planned"` — its topic/angle/title are the brief (still fact-check; the title is a draft). After you
    push the script, set that item's `status` to `"scripted"` and `"job": "<id>"`, commit + push. If the item is
-   `format: "long"`, make it as a Short for now (long-form production does not exist yet) and keep its long idea in
+   `format: "long"` and long-form is enabled, make it as a long job (docs/longform_guide.md); if long-form is off, make it as a Short and keep its long idea in
    `long_later`. Only if the calendar has no planned item, pick your own story.
 6. **Weekly learning** — only in the Monday story-hour run (Monday 11:00-11:59 Asia/Karachi). See "Weekly learning"
    below. Runs from the first week; with few videos everything is labelled "early signal".
@@ -139,6 +139,12 @@ Also post the final thumbnail the same way (`--image jobs/<id>/thumbnail.jpg`).
    The thumbnail must be a JPG under 2 MB: on publish day n8n puts its raw URL in the feed item <link>, and Zapier sets it as the YouTube thumbnail (if missing, assets/default_thumbnail.jpg is used).
 5. Do not commit `node_modules/`, `out/`, `stills/`, `RAW.wav` (see .gitignore). Commit + push, then
    `set_status <id> render_queued`.
+
+## Long-form videos
+If `config.longform_enabled` is true, read `docs/longform_guide.md` and follow it for `type: "long"` jobs (own folder layout, own workflow `render_long.yml`,
+owner uploads manually). Long jobs are skipped by `render.yml`, by the Shorts publish step and by Instagram/Facebook. At most one long job in the pipeline at a time.
+In the story-hour run: if the Shorts buffer is full but no long job is open and an owner `[LONG]` idea exists, make that long script instead.
+Ideas starting with `[LONG]` are never taken by the Shorts path (`pop_idea.py` skips them; `pop_idea.py --long` takes them).
 
 ## Instagram + Facebook
 
