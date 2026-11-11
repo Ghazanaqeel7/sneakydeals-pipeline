@@ -159,11 +159,20 @@
       "progress_count": 12
     },
     "003-pudding-guy-free-flights": {
-      "status": "script_sent",
-      "updated": "2026-11-11T06:18:50Z",
+      "status": "script_approved",
+      "updated": "2026-11-11T07:50:24Z",
       "title": "This Man Bought $3,000 of Pudding for Free Flights",
       "vote_msg": "1794377936.645779",
-      "vote_kind": "script"
+      "vote_kind": "script",
+      "progress": [
+        {
+          "t": "2026-11-11T07:50:24Z",
+          "msg": "✅ Aap ne dashboard se script approve kiya. Claude agle run mein video banana shuru karega."
+        }
+      ],
+      "progress_count": 1,
+      "decided_via": "dashboard",
+      "decided_at": "2026-11-11T07:50:24Z"
     }
   }
 }
