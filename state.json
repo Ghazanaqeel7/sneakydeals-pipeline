@@ -223,9 +223,14 @@
         {
           "t": "2026-11-11T11:18:14Z",
           "msg": "🛠 Aapke changes laga raha hoon: thumbnail ka hook zyada tez aur nazar-khench bana raha hoon, video wahi rahegi (~20 min)"
+        },
+        {
+          "t": "2026-11-11T11:22:08Z",
+          "msg": "✅ Naya thumbnail tayyar: bara hara '$3,000 OF PUDDING → FREE FLIGHTS?!' hook aur '12,150 CUPS!' ka board (video wahi hai). Review ke liye abhi bhej raha hoon.",
+          "image": "jobs/003-pudding-guy-free-flights/thumbnail.jpg"
         }
       ],
-      "progress_count": 14,
+      "progress_count": 15,
       "decided_via": "dashboard",
       "decided_at": "2026-11-11T10:55:10Z",
       "run": "42988317343",
