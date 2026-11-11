@@ -1,0 +1,269 @@
+{
+ "title": "Sample long-form (template demo)",
+ "scenes": [
+  {
+   "id": "s01",
+   "text": "This week, The Children's Place filed for bankruptcy. But it is not the first kids' store to fall.",
+   "visual": {
+    "type": "headline",
+    "kicker": "IN THE NEWS · 10 NOV 2026",
+    "text": "Kids clothing chain files for bankruptcy protection and plans store closures",
+    "source": "Reported by major US outlets (sample text)"
+   },
+   "tone": "dark"
+  },
+  {
+   "id": "s02",
+   "text": "Here is how America's mall stores keep dying.",
+   "visual": {
+    "type": "title",
+    "text": "How America's mall stores keep dying",
+    "accent": [
+     "dying"
+    ]
+   },
+   "tone": "dark"
+  },
+  {
+   "id": "s03",
+   "text": "It starts in eighteen ninety-three.",
+   "visual": {
+    "type": "chapter",
+    "number": 1,
+    "title": "The rise"
+   },
+   "tone": "dark",
+   "chapter": "The rise"
+  },
+  {
+   "id": "s04",
+   "text": "A mail-order catalog reached millions of farm families.",
+   "visual": [
+    {
+     "type": "photo",
+     "image": {
+      "q": "mail order catalog 1897"
+     },
+     "move": "in",
+     "fallback": {
+      "icon": "mail",
+      "label": "The catalog"
+     },
+     "caption": "Mail-order catalog"
+    },
+    {
+     "type": "stat",
+     "from": 0,
+     "to": 100,
+     "suffix": " years",
+     "label": "Before the web",
+     "sub": "A catalog sold almost anything"
+    }
+   ],
+   "tone": "dark"
+  },
+  {
+   "id": "s05",
+   "text": "Sales climbed for decades, then the line bent.",
+   "visual": {
+    "type": "chart",
+    "kind": "line",
+    "title": "Sales",
+    "unit": "BILLION USD",
+    "data": [
+     {
+      "x": "1990",
+      "y": 30
+     },
+     {
+      "x": "2000",
+      "y": 41
+     },
+     {
+      "x": "2005",
+      "y": 50
+     },
+     {
+      "x": "2010",
+      "y": 38
+     },
+     {
+      "x": "2015",
+      "y": 25
+     }
+    ],
+    "highlight": 2,
+    "color": "green"
+   },
+   "tone": "dark"
+  },
+  {
+   "id": "s06",
+   "text": "One decision decided everything.",
+   "visual": {
+    "type": "timeline",
+    "title": "Key dates",
+    "events": [
+     {
+      "year": "1893",
+      "label": "Catalog opens"
+     },
+     {
+      "year": "1925",
+      "label": "First store"
+     },
+     {
+      "year": "1993",
+      "label": "Catalog closes"
+     },
+     {
+      "year": "2018",
+      "label": "Bankruptcy"
+     }
+    ]
+   },
+   "tone": "dark"
+  },
+  {
+   "id": "s07",
+   "text": "Stores spread across the country.",
+   "visual": {
+    "type": "map",
+    "region": "us",
+    "highlight": [
+     "Illinois",
+     "Texas",
+     "California"
+    ],
+    "pins": [
+     {
+      "lon": -87.63,
+      "lat": 41.88,
+      "label": "Chicago"
+     }
+    ],
+    "arcs": [
+     {
+      "from": [
+       -87.63,
+       41.88
+      ],
+      "to": [
+       -118.24,
+       34.05
+      ],
+      "label": "West"
+     }
+    ],
+    "title": "Footprint"
+   },
+   "tone": "dark"
+  },
+  {
+   "id": "s08",
+   "text": "Compare that with the newcomer.",
+   "visual": {
+    "type": "compare",
+    "title": "Old vs new",
+    "a": {
+     "name": "Old store",
+     "color": "#f2b134"
+    },
+    "b": {
+     "name": "Online",
+     "color": "#3b82f6"
+    },
+    "rows": [
+     {
+      "label": "Stores",
+      "a": 2000,
+      "b": 0
+     },
+     {
+      "label": "Warehouses",
+      "a": 30,
+      "b": 175
+     },
+     {
+      "label": "Growth",
+      "a": 2,
+      "b": 20,
+      "unit": "%"
+     }
+    ]
+   },
+   "tone": "blue"
+  },
+  {
+   "id": "s09",
+   "text": "Three mistakes sank them.",
+   "visual": {
+    "type": "list",
+    "title": "Three mistakes",
+    "items": [
+     {
+      "title": "Ignored online",
+      "sub": "Years too late"
+     },
+     {
+      "title": "Too much debt",
+      "sub": "Buyouts loaded the books"
+     },
+     {
+      "title": "Same stores",
+      "sub": "Nothing new to see"
+     }
+    ]
+   },
+   "tone": "red"
+  },
+  {
+   "id": "s10",
+   "text": "Everything was built on a promise.",
+   "visual": {
+    "type": "illustration",
+    "title": "The chain",
+    "icons": [
+     {
+      "name": "factory",
+      "label": "Make"
+     },
+     {
+      "name": "truck",
+      "label": "Ship"
+     },
+     {
+      "name": "store",
+      "label": "Sell"
+     },
+     {
+      "name": "dollar",
+      "label": "Profit"
+     }
+    ]
+   },
+   "tone": "dark"
+  },
+  {
+   "id": "s11",
+   "text": "One executive said it plainly.",
+   "visual": {
+    "type": "quote",
+    "text": "This is a sample quote placeholder for a sourced line.",
+    "who": "Executive name",
+    "source": "Source, year"
+   },
+   "tone": "paper"
+  },
+  {
+   "id": "s12",
+   "text": "Subscribe for the next story.",
+   "visual": {
+    "type": "endcard",
+    "title": "Next: the pharmacy that ate itself",
+    "sub": "Subscribe to Sneaky Deals"
+   },
+   "tone": "dark"
+  }
+ ]
+}

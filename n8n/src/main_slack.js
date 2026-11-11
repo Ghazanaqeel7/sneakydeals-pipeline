@@ -150,6 +150,7 @@ if (mode === 'replies') {
       script_rejected: `❌ Script rejected: *${id}*. Type what to change in your next message (or type \`drop\` to throw this idea away).`,
       video_rejected: `❌ Video rejected: *${id}*. Type what to fix (shot / second / what looks wrong).`,
     };
+    if (next === 'video_approved' && ((st0.jobs[id] || {}).type === 'long')) texts.video_approved = `✅ Long video approved: *${id}*. Dashboard > Long-form tab kholein, wahan se file download karke YouTube Studio mein upload karein (auto-publish long videos ke liye band hai).`;
     await dPost(texts[next]);
     if (next.endsWith('rejected')) data.awaiting = id;
     log.push(`${id}: ${next}`);
@@ -223,7 +224,7 @@ if (mode === 'publish') {
   const stNow = JSON.parse((await ghGet('state.json')).text);
   const days = (stNow.config && stNow.config.publish_days) || ['Mon', 'Wed', 'Fri', 'Sun'];
   const today = new Date().toLocaleDateString('en-US', { weekday: 'short', timeZone: 'Asia/Karachi' });
-  const pick = Object.entries(stNow.jobs).filter(([, j]) => j.status === 'video_approved').sort((a, b) => (a[1].updated || '').localeCompare(b[1].updated || ''))[0];
+  const pick = Object.entries(stNow.jobs).filter(([, j]) => j.status === 'video_approved' && j.type !== 'long').sort((a, b) => (a[1].updated || '').localeCompare(b[1].updated || ''))[0];
   const dayKey = (t) => new Date(t).toLocaleDateString('en-CA', { timeZone: 'Asia/Karachi' });
   const todayKey = dayKey(Date.now());
   const takenBy = Object.entries(stNow.jobs).find(([, j]) => (j.live_at && dayKey(j.live_at) === todayKey) || (j.published_at && dayKey(j.published_at) === todayKey));

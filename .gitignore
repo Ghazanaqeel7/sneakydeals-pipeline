@@ -6,3 +6,7 @@ RAW.wav
 hook_sample.wav
 .DS_Store
 __pycache__/
+node_modules/
+out/
+pipeline/template-long/public/assets/*
+!pipeline/template-long/public/assets/.gitkeep
