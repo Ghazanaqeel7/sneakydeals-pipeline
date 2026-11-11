@@ -194,9 +194,14 @@
           "t": "2026-11-11T08:35:18Z",
           "msg": "✅ Check frames clean (round 2): pudding ka shelf ab saaf dikh raha hai, camera ab dabbon ke pahar se nahi guzarta, sarak aur film set theek (~5 min baqi, phir render ~40 min)",
           "image": "jobs/003-pudding-guy-free-flights/review/round2.jpg"
+        },
+        {
+          "t": "2026-11-11T08:35:52Z",
+          "msg": "🖼 Thumbnail tayyar — ab GitHub par render shuru hoga (~40 min)",
+          "image": "jobs/003-pudding-guy-free-flights/thumbnail.jpg"
         }
       ],
-      "progress_count": 7,
+      "progress_count": 8,
       "decided_via": "dashboard",
       "decided_at": "2026-11-11T07:50:24Z"
     }
