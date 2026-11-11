@@ -12,7 +12,8 @@
       "Sun"
     ],
     "publish_time_pkt": "05:00",
-    "pipeline_buffer": 2
+    "pipeline_buffer": 2,
+    "longform_enabled": true
   },
   "jobs": {
     "001-pepsi-submarines": {
