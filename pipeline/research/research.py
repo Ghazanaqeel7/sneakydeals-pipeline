@@ -289,11 +289,34 @@ def update_trends(res):
     json.dump(tr, open(path, 'w'), indent=1, ensure_ascii=False)
     return tr
 
+def thin_snaps(snaps, keep_days=8):
+    """Keep every snapshot of the last keep_days days; older ones one per day (the last of that day)."""
+    out, seen = [], set()
+    for s in reversed(sorted(snaps, key=lambda x: x['t'])):
+        if days_since(s['t']) <= keep_days: out.append(s); continue
+        if s['t'][:10] in seen: continue
+        seen.add(s['t'][:10]); out.append(s)
+    return sorted(out, key=lambda x: x['t'])[-400:]
+
+def views_ago(snaps, hours, key='views'):
+    """Value from the newest snapshot at least `hours` old (None if we have none that old)."""
+    old = [x for x in snaps if days_since(x['t']) * 24 >= hours - 0.5]
+    return old[-1][key] if old else None
+
 def track_own_videos(own):
-    """Daily snapshot of every public Sneaky Deals video, so we can compare our videos at the same age (1/3/7 days)."""
+    """Snapshot of the channel and every public Sneaky Deals video (hourly via --stats, daily via --full):
+    views over time, change in the last 24 h, views at day 1/3/7 for fair comparisons. Feeds the dashboard Stats page."""
     path = os.path.join(OUT_DIR, 'own_videos.json')
     data = json.load(open(path)) if os.path.exists(path) else {'videos': {}}
-    if not own or not own.get('uploads'): return data
+    if own:
+        c = data.setdefault('channel', {'snaps': []})
+        c.update({k: own.get(k) for k in ('id', 'title', 'handle', 'thumb', 'subs', 'views', 'videos')})
+        c['snaps'] = thin_snaps(c['snaps'] + [{'t': NOW.strftime('%Y-%m-%dT%H:%M:%SZ'), 'subs': own['subs'], 'views': own['views']}])
+        a, b = views_ago(c['snaps'], 24, 'subs'), views_ago(c['snaps'], 24)
+        c['subs_24h'] = own['subs'] - a if a is not None else None
+        c['views_24h'] = own['views'] - b if b is not None else None
+    if not own or not own.get('uploads'):
+        data['updated'] = NOW.strftime('%Y-%m-%dT%H:%M:%SZ'); json.dump(data, open(path, 'w'), indent=1, ensure_ascii=False); return data
     items = safe_items(own['uploads'], 50)
     vids = video_details([i['contentDetails']['videoId'] for i in items])
     stamp = NOW.strftime('%Y-%m-%dT%H:%M:%SZ')
@@ -301,7 +324,10 @@ def track_own_videos(own):
         rec = data['videos'].setdefault(vid, {'snaps': []})
         rec.update({k: v[k] for k in ('title', 'published', 'seconds', 'thumb')})
         rec['short'] = v['seconds'] <= 180
-        rec['snaps'] = [s for s in rec['snaps'] if s['t'][:10] != stamp[:10]] + [{'t': stamp, 'views': v['views'], 'likes': v['likes'], 'comments': v['comments']}]
+        rec['snaps'] = thin_snaps(rec['snaps'] + [{'t': stamp, 'views': v['views'], 'likes': v['likes'], 'comments': v['comments']}])
+        b = views_ago(rec['snaps'], 24)
+        rec['views_24h'] = v['views'] - b if b is not None else (v['views'] if days_since(v['published']) <= 1 else None)
+        rec['likes'], rec['comments'] = v['likes'], v['comments']
         age = days_since(v['published'])
         rec['age_days'] = round(age, 1)
         def at(d):   # views from a snapshot taken when the video was d to d+1.5 days old (None if we have none)
@@ -325,6 +351,13 @@ def prune_history(days=30):
 
 def main():
     args = sys.argv[1:]
+    if '--stats' in args:     # hourly: only our own channel + videos (~3 API units)
+        if not KEY: sys.exit('YT_API_KEY is not set')
+        os.makedirs(OUT_DIR, exist_ok=True)
+        prev = json.load(open(LATEST)) if os.path.exists(LATEST) else {}
+        d = track_own_videos(own_channel(prev))
+        print(f"stats: {len(d.get('videos', {}))} videos, subs={d.get('channel', {}).get('subs')}, units={UNITS['used']}")
+        return
     full = '--full' in args
     os.makedirs(os.path.join(OUT_DIR, 'history'), exist_ok=True)
     prev = json.load(open(LATEST)) if os.path.exists(LATEST) else {}

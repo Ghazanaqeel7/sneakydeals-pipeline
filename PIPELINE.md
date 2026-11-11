@@ -168,7 +168,7 @@ yourself.
 ## Weekly learning (research data → playbook → Slack)
 
 This is how the system trains itself. Free data first; vidIQ only if credits are left (`vidiq_balance` ≥ 25).
-1. Read `docs/research/own_videos.json` (our videos: views at 1/3/7 days, like rate, length), `docs/research/trends.json`
+1. Read `docs/research/own_videos.json` (refreshed hourly by `.github/workflows/stats.yml`: channel subscribers/views over time, every video's views, last-24 h views, views at 1/3/7 days, likes, comments, length), `docs/research/trends.json`
    (30-day memory: rising/falling brands and words, title patterns of this week's hits) and `docs/research/latest.json`.
    Instagram/Facebook numbers are not readable automatically yet: use what the owner shares (screenshots/notes in
    Slack or the ideas queue) and keep the playbook's Instagram/Facebook rules at [start]/[signal] until then.

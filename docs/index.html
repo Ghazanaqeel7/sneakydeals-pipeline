@@ -85,6 +85,32 @@ button,input,textarea,select{font:inherit;color:inherit}
 .mini{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:9px;max-width:420px}
 .mini i{height:5px;border-radius:99px;background:var(--line)}
 .mini i.done{background:#16A36B}.mini i.now{background:var(--ink)}.mini i.now.attn{background:var(--gold)}.mini i.now.err{background:var(--coral)}
+.board{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.col{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:12px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px;min-width:0}
+.col .ch{display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:13.5px;padding:2px 4px 4px}
+.col .ch span{font:500 11px var(--mono);color:var(--ink3);background:var(--bg2);border-radius:999px;padding:1px 8px}
+.bc{display:flex;gap:10px;align-items:center;width:100%;text-align:left;background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:9px;cursor:pointer;min-width:0}
+.bc:hover{border-color:var(--line2);background:var(--bg2)}
+.bc img{width:32px;height:44px;border-radius:6px;object-fit:cover;flex-shrink:0;background:var(--bg2)}
+.bc .bt{font-size:13px;font-weight:500;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.bc .bs{font-size:11.5px;color:var(--ink3);margin-top:3px}
+.bc .bs.wait{color:var(--gold2);font-weight:500}.bc .bs.bad{color:var(--coral);font-weight:500}.bc .bs.work{color:var(--blue)}
+.bc.plan{background:none;border-style:dashed;cursor:default}
+.colempty{border:1px dashed var(--line2);border-radius:12px;padding:10px;font-size:12px;color:var(--ink3)}
+.spark{display:block}
+.vt{width:100%;border-collapse:collapse;font-size:13.5px}
+.vt th{font:500 10.5px var(--mono);text-transform:uppercase;letter-spacing:.8px;color:var(--ink3);text-align:right;padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+.vt th:first-child,.vt td:first-child{text-align:left}
+.vt td{padding:12px;border-bottom:1px solid var(--line);text-align:right;font-family:var(--mono);white-space:nowrap;vertical-align:middle}
+.vt td:first-child{font-family:var(--sans);white-space:normal}
+.vt tr:last-child td{border-bottom:0}
+.vt .vv{display:flex;gap:12px;align-items:center;min-width:240px}
+.vt .vv img{width:40px;height:56px;border-radius:7px;object-fit:cover;flex-shrink:0;background:var(--bg2)}
+.vt .vv a{color:var(--ink);font-weight:600;line-height:1.3}
+.up{color:var(--mint)}.dim{color:var(--ink3)}
+.ytline{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;margin:10px 0 0;padding:10px 14px;background:var(--card);border:1px solid var(--line);border-radius:12px;font-size:13px;color:var(--ink2)}
+.ytline b{color:var(--ink);font-family:var(--mono)}
+.chartbox{padding:18px 20px}
 .week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
 .wd{padding:10px;border-radius:12px;background:var(--card2);border:1px solid var(--line);font-size:12.5px;line-height:1.35;min-height:78px}
 .wd .d{color:var(--ink3);font:500 10.5px var(--mono);text-transform:uppercase;letter-spacing:.6px}
@@ -248,15 +274,15 @@ audio{width:100%;border-radius:999px}
   .brand b{font-size:21px}.brand span{display:none}
   .nav,.health .hl{display:none}
   .health{margin-left:auto}
-  .bnav{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));position:fixed;left:0;right:0;bottom:0;z-index:6;background:rgba(255,255,255,.96);backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:6px 6px calc(10px + env(safe-area-inset-bottom))}
-  .bnav button{border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:3px;min-height:52px;justify-content:center;color:var(--ink3);font-size:11px;font-weight:500;position:relative;cursor:pointer}
+  .bnav{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));position:fixed;left:0;right:0;bottom:0;z-index:6;background:rgba(255,255,255,.96);backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:6px 6px calc(10px + env(safe-area-inset-bottom))}
+  .bnav button{border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:3px;min-height:52px;justify-content:center;color:var(--ink3);font-size:10.5px;padding:0;font-weight:500;position:relative;cursor:pointer}
   .bnav button.on{color:var(--ink)}
   .bnav button.on svg{stroke:var(--ink)}
   .bnav .badge{position:absolute;top:2px;left:calc(50% + 6px)}
   #main{padding:20px 16px 30px}
   h1{font-size:30px;margin:4px 0 8px}
   .lead{font-size:15px}
-  .stats{width:100%}.stat{flex:1;min-width:0;padding:10px 12px}.stat b{font-size:26px}
+  .stats{width:100%;display:grid;grid-template-columns:1fr 1fr}.stat{min-width:0;padding:10px 12px}.stat b{font-size:26px}
   .tgrid{grid-template-columns:1fr}
   .need{flex-direction:column;padding:16px;gap:12px}
   .need .th,.need .ic{width:100%;height:auto;aspect-ratio:16/9}
@@ -269,6 +295,7 @@ audio{width:100%;border-radius:999px}
   .prod img{width:44px;height:60px}
   .prod>.chip,.prod>span.chip{display:none}
   .week{grid-template-columns:repeat(7,minmax(92px,1fr));overflow-x:auto;padding-bottom:4px}
+  .board{grid-template-columns:repeat(5,minmax(200px,1fr));overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory}.col{scroll-snap-align:start}
   .vids{grid-template-columns:1fr}
   .vids.has .vlist{display:none}
   .vids:not(.has) #detail{display:none}
@@ -385,7 +412,8 @@ async function load(){
     S.state=JSON.parse(await readText('state.json'));
     S.lastSync=new Date();
     S.n=(S.n||0)+1;const heavy=TOKEN||S.n%4===1;
-    const [runs,commits,feed]=await Promise.allSettled([heavy?api('/actions/runs?per_page=6'):Promise.reject(0),heavy?api('/commits?per_page=40'):Promise.reject(0),readText('feed/youtube.xml')]);
+    const [runs,commits,feed,own]=await Promise.allSettled([heavy?api('/actions/runs?per_page=6'):Promise.reject(0),heavy?api('/commits?per_page=40'):Promise.reject(0),readText('feed/youtube.xml'),readText('docs/research/own_videos.json')]);
+    if(own.status==='fulfilled'){try{S.own=JSON.parse(own.value)}catch(e){}}
     if(runs.status==='fulfilled')S.runs=runs.value.workflow_runs||[];
     if(commits.status==='fulfilled')S.commits=commits.value||[];
     if(feed.status==='fulfilled')S.feed=parseFeed(feed.value);
@@ -399,16 +427,17 @@ function whoOf(c){const m=c.commit.message,a=c.commit.author.name;
   if(a==='research-bot')return['render','Research'];if(/^Merge pull request/.test(m)||a===OWNER)return['you','You'];if(a==='render-bot'||/github-actions/.test(a))return['render','Render'];if(a==='claude-pipeline'||/claude/i.test(a))return['claude','Claude'];return['you',a]}
 
 // ---------- render ----------
-function sigOf(){const j=S.state&&S.state.jobs[S.sel];return JSON.stringify([S.view,S.detail,S.view==='today'&&S.state&&Object.entries(S.state.jobs).map(([k,v])=>k+v.status+(v.progress_count||0)+(v.updated||'')+(v.ig_at||'')).join(),S.view==='settings'&&S.commits.length&&S.commits[0].sha,S.sel,S.tab,!!TOKEN,j&&j.status,j&&j.updated,j&&j.progress_count,S.view==='settings'&&S.state&&[S.state.config,S.state.ideas],S.view==='calendar'&&Object.values(S.state.jobs).map(j=>j.status).join(),S.view==='research'&&[S.rtab,S.rsort,(S.state.jobs.research||{}).progress_count,(S.state.ideas||[]).length]])}
+function sigOf(){const j=S.state&&S.state.jobs[S.sel];return JSON.stringify([S.view,S.detail,S.own&&S.own.updated,S.view==='today'&&S.state&&Object.entries(S.state.jobs).map(([k,v])=>k+v.status+(v.progress_count||0)+(v.updated||'')+(v.ig_at||'')).join(),S.view==='settings'&&S.commits.length&&S.commits[0].sha,S.sel,S.tab,!!TOKEN,j&&j.status,j&&j.updated,j&&j.progress_count,S.view==='settings'&&S.state&&[S.state.config,S.state.ideas],S.view==='calendar'&&Object.values(S.state.jobs).map(j=>j.status).join(),S.view==='research'&&[S.rtab,S.rsort,(S.state.jobs.research||{}).progress_count,(S.state.ideas||[]).length]])}
 function render(force){renderChrome();if(S.editing)return;const sg=sigOf();if(!force&&sg===S.sig)return;S.sig=sg;renderMain()}
 const ICONS={
   today:'<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
   videos:'<rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z"/>',
   calendar:'<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/>',
   research:'<circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/>',
+  stats:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
   settings:'<circle cx="12" cy="12" r="3"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/>'};
 const svg=(k,sz=18)=>`<svg width="${sz}" height="${sz}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[k]}</svg>`;
-const VIEWS=[['today','Today'],['videos','Videos'],['calendar','Calendar'],['research','Research'],['settings','Settings']];
+const VIEWS=[['today','Today'],['videos','Videos'],['stats','Stats'],['calendar','Calendar'],['research','Research'],['settings','Settings']];
 const needsYou=()=>Object.entries(S.state.jobs).filter(([k,j])=>isJob(k)&&(info(j)[3]||j.status==='render_failed'));
 function systemsInfo(){
   const st=S.state;const lastBy=(k)=>S.commits.find(c=>whoOf(c)[0]===k);
@@ -449,6 +478,7 @@ function renderMain(){
   if(S.view==='today')return renderToday();
   if(S.view==='settings')return renderSettings();
   if(S.view==='research')return renderResearch();
+  if(S.view==='stats')return renderStats();
   if(S.view==='calendar')return renderCalendar();
   $('#main').innerHTML=`<div class="vids ${S.detail?'has':''}"><aside class="vlist" id="jobs">${jobsListHtml()}</aside><section id="detail" style="min-width:0"></section></div>`;
   const id=S.sel,j=S.state.jobs[id];if(!j){$('#detail').innerHTML='<div class="empty">No videos yet.</div>';return}
@@ -462,6 +492,7 @@ function renderMain(){
     <div class="sub"><span>${chip(j)}</span><span>Updated ${ago(j.updated)}</span>${slots[id]?`<span style="color:var(--gold2)">Goes live ${pkt(slots[id])} PKT</span>`:''}${j.video_url?`<a href="${esc(j.video_url)}" target="_blank">Full-quality file ↗</a>`:''}</div></div></div>
     ${j.status==='dropped'?'':`<div class="track">${track}</div><div class="track-m"><div class="bar">${STAGES.map((x,i)=>`<i class="${i<idx?'done':''} ${i===idx?'now'+(attn?' attn':'')+(err?' err':''):''}"></i>`).join('')}</div><div class="lab"><span>Step ${idx+1} of 7 · ${STAGES[Math.max(idx,0)]}</span><span>${idx<6?'Next: '+STAGES[idx+1]:''}</span></div></div>`}
     ${platformStrip(id,j)}
+    ${ytLine(j)}
     ${actionBar(id,j,lastP)}
     ${reviewBlock(id,j)}
     <div class="tabs">${[['progress','Progress'],['script','Script'],['media','Voice · Video · Thumbnail'],['publish','YouTube details'],['social','Instagram · Facebook'],['frames','Check frames']].map(([k,n])=>`<button class="tab ${S.tab===k?'on':''}" onclick="setTab('${k}')">${n}</button>`).join('')}</div>
@@ -648,19 +679,90 @@ async function renderToday(){
   const prodRow=([id,j])=>{const [idx,,c,attn,err]=info(j);const lp=(j.progress||[]).slice(-1)[0];
     return `<button class="prod" onclick="pick('${id}')"><img alt="" src="${th(id,j)}" onerror="this.onerror=null;this.src='logo.png'"><div style="min-width:0"><div class="tt">${esc(j.title||titleFromId(id))}</div><div class="mini" aria-label="Step ${idx+1} of 7">${STAGES.map((x,i)=>`<i class="${i<idx?'done':''} ${i===idx?'now'+(attn?' attn':'')+(err?' err':''):''}"></i>`).join('')}</div><div class="nt">Step ${Math.max(idx,0)+1} of 7 · ${STAGES[Math.max(idx,0)]}${lp?' — '+esc(lp.msg)+' · '+ago(lp.t):''}</div></div>${chip(j)}</button>`};
   $('#main').innerHTML=`<div class="pagehead"><div><div class="kicker">${esc(today)}</div><h1 style="margin:6px 0 0;font-size:46px">${greet}, Ghazan</h1><p class="lead">${needs.length?`${needs.length} thing${needs.length>1?'s':''} need${needs.length>1?'':'s'} you. Everything else is running on its own.`:'Nothing needs you right now. Everything is running on its own.'}</p></div>
-    <div class="stats"><div class="stat"><div class="kicker">Live</div><b>${live}</b></div><div class="stat"><div class="kicker">Scheduled</div><b>${sched}</b></div><div class="stat"><div class="kicker">In the works</div><b>${prod.length}</b></div></div></div>
+    <div class="stats">${S.own&&S.own.channel?`<div class="stat" style="cursor:pointer" onclick="go('stats')"><div class="kicker">Subscribers</div><b>${fmtN(S.own.channel.subs)}</b>${S.own.channel.subs_24h!=null?`<div class="note" style="margin:0;color:${S.own.channel.subs_24h>0?'var(--mint)':'var(--ink3)'}">${S.own.channel.subs_24h>=0?'+':''}${S.own.channel.subs_24h} in 24 h</div>`:''}</div>`:''}<div class="stat"><div class="kicker">Live</div><b>${live}</b></div><div class="stat"><div class="kicker">Scheduled</div><b>${sched}</b></div><div class="stat"><div class="kicker">In the works</div><b>${prod.length}</b></div></div></div>
     <div class="tgrid"><div><div class="sec" style="margin-top:0"><h2 class="hot">Needs you${needs.length?' · '+needs.length:''}</h2>${TOKEN?'':'<a href="#" onclick="askToken();return false">Unlock to approve here</a>'}</div>
       ${needs.length?needs.map(needCard).join(''):`<div class="allclear"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E7A54" stroke-width="2" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>All clear. Claude writes the next script at 11:00 and posts it in Slack.</div>`}</div>
       <div><div class="sec" style="margin-top:0"><h2>Next post</h2></div>${nextHtml}</div></div>
+    <div class="sec"><h2>Pipeline</h2><a href="#" onclick="go('videos');return false">All videos →</a></div>
+    ${pipelineBoard(entries)}
     <div class="sec"><h2>In production · ${prod.length}</h2><a href="#" onclick="go('videos');return false">All videos →</a></div>
     <div class="card">${prod.length?prod.map(prodRow).join(''):'<div class="empty" style="padding:18px">Nothing in production right now.</div>'}</div>
     <div class="tgrid" style="margin-top:6px"><div><div class="sec"><h2>This week</h2><a href="#" onclick="go('calendar');return false">Open calendar →</a></div><div class="card" style="padding:14px" id="t_week"><div class="empty" style="padding:6px">Loading…</div></div></div>
       <div><div class="sec"><h2>Research says</h2><a href="#" onclick="go('research');return false">More →</a></div><div class="card insight" id="t_res"><div class="empty" style="padding:0">Loading…</div></div></div></div>`;
   try{const C=await cachedDaily('docs/calendar.json');const tdy=new Date().toLocaleDateString('en-GB',{timeZone:'Asia/Karachi',weekday:'short',day:'numeric',month:'short'}).replace(',','');
+    const planned=(C.items||[]).filter(x=>x.status==='planned'&&!x.job).slice(0,2),bp=$('#b_plan');
+    if(bp)bp.innerHTML=planned.map((x,i)=>`<div class="bc plan"><div style="min-width:0"><div class="bt">${esc(x.title||x.topic||'')}</div><div class="bs">${i===0?'Next up · Claude writes at 11:00':'Planned · '+esc(x.day||'')}</div></div></div>`).join('')||(bp.parentElement.querySelector('.bc')?'':'<div class="colempty">Claude writes the next one at 11:00</div>');
     const it=(C.items||[]).slice(0,7);const el=$('#t_week');if(el)el.innerHTML=it.length?`<div class="week">${it.map(x=>{const j=x.job&&st.jobs[x.job];return `<div class="wd ${x.format==='long'?'long':''} ${tdy&&(x.day||'').replace(/\s+/g,' ')===tdy?'today':''}"><div class="d">${esc(x.day||'')}${x.format==='long'?' · long':''}</div><div class="x">${esc(x.title||x.topic||'')}</div>${j?`<div style="margin-top:6px">${chip(j)}</div>`:''}</div>`}).join('')}</div>`:'<div class="empty" style="padding:6px">No calendar yet — Claude writes one on Monday.</div>'}catch(e){const el=$('#t_week');if(el)el.innerHTML='<div class="empty" style="padding:6px">No calendar yet — Claude writes one on Monday.</div>'}
   try{const R=await cachedDaily('docs/research/latest.json');let T=null;try{T=await cachedDaily('docs/research/trends.json')}catch(e){}
     const top=(R.shorts||[])[0];const up=T&&T.days_of_memory>=8?(T.rising.brands.rising||[]).slice(0,3).map(m=>'↑ '+m.name):((R.hot_words||{}).shorts||[]).slice(0,3).map(w=>w.word);
     const el=$('#t_res');if(el)el.innerHTML=`${top?`<p>Top Short in our niche right now: “${esc(top.title.slice(0,80))}” — <b style="color:var(--gold2)">${fmtN(top.views)}</b> views, ${top.score}× its channel’s normal.</p>`:'<p>No research yet.</p>'}<div>${up.map(w=>`<span class="rw up">${esc(w)}</span>`).join('')}</div><div class="note" style="margin:0">Updated ${ago(R.full_run)} · runs daily 06:00</div>`}catch(e){const el=$('#t_res');if(el)el.innerHTML='<p class="note">Research appears after the first daily scan.</p>'}
+}
+
+function pipelineBoard(entries){
+  const cols=[['script','Script'],['making','Making'],['review','Review'],['sched','Scheduled'],['live','Live']];
+  const colOf=(j)=>{const s=j.status;if(s==='dropped')return null;
+    if(['script_ready','script_sent','script_rejected'].includes(s))return'script';
+    if(['script_approved','building','render_queued','rendering','render_failed','video_rejected'].includes(s))return'making';
+    if(['video_ready','video_sent'].includes(s))return'review';
+    if(s==='video_approved'||(s==='published'&&j.live_at&&new Date(j.live_at)>new Date()))return'sched';
+    if(s==='published')return'live';return'making'};
+  const slots=publishSlots(S.state);
+  const sub=(id,j)=>{const s=j.status;
+    if(s==='script_ready'||s==='script_sent')return['wait','Waiting on you'];
+    if(s==='script_rejected')return['work','Claude is rewriting'];
+    if(s==='video_ready'||s==='video_sent')return['wait','Waiting on you'];
+    if(s==='render_failed')return['bad','Render failed — retrying'];
+    if(s==='video_rejected')return['work','Fixing your notes'];
+    if(s==='script_approved')return['work','Starts within the hour'];
+    if(['building','render_queued','rendering'].includes(s)){const lp=(j.progress||[]).slice(-1)[0];return['work',info(j)[1]+(lp?' · '+ago(lp.t):'')]}
+    if(slots[id])return['','Goes '+pkt(slots[id])];
+    if(j.live_at)return['',(new Date(j.live_at)>new Date()?'Goes ':'Live ')+pkt(j.live_at)];
+    return['',j.published_at?'Sent '+pkt(j.published_at):''];};
+  const by={};cols.forEach(([k])=>by[k]=[]);
+  entries.forEach(([id,j])=>{const c=colOf(j);if(c)by[c].push([id,j])});
+  by.live.sort((a,b)=>(b[1].live_at||b[1].published_at||'').localeCompare(a[1].live_at||a[1].published_at||''));
+  const card=([id,j],c)=>{const [cls,t]=sub(id,j);const img=c==='script'?'':`<img alt="" src="${RAW}/jobs/${esc(id)}/thumbnail.jpg?u=${encodeURIComponent(j.updated||'')}" onerror="this.onerror=null;this.src='logo.png'">`;
+    return `<button class="bc" onclick="pick('${id}')">${img}<div style="min-width:0"><div class="bt">${esc(j.title||titleFromId(id))}</div><div class="bs ${cls}">${esc(t)}</div></div></button>`};
+  const empty={script:'Claude writes the next one at 11:00',making:'Starts within an hour of your OK',review:'Nothing to watch',sched:'Approve a video to schedule it',live:'Nothing live yet'};
+  return `<div class="board">${cols.map(([k,n])=>{const list=k==='live'?by[k].slice(0,4):by[k];
+    return `<div class="col"><div class="ch">${n}<span>${by[k].length}</span></div>${list.map(e=>card(e,k)).join('')}${k==='script'?'<div id="b_plan"></div>':''}${!by[k].length&&k!=='script'?`<div class="colempty">${empty[k]}</div>`:''}${k==='live'&&by[k].length>4?`<a href="#" onclick="go('videos');return false" style="font-size:12.5px;padding:2px 4px">+${by[k].length-4} more</a>`:''}</div>`}).join('')}</div>`;
+}
+
+// ---------- stats ----------
+const normT=(t)=>String(t||'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+function ownVideoFor(j){if(!S.own||!S.own.videos)return null;const t=normT(j.title);if(!t)return null;
+  return Object.entries(S.own.videos).map(([id,v])=>({id,...v})).find(v=>normT(v.title)===t)||null}
+function ytLine(j){const v=ownVideoFor(j);if(!v)return'';
+  return `<div class="ytline">${PICON.yt}<span>On YouTube:</span><span><b>${fmtN(v.views)}</b> views</span>${v.views_24h!=null?`<span class="up">+${fmtN(v.views_24h)} in 24 h</span>`:''}<span><b>${fmtN(v.likes||0)}</b> likes</span><span><b>${fmtN(v.comments||0)}</b> comments</span><a href="#" onclick="go('stats');return false">All stats</a><a href="https://studio.youtube.com/video/${esc(v.id)}/analytics" target="_blank">Watch time &amp; subscribers ↗</a></div>`}
+function spark(snaps,w=110,h=28,key='views'){const p=(snaps||[]).filter(x=>x[key]!=null).slice(-72);if(p.length<2)return'<span class="dim">—</span>';
+  const vs=p.map(x=>x[key]),mn=Math.min(...vs),mx=Math.max(...vs),r=mx-mn||1;
+  const pts=p.map((x,i)=>`${(i/(p.length-1)*w).toFixed(1)},${(h-2-(x[key]-mn)/r*(h-4)).toFixed(1)}`).join(' ');
+  return `<svg class="spark" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="Views trend"><polyline points="${pts}" fill="none" stroke="#1F4FE0" stroke-width="1.8" stroke-linejoin="round"/></svg>`}
+function bigChart(snaps,key,label){const p=(snaps||[]).filter(x=>x[key]!=null).slice(-200);
+  if(p.length<2)return `<div class="empty" style="padding:24px 0">The ${label} chart fills in as hourly numbers come in.</div>`;
+  const W=900,H=180,vs=p.map(x=>x[key]),mn=Math.min(...vs),mx=Math.max(...vs),r=mx-mn||1;
+  const xy=p.map((x,i)=>[i/(p.length-1)*W,H-10-(x[key]-mn)/r*(H-30)]);
+  const line=xy.map(([x,y])=>`${x.toFixed(1)},${y.toFixed(1)}`).join(' ');
+  return `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" preserveAspectRatio="none" role="img" aria-label="${label} over time"><polygon points="0,${H} ${line} ${W},${H}" fill="#E8EEFF"/><polyline points="${line}" fill="none" stroke="#1F4FE0" stroke-width="2.2" vector-effect="non-scaling-stroke"/></svg>
+    <div style="display:flex;justify-content:space-between;font:11px var(--mono);color:var(--ink3);margin-top:6px"><span>${pkt(p[0].t)}</span><span>${fmtN(mn)} → ${fmtN(mx)}</span><span>${pkt(p[p.length-1].t)}</span></div>`}
+async function renderStats(){
+  let O=S.own;try{O=JSON.parse(await readText('docs/research/own_videos.json'));S.own=O}catch(e){}
+  if(!O||!O.channel){$('#main').innerHTML=`<div class="pagehead"><div><div class="kicker">YouTube · @SneakyDeals</div><h1 style="margin:6px 0 0">Stats</h1><p class="lead">The stats bot fetches subscribers and every video’s views each hour. The first numbers appear within an hour of it starting.</p></div></div>`;return}
+  const c=O.channel,vids=Object.entries(O.videos||{}).map(([id,v])=>({id,...v})).sort((a,b)=>(b.published||'').localeCompare(a.published||''));
+  const v24=vids.reduce((a,v)=>a+(v.views_24h||0),0);
+  const d=(n,suf='in 24 h')=>n==null?'<div class="note" style="margin:0">first day of data</div>':`<div class="note" style="margin:0;color:${n>0?'var(--mint)':'var(--ink3)'}">${n>=0?'+':''}${fmtN(n)} ${suf}</div>`;
+  const cell=(x)=>x==null?'<span class="dim">—</span>':fmtN(x);
+  $('#main').innerHTML=`<div class="pagehead"><div><div class="kicker">YouTube · @SneakyDeals</div><h1 style="margin:6px 0 0">Stats</h1><p class="lead">Updated ${ago(O.updated)} · refreshes every hour</p></div>
+    <div class="stats"><div class="stat"><div class="kicker">Subscribers</div><b>${fmtN(c.subs)}</b>${d(c.subs_24h)}</div><div class="stat"><div class="kicker">Channel views</div><b>${fmtN(c.views)}</b>${d(c.views_24h)}</div><div class="stat"><div class="kicker">Views · 24 h</div><b>${fmtN(v24)}</b><div class="note" style="margin:0">all videos</div></div><div class="stat"><div class="kicker">Public videos</div><b>${vids.length}</b><div class="note" style="margin:0">${vids.filter(v=>v.short).length} Short${vids.filter(v=>v.short).length===1?'':'s'}</div></div></div></div>
+    <div class="tgrid"><div class="card chartbox"><div class="sec" style="margin:0 0 12px"><h2>Channel views</h2></div>${bigChart(c.snaps,'views','views')}</div>
+      <div class="card chartbox"><div class="sec" style="margin:0 0 12px"><h2>Subscribers</h2></div>${bigChart(c.snaps,'subs','subscribers')}</div></div>
+    <div class="sec"><h2>Every video</h2><a href="https://studio.youtube.com/channel/${esc(c.id||'')}/analytics" target="_blank">YouTube Studio analytics ↗</a></div>
+    <div class="card" style="overflow-x:auto">${vids.length?`<table class="vt"><thead><tr><th>Video</th><th>Views</th><th>24 h</th><th>Trend</th><th>Day 1</th><th>Day 3</th><th>Day 7</th><th>Likes</th><th>Comments</th><th></th></tr></thead><tbody>
+      ${vids.map(v=>`<tr><td><div class="vv"><img alt="" src="${esc(v.thumb)}" onerror="this.onerror=null;this.src='logo.png'"><div><a href="https://youtu.be/${esc(v.id)}" target="_blank">${esc(v.title)}</a><div class="note" style="margin:3px 0 0">${v.short?'Short':'Long'} · ${durT(v.seconds||0)} · ${ago(v.published)}</div></div></div></td>
+        <td><b>${fmtN(v.views)}</b></td><td class="${v.views_24h>0?'up':'dim'}">${v.views_24h==null?'—':'+'+fmtN(v.views_24h)}</td><td>${spark(v.snaps)}</td><td>${cell(v.views_1d)}</td><td>${cell(v.views_3d)}</td><td>${cell(v.views_7d)}</td>
+        <td>${fmtN(v.likes||0)} <span class="dim">${v.views?Math.round((v.likes||0)/v.views*1000)/10+'%':''}</span></td><td>${fmtN(v.comments||0)}</td>
+        <td><a href="https://studio.youtube.com/video/${esc(v.id)}/analytics" target="_blank" style="font-family:var(--sans)">Analytics ↗</a></td></tr>`).join('')}</tbody></table>`:'<div class="empty" style="padding:20px">No public videos yet. They appear here within an hour of going live.</div>'}</div>
+    <div class="note" style="margin-top:12px">Public numbers from the YouTube Data API, refreshed hourly. YouTube rounds subscriber counts. Watch time, retention and subscribers gained per video are private to the channel owner — open “Analytics ↗” for those (or ask Claude: the Monday learning run reads them when vidIQ credits allow).</div>`;
 }
 
 // ---------- settings ----------
@@ -670,7 +772,7 @@ async function renderSettings(){
   $('#main').insertAdjacentHTML('beforeend',`<div class="sec"><h2>System status</h2><span class="note" style="margin:0">${S.lastSync?'synced '+hm(S.lastSync):''}</span></div>
     <div class="systems">${systemsInfo().map(([k,d,v,sx])=>`<div class="sys"><div class="k"><i class="dot ${d}"></i>${k}</div><div class="v">${v}</div><div class="s">${sx}</div></div>`).join('')}</div>
     <div class="sec"><h2>Activity · all systems</h2></div>
-    <div class="card" style="padding:6px 16px"><ul class="feed">${S.commits.slice(0,25).map(c=>{const [w,n]=whoOf(c);return `<li><time>${pkt(c.commit.author.date)}</time><span class="who ${w}">${esc(n)}</span><span>${esc(c.commit.message.split('\n')[0]).slice(0,90)}</span></li>`}).join('')||'<li><span>Unlock editing to see the full activity.</span></li>'}</ul></div>`);
+    <div class="card" style="padding:6px 16px"><ul class="feed">${S.commits.filter(c=>!/^stats: |^research: progress/.test(c.commit.message)).slice(0,25).map(c=>{const [w,n]=whoOf(c);return `<li><time>${pkt(c.commit.author.date)}</time><span class="who ${w}">${esc(n)}</span><span>${esc(c.commit.message.split('\n')[0]).slice(0,90)}</span></li>`}).join('')||'<li><span>Unlock editing to see the full activity.</span></li>'}</ul></div>`);
 }
 function count(){const t=$('#m_title'),d=$('#m_desc');if(t)$('#tc').textContent=t.value.length+' / 100';if(d)$('#dc').textContent=d.value.length+' / 5000'}
 function dirty(){S.editing=true}
