@@ -1,90 +1,94 @@
 {
  "fps": 30,
- "duration": 63.23,
+ "duration": 56.22,
  "shots": [
   {
    "key": "hook",
    "start": 0.15,
-   "end": 5.582,
-   "words": 15,
-   "text": "In nineteen seventy-eight, welders secretly patched a brand new New York skyscraper, every single night."
-  },
-  {
-   "key": "cta",
-   "start": 5.974,
-   "end": 11.538,
-   "words": 23,
-   "text": "Before we go deep into today's story, take a second to like this video and subscribe if you haven't. Let's get into it."
-  },
-  {
-   "key": "tower",
-   "start": 11.93,
-   "end": 16.684,
-   "words": 13,
-   "text": "It stood fifty-nine stories high on giant stilts, and it had just opened."
-  },
-  {
-   "key": "rules",
-   "start": 17.077,
-   "end": 20.643,
-   "words": 11,
-   "text": "The building rules only asked about wind hitting the flat sides."
-  },
-  {
-   "key": "but",
-   "start": 21.036,
-   "end": 26.334,
-   "words": 16,
-   "text": "But a student asked about corner winds, and the numbers showed about forty percent more force."
-  },
-  {
-   "key": "then",
-   "start": 26.726,
-   "end": 31.59,
-   "words": 16,
-   "text": "Then the engineer learned the builders had swapped his welded joints for bolts to save money."
-  },
-  {
-   "key": "storm",
-   "start": 31.983,
-   "end": 35.961,
-   "words": 14,
-   "text": "A big enough storm could snap those bolts, right in the middle of Manhattan."
+   "end": 2.816,
+   "words": 9,
+   "text": "He bought twelve thousand pudding cups for free flights."
   },
   {
    "key": "yousee",
-   "start": 36.353,
-   "end": 42.624,
-   "words": 19,
-   "text": "You see, a weld turns a joint into one solid piece. Bolts are only as strong as the bolts."
-  },
-  {
-   "key": "night",
-   "start": 43.017,
-   "end": 48.297,
-   "words": 14,
-   "text": "Every night after the offices emptied, welders covered the bolted joints with steel plates."
-  },
-  {
-   "key": "ella",
-   "start": 48.69,
-   "end": 53.756,
+   "start": 3.236,
+   "end": 8.233,
    "words": 15,
-   "text": "During the repair, Hurricane Ella headed for New York, and evacuation plans were drawn up."
+   "text": "You see, in nineteen ninety-nine, David Phillips, a civil engineer in California, spotted a deal."
+  },
+  {
+   "key": "deal",
+   "start": 8.653,
+   "end": 13.776,
+   "words": 13,
+   "text": "Healthy Choice gave airline miles for its barcodes. Ten barcodes, five hundred miles."
+  },
+  {
+   "key": "double",
+   "start": 14.196,
+   "end": 17.058,
+   "words": 12,
+   "text": "Mail them in by the end of May, and the miles doubled."
+  },
+  {
+   "key": "but",
+   "start": 17.478,
+   "end": 22.476,
+   "words": 15,
+   "text": "But the cheapest Healthy Choice thing he could find? Pudding cups. About twenty-five cents each."
   },
   {
    "key": "so",
-   "start": 54.148,
-   "end": 58.165,
-   "words": 10,
-   "text": "So everyone watched the forecasts, until the storm turned away."
+   "start": 22.896,
+   "end": 26.645,
+   "words": 13,
+   "text": "So he drove to discount store after discount store and bought their pudding."
+  },
+  {
+   "key": "ladder",
+   "start": 26.987,
+   "end": 30.813,
+   "words": 11,
+   "text": "Twelve thousand one hundred fifty cups. Just over three thousand dollars."
+  },
+  {
+   "key": "then",
+   "start": 31.161,
+   "end": 34.88,
+   "words": 13,
+   "text": "Then came the problem. Every barcode had to be peeled off by hand."
+  },
+  {
+   "key": "army",
+   "start": 35.227,
+   "end": 40.149,
+   "words": 18,
+   "text": "So he made a deal with the Salvation Army. Volunteers peeled the labels, and they kept the pudding."
+  },
+  {
+   "key": "tax",
+   "start": 40.569,
+   "end": 44.548,
+   "words": 14,
+   "text": "Donating the pudding even got him a tax write-off of about eight hundred dollars."
+  },
+  {
+   "key": "miles",
+   "start": 44.968,
+   "end": 50.671,
+   "words": 16,
+   "text": "The result? More than one point two million miles, and lifetime Gold status with American Airlines."
   },
   {
    "key": "close",
-   "start": 58.558,
-   "end": 62.476,
+   "start": 51.091,
+   "end": 55.474,
    "words": 13,
-   "text": "The repair worked, and the public didn't hear about it until nineteen ninety-five."
+   "text": "His story even inspired part of a Hollywood movie. All from cheap pudding."
   }
+ ],
+ "hookTitle": [
+  "PUDDING FOR",
+  "FREE FLIGHTS?!"
  ]
 }

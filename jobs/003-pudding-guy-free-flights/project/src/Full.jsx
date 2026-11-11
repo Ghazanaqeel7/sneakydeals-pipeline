@@ -92,7 +92,7 @@ const Scene = ({frame, fps}) => {
     scene.background = null;
     lights.sky.position.copy(cam.pos);
     const su = lights.sky.material.uniforms; su.top.value.set(L.top); su.hor.value.set(L.hor);
-    su.sunDir.value.set(L.sunOff[0], L.sunOff[1], L.sunOff[2]).normalize(); su.sunOn.value = (cam.plan.light === 'day' || cam.plan.light === 'morning' || cam.plan.light === 'yard') ? 1 : 0;
+    su.sunDir.value.set(L.sunOff[0], L.sunOff[1], L.sunOff[2]).normalize(); su.sunOn.value = (cam.plan.light === 'day' || cam.plan.light === 'morning' || cam.plan.light === 'yard' || cam.plan.light === 'dusk' || cam.plan.light === 'swamp') ? 1 : 0;
     if (L.pt) { lights.pt.color.set(L.pt.c); lights.pt.intensity = L.pt.i; lights.pt.distance = L.pt.d; lights.pt.position.set(A[0] + L.pt.p[0], A[1] + L.pt.p[1], A[2] + L.pt.p[2]); } else lights.pt.intensity = 0;
     world.update(tt, camera, cam.key);
     comp.bokeh.uniforms.focus.value = cam.pos.distanceTo(cam.look);
