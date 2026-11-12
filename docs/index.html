@@ -423,6 +423,7 @@ async function load(){
     S.n=(S.n||0)+1;const heavy=TOKEN||S.n%4===1;
     const [runs,commits,feed,own]=await Promise.allSettled([heavy?api('/actions/runs?per_page=6'):Promise.reject(0),heavy?api('/commits?per_page=40'):Promise.reject(0),readText('feed/youtube.xml'),readText('docs/research/own_videos.json')]);
     if(own.status==='fulfilled'){try{S.own=JSON.parse(own.value)}catch(e){}}
+    try{S.social=JSON.parse(await readText('docs/research/social.json'))}catch(e){}
     if(runs.status==='fulfilled')S.runs=runs.value.workflow_runs||[];
     if(commits.status==='fulfilled')S.commits=commits.value||[];
     if(feed.status==='fulfilled')S.feed=parseFeed(feed.value);
@@ -829,11 +830,16 @@ function renderSocialStats(k){
   const link=k==='ig'?'https://www.instagram.com/sneakydealstv/':'https://www.facebook.com/profile.php';
   const jobs=Object.entries(S.state.jobs).filter(([id,j])=>isJob(id)&&j.type!=='long'&&['published','video_approved'].includes(j.status)).sort((a,b)=>(at(b[1])||'9').localeCompare(at(a[1])||'9'));
   const sent=jobs.filter(([,j])=>at(j)).length;
+  const SO=(S.social||{})[k==='ig'?'instagram':'facebook']||{posts:[]};
+  const P=(id)=>(SO.posts||[]).find(p=>p.job===id);
+  const tot=(f)=>(SO.posts||[]).reduce((a,p)=>a+(p[f]||0),0);
+  const likeKey=k==='ig'?'likes':'reactions';
   const row=([id,j])=>{const t=at(j);const st=t?['ok','Zapier ko bheja']:j.status==='published'?['mute','Nahi bheja (setup se pehle)']:['wait','YouTube ke saath jayegi'];
-    return `<tr><td><div class="vv"><img alt="" src="${th(id,j)}" onerror="this.onerror=null;this.src='logo.png'"><div><a href="#" onclick="pick('${id}','social');return false">${esc(j.title||titleFromId(id))}</a><div class="note" style="margin:3px 0 0">${esc(id)}</div></div></div></td><td><span class="chip c-${st[0]}">${st[1]}</span></td><td>${t?pt2(t):'—'}</td></tr>`};
-  $('#main').innerHTML=`<div class="pagehead"><div><div class="kicker">${name} · @sneakydealstv</div><h1 style="margin:6px 0 0">Stats</h1><p class="lead">${sent} video${sent===1?'':'s'} ${name} par bheji gayi</p></div></div>${ptabs()}
-    <div class="card" style="overflow-x:auto">${jobs.length?`<table class="vt"><thead><tr><th>Video</th><th>Status</th><th>Kab</th></tr></thead><tbody>${jobs.map(row).join('')}</tbody></table>`:'<div class="empty" style="padding:20px">Abhi koi video nahi.</div>'}</div>
-    <div class="note" style="margin-top:12px">"Zapier ko bheja" = video ${name} wali Zap ki feed mein chali gayi; Zapier ~15 min mein post karta hai. Fail ho to Zapier email karta hai (aur jald Slack par bhi). ${name} ke views/likes ke liye Meta (Instagram/Facebook) ko connect karna hoga — woh agla qadam hai. <a href="${link}" target="_blank">${name} kholein ↗</a></div>`;
+    const p=P(id);return `<tr><td><div class="vv"><img alt="" src="${th(id,j)}" onerror="this.onerror=null;this.src='logo.png'"><div><a href="#" onclick="pick('${id}','social');return false">${esc(j.title||titleFromId(id))}</a><div class="note" style="margin:3px 0 0">${esc(id)}</div></div></div></td><td><span class="chip c-${st[0]}">${p?'Live':st[1]}</span>${p&&p.url?` <a href="${esc(p.url)}" target="_blank">kholein ↗</a>`:''}</td><td style="text-align:right"><b>${p?fmtN(p.views||0):'—'}</b></td><td style="text-align:right">${p?fmtN(p[likeKey]||0):'—'}</td><td style="text-align:right">${p?fmtN(p.comments||0):'—'}</td><td>${t?pt2(t):'—'}</td></tr>`};
+  $('#main').innerHTML=`<div class="pagehead"><div><div class="kicker">${name} · @sneakydealstv</div><h1 style="margin:6px 0 0">Stats</h1><p class="lead">${sent} video${sent===1?'':'s'} ${name} par bheji gayi${S.social?` · numbers updated ${ago(S.social.updated)} (har 6 ghante)`:''}</p></div></div>${ptabs()}
+    <div class="stats" style="margin:0 0 16px"><div class="stat"><div class="kicker">Views</div><b>${fmtN(tot('views'))}</b></div><div class="stat"><div class="kicker">${k==='ig'?'Likes':'Reactions'}</div><b>${fmtN(tot(likeKey))}</b></div><div class="stat"><div class="kicker">Comments</div><b>${fmtN(tot('comments'))}</b></div><div class="stat"><div class="kicker">${k==='ig'?'Reach':'Followers'}</div><b>${k==='ig'?fmtN(tot('reach')):(SO.followers!=null?fmtN(SO.followers):'—')}</b></div></div>
+    <div class="card" style="overflow-x:auto">${jobs.length?`<table class="vt"><thead><tr><th>Video</th><th>Status</th><th style="text-align:right">Views</th><th style="text-align:right">${k==='ig'?'Likes':'Reactions'}</th><th style="text-align:right">Comments</th><th>Bheji gayi</th></tr></thead><tbody>${jobs.map(row).join('')}</tbody></table>`:'<div class="empty" style="padding:20px">Abhi koi video nahi.</div>'}</div>
+    <div class="note" style="margin-top:12px">"Zapier ko bheja" = video ${name} wali Zap ki feed mein chali gayi; Zapier ~15 min mein post karta hai. Fail ho to Zapier email karta hai (aur jald Slack par bhi). <a href="${link}" target="_blank">${name} kholein ↗</a></div>`;
 }
 async function renderYtStats(){
   let O=S.own;try{O=JSON.parse(await readText('docs/research/own_videos.json'));S.own=O}catch(e){}
