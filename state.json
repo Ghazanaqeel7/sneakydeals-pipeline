@@ -247,7 +247,9 @@
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-003-pudding-guy-free-flights/final.mp4",
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-003-pudding-guy-free-flights/preview.mp4",
       "feedback": "",
-      "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/003-pudding-guy-free-flights.mp4"
+      "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/003-pudding-guy-free-flights.mp4",
+      "yt_scheduled_for": "2026-11-13T00:00:00Z",
+      "yt_queued_at": "2026-11-12T01:35:00Z"
     }
   }
 }
