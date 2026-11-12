@@ -290,9 +290,14 @@
           "t": "2026-11-12T10:32:57Z",
           "msg": "✅ Check frames clean (round 2): lamp post/darakht hata diye, bank aur traders wale shot theek, $124 board saaf (~5 min baqi, phir render ~40 min)",
           "image": "jobs/004-piggly-wiggly-wall-street/review/round2.jpg"
+        },
+        {
+          "t": "2026-11-12T10:33:04Z",
+          "msg": "🖼 Thumbnail tayyar: GROCER · BET $10 MILLION · VS WALL STREET?! (render ab GitHub par ~40 min)",
+          "image": "jobs/004-piggly-wiggly-wall-street/thumbnail.jpg"
         }
       ],
-      "progress_count": 5,
+      "progress_count": 6,
       "decided_via": "dashboard",
       "decided_at": "2026-11-12T09:12:13Z"
     }
