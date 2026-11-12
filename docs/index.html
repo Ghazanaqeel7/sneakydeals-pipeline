@@ -563,8 +563,8 @@ function actionBar(id,j,lastP){
     btns=''}
   else if(s==='script_rejected'||s==='video_rejected'){msg=`<b>Changes requested — Claude is on it.</b><span>${j.feedback?'Progress updates appear below and in Slack.':'Waiting for your note. Add one so Claude knows what to fix.'}</span>`;
     btns=j.feedback?'':`<button class="btn pri"${lock} onclick="askFeedback('${id}','${s}','What should change?')">Add note</button>`}
-  else if(s==='video_approved'&&j.type==='long'){msg=`<b>Approved. Ab upload aap ko karni hai.</b><span>Neeche helper se file download karein, YouTube Studio mein upload karein, phir "Mark published" dabayein.</span>`;btns=`<button class="btn"${lock} onclick="unapprove('${id}')">Pull back to review</button>`}
-  else if(s==='video_approved'){msg=`<b>Approved and scheduled.</b><span>Approve hote hi YouTube par Private upload ho jaati hai aur ${esc((S.state.config||{}).publish_time_pkt||'05:00')} PKT (7 PM US ET) par khud public hoti hai. Instagram + Facebook usi subah jaate hain. Bot har ghante YouTube par check karta hai ke video sach mein live hui.</span>`;
+  else if(s==='video_approved'&&j.type==='long'){msg=`<b>Approved. Now you upload it.</b><span>Download the file with the helper below, upload it in YouTube Studio, then press "Mark published".</span>`;btns=`<button class="btn"${lock} onclick="unapprove('${id}')">Pull back to review</button>`}
+  else if(s==='video_approved'){msg=`<b>Approved and scheduled.</b><span>On approval it uploads to YouTube as Private and goes public by itself at ${esc((S.state.config||{}).publish_time_pkt||'05:00')} PKT (7 PM US ET). Instagram + Facebook go out the same morning. The bot checks YouTube every hour to confirm it is really live.</span>`;
     btns=`<button class="btn"${lock} onclick="unapprove('${id}')">Pull back to review</button>`}
   else if(s==='published'&&j.live_at&&new Date(j.live_at)>new Date()){msg=`<b>On YouTube, scheduled for ${pt2(j.live_at)}.</b><span>It is uploaded and set to go public by itself. Pin this comment once it is live: <i id="pinned"></i></span>`;btns=`<a class="btn" href="https://studio.youtube.com" target="_blank">Open YouTube Studio ↗</a>`}
   else if(s==='published'){msg=`<b>Handed to YouTube.</b><span>Pin this comment once it is live: ${esc('')}<i id="pinned"></i></span>`;btns=`<a class="btn" href="https://studio.youtube.com" target="_blank">Open YouTube Studio ↗</a>`}
@@ -659,13 +659,13 @@ function platStatus(id,j){
   const slot=publishSlots(S.state)[id],reelsOn=!(S.state.config&&S.state.config.reels===false),nowD=new Date();
   let yt;
   if(j.yt_live_at)yt=['ok','LIVE ✓ (bot ne check kiya) '+pt2(j.yt_live_at)];
-  else if(j.yt_alert)yt=['bad','Slot guzar gaya, YouTube par nahi mili — Zapier check karein'];
-  else if(j.yt_scheduled_for&&new Date(j.yt_scheduled_for)>nowD)yt=['wait','YouTube par uploaded (Private), live: '+pt2(j.yt_scheduled_for)];
-  else if(j.yt_scheduled_for)yt=['wait','Live hona chahiye tha '+pt2(j.yt_scheduled_for)+' — bot har ghante check karta hai'];
+  else if(j.yt_alert)yt=['bad','Slot passed but not found on YouTube — check Zapier'];
+  else if(j.yt_scheduled_for&&new Date(j.yt_scheduled_for)>nowD)yt=['wait','Uploaded to YouTube (Private), goes live '+pt2(j.yt_scheduled_for)];
+  else if(j.yt_scheduled_for)yt=['wait','Should have gone live '+pt2(j.yt_scheduled_for)+' — the bot checks every hour'];
   else if(j.live_at)yt=new Date(j.live_at)>nowD?['wait','Scheduled '+pt2(j.live_at)]:['ok','Live since '+pt2(j.live_at)];
-  else if(j.published_at)yt=['wait','Zapier ko bheja '+pt2(j.published_at)+' — confirm hona baqi'];
-  else yt=slot?['wait','Jayegi '+pt2(slot)]:['mute','Not scheduled'];
-  const soc=(at)=>{if(!reelsOn)return['mute','Off'];if(at)return['ok','Zapier ko bheja '+pt2(at)+' · ~15 min mein post'];if(j.published_at||j.live_at||j.yt_live_at)return['mute','Nahi bheja (IG/FB setup se pehle)'];return slot?['wait','YouTube ke saath jayegi']:['mute','Waiting']};
+  else if(j.published_at)yt=['wait','Sent to Zapier '+pt2(j.published_at)+' — confirm hona baqi'];
+  else yt=slot?['wait','Goes out '+pt2(slot)]:['mute','Not scheduled'];
+  const soc=(at)=>{if(!reelsOn)return['mute','Off'];if(at)return['ok','Sent to Zapier '+pt2(at)+' · posts in ~15 min'];if(j.published_at||j.live_at||j.yt_live_at)return['mute','Not sent (before IG/FB setup)'];return slot?['wait','Goes out with YouTube']:['mute','Waiting']};
   return {yt,ig:soc(j.ig_at||j.reels_at),fb:soc(j.fb_at||j.reels_at)};
 }
 function platformStrip(id,j){
@@ -792,30 +792,30 @@ function earnGoal(){
     return {name,what,subsT,viewsT,ps,pv,pct:Math.min(ps,pv),eta:isFinite(d)?new Date(Date.now()+d*864e5):null,
       needViewsDay:Math.ceil(viewsT/90), needSubsDay:null, speedX:viewsPace>0?(viewsT/90)/viewsPace:null};
   };
-  const t1=mk('Pehla qadam: Fan funding',500,3e6,'Super Thanks, memberships, shopping');
-  let t2=mk('Ads ki kamai (asal earning)',1000,1e7,'Video ads + Premium ka hissa');
-  if(!t2.eta||t2.eta.getTime()>=cut)t2=mk('Ads ki kamai (asal earning)',1000,2e7,'Video ads + Premium ka hissa · 1 Feb 2027 ke baad 20M views');
+  const t1=mk('Step 1: Fan funding',500,3e6,'Super Thanks, memberships, shopping');
+  let t2=mk('Ad revenue (real earning)',1000,1e7,'Video ads + Premium share');
+  if(!t2.eta||t2.eta.getTime()>=cut)t2=mk('Ad revenue (real earning)',1000,2e7,'Video ads + Premium share · 20M views for new channels from 1 Feb 2027');
   return {subs,views90,subsPace,viewsPace,days,t1,t2};
 }
 const pctTxt=(x)=>x>=1?'100%':(x*100<0.01?'<0.01%':(x*100<1?(x*100).toFixed(2):(x*100).toFixed(1))+'%');
 function goalBar(label,cur,tgt,p){return `<div style="margin:10px 0"><div style="display:flex;justify-content:space-between;font-size:13px"><span>${label}</span><span><b>${fmtN(Math.round(cur))}</b> / ${fmtN(tgt)} · <b>${pctTxt(p)}</b></span></div><div style="height:8px;background:var(--line);border-radius:6px;overflow:hidden;margin-top:5px"><div style="height:100%;width:${Math.max(0.6,p*100)}%;background:${p>=1?'var(--mint)':'var(--sig)'}"></div></div></div>`}
 function goalTier(t,G){
-  const eta=t.eta?`<b>${t.eta.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})}</b> tak pahunch jayenge (is speed par)`:`<b>Is speed par nahi pahunchenge</b> — roz kam se kam <b>${fmtN(t.needViewsDay)}</b> Shorts views chahiye (abhi ~${fmtN(Math.round(G.viewsPace))}/din${t.speedX?`, yani ${fmtN(Math.round(t.speedX))}x speed`:''})`;
+  const eta=t.eta?`<b>${t.eta.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})}</b> — reached by then at the current pace`:`<b>Not reachable at the current pace</b> — needs at least <b>${fmtN(t.needViewsDay)}</b> Shorts views a day (now ~${fmtN(Math.round(G.viewsPace))}/day${t.speedX?`, i.e. ${fmtN(Math.round(t.speedX))}x the current pace`:''})`;
   return `<div class="card" style="padding:16px 18px;margin:0 0 12px"><div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap"><div><div class="kicker">${esc(t.what)}</div><h3 style="margin:4px 0 0">${esc(t.name)}</h3></div><div style="font-size:30px;font-weight:700">${pctTxt(t.pct)}</div></div>
-    ${goalBar('Subscribers',G.subs,t.subsT,t.ps)}${goalBar('Shorts views (90 din)',G.views90,t.viewsT,t.pv)}
+    ${goalBar('Subscribers',G.subs,t.subsT,t.ps)}${goalBar('Shorts views (90 days)',G.views90,t.viewsT,t.pv)}
     <div class="note" style="margin:8px 0 0">${eta}</div></div>`;
 }
 function goalCard(){
   const G=earnGoal(); if(!G)return '';
-  return `<div class="card" style="padding:16px 18px;margin:18px 0;cursor:pointer" onclick="S.ptab='goal';go('stats')"><div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><div><div class="kicker">Earning goal · YouTube Partner Program</div><h3 style="margin:4px 0 0">Earning se hum <b>${pctTxt(G.t2.pct)}</b> qareeb hain</h3><div class="note" style="margin:4px 0 0">Pehla qadam (fan funding): ${pctTxt(G.t1.pct)} · ${G.t2.eta?'Ads: '+G.t2.eta.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}):'Abhi ki speed par ads ki shart poori nahi hogi'}</div></div><span class="btn">Detail →</span></div>
-  ${goalBar('Subscribers → 1,000',G.subs,G.t2.subsT,G.t2.ps)}${goalBar('Shorts views (90 din) → '+fmtN(G.t2.viewsT),G.views90,G.t2.viewsT,G.t2.pv)}</div>`;
+  return `<div class="card" style="padding:16px 18px;margin:18px 0;cursor:pointer" onclick="S.ptab='goal';go('stats')"><div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><div><div class="kicker">Earning goal · YouTube Partner Program</div><h3 style="margin:4px 0 0">We are <b>${pctTxt(G.t2.pct)}</b> of the way to earning</h3><div class="note" style="margin:4px 0 0">Step 1 (fan funding): ${pctTxt(G.t1.pct)} · ${G.t2.eta?'Ad revenue: '+G.t2.eta.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}):'Ad revenue is not reachable at the current pace'}</div></div><span class="btn">Detail →</span></div>
+  ${goalBar('Subscribers → 1,000',G.subs,G.t2.subsT,G.t2.ps)}${goalBar('Shorts views (90 days) → '+fmtN(G.t2.viewsT),G.views90,G.t2.viewsT,G.t2.pv)}</div>`;
 }
 function renderGoal(){
   const G=earnGoal();
-  if(!G){$('#main').innerHTML=`<div class="pagehead"><div><h1>Earning goal</h1><p class="lead">Stats abhi load nahi hue.</p></div></div>${ptabs()}`;return}
-  $('#main').innerHTML=`<div class="pagehead"><div><div class="kicker">YouTube Partner Program</div><h1 style="margin:6px 0 0">Earning goal</h1><p class="lead">Data ${G.days.toFixed(1)} din ka · har ghante update · speed: ~${fmtN(Math.round(G.viewsPace))} views/din, ${G.subsPace.toFixed(1)} subscribers/din</p></div></div>${ptabs()}
+  if(!G){$('#main').innerHTML=`<div class="pagehead"><div><h1>Earning goal</h1><p class="lead">Stats have not loaded yet.</p></div></div>${ptabs()}`;return}
+  $('#main').innerHTML=`<div class="pagehead"><div><div class="kicker">YouTube Partner Program</div><h1 style="margin:6px 0 0">Earning goal</h1><p class="lead">${G.days.toFixed(1)} days of data · updated hourly · pace: ~${fmtN(Math.round(G.viewsPace))} views/day, ${G.subsPace.toFixed(1)} subscribers/day</p></div></div>${ptabs()}
     ${goalTier(G.t2,G)}${goalTier(G.t1,G)}
-    <div class="note">Sharten: fan funding = 500 subscribers + 3 uploads + 3M Shorts views (90 din). Ads = 1,000 subscribers + 10M Shorts views (90 din); 1 Feb 2027 se naye channels ke liye 20M. Views sirf pichle 90 din ke gine jaate hain, is liye roz ki speed sab se zaroori hai. Andaza abhi bohat kam data par hai, har din behtar hoga. Asal numbers: <a href="https://studio.youtube.com/channel/UCyNCq5TQLEzCU87Qb7XMfEA/monetization" target="_blank">YouTube Studio → Earn ↗</a></div>`;
+    <div class="note">Requirements: fan funding = 500 subscribers + 3 uploads + 3M Shorts views (90 days). Ad revenue = 1,000 subscribers + 10M Shorts views (90 days); 20M for new channels from 1 Feb 2027. Only the last 90 days of views count, so the daily pace matters most. The estimate uses very little data so far and improves every day. Official numbers: <a href="https://studio.youtube.com/channel/UCyNCq5TQLEzCU87Qb7XMfEA/monetization" target="_blank">YouTube Studio → Earn ↗</a></div>`;
 }
 async function renderStats(){
   S.ptab=S.ptab||'yt';
@@ -834,12 +834,12 @@ function renderSocialStats(k){
   const P=(id)=>(SO.posts||[]).find(p=>p.job===id);
   const tot=(f)=>(SO.posts||[]).reduce((a,p)=>a+(p[f]||0),0);
   const likeKey=k==='ig'?'likes':'reactions';
-  const row=([id,j])=>{const t=at(j);const st=t?['ok','Zapier ko bheja']:j.status==='published'?['mute','Nahi bheja (setup se pehle)']:['wait','YouTube ke saath jayegi'];
-    const p=P(id);return `<tr><td><div class="vv"><img alt="" src="${th(id,j)}" onerror="this.onerror=null;this.src='logo.png'"><div><a href="#" onclick="pick('${id}','social');return false">${esc(j.title||titleFromId(id))}</a><div class="note" style="margin:3px 0 0">${esc(id)}</div></div></div></td><td><span class="chip c-${st[0]}">${p?'Live':st[1]}</span>${p&&p.url?` <a href="${esc(p.url)}" target="_blank">kholein ↗</a>`:''}</td><td style="text-align:right"><b>${p?fmtN(p.views||0):'—'}</b></td><td style="text-align:right">${p?fmtN(p[likeKey]||0):'—'}</td><td style="text-align:right">${p?fmtN(p.comments||0):'—'}</td><td>${t?pt2(t):'—'}</td></tr>`};
-  $('#main').innerHTML=`<div class="pagehead"><div><div class="kicker">${name} · @sneakydealstv</div><h1 style="margin:6px 0 0">Stats</h1><p class="lead">${sent} video${sent===1?'':'s'} ${name} par bheji gayi${S.social?` · numbers updated ${ago(S.social.updated)} (har 6 ghante)`:''}</p></div></div>${ptabs()}
+  const row=([id,j])=>{const t=at(j);const st=t?['ok','Sent to Zapier']:j.status==='published'?['mute','Not sent (before IG/FB setup)']:['wait','Goes out with YouTube'];
+    const p=P(id);return `<tr><td><div class="vv"><img alt="" src="${th(id,j)}" onerror="this.onerror=null;this.src='logo.png'"><div><a href="#" onclick="pick('${id}','social');return false">${esc(j.title||titleFromId(id))}</a><div class="note" style="margin:3px 0 0">${esc(id)}</div></div></div></td><td><span class="chip c-${st[0]}">${p?'Live':st[1]}</span>${p&&p.url?` <a href="${esc(p.url)}" target="_blank">open ↗</a>`:''}</td><td style="text-align:right"><b>${p?fmtN(p.views||0):'—'}</b></td><td style="text-align:right">${p?fmtN(p[likeKey]||0):'—'}</td><td style="text-align:right">${p?fmtN(p.comments||0):'—'}</td><td>${t?pt2(t):'—'}</td></tr>`};
+  $('#main').innerHTML=`<div class="pagehead"><div><div class="kicker">${name} · @sneakydealstv</div><h1 style="margin:6px 0 0">Stats</h1><p class="lead">${sent} video${sent===1?'':'s'} sent to ${name}${S.social?` · numbers updated ${ago(S.social.updated)} (every 6 h)`:''}</p></div></div>${ptabs()}
     <div class="stats" style="margin:0 0 16px"><div class="stat"><div class="kicker">Views</div><b>${fmtN(tot('views'))}</b></div><div class="stat"><div class="kicker">${k==='ig'?'Likes':'Reactions'}</div><b>${fmtN(tot(likeKey))}</b></div><div class="stat"><div class="kicker">Comments</div><b>${fmtN(tot('comments'))}</b></div><div class="stat"><div class="kicker">${k==='ig'?'Reach':'Followers'}</div><b>${k==='ig'?fmtN(tot('reach')):(SO.followers!=null?fmtN(SO.followers):'—')}</b></div></div>
-    <div class="card" style="overflow-x:auto">${jobs.length?`<table class="vt"><thead><tr><th>Video</th><th>Status</th><th style="text-align:right">Views</th><th style="text-align:right">${k==='ig'?'Likes':'Reactions'}</th><th style="text-align:right">Comments</th><th>Bheji gayi</th></tr></thead><tbody>${jobs.map(row).join('')}</tbody></table>`:'<div class="empty" style="padding:20px">Abhi koi video nahi.</div>'}</div>
-    <div class="note" style="margin-top:12px">"Zapier ko bheja" = video ${name} wali Zap ki feed mein chali gayi; Zapier ~15 min mein post karta hai. Fail ho to Zapier email karta hai (aur jald Slack par bhi). <a href="${link}" target="_blank">${name} kholein ↗</a></div>`;
+    <div class="card" style="overflow-x:auto">${jobs.length?`<table class="vt"><thead><tr><th>Video</th><th>Status</th><th style="text-align:right">Views</th><th style="text-align:right">${k==='ig'?'Likes':'Reactions'}</th><th style="text-align:right">Comments</th><th>Sent</th></tr></thead><tbody>${jobs.map(row).join('')}</tbody></table>`:'<div class="empty" style="padding:20px">No videos yet.</div>'}</div>
+    <div class="note" style="margin-top:12px">"Sent to Zapier" = the video is in the ${name} Zap's feed; Zapier posts it within ~15 min. If it fails, Zapier emails you. <a href="${link}" target="_blank">${name} open ↗</a></div>`;
 }
 async function renderYtStats(){
   let O=S.own;try{O=JSON.parse(await readText('docs/research/own_videos.json'));S.own=O}catch(e){}
@@ -1019,7 +1019,7 @@ function askToken(){modal(`<h3>Unlock editing</h3><p>Paste a GitHub fine-grained
 async function saveToken(){const t=$('#tok').value.trim();if(!t)return;TOKEN=t;try{const r=await api('');if(!r.permissions||!r.permissions.push)throw new Error('This token cannot write to the repo.');store.set('sd_token',t);closeModal();toast('Editing unlocked.');load()}catch(e){TOKEN=null;toast(e.message,true)}}
 function signOut(){TOKEN=null;store.set('sd_token',null);render(true)}
 function addNote(j,msg){j.progress=(j.progress||[]).concat([{t:nowIso(),msg}]).slice(-15);j.progress_count=(j.progress_count||0)+1}
-const DECIDE_NOTE={script_approved:'✅ Aap ne dashboard se script approve kiya. Claude agle run mein video banana shuru karega.',video_approved:'✅ Aap ne dashboard se video + thumbnail approve kiya. Agle publish slot par YouTube par jayegi.'};
+const DECIDE_NOTE={script_approved:'✅ You approved the script on the dashboard. Claude starts the video in the next run.',video_approved:'✅ You approved the video + thumbnail on the dashboard. It goes to YouTube at the next publish slot.'};
 async function decide(id,next){
   if(BUSY)return;BUSY=true;setTimeout(()=>BUSY=false,4000);
   S.editing=false;
@@ -1035,10 +1035,10 @@ async function doFeedback(id,next,text){
   S.editing=false;
   try{await updateState(st=>{const j=st.jobs[id];if(!j)return false;j.status=next;j.updated=nowIso();j.decided_via='dashboard';j.decided_at=j.updated;
     j.feedback=((j.feedback?j.feedback+'\n':'')+`[${nowIso()}] ${text}`).slice(-3000);
-    addNote(j,next==='dropped'?'🗑 Aap ne dashboard se ye story drop ki.':`🛠 Changes note ho gaye (dashboard): "${text.slice(0,180)}" — Claude agle run mein (by ${hm(nextClaudeRun())} PKT) inhe lagana shuru karega.`)},`dashboard: feedback for ${id}`);
+    addNote(j,next==='dropped'?'🗑 You dropped this story on the dashboard.':`🛠 Changes noted (dashboard): "${text.slice(0,180)}" — Claude agle run mein (by ${hm(nextClaudeRun())} PKT) inhe lagana shuru karega.`)},`dashboard: feedback for ${id}`);
     toast(next==='dropped'?'Dropped.':'Sent. Claude starts on it by '+hm(nextClaudeRun())+' PKT — updates appear here and in Slack.');load()}catch(e){toast(e.message,true)}}
 async function unapprove(id){if(!confirm('Move this video back to review? It will not be published until you approve it again.'))return;
-  try{await updateState(st=>{const j=st.jobs[id];if(j.status!=='video_approved')return false;j.status='video_ready';j.updated=nowIso();j.decided_via='dashboard';j.decided_at=j.updated;addNote(j,'↩️ Aap ne dashboard se video wapas review mein bulaya — abhi publish nahi hogi. Naya review message aa raha hai.')},`dashboard: ${id} back to review`);load()}catch(e){toast(e.message,true)}}
+  try{await updateState(st=>{const j=st.jobs[id];if(j.status!=='video_approved')return false;j.status='video_ready';j.updated=nowIso();j.decided_via='dashboard';j.decided_at=j.updated;addNote(j,'↩️ You pulled the video back into review on the dashboard — it will not publish. A new review message is coming.')},`dashboard: ${id} back to review`);load()}catch(e){toast(e.message,true)}}
 async function editScript(){
   const id=S.sel;const f=await readJson(`jobs/${id}/script.md`);S.editing=true;
   $('#panel').innerHTML=`<div class="note">Edit the words freely. Keep the shot table and "## Voice-over" section — Claude builds from them. After saving, approve the script as usual.</div><textarea class="code" id="scr">${esc(f.text)}</textarea><div class="row"><button class="btn" onclick="S.editing=false;renderTab()">Cancel</button><button class="btn pri" onclick="saveScript('${f.sha}')">Save script</button></div>`;
@@ -1062,26 +1062,26 @@ async function saveDays(){S.editing=false;const d=[...document.querySelectorAll(
 
 // ---------- long-form ----------
 const LONG_STEPS=[
- ['1','Toggle ON karein (neeche). Jab tak OFF hai, Claude sirf Shorts banata hai.'],
- ['2','News hooks mein se topic chunein ("Is par long video banao") ya apna idea likhein. Ya kuch na karein: Claude khud bhi hooks se topic uthata hai.'],
- ['3','Script aap ko Slack + Videos tab mein ayegi. Parhein, ✅ approve ya ❌ + note. (Yahan 12-15 min ki script hoti hai, 2 sources har fact ke.)'],
- ['4','Script approve hote hi GitHub video banata hai (voice, images, music, render): ~2-4 ghante. Aap ko kuch nahi karna.'],
- ['5','Video review ke liye ayegi: preview dekhein (480p), thumbnail dekhein, approve ya changes likhein.'],
- ['6','Approve ke baad yahan "Upload helper" ata hai: file download, title/description/tags copy, YouTube Studio mein upload, phir "Mark published".']];
+ ['1','Turn the toggle ON (below). While it is OFF, Claude only makes Shorts.'],
+ ['2','Pick a topic from the news hooks ("Make a long video on this") or write your own idea. Or do nothing: Claude picks a topic from the hooks itself.'],
+ ['3','The script arrives in Slack + the Videos tab. Read it, ✅ approve or ❌ + note. (A 12-15 min script, 2 sources for every fact.)'],
+ ['4','Once the script is approved, GitHub builds the video (voice, images, music, render): ~2-4 hours. Nothing for you to do.'],
+ ['5','The video comes for review: watch the preview (480p), check the thumbnail, approve or write changes.'],
+ ['6','After approval this page shows "Upload helper": file download, title/description/tags to copy, upload in YouTube Studio, then "Mark published".']];
 function renderLong(){
   const st=S.state,c=st.config||{},on=!!c.longform_enabled;
   const longs=Object.entries(st.jobs).filter(([k,j])=>isJob(k)&&j.type==='long').reverse();
   const lock=!TOKEN?' disabled title="Unlock editing first"':'';
   const card=([id,j])=>`<div class="card lf-card"><div class="lf-row"><img class="lf-thumb" loading="lazy" alt="" src="${RAW}/jobs/${esc(id)}/thumbnail.jpg?u=${encodeURIComponent(j.updated||'')}" onerror="this.onerror=null;this.src='logo.png'"><div style="flex:1;min-width:200px"><div class="eyebrow">${esc(id)}</div><div style="font-weight:600;margin:4px 0">${esc(j.title||titleFromId(id))}</div><div>${chip(j)} <span class="note">${ago(j.updated)}</span></div></div><button class="btn pri" onclick="pick('${esc(id)}')">Open</button></div>${j.status==='video_approved'?`<div id="uh-${esc(id)}" style="margin-top:12px">Loading upload helper…</div>`:''}</div>`;
   $('#main').innerHTML=`<div class="lf-grid">
-   <div class="card lf-card"><div class="lf-row"><div style="flex:1;min-width:220px"><div class="eyebrow">Long-form videos</div><h1 style="margin:4px 0">${on?'ON — Claude long videos bana raha hai':'OFF — abhi sirf Shorts'}</h1><div class="note">12-15 min documentary style (news hook + evergreen kahani). Shorts par koi asar nahi parta.</div></div><button class="btn ${on?'':'go'}"${lock} onclick="setLongFlag(${!on})">${on?'Turn OFF':'Turn ON'}</button></div></div>
-   <div class="card lf-card"><div class="lbl">Aap ko kya karna hai</div>${LONG_STEPS.map(([n,t])=>`<div class="lf-step"><b>${n}</b><span>${t}</span></div>`).join('')}</div>
-   ${longs.length?`<div class="sect"><span>Long videos · ${longs.length}</span></div>${longs.map(card).join('')}`:`<div class="card lf-card"><div class="empty">Abhi koi long video nahi. Toggle ON karein aur topic chunein.</div></div>`}
+   <div class="card lf-card"><div class="lf-row"><div style="flex:1;min-width:220px"><div class="eyebrow">Long-form videos</div><h1 style="margin:4px 0">${on?'ON — Claude is making long videos':'OFF — Shorts only'}</h1><div class="note">12-15 min documentary style (news hook + evergreen story). Does not affect Shorts.</div></div><button class="btn ${on?'':'go'}"${lock} onclick="setLongFlag(${!on})">${on?'Turn OFF':'Turn ON'}</button></div></div>
+   <div class="card lf-card"><div class="lbl">What you do</div>${LONG_STEPS.map(([n,t])=>`<div class="lf-step"><b>${n}</b><span>${t}</span></div>`).join('')}</div>
+   ${longs.length?`<div class="sect"><span>Long videos · ${longs.length}</span></div>${longs.map(card).join('')}`:`<div class="card lf-card"><div class="empty">No long video yet. Turn the toggle ON and pick a topic.</div></div>`}
    <div class="card lf-card"><div class="lbl">Apna long-video idea</div><div class="lf-row"><input id="lidea" style="flex:1;min-width:220px;padding:10px;border:1px solid var(--line);border-radius:10px" placeholder="e.g. Why did Blockbuster really die?"><button class="btn pri"${lock} onclick="addLongIdea()">Queue it</button></div></div>
-   <div class="card lf-card" id="lhooks"><div class="lbl">Aaj ki news hooks (US + UK)</div><div class="empty">Loading…</div></div></div>`;
+   <div class="card lf-card" id="lhooks"><div class="lbl">Today's news hooks (US + UK)</div><div class="empty">Loading…</div></div></div>`;
   longs.filter(([,j])=>j.status==='video_approved').forEach(([id])=>fillHelper(id));
   cachedDaily('docs/research/news_hooks.json').then(H=>{S.hooks=H.hooks||[];const el=$('#lhooks');if(!el)return;
-    el.innerHTML=`<div class="lbl">Aaj ki news hooks (US + UK) · ${esc(hm(new Date(H.updated)))} PKT</div>`+(S.hooks.length?S.hooks.slice(0,12).map((h,i)=>`<div class="lf-hook"><div><div class="t">${esc(h.title)}</div><div class="m">${esc(h.source)} · ${esc(h.region)} · ${ago(h.date)}</div></div><button class="btn sm"${lock} onclick="queueHook(${i})">Is par long video banao</button></div>`).join(''):'<div class="empty">Koi strong hook nahi mila.</div>')}).catch(()=>{const el=$('#lhooks');if(el)el.innerHTML='<div class="lbl">News hooks</div><div class="empty">Research run ke baad yahan ayenge (roz 06:00 PKT).</div>'});
+    el.innerHTML=`<div class="lbl">Today's news hooks (US + UK) · ${esc(hm(new Date(H.updated)))} PKT</div>`+(S.hooks.length?S.hooks.slice(0,12).map((h,i)=>`<div class="lf-hook"><div><div class="t">${esc(h.title)}</div><div class="m">${esc(h.source)} · ${esc(h.region)} · ${ago(h.date)}</div></div><button class="btn sm"${lock} onclick="queueHook(${i})">Make a long video on this</button></div>`).join(''):'<div class="empty">No strong hook found.</div>')}).catch(()=>{const el=$('#lhooks');if(el)el.innerHTML='<div class="lbl">News hooks</div><div class="empty">They appear here after the research run (daily 06:00 PKT).</div>'});
 }
 async function setLongFlag(v){if(!TOKEN)return askToken();try{await updateState(st=>{st.config=st.config||{};st.config.longform_enabled=v},'dashboard: long-form '+(v?'on':'off'));toast(v?'Long-form ON.':'Long-form OFF.');load()}catch(e){toast(e.message,true)}}
 async function addLongIdea(){if(!TOKEN)return askToken();const t=$('#lidea').value.trim();if(!t)return;try{await updateState(st=>{st.ideas=st.ideas||[];st.ideas.push('[LONG] '+t)},'dashboard: add long idea');toast('Long idea queued for Claude.');load()}catch(e){toast(e.message,true)}}
@@ -1089,19 +1089,19 @@ async function queueHook(i){if(!TOKEN)return askToken();const h=(S.hooks||[])[i]
 async function fillHelper(id){
   const el=document.getElementById('uh-'+id);if(!el)return;const j=S.state.jobs[id]||{};let U=null;
   try{U=JSON.parse(await readText(`jobs/${id}/upload.json`))}catch(e){}
-  if(!U){el.innerHTML='<div class="note">Upload data abhi nahi mila (render ke baad aata hai).</div>';return}
+  if(!U){el.innerHTML='<div class="note">Upload data is not ready yet (it comes after the render).</div>';return}
   S.uh=S.uh||{};S.uh[id]={title:U.title,desc:U.description,tags:(U.tags||[]).join(', '),chap:(U.chapters||[]).join('\n'),pin:U.pinned_comment||''};
   const row=(k,l,v)=>`<div class="r"><div style="min-width:0"><b>${l}</b> <span>${esc(String(v).replace(/\n/g,' ').slice(0,70))}</span></div><button class="btn sm" onclick="copyUH('${esc(id)}','${k}')">Copy</button></div>`;
   const u=S.uh[id];
-  el.innerHTML=`<div class="lbl">Upload helper</div><div class="note">YouTube Studio > Create > Upload > file select karein, phir neeche se copy-paste karein. Thumbnail alag se upload hota hai.</div>
+  el.innerHTML=`<div class="lbl">Upload helper</div><div class="note">YouTube Studio > Create > Upload > select the file, then copy-paste from below. The thumbnail is uploaded separately.</div>
    <div class="lf-row" style="margin:10px 0"><a class="btn pri" href="${esc(j.video_url||'#')}" target="_blank">⬇ Video file</a><a class="btn" href="${RAW}/jobs/${esc(id)}/thumbnail.jpg" target="_blank">🖼 Thumbnail</a><a class="btn" href="https://studio.youtube.com" target="_blank">YouTube Studio ↗</a></div>
    <div class="lf-copy">${row('title','Title',u.title)}${row('desc','Description (chapters + credits included)',u.desc)}${row('tags','Tags',u.tags)}${u.pin?row('pin','Pinned comment',u.pin):''}</div>
-   <div class="lf-row" style="margin-top:14px"><button class="btn go"${TOKEN?'':' disabled'} onclick="markPublished('${esc(id)}')">Mark published</button><span class="note">Upload ke baad dabayein.</span></div>`;
+   <div class="lf-row" style="margin-top:14px"><button class="btn go"${TOKEN?'':' disabled'} onclick="markPublished('${esc(id)}')">Mark published</button><span class="note">Press after uploading.</span></div>`;
 }
 function copyUH(id,k){const u=(S.uh||{})[id];if(!u)return;const v={title:u.title,desc:u.desc,tags:u.tags,pin:u.pin,chap:u.chap}[k]||'';
-  (navigator.clipboard?navigator.clipboard.writeText(v):Promise.reject()).then(()=>toast('Copied.')).catch(()=>{const t=document.createElement('textarea');t.value=v;document.body.appendChild(t);t.select();try{document.execCommand('copy');toast('Copied.')}catch(e){toast('Copy nahi hua — manually select karein.',true)}t.remove()})}
-async function markPublished(id){if(!TOKEN)return askToken();const url=prompt('YouTube video ka link (optional, khali chor sakte hain):','')||'';
-  try{await updateState(st=>{const j=st.jobs[id];if(!j||j.status!=='video_approved')return false;j.status='published';j.published_at=nowIso();j.updated=j.published_at;if(url)j.yt_url=url;addNote(j,'✅ Aap ne long video YouTube par upload karke published mark ki.')},`dashboard: ${id} published (manual upload)`);toast('Marked published.');load()}catch(e){toast(e.message,true)}}
+  (navigator.clipboard?navigator.clipboard.writeText(v):Promise.reject()).then(()=>toast('Copied.')).catch(()=>{const t=document.createElement('textarea');t.value=v;document.body.appendChild(t);t.select();try{document.execCommand('copy');toast('Copied.')}catch(e){toast('Copy failed — select it manually.',true)}t.remove()})}
+async function markPublished(id){if(!TOKEN)return askToken();const url=prompt('YouTube video link (optional, can be left empty):','')||'';
+  try{await updateState(st=>{const j=st.jobs[id];if(!j||j.status!=='video_approved')return false;j.status='published';j.published_at=nowIso();j.updated=j.published_at;if(url)j.yt_url=url;addNote(j,'✅ You uploaded the long video to YouTube and marked it published.')},`dashboard: ${id} published (manual upload)`);toast('Marked published.');load()}catch(e){toast(e.message,true)}}
 async function addIdea(){S.editing=false;const t=$('#idea').value.trim();if(!t)return;try{await updateState(st=>{st.ideas=st.ideas||[];st.ideas.push(t)},'dashboard: add story idea');toast('Idea queued for Claude.');load()}catch(e){toast(e.message,true)}}
 async function dropIdea(i){try{await updateState(st=>{(st.ideas||[]).splice(i,1)},'dashboard: remove story idea');load()}catch(e){toast(e.message,true)}}
 
