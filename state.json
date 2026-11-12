@@ -96,9 +96,13 @@
         {
           "t": "2026-11-10T17:19:48Z",
           "msg": "✅ Aap ne dashboard se video + thumbnail approve kiya. Agle publish slot par YouTube par jayegi."
+        },
+        {
+          "t": "2026-11-12T04:05:40Z",
+          "msg": "✅ YouTube par LIVE: \"Disney Secretly Bought a Swamp Using Fake Names\" https://youtu.be/mm0ShpBg_4Y"
         }
       ],
-      "progress_count": 19,
+      "progress_count": 20,
       "run": "42817432233",
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-002-disney-secret-swamp/final.mp4",
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-002-disney-secret-swamp/preview.mp4",
@@ -112,7 +116,9 @@
       "reels_at": "2026-11-12T00:47:04Z",
       "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/002-disney-secret-swamp.mp4",
       "youtube_id": "mm0ShpBg_4Y",
-      "yt_scheduled_for": "2026-11-12T01:40:00Z"
+      "yt_scheduled_for": "2026-11-12T01:40:00Z",
+      "yt_video_id": "mm0ShpBg_4Y",
+      "yt_live_at": "2026-11-12T04:05:40Z"
     },
     "research": {
       "progress": [
