@@ -62,6 +62,7 @@ jobs:
           python3 pipeline/longform/validate_long.py "jobs/$J"
           python3 pipeline/longform/fetch_assets.py "jobs/$J"
           (cd jobs/$J/project && (npm ci --no-audit --no-fund >/dev/null 2>&1 || npm install --no-audit --no-fund >/dev/null) && CH=$(command -v google-chrome || command -v chromium || true) && npx remotion still src/index.jsx Thumb ../thumbnail.jpg --image-format=jpeg --jpeg-quality=92 --gl=swangle ${CH:+--browser-executable=$CH} || echo thumbnail failed)
+          python3 -m pip install -q --break-system-packages kokoro-onnx soundfile numpy
           python3 pipeline/longform/make_voice_long.py "jobs/$J"
           bash pipeline/longform/mix_audio.sh "jobs/$J"
           python3 pipeline/longform/chapters.py "jobs/$J"
@@ -85,7 +86,7 @@ jobs:
         with: { name: prep, path: prep.tgz, retention-days: 3 }
       - name: Mark failed
         if: failure() && steps.pick.outputs.job != ''
-        run: python3 pipeline/scripts/set_status.py "${{ steps.pick.outputs.job }}" render_failed run="${{ github.run_id }}"
+        run: git checkout -- . ; python3 pipeline/scripts/set_status.py "${{ steps.pick.outputs.job }}" render_failed run="${{ github.run_id }}"
 
   chunks:
     needs: prepare
@@ -126,7 +127,7 @@ jobs:
         env: { GH_TOKEN: '${{ github.token }}' }
         run: |
           git config user.name "render-bot"; git config user.email "render-bot@users.noreply.github.com"
-          python3 pipeline/scripts/set_status.py "${{ needs.prepare.outputs.job }}" render_failed run="${{ github.run_id }}"; exit 1
+          git checkout -- . ; python3 pipeline/scripts/set_status.py "${{ needs.prepare.outputs.job }}" render_failed run="${{ github.run_id }}"; exit 1
       - uses: actions/download-artifact@v4
         with: { path: dl }
       - name: Join, mix, release

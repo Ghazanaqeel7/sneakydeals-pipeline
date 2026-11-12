@@ -15,6 +15,9 @@ def ensure():
         if not os.path.exists(p) or os.path.getsize(p) < 1_000_000: urllib.request.urlretrieve(u, p)
     try: import kokoro_onnx, soundfile, numpy  # noqa
     except ImportError: subprocess.run([sys.executable, '-m', 'pip', 'install', '-q', '--break-system-packages', 'kokoro-onnx', 'soundfile', 'numpy'], check=True)
+    import site, importlib; importlib.invalidate_caches()
+    for d in [site.getusersitepackages()] + site.getsitepackages():
+        if d not in sys.path: sys.path.append(d)   # packages installed after start-up live here
 def main():
     job = sys.argv[1].rstrip('/'); P = os.path.join(job, 'project')
     sc = json.load(open(os.path.join(P, 'src', 'scenes.json'), encoding='utf-8'))['scenes']
