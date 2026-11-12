@@ -92,7 +92,9 @@ check the milestones from `docs/research/own_videos.json` (500 subs + 3M views i
 applicants from 1 Feb 2027) = about 222K views a day. Fan funding first: 500 subs + 3M views in 90 days. The dashboard
 "Earning goal" panel shows the % and the pace. Every choice (story, hook, format, how many uploads) is judged by what moves
 views/day and subscribers/day; the Monday learning ends with one line in `docs/playbook.md`: current pace vs needed, and the one
-change most likely to close the gap next week.
+change most likely to close the gap next week. Also pick the next 3 long-video topics yourself from `latest.json` `long`
+(rise-and-fall / worst-deal business stories with the highest `score`, our own angle, never a competitor's exact topic),
+queue them as `[LONG] …` ideas with the signal, and post them to Slack so the owner sees what is coming.
 6. **Weekly learning** — only in the Monday story-hour run (Monday 11:00-11:59 Asia/Karachi). See "Weekly learning"
    below. Runs from the first week; with few videos everything is labelled "early signal".
    **On Mondays do step 6 before step 5**, so the day's new story already comes from the new calendar.
