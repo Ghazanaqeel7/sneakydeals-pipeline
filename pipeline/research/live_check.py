@@ -57,12 +57,12 @@ for jid, j in st.get('jobs', {}).items():
     vid = by_title.get(norm(title))
     if vid:
         j['yt_video_id'] = vid; j['yt_live_at'] = stamp
-        note(j, f'✅ YouTube par LIVE: "{title}" https://youtu.be/{vid}')
+        note(j, f'✅ LIVE on YouTube: "{title}" https://youtu.be/{vid}')
         queue_thumb(jid, vid, j)
         changed = True
     elif now - due > dt.timedelta(minutes=60) and not j.get('yt_alert'):
         j['yt_alert'] = stamp
-        note(j, f'⚠️ "{title}" slot ke 1 ghante baad bhi YouTube par public nahi mili. Zapier > Zap history (YouTube) check karein.')
+        note(j, f'⚠️ "{title}" is still not public on YouTube 1 hour after its slot. Check Zapier > Zap history (YouTube).')
         changed = True
 
 if changed:

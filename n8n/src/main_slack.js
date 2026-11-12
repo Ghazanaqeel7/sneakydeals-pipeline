@@ -156,7 +156,7 @@ if (mode === 'replies') {
       script_rejected: `❌ Script rejected: *${id}*. Type what to change in your next message (or type \`drop\` to throw this idea away).`,
       video_rejected: `❌ Video rejected: *${id}*. Type what to fix (shot / second / what looks wrong).`,
     };
-    if (next === 'video_approved' && ((st0.jobs[id] || {}).type === 'long')) texts.video_approved = `✅ Long video approved: *${id}*. Dashboard > Long-form tab kholein, wahan se file download karke YouTube Studio mein upload karein (auto-publish long videos ke liye band hai).`;
+    if (next === 'video_approved' && ((st0.jobs[id] || {}).type === 'long')) texts.video_approved = `✅ Long video approved: *${id}*. Open the dashboard Long tab, download the file there and upload it in YouTube Studio (long videos are not auto-published).`;
     await dPost(texts[next]);
     if (next.endsWith('rejected')) data.awaiting = id;
     log.push(`${id}: ${next}`);
@@ -164,10 +164,10 @@ if (mode === 'replies') {
   // typed messages
   // status changes + Claude's progress notes -> Slack (so the owner sees the video being made)
   const ANNOUNCE = {
-    building: '🛠 Video banana shuru: voice, scenes, check frames. Andaza: scenes ~45-75 min + render ~30-50 min = video ~1.5-2 ghante mein. Har step ki update yahan aayegi.',
-    render_queued: '🎞 Scenes tayyar. GitHub par render 30 min ke andar shuru hoga, phir ~30-50 min lagenge.',
-    rendering: '⏳ Render chal raha hai (GitHub Actions)...',
-    render_failed: '⚠️ Render fail hua. Claude agle check mein theek karega.',
+    building: '🛠 Video build started: voice, scenes, frame checks. Estimate: scenes ~45-75 min + render ~30-50 min = video in ~1.5-2 hours. Every step is posted here.',
+    render_queued: '🎞 Scenes ready. The GitHub render starts within 30 min and takes ~30-50 min.',
+    rendering: '⏳ Rendering (GitHub Actions)...',
+    render_failed: '⚠️ Render failed. Claude fixes it in the next check.',
     script_ready: '📝 Naya / updated script tayyar, abhi bhejta hoon.',
   };
   const stP = JSON.parse((await ghGet('state.json')).text);
@@ -219,7 +219,7 @@ if (mode === 'replies') {
         if (t.toLowerCase() === 'drop') j.status = 'dropped';
         j.feedback = ((j.feedback ? j.feedback + '\n' : '') + `[${now()}] ${t}`).slice(-3000); j.updated = now(); return true;
       }, `n8n: feedback for ${id}`);
-      await dPost(t.toLowerCase() === 'drop' ? `🗑 Dropped *${id}*. Claude will pick a new story.` : `🛠 Changes note ho gaye: *${id}*. Claude agle hourly run mein (zyada se zyada ~1 ghanta) inhe lagana shuru karega — har step ki update yahan aur dashboard par aayegi.`);
+      await dPost(t.toLowerCase() === 'drop' ? `🗑 Dropped *${id}*. Claude will pick a new story.` : `🛠 Changes noted: *${id}*. Claude starts on them in the next hourly run (within ~1 hour); every step is posted here and on the dashboard.`);
       log.push(`feedback ${id}`);
     }
   }
@@ -262,7 +262,7 @@ if (mode === 'publish') {
     }
     await updateState((st) => { st.jobs[id].status = 'published'; st.jobs[id].published_at = now(); return true; }, `n8n: published ${id}`);
     await dPost(j.yt_scheduled_for
-      ? `🚀 Aaj ki video: *${meta.title}*\nYouTube par pehle se scheduled hai, ${new Date(j.yt_scheduled_for).toLocaleTimeString('en-GB', { timeZone: 'Asia/Karachi', hour: '2-digit', minute: '2-digit' })} PKT par khud live hogi.\n\nLive hone ke baad yeh comment pin karein:\n> ${meta.pinned_comment || ''}`
+      ? `🚀 Today's video: *${meta.title}*\nAlready scheduled on YouTube, goes live by itself at ${new Date(j.yt_scheduled_for).toLocaleTimeString('en-GB', { timeZone: 'Asia/Karachi', hour: '2-digit', minute: '2-digit' })} PKT.\n\nAfter it is live, pin this comment:\n> ${meta.pinned_comment || ''}`
       : `🚀 Publishing now: *${meta.title}*\nZapier will upload it to YouTube within ~15 minutes.\n\nAfter it is live, pin this comment:\n> ${meta.pinned_comment || ''}`);
     log.push(`published ${id}`);
 
@@ -287,7 +287,7 @@ if (mode === 'publish') {
       try {
         await updateState((st) => { const J = st.jobs[id]; const t = now(); if (sent.includes('ig')) J.ig_at = t; if (sent.includes('fb')) J.fb_at = t; if (sent.length) J.reels_at = t; return true; }, `n8n: social ${id}`);
       } catch (e) { log.push(`social state failed ${id}`); }
-      if (sent.length === 2) await dPost(`📱 Instagram + Facebook: *${meta.title}* queue ho gaya — Zapier ~15 min mein post karega.`);
+      if (sent.length === 2) await dPost(`📱 Instagram + Facebook: *${meta.title}* queued — Zapier posts it within ~15 min.`);
       else await dPost(`⚠️ YouTube theek hai, lekin ${sent.includes('ig') ? 'Facebook' : sent.includes('fb') ? 'Instagram' : 'Instagram aur Facebook'} feed update nahi hua (${id}). Claude se kahein check kare.`);
       log.push(`social ${id}: ${sent.join('+') || 'none'}`);
     }
@@ -336,7 +336,7 @@ async function scheduleAhead() {
     used.add(dayKey(slot));
     await updateState((s2) => { const J = s2.jobs[id]; if (!J) return false; J.yt_scheduled_for = slot; J.yt_queued_at = now(); return true; }, `n8n: ${id} scheduled on YouTube for ${slot}`);
     const when = new Date(slot).toLocaleString('en-GB', { timeZone: 'Asia/Karachi', weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
-    await dPost(`📅 YouTube schedule: *${meta.title}*\nZapier ~15 min mein Private upload karega, ${when} PKT par khud public hogi. Instagram + Facebook usi waqt jayenge.`);
+    await dPost(`📅 YouTube schedule: *${meta.title}*\nZapier uploads it as Private within ~15 min; it goes public by itself on ${when} PKT. Instagram + Facebook go out the same morning.`);
     log.push(`scheduled ${id} ${slot}`);
   }
 }

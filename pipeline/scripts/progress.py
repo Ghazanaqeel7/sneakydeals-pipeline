@@ -5,7 +5,7 @@ Usage: python3 pipeline/scripts/progress.py <job_id> "🎙 Voice done (56 s). Bu
        python3 pipeline/scripts/progress.py <job_id> --image jobs/<id>/review/round1.jpg "🔍 Check frames, round 1"
 --image: a JPG/PNG already committed AND pushed (keep it under ~1 MB); n8n posts it into Slack with the text.
 Only touches state.json (fetch + reset + append + push, retried), so commit/push your own files first.
-Keep each update one short line, written for the owner (simple English or Roman Urdu), no jargon.
+Keep each update one short line, written for the owner (simple English: the dashboard and Slack are English-only), no jargon.
 """
 import json, subprocess, sys, time, datetime
 

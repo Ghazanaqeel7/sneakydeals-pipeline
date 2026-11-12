@@ -8,6 +8,8 @@ publish, never touch YouTube, and never set an approval status yourself.**
 Read this file, `docs/LEARNINGS.md` and `state.json` at the start of every run. Follow the `3d-story-shorts` skill
 for story rules, look and build technique; this file overrides it where they differ (voice, folders, publishing).
 
+**Language:** every progress note, Slack message and dashboard text is in simple English (the owner asked for an English dashboard).
+
 ## Dashboard
 
 The owner also has a web dashboard (`docs/index.html`, GitHub Pages). From it they can approve/reject exactly like
@@ -225,7 +227,7 @@ This is how the system trains itself. Free data first; vidIQ only if credits are
    `python3 pipeline/scripts/progress.py weekly-review "<line>"` — e.g. "📊 Hafta: 4 Shorts, 12.4K views, +86 subs",
    "🥇 Best: Disney swamp — 3 din mein 8K views (hook: brand + secret)", "📈 Niche mein barh raha: Pepsi, Sears",
    "🧠 Playbook update: …", "🧪 Agle hafte test: …", and the calendar in 2-3 lines
-   ("📅 Is hafte: Mon Pudding Guy · Tue (long) Blockbuster …"). Simple Roman Urdu/English.
+   ("📅 Is hafte: Mon Pudding Guy · Tue (long) Blockbuster …"). Simple English.
 
 ## Never
 - publish, upload, or change anything on YouTube/Instagram/Facebook
