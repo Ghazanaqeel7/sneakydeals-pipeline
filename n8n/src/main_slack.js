@@ -17,6 +17,12 @@ async function http(o) {
   }
 }
 const data = $getWorkflowStaticData('global');
+// One runner at a time: when state.config.bot_runner is "github", the laptop n8n stands down (GitHub Actions runs this code).
+{
+  const _st = JSON.parse(Buffer.from((await http({ method: 'GET', url: `https://api.github.com/repos/${cfg.github_owner}/${cfg.github_repo}/contents/state.json?ref=main&t=${Date.now()}`, headers: { Authorization: `Bearer ${cfg.github_token}`, Accept: 'application/vnd.github+json', 'User-Agent': 'sneakydeals-n8n' }, json: true })).content, 'base64').toString('utf8'));
+  const want = ((_st.config || {}).bot_runner) || 'n8n';
+  if (want !== (cfg.runner || 'n8n')) return [{ json: { mode, log: [`skipped: bot_runner is ${want}`] } }];
+}
 const GH = `https://api.github.com/repos/${cfg.github_owner}/${cfg.github_repo}`;
 const ghHeaders = { Authorization: `Bearer ${cfg.github_token}`, Accept: 'application/vnd.github+json', 'User-Agent': 'sneakydeals-n8n', 'X-GitHub-Api-Version': '2022-11-28' };
 const SL = 'https://slack.com/api';

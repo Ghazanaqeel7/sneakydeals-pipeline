@@ -361,6 +361,8 @@ let TOKEN=store.get('sd_token');
 const $=(s)=>document.querySelector(s);
 const esc=(s)=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const ago=(t)=>{if(!t)return'—';const s=(Date.now()-new Date(t))/1000;if(s<60)return'just now';if(s<3600)return Math.floor(s/60)+' min ago';if(s<86400)return Math.floor(s/3600)+' h ago';return Math.floor(s/86400)+' d ago'};
+const etz=(t)=>t?new Date(t).toLocaleString('en-US',{timeZone:'America/New_York',month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}):'—';
+const pt2=(t)=>t?`${pt2(t)} · ${etz(t)} US ET`:'—';
 const pkt=(t,o={})=>t?new Date(t).toLocaleString('en-GB',{timeZone:'Asia/Karachi',day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit',hour12:false,...o}):'—';
 const hm=(t)=>pkt(t,{day:undefined,month:undefined});
 const b64d=(s)=>new TextDecoder().decode(Uint8Array.from(atob(s.replace(/\n/g,'')),c=>c.charCodeAt(0)));
@@ -498,7 +500,7 @@ function renderMain(){
     <div class="hero"><img class="poster${j.type==='long'?' wide':''}" src="${RAW}/jobs/${esc(id)}/thumbnail.jpg?u=${encodeURIComponent(j.updated||'')}" onclick="zoom(this.src)" onerror="this.onerror=null;this.src='logo.png'"><div>
     <div class="eyebrow">${esc(id)}</div>
     <h1>${esc(j.title||titleFromId(id))}</h1>
-    <div class="sub"><span>${chip(j)}</span><span>Updated ${ago(j.updated)}</span>${slots[id]?`<span style="color:var(--gold2)">Goes live ${pkt(slots[id])} PKT</span>`:''}${j.video_url?`<a href="${esc(j.video_url)}" target="_blank">Full-quality file ↗</a>`:''}</div></div></div>
+    <div class="sub"><span>${chip(j)}</span><span>Updated ${ago(j.updated)}</span>${slots[id]?`<span style="color:var(--gold2)">Goes live ${pt2(slots[id])}</span>`:''}${j.video_url?`<a href="${esc(j.video_url)}" target="_blank">Full-quality file ↗</a>`:''}</div></div></div>
     ${j.status==='dropped'?'':`<div class="track">${track}</div><div class="track-m"><div class="bar">${STAGES.map((x,i)=>`<i class="${i<idx?'done':''} ${i===idx?'now'+(attn?' attn':'')+(err?' err':''):''}"></i>`).join('')}</div><div class="lab"><span>Step ${idx+1} of 7 · ${STAGES[Math.max(idx,0)]}</span><span>${idx<6?'Next: '+STAGES[idx+1]:''}</span></div></div>`}
     ${platformStrip(id,j)}
     ${ytLine(j)}
@@ -521,7 +523,7 @@ function reviewBlock(id,j){
       <div class="thumbwrap"><div class="lbl">Thumbnail</div><img src="${RAW}/jobs/${esc(id)}/thumbnail.jpg?u=${encodeURIComponent(j.updated||'')}" onclick="zoom(this.src)" onerror="this.outerHTML='<div class=empty>No thumbnail — the logo thumbnail would be used.</div>'"><div class="note" style="margin-top:10px">Video, thumbnail and the YouTube text are approved together.</div></div>
       <div>${!TOKEN?LOCKED():`<div class="lbl">Your decision</div>
         <button class="btn go" style="width:100%;padding:11px"${lock} onclick="decide('${id}','video_approved')">Approve video + thumbnail</button>
-        <div class="note" style="margin:10px 0 12px">Goes out ${publishSlots(Object.assign({},S.state,{jobs:{...S.state.jobs,[id]:{...j,status:'video_approved',updated:'9999'}}}))[id]?'on '+pkt(publishSlots(Object.assign({},S.state,{jobs:{...S.state.jobs,[id]:{...j,status:'video_approved',updated:'9999'}}}))[id])+' PKT':'on the next publish slot'} if you approve now.</div>
+        <div class="note" style="margin:10px 0 12px">Goes out ${publishSlots(Object.assign({},S.state,{jobs:{...S.state.jobs,[id]:{...j,status:'video_approved',updated:'9999'}}}))[id]?'on '+pt2(publishSlots(Object.assign({},S.state,{jobs:{...S.state.jobs,[id]:{...j,status:'video_approved',updated:'9999'}}}))[id]):'on the next publish slot'} if you approve now.</div>
         <div class="lbl" style="margin-top:6px">Or ask for changes</div>
         <div class="choice"><label><input type="radio" name="fx" value="thumbnail: " checked>Thumbnail only</label><label><input type="radio" name="fx" value="">Video</label></div>
         <textarea id="rv_fb" rows="5" oninput="dirty()" placeholder="Be specific — e.g. 'thumbnail: bigger DISNEY text, show the gator' or 'shot 5 at 0:21: the sign is cut off'"${lock}></textarea>
@@ -561,9 +563,9 @@ function actionBar(id,j,lastP){
   else if(s==='script_rejected'||s==='video_rejected'){msg=`<b>Changes requested — Claude is on it.</b><span>${j.feedback?'Progress updates appear below and in Slack.':'Waiting for your note. Add one so Claude knows what to fix.'}</span>`;
     btns=j.feedback?'':`<button class="btn pri"${lock} onclick="askFeedback('${id}','${s}','What should change?')">Add note</button>`}
   else if(s==='video_approved'&&j.type==='long'){msg=`<b>Approved. Ab upload aap ko karni hai.</b><span>Neeche helper se file download karein, YouTube Studio mein upload karein, phir "Mark published" dabayein.</span>`;btns=`<button class="btn"${lock} onclick="unapprove('${id}')">Pull back to review</button>`}
-  else if(s==='video_approved'){msg=`<b>Approved and scheduled.</b><span>On the publish day at ${esc((S.state.config||{}).publish_time_pkt||'05:00')} PKT n8n hands it to Zapier, which uploads it to YouTube within ~15 min.</span>`;
+  else if(s==='video_approved'){msg=`<b>Approved and scheduled.</b><span>Approve hote hi YouTube par Private upload ho jaati hai aur ${esc((S.state.config||{}).publish_time_pkt||'05:00')} PKT (7 PM US ET) par khud public hoti hai. Instagram + Facebook usi subah jaate hain. Bot har ghante YouTube par check karta hai ke video sach mein live hui.</span>`;
     btns=`<button class="btn"${lock} onclick="unapprove('${id}')">Pull back to review</button>`}
-  else if(s==='published'&&j.live_at&&new Date(j.live_at)>new Date()){msg=`<b>On YouTube, scheduled for ${pkt(j.live_at)} PKT.</b><span>It is uploaded and set to go public by itself. Pin this comment once it is live: <i id="pinned"></i></span>`;btns=`<a class="btn" href="https://studio.youtube.com" target="_blank">Open YouTube Studio ↗</a>`}
+  else if(s==='published'&&j.live_at&&new Date(j.live_at)>new Date()){msg=`<b>On YouTube, scheduled for ${pt2(j.live_at)}.</b><span>It is uploaded and set to go public by itself. Pin this comment once it is live: <i id="pinned"></i></span>`;btns=`<a class="btn" href="https://studio.youtube.com" target="_blank">Open YouTube Studio ↗</a>`}
   else if(s==='published'){msg=`<b>Handed to YouTube.</b><span>Pin this comment once it is live: ${esc('')}<i id="pinned"></i></span>`;btns=`<a class="btn" href="https://studio.youtube.com" target="_blank">Open YouTube Studio ↗</a>`}
   else if(s==='render_failed'){msg=`<b>Render failed.</b><span>Claude retries in its next hourly run. ${j.render_error?esc(j.render_error):''}</span>`;btns=j.run?`<a class="btn" target="_blank" href="https://github.com/${OWNER}/${REPO}/actions/runs/${j.run}">See the log ↗</a>`:''}
   else if(s==='dropped'){msg=`<b>Dropped.</b><span>This story will not be made.</span>`}
@@ -610,7 +612,7 @@ async function renderTab(){
       ${canEdit?`<button class="btn pri" onclick="saveMeta()">Save YouTube details</button>`:`<div class="note">${TOKEN?'Already handed to YouTube — edit it in YouTube Studio.':'Unlock editing to change these.'}</div>`}
     </div><div>
       <div class="lbl">How it will go out</div>
-      <div class="kv"><div>Privacy</div><div>Public</div><div>Category</div><div>Education</div><div>Made for kids</div><div>No</div><div>Publish slot</div><div>${publishSlots(S.state)[id]?pkt(publishSlots(S.state)[id])+' PKT':esc(nextSlotText(S.state))+' PKT'}</div><div>Thumbnail text</div><div>${meta.thumb?esc([meta.thumb.box,meta.thumb.line1,meta.thumb.line2].filter(Boolean).join(' / ')):'—'}</div><div>Uploader</div><div>n8n → feed → Zapier → YouTube</div></div>
+      <div class="kv"><div>Privacy</div><div>Public</div><div>Category</div><div>Education</div><div>Made for kids</div><div>No</div><div>Publish slot</div><div>${publishSlots(S.state)[id]?pt2(publishSlots(S.state)[id]):esc(nextSlotText(S.state))+' PKT'}</div><div>Thumbnail text</div><div>${meta.thumb?esc([meta.thumb.box,meta.thumb.line1,meta.thumb.line2].filter(Boolean).join(' / ')):'—'}</div><div>Uploader</div><div>n8n → feed → Zapier → YouTube</div></div>
       <div class="note" style="margin-top:14px">Title edits are used as-is on upload. Keep it under 70 characters so it is not cut on phones.</div>
     </div></div>`;count();
   }
@@ -631,7 +633,7 @@ async function renderTab(){
       ${TOKEN&&(igLock||fbLock)?`<button class="btn pri" onclick="saveSocial()">Save Instagram + Facebook</button>`:`<div class="note">${TOKEN?'Already sent to Instagram/Facebook — edit the post in the app.':'Unlock editing to change these.'}</div>`}
     </div><div>
       <div class="lbl">How it goes out</div>
-      <div class="kv"><div>When</div><div>Same morning as YouTube, right after it (${publishSlots(S.state)[id]?pkt(publishSlots(S.state)[id])+' PKT':esc(nextSlotText(S.state))+' PKT'})</div><div>Instagram</div><div>n8n → feed/reels.xml → Zapier → Reel</div><div>Facebook</div><div>n8n → feed/facebook.xml → Zapier → Page video</div><div>Video</div><div>Same file as YouTube (9:16)</div></div>
+      <div class="kv"><div>When</div><div>Same morning as YouTube, right after it (${publishSlots(S.state)[id]?pt2(publishSlots(S.state)[id]):esc(nextSlotText(S.state))+' PKT'})</div><div>Instagram</div><div>n8n → feed/reels.xml → Zapier → Reel</div><div>Facebook</div><div>n8n → feed/facebook.xml → Zapier → Page video</div><div>Video</div><div>Same file as YouTube (9:16)</div></div>
       <div class="lbl" style="margin-top:20px">Instagram preview</div>
       <div class="igprev"><b>sneakydealstv</b> <span id="ig_prev"></span></div>
       <div class="note" style="margin-top:14px">Instagram shows only the first ~125 characters before "more" — put the hook there. Instagram now favours a few precise hashtags (max 5) and keyword-rich captions (they are searchable). Facebook: short title, end with a question to get comments.</div>
@@ -653,9 +655,16 @@ const PICON={
   ig:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C13584" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#C13584"/></svg>',
   fb:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1877F2" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M13.5 21v-7h2.5l.5-3h-3V9.2c0-.9.4-1.5 1.6-1.5h1.5V5.1c-.3 0-1.2-.1-2.2-.1-2.3 0-3.7 1.4-3.7 3.8V11H8v3h2.7v7"/></svg>'};
 function platStatus(id,j){
-  const slot=publishSlots(S.state)[id],reelsOn=!(S.state.config&&S.state.config.reels===false);
-  const yt=j.live_at?(new Date(j.live_at)>new Date()?['wait','Scheduled '+pkt(j.live_at)]:['ok','Live since '+pkt(j.live_at)]):j.published_at?['ok','Sent '+pkt(j.published_at)]:slot?['wait','Goes '+pkt(slot)]:['mute','Not scheduled'];
-  const soc=(at)=>{if(!reelsOn)return['mute','Off'];if(at)return['ok','Sent '+pkt(at)+' · posts ~15 min later'];if(j.published_at||j.live_at)return['mute','Not sent (before IG/FB setup)'];return slot?['wait','Goes with YouTube']:['mute','Waiting']};
+  const slot=publishSlots(S.state)[id],reelsOn=!(S.state.config&&S.state.config.reels===false),nowD=new Date();
+  let yt;
+  if(j.yt_live_at)yt=['ok','LIVE ✓ (bot ne check kiya) '+pt2(j.yt_live_at)];
+  else if(j.yt_alert)yt=['bad','Slot guzar gaya, YouTube par nahi mili — Zapier check karein'];
+  else if(j.yt_scheduled_for&&new Date(j.yt_scheduled_for)>nowD)yt=['wait','YouTube par uploaded (Private), live: '+pt2(j.yt_scheduled_for)];
+  else if(j.yt_scheduled_for)yt=['wait','Live hona chahiye tha '+pt2(j.yt_scheduled_for)+' — bot har ghante check karta hai'];
+  else if(j.live_at)yt=new Date(j.live_at)>nowD?['wait','Scheduled '+pt2(j.live_at)]:['ok','Live since '+pt2(j.live_at)];
+  else if(j.published_at)yt=['wait','Zapier ko bheja '+pt2(j.published_at)+' — confirm hona baqi'];
+  else yt=slot?['wait','Jayegi '+pt2(slot)]:['mute','Not scheduled'];
+  const soc=(at)=>{if(!reelsOn)return['mute','Off'];if(at)return['ok','Zapier ko bheja '+pt2(at)+' · ~15 min mein post'];if(j.published_at||j.live_at||j.yt_live_at)return['mute','Nahi bheja (IG/FB setup se pehle)'];return slot?['wait','YouTube ke saath jayegi']:['mute','Waiting']};
   return {yt,ig:soc(j.ig_at||j.reels_at),fb:soc(j.fb_at||j.reels_at)};
 }
 function platformStrip(id,j){
@@ -687,7 +696,7 @@ async function renderToday(){
   const nx=upcoming[0];
   let nextHtml='<div class="card next"><div class="empty" style="padding:4px 0">Nothing scheduled yet. Approve a video and it gets the next free morning.</div></div>';
   if(nx){const [id,j,when]=nx,p=platStatus(id,j),row=(ic,n,[c,t])=>`<div class="prow"><span>${ic}${n}</span><span class="st2 ${c}">${esc(t)}</span></div>`;
-    nextHtml=`<div class="card next"><div class="hd"><img alt="" src="${th(id,j)}" onerror="this.onerror=null;this.src='logo.png'"><div><div class="kicker" style="color:var(--gold2)">${pkt(when)} PKT</div><div style="font-weight:600;font-size:15.5px;line-height:1.3;margin-top:4px">${esc(j.title||titleFromId(id))}</div></div></div>${row(PICON.yt,'YouTube',p.yt)}${row(PICON.ig,'Instagram',p.ig)}${row(PICON.fb,'Facebook',p.fb)}<a href="#" onclick="pick('${id}','social');return false">Edit Instagram &amp; Facebook text →</a></div>`}
+    nextHtml=`<div class="card next"><div class="hd"><img alt="" src="${th(id,j)}" onerror="this.onerror=null;this.src='logo.png'"><div><div class="kicker" style="color:var(--gold2)">${pt2(when)}</div><div style="font-weight:600;font-size:15.5px;line-height:1.3;margin-top:4px">${esc(j.title||titleFromId(id))}</div></div></div>${row(PICON.yt,'YouTube',p.yt)}${row(PICON.ig,'Instagram',p.ig)}${row(PICON.fb,'Facebook',p.fb)}<a href="#" onclick="pick('${id}','social');return false">Edit Instagram &amp; Facebook text →</a></div>`}
   const prodRow=([id,j])=>{const [idx,,c,attn,err]=info(j);const lp=(j.progress||[]).slice(-1)[0];
     return `<button class="prod" onclick="pick('${id}')"><img alt="" src="${th(id,j)}" onerror="this.onerror=null;this.src='logo.png'"><div style="min-width:0"><div class="tt">${esc(j.title||titleFromId(id))}</div><div class="mini" aria-label="Step ${idx+1} of 7">${STAGES.map((x,i)=>`<i class="${i<idx?'done':''} ${i===idx?'now'+(attn?' attn':'')+(err?' err':''):''}"></i>`).join('')}</div><div class="nt">Step ${Math.max(idx,0)+1} of 7 · ${STAGES[Math.max(idx,0)]}${lp?' — '+esc(lp.msg)+' · '+ago(lp.t):''}</div></div>${chip(j)}</button>`};
   $('#main').innerHTML=`<div class="pagehead"><div><div class="kicker">${esc(today)}</div><h1 style="margin:6px 0 0;font-size:46px">${greet}, Ghazan</h1><p class="lead">${needs.length?`${needs.length} thing${needs.length>1?'s':''} need${needs.length>1?'':'s'} you. Everything else is running on its own.`:'Nothing needs you right now. Everything is running on its own.'}</p></div>
@@ -758,13 +767,30 @@ function bigChart(snaps,key,label){const p=(snaps||[]).filter(x=>x[key]!=null).s
   return `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" preserveAspectRatio="none" role="img" aria-label="${label} over time"><polygon points="0,${H} ${line} ${W},${H}" fill="#E8EEFF"/><polyline points="${line}" fill="none" stroke="#1F4FE0" stroke-width="2.2" vector-effect="non-scaling-stroke"/></svg>
     <div style="display:flex;justify-content:space-between;font:11px var(--mono);color:var(--ink3);margin-top:6px"><span>${pkt(p[0].t)}</span><span>${fmtN(mn)} → ${fmtN(mx)}</span><span>${pkt(p[p.length-1].t)}</span></div>`}
 async function renderStats(){
+  S.ptab=S.ptab||'yt';
+  if(S.ptab!=='yt')return renderSocialStats(S.ptab);
+  return renderYtStats();
+}
+const ptabs=()=>`<div class="tabs" style="margin:0 0 18px">${[['yt','YouTube'],['ig','Instagram'],['fb','Facebook']].map(([k,n])=>`<button class="tab ${S.ptab===k?'on':''}" onclick="S.ptab='${k}';renderStats()">${PICON[k]} ${n}</button>`).join('')}</div>`;
+function renderSocialStats(k){
+  const name=k==='ig'?'Instagram':'Facebook',at=(j)=>k==='ig'?(j.ig_at||j.reels_at):(j.fb_at||j.reels_at);
+  const link=k==='ig'?'https://www.instagram.com/sneakydealstv/':'https://www.facebook.com/profile.php';
+  const jobs=Object.entries(S.state.jobs).filter(([id,j])=>isJob(id)&&j.type!=='long'&&['published','video_approved'].includes(j.status)).sort((a,b)=>(at(b[1])||'9').localeCompare(at(a[1])||'9'));
+  const sent=jobs.filter(([,j])=>at(j)).length;
+  const row=([id,j])=>{const t=at(j);const st=t?['ok','Zapier ko bheja']:j.status==='published'?['mute','Nahi bheja (setup se pehle)']:['wait','YouTube ke saath jayegi'];
+    return `<tr><td><div class="vv"><img alt="" src="${th(id,j)}" onerror="this.onerror=null;this.src='logo.png'"><div><a href="#" onclick="pick('${id}','social');return false">${esc(j.title||titleFromId(id))}</a><div class="note" style="margin:3px 0 0">${esc(id)}</div></div></div></td><td><span class="chip c-${st[0]}">${st[1]}</span></td><td>${t?pt2(t):'—'}</td></tr>`};
+  $('#main').innerHTML=`<div class="pagehead"><div><div class="kicker">${name} · @sneakydealstv</div><h1 style="margin:6px 0 0">Stats</h1><p class="lead">${sent} video${sent===1?'':'s'} ${name} par bheji gayi</p></div></div>${ptabs()}
+    <div class="card" style="overflow-x:auto">${jobs.length?`<table class="vt"><thead><tr><th>Video</th><th>Status</th><th>Kab</th></tr></thead><tbody>${jobs.map(row).join('')}</tbody></table>`:'<div class="empty" style="padding:20px">Abhi koi video nahi.</div>'}</div>
+    <div class="note" style="margin-top:12px">"Zapier ko bheja" = video ${name} wali Zap ki feed mein chali gayi; Zapier ~15 min mein post karta hai. Fail ho to Zapier email karta hai (aur jald Slack par bhi). ${name} ke views/likes ke liye Meta (Instagram/Facebook) ko connect karna hoga — woh agla qadam hai. <a href="${link}" target="_blank">${name} kholein ↗</a></div>`;
+}
+async function renderYtStats(){
   let O=S.own;try{O=JSON.parse(await readText('docs/research/own_videos.json'));S.own=O}catch(e){}
-  if(!O||!O.channel){$('#main').innerHTML=`<div class="pagehead"><div><div class="kicker">YouTube · @SneakyDeals</div><h1 style="margin:6px 0 0">Stats</h1><p class="lead">The stats bot fetches subscribers and every video’s views each hour. The first numbers appear within an hour of it starting.</p></div></div>`;return}
+  if(!O||!O.channel){$('#main').innerHTML=`<div class="pagehead"><div><div class="kicker">YouTube · @SneakyDeals</div><h1 style="margin:6px 0 0">Stats</h1><p class="lead">The stats bot fetches subscribers and every video’s views each hour. The first numbers appear within an hour of it starting.</p></div></div>${ptabs()}`;return}
   const c=O.channel,vids=Object.entries(O.videos||{}).map(([id,v])=>({id,...v})).sort((a,b)=>(b.published||'').localeCompare(a.published||''));
   const v24=vids.reduce((a,v)=>a+(v.views_24h||0),0);
   const d=(n,suf='in 24 h')=>n==null?'<div class="note" style="margin:0">first day of data</div>':`<div class="note" style="margin:0;color:${n>0?'var(--mint)':'var(--ink3)'}">${n>=0?'+':''}${fmtN(n)} ${suf}</div>`;
   const cell=(x)=>x==null?'<span class="dim">—</span>':fmtN(x);
-  $('#main').innerHTML=`<div class="pagehead"><div><div class="kicker">YouTube · @SneakyDeals</div><h1 style="margin:6px 0 0">Stats</h1><p class="lead">Updated ${ago(O.updated)} · refreshes every hour</p></div>
+  $('#main').innerHTML=`<div class="pagehead"><div><div class="kicker">YouTube · @SneakyDeals</div><h1 style="margin:6px 0 0">Stats</h1><p class="lead">Updated ${ago(O.updated)} · refreshes every hour</p>${ptabs()}</div>
     <div class="stats"><div class="stat"><div class="kicker">Subscribers</div><b>${fmtN(c.subs)}</b>${d(c.subs_24h)}</div><div class="stat"><div class="kicker">Channel views</div><b>${fmtN(c.views)}</b>${d(c.views_24h)}</div><div class="stat"><div class="kicker">Views · 24 h</div><b>${fmtN(v24)}</b><div class="note" style="margin:0">all videos</div></div><div class="stat"><div class="kicker">Public videos</div><b>${vids.length}</b><div class="note" style="margin:0">${vids.filter(v=>v.short).length} Short${vids.filter(v=>v.short).length===1?'':'s'}</div></div></div></div>
     <div class="tgrid"><div class="card chartbox"><div class="sec" style="margin:0 0 12px"><h2>Channel views</h2></div>${bigChart(c.snaps,'views','views')}</div>
       <div class="card chartbox"><div class="sec" style="margin:0 0 12px"><h2>Subscribers</h2></div>${bigChart(c.snaps,'subs','subscribers')}</div></div>
@@ -853,7 +879,7 @@ async function renderResearch(){
   const o=R.own||{},ideas=S.state.ideas||[];
   const tabs=[['shorts','Viral Shorts ('+(R.shorts||[]).length+')'],['long','Viral long videos ('+(R.long||[]).length+')'],['comp','Competitors ('+(R.competitors||[]).length+')'],['words','Hot words & searches'],['titles','Title check'],['trends','Trends (30 days)'],['learn','Learning']];
   $('#main').innerHTML=`<h1>Research</h1>
-  <div class="sub"><span>Last full scan ${ago(R.full_run)} (${pkt(R.full_run)} PKT)</span><span>Runs daily 06:00 PKT</span><span>${R.units_used||0} of 10,000 free API units</span><a href="https://github.com/${OWNER}/${REPO}/actions/workflows/research.yml" target="_blank">Run now ↗</a></div>
+  <div class="sub"><span>Last full scan ${ago(R.full_run)} (${pt2(R.full_run)})</span><span>Runs daily 06:00 PKT</span><span>${R.units_used||0} of 10,000 free API units</span><a href="https://github.com/${OWNER}/${REPO}/actions/workflows/research.yml" target="_blank">Run now ↗</a></div>
   <div class="overview">
     <div><div class="lbl">Sneaky Deals subs</div><div class="big">${fmtN(o.subs)}</div><div class="note">${o.subs_change!=null?(o.subs_change>=0?'+':'')+o.subs_change+' since last scan':'first scan'}</div></div>
     <div><div class="lbl">Channel views</div><div class="big">${fmtN(o.views)}</div><div class="note">${o.views_change!=null?'+'+fmtN(o.views_change)+' since last scan':'&nbsp;'}</div></div>

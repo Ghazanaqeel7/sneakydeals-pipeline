@@ -10,3 +10,4 @@ node_modules/
 out/
 pipeline/template-long/public/assets/*
 !pipeline/template-long/public/assets/.gitkeep
+.bot-static.json
