@@ -42,7 +42,7 @@ def queue_thumb(jid, vid, j):
 
 changed = False
 for jid, j in st.get('jobs', {}).items():
-    if not jid[:1].isdigit() or j.get('type') == 'long' or j.get('yt_live_at'):
+    if not jid[:1].isdigit() or j.get('yt_live_at'):
         continue
     due = j.get('yt_scheduled_for') or (j.get('published_at') if j.get('status') == 'published' else None)
     if not due:
@@ -59,6 +59,8 @@ for jid, j in st.get('jobs', {}).items():
         j['yt_video_id'] = vid; j['yt_live_at'] = stamp
         note(j, f'✅ LIVE on YouTube: "{title}" https://youtu.be/{vid}')
         queue_thumb(jid, vid, j)
+        if j.get('type') == 'long' and j.get('status') == 'video_approved':
+            j['status'] = 'published'; j['published_at'] = stamp   # long videos have no 04:40 publish run
         changed = True
     elif now - due > dt.timedelta(minutes=60) and not j.get('yt_alert'):
         j['yt_alert'] = stamp

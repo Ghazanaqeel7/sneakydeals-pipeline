@@ -139,14 +139,16 @@ jobs:
           bash pipeline/longform/finalize_long.sh jobs/$J $CH
           TITLE=$(python3 -c "import json;print(json.load(open('jobs/$J/meta.json'))['title'])")
           gh release delete "job-$J" -y --cleanup-tag 2>/dev/null || true
-          ASSETS="jobs/$J/project/out/final.mp4 jobs/$J/project/out/preview.mp4"
+          ASSETS="jobs/$J/project/out/final.mp4 jobs/$J/project/out/preview.mp4 jobs/$J/project/out/upload.mp4"
           [ -f jobs/$J/thumbnail.jpg ] && ASSETS="$ASSETS jobs/$J/thumbnail.jpg"
           gh release create "job-$J" $ASSETS --title "$TITLE" --notes "Long-form render for $J" --prerelease
           # persist upload helper data + credits on main (small text files), then flip status
           git add jobs/$J/upload.json jobs/$J/credits.txt 2>/dev/null || true
+          git add -f jobs/$J/thumbnail.jpg 2>/dev/null || true
           git commit -m "$J: upload helper data" || true
           git checkout -- . ; git clean -fdq jobs/$J/project jobs/$J/review 2>/dev/null || true
           for a in 1 2 3 4 5; do git pull --rebase origin main && git push origin HEAD:main && break || sleep 4; done
           URL="https://github.com/${{ github.repository }}/releases/download/job-$J/final.mp4"
           PURL="https://github.com/${{ github.repository }}/releases/download/job-$J/preview.mp4"
-          python3 pipeline/scripts/set_status.py "$J" video_ready video_url="$URL" preview_url="$PURL"
+          UURL="https://github.com/${{ github.repository }}/releases/download/job-$J/upload.mp4"
+          python3 pipeline/scripts/set_status.py "$J" video_ready video_url="$URL" preview_url="$PURL" upload_url="$UURL"

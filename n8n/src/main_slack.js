@@ -156,7 +156,7 @@ if (mode === 'replies') {
       script_rejected: `❌ Script rejected: *${id}*. Type what to change in your next message (or type \`drop\` to throw this idea away).`,
       video_rejected: `❌ Video rejected: *${id}*. Type what to fix (shot / second / what looks wrong).`,
     };
-    if (next === 'video_approved' && ((st0.jobs[id] || {}).type === 'long')) texts.video_approved = `✅ Long video approved: *${id}*. Open the dashboard Long tab, download the file there and upload it in YouTube Studio (long videos are not auto-published).`;
+    if (next === 'video_approved' && ((st0.jobs[id] || {}).type === 'long')) texts.video_approved = `✅ Long video approved: *${id}*. It is scheduled on YouTube automatically (next Tue/Thu/Sat 19:00 PKT slot); you get a 📅 message with the time. The dashboard Long tab keeps a manual upload helper as a backup.`;
     await dPost(texts[next]);
     if (next.endsWith('rejected')) data.awaiting = id;
     log.push(`${id}: ${next}`);
@@ -300,23 +300,27 @@ async function scheduleAhead() {
   const st = JSON.parse((await ghGet('state.json')).text);
   const C = st.config || {};
   if (!C.yt_schedule_ahead) return;
-  const todo = Object.entries(st.jobs).filter(([, j]) => j.status === 'video_approved' && j.type !== 'long' && !j.yt_scheduled_for)
+  const todo = Object.entries(st.jobs).filter(([, j]) => j.status === 'video_approved' && !j.yt_scheduled_for && (j.type !== 'long' || (C.long_auto !== false && (j.upload_url || j.video_url))))
     .sort((a, b) => (a[1].updated || '').localeCompare(b[1].updated || ''));
   if (!todo.length) return;
   const days = C.publish_days || ['Mon', 'Wed', 'Fri', 'Sun'];
   const [hh, mm] = String(C.publish_time_pkt || '05:00').split(':').map(Number);
   const dayKey = (t) => new Date(t).toLocaleDateString('en-CA', { timeZone: 'Asia/Karachi' });
-  const used = new Set();
-  for (const j of Object.values(st.jobs)) for (const t of [j.yt_scheduled_for, j.published_at, j.live_at]) if (t) used.add(dayKey(t));
+  const used = new Set(), usedLong = new Set();
+  for (const j of Object.values(st.jobs)) for (const t of [j.yt_scheduled_for, j.published_at, j.live_at]) if (t) (j.type === 'long' ? usedLong : used).add(dayKey(t));
+  // long videos: their own slot (default Tue/Thu/Sat 19:00 PKT = 9 AM US Eastern), separate from the daily Short
+  const longDays = C.long_days || ['Tue', 'Thu', 'Sat'];
+  const [lh, lm] = String(C.long_publish_time_pkt || '19:00').split(':').map(Number);
   const esc = (x) => String(x).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   const RAW = `https://raw.githubusercontent.com/${cfg.github_owner}/${cfg.github_repo}/main`;
   for (const [id, j] of todo) {
+    const isLong = j.type === 'long', U = isLong ? usedLong : used, D = isLong ? longDays : days, H = isLong ? lh : hh, M = isLong ? lm : mm;
     let slot = null;
     for (let d = 0; d < 60 && !slot; d++) {
       const key = dayKey(Date.now() + d * 86400000);
       const wd = new Date(Date.parse(key + 'T12:00:00Z')).toLocaleDateString('en-US', { weekday: 'short', timeZone: 'UTC' });
-      if (!days.includes(wd) || used.has(key)) continue;
-      const t = Date.parse(key + 'T00:00:00Z') + ((hh - 5) * 60 + mm) * 60000;   // PKT = UTC+5
+      if (!D.includes(wd) || U.has(key)) continue;
+      const t = Date.parse(key + 'T00:00:00Z') + ((H - 5) * 60 + M) * 60000;   // PKT = UTC+5
       if (t - Date.now() < 3 * 3600e3) continue;
       slot = new Date(t).toISOString().replace(/\.\d+Z$/, 'Z');
     }
@@ -324,7 +328,7 @@ async function scheduleAhead() {
     const meta = JSON.parse((await ghGet(`jobs/${id}/meta.json`)).text);
     let thumbUrl = `${RAW}/assets/default_thumbnail.jpg`;
     try { await http({ method: 'GET', url: `${GH}/contents/jobs/${id}/thumbnail.jpg?ref=main`, headers: ghHeaders, json: true }); thumbUrl = `${RAW}/jobs/${id}/thumbnail.jpg`; } catch (e) {}
-    const item = `<item>\n<title>${esc(meta.title)}</title>\n<description><![CDATA[${meta.description.replace(/]]>/g, '')}]]></description>\n<link>${esc(thumbUrl)}</link>\n<guid isPermaLink="false">${esc(id)}</guid>\n<category>${slot}</category>\n<pubDate>${new Date().toUTCString()}</pubDate>\n<enclosure url="${esc(j.video_url_direct || j.video_url)}" type="video/mp4" length="0"/>\n</item>\n`;
+    const item = `<item>\n<title>${esc(meta.title)}</title>\n<description><![CDATA[${meta.description.replace(/]]>/g, '')}]]></description>\n<link>${esc(thumbUrl)}</link>\n<guid isPermaLink="false">${esc(id)}</guid>\n<category>${slot}</category>\n<pubDate>${new Date().toUTCString()}</pubDate>\n<enclosure url="${esc(isLong ? (j.upload_url || j.video_url) : (j.video_url_direct || j.video_url))}" type="video/mp4" length="0"/>\n</item>\n`;
     let added = false;
     for (let i = 0; i < 3; i++) {
       const f = await ghGet('feed/youtube.xml');
@@ -333,10 +337,12 @@ async function scheduleAhead() {
       catch (e) { if (i === 2) throw e; await sleep(1500); }
     }
     if (!added) continue;
-    used.add(dayKey(slot));
+    U.add(dayKey(slot));
     await updateState((s2) => { const J = s2.jobs[id]; if (!J) return false; J.yt_scheduled_for = slot; J.yt_queued_at = now(); return true; }, `n8n: ${id} scheduled on YouTube for ${slot}`);
     const when = new Date(slot).toLocaleString('en-GB', { timeZone: 'Asia/Karachi', weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
-    await dPost(`📅 YouTube schedule: *${meta.title}*\nZapier uploads it as Private within ~15 min; it goes public by itself on ${when} PKT. Instagram + Facebook go out the same morning.`);
+    await dPost(isLong
+      ? `📅 Long video scheduled: *${meta.title}*\nZapier uploads it as Private (takes a while for a long file); it goes public by itself on ${when} PKT. If it has not appeared in YouTube Studio within 2 hours, use the manual helper on the dashboard Long tab.`
+      : `📅 YouTube schedule: *${meta.title}*\nZapier uploads it as Private within ~15 min; it goes public by itself on ${when} PKT. Instagram + Facebook go out the same morning.`);
     log.push(`scheduled ${id} ${slot}`);
   }
 }

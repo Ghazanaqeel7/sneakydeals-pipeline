@@ -44,4 +44,4 @@ Use real photos for people/places/objects of history; charts/maps/stats for numb
 2. `script_approved` (long): `set_status <id> building`; fix any scene problems with `bash pipeline/longform/stills_long.sh jobs/<id>` (needs sample timing: run
    locally only if `timing.json` was generated; otherwise skip), then commit/push and `set_status <id> render_queued`. **Do not render locally** — `render_long.yml` does voice, images, music, render, thumbnail and sets `video_ready`.
 3. `render_failed`: read the failed run's log, fix the files, push, `set_status <id> render_queued`.
-4. After `video_approved` the owner uploads by hand (dashboard helper). Never publish. `video_rejected` with feedback: change scenes/thumb/script as asked, push, `render_queued`.
+4. After `video_approved` the bot schedules it on YouTube by itself (feed → YouTube Zap, Private + publish time, next Tue/Thu/Sat 19:00 PKT; `upload.mp4` is a <95 MB copy because Zapier times out above ~100 MB). The dashboard upload helper stays as a backup if the Zap fails. Never publish yourself. `video_rejected` with feedback: change scenes/thumb/script as asked, push, `render_queued`.
