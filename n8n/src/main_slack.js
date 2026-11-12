@@ -279,9 +279,13 @@ if (mode === 'publish') {
   }
 }
 
-const tagLine = (tags, max) => (Array.isArray(tags) ? tags : String(tags || '').split(/[\s,]+/))
-  .map((t) => String(t).trim()).filter(Boolean).map((t) => (t.startsWith('#') ? t : '#' + t)).slice(0, max).join(' ');
-const cap2200 = (c) => (c.length > 2200 ? c.slice(0, 2190).replace(/\s+\S*$/, '') + '…' : c);
+// function declarations (hoisted): the publish block above runs before this point in the file,
+// so these must not be const arrow functions (that threw "Cannot access before initialization" on 12 Nov).
+function tagLine(tags, max) {
+  return (Array.isArray(tags) ? tags : String(tags || '').split(/[\s,]+/))
+    .map((t) => String(t).trim()).filter(Boolean).map((t) => (t.startsWith('#') ? t : '#' + t)).slice(0, max).join(' ');
+}
+function cap2200(c) { return c.length > 2200 ? c.slice(0, 2190).replace(/\s+\S*$/, '') + '…' : c; }
 
 // Instagram caption: meta.instagram {caption, hashtags} written by Claude / edited on the dashboard;
 // older jobs fall back to meta.reels_caption or an automatic version of the YouTube description.
