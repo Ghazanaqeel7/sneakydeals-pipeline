@@ -295,9 +295,13 @@
           "t": "2026-11-12T10:33:04Z",
           "msg": "🖼 Thumbnail tayyar: GROCER · BET $10 MILLION · VS WALL STREET?! (render ab GitHub par ~40 min)",
           "image": "jobs/004-piggly-wiggly-wall-street/thumbnail.jpg"
+        },
+        {
+          "t": "2026-11-12T10:34:04Z",
+          "msg": "🎞 Render shuru (GitHub). Andaza: ~30-50 min."
         }
       ],
-      "progress_count": 6,
+      "progress_count": 7,
       "decided_via": "dashboard",
       "decided_at": "2026-11-12T09:12:13Z",
       "run": "43201368550"
