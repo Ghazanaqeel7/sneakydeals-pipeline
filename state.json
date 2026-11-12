@@ -263,8 +263,8 @@
       "yt_queued_at": "2026-11-12T01:35:00Z"
     },
     "004-piggly-wiggly-wall-street": {
-      "status": "video_sent",
-      "updated": "2026-11-12T12:22:50Z",
+      "status": "video_approved",
+      "updated": "2026-11-12T17:55:46Z",
       "title": "Piggly Wiggly's Founder Tried to Beat Wall Street",
       "vote_msg": "1794486206.650429",
       "vote_kind": "video",
@@ -311,11 +311,15 @@
         {
           "t": "2026-11-12T11:55:14Z",
           "msg": "⏳ Render 75% (1231/1641 frames). Baqi waqt: 1h 47m 42s"
+        },
+        {
+          "t": "2026-11-12T17:55:46Z",
+          "msg": "✅ Aap ne dashboard se video + thumbnail approve kiya. Agle publish slot par YouTube par jayegi."
         }
       ],
-      "progress_count": 10,
+      "progress_count": 11,
       "decided_via": "dashboard",
-      "decided_at": "2026-11-12T09:12:13Z",
+      "decided_at": "2026-11-12T17:55:46Z",
       "run": "43201368550",
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-004-piggly-wiggly-wall-street/final.mp4",
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-004-piggly-wiggly-wall-street/preview.mp4",
