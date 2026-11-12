@@ -37,6 +37,12 @@
      "views": 222,
      "likes": 5,
      "comments": 0
+    },
+    {
+     "t": "2026-11-12T07:20:51Z",
+     "views": 227,
+     "likes": 5,
+     "comments": 0
     }
    ],
    "title": "Pepsi Got Paid in 17 Soviet Submarines 🤯",
@@ -44,13 +50,13 @@
    "seconds": 56,
    "thumb": "https://i.ytimg.com/vi/B9Xec5izJlw/mqdefault.jpg",
    "short": true,
-   "age_days": 1.2,
+   "age_days": 1.3,
    "views_1d": null,
    "views_3d": null,
    "views_7d": null,
-   "views": 222,
-   "like_rate": 0.023,
-   "views_24h": null,
+   "views": 227,
+   "like_rate": 0.022,
+   "views_24h": 20,
    "likes": 5,
    "comments": 0
   },
@@ -61,6 +67,12 @@
      "views": 8,
      "likes": 0,
      "comments": 0
+    },
+    {
+     "t": "2026-11-12T07:20:51Z",
+     "views": 10,
+     "likes": 1,
+     "comments": 0
     }
    ],
    "title": "Disney Secretly Bought a Swamp Using Fake Names",
@@ -68,18 +80,18 @@
    "seconds": 56,
    "thumb": "https://i.ytimg.com/vi/mm0ShpBg_4Y/mqdefault.jpg",
    "short": true,
-   "views_24h": 8,
-   "likes": 0,
+   "views_24h": 10,
+   "likes": 1,
    "comments": 0,
    "age_days": 0.5,
    "views_1d": null,
    "views_3d": null,
    "views_7d": null,
-   "views": 8,
-   "like_rate": 0.0
+   "views": 10,
+   "like_rate": 0.1
   }
  },
- "updated": "2026-11-12T04:05:38Z",
+ "updated": "2026-11-12T07:20:51Z",
  "channel": {
   "snaps": [
    {
@@ -104,6 +116,11 @@
    },
    {
     "t": "2026-11-12T04:05:38Z",
+    "subs": 3,
+    "views": 213
+   },
+   {
+    "t": "2026-11-12T07:20:51Z",
     "subs": 3,
     "views": 213
    }
