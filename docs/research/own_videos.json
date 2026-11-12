@@ -19,6 +19,12 @@
      "views": 222,
      "likes": 5,
      "comments": 0
+    },
+    {
+     "t": "2026-11-12T00:57:38Z",
+     "views": 222,
+     "likes": 5,
+     "comments": 0
     }
    ],
    "title": "Pepsi Got Paid in 17 Soviet Submarines 🤯",
@@ -32,12 +38,12 @@
    "views_7d": null,
    "views": 222,
    "like_rate": 0.023,
-   "views_24h": 222,
+   "views_24h": null,
    "likes": 5,
    "comments": 0
   }
  },
- "updated": "2026-11-11T23:30:09Z",
+ "updated": "2026-11-12T00:57:38Z",
  "channel": {
   "snaps": [
    {
@@ -47,6 +53,11 @@
    },
    {
     "t": "2026-11-11T23:30:09Z",
+    "subs": 3,
+    "views": 213
+   },
+   {
+    "t": "2026-11-12T00:57:38Z",
     "subs": 3,
     "views": 213
    }
