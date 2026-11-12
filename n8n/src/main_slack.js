@@ -219,14 +219,21 @@ if (mode === 'replies') {
   }
 }
 
+// YouTube schedule-ahead: approved videos go to YouTube right away as Private with a publish time (next free 05:00 PKT slot).
+if (mode === 'replies') {
+  try { await scheduleAhead(); } catch (e) { log.push(`schedule-ahead failed: ${String(e.message || e).slice(0, 160)}`); }
+}
+
 // ---------------- PUBLISH ----------------
 if (mode === 'publish') {
   const stNow = JSON.parse((await ghGet('state.json')).text);
   const days = (stNow.config && stNow.config.publish_days) || ['Mon', 'Wed', 'Fri', 'Sun'];
   const today = new Date().toLocaleDateString('en-US', { weekday: 'short', timeZone: 'Asia/Karachi' });
-  const pick = Object.entries(stNow.jobs).filter(([, j]) => j.status === 'video_approved' && j.type !== 'long').sort((a, b) => (a[1].updated || '').localeCompare(b[1].updated || ''))[0];
   const dayKey = (t) => new Date(t).toLocaleDateString('en-CA', { timeZone: 'Asia/Karachi' });
   const todayKey = dayKey(Date.now());
+  const approved = Object.entries(stNow.jobs).filter(([, j]) => j.status === 'video_approved' && j.type !== 'long').sort((a, b) => (a[1].updated || '').localeCompare(b[1].updated || ''));
+  // a job already scheduled on YouTube for today wins; jobs scheduled for a later day are left alone
+  const pick = approved.find(([, j]) => j.yt_scheduled_for && dayKey(j.yt_scheduled_for) === todayKey) || approved.find(([, j]) => !j.yt_scheduled_for);
   const takenBy = Object.entries(stNow.jobs).find(([, j]) => (j.live_at && dayKey(j.live_at) === todayKey) || (j.published_at && dayKey(j.published_at) === todayKey));
   if (!days.includes(today)) log.push(`not a publish day (${today})`);
   else if (takenBy) log.push(`today's slot already used by ${takenBy[0]}`);
@@ -242,13 +249,15 @@ if (mode === 'publish') {
     try { await http({ method: 'GET', url: `${GH}/contents/jobs/${id}/thumbnail.jpg?ref=main`, headers: ghHeaders, json: true }); thumbUrl = `${RAW}/jobs/${id}/thumbnail.jpg`; }
     catch (e) { log.push(`no thumbnail for ${id}, using default`); }
     const item = `<item>\n<title>${esc(meta.title)}</title>\n<description><![CDATA[${meta.description.replace(/]]>/g, '')}]]></description>\n<link>${esc(thumbUrl)}</link>\n<guid isPermaLink="false">${esc(id)}</guid>\n<pubDate>${new Date().toUTCString()}</pubDate>\n<enclosure url="${esc(j.video_url_direct || j.video_url)}" type="video/mp4" length="0"/>\n</item>\n`;
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 3 && !j.yt_scheduled_for; i++) {
       const f = await ghGet('feed/youtube.xml');
       if (f.text.includes(`<guid isPermaLink="false">${esc(id)}</guid>`)) break;
       try { await ghPut('feed/youtube.xml', f.text.replace('<!--ITEMS-->', '<!--ITEMS-->\n' + item), f.sha, `publish ${id}`); break; } catch (e) { if (i === 2) throw e; }
     }
     await updateState((st) => { st.jobs[id].status = 'published'; st.jobs[id].published_at = now(); return true; }, `n8n: published ${id}`);
-    await dPost(`🚀 Publishing now: *${meta.title}*\nZapier will upload it to YouTube within ~15 minutes.\n\nAfter it is live, pin this comment:\n> ${meta.pinned_comment || ''}`);
+    await dPost(j.yt_scheduled_for
+      ? `🚀 Aaj ki video: *${meta.title}*\nYouTube par pehle se scheduled hai, ${new Date(j.yt_scheduled_for).toLocaleTimeString('en-GB', { timeZone: 'Asia/Karachi', hour: '2-digit', minute: '2-digit' })} PKT par khud live hogi.\n\nLive hone ke baad yeh comment pin karein:\n> ${meta.pinned_comment || ''}`
+      : `🚀 Publishing now: *${meta.title}*\nZapier will upload it to YouTube within ~15 minutes.\n\nAfter it is live, pin this comment:\n> ${meta.pinned_comment || ''}`);
     log.push(`published ${id}`);
 
     // ---- Instagram + Facebook (added Nov 2026). Own feeds, own Zaps; YouTube above is untouched.
@@ -276,6 +285,53 @@ if (mode === 'publish') {
       else await dPost(`⚠️ YouTube theek hai, lekin ${sent.includes('ig') ? 'Facebook' : sent.includes('fb') ? 'Instagram' : 'Instagram aur Facebook'} feed update nahi hua (${id}). Claude se kahein check kare.`);
       log.push(`social ${id}: ${sent.join('+') || 'none'}`);
     }
+  }
+}
+
+// Schedule-ahead (needs state.config.yt_schedule_ahead = true AND the YouTube Zap set to Privacy = private,
+// Publish At = the RSS item's Category). Each approved short gets the next free publish-day slot that is 3+ hours away.
+async function scheduleAhead() {
+  const st = JSON.parse((await ghGet('state.json')).text);
+  const C = st.config || {};
+  if (!C.yt_schedule_ahead) return;
+  const todo = Object.entries(st.jobs).filter(([, j]) => j.status === 'video_approved' && j.type !== 'long' && !j.yt_scheduled_for)
+    .sort((a, b) => (a[1].updated || '').localeCompare(b[1].updated || ''));
+  if (!todo.length) return;
+  const days = C.publish_days || ['Mon', 'Wed', 'Fri', 'Sun'];
+  const [hh, mm] = String(C.publish_time_pkt || '05:00').split(':').map(Number);
+  const dayKey = (t) => new Date(t).toLocaleDateString('en-CA', { timeZone: 'Asia/Karachi' });
+  const used = new Set();
+  for (const j of Object.values(st.jobs)) for (const t of [j.yt_scheduled_for, j.published_at, j.live_at]) if (t) used.add(dayKey(t));
+  const esc = (x) => String(x).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const RAW = `https://raw.githubusercontent.com/${cfg.github_owner}/${cfg.github_repo}/main`;
+  for (const [id, j] of todo) {
+    let slot = null;
+    for (let d = 0; d < 60 && !slot; d++) {
+      const key = dayKey(Date.now() + d * 86400000);
+      const wd = new Date(Date.parse(key + 'T12:00:00Z')).toLocaleDateString('en-US', { weekday: 'short', timeZone: 'UTC' });
+      if (!days.includes(wd) || used.has(key)) continue;
+      const t = Date.parse(key + 'T00:00:00Z') + ((hh - 5) * 60 + mm) * 60000;   // PKT = UTC+5
+      if (t - Date.now() < 3 * 3600e3) continue;
+      slot = new Date(t).toISOString().replace(/\.\d+Z$/, 'Z');
+    }
+    if (!slot) { log.push(`no free slot for ${id}`); continue; }
+    const meta = JSON.parse((await ghGet(`jobs/${id}/meta.json`)).text);
+    let thumbUrl = `${RAW}/assets/default_thumbnail.jpg`;
+    try { await http({ method: 'GET', url: `${GH}/contents/jobs/${id}/thumbnail.jpg?ref=main`, headers: ghHeaders, json: true }); thumbUrl = `${RAW}/jobs/${id}/thumbnail.jpg`; } catch (e) {}
+    const item = `<item>\n<title>${esc(meta.title)}</title>\n<description><![CDATA[${meta.description.replace(/]]>/g, '')}]]></description>\n<link>${esc(thumbUrl)}</link>\n<guid isPermaLink="false">${esc(id)}</guid>\n<category>${slot}</category>\n<pubDate>${new Date().toUTCString()}</pubDate>\n<enclosure url="${esc(j.video_url_direct || j.video_url)}" type="video/mp4" length="0"/>\n</item>\n`;
+    let added = false;
+    for (let i = 0; i < 3; i++) {
+      const f = await ghGet('feed/youtube.xml');
+      if (f.text.includes(`<guid isPermaLink="false">${esc(id)}</guid>`)) { log.push(`${id} already in youtube feed`); break; }
+      try { await ghPut('feed/youtube.xml', f.text.replace('<!--ITEMS-->', '<!--ITEMS-->\n' + item), f.sha, `schedule ${id} for ${slot}`); added = true; break; }
+      catch (e) { if (i === 2) throw e; await sleep(1500); }
+    }
+    if (!added) continue;
+    used.add(dayKey(slot));
+    await updateState((s2) => { const J = s2.jobs[id]; if (!J) return false; J.yt_scheduled_for = slot; J.yt_queued_at = now(); return true; }, `n8n: ${id} scheduled on YouTube for ${slot}`);
+    const when = new Date(slot).toLocaleString('en-GB', { timeZone: 'Asia/Karachi', weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+    await dPost(`📅 YouTube schedule: *${meta.title}*\nZapier ~15 min mein Private upload karega, ${when} PKT par khud public hogi. Instagram + Facebook usi waqt jayenge.`);
+    log.push(`scheduled ${id} ${slot}`);
   }
 }
 
