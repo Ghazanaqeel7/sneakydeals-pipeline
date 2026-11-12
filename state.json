@@ -333,8 +333,8 @@
       "thumb_queued_at": "2026-11-12T18:50:00Z"
     },
     "090-demo-blockbuster-netflix": {
-      "status": "video_ready",
-      "updated": "2026-11-12T22:14:36Z",
+      "status": "video_sent",
+      "updated": "2026-11-12T22:14:50Z",
       "type": "long",
       "demo": "true",
       "title": "The $50 Million Deal Blockbuster Laughed At (Demo)",
@@ -352,7 +352,9 @@
       "progress_count": 2,
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-090-demo-blockbuster-netflix/final.mp4",
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-090-demo-blockbuster-netflix/preview.mp4",
-      "upload_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-090-demo-blockbuster-netflix/upload.mp4"
+      "upload_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-090-demo-blockbuster-netflix/upload.mp4",
+      "vote_msg": "",
+      "vote_kind": ""
     }
   },
   "ideas": [
