@@ -6,6 +6,7 @@ name: stats
 on:
   schedule:
     - cron: '20 * * * *'
+    - cron: '3 0 * * *'     # 05:03 PKT, right after the daily slot: confirms live + queues the thumbnail fast
   workflow_dispatch:
 
 concurrency:
@@ -43,8 +44,8 @@ jobs:
           for i in 1 2 3 4 5; do
             git fetch -q origin main && git reset -q --hard FETCH_HEAD
             python3 pipeline/research/live_check.py
-            git diff --quiet state.json && exit 0
-            git commit -q -am "stats: YouTube live check"
+            git diff --quiet && exit 0
+            git commit -q -am "stats: YouTube live check (+ thumbnail queue)"
             git push -q origin HEAD:main && exit 0
             sleep $((i * 5))
           done

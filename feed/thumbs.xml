@@ -6,6 +6,24 @@
 <description>One item per uploaded video: title = YouTube video ID, enclosure = its thumbnail. A Zap sets it (YouTube: Update Video Thumbnail) after YouTube has processed the Short.</description>
 <!--ITEMS-->
 <item>
+<title>rLOX2z_OqaQ</title>
+<description>004-piggly-wiggly-wall-street</description>
+<link>https://raw.githubusercontent.com/Ghazanaqeel7/sneakydeals-pipeline/main/jobs/004-piggly-wiggly-wall-street/thumbnail.jpg?r=2</link>
+<guid isPermaLink="false">thumb2-004-piggly-wiggly-wall-street</guid>
+<pubDate>Thu, 12 Nov 2026 18:44:54 GMT</pubDate>
+<enclosure url="https://raw.githubusercontent.com/Ghazanaqeel7/sneakydeals-pipeline/main/jobs/004-piggly-wiggly-wall-street/thumbnail.jpg" type="image/jpeg" length="0"/>
+</item>
+
+<item>
+<title>e9HCNu75-2U</title>
+<description>003-pudding-guy-free-flights</description>
+<link>https://raw.githubusercontent.com/Ghazanaqeel7/sneakydeals-pipeline/main/jobs/003-pudding-guy-free-flights/thumbnail.jpg?r=2</link>
+<guid isPermaLink="false">thumb2-003-pudding-guy-free-flights</guid>
+<pubDate>Thu, 12 Nov 2026 18:44:54 GMT</pubDate>
+<enclosure url="https://raw.githubusercontent.com/Ghazanaqeel7/sneakydeals-pipeline/main/jobs/003-pudding-guy-free-flights/thumbnail.jpg" type="image/jpeg" length="0"/>
+</item>
+
+<item>
 <title>mm0ShpBg_4Y</title>
 <description>002-disney-secret-swamp</description>
 <link>https://raw.githubusercontent.com/Ghazanaqeel7/sneakydeals-pipeline/main/jobs/002-disney-secret-swamp/thumbnail.jpg</link>

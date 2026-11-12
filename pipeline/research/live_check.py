@@ -23,6 +23,23 @@ def note(j, msg):
     j['progress'] = j['progress'][-40:]
     j['progress_count'] = j.get('progress_count', 0) + 1
 
+def queue_thumb(jid, vid, j):
+    """Add the video to feed/thumbs.xml; the Zap "Sneaky Deals -> YouTube thumbnail" sets it (YouTube only keeps a
+    Short's custom thumbnail when it is set after processing, so the upload Zap's own thumbnail does not stick)."""
+    if j.get('thumb_queued_at') or not os.path.exists(os.path.join(ROOT, 'jobs', jid, 'thumbnail.jpg')):
+        return
+    from email.utils import formatdate
+    fp = os.path.join(ROOT, 'feed/thumbs.xml')
+    feed = open(fp).read()
+    if f'>{vid}</title>' in feed:
+        j['thumb_queued_at'] = stamp; return
+    u = f'https://raw.githubusercontent.com/Ghazanaqeel7/sneakydeals-pipeline/main/jobs/{jid}/thumbnail.jpg'
+    item = (f'<item>\n<title>{vid}</title>\n<description>{jid}</description>\n<link>{u}</link>\n'
+            f'<guid isPermaLink="false">thumb-{jid}</guid>\n<pubDate>{formatdate(usegmt=True)}</pubDate>\n'
+            f'<enclosure url="{u}" type="image/jpeg" length="0"/>\n</item>\n')
+    open(fp, 'w').write(feed.replace('<!--ITEMS-->', '<!--ITEMS-->\n' + item, 1))
+    j['thumb_queued_at'] = stamp
+
 changed = False
 for jid, j in st.get('jobs', {}).items():
     if not jid[:1].isdigit() or j.get('type') == 'long' or j.get('yt_live_at'):
@@ -41,6 +58,7 @@ for jid, j in st.get('jobs', {}).items():
     if vid:
         j['yt_video_id'] = vid; j['yt_live_at'] = stamp
         note(j, f'✅ YouTube par LIVE: "{title}" https://youtu.be/{vid}')
+        queue_thumb(jid, vid, j)
         changed = True
     elif now - due > dt.timedelta(minutes=60) and not j.get('yt_alert'):
         j['yt_alert'] = stamp
