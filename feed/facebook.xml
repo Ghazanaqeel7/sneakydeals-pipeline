@@ -6,6 +6,19 @@
 <description>Approved videos for the Sneaky Deals Facebook Page. Zap "Sneaky Deals -> Facebook" (RSS by Zapier -> Facebook Pages Create Page Video) reads this feed. n8n adds one item per publish day, right after feed/youtube.xml.</description>
 <!--ITEMS-->
 <item>
+<title>Disney Secretly Bought a Swamp Using Fake Names</title>
+<description><![CDATA[Walt Disney hid behind fake companies (one was called "M.T. Lott") to buy 27,000+ acres of Florida swamp for under $200 an acre, before a reporter cracked the secret in 1965.
+
+Was it smart business or a dirty trick? 👇
+
+#disney #businesshistory]]></description>
+<link>https://raw.githubusercontent.com/Ghazanaqeel7/sneakydeals-pipeline/main/jobs/002-disney-secret-swamp/thumbnail.jpg</link>
+<guid isPermaLink="false">002-disney-secret-swamp</guid>
+<pubDate>Thu, 12 Nov 2026 00:47:04 GMT</pubDate>
+<enclosure url="https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/002-disney-secret-swamp.mp4" type="video/mp4" length="17847395"/>
+</item>
+
+<item>
 <title>SETUP SAMPLE - do not post</title>
 <description><![CDATA[SETUP SAMPLE - do not post. This item only exists so Zapier can see the feed's fields. Click "Skip test" on the Facebook step.]]></description>
 <link>https://raw.githubusercontent.com/Ghazanaqeel7/sneakydeals-pipeline/main/jobs/001-pepsi-submarines/thumbnail.jpg</link>
