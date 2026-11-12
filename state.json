@@ -261,6 +261,11 @@
       "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/003-pudding-guy-free-flights.mp4",
       "yt_scheduled_for": "2026-11-13T00:00:00Z",
       "yt_queued_at": "2026-11-12T01:35:00Z"
+    },
+    "004-piggly-wiggly-wall-street": {
+      "status": "script_ready",
+      "updated": "2026-11-12T06:23:20Z",
+      "title": "Piggly Wiggly's Founder Tried to Beat Wall Street"
     }
   },
   "ideas": []
