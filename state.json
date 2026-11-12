@@ -14,7 +14,8 @@
     "publish_time_pkt": "05:00",
     "pipeline_buffer": 2,
     "longform_enabled": false,
-    "yt_schedule_ahead": true
+    "yt_schedule_ahead": true,
+    "bot_runner": "github"
   },
   "jobs": {
     "001-pepsi-submarines": {
