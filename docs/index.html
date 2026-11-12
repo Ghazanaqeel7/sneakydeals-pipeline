@@ -773,6 +773,7 @@ async function renderStats(){
 }
 const ptabs=()=>`<div class="tabs" style="margin:0 0 18px">${[['yt','YouTube'],['ig','Instagram'],['fb','Facebook']].map(([k,n])=>`<button class="tab ${S.ptab===k?'on':''}" onclick="S.ptab='${k}';renderStats()">${PICON[k]} ${n}</button>`).join('')}</div>`;
 function renderSocialStats(k){
+  const th=(id,j)=>`${RAW}/jobs/${esc(id)}/thumbnail.jpg?u=${encodeURIComponent(j.updated||'')}`;
   const name=k==='ig'?'Instagram':'Facebook',at=(j)=>k==='ig'?(j.ig_at||j.reels_at):(j.fb_at||j.reels_at);
   const link=k==='ig'?'https://www.instagram.com/sneakydealstv/':'https://www.facebook.com/profile.php';
   const jobs=Object.entries(S.state.jobs).filter(([id,j])=>isJob(id)&&j.type!=='long'&&['published','video_approved'].includes(j.status)).sort((a,b)=>(at(b[1])||'9').localeCompare(at(a[1])||'9'));
