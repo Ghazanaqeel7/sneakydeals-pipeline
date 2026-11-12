@@ -285,9 +285,14 @@
           "t": "2026-11-12T10:27:55Z",
           "msg": "🔍 Check frames round 1: 10 scenes bani. Fix kar raha hoon: sadak par lamp post aur darakht camera ke saamne, bank mein camera ek aadmi mein ghus raha tha, traders wale shot mein hero shares ke dher ke peeche chhup gaya (~25 min baqi, phir render ~40 min)",
           "image": "jobs/004-piggly-wiggly-wall-street/review/round1.jpg"
+        },
+        {
+          "t": "2026-11-12T10:32:57Z",
+          "msg": "✅ Check frames clean (round 2): lamp post/darakht hata diye, bank aur traders wale shot theek, $124 board saaf (~5 min baqi, phir render ~40 min)",
+          "image": "jobs/004-piggly-wiggly-wall-street/review/round2.jpg"
         }
       ],
-      "progress_count": 4,
+      "progress_count": 5,
       "decided_via": "dashboard",
       "decided_at": "2026-11-12T09:12:13Z"
     }
