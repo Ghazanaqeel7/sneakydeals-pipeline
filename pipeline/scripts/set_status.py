@@ -16,6 +16,14 @@ def git(*a, check=True):
 def main():
     job, status, *kv = sys.argv[1:]
     if status not in STATUSES: sys.exit(f'unknown status {status}; use one of {STATUSES}')
+    if status == 'script_ready' and not any(p.startswith('type=long') for p in kv):
+        r = subprocess.run([sys.executable, 'pipeline/scripts/policy_check.py', job], capture_output=True, text=True)
+        print(r.stdout.strip())
+        if r.returncode != 0:
+            sys.exit('policy check failed: fix the errors above (docs/ypp_policy.md), commit, then run set_status again')
+        if git('status', '--porcelain').stdout.strip():
+            git('add', f'jobs/{job}/policy.json'); git('commit', '-m', f'{job}: policy check passed')
+            git('push', 'origin', 'HEAD:main', check=False)
     if git('status', '--porcelain', '--untracked-files=no').stdout.strip():
         sys.exit('working tree has uncommitted changes: commit and push them first')
     for attempt in range(8):

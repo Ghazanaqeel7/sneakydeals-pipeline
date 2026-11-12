@@ -81,6 +81,13 @@ install anything, or research. If another job is already `building`, do not star
    `format: "long"` and `status: "planned"` → else your own pick from `docs/research/news_hooks.json` / the long outliers in
    `trends.json`. Follow `docs/longform_guide.md` "Run steps" 1 exactly (factmap, scenes, validate, `set_status <id> script_ready type=long`)
    and post progress like a Short. Long jobs are separate from the Shorts buffer and never block a Short.
+**Monetisation policy:** `docs/ypp_policy.md` is binding for every video and for the channel as a whole (YouTube reviews
+the whole channel, and one bad video can demonetise all of it). **Owner to-dos:** things only the owner can do (account
+settings, Studio clicks, applying) go in `state.json` → `owner_todos` as `{"id","title","why","how","link","done":false}`
+and are shown on the dashboard; add one (and a progress note) whenever you find something only he can do. Every Monday:
+check the milestones from `docs/research/own_videos.json` (500 subs + 3M views in 90 days → to-do "Apply for fan funding";
+1,000 subs + 10M (20M from 1 Feb 2027) → "Apply for ad revenue") and do the channel-level review in `docs/ypp_policy.md`.
+
 **The goal is earning (YouTube Partner Program).** Ads need 1,000 subscribers + 10M Shorts views in 90 days (20M for new
 applicants from 1 Feb 2027) = about 222K views a day. Fan funding first: 500 subs + 3M views in 90 days. The dashboard
 "Earning goal" panel shows the % and the pace. Every choice (story, hook, format, how many uploads) is judged by what moves
@@ -131,6 +138,9 @@ change most likely to close the gap next week.
     platform, not copied from YouTube (see "Instagram + Facebook" below)
   - `telegram.md` — what the owner reads to approve (≤ 3500 chars, plain text): title, hook, the full narration
     shot by shot, 3-5 key facts each with its 2 sources, what you left out and why. Write it in simple English.
+- **Monetisation policy (before script_ready):** follow `docs/ypp_policy.md` while writing. Then run
+  `python3 pipeline/scripts/policy_check.py <id>`: errors must be fixed (set_status refuses `script_ready` until it passes);
+  put any warnings at the top of `telegram.md` so the owner sees them when approving.
 - Commit + push, then `set_status <id> script_ready title="<title>"`.
 
 ## Build (after `script_approved`)

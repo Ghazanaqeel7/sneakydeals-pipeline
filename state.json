@@ -333,5 +333,63 @@
       "thumb_queued_at": "2026-11-12T18:50:00Z"
     }
   },
-  "ideas": []
+  "ideas": [],
+  "owner_todos": [
+    {
+      "id": "2sv",
+      "title": "Turn on 2-Step Verification on the Google account that owns Sneaky Deals",
+      "why": "Required to join the YouTube Partner Program.",
+      "how": "Google Account > Security > 2-Step Verification > Turn on.",
+      "link": "https://myaccount.google.com/signinoptions/two-step-verification",
+      "done": false
+    },
+    {
+      "id": "verify",
+      "title": "Verify the channel with your phone (advanced features)",
+      "why": "Required for YPP, and YouTube only keeps our custom Shorts thumbnails on verified channels.",
+      "how": "Open the link, choose Sneaky Deals, enter your phone number, type the code.",
+      "link": "https://www.youtube.com/verify",
+      "done": false
+    },
+    {
+      "id": "notify",
+      "title": "Turn on 'Get notified' in YouTube Studio > Earn",
+      "why": "YouTube emails you the day the channel qualifies, so we apply on day one.",
+      "how": "Studio > Earn > Get notified.",
+      "link": "https://studio.youtube.com/channel/UCyNCq5TQLEzCU87Qb7XMfEA/monetization",
+      "done": false
+    },
+    {
+      "id": "about",
+      "title": "Write the channel About section",
+      "why": "Reviewers read it to judge the channel's theme and originality.",
+      "how": "Studio > Customisation > Profile > Description. Suggested: 'True stories behind the world's sneakiest business deals, told as one-minute mini-movies. Every story is fact-checked with at least two sources (listed in each description). Scenes are dramatised illustrations; the facts are real. New sneaky deal every day.'",
+      "link": "https://studio.youtube.com/channel/UCyNCq5TQLEzCU87Qb7XMfEA/editing/profile",
+      "done": false
+    },
+    {
+      "id": "country",
+      "title": "Set the channel's country of residence correctly",
+      "why": "YPP is only available in supported countries and payments depend on it.",
+      "how": "Studio > Settings > Channel > Basic info > Country of residence.",
+      "link": "https://studio.youtube.com/channel/UCyNCq5TQLEzCU87Qb7XMfEA/settings",
+      "done": false
+    },
+    {
+      "id": "strikes",
+      "title": "Check there are no Community Guidelines strikes or copyright claims",
+      "why": "Channels with active strikes cannot apply.",
+      "how": "Studio > Dashboard and Content > Restrictions column. Tell Claude if anything shows up.",
+      "link": "https://studio.youtube.com/channel/UCyNCq5TQLEzCU87Qb7XMfEA",
+      "done": false
+    },
+    {
+      "id": "never",
+      "title": "Never buy views/subscribers or join sub4sub / engagement groups",
+      "why": "Fake engagement gets earnings withheld or the channel removed, on all your channels.",
+      "how": "Nothing to click: just never do it. Mark done once read.",
+      "link": "https://support.google.com/youtube/answer/1311392",
+      "done": false
+    }
+  ]
 }
