@@ -49,6 +49,12 @@
      "views": 227,
      "likes": 5,
      "comments": 0
+    },
+    {
+     "t": "2026-11-12T16:51:44Z",
+     "views": 240,
+     "likes": 8,
+     "comments": 0
     }
    ],
    "title": "Pepsi Got Paid in 17 Soviet Submarines 🤯",
@@ -56,14 +62,14 @@
    "seconds": 56,
    "thumb": "https://i.ytimg.com/vi/B9Xec5izJlw/mqdefault.jpg",
    "short": true,
-   "age_days": 1.3,
-   "views_1d": null,
+   "age_days": 1.7,
+   "views_1d": 222,
    "views_3d": null,
    "views_7d": null,
-   "views": 227,
-   "like_rate": 0.022,
-   "views_24h": 20,
-   "likes": 5,
+   "views": 240,
+   "like_rate": 0.033,
+   "views_24h": 26,
+   "likes": 8,
    "comments": 0
   },
   "mm0ShpBg_4Y": {
@@ -85,6 +91,12 @@
      "views": 16,
      "likes": 1,
      "comments": 0
+    },
+    {
+     "t": "2026-11-12T16:51:44Z",
+     "views": 72,
+     "likes": 2,
+     "comments": 0
     }
    ],
    "title": "Disney Secretly Bought a Swamp Using Fake Names",
@@ -92,18 +104,18 @@
    "seconds": 56,
    "thumb": "https://i.ytimg.com/vi/mm0ShpBg_4Y/mqdefault.jpg",
    "short": true,
-   "views_24h": 16,
-   "likes": 1,
+   "views_24h": 72,
+   "likes": 2,
    "comments": 0,
-   "age_days": 0.5,
+   "age_days": 0.6,
    "views_1d": null,
    "views_3d": null,
    "views_7d": null,
-   "views": 16,
-   "like_rate": 0.062
+   "views": 72,
+   "like_rate": 0.028
   }
  },
- "updated": "2026-11-12T07:49:58Z",
+ "updated": "2026-11-12T16:51:44Z",
  "channel": {
   "snaps": [
    {
@@ -140,16 +152,21 @@
     "t": "2026-11-12T07:49:58Z",
     "subs": 3,
     "views": 222
+   },
+   {
+    "t": "2026-11-12T16:51:44Z",
+    "subs": 4,
+    "views": 222
    }
   ],
   "id": "UCyNCq5TQLEzCU87Qb7XMfEA",
   "title": "Sneaky Deals",
   "handle": "@sneakydeals",
   "thumb": "https://yt3.ggpht.com/5MkeOwWOLKlx7LQiz3bhIUCxn9jMhi71T10r9gMBXaZHi4oN_HenslKyjf2bmOo9JXWewBhBhg=s88-c-k-c0x00ffffff-no-rj",
-  "subs": 3,
+  "subs": 4,
   "views": 222,
   "videos": 2,
-  "subs_24h": null,
-  "views_24h": null
+  "subs_24h": 1,
+  "views_24h": 222
  }
 }
