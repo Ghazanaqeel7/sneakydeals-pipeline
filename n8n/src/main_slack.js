@@ -300,7 +300,7 @@ async function scheduleAhead() {
   const st = JSON.parse((await ghGet('state.json')).text);
   const C = st.config || {};
   if (!C.yt_schedule_ahead) return;
-  const todo = Object.entries(st.jobs).filter(([, j]) => j.status === 'video_approved' && !j.yt_scheduled_for && (j.type !== 'long' || (C.long_auto !== false && (j.upload_url || j.video_url))))
+  const todo = Object.entries(st.jobs).filter(([, j]) => j.status === 'video_approved' && !j.yt_scheduled_for && !j.demo && (j.type !== 'long' || (C.long_auto !== false && (j.upload_url || j.video_url))))
     .sort((a, b) => (a[1].updated || '').localeCompare(b[1].updated || ''));
   if (!todo.length) return;
   const days = C.publish_days || ['Mon', 'Wed', 'Fri', 'Sun'];

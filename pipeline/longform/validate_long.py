@@ -31,7 +31,8 @@ def main():
         if len(t.split()) > 75: warns.append(f'{sid}: scene is {len(t.split())} words (>~30 s on one visual)')
     if sc and types[-1:] != ['endcard']: warns.append('last scene is not an endcard')
     minutes = words / 150.0
-    if minutes < 8: errs.append(f'narration only ~{minutes:.1f} min ({words} words); long-form needs >= 8 min (~1200 words)')
+    if meta.get('demo') and minutes >= 1.5: pass   # demo render (never published)
+    elif minutes < 8: errs.append(f'narration only ~{minutes:.1f} min ({words} words); long-form needs >= 8 min (~1200 words)')
     elif minutes < 12: warns.append(f'narration ~{minutes:.1f} min; target 12-15 min')
     # a new visual at least every ~15 s
     if len(sc) < minutes * 60 / 18: warns.append(f'only {len(sc)} scenes for {minutes:.1f} min; add more cuts (one per ~12-15 s)')

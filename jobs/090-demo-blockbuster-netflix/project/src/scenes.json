@@ -1,0 +1,387 @@
+{
+ "title": "The $50 Million Deal Blockbuster Laughed At",
+ "scenes": [
+  {
+   "id": "s01",
+   "text": "In September two thousand, three men flew to Dallas to sell their company to a giant. The giant said no. Ten years later, the giant was bankrupt.",
+   "visual": {
+    "type": "headline",
+    "kicker": "DALLAS \u00b7 SEPTEMBER 2000",
+    "text": "Video giant turns down a $50 million internet start-up",
+    "source": "Sneaky Deals reconstruction"
+   },
+   "tone": "dark"
+  },
+  {
+   "id": "s02",
+   "text": "This is the story of the fifty million dollar deal Blockbuster laughed at.",
+   "visual": {
+    "type": "title",
+    "text": "The $50 million deal Blockbuster laughed at",
+    "accent": [
+     "laughed"
+    ]
+   },
+   "tone": "dark"
+  },
+  {
+   "id": "s03",
+   "text": "It starts in nineteen eighty-five.",
+   "visual": {
+    "type": "chapter",
+    "number": 1,
+    "title": "The giant"
+   },
+   "tone": "dark",
+   "chapter": "The giant"
+  },
+  {
+   "id": "s04",
+   "text": "The first Blockbuster opened in Dallas, Texas. Bright blue and yellow, thousands of tapes on the wall, open late every night.",
+   "visual": [
+    {
+     "type": "photo",
+     "image": {
+      "q": "Blockbuster Video store exterior"
+     },
+     "move": "in",
+     "fallback": {
+      "icon": "store",
+      "label": "The first store, Dallas 1985"
+     },
+     "caption": "Dallas, 1985"
+    }
+   ],
+   "tone": "blue"
+  },
+  {
+   "id": "s05",
+   "text": "By two thousand four, it had about nine thousand stores and roughly eighty-four thousand workers.",
+   "visual": {
+    "type": "stat",
+    "from": 0,
+    "to": 9000,
+    "suffix": " stores",
+    "label": "Blockbuster at its peak",
+    "sub": "2004, around the world"
+   },
+   "tone": "blue"
+  },
+  {
+   "id": "s06",
+   "text": "Friday night meant a trip to Blockbuster. Almost every town had one.",
+   "visual": {
+    "type": "map",
+    "region": "us",
+    "pins": [
+     {
+      "lon": -96.8,
+      "lat": 32.8,
+      "label": "Dallas HQ"
+     },
+     {
+      "lon": -121.3,
+      "lat": 44.06,
+      "label": "Bend, Oregon"
+     }
+    ],
+    "title": "A store in almost every town"
+   },
+   "tone": "blue"
+  },
+  {
+   "id": "s07",
+   "text": "But part of the money came from something customers hated. Late fees.",
+   "visual": {
+    "type": "illustration",
+    "title": "Return it late, pay a fee",
+    "icons": [
+     {
+      "name": "clock",
+      "label": "Late"
+     },
+     {
+      "name": "dollar",
+      "label": "Fee"
+     },
+     {
+      "name": "warning",
+      "label": "Angry customers"
+     }
+    ]
+   },
+   "tone": "red"
+  },
+  {
+   "id": "s08",
+   "text": "In two thousand alone, late fees brought in about eight hundred million dollars. Around sixteen percent of all its revenue.",
+   "visual": {
+    "type": "stat",
+    "from": 0,
+    "to": 800,
+    "prefix": "$",
+    "suffix": "M",
+    "label": "Late fees in 2000",
+    "sub": "about 16% of revenue"
+   },
+   "tone": "red"
+  },
+  {
+   "id": "s09",
+   "text": "Meanwhile, a tiny company was mailing DVDs in red envelopes.",
+   "visual": {
+    "type": "chapter",
+    "number": 2,
+    "title": "The offer"
+   },
+   "tone": "dark",
+   "chapter": "The offer"
+  },
+  {
+   "id": "s10",
+   "text": "Netflix was founded in nineteen ninety-seven by Reed Hastings and Marc Randolph. Rent online, get the disc by mail, no late fees.",
+   "visual": {
+    "type": "compare",
+    "title": "Two ways to rent a movie",
+    "a": {
+     "name": "Blockbuster",
+     "color": "#1f4ea8"
+    },
+    "b": {
+     "name": "Netflix",
+     "color": "#c43d32"
+    },
+    "rows": [
+     {
+      "label": "Where",
+      "a": "Store",
+      "b": "Mailbox"
+     },
+     {
+      "label": "Late fees",
+      "a": "Yes",
+      "b": "None"
+     },
+     {
+      "label": "Stores",
+      "a": "Thousands",
+      "b": "Zero"
+     }
+    ]
+   },
+   "tone": "paper"
+  },
+  {
+   "id": "s11",
+   "text": "But in two thousand, Netflix was losing money. So the founders made a bold pitch.",
+   "visual": {
+    "type": "illustration",
+    "title": "Running out of cash",
+    "icons": [
+     {
+      "name": "mail",
+      "label": "DVDs by mail"
+     },
+     {
+      "name": "dollar",
+      "label": "Losing money"
+     },
+     {
+      "name": "plane",
+      "label": "Fly to Dallas"
+     }
+    ]
+   },
+   "tone": "dark"
+  },
+  {
+   "id": "s12",
+   "text": "They flew to Blockbuster's headquarters in Dallas and met its chief executive, John Antioco.",
+   "visual": [
+    {
+     "type": "photo",
+     "image": {
+      "q": "Renaissance Tower Dallas"
+     },
+     "move": "in",
+     "fallback": {
+      "icon": "building",
+      "label": "Blockbuster HQ, Dallas"
+     },
+     "caption": "Dallas, September 2000"
+    }
+   ],
+   "tone": "dark"
+  },
+  {
+   "id": "s13",
+   "text": "The offer: buy Netflix for fifty million dollars. Netflix would run Blockbuster's website, Blockbuster would keep the stores.",
+   "visual": {
+    "type": "stat",
+    "from": 0,
+    "to": 50,
+    "prefix": "$",
+    "suffix": " million",
+    "label": "The asking price",
+    "sub": "for all of Netflix"
+   },
+   "tone": "blue"
+  },
+  {
+   "id": "s14",
+   "text": "According to Marc Randolph, the Blockbuster team struggled not to laugh. The answer was no.",
+   "visual": {
+    "type": "headline",
+    "kicker": "THE ANSWER",
+    "text": "Blockbuster declines to buy Netflix",
+    "source": "As told by Netflix co-founder Marc Randolph"
+   },
+   "tone": "red"
+  },
+  {
+   "id": "s15",
+   "text": "So the two founders went home and decided to beat Blockbuster instead.",
+   "visual": {
+    "type": "chapter",
+    "number": 3,
+    "title": "The fall"
+   },
+   "tone": "dark",
+   "chapter": "The fall"
+  },
+  {
+   "id": "s16",
+   "text": "Blockbuster fought back. It dropped late fees and launched its own online rental service in two thousand four. For a while, it worked.",
+   "visual": {
+    "type": "timeline",
+    "title": "Blockbuster fights back",
+    "events": [
+     {
+      "year": "2000",
+      "label": "Says no to Netflix"
+     },
+     {
+      "year": "2004",
+      "label": "Peak: 9,000 stores"
+     },
+     {
+      "year": "2004",
+      "label": "Blockbuster Online"
+     },
+     {
+      "year": "2005",
+      "label": "Drops late fees"
+     }
+    ]
+   },
+   "tone": "blue"
+  },
+  {
+   "id": "s17",
+   "text": "But the stores were expensive, the debt was heavy, and streaming was coming.",
+   "visual": {
+    "type": "chart",
+    "kind": "bar",
+    "title": "Blockbuster stores",
+    "unit": "APPROX.",
+    "data": [
+     {
+      "x": "2004",
+      "y": 9000
+     },
+     {
+      "x": "2010",
+      "y": 3000
+     },
+     {
+      "x": "2014",
+      "y": 50
+     },
+     {
+      "x": "2019",
+      "y": 1
+     }
+    ],
+    "highlight": 0,
+    "color": "red",
+    "note": "Approximate, for illustration"
+   },
+   "tone": "red"
+  },
+  {
+   "id": "s18",
+   "text": "In September twenty ten, carrying about a billion dollars of debt, Blockbuster filed for bankruptcy.",
+   "visual": {
+    "type": "headline",
+    "kicker": "SEPTEMBER 2010",
+    "text": "Blockbuster files for bankruptcy protection",
+    "source": "Widely reported"
+   },
+   "tone": "red"
+  },
+  {
+   "id": "s19",
+   "text": "The next year, Dish Network bought what was left for three hundred twenty million dollars.",
+   "visual": {
+    "type": "stat",
+    "from": 0,
+    "to": 320,
+    "prefix": "$",
+    "suffix": "M",
+    "label": "Dish buys Blockbuster",
+    "sub": "2011, at auction"
+   },
+   "tone": "dark"
+  },
+  {
+   "id": "s20",
+   "text": "Today, only one Blockbuster is left, in Bend, Oregon. Netflix is worth hundreds of billions.",
+   "visual": {
+    "type": "compare",
+    "title": "Then and now",
+    "a": {
+     "name": "Blockbuster",
+     "color": "#1f4ea8"
+    },
+    "b": {
+     "name": "Netflix",
+     "color": "#c43d32"
+    },
+    "rows": [
+     {
+      "label": "2000",
+      "a": "Giant",
+      "b": "$50M offer"
+     },
+     {
+      "label": "Today",
+      "a": "1 store",
+      "b": "Global streaming"
+     }
+    ]
+   },
+   "tone": "paper"
+  },
+  {
+   "id": "s21",
+   "text": "The lesson. The money you make from annoying your customers is money a competitor will take away.",
+   "visual": {
+    "type": "quote",
+    "text": "Late fees made Blockbuster rich, and gave Netflix its pitch.",
+    "who": "Sneaky Deals",
+    "source": "our take"
+   },
+   "tone": "dark"
+  },
+  {
+   "id": "s22",
+   "text": "If this was worth your time, subscribe for the next sneaky deal.",
+   "visual": {
+    "type": "endcard",
+    "title": "Sneaky Deals",
+    "sub": "True business stories, told like a movie"
+   },
+   "tone": "dark"
+  }
+ ]
+}
