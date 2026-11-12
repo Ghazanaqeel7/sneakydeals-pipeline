@@ -23,13 +23,26 @@ Only when `state.json config.longform_enabled` is true. Long jobs are numeric-id
 - `jobs/<id>/project/src/thumb.json` = `{image:{q}, icon, line1, line2, box, box_color, line_color}` (1280x720, <=4 words big).
 
 ## Visual types (`visual.type`)
-title{text,sub,accent[],align,size} · chapter{number,title} · photo{image:{q},move,grade,caption,fallback:{icon,label},frame} ·
-stat{from,to,prefix,suffix,decimals,label,sub,color} · chart{kind:line|bar,data:[{x,y}],title,unit,highlight,color,note} ·
+title{text,sub,accent[],align,size,cast[]} · chapter{number,title} · photo{image:{q},move,grade,caption,fallback:{icon,label},frame} ·
+stat{from,to,prefix,suffix,decimals,label,sub,color,icon,swarm,brand:{a,b},per,cast[]} · chart{kind:line|bar,data:[{x,y}],title,unit,highlight,color,note} ·
 timeline{title,events:[{year,label}]} · map{region:us|world,highlight[],pins[{lon,lat,label}],arcs[{from,to,label}],title} ·
-headline{kicker,text,source} (our own generic news card) · compare{title,a:{name,color},b:{name,color},rows:[{label,a,b,unit}]} ·
+headline{kicker,text,source,stamp,art,caption,masthead} (our own front page, invented masthead) ·
+compare{title,a:{name,color,icon,char},b:{...},rows:[{label,a,b,unit,dec,win:'a'|'b'}]} ·
 list{title,items:[{title,sub,icon}],numbered} · quote{text,who,source} (only exact, cited quotes) ·
 illustration{title,icons:[{name,label}],arrows} · endcard{title,sub} (last scene). `tone`: dark|blue|red|paper.
 Icons: store factory dollar person people building truck cart box plane car phone tv bank barcode bulb warning lock document gavel globe clock fire tag key megaphone mail screen cross check question.
+
+### Attention rules (owner feedback 13 Nov 2026: "simple type mat dikhao")
+- **Cast.** Our own cartoon characters (never a real person's likeness) carry the story: `cast:[{side:'left'|'right'|'center', mood, outfit, suit, tie, label}]`.
+  mood: laugh smug shock worried talk happy angry · outfit: suit hoodie · `label` = the company or role ("Blockbuster", "The founder"), never a real name on a face.
+  Put a cast on the hook `title` and on at least 3 more scenes; match the mood to the beat (the side that loses looks worried, the winner smug).
+- **Make numbers visible.** A count of things (stores, planes, users) gets `stat.icon` (`store` draws cartoon shops in `brand` colours) plus `per`
+  ("each shop = about 100 stores"). A plain number with nothing behind it is a last resort.
+- **Headlines** get a `stamp` (2-3 words: "DEAL REJECTED", "BANKRUPT") and `art` (Character props shown as the front-page photo).
+  `source` = a real attribution only ("Reported by Reuters"); never "reconstruction" or our own name. Omit it if there is none.
+- **Compare** values may be short text ("In a store") or numbers; mark the better side with `win`. Give each side an `icon` (or `char`).
+- No real logos or brand marks are drawn; a brand is its name in its colour plus an icon.
+- Fonts are bundled (Anton, Playfair Display, Inter, Space Mono); every scene already gets punch-in transitions, shakes on impacts and film grain.
 
 ## Images
 `image.q` = a Wikimedia Commons search phrase (specific: "Sears Tower Chicago 1980s", "mail order catalog 1897").

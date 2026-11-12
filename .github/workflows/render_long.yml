@@ -59,6 +59,8 @@ jobs:
           J=${{ steps.pick.outputs.job }}; git config user.name "render-bot"; git config user.email "render-bot@users.noreply.github.com"
           python3 pipeline/scripts/set_status.py "$J" rendering run="${{ github.run_id }}"
           python3 pipeline/scripts/progress.py "$J" "🎞 Long video prepare: images, voice aur music ban rahe hain (~10-20 min)" || true
+          # always render with the latest engine: refresh code from the template, keep the job's own scenes/thumb/timing/assets
+          (cd pipeline/template-long && tar cf - --exclude=node_modules --exclude=out --exclude=./public/assets --exclude=./src/scenes.json --exclude=./src/thumb.json --exclude=./src/timing.json .) | (cd "jobs/$J/project" && tar xf -)
           python3 pipeline/longform/validate_long.py "jobs/$J"
           python3 pipeline/longform/fetch_assets.py "jobs/$J"
           (cd jobs/$J/project && (npm ci --no-audit --no-fund >/dev/null 2>&1 || npm install --no-audit --no-fund >/dev/null) && CH=$(command -v google-chrome || command -v chromium || true) && npx remotion still src/index.jsx Thumb ../thumbnail.jpg --image-format=jpeg --jpeg-quality=92 --gl=swangle ${CH:+--browser-executable=$CH} || echo thumbnail failed)

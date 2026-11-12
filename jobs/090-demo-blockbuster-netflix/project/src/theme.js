@@ -6,10 +6,10 @@ export const C = {
   white: '#ffffff', mute: '#9aa6c4', black: '#05070c',
 };
 export const F = {
-  display: 'Impact, "Arial Black", "Liberation Sans", "DejaVu Sans", sans-serif',
-  serif: 'Georgia, "Liberation Serif", "DejaVu Serif", serif',
-  sans: 'Arial, "Liberation Sans", "DejaVu Sans", sans-serif',
-  mono: '"Courier New", "Liberation Mono", "DejaVu Sans Mono", monospace',
+  display: 'Anton, Impact, "Arial Black", sans-serif',
+  serif: '"Playfair Display", Georgia, serif',
+  sans: 'Inter, Arial, "Liberation Sans", sans-serif',
+  mono: '"Space Mono", "Courier New", monospace',
 };
 export const TONES = {
   dark: {bg: C.ink, fg: C.white, sub: C.mute, accent: C.gold, card: C.slate},

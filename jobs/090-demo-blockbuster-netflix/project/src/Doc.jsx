@@ -15,6 +15,7 @@ import {ListScene} from './scenes/ListScene.jsx';
 import {Quote} from './scenes/Quote.jsx';
 import {Illustration} from './scenes/Illustration.jsx';
 import {EndCard} from './scenes/EndCard.jsx';
+import {Grain} from './scenes/common.jsx';
 
 export const REGISTRY = {title: Title, chapter: Chapter, photo: Photo, stat: Stat, chart: Chart, timeline: Timeline, map: MapScene, headline: Headline, compare: Compare, list: ListScene, quote: Quote, illustration: Illustration, endcard: EndCard};
 const OVERLAP = 9;   // frames: a beat keeps showing this long after its end so the next one cross-fades in
@@ -23,7 +24,8 @@ const Fade = ({children, first, last}) => {
   const f = useCurrentFrame(); const {durationInFrames} = useVideoConfig();
   const a = first ? 1 : interpolate(f, [0, OVERLAP], [0, 1], {extrapolateRight: 'clamp'});
   const b = last ? 1 : interpolate(f, [durationInFrames - OVERLAP, durationInFrames], [1, 0], {extrapolateLeft: 'clamp'});
-  return <AbsoluteFill style={{opacity: Math.min(a, b)}}>{children}</AbsoluteFill>;
+  const s = first ? 1 : 1 + 0.08 * (1 - a);
+  return <AbsoluteFill style={{opacity: Math.min(a, b), transform: `scale(${s})`}}>{children}</AbsoluteFill>;
 };
 
 // scene -> list of beats [{from, dur, visual, scene}] in frames
@@ -60,6 +62,7 @@ export const Doc = () => {
         );
       })}
       <AbsoluteFill style={{background: 'radial-gradient(ellipse 90% 85% at 50% 50%, rgba(0,0,0,0) 62%, rgba(0,0,0,.35) 100%)', pointerEvents: 'none'}} />
+      <Grain />
     </AbsoluteFill>
   );
 };

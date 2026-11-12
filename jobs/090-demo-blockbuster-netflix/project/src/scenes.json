@@ -8,7 +8,13 @@
     "type": "headline",
     "kicker": "DALLAS \u00b7 SEPTEMBER 2000",
     "text": "Video giant turns down a $50 million internet start-up",
-    "source": "Sneaky Deals reconstruction"
+    "stamp": "Deal rejected",
+    "art": {
+     "mood": "laugh",
+     "suit": "#1f4ea8",
+     "tie": "#f2c230"
+    },
+    "caption": "A video-rental boss, illustration"
    },
    "tone": "dark"
   },
@@ -20,6 +26,22 @@
     "text": "The $50 million deal Blockbuster laughed at",
     "accent": [
      "laughed"
+    ],
+    "cast": [
+     {
+      "side": "left",
+      "mood": "laugh",
+      "suit": "#1f4ea8",
+      "tie": "#f2c230",
+      "label": "Blockbuster"
+     },
+     {
+      "side": "right",
+      "mood": "shock",
+      "outfit": "hoodie",
+      "suit": "#c43d32",
+      "label": "Netflix"
+     }
     ]
    },
    "tone": "dark"
@@ -63,7 +85,13 @@
     "to": 9000,
     "suffix": " stores",
     "label": "Blockbuster at its peak",
-    "sub": "2004, around the world"
+    "sub": "2004, around the world",
+    "icon": "store",
+    "brand": {
+     "a": "#1f4ea8",
+     "b": "#f2c230"
+    },
+    "per": "each shop = about 100 stores"
    },
    "tone": "blue"
   },
@@ -145,27 +173,32 @@
     "title": "Two ways to rent a movie",
     "a": {
      "name": "Blockbuster",
-     "color": "#1f4ea8"
+     "color": "#1f4ea8",
+     "icon": "store",
+     "accent": "#f2c230"
     },
     "b": {
      "name": "Netflix",
-     "color": "#c43d32"
+     "color": "#c43d32",
+     "icon": "mail"
     },
     "rows": [
      {
       "label": "Where",
-      "a": "Store",
-      "b": "Mailbox"
+      "a": "In a store",
+      "b": "In your mailbox"
      },
      {
       "label": "Late fees",
       "a": "Yes",
-      "b": "None"
+      "b": "None",
+      "win": "b"
      },
      {
       "label": "Stores",
-      "a": "Thousands",
-      "b": "Zero"
+      "a": 9000,
+      "b": 0,
+      "unit": ""
      }
     ]
    },
@@ -234,7 +267,8 @@
     "type": "headline",
     "kicker": "THE ANSWER",
     "text": "Blockbuster declines to buy Netflix",
-    "source": "As told by Netflix co-founder Marc Randolph"
+    "source": "As told by Netflix co-founder Marc Randolph",
+    "stamp": "No deal"
    },
    "tone": "red"
   },

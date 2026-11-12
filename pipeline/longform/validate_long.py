@@ -10,7 +10,7 @@ def main():
     except Exception as e: print('ERROR scenes.json unreadable:', e); sys.exit(1)
     try: meta = json.load(open(os.path.join(job, 'meta.json'), encoding='utf-8'))
     except Exception as e: print('ERROR meta.json unreadable:', e); sys.exit(1)
-    ids = set(); words = 0; photos = 0; types = []
+    ids = set(); words = 0; photos = 0; types = []; casted = []
     for i, s in enumerate(sc):
         sid = s.get('id')
         if not sid or sid in ids: errs.append(f'scene {i}: missing/duplicate id')
@@ -22,6 +22,16 @@ def main():
         for b in beats:
             if not isinstance(b, dict) or b.get('type') not in TYPES: errs.append(f'{sid}: bad visual {b!r}'[:120]); continue
             types.append(b['type'])
+            if b.get('cast') or b.get('art') or any(isinstance(x, dict) and x.get('char') for x in (b.get('a'), b.get('b'))): casted.append(sid)
+            if b['type'] == 'headline' and re.search(r'reconstruct|sneaky deals|our take', str(b.get('source', '')), re.I):
+                errs.append(f'{sid}: headline source must be a real attribution or omitted (not "{b.get("source")}")')
+            if b['type'] == 'compare':
+                for r in b.get('rows', []):
+                    for k in ('a', 'b'):
+                        x = r.get(k)
+                        if not (isinstance(x, (int, float)) or (isinstance(x, str) and x.strip())): errs.append(f'{sid}: compare row "{r.get("label")}" {k} must be a number or short text')
+            if b['type'] == 'stat' and abs(float(b.get('to', 0) or 0)) >= 100 and 'store' in (b.get('suffix', '') + b.get('label', '')).lower() and not b.get('icon'):
+                warns.append(f'{sid}: count of stores without stat.icon; make the number visible')
             if b['type'] == 'photo':
                 photos += 1
                 if not (b.get('image') or {}).get('q') and not (b.get('image') or {}).get('file'): errs.append(f'{sid}: photo without image.q')
@@ -37,6 +47,7 @@ def main():
     # a new visual at least every ~15 s
     if len(sc) < minutes * 60 / 18: warns.append(f'only {len(sc)} scenes for {minutes:.1f} min; add more cuts (one per ~12-15 s)')
     if len(set(types)) < 5: warns.append('low visual variety (<5 scene types)')
+    if len(set(casted)) < 4: warns.append(f'only {len(set(casted))} scenes use cartoon characters (cast/art/char); aim for the hook + 3 more')
     for k in ('title', 'description', 'tags'):
         if not meta.get(k): errs.append(f'meta.json missing {k}')
     if meta.get('type') != 'long': errs.append('meta.json type must be "long"')
