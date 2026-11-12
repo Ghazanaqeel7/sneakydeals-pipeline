@@ -338,7 +338,14 @@
       "type": "long",
       "demo": "true",
       "title": "The $50 Million Deal Blockbuster Laughed At (Demo)",
-      "run": "43314287879"
+      "run": "43314287879",
+      "progress": [
+        {
+          "t": "2026-11-12T21:51:46Z",
+          "msg": "🎞 Long video prepare: images, voice aur music ban rahe hain (~10-20 min)"
+        }
+      ],
+      "progress_count": 1
     }
   },
   "ideas": [
