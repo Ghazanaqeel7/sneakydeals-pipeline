@@ -12,6 +12,11 @@ Reads jobs/<id>/meta.json:
   place it over the 3D sign so the original post still shows under it). Coordinates are on the 1080x1920 canvas.
 - optional "cups": {"x": 10, "y": 1330, "rows": 4, "size": 150, "label": "PUDDING"} draws a pyramid of big cartoon
   cups (generic, no logo) so the object itself grabs attention; pair it with a "sign" for the number.
+- optional "bg_shift": px to move the scene up (+) or down (-) so the key object lands inside the safe square
+  (the scene is zoomed just enough to cover the gap); optional "bg_zoom" (e.g. 1.2) to make the scene bigger.
+SAFE ZONE: YouTube channel grid, Instagram grid (3:4), Facebook (4:5 / 1:1) crop the 9:16 image around its centre.
+All text, signs and cups MUST stay inside the centre square x 60-1020, y 430-1490 (the 1:1 crop), so the
+thumbnail reads fully everywhere. The headline is auto-shrunk to fit 960 px wide; sign/cups y must be 950-1490.
 Renders a clean frame (no captions) with Remotion, overlays the text, writes jobs/<id>/thumbnail.jpg.
 """
 import json, os, subprocess, sys, shutil, html
@@ -47,16 +52,27 @@ if cp:  # optional pile of big cartoon cups (generic, no logo): {"x","y","rows",
             left = cp.get('x', 20) + r * w / 2 + i * w; top = cp.get('y', 1440) + (rows - 1 - r) * s * 0.78
             rot = ((i * 7 + r * 5) % 11) - 5
             cups_html += f'<div style="position:absolute;left:{left:.0f}px;top:{top:.0f}px;transform:rotate({rot}deg);filter:drop-shadow(0 10px 0 rgba(0,0,0,.3))">{cup}</div>'
-l2 = t['line2']; fs2 = 150 if len(l2) <= 10 else 128 if len(l2) <= 13 else 104
+sh = int(t.get('bg_shift', 0)); k = max(float(t.get('bg_zoom', 1)), (1920 + 2 * abs(sh)) / 1920)
 page = f'''<!DOCTYPE html><html><head><style>html,body{{margin:0;width:1080px;height:1920px;overflow:hidden}}
-body{{background:url(file://{bg}) center/cover}}
-.t{{position:absolute;left:30px;right:30px;text-align:center;font-family:'Inter Display','Arial Black',Arial,sans-serif;font-weight:900;paint-order:stroke fill;-webkit-text-stroke:22px #1a1414}}</style></head><body>
-<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,30,70,.55) 0%,rgba(15,30,70,0) 38%,rgba(0,0,0,0) 70%,rgba(20,10,5,.4) 100%)"></div>
-<div style="position:absolute;top:120px;left:0;right:0;text-align:center"><span style="display:inline-block;background:{t.get('box_color','#2f6db3')};border:12px solid #1a1414;border-radius:22px;padding:6px 44px 14px;transform:rotate(-3deg);font-family:'Inter Display','Arial Black',Arial,sans-serif;font-weight:900;font-size:150px;color:#fff;letter-spacing:4px;box-shadow:0 12px 0 rgba(0,0,0,.35)">{e(t['box'])}</span></div>
+body{{background:url(file://{bg}) no-repeat;background-size:{1080*k:.0f}px {1920*k:.0f}px;background-position:{-(1080*k-1080)/2:.0f}px {-(1920*k-1920)/2-sh:.0f}px}}
+.t{{position:absolute;left:60px;width:960px;text-align:center;white-space:nowrap;font-family:'Inter Display','Arial Black',Arial,sans-serif;font-weight:900;paint-order:stroke fill;-webkit-text-stroke:20px #1a1414;line-height:1}}</style></head><body>
+<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,30,70,.25) 0%,rgba(15,30,70,.6) 24%,rgba(15,30,70,.45) 46%,rgba(0,0,0,0) 62%,rgba(0,0,0,0) 80%,rgba(20,10,5,.4) 100%)"></div>
+<div id="box" style="position:absolute;top:440px;left:0;right:0;text-align:center"><span style="display:inline-block;background:{t.get('box_color','#2f6db3')};border:11px solid #1a1414;border-radius:22px;padding:4px 40px 12px;transform:rotate(-3deg);font-family:'Inter Display','Arial Black',Arial,sans-serif;font-weight:900;font-size:128px;color:#fff;letter-spacing:3px;box-shadow:0 12px 0 rgba(0,0,0,.35);white-space:nowrap">{e(t['box'])}</span></div>
 {cups_html}
 {sign_html}
-<div class="t" style="top:345px;font-size:112px;color:#fff;line-height:1">{e(t['line1'])}</div>
-<div class="t" style="top:475px;font-size:{fs2}px;color:#ffd84a;line-height:1;transform:rotate(-2deg)">{e(l2)}</div>
+<div class="t" id="l1" style="top:640px;font-size:104px;color:#fff">{e(t['line1'])}</div>
+<div class="t" id="l2" style="top:760px;font-size:136px;color:#ffd84a;transform:rotate(-2deg)">{e(t['line2'])}</div>
+<script>
+// shrink any headline that is wider than the safe square (960 px) so nothing is cut on any platform
+function fit(el,max,min){{let f=parseFloat(el.style.fontSize);const r=document.createRange();
+ for(;f>min;f-=2){{el.style.fontSize=f+'px';r.selectNodeContents(el);if(r.getBoundingClientRect().width<=max)break;}}}}
+const b=document.querySelector('#box span');fit(b,900,70);
+fit(document.getElementById('l1'),940,56);fit(document.getElementById('l2'),940,60);
+// stack lines under the box with even gaps
+const bb=b.getBoundingClientRect();const l1=document.getElementById('l1'),l2=document.getElementById('l2');
+l1.style.top=(bb.bottom+28)+'px';const h1=parseFloat(l1.style.fontSize);
+l2.style.top=(bb.bottom+28+h1+18)+'px';
+</script>
 </body></html>'''
 hp = os.path.abspath(os.path.join(tmp, 'thumb.html')); open(hp, 'w').write(page)
 png = os.path.abspath(os.path.join(tmp, 'thumb.png'))

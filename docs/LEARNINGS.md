@@ -8,3 +8,4 @@
 - Owner's laptop has Windows Smart App Control, which blocks Remotion's renderer: never ask him to render locally.
 - 002 Disney: progress.py/set_status.py do `git reset --hard FETCH_HEAD`. If your own push failed (n8n pushed first), that wipes your unpushed commit. Always `git pull --rebase origin main && git push` and check it succeeded BEFORE calling them (recover with git reflog + cherry-pick).
 - 002 Disney: in the first check round the camera flew through a background extra and foreground bushes hid the main character. Keep extras and bushes off the camera path.
+- 2026-11-12: Owner saw thumbnail text cut off in the channel grid. All text/signs now live in the centre 1:1 square (make_thumb.py safe zone), so the thumb reads fully on YouTube, Instagram (3:4) and Facebook (4:5/1:1).

@@ -22,10 +22,10 @@
     "box_color": "#3f8f4a",
     "sign": {
       "text": "LAND FOR SALE",
-      "x": 12,
-      "y": 870,
-      "w": 500,
-      "size": 100,
+      "x": 70,
+      "y": 1110,
+      "w": 560,
+      "size": 92,
       "rotate": -3
     }
   },

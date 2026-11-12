@@ -19,6 +19,7 @@
     "box": "PEPSI",
     "line1": "GOT PAID IN",
     "line2": "SUBMARINES?!",
-    "box_color": "#2f6db3"
+    "box_color": "#2f6db3",
+    "bg_shift": -330
   }
 }
