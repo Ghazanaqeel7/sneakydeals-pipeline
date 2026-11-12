@@ -333,8 +333,8 @@
       "thumb_queued_at": "2026-11-12T18:50:00Z"
     },
     "090-demo-blockbuster-netflix": {
-      "status": "rendering",
-      "updated": "2026-11-12T21:51:45Z",
+      "status": "render_failed",
+      "updated": "2026-11-12T21:52:25Z",
       "type": "long",
       "demo": "true",
       "title": "The $50 Million Deal Blockbuster Laughed At (Demo)",
