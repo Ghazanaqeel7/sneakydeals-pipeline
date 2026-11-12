@@ -55,6 +55,12 @@
      "views": 240,
      "likes": 8,
      "comments": 0
+    },
+    {
+     "t": "2026-11-12T22:45:32Z",
+     "views": 739,
+     "likes": 14,
+     "comments": 0
     }
    ],
    "title": "Pepsi Got Paid in 17 Soviet Submarines 🤯",
@@ -62,14 +68,14 @@
    "seconds": 56,
    "thumb": "https://i.ytimg.com/vi/B9Xec5izJlw/mqdefault.jpg",
    "short": true,
-   "age_days": 1.7,
+   "age_days": 1.9,
    "views_1d": 222,
    "views_3d": null,
    "views_7d": null,
-   "views": 240,
-   "like_rate": 0.033,
-   "views_24h": 26,
-   "likes": 8,
+   "views": 739,
+   "like_rate": 0.019,
+   "views_24h": 525,
+   "likes": 14,
    "comments": 0
   },
   "mm0ShpBg_4Y": {
@@ -97,6 +103,12 @@
      "views": 72,
      "likes": 2,
      "comments": 0
+    },
+    {
+     "t": "2026-11-12T22:45:32Z",
+     "views": 1355,
+     "likes": 44,
+     "comments": 0
     }
    ],
    "title": "Disney Secretly Bought a Swamp Using Fake Names",
@@ -104,18 +116,18 @@
    "seconds": 56,
    "thumb": "https://i.ytimg.com/vi/mm0ShpBg_4Y/mqdefault.jpg",
    "short": true,
-   "views_24h": 72,
-   "likes": 2,
+   "views_24h": 1355,
+   "likes": 44,
    "comments": 0,
-   "age_days": 0.6,
+   "age_days": 0.9,
    "views_1d": null,
    "views_3d": null,
    "views_7d": null,
-   "views": 72,
-   "like_rate": 0.028
+   "views": 1355,
+   "like_rate": 0.032
   }
  },
- "updated": "2026-11-12T16:51:44Z",
+ "updated": "2026-11-12T22:45:32Z",
  "channel": {
   "snaps": [
    {
@@ -157,16 +169,21 @@
     "t": "2026-11-12T16:51:44Z",
     "subs": 4,
     "views": 222
+   },
+   {
+    "t": "2026-11-12T22:45:32Z",
+    "subs": 6,
+    "views": 254
    }
   ],
   "id": "UCyNCq5TQLEzCU87Qb7XMfEA",
   "title": "Sneaky Deals",
   "handle": "@sneakydeals",
-  "thumb": "https://yt3.ggpht.com/5MkeOwWOLKlx7LQiz3bhIUCxn9jMhi71T10r9gMBXaZHi4oN_HenslKyjf2bmOo9JXWewBhBhg=s88-c-k-c0x00ffffff-no-rj",
-  "subs": 4,
-  "views": 222,
+  "thumb": "https://yt3.ggpht.com/9fbUie-ZsQunwNafR-Rws3mpCZoqr1FNGNHeG2LMEwv_8sJouZn0ff14UgZMIuekW_ThWUX32is=s88-c-k-c0x00ffffff-no-rj",
+  "subs": 6,
+  "views": 254,
   "videos": 2,
-  "subs_24h": 1,
-  "views_24h": 222
+  "subs_24h": 3,
+  "views_24h": 254
  }
 }
