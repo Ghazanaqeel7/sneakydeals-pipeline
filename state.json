@@ -263,9 +263,11 @@
       "yt_queued_at": "2026-11-12T01:35:00Z"
     },
     "004-piggly-wiggly-wall-street": {
-      "status": "script_ready",
-      "updated": "2026-11-12T06:23:20Z",
-      "title": "Piggly Wiggly's Founder Tried to Beat Wall Street"
+      "status": "script_sent",
+      "updated": "2026-11-12T06:23:38Z",
+      "title": "Piggly Wiggly's Founder Tried to Beat Wall Street",
+      "vote_msg": "",
+      "vote_kind": ""
     }
   },
   "ideas": []
