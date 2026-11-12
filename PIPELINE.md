@@ -38,7 +38,7 @@ your files. Never hand-edit state.json and never force-push (n8n writes to it th
 
 The task runs **every hour**, so an approved script starts building within an hour of the owner's ✅.
 **Quick exit first:** read `state.json`. If no job is `script_approved`, `render_failed`, or `*_rejected` with
-`feedback`, AND it is not the story hour (step 5), stop right away with a one-line summary — do not load the skill,
+`feedback`, AND it is not the story hour (step 5), AND there is no long-form work (step 5b: long-form on, no open long job, and a `[LONG]` idea queued), stop right away with a one-line summary — do not load the skill,
 install anything, or research. If another job is already `building`, do not start a second build.
 
 0. Setup: `git config user.name "claude-pipeline"`, `git config user.email "claude-pipeline@users.noreply.github.com"`.
@@ -56,7 +56,7 @@ install anything, or research. If another job is already `building`, do not star
    feedback, push, `set_status <id> script_ready feedback=`. No feedback yet → leave it.
 4. **`script_approved`** (oldest first, one per run): `set_status <id> building`, then BUILD (below).
 5. **New story** — only in the run that starts between 11:00 and 11:59 Asia/Karachi time: count jobs (ids that start
-   with a number; `research` / `weekly-review` are not jobs) whose status is not `published`/`dropped`. If it is below `config.pipeline_buffer`, research and write ONE new script (below)
+   with a number; `research` / `weekly-review` are not jobs; `type: "long"` jobs do not count) whose status is not `published`/`dropped`. If it is below `config.pipeline_buffer`, research and write ONE new script (below)
    and `set_status <id> script_ready`. **Owner ideas first:** run `python3 pipeline/scripts/pop_idea.py`; if it
    prints an idea (queued by the owner on the dashboard), that is the story — research it, and if it is not true or
    not usable, say so in the script message and pick your own instead.
@@ -65,6 +65,12 @@ install anything, or research. If another job is already `building`, do not star
    push the script, set that item's `status` to `"scripted"` and `"job": "<id>"`, commit + push. If the item is
    `format: "long"` and long-form is enabled, make it as a long job (docs/longform_guide.md); if long-form is off, make it as a Short and keep its long idea in
    `long_later`. Only if the calendar has no planned item, pick your own story.
+5b. **New long video** — only if `config.longform_enabled` is true and no `type: "long"` job is open (status not `published`/`dropped`).
+   Do it in the story-hour run AFTER step 5 (the Short comes first and is never skipped for a long one), or in any run if the owner
+   queued a `[LONG]` idea. Story: `python3 pipeline/scripts/pop_idea.py --long` (owner idea) → else the first calendar item with
+   `format: "long"` and `status: "planned"` → else your own pick from `docs/research/news_hooks.json` / the long outliers in
+   `trends.json`. Follow `docs/longform_guide.md` "Run steps" 1 exactly (factmap, scenes, validate, `set_status <id> script_ready type=long`)
+   and post progress like a Short. Long jobs are separate from the Shorts buffer and never block a Short.
 6. **Weekly learning** — only in the Monday story-hour run (Monday 11:00-11:59 Asia/Karachi). See "Weekly learning"
    below. Runs from the first week; with few videos everything is labelled "early signal".
    **On Mondays do step 6 before step 5**, so the day's new story already comes from the new calendar.
