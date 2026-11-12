@@ -323,7 +323,9 @@
       "run": "43201368550",
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-004-piggly-wiggly-wall-street/final.mp4",
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-004-piggly-wiggly-wall-street/preview.mp4",
-      "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/004-piggly-wiggly-wall-street.mp4"
+      "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/004-piggly-wiggly-wall-street.mp4",
+      "yt_scheduled_for": "2026-11-14T00:00:00Z",
+      "yt_queued_at": "2026-11-12T17:56:10Z"
     }
   },
   "ideas": []
