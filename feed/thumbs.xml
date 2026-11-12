@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+<title>Sneaky Deals thumbnails</title>
+<link>https://github.com/Ghazanaqeel7/sneakydeals-pipeline</link>
+<description>One item per uploaded video: title = YouTube video ID, enclosure = its thumbnail. A Zap sets it (YouTube: Update Video Thumbnail) after YouTube has processed the Short.</description>
+<!--ITEMS-->
+<item>
+<title>mm0ShpBg_4Y</title>
+<description>002-disney-secret-swamp</description>
+<link>https://raw.githubusercontent.com/Ghazanaqeel7/sneakydeals-pipeline/main/jobs/002-disney-secret-swamp/thumbnail.jpg</link>
+<guid isPermaLink="false">thumb-002-disney-secret-swamp</guid>
+<pubDate>Thu, 12 Nov 2026 18:37:43 GMT</pubDate>
+<enclosure url="https://raw.githubusercontent.com/Ghazanaqeel7/sneakydeals-pipeline/main/jobs/002-disney-secret-swamp/thumbnail.jpg" type="image/jpeg" length="0"/>
+</item>
+<item>
+<title>e9HCNu75-2U</title>
+<description>003-pudding-guy-free-flights</description>
+<link>https://raw.githubusercontent.com/Ghazanaqeel7/sneakydeals-pipeline/main/jobs/003-pudding-guy-free-flights/thumbnail.jpg</link>
+<guid isPermaLink="false">thumb-003-pudding-guy-free-flights</guid>
+<pubDate>Thu, 12 Nov 2026 18:37:43 GMT</pubDate>
+<enclosure url="https://raw.githubusercontent.com/Ghazanaqeel7/sneakydeals-pipeline/main/jobs/003-pudding-guy-free-flights/thumbnail.jpg" type="image/jpeg" length="0"/>
+</item>
+<item>
+<title>rLOX2z_OqaQ</title>
+<description>004-piggly-wiggly-wall-street</description>
+<link>https://raw.githubusercontent.com/Ghazanaqeel7/sneakydeals-pipeline/main/jobs/004-piggly-wiggly-wall-street/thumbnail.jpg</link>
+<guid isPermaLink="false">thumb-004-piggly-wiggly-wall-street</guid>
+<pubDate>Thu, 12 Nov 2026 18:37:43 GMT</pubDate>
+<enclosure url="https://raw.githubusercontent.com/Ghazanaqeel7/sneakydeals-pipeline/main/jobs/004-piggly-wiggly-wall-street/thumbnail.jpg" type="image/jpeg" length="0"/>
+</item>
+</channel>
+</rss>
