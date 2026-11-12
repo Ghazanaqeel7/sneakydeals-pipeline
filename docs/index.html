@@ -701,6 +701,7 @@ async function renderToday(){
     return `<button class="prod" onclick="pick('${id}')"><img alt="" src="${th(id,j)}" onerror="this.onerror=null;this.src='logo.png'"><div style="min-width:0"><div class="tt">${esc(j.title||titleFromId(id))}</div><div class="mini" aria-label="Step ${idx+1} of 7">${STAGES.map((x,i)=>`<i class="${i<idx?'done':''} ${i===idx?'now'+(attn?' attn':'')+(err?' err':''):''}"></i>`).join('')}</div><div class="nt">Step ${Math.max(idx,0)+1} of 7 · ${STAGES[Math.max(idx,0)]}${lp?' — '+esc(lp.msg)+' · '+ago(lp.t):''}</div></div>${chip(j)}</button>`};
   $('#main').innerHTML=`<div class="pagehead"><div><div class="kicker">${esc(today)}</div><h1 style="margin:6px 0 0;font-size:46px">${greet}, Ghazan</h1><p class="lead">${needs.length?`${needs.length} thing${needs.length>1?'s':''} need${needs.length>1?'':'s'} you. Everything else is running on its own.`:'Nothing needs you right now. Everything is running on its own.'}</p></div>
     <div class="stats">${S.own&&S.own.channel?`<div class="stat" style="cursor:pointer" onclick="go('stats')"><div class="kicker">Subscribers</div><b>${fmtN(S.own.channel.subs)}</b>${S.own.channel.subs_24h!=null?`<div class="note" style="margin:0;color:${S.own.channel.subs_24h>0?'var(--mint)':'var(--ink3)'}">${S.own.channel.subs_24h>=0?'+':''}${S.own.channel.subs_24h} in 24 h</div>`:''}</div>`:''}<div class="stat"><div class="kicker">Live</div><b>${live}</b></div><div class="stat"><div class="kicker">Scheduled</div><b>${sched}</b></div><div class="stat"><div class="kicker">In the works</div><b>${prod.length}</b></div></div></div>
+    ${goalCard()}
     <div class="tgrid"><div><div class="sec" style="margin-top:0"><h2 class="hot">Needs you${needs.length?' · '+needs.length:''}</h2>${TOKEN?'':'<a href="#" onclick="askToken();return false">Unlock to approve here</a>'}</div>
       ${needs.length?needs.map(needCard).join(''):`<div class="allclear"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E7A54" stroke-width="2" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>All clear. Claude writes the next script at 11:00 and posts it in Slack.</div>`}</div>
       <div><div class="sec" style="margin-top:0"><h2>Next post</h2></div>${nextHtml}</div></div>
@@ -766,12 +767,62 @@ function bigChart(snaps,key,label){const p=(snaps||[]).filter(x=>x[key]!=null).s
   const line=xy.map(([x,y])=>`${x.toFixed(1)},${y.toFixed(1)}`).join(' ');
   return `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" preserveAspectRatio="none" role="img" aria-label="${label} over time"><polygon points="0,${H} ${line} ${W},${H}" fill="#E8EEFF"/><polyline points="${line}" fill="none" stroke="#1F4FE0" stroke-width="2.2" vector-effect="non-scaling-stroke"/></svg>
     <div style="display:flex;justify-content:space-between;font:11px var(--mono);color:var(--ink3);margin-top:6px"><span>${pkt(p[0].t)}</span><span>${fmtN(mn)} → ${fmtN(mx)}</span><span>${pkt(p[p.length-1].t)}</span></div>`}
+
+// ---- Earning goal (YouTube Partner Program) ----
+// Tier 1 (fan funding): 500 subs + 3M Shorts views in 90 d (+3 uploads). Ads: 1,000 subs + 10M Shorts views in 90 d;
+// new applicants from 1 Feb 2027 need 20M. Pace = growth over the hourly stats snapshots (min 1 day of data).
+function earnGoal(){
+  const O=S.own; if(!O||!O.channel)return null;
+  const C=O.channel, snaps=(C.snaps||[]).filter(x=>x&&x.t);
+  const subs=C.subs||0, vids=Object.values(O.videos||{});
+  const views90=vids.reduce((a,v)=>a+((v.age_days==null||v.age_days<=90)?(v.views||0):0),0);
+  const first=snaps[0], last=snaps[snaps.length-1]||{t:O.updated,subs,views:views90};
+  const days=Math.max(1,first?(Date.parse(last.t)-Date.parse(first.t))/864e5:1);
+  const subsPace=first?Math.max(0,(subs-(first.subs||0))/days):0;
+  const v24=vids.reduce((a,v)=>a+(v.views_24h||0),0);
+  const viewsPace=Math.max(v24, first?Math.max(0,(views90-(first.views||0))/days):0);
+  const cut=Date.parse('2027-02-01T00:00:00Z');
+  const mk=(name,subsT,viewsT,what)=>{
+    const ps=Math.min(1,subs/subsT), pv=Math.min(1,views90/viewsT);
+    const dS=subs>=subsT?0:(subsPace>0?(subsT-subs)/subsPace:Infinity);
+    const reach90=viewsPace*90;                       // views in a 90-day window at today's pace
+    const dV=views90>=viewsT?0:(reach90>=viewsT?(viewsT-views90)/viewsPace:Infinity);
+    const d=Math.max(dS,dV);
+    return {name,what,subsT,viewsT,ps,pv,pct:Math.min(ps,pv),eta:isFinite(d)?new Date(Date.now()+d*864e5):null,
+      needViewsDay:Math.ceil(viewsT/90), needSubsDay:null, speedX:viewsPace>0?(viewsT/90)/viewsPace:null};
+  };
+  const t1=mk('Pehla qadam: Fan funding',500,3e6,'Super Thanks, memberships, shopping');
+  let t2=mk('Ads ki kamai (asal earning)',1000,1e7,'Video ads + Premium ka hissa');
+  if(!t2.eta||t2.eta.getTime()>=cut)t2=mk('Ads ki kamai (asal earning)',1000,2e7,'Video ads + Premium ka hissa · 1 Feb 2027 ke baad 20M views');
+  return {subs,views90,subsPace,viewsPace,days,t1,t2};
+}
+const pctTxt=(x)=>x>=1?'100%':(x*100<0.01?'<0.01%':(x*100<1?(x*100).toFixed(2):(x*100).toFixed(1))+'%');
+function goalBar(label,cur,tgt,p){return `<div style="margin:10px 0"><div style="display:flex;justify-content:space-between;font-size:13px"><span>${label}</span><span><b>${fmtN(Math.round(cur))}</b> / ${fmtN(tgt)} · <b>${pctTxt(p)}</b></span></div><div style="height:8px;background:var(--line);border-radius:6px;overflow:hidden;margin-top:5px"><div style="height:100%;width:${Math.max(0.6,p*100)}%;background:${p>=1?'var(--mint)':'var(--sig)'}"></div></div></div>`}
+function goalTier(t,G){
+  const eta=t.eta?`<b>${t.eta.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})}</b> tak pahunch jayenge (is speed par)`:`<b>Is speed par nahi pahunchenge</b> — roz kam se kam <b>${fmtN(t.needViewsDay)}</b> Shorts views chahiye (abhi ~${fmtN(Math.round(G.viewsPace))}/din${t.speedX?`, yani ${fmtN(Math.round(t.speedX))}x speed`:''})`;
+  return `<div class="card" style="padding:16px 18px;margin:0 0 12px"><div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap"><div><div class="kicker">${esc(t.what)}</div><h3 style="margin:4px 0 0">${esc(t.name)}</h3></div><div style="font-size:30px;font-weight:700">${pctTxt(t.pct)}</div></div>
+    ${goalBar('Subscribers',G.subs,t.subsT,t.ps)}${goalBar('Shorts views (90 din)',G.views90,t.viewsT,t.pv)}
+    <div class="note" style="margin:8px 0 0">${eta}</div></div>`;
+}
+function goalCard(){
+  const G=earnGoal(); if(!G)return '';
+  return `<div class="card" style="padding:16px 18px;margin:18px 0;cursor:pointer" onclick="S.ptab='goal';go('stats')"><div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><div><div class="kicker">Earning goal · YouTube Partner Program</div><h3 style="margin:4px 0 0">Earning se hum <b>${pctTxt(G.t2.pct)}</b> qareeb hain</h3><div class="note" style="margin:4px 0 0">Pehla qadam (fan funding): ${pctTxt(G.t1.pct)} · ${G.t2.eta?'Ads: '+G.t2.eta.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}):'Abhi ki speed par ads ki shart poori nahi hogi'}</div></div><span class="btn">Detail →</span></div>
+  ${goalBar('Subscribers → 1,000',G.subs,G.t2.subsT,G.t2.ps)}${goalBar('Shorts views (90 din) → '+fmtN(G.t2.viewsT),G.views90,G.t2.viewsT,G.t2.pv)}</div>`;
+}
+function renderGoal(){
+  const G=earnGoal();
+  if(!G){$('#main').innerHTML=`<div class="pagehead"><div><h1>Earning goal</h1><p class="lead">Stats abhi load nahi hue.</p></div></div>${ptabs()}`;return}
+  $('#main').innerHTML=`<div class="pagehead"><div><div class="kicker">YouTube Partner Program</div><h1 style="margin:6px 0 0">Earning goal</h1><p class="lead">Data ${G.days.toFixed(1)} din ka · har ghante update · speed: ~${fmtN(Math.round(G.viewsPace))} views/din, ${G.subsPace.toFixed(1)} subscribers/din</p></div></div>${ptabs()}
+    ${goalTier(G.t2,G)}${goalTier(G.t1,G)}
+    <div class="note">Sharten: fan funding = 500 subscribers + 3 uploads + 3M Shorts views (90 din). Ads = 1,000 subscribers + 10M Shorts views (90 din); 1 Feb 2027 se naye channels ke liye 20M. Views sirf pichle 90 din ke gine jaate hain, is liye roz ki speed sab se zaroori hai. Andaza abhi bohat kam data par hai, har din behtar hoga. Asal numbers: <a href="https://studio.youtube.com/channel/UCyNCq5TQLEzCU87Qb7XMfEA/monetization" target="_blank">YouTube Studio → Earn ↗</a></div>`;
+}
 async function renderStats(){
   S.ptab=S.ptab||'yt';
+  if(S.ptab==='goal'){if(!S.own)await renderYtStats();return renderGoal()}
   if(S.ptab!=='yt')return renderSocialStats(S.ptab);
   return renderYtStats();
 }
-const ptabs=()=>`<div class="tabs" style="margin:0 0 18px">${[['yt','YouTube'],['ig','Instagram'],['fb','Facebook']].map(([k,n])=>`<button class="tab ${S.ptab===k?'on':''}" onclick="S.ptab='${k}';renderStats()">${PICON[k]} ${n}</button>`).join('')}</div>`;
+const ptabs=()=>`<div class="tabs" style="margin:0 0 18px">${[['goal','💰 Earning goal'],['yt','YouTube'],['ig','Instagram'],['fb','Facebook']].map(([k,n])=>`<button class="tab ${S.ptab===k?'on':''}" onclick="S.ptab='${k}';renderStats()">${PICON[k]||''} ${n}</button>`).join('')}</div>`;
 function renderSocialStats(k){
   const th=(id,j)=>`${RAW}/jobs/${esc(id)}/thumbnail.jpg?u=${encodeURIComponent(j.updated||'')}`;
   const name=k==='ig'?'Instagram':'Facebook',at=(j)=>k==='ig'?(j.ig_at||j.reels_at):(j.fb_at||j.reels_at);
