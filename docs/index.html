@@ -1075,7 +1075,7 @@ const LONG_STEPS=[
  ['3','The script arrives in Slack + the Videos tab. Read it, ✅ approve or ❌ + note. (A 12-15 min script, 2 sources for every fact.)'],
  ['4','Once the script is approved, GitHub builds the video (voice, images, music, render): ~2-4 hours. Nothing for you to do.'],
  ['5','The video comes for review: watch the preview (480p), check the thumbnail, approve or write changes.'],
- ['6','After approval this page shows "Upload helper": file download, title/description/tags to copy, upload in YouTube Studio, then "Mark published".']];
+ ['6','After approval it is scheduled on YouTube automatically (next Tue/Thu/Sat 19:00 PKT = 9 AM US Eastern) and goes public by itself; Slack tells you the time and confirms when it is live. The "Upload helper" below is only a backup if Slack warns that the upload failed.']];
 function renderLong(){
   const st=S.state,c=st.config||{},on=!!c.longform_enabled;
   const longs=Object.entries(st.jobs).filter(([k,j])=>isJob(k)&&j.type==='long').reverse();
