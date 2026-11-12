@@ -78,6 +78,12 @@ install anything, or research. If another job is already `building`, do not star
 
 ## New story (script stage)
 
+- **Daily self-learning (every story-hour run, before writing):** open `docs/research/own_videos.json` and compare our own
+  videos' `views_1d` / `views_24h` / like rate (and the Instagram/Facebook notes in `state.json`). If one of ours clearly beat
+  the others, or one clearly flopped, add ONE dated line to `docs/playbook.md` under the matching section, tagged `[signal]`
+  (e.g. `[signal 12 Nov] Brand-name hook in the first 2 s: Pepsi 2.1x our day-1 median`), commit it with the script. Never
+  turn one video into a `[proven]` rule; the Monday weekly learning promotes or removes these lines. Then write today's script
+  using the updated playbook.
 - **Playbook first:** read `docs/playbook.md` and follow it (topics, titles, hooks, length). It is the system's
   learned rulebook; where it conflicts with the older bullets below, the playbook wins (except fact-checking and the
   Never list).

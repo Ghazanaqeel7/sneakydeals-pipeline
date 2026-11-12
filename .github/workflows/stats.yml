@@ -1,7 +1,8 @@
 name: stats
 # Hourly YouTube numbers for our own channel (subscribers, views) and every public video (views, likes, comments).
 # Uses the free YouTube Data API (~3 of 10,000 units/day per run). Writes docs/research/own_videos.json only,
-# which the dashboard Stats page reads. Never touches jobs, feeds or publishing.
+# which the dashboard Stats page reads. Then live_check.py marks jobs whose video is really live on YouTube (or warns
+# when a slot passed without it) in state.json; the Slack bot posts those notes.
 on:
   schedule:
     - cron: '20 * * * *'
@@ -31,8 +32,20 @@ jobs:
           git add docs/research/own_videos.json
           git diff --cached --quiet && { echo "no changes"; exit 0; }
           git commit -q -m "stats: hourly YouTube numbers"
+          ok=0
           for i in 1 2 3 4 5; do
-            git pull --rebase -q origin main && git push -q origin HEAD:main && exit 0
+            git pull --rebase -q origin main && git push -q origin HEAD:main && { ok=1; break; }
+            sleep $((i * 5))
+          done
+          [ $ok = 1 ] || exit 1
+      - name: Live check (did the videos really go live?)
+        run: |
+          for i in 1 2 3 4 5; do
+            git fetch -q origin main && git reset -q --hard FETCH_HEAD
+            python3 pipeline/research/live_check.py
+            git diff --quiet state.json && exit 0
+            git commit -q -am "stats: YouTube live check"
+            git push -q origin HEAD:main && exit 0
             sleep $((i * 5))
           done
           exit 1

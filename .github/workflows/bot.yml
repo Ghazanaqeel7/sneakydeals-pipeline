@@ -1,0 +1,64 @@
+name: bot
+# The Slack bot + publisher (same code as the laptop n8n: n8n/src/main_slack.js), running on GitHub so it works when the laptop is off.
+# Active only when state.json config.bot_runner == "github" and the secrets SLACK_BOT_TOKEN + SLACK_CHANNEL_ID exist.
+on:
+  schedule:
+    - cron: '*/5 * * * *'     # send + replies (approvals, progress updates, schedule-ahead)
+    - cron: '40 23 * * *'     # publish = 04:40 PKT (GitHub can start this a few minutes late)
+  push:
+    branches: [main]
+    paths: ['state.json']
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'send+replies (default) or publish'
+        required: false
+        default: 'send+replies'
+
+concurrency:
+  group: bot
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  bot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check switch
+        id: on
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        run: |
+          R=$(python3 -c "import json;print((json.load(open('state.json')).get('config') or {}).get('bot_runner','n8n'))")
+          if [ "$R" = "github" ] && [ -n "$SLACK_BOT_TOKEN" ]; then echo "go=1" >> $GITHUB_OUTPUT; else echo "bot_runner=$R (or no Slack secret): nothing to do"; fi
+      - uses: actions/setup-node@v4
+        if: steps.on.outputs.go
+        with: { node-version: '20' }
+      - uses: actions/cache/restore@v4
+        if: steps.on.outputs.go
+        with:
+          path: .bot-static.json
+          key: bot-static-${{ github.run_id }}
+          restore-keys: bot-static-
+      - name: Run
+        if: steps.on.outputs.go
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
+          REPO: ${{ github.repository }}
+        run: |
+          if [ "${{ github.event.schedule }}" = "40 23 * * *" ] || [ "${{ inputs.mode }}" = "publish" ]; then
+            node pipeline/bot/run.mjs publish
+          else
+            F=0; node pipeline/bot/run.mjs send || F=1; node pipeline/bot/run.mjs replies || F=1; exit $F
+          fi
+      - uses: actions/cache/save@v4
+        if: always() && steps.on.outputs.go
+        with:
+          path: .bot-static.json
+          key: bot-static-${{ github.run_id }}
