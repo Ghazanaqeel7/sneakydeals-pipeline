@@ -81,7 +81,21 @@ jobs:
               gh release create "job-$J" $ASSETS --title "$TITLE" --notes "Pipeline render for $J" --prerelease
               URL="https://github.com/${{ github.repository }}/releases/download/job-$J/final.mp4"
               PURL="https://github.com/${{ github.repository }}/releases/download/job-$J/preview.mp4"
-              python3 pipeline/scripts/set_status.py "$J" video_ready video_url="$URL" preview_url="$PURL"
+              # Direct copy on GitHub Pages: Zapier's YouTube step rejects the release link (it redirects), so the feeds use this one.
+              # Old videos (published 7+ days ago) are removed here so the Pages site stays small.
+              DURL=""
+              for TRY in 1 2 3 4 5; do
+                git fetch -q origin main && git reset -q --hard FETCH_HEAD
+                mkdir -p docs/media && cp "jobs/$J/project/out/final.mp4" "docs/media/$J.mp4"
+                python3 -c "import json,os,datetime as d;s=json.load(open('state.json'))['jobs'];c=d.datetime.utcnow()-d.timedelta(days=7)
+          for f in os.listdir('docs/media'):
+            j=s.get(f[:-4],{});t=j.get('published_at','')
+            if f.endswith('.mp4') and j.get('status')=='published' and t and d.datetime.strptime(t[:19],'%Y-%m-%dT%H:%M:%S')<c: os.remove('docs/media/'+f)" || true
+                git add -A docs/media && git commit -qm "media: direct video file for $J" && git push -q origin HEAD:main && { DURL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/media/$J.mp4"; break; }
+                sleep 5
+              done
+              DURL=$(echo "$DURL" | tr 'A-Z' 'a-z')
+              python3 pipeline/scripts/set_status.py "$J" video_ready video_url="$URL" preview_url="$PURL" video_url_direct="$DURL"
             else
               python3 pipeline/scripts/set_status.py "$J" render_failed run="${{ github.run_id }}"
             fi
