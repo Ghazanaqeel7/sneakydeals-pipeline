@@ -176,7 +176,7 @@
       "progress_count": 12
     },
     "003-pudding-guy-free-flights": {
-      "status": "video_approved",
+      "status": "published",
       "updated": "2026-11-11T13:26:59Z",
       "title": "This Man Bought $3,000 of Pudding for Free Flights",
       "vote_msg": "",
@@ -263,7 +263,8 @@
       "yt_scheduled_for": "2026-11-13T00:00:00Z",
       "yt_queued_at": "2026-11-12T01:35:00Z",
       "yt_video_id": "e9HCNu75-2U",
-      "thumb_queued_at": "2026-11-12T18:50:00Z"
+      "thumb_queued_at": "2026-11-12T18:50:00Z",
+      "published_at": "2026-11-12T23:40:32Z"
     },
     "004-piggly-wiggly-wall-street": {
       "status": "video_approved",
