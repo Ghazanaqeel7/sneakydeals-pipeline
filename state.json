@@ -272,9 +272,13 @@
         {
           "t": "2026-11-12T09:12:13Z",
           "msg": "✅ Aap ne dashboard se script approve kiya. Claude agle run mein video banana shuru karega."
+        },
+        {
+          "t": "2026-11-12T10:10:34Z",
+          "msg": "🎙 Voice ban rahi hai… (~70 min baqi, phir render ~40 min)"
         }
       ],
-      "progress_count": 1,
+      "progress_count": 2,
       "decided_via": "dashboard",
       "decided_at": "2026-11-12T09:12:13Z"
     }
