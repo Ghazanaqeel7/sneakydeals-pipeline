@@ -13,7 +13,8 @@
     ],
     "publish_time_pkt": "05:00",
     "pipeline_buffer": 2,
-    "longform_enabled": true
+    "longform_enabled": true,
+    "yt_schedule_ahead": true
   },
   "jobs": {
     "001-pepsi-submarines": {
@@ -109,7 +110,9 @@
       "ig_at": "2026-11-12T00:47:04Z",
       "fb_at": "2026-11-12T00:47:04Z",
       "reels_at": "2026-11-12T00:47:04Z",
-      "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/002-disney-secret-swamp.mp4"
+      "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/002-disney-secret-swamp.mp4",
+      "youtube_id": "mm0ShpBg_4Y",
+      "yt_scheduled_for": "2026-11-12T01:40:00Z"
     },
     "research": {
       "progress": [
