@@ -363,9 +363,11 @@
       "vote_kind": "video"
     },
     "005-pepsi-harrier-jet": {
-      "status": "script_ready",
-      "updated": "2026-11-13T06:14:33Z",
-      "title": "Pepsi's Ad Showed a Fighter Jet. He Sent $700,000."
+      "status": "script_sent",
+      "updated": "2026-11-13T06:14:50Z",
+      "title": "Pepsi's Ad Showed a Fighter Jet. He Sent $700,000.",
+      "vote_msg": "",
+      "vote_kind": ""
     }
   },
   "ideas": [
