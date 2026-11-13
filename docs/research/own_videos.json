@@ -73,6 +73,12 @@
      "views": 759,
      "likes": 14,
      "comments": 0
+    },
+    {
+     "t": "2026-11-13T07:27:18Z",
+     "views": 759,
+     "likes": 14,
+     "comments": 0
     }
    ],
    "title": "Pepsi Got Paid in 17 Soviet Submarines 🤯",
@@ -86,7 +92,7 @@
    "views_7d": null,
    "views": 759,
    "like_rate": 0.018,
-   "views_24h": 537,
+   "views_24h": 532,
    "likes": 14,
    "comments": 0
   },
@@ -133,6 +139,12 @@
      "views": 1365,
      "likes": 44,
      "comments": 0
+    },
+    {
+     "t": "2026-11-13T07:27:18Z",
+     "views": 1370,
+     "likes": 44,
+     "comments": 0
     }
    ],
    "title": "Disney Secretly Bought a Swamp Using Fake Names",
@@ -140,14 +152,14 @@
    "seconds": 56,
    "thumb": "https://i.ytimg.com/vi/mm0ShpBg_4Y/mqdefault.jpg",
    "short": true,
-   "views_24h": 1357,
+   "views_24h": 1354,
    "likes": 44,
    "comments": 0,
    "age_days": 1.2,
    "views_1d": null,
    "views_3d": null,
    "views_7d": null,
-   "views": 1365,
+   "views": 1370,
    "like_rate": 0.032
   },
   "e9HCNu75-2U": {
@@ -163,6 +175,12 @@
      "views": 144,
      "likes": 14,
      "comments": 0
+    },
+    {
+     "t": "2026-11-13T07:27:18Z",
+     "views": 133,
+     "likes": 13,
+     "comments": 0
     }
    ],
    "title": "This Man Bought $3,000 of Pudding for Free Flights",
@@ -170,18 +188,18 @@
    "seconds": 57,
    "thumb": "https://i.ytimg.com/vi/e9HCNu75-2U/mqdefault.jpg",
    "short": true,
-   "views_24h": 144,
-   "likes": 14,
+   "views_24h": 133,
+   "likes": 13,
    "comments": 0,
    "age_days": 0.5,
    "views_1d": null,
    "views_3d": null,
    "views_7d": null,
-   "views": 144,
-   "like_rate": 0.097
+   "views": 133,
+   "like_rate": 0.098
   }
  },
- "updated": "2026-11-13T06:24:46Z",
+ "updated": "2026-11-13T07:27:18Z",
  "channel": {
   "snaps": [
    {
@@ -238,6 +256,11 @@
     "t": "2026-11-13T06:24:46Z",
     "subs": 7,
     "views": 254
+   },
+   {
+    "t": "2026-11-13T07:27:18Z",
+    "subs": 7,
+    "views": 254
    }
   ],
   "id": "UCyNCq5TQLEzCU87Qb7XMfEA",
@@ -248,6 +271,6 @@
   "views": 254,
   "videos": 3,
   "subs_24h": 4,
-  "views_24h": 41
+  "views_24h": 32
  }
 }
