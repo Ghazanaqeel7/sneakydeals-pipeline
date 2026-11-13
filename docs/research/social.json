@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-13T04:12:00Z",
+  "updated": "2026-11-13T12:06:50Z",
   "source": "Composio (Instagram + Facebook Graph API), refreshed by Claude's production run every 6 h",
   "instagram": {
     "account": "sneakydealstv",
@@ -29,7 +29,7 @@
         "job": "002-disney-secret-swamp",
         "t": "2026-11-12T00:57:26Z",
         "url": "https://www.facebook.com/reel/1132990566292006/",
-        "views": 188,
+        "views": 189,
         "reactions": 0,
         "comments": 0,
         "shares": 0
