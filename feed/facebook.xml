@@ -6,6 +6,19 @@
 <description>Approved videos for the Sneaky Deals Facebook Page. Zap "Sneaky Deals -> Facebook" (RSS by Zapier -> Facebook Pages Create Page Video) reads this feed. n8n adds one item per publish day, right after feed/youtube.xml.</description>
 <!--ITEMS-->
 <item>
+<title>This Man Turned $3,000 of Pudding Into 1.2 Million Airline Miles</title>
+<description><![CDATA[In 1999, David Phillips noticed a Healthy Choice promo paid airline miles for barcodes, and pudding cost about 25 cents a cup. He bought 12,150 cups and earned more than 1.2 million miles.
+
+Genius loophole or too far? 👇
+
+#puddingguy #businesshistory]]></description>
+<link>https://raw.githubusercontent.com/Ghazanaqeel7/sneakydeals-pipeline/main/jobs/003-pudding-guy-free-flights/thumbnail.jpg</link>
+<guid isPermaLink="false">003-pudding-guy-free-flights</guid>
+<pubDate>Fri, 13 Nov 2026 14:59:07 GMT</pubDate>
+<enclosure url="https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/003-pudding-guy-free-flights.mp4" type="video/mp4" length="0"/>
+</item>
+
+<item>
 <title>Disney Secretly Bought a Swamp Using Fake Names</title>
 <description><![CDATA[Walt Disney hid behind fake companies (one was called "M.T. Lott") to buy 27,000+ acres of Florida swamp for under $200 an acre, before a reporter cracked the secret in 1965.
 

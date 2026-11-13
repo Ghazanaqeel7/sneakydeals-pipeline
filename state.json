@@ -254,9 +254,13 @@
         {
           "t": "2026-11-13T03:27:35Z",
           "msg": "✅ LIVE on YouTube: \"This Man Bought $3,000 of Pudding for Free Flights\" https://youtu.be/e9HCNu75-2U"
+        },
+        {
+          "t": "2026-11-13T14:59:07Z",
+          "msg": "📱 Instagram + Facebook: \"This Man Bought $3,000 of Pudding for Free Flights\" queued, Zapier posts it within ~15 min."
         }
       ],
-      "progress_count": 22,
+      "progress_count": 23,
       "decided_via": "dashboard",
       "decided_at": "2026-11-11T13:26:59Z",
       "run": "42988317343",
@@ -269,7 +273,10 @@
       "yt_video_id": "e9HCNu75-2U",
       "thumb_queued_at": "2026-11-12T18:50:00Z",
       "published_at": "2026-11-12T23:40:32Z",
-      "yt_live_at": "2026-11-13T03:27:35Z"
+      "yt_live_at": "2026-11-13T03:27:35Z",
+      "ig_at": "2026-11-13T14:59:07Z",
+      "fb_at": "2026-11-13T14:59:07Z",
+      "reels_at": "2026-11-13T14:59:07Z"
     },
     "004-piggly-wiggly-wall-street": {
       "status": "video_approved",
