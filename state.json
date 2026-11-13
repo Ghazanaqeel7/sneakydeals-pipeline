@@ -380,9 +380,13 @@
         {
           "t": "2026-11-13T07:13:30Z",
           "msg": "🎙 Voice ready (49 s). Now planning the scenes (~55 min left, then render ~40 min)"
+        },
+        {
+          "t": "2026-11-13T07:26:52Z",
+          "msg": "🎬 Scenes: 8 places built — 90s TV room, prize shop, high school, dorm room, airfield, investors' office, post office, courtroom (~30 min left, then render ~40 min)"
         }
       ],
-      "progress_count": 3,
+      "progress_count": 4,
       "decided_via": "dashboard",
       "decided_at": "2026-11-13T06:27:41Z"
     }
