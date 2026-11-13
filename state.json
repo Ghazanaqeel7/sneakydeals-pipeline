@@ -361,6 +361,11 @@
       "upload_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-090-demo-blockbuster-netflix/upload.mp4",
       "vote_msg": "1794521720.023079",
       "vote_kind": "video"
+    },
+    "005-pepsi-harrier-jet": {
+      "status": "script_ready",
+      "updated": "2026-11-13T06:14:33Z",
+      "title": "Pepsi's Ad Showed a Fighter Jet. He Sent $700,000."
     }
   },
   "ideas": [
