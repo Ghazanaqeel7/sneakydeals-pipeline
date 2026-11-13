@@ -1,90 +1,101 @@
 {
  "fps": 30,
- "duration": 63.23,
+ "duration": 48.85,
  "shots": [
   {
    "key": "hook",
    "start": 0.15,
-   "end": 5.582,
-   "words": 15,
-   "text": "In nineteen seventy-eight, welders secretly patched a brand new New York skyscraper, every single night."
-  },
-  {
-   "key": "cta",
-   "start": 5.974,
-   "end": 11.538,
-   "words": 23,
-   "text": "Before we go deep into today's story, take a second to like this video and subscribe if you haven't. Let's get into it."
-  },
-  {
-   "key": "tower",
-   "start": 11.93,
-   "end": 16.684,
-   "words": 13,
-   "text": "It stood fifty-nine stories high on giant stilts, and it had just opened."
-  },
-  {
-   "key": "rules",
-   "start": 17.077,
-   "end": 20.643,
-   "words": 11,
-   "text": "The building rules only asked about wind hitting the flat sides."
-  },
-  {
-   "key": "but",
-   "start": 21.036,
-   "end": 26.334,
-   "words": 16,
-   "text": "But a student asked about corner winds, and the numbers showed about forty percent more force."
-  },
-  {
-   "key": "then",
-   "start": 26.726,
-   "end": 31.59,
-   "words": 16,
-   "text": "Then the engineer learned the builders had swapped his welded joints for bolts to save money."
-  },
-  {
-   "key": "storm",
-   "start": 31.983,
-   "end": 35.961,
-   "words": 14,
-   "text": "A big enough storm could snap those bolts, right in the middle of Manhattan."
+   "end": 2.593,
+   "words": 9,
+   "text": "Pepsi's ad showed a fighter jet as a prize."
   },
   {
    "key": "yousee",
-   "start": 36.353,
-   "end": 42.624,
-   "words": 19,
-   "text": "You see, a weld turns a joint into one solid piece. Bolts are only as strong as the bolts."
-  },
-  {
-   "key": "night",
-   "start": 43.017,
-   "end": 48.297,
+   "start": 3.005,
+   "end": 7.186,
    "words": 14,
-   "text": "Every night after the offices emptied, welders covered the bolted joints with steel plates."
+   "text": "You see, in nineteen ninety-six, Pepsi Points could get you T-shirts and leather jackets."
   },
   {
-   "key": "ella",
-   "start": 48.69,
-   "end": 53.756,
+   "key": "school",
+   "start": 7.606,
+   "end": 10.676,
    "words": 15,
-   "text": "During the repair, Hurricane Ella headed for New York, and evacuation plans were drawn up."
+   "text": "At the end of the ad, a teenager lands a Harrier jet at his school."
   },
   {
-   "key": "so",
-   "start": 54.148,
-   "end": 58.165,
+   "key": "price",
+   "start": 11.044,
+   "end": 13.679,
+   "words": 8,
+   "text": "On screen it said: seven million Pepsi Points."
+  },
+  {
+   "key": "student",
+   "start": 14.084,
+   "end": 17.1,
+   "words": 9,
+   "text": "A twenty-one-year-old business student near Seattle did the math."
+  },
+  {
+   "key": "rules",
+   "start": 17.52,
+   "end": 20.433,
+   "words": 11,
+   "text": "The rules let you buy extra points for ten cents each."
+  },
+  {
+   "key": "math",
+   "start": 20.853,
+   "end": 24.632,
+   "words": 11,
+   "text": "Seven million points would cost him about seven hundred thousand dollars."
+  },
+  {
+   "key": "jetcost",
+   "start": 24.991,
+   "end": 27.872,
    "words": 10,
-   "text": "So everyone watched the forecasts, until the storm turned away."
+   "text": "A real Harrier was worth more than twenty million dollars."
+  },
+  {
+   "key": "raise",
+   "start": 28.292,
+   "end": 31.389,
+   "words": 11,
+   "text": "So he got investors to lend him seven hundred thousand dollars."
+  },
+  {
+   "key": "check",
+   "start": 31.794,
+   "end": 34.466,
+   "words": 11,
+   "text": "He mailed Pepsi fifteen points and a check for the rest."
+  },
+  {
+   "key": "but",
+   "start": 34.886,
+   "end": 38.264,
+   "words": 16,
+   "text": "But Pepsi sent the check back and said the jet was only there to be funny."
+  },
+  {
+   "key": "court",
+   "start": 38.684,
+   "end": 43.735,
+   "words": 16,
+   "text": "Then in nineteen ninety-nine, a judge ruled no reasonable person could think the ad was serious."
   },
   {
    "key": "close",
-   "start": 58.558,
-   "end": 62.476,
-   "words": 13,
-   "text": "The repair worked, and the public didn't hear about it until nineteen ninety-five."
+   "start": 44.141,
+   "end": 48.098,
+   "words": 12,
+   "text": "And Pepsi's new ad? The jet now cost seven hundred million points."
   }
+ ],
+ "hookTitle": [
+  "FIGHTER JET",
+  "FOR PEPSI POINTS?!"
  ]
 }
