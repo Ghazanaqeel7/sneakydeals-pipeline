@@ -372,9 +372,13 @@
         {
           "t": "2026-11-13T06:27:41Z",
           "msg": "✅ You approved the script on the dashboard. Claude starts the video in the next run."
+        },
+        {
+          "t": "2026-11-13T07:11:57Z",
+          "msg": "🎙 Making the voice now… (~60-80 min left, then render ~40 min)"
         }
       ],
-      "progress_count": 1,
+      "progress_count": 2,
       "decided_via": "dashboard",
       "decided_at": "2026-11-13T06:27:41Z"
     }
