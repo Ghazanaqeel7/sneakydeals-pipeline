@@ -250,9 +250,13 @@
         {
           "t": "2026-11-12T05:06:00Z",
           "msg": "🧪 Test: Slack ab GitHub se chal raha hai, laptop band ho tab bhi updates aayengi. Kal 5:00 PKT (Thu 7 PM US ET) Pudding Guy YouTube par khud live hogi."
+        },
+        {
+          "t": "2026-11-13T03:27:35Z",
+          "msg": "✅ LIVE on YouTube: \"This Man Bought $3,000 of Pudding for Free Flights\" https://youtu.be/e9HCNu75-2U"
         }
       ],
-      "progress_count": 21,
+      "progress_count": 22,
       "decided_via": "dashboard",
       "decided_at": "2026-11-11T13:26:59Z",
       "run": "42988317343",
@@ -264,7 +268,8 @@
       "yt_queued_at": "2026-11-12T01:35:00Z",
       "yt_video_id": "e9HCNu75-2U",
       "thumb_queued_at": "2026-11-12T18:50:00Z",
-      "published_at": "2026-11-12T23:40:32Z"
+      "published_at": "2026-11-12T23:40:32Z",
+      "yt_live_at": "2026-11-13T03:27:35Z"
     },
     "004-piggly-wiggly-wall-street": {
       "status": "video_approved",
