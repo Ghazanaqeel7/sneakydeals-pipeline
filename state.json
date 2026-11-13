@@ -363,8 +363,8 @@
       "vote_kind": "video"
     },
     "005-pepsi-harrier-jet": {
-      "status": "video_ready",
-      "updated": "2026-11-13T09:16:45Z",
+      "status": "video_approved",
+      "updated": "2026-11-13T12:09:21Z",
       "title": "Pepsi's Ad Showed a Fighter Jet. He Sent $700,000.",
       "vote_msg": "1794550492.459879",
       "vote_kind": "script",
@@ -423,11 +423,15 @@
         {
           "t": "2026-11-13T08:54:35Z",
           "msg": "⏳ Render 75% (1106/1466 frames). Baqi waqt: 1h 16m 36s"
+        },
+        {
+          "t": "2026-11-13T12:09:21Z",
+          "msg": "✅ You approved the video + thumbnail on the dashboard. It goes to YouTube at the next publish slot."
         }
       ],
-      "progress_count": 13,
+      "progress_count": 14,
       "decided_via": "dashboard",
-      "decided_at": "2026-11-13T06:27:41Z",
+      "decided_at": "2026-11-13T12:09:21Z",
       "run": "43389141444",
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-005-pepsi-harrier-jet/final.mp4",
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-005-pepsi-harrier-jet/preview.mp4",
