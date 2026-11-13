@@ -76,11 +76,17 @@ export function buildWorld() {
   const M = LOC.mall;
   W.add(room(M, {w: 16, h: 5, d: 10, wall: '#bfd8ef', floor: '#c49a62', seed: 9}));
   wallSign(W, 'PEPSI STUFF PRIZES', 6.0, 1.0, M + 0.5, 3.9, -4.92, {bg: '#2f6db3', fg: '#ffffff'});
-  const p1996 = wallSign(W, '1996', 1.6, 1.0, M - 5.2, 2.6, -4.9, {bg: '#f2c12e'});
+  const p1996 = wallSign(W, '1996', 1.6, 1.0, M - 5.2, 3.25, -4.9, {bg: '#f2c12e'});
   const prizes = [['tee', '#c43d32', -3.5], ['jacket', '#6b4430', -1.5], ['shades', '#1f1f24', 0.5], ['cap', '#2f6db3', 2.0], ['tee', '#2f6db3', 3.5]];
   for (const [k, c, x] of prizes) { const pz = prize(k, c); pz.position.set(M + x, 0.05, -2.6); W.add(pz); W.add(box(1.1, 0.3, 0.8, '#f2f0e6', {x: M + x, y: 0.15, z: -2.6})); }
-  const tagTee = wallSign(W, '75 POINTS', 1.3, 0.45, M - 3.5, 2.3, -2.55, {bg: '#fff1b8'});
+  const tagTee = wallSign(W, '75 POINTS', 1.3, 0.45, M - 3.3, 2.3, -2.55, {bg: '#fff1b8'});
   const tagJacket = wallSign(W, '1,450 POINTS', 1.5, 0.45, M - 1.5, 2.4, -2.55, {bg: '#fff1b8'});
+  W.add(P.at(P.bookshelf(71, 2.4, 2.6), M - 6.6, 0.05, -4.6));
+  for (let i = 0; i < 3; i++) { W.add(box(1.0, 0.8, 0.8, ['#c43d32', '#2f6db3', '#f2c12e'][i], {x: M - 7.2 + i * 0.05, y: 0.45 + i * 0.8, z: -0.8, ry: i * 0.2})); }
+  const rackL = prize('tee', '#4f8a4a'); rackL.position.set(M - 5.2, 0.05, -1.4); W.add(rackL);
+  const rackL2 = prize('jacket', '#2b2b2e'); rackL2.position.set(M - 4.2, 0.05, -3.4); W.add(rackL2);
+  person(W, chars, M - 7.0, 0.05, -2.2, 'red', 'cap', false, 206);
+  person(W, chars, M - 3.2, 0.05, -3.6, 'mustard', 'none', true, 207);
   // shelves of cans + crates
   for (let i = 0; i < 3; i++) { W.add(box(2.4, 0.06, 0.5, '#7a4f33', {x: M + 5.6, y: 0.6 + i * 0.6, z: -4.55})); for (let j = 0; j < 8; j++) { const c = sodaCan('COLA', ['#2f6db3', '#c43d32'][(i + j) % 2]); c.scale.setScalar(2.2); c.position.set(M + 4.6 + j * 0.28, 0.63 + i * 0.6, -4.5); W.add(c); } }
   W.add(box(2.2, 1.0, 0.8, '#c43d32', {x: M + 5.4, y: 0.5, z: -0.6}), box(2.3, 0.08, 0.9, '#f2f0e6', {x: M + 5.4, y: 1.04, z: -0.6}));
@@ -263,15 +269,15 @@ export function buildWorld() {
   const C = LOC.court;
   W.add(room(C, {w: 16, h: 6, d: 12, wall: '#8fb3c9', floor: '#8a5a3b', seed: 29}));
   for (let i = 0; i < 8; i++) W.add(box(1.9, 1.4, 0.08, '#7a4f33', {x: C - 6.65 + i * 1.9, y: 0.75, z: -5.92, thick: 0.01}));
-  W.add(box(5, 0.5, 2.4, '#6b4430', {x: C, y: 0.25, z: -4.6}));                         // platform
+  W.add(box(5, 0.9, 2.4, '#6b4430', {x: C, y: 0.45, z: -4.6}));                         // platform
   W.add(box(4.4, 1.4, 1.0, '#7a4f33', {x: C, y: 0.7, z: -3.4}), box(4.6, 0.1, 1.2, '#5a3a26', {x: C, y: 1.44, z: -3.4}));
-  const judge = person(W, chars, C, 0.55, -4.2, 'official', 'none', true, 701);
+  const judge = person(W, chars, C, 0.92, -4.15, 'official', 'none', true, 701);
   const gavel = new THREE.Group(); const gh = cyl(0.025, 0.025, 0.4, '#5a3a26', {seg: 8, thick: 0.004}); gh.rotation.z = Math.PI / 2; gh.position.set(0.2, 0, 0); gavel.add(gh);
   const ghead = cyl(0.07, 0.07, 0.24, '#4a3020', {x: 0.42, seg: 12, thick: 0.006}); ghead.rotation.x = Math.PI / 2; gavel.add(ghead);
   gavel.position.set(C + 0.55, 1.65, -3.25); gavel.rotation.y = -0.3; W.add(gavel);
   W.add(cyl(0.14, 0.16, 0.05, '#4a3020', {x: C + 0.97, y: 1.51, z: -3.35, seg: 14, thick: 0.004}));
   for (const [x, c] of [[C - 2.0, '#2f6db3'], [C + 2.0, '#c43d32']]) { W.add(cyl(0.04, 0.04, 3.2, '#d9a441', {x, y: 1.6, z: -5.5})); const f = P.flag(c, 7); f.position.set(x, 2.6, -5.5); W.add(f); }
-  const cal = wallSign(W, '1999', 1.3, 1.1, C - 5.0, 3.4, -5.9, {bg: '#f2f0e6', sub: 'CALENDAR'});
+  const cal = wallSign(W, '1999', 1.3, 1.1, C - 4.6, 3.8, -5.9, {bg: '#f2f0e6', sub: 'CALENDAR'});
   const verdict = wallSign(W, 'NOT A REAL OFFER', 3.4, 1.0, C + 4.6, 3.3, -5.9, {bg: '#fff1b8', fg: '#c43d32'});
   W.add(P.at(P.wallClock(), C, 4.9, -5.9));
   for (const x of [C - 3.3, C + 3.3]) { const tb = P.desk(2.2, '#7a4f33'); tb.position.set(x, 0.05, -0.9); W.add(tb); W.add(P.at(P.papers(5, x), x, 1.06, -0.9)); }
@@ -314,10 +320,10 @@ export function buildWorld() {
     pop(loan, t, wordT('raise', 7));
     studentO.userData.armR.rotation.z = shot === 'raise' ? 1.4 + Math.sin(t * 10) * 0.15 * ease(t, wordT('raise', 4), wordT('raise', 5)) : 0;
     // post office: points + check go into the mailbox, then come back
-    const into = ease(t, wordT('check', 8), wordT('check', 10.5));
+    const into = ease(t, wordT('check', 8.5), wordT('check', 10.8));
     const hand = new THREE.Vector3(LOC.mail - 2.7, 1.25, 0.45), slot = new THREE.Vector3(LOC.mail - 1.8, 1.1, 0.05);
     pts.position.copy(hand).add(new THREE.Vector3(0.1, 0.55, 0.05)).lerp(slot, into); pop(pts, t, wordT('check', 3)); if (into > 0.98 || shot !== 'check') pts.visible = false; else pts.scale.multiplyScalar(1 - into * 0.7);
-    checkCard.position.copy(hand).add(new THREE.Vector3(0.45, 0.35, 0.1)).lerp(slot, into); checkCard.rotation.set(0, -0.2, Math.sin(t * 2) * 0.05); pop(checkCard, t, wordT('check', 6.5)); if (into > 0.98 || shot !== 'check') checkCard.visible = false; else checkCard.scale.multiplyScalar(1 - into * 0.8);
+    checkCard.position.copy(hand).add(new THREE.Vector3(0.45, 0.35, 0.1)).lerp(slot, into); checkCard.rotation.set(0, -0.2, Math.sin(t * 2) * 0.05); pop(checkCard, t, wordT('check', 5)); if (into > 0.98 || shot !== 'check') checkCard.visible = false; else checkCard.scale.multiplyScalar(1 - into * 0.8);
     env.position.copy(hand).lerp(slot, into); env.rotation.set(Math.PI / 2 - 0.2, 0, 0.1); env.visible = shot === 'check' && into < 0.98;
     const back = ease(t, wordT('but', 2), wordT('but', 5));
     const backPos = new THREE.Vector3(LOC.mail - 0.6, 1.45, 0.6);
