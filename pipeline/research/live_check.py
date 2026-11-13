@@ -4,6 +4,10 @@
 Matches jobs to our public videos in docs/research/own_videos.json by title.
 - found      -> jobs[id].yt_video_id, yt_live_at, and a progress note "✅ YouTube par LIVE" (the bot posts it to Slack)
 - not found 60 min after the slot -> one warning note (yt_alert) so the owner checks Zapier
+- live on YouTube but not yet on Instagram/Facebook -> queued in feed/reels.xml + feed/facebook.xml (Zaps post them),
+  only inside a posting window (config.social_windows_pkt, default 05:00-08:00 and 19:00-22:00 PKT) and at most one per
+  window: today's fresh video first, otherwise the oldest one that was missed. This is the safety net for the 04:40
+  publish run (on 13 Nov the old laptop n8n published 003 and its Instagram/Facebook step crashed).
 Only jobs due in the last 3 days. Edits state.json in place; the workflow commits it.
 """
 import json, os, datetime as dt
@@ -66,6 +70,85 @@ for jid, j in st.get('jobs', {}).items():
         j['yt_alert'] = stamp
         note(j, f'⚠️ "{title}" is still not public on YouTube 1 hour after its slot. Check Zapier > Zap history (YouTube).')
         changed = True
+
+# ---------------- Instagram + Facebook safety net ----------------
+import re
+from email.utils import formatdate
+
+def tag_line(tags, mx):
+    tags = tags if isinstance(tags, list) else re.split(r'[\s,]+', str(tags or ''))
+    tags = [str(t).strip() for t in tags if str(t).strip()]
+    return ' '.join((t if t.startswith('#') else '#' + t) for t in tags[:mx])
+
+def cap2200(c):
+    return c if len(c) <= 2200 else re.sub(r'\s+\S*$', '', c[:2190]) + '…'
+
+def reels_caption(meta):
+    if meta.get('reels_caption'): return str(meta['reels_caption'])[:2200]
+    out, tags = [], []
+    for p in [x.strip() for x in re.split(r'\n\s*\n', str(meta.get('description', ''))) if x.strip()]:
+        if re.fullmatch(r'(#\w+\s*)+', p): tags = [t for t in re.findall(r'#\w+', p) if t.lower() != '#shorts']; continue
+        if p.startswith('🔔') or re.search('subscribe', p, re.I): out.append('🔔 Follow for a new sneaky deal every day.'); continue
+        out.append(p)
+    if meta.get('pinned_comment'): out.append('💬 ' + meta['pinned_comment'])
+    if tags: out.append(' '.join(tags[:5]))
+    return cap2200('\n\n'.join(out))
+
+def ig_caption(meta):
+    ig = meta.get('instagram') or {}
+    if ig.get('caption'): return cap2200('\n\n'.join(x for x in [str(ig['caption']).strip(), tag_line(ig.get('hashtags'), 5)] if x))
+    return reels_caption(meta)
+
+def fb_post(meta):
+    fb = meta.get('facebook') or {}
+    body = '\n\n'.join(x for x in [str(fb['description']).strip(), tag_line(fb.get('hashtags'), 3)] if x) if fb.get('description') else ig_caption(meta)
+    return str(fb.get('title') or meta.get('title', ''))[:250], cap2200(body)
+
+def esc(x): return str(x).replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
+
+def add_item(path, jid, title, body, thumb, video):
+    fp = os.path.join(ROOT, path); feed = open(fp).read()
+    if f'<guid isPermaLink="false">{esc(jid)}</guid>' in feed: return
+    item = (f'<item>\n<title>{esc(title)}</title>\n<description><![CDATA[{body.replace("]]>", "")}]]></description>\n'
+            f'<link>{esc(thumb)}</link>\n<guid isPermaLink="false">{esc(jid)}</guid>\n<pubDate>{formatdate(usegmt=True)}</pubDate>\n'
+            f'<enclosure url="{esc(video)}" type="video/mp4" length="0"/>\n</item>\n')
+    open(fp, 'w').write(feed.replace('<!--ITEMS-->', '<!--ITEMS-->\n' + item, 1))
+
+def social_window(cfg):
+    pkt = now + dt.timedelta(hours=5)
+    for a, b in cfg.get('social_windows_pkt') or [['05:00', '08:00'], ['19:00', '22:00']]:
+        ah, am = map(int, a.split(':')); bh, bm = map(int, b.split(':'))
+        start = pkt.replace(hour=ah, minute=am, second=0, microsecond=0)
+        if start <= pkt < pkt.replace(hour=bh, minute=bm, second=0, microsecond=0):
+            return start - dt.timedelta(hours=5)   # window start in UTC
+    return None
+
+cfg = st.get('config') or {}
+win = social_window(cfg) if cfg.get('reels') is not False else None
+if win:
+    jobs = st.get('jobs', {})
+    done_now = any(j.get('reels_at') and iso(j['reels_at']) >= win for j in jobs.values())
+    todo = [(jid, j) for jid, j in jobs.items()
+            if jid[:1].isdigit() and j.get('type') != 'long' and not j.get('demo') and j.get('yt_live_at')
+            and not (j.get('ig_at') or j.get('fb_at') or j.get('reels_at')) and now - iso(j['yt_live_at']) < dt.timedelta(days=4)
+            and (j.get('video_url_direct') or j.get('video_url'))]
+    if todo and not done_now:
+        fresh = [x for x in todo if iso(x[1]['yt_live_at']) >= win - dt.timedelta(hours=1)]
+        jid, j = fresh[0] if fresh else sorted(todo, key=lambda x: x[1]['yt_live_at'])[0]
+        try:
+            meta = json.load(open(os.path.join(ROOT, 'jobs', jid, 'meta.json')))
+            raw = 'https://raw.githubusercontent.com/Ghazanaqeel7/sneakydeals-pipeline/main'
+            thumb = f'{raw}/jobs/{jid}/thumbnail.jpg' if os.path.exists(os.path.join(ROOT, 'jobs', jid, 'thumbnail.jpg')) else f'{raw}/assets/default_thumbnail.jpg'
+            video = j.get('video_url_direct') or j.get('video_url')
+            add_item('feed/reels.xml', jid, meta.get('title', ''), ig_caption(meta), thumb, video)
+            ft, fbody = fb_post(meta)
+            add_item('feed/facebook.xml', jid, ft, fbody, thumb, video)
+            j['ig_at'] = j['fb_at'] = j['reels_at'] = stamp
+            note(j, f'📱 Instagram + Facebook: "{meta.get("title", "")}" queued, Zapier posts it within ~15 min.')
+            changed = True
+            print('social: queued', jid)
+        except Exception as e:
+            print('social: failed', jid, e)
 
 if changed:
     json.dump(st, open(os.path.join(ROOT, 'state.json'), 'w'), indent=2, ensure_ascii=False)
