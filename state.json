@@ -411,9 +411,13 @@
         {
           "t": "2026-11-13T07:55:28Z",
           "msg": "🎞 Render shuru (GitHub). Andaza: ~30-50 min."
+        },
+        {
+          "t": "2026-11-13T08:16:30Z",
+          "msg": "⏳ Render 25% (372/1466 frames). Baqi waqt: 4h 3m 48s"
         }
       ],
-      "progress_count": 10,
+      "progress_count": 11,
       "decided_via": "dashboard",
       "decided_at": "2026-11-13T06:27:41Z",
       "run": "43389141444"
