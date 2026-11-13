@@ -91,6 +91,12 @@
      "views": 760,
      "likes": 14,
      "comments": 0
+    },
+    {
+     "t": "2026-11-13T19:52:59Z",
+     "views": 762,
+     "likes": 14,
+     "comments": 0
     }
    ],
    "title": "Pepsi Got Paid in 17 Soviet Submarines 🤯",
@@ -98,13 +104,13 @@
    "seconds": 56,
    "thumb": "https://i.ytimg.com/vi/B9Xec5izJlw/mqdefault.jpg",
    "short": true,
-   "age_days": 2.6,
+   "age_days": 2.8,
    "views_1d": 222,
    "views_3d": null,
    "views_7d": null,
-   "views": 760,
+   "views": 762,
    "like_rate": 0.018,
-   "views_24h": 533,
+   "views_24h": 522,
    "likes": 14,
    "comments": 0
   },
@@ -169,6 +175,12 @@
      "views": 1371,
      "likes": 43,
      "comments": 0
+    },
+    {
+     "t": "2026-11-13T19:52:59Z",
+     "views": 1371,
+     "likes": 43,
+     "comments": 0
     }
    ],
    "title": "Disney Secretly Bought a Swamp Using Fake Names",
@@ -176,10 +188,10 @@
    "seconds": 56,
    "thumb": "https://i.ytimg.com/vi/mm0ShpBg_4Y/mqdefault.jpg",
    "short": true,
-   "views_24h": 1355,
+   "views_24h": 1299,
    "likes": 43,
    "comments": 0,
-   "age_days": 1.6,
+   "age_days": 1.8,
    "views_1d": 1363,
    "views_3d": null,
    "views_7d": null,
@@ -217,6 +229,12 @@
      "views": 188,
      "likes": 15,
      "comments": 0
+    },
+    {
+     "t": "2026-11-13T19:52:59Z",
+     "views": 241,
+     "likes": 18,
+     "comments": 0
     }
    ],
    "title": "This Man Bought $3,000 of Pudding for Free Flights",
@@ -224,18 +242,18 @@
    "seconds": 57,
    "thumb": "https://i.ytimg.com/vi/e9HCNu75-2U/mqdefault.jpg",
    "short": true,
-   "views_24h": 188,
-   "likes": 15,
+   "views_24h": 241,
+   "likes": 18,
    "comments": 0,
-   "age_days": 0.6,
+   "age_days": 0.8,
    "views_1d": null,
    "views_3d": null,
    "views_7d": null,
-   "views": 188,
-   "like_rate": 0.08
+   "views": 241,
+   "like_rate": 0.075
   }
  },
- "updated": "2026-11-13T14:59:05Z",
+ "updated": "2026-11-13T19:52:59Z",
  "channel": {
   "snaps": [
    {
@@ -307,6 +325,11 @@
     "t": "2026-11-13T14:59:05Z",
     "subs": 7,
     "views": 2107
+   },
+   {
+    "t": "2026-11-13T19:52:59Z",
+    "subs": 7,
+    "views": 2319
    }
   ],
   "id": "UCyNCq5TQLEzCU87Qb7XMfEA",
@@ -314,9 +337,9 @@
   "handle": "@sneakydeals",
   "thumb": "https://yt3.ggpht.com/9fbUie-ZsQunwNafR-Rws3mpCZoqr1FNGNHeG2LMEwv_8sJouZn0ff14UgZMIuekW_ThWUX32is=s88-c-k-c0x00ffffff-no-rj",
   "subs": 7,
-  "views": 2107,
+  "views": 2319,
   "videos": 3,
-  "subs_24h": 4,
-  "views_24h": 1885
+  "subs_24h": 3,
+  "views_24h": 2097
  }
 }
