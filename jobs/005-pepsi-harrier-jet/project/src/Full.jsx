@@ -112,7 +112,7 @@ const Caption = ({t}) => {
   if (!cur) return null;
   const k = Math.min(1, (t - cur.a + 0.03) / 0.08); const sc = 0.82 + 0.18 * k;
   return (
-    <div style={{position: 'absolute', left: 0, right: 0, top: cameraAt(t).key === 'close' ? '82%' : '67%', textAlign: 'center', transform: `scale(${sc})`}}>
+    <div style={{position: 'absolute', left: 0, right: 0, top: ['close', 'price'].includes(cameraAt(t).key) ? '80%' : '67%', textAlign: 'center', transform: `scale(${sc})`}}>
       <span style={{fontFamily: '"Arial Black", "Arial Bold", Arial, sans-serif', fontWeight: 900, fontSize: 54, color: '#ffffff', letterSpacing: 0.5,
         WebkitTextStroke: '9px #1a1414', paintOrder: 'stroke fill', textShadow: '0 4px 0 rgba(0,0,0,0.35)'}}>{cur.w}</span>
     </div>

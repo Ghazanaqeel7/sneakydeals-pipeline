@@ -28,24 +28,28 @@ export const LIGHTS = {
   yard: {sun: '#ffe7bd', si: 2.5, sky: '#b5dcff', gnd: '#d1ad7c', hi: 1.15, fog: '#e2e3d4', near: 70, far: 260, sunOff: [-14, 22, 14], shadow: 20, top: '#3d8fe0', hor: '#d9ecf5', pt: null},
   joint: {sun: '#ffe0b0', si: 2.3, sky: '#c4c8dc', gnd: '#5a5662', hi: 1.3, fog: '#4a4a58', near: 30, far: 80, sunOff: [-7, 12, 9], shadow: 12, top: '#222', hor: '#333', pt: {c: '#ffb066', i: 16, p: [-3.2, 4.6, -1.5], d: 12}},
   weather: {sun: '#eef2ff', si: 1.4, sky: '#eef3f6', gnd: '#8f7b66', hi: 1.1, fog: '#e3e7e1', near: 30, far: 90, sunOff: [-6, 9, 7], shadow: 10, top: '#56606e', hor: '#9aa4b0', pt: {c: '#ffd58a', i: 5, p: [0, 3.8, 0], d: 14}},
+  tv: {sun: '#fff0d8', si: 1.5, sky: '#f4fbff', gnd: '#b48a62', hi: 1.05, fog: '#efe2cb', near: 30, far: 90, sunOff: [-6, 9, 7], shadow: 10, top: '#7fb7e6', hor: '#d6ecf6', pt: {c: '#ffc77a', i: 6, p: [2.9, 1.6, -2.7], d: 10}},
+  dorm: {sun: '#aab8ff', si: 0.9, sky: '#8a96d0', gnd: '#4a3a40', hi: 1.0, fog: '#2a2d50', near: 30, far: 90, sunOff: [-6, 9, 7], shadow: 10, top: '#0b1030', hor: '#3e3f86', pt: {c: '#ffc77a', i: 10, p: [-1.6, 2.0, -1.2], d: 9}},
   morning: {sun: '#ffbf7a', si: 2.5, sky: '#ffe0bd', gnd: '#c08a5a', hi: 1.0, fog: '#f6d9b8', near: 160, far: 650, sunOff: [-60, 40, 50], shadow: 80, top: '#6fa6dd', hor: '#ffd3a1', pt: null},
 };
 
 const v = (a) => new THREE.Vector3(...a);
 // camera plan: per shot, location light, anchor (for the light), path keys {p, l}, optional beat times
+// locations: tv 0, mall 300, school 600, dorm 900, air 1200, office 1500, mail 1800, court 2100
 export const PLAN = {
-  hook: {light: 'night', anchor: [0, 0, -30], keys: [{p: [16, 66, 6], l: [0, 60, -29]}, {p: [12, 56, 9], l: [0, 54, -29]}, {p: [8, 44, 11], l: [0, 48, -29]}]},
-  cta: {light: 'day', anchor: [265, 0, 5], keys: [{p: [266.4, 2.8, 15.5], l: [265.4, 3.0, 5]}, {p: [265.8, 1.9, 11.5], l: [265.2, 2.0, 5.8]}, {p: [265.3, 1.45, 8.9], l: [265.0, 1.4, 6.4]}]},
-  tower: {light: 'day', anchor: [300, 0, -30], keys: [{p: [306, 3, 5], l: [300, 9, -40]}, {p: [304, 12, 4], l: [300, 35, -40]}, {p: [302, 24, 3], l: [300, 70, -40]}]},
-  rules: {light: 'office', anchor: [600, 0, 0], keys: [{p: [596.0, 2.4, 3.1], l: [596.8, 1.2, 0.6]}, {p: [596.9, 2.2, 2.7], l: [597.6, 1.35, 0.5]}, {p: [597.7, 2.05, 2.35], l: [598.4, 1.5, 0.4]}]},
-  but: {light: 'office', anchor: [600, 0, 0], keys: [{p: [597.7, 2.05, 2.35], l: [598.4, 1.5, 0.4]}, {p: [599.6, 2.0, 1.2], l: [600.8, 1.7, -2.4]}, {p: [601.5, 1.8, -0.5], l: [601.9, 1.9, -4.4]}], beats: 'words:but:0,6,15'},
-  then: {light: 'yard', anchor: [700, 0, 0], keys: [{p: [696.2, 1.6, 3.4], l: [697.6, 1.0, -1.2]}, {p: [699.8, 1.45, 2.9], l: [700.0, 1.3, 0.6]}, {p: [701.6, 2.1, 4.6], l: [701.9, 2.3, -1.5]}], beats: 'words:then:0,3,15'},
-  storm: {light: 'storm', anchor: [300, 0, -30], keys: [{p: [310.5, 2.5, 15.5], l: [300, 38, -40]}, {p: [309, 4, 14.5], l: [300, 46, -40]}, {p: [307.5, 6, 13.5], l: [300, 55, -40]}]},
-  yousee: {light: 'joint', anchor: [800, 0, 0], keys: [{p: [796.4, 4.3, 5.4], l: [796.8, 4.4, -2.6]}, {p: [800, 4.9, 8.2], l: [800, 4.5, -2.6]}, {p: [803.6, 4.3, 5.4], l: [803.2, 4.4, -2.6]}], beats: 'words:yousee:0,8,18'},
-  night: {light: 'night', anchor: [0, 0, -30], keys: [{p: [-9, 3, 20], l: [0, 45, -40]}, {p: [-6.5, 5.5, 14], l: [0, 50, -36]}, {p: [-4, 8, 8], l: [0, 55, -29]}]},
-  ella: {light: 'weather', anchor: [900, 0, 0], keys: [{p: [896.4, 2.0, 3.6], l: [898.4, 2.4, -5]}, {p: [899.8, 2.1, 3.9], l: [899.8, 2.3, -3]}, {p: [902.9, 1.85, 2.6], l: [904.3, 1.65, -2.4]}], beats: 'words:ella:0,6,13'},
-  so: {light: 'weather', anchor: [900, 0, 0], keys: [{p: [902.9, 1.85, 2.6], l: [904.3, 1.65, -2.4]}, {p: [901.2, 2.1, 3.6], l: [901.0, 2.1, -3.5]}, {p: [899.6, 2.4, 4.4], l: [899.2, 2.6, -5]}]},
-  close: {light: 'morning', anchor: [320, 0, 0], keys: [{p: [319.6, 2.3, 11.6], l: [319.6, 1.0, 6.6]}, {p: [321.0, 2.3, 12.8], l: [317, 9, -12]}, {p: [321.6, 2.8, 15.4], l: [312, 22, -40]}], beats: 'words:close:0,6,13'},
+  hook: {light: 'tv', anchor: [0, 0, -1], keys: [{p: [0.47, 0.6, -0.8], l: [0.35, 0.53, -1.0]}, {p: [0.35, 1.05, 0.0], l: [0.0, 1.3, -3.0]}, {p: [0.15, 1.45, 0.5], l: [-0.05, 1.35, -3.0]}], beats: 'words:hook:0,4,9'},
+  yousee: {light: 'office', anchor: [300, 0, 0], keys: [{p: [295.4, 2.3, 1.6], l: [294.8, 2.5, -4.9]}, {p: [296.6, 1.75, 0.9], l: [296.5, 1.55, -2.6]}, {p: [298.4, 1.75, 0.7], l: [298.5, 1.55, -2.6]}], beats: 'words:yousee:0,10,14'},
+  school: {light: 'day', anchor: [600, 0, -5], keys: [{p: [603.2, 1.3, 6.5], l: [600, 8, -5]}, {p: [603.8, 1.7, 5.2], l: [600, 4, -5]}, {p: [604.2, 2.1, 4.2], l: [600, 1.6, -5]}], beats: 'words:school:0,8,15'},
+  price: {light: 'tv', anchor: [0, 0, -1], keys: [{p: [-0.55, 1.5, -1.2], l: [-0.08, 1.45, -3.04]}, {p: [-0.1, 1.46, -1.3], l: [-0.08, 1.45, -3.04]}, {p: [0.3, 1.42, -1.25], l: [-0.08, 1.45, -3.04]}], beats: 'words:price:0,4,8'},
+  student: {light: 'dorm', anchor: [900, 0, -1], keys: [{p: [898.0, 1.6, 0.9], l: [899.9, 1.2, -2.3]}, {p: [898.9, 1.5, 0.5], l: [900.2, 1.15, -2.2]}, {p: [899.7, 1.45, 0.4], l: [900.5, 1.15, -2.1]}]},
+  rules: {light: 'dorm', anchor: [900, 0, -1], keys: [{p: [-0.95 + 900, 1.85, -1.75], l: [899.15, 1.05, -2.5]}, {p: [899.05, 1.72, -1.85], l: [899.15, 1.05, -2.5]}, {p: [899.25, 1.65, -1.9], l: [899.15, 1.05, -2.5]}], beats: 'words:rules:0,8,11'},
+  math: {light: 'dorm', anchor: [900, 0, -1], keys: [{p: [901.0, 1.9, -0.6], l: [902.2, 2.2, -3.94]}, {p: [901.8, 2.05, -0.9], l: [902.3, 2.2, -3.94]}, {p: [902.5, 2.1, -1.2], l: [902.35, 2.15, -3.94]}], beats: 'words:math:0,4,11'},
+  jetcost: {light: 'yard', anchor: [1200, 0, -3], keys: [{p: [1196.2, 1.6, 4.8], l: [1198.5, 1.7, -3.5]}, {p: [1199.4, 2.2, 5.6], l: [1201.5, 2.8, -2.5]}, {p: [1201.8, 2.6, 5.0], l: [1203.6, 3.1, -2.0]}], beats: 'words:jetcost:0,7,10'},
+  raise: {light: 'office', anchor: [1500, 0, -1], keys: [{p: [1497.6, 1.7, 2.4], l: [1498.6, 1.3, -2.2]}, {p: [1499.4, 1.75, 1.9], l: [1499.9, 1.3, -2.2]}, {p: [1500.1, 2.0, 0.6], l: [1500.0, 1.1, -1.5]}], beats: 'words:raise:0,4,11'},
+  check: {light: 'office', anchor: [1800, 0, -1], keys: [{p: [1796.0, 1.6, 2.9], l: [1797.4, 1.3, -0.3]}, {p: [1796.6, 1.55, 2.5], l: [1797.8, 1.25, -0.1]}, {p: [1797.4, 1.5, 2.2], l: [1798.2, 1.2, -0.2]}], beats: 'words:check:0,7,11'},
+  but: {light: 'office', anchor: [1800, 0, -1], keys: [{p: [1797.4, 1.5, 2.2], l: [1798.2, 1.2, -0.2]}, {p: [1798.6, 1.6, 2.2], l: [1799.4, 1.5, -0.6]}, {p: [1799.8, 1.7, 1.6], l: [1800.4, 1.65, -1.0]}], beats: 'words:but:0,5,16'},
+  court: {light: 'office', anchor: [2100, 0, -2], keys: [{p: [2098.2, 1.9, 3.6], l: [2099.5, 2.0, -4.0]}, {p: [2099.9, 2.0, -0.2], l: [2100.1, 1.9, -4.0]}, {p: [2101.9, 2.4, 0.4], l: [2103.8, 2.9, -5.8]}], beats: 'words:court:0,6,16'},
+  close: {light: 'tv', anchor: [0, 0, -1], keys: [{p: [0.3, 1.42, -1.25], l: [-0.08, 1.45, -3.04]}, {p: [-0.05, 1.42, -1.15], l: [-0.08, 1.45, -3.04]}, {p: [0.47, 0.6, -0.8], l: [0.35, 0.53, -1.0]}], beats: 'words:close:0,10,12'},
 };
 
 // precompute curves + beat times
@@ -76,7 +80,7 @@ export function cameraAt(t) {
   return {key: k, pos: C.p.getPointAt(u), look: C.l.getPointAt(u), plan: PLAN[k], a: C.a, b: C.b};
 }
 // dip-to-cream opacity around location changes (0.4 s total)
-const CONT = new Set(['but', 'so']); // these shots continue the previous camera move
+const CONT = new Set(['but']); // these shots continue the previous camera move
 export function dipAt(t) {
   let o = 0;
   keys.forEach((k, i) => {
