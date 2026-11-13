@@ -399,9 +399,13 @@
           "t": "2026-11-13T07:31:50Z",
           "msg": "🖼 Thumbnail ready: PEPSI · FIGHTER JET FOR POINTS?! (render starts now, ~40 min)",
           "image": "jobs/005-pepsi-harrier-jet/thumbnail.jpg"
+        },
+        {
+          "t": "2026-11-13T07:32:50Z",
+          "msg": "🎞 Render shuru (GitHub). Andaza: ~30-50 min."
         }
       ],
-      "progress_count": 7,
+      "progress_count": 8,
       "decided_via": "dashboard",
       "decided_at": "2026-11-13T06:27:41Z",
       "run": "43386431621"
