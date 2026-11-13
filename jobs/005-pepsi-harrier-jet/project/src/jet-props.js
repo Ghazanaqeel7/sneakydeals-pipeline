@@ -87,14 +87,19 @@ export function crtTV() {
   return grp;
 }
 
-// soda can with a plain text label (no logo)
+// soda can with a plain text label (no logo); texture + geometry shared by all cans
+const CAN_MAT = {}; const CAN_GEO = new THREE.CylinderGeometry(0.033, 0.033, 0.12, 20, 1, true);
 export function sodaCan(label = 'COLA', c = '#2f6db3') {
   const s = g();
-  const cv = document.createElement('canvas'); cv.width = 256; cv.height = 256; const x = cv.getContext('2d');
-  x.fillStyle = c; x.fillRect(0, 0, 256, 256); x.fillStyle = '#f2f0e6'; x.fillRect(0, 150, 256, 40);
-  x.fillStyle = '#ffffff'; x.font = 'bold 54px Arial'; x.textAlign = 'center'; x.fillText(label, 128, 110); x.fillStyle = '#c43d32'; x.font = 'bold 30px Arial'; x.fillText('POINTS', 128, 180);
-  const t = new THREE.CanvasTexture(cv); t.colorSpace = THREE.SRGBColorSpace;
-  const body = new THREE.Mesh(new THREE.CylinderGeometry(0.033, 0.033, 0.12, 20, 1, true), toon('#ffffff', t)); ink(body, 0.004, false); body.position.y = 0.06; body.rotation.y = Math.PI; s.add(body);
+  const key = label + c;
+  if (!CAN_MAT[key]) {
+    const cv = document.createElement('canvas'); cv.width = 256; cv.height = 256; const x = cv.getContext('2d');
+    x.fillStyle = c; x.fillRect(0, 0, 256, 256); x.fillStyle = '#f2f0e6'; x.fillRect(0, 150, 256, 40);
+    x.fillStyle = '#ffffff'; x.font = 'bold 54px Arial'; x.textAlign = 'center'; x.fillText(label, 128, 110); x.fillStyle = '#c43d32'; x.font = 'bold 30px Arial'; x.fillText('POINTS', 128, 180);
+    const t = new THREE.CanvasTexture(cv); t.colorSpace = THREE.SRGBColorSpace;
+    CAN_MAT[key] = toon('#ffffff', t);
+  }
+  const body = new THREE.Mesh(CAN_GEO, CAN_MAT[key]); ink(body, 0.004, false); body.position.y = 0.06; body.rotation.y = Math.PI; s.add(body);
   s.add(cyl(0.033, 0.033, 0.006, '#c9cdd2', {y: 0.121, seg: 20, thick: 0.002}), cyl(0.03, 0.03, 0.006, '#c9cdd2', {y: 0.002, seg: 20, thick: 0.002}));
   return s;
 }
