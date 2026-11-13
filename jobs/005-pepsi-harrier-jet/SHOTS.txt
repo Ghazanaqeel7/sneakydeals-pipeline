@@ -1,0 +1,13 @@
+hook | Pepsi's ad showed a fighter jet as a prize.
+yousee | You see, in nineteen ninety-six, Pepsi Points could get you T-shirts and leather jackets.
+school | At the end of the ad, a teenager lands a Harrier jet at his school.
+price | On screen it said: seven million Pepsi Points.
+student | A twenty-one-year-old business student near Seattle did the math.
+rules | The rules let you buy extra points for ten cents each.
+math | Seven million points would cost him about seven hundred thousand dollars.
+jetcost | A real Harrier was worth more than twenty million dollars.
+raise | So he got investors to lend him seven hundred thousand dollars.
+check | He mailed Pepsi fifteen points and a check for the rest.
+but | But Pepsi sent the check back and said the jet was only there to be funny.
+court | Then in nineteen ninety-nine, a judge ruled no reasonable person could think the ad was serious.
+close | And Pepsi's new ad? The jet now cost seven hundred million points.

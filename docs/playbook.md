@@ -15,9 +15,10 @@ _Last updated: 11 Nov 2026 (first version, before any of our videos had data)._
 - [start] Brand rivalries (Pepsi vs Coca-Cola) pull extra comments.
 
 ## Titles
-- [start] Brand + shocking action, no year, ≤ 60 characters (e.g. "Pepsi Accidentally Offered a Fighter Jet").
+- [start] Brand + shocking action, no year, ≤ 60 characters (e.g. "Pepsi's Ad Showed a Fighter Jet. He Sent $700,000.").
 - [signal] Hit titles are short. "Why…" / "How…" openers and one CAPS word (SECRET, GENIUS) show up often. (Exact shares: dashboard → Research → Trends.)
 - [start] Use words people actually search (dashboard → Research → Title check).
+- [signal 13 Nov] "Secretly" + fake-names hook (Disney swamp) had ~1,360 views at day 1 vs Pepsi submarines 222 (~6x), like rate 3.2% vs 1.8%. Both jumped on the evening of 12 Nov, so part of it may be channel-wide.
 
 ## Hooks (first 1.5 s)
 - [proven by owner feedback, video 001] Brand name + the shock in the first words. Never open with a date.
