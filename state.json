@@ -376,9 +376,13 @@
         {
           "t": "2026-11-13T07:11:57Z",
           "msg": "🎙 Making the voice now… (~60-80 min left, then render ~40 min)"
+        },
+        {
+          "t": "2026-11-13T07:13:30Z",
+          "msg": "🎙 Voice ready (49 s). Now planning the scenes (~55 min left, then render ~40 min)"
         }
       ],
-      "progress_count": 2,
+      "progress_count": 3,
       "decided_via": "dashboard",
       "decided_at": "2026-11-13T06:27:41Z"
     }
