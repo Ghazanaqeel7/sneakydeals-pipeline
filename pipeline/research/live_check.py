@@ -5,7 +5,7 @@ Matches jobs to our public videos in docs/research/own_videos.json by title.
 - found      -> jobs[id].yt_video_id, yt_live_at, and a progress note "✅ YouTube par LIVE" (the bot posts it to Slack)
 - not found 60 min after the slot -> one warning note (yt_alert) so the owner checks Zapier
 - live on YouTube but not yet on Instagram/Facebook -> queued in feed/reels.xml + feed/facebook.xml (Zaps post them),
-  only inside a posting window (config.social_windows_pkt, default 05:00-08:00 and 19:00-22:00 PKT) and at most one per
+  only inside a posting window (config.social_windows_pkt, default 05:00-09:00 and 19:00-23:00 PKT) and at most one per
   window: today's fresh video first, otherwise the oldest one that was missed. This is the safety net for the 04:40
   publish run (on 13 Nov the old laptop n8n published 003 and its Instagram/Facebook step crashed).
 Only jobs due in the last 3 days. Edits state.json in place; the workflow commits it.
@@ -116,7 +116,7 @@ def add_item(path, jid, title, body, thumb, video):
 
 def social_window(cfg):
     pkt = now + dt.timedelta(hours=5)
-    for a, b in cfg.get('social_windows_pkt') or [['05:00', '08:00'], ['19:00', '22:00']]:
+    for a, b in cfg.get('social_windows_pkt') or [['05:00', '09:00'], ['19:00', '23:00']]:
         ah, am = map(int, a.split(':')); bh, bm = map(int, b.split(':'))
         start = pkt.replace(hour=ah, minute=am, second=0, microsecond=0)
         if start <= pkt < pkt.replace(hour=bh, minute=bm, second=0, microsecond=0):

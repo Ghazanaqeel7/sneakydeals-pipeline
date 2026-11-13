@@ -192,7 +192,7 @@ On publish day, right after the YouTube feed item, n8n adds the same video to `f
 Reel on @sneakydealstv) and `feed/facebook.xml` (Zap → Sneaky Deals Facebook Page), and sets `ig_at` / `fb_at` on
 the job. `config.reels: false` switches both off. **Safety net:** `pipeline/research/live_check.py` (stats workflow, hourly at :20 and 05:03 PKT)
 queues any Short that is live on YouTube but has no `ig_at`/`fb_at`, inside a posting window (`config.social_windows_pkt`, default
-05:00-08:00 and 19:00-22:00 PKT), one per window: that morning's video first, else the oldest missed one. The owner sees the three platforms on each job page and can edit
+05:00-09:00 and 19:00-23:00 PKT), one per window: that morning's video first, else the oldest missed one. The owner sees the three platforms on each job page and can edit
 the Instagram/Facebook text in the "Instagram · Facebook" tab until it is sent (never overwrite those edits).
 
 **Write `meta.json.instagram` and `meta.json.facebook` at the script stage** (and rewrite them when a script is
