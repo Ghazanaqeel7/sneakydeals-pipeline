@@ -1,11 +1,22 @@
 {
-  "updated": "2026-11-12T21:20:00Z",
+  "updated": "2026-11-13T04:12:00Z",
   "source": "Composio (Instagram + Facebook Graph API), refreshed by Claude's production run every 6 h",
   "instagram": {
     "account": "sneakydealstv",
     "followers": null,
     "posts": [
-      {"id": "18152545258555305", "job": "002-disney-secret-swamp", "t": "2026-11-12T00:50:16Z", "url": "https://www.instagram.com/reel/DfnzYMsiziT/", "views": 156, "reach": 114, "likes": 0, "comments": 0, "shares": 0, "saved": 0}
+      {
+        "id": "18152545258555305",
+        "job": "002-disney-secret-swamp",
+        "t": "2026-11-12T00:50:16Z",
+        "url": "https://www.instagram.com/reel/DfnzYMsiziT/",
+        "views": 156,
+        "reach": 114,
+        "likes": 0,
+        "comments": 0,
+        "shares": 0,
+        "saved": 0
+      }
     ]
   },
   "facebook": {
@@ -13,7 +24,16 @@
     "page_id": "1392110527326521",
     "followers": 0,
     "posts": [
-      {"id": "1392110527326521_122108479443537552", "job": "002-disney-secret-swamp", "t": "2026-11-12T00:57:26Z", "url": "https://www.facebook.com/reel/1132990566292006/", "views": 187, "reactions": 0, "comments": 0, "shares": 0}
+      {
+        "id": "1392110527326521_122108479443537552",
+        "job": "002-disney-secret-swamp",
+        "t": "2026-11-12T00:57:26Z",
+        "url": "https://www.facebook.com/reel/1132990566292006/",
+        "views": 188,
+        "reactions": 0,
+        "comments": 0,
+        "shares": 0
+      }
     ]
   }
 }
