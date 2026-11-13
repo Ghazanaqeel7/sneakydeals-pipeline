@@ -384,9 +384,14 @@
         {
           "t": "2026-11-13T07:26:52Z",
           "msg": "🎬 Scenes: 8 places built — 90s TV room, prize shop, high school, dorm room, airfield, investors' office, post office, courtroom (~30 min left, then render ~40 min)"
+        },
+        {
+          "t": "2026-11-13T07:26:54Z",
+          "msg": "🔍 Check frames round 1: looks good overall. Fixing: can label faces away, prize shop start too empty, $20M sign cut off, mailbox blocks the camera, judge too small in court (~25 min left, then render ~40 min)",
+          "image": "jobs/005-pepsi-harrier-jet/review/round1.jpg"
         }
       ],
-      "progress_count": 4,
+      "progress_count": 5,
       "decided_via": "dashboard",
       "decided_at": "2026-11-13T06:27:41Z"
     }
