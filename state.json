@@ -403,9 +403,13 @@
         {
           "t": "2026-11-13T07:32:50Z",
           "msg": "🎞 Render shuru (GitHub). Andaza: ~30-50 min."
+        },
+        {
+          "t": "2026-11-13T07:54:37Z",
+          "msg": "🛠 Render failed: GitHub's first frames took too long (time limit hit). Fixed: lighter scene + longer time limit. Rendering again (~40 min)"
         }
       ],
-      "progress_count": 8,
+      "progress_count": 9,
       "decided_via": "dashboard",
       "decided_at": "2026-11-13T06:27:41Z",
       "run": "43386431621"
