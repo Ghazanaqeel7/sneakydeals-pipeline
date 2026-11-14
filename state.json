@@ -464,7 +464,14 @@
       "updated": "2026-11-14T06:18:22Z",
       "title": "Hoover Gave Away Free Flights. It Cost Them Millions.",
       "vote_msg": "1794637103.737299",
-      "vote_kind": "script"
+      "vote_kind": "script",
+      "progress": [
+        {
+          "t": "2026-11-14T06:18:29Z",
+          "msg": "📝 Hoover free-flights script tayyar hai, approval ke liye bhej raha hoon."
+        }
+      ],
+      "progress_count": 1
     }
   },
   "ideas": [
