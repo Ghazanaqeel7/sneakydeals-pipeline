@@ -515,7 +515,9 @@
       "run": "43620596837",
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-006-hoover-free-flights/final.mp4",
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-006-hoover-free-flights/preview.mp4",
-      "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/006-hoover-free-flights.mp4"
+      "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/006-hoover-free-flights.mp4",
+      "yt_scheduled_for": "2026-11-16T00:00:00Z",
+      "yt_queued_at": "2026-11-14T19:23:32Z"
     }
   },
   "ideas": [
