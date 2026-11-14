@@ -1,9 +1,7 @@
 {
-  "ok": false,
-  "errors": [
-    "7 claim(s) with fewer than 2 sources, e.g. \"1992 offer: spend £100, two return flights (Europe\""
-  ],
+  "ok": true,
+  "errors": [],
   "warnings": [],
-  "checked_at": "2026-11-14T06:17:53Z",
+  "checked_at": "2026-11-14T06:18:02Z",
   "policy": "docs/ypp_policy.md"
 }

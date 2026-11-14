@@ -28,15 +28,15 @@ Hoover said, buy a vacuum, fly free. You see, in nineteen ninety-two, Hoover's B
 
 ## Fact map (claim | sources)
 
-| claim | source 1 | source 2 |
-|---|---|---|
-| 1992 offer: spend £100, two return flights (Europe, later US) | Wikipedia: Hoover free flights promotion | Today I Found Out; Entrepreneur |
-| Cheapest qualifying vacuum about £120, tickets worth far more | Today I Found Out (£119.99) | Entrepreneur (£119, tickets £600+) |
-| ~50,000 claims expected, hundreds of thousands came | Wikipedia (about 300,000) | Today I Found Out (about 500,000) |
-| Cost: tens of millions of pounds | Today I Found Out (~£50M) | Entrepreneur (~£70M losses) |
-| Three top managers lost their jobs | Wikipedia | Today I Found Out |
-| Hoover held about half its market for decades, share dropped | Wikipedia | Today I Found Out |
-| Sold to Candy in 1995 | Wikipedia | Entrepreneur (1995 sale); Today I Found Out (Candy) |
+| Claim | Sources |
+|---|---|
+| 1992 offer: spend £100, two return flights (Europe, later US) | Wikipedia: Hoover free flights promotion; Today I Found Out; Entrepreneur |
+| Cheapest qualifying vacuum about £120, tickets worth far more | Today I Found Out (£119.99); Entrepreneur (£119, tickets £600+) |
+| ~50,000 claims expected, hundreds of thousands came | Wikipedia (about 300,000); Today I Found Out (about 500,000) |
+| Cost: tens of millions of pounds | Today I Found Out (~£50M); Entrepreneur (~£70M losses) |
+| Three top managers lost their jobs | Wikipedia; Today I Found Out |
+| Hoover held about half its market for decades, share dropped | Wikipedia; Today I Found Out |
+| Sold to Candy in 1995 | Wikipedia; Entrepreneur (1995 sale); Today I Found Out (Candy) |
 
 ## Left out on purpose
 Exact claimant count and loss figure (sources differ), the Sandy Jack lawsuit and its outcome (no verdict found), the 2004 BBC documentary, sale price, exact market-share fall (50→20% vs "90%"), executives' names, who proposed the idea (sources disagree).
