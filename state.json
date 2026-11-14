@@ -460,8 +460,8 @@
       "yt_queued_at": "2026-11-13T12:09:46Z"
     },
     "006-hoover-free-flights": {
-      "status": "render_queued",
-      "updated": "2026-11-14T17:20:42Z",
+      "status": "rendering",
+      "updated": "2026-11-14T17:21:28Z",
       "title": "Hoover Gave Away Free Flights. It Cost Them Millions.",
       "vote_msg": "1794637103.737299",
       "vote_kind": "script",
@@ -491,7 +491,8 @@
       ],
       "progress_count": 5,
       "decided_via": "dashboard",
-      "decided_at": "2026-11-14T12:28:34Z"
+      "decided_at": "2026-11-14T12:28:34Z",
+      "run": "43620596837"
     }
   },
   "ideas": [
