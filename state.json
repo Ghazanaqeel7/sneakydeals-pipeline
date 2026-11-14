@@ -279,7 +279,7 @@
       "reels_at": "2026-11-13T14:59:07Z"
     },
     "004-piggly-wiggly-wall-street": {
-      "status": "video_approved",
+      "status": "published",
       "updated": "2026-11-12T17:55:46Z",
       "title": "Piggly Wiggly's Founder Tried to Beat Wall Street",
       "vote_msg": "1794486206.650429",
@@ -355,7 +355,8 @@
       "yt_live_at": "2026-11-14T00:55:07Z",
       "ig_at": "2026-11-14T00:55:07Z",
       "fb_at": "2026-11-14T00:55:07Z",
-      "reels_at": "2026-11-14T00:55:07Z"
+      "reels_at": "2026-11-14T00:55:07Z",
+      "published_at": "2026-11-14T03:33:27Z"
     },
     "090-demo-blockbuster-netflix": {
       "status": "video_sent",
