@@ -331,9 +331,17 @@
         {
           "t": "2026-11-12T17:55:46Z",
           "msg": "✅ Aap ne dashboard se video + thumbnail approve kiya. Agle publish slot par YouTube par jayegi."
+        },
+        {
+          "t": "2026-11-14T00:55:07Z",
+          "msg": "✅ LIVE on YouTube: \"Piggly Wiggly's Founder Tried to Beat Wall Street\" https://youtu.be/rLOX2z_OqaQ"
+        },
+        {
+          "t": "2026-11-14T00:55:07Z",
+          "msg": "📱 Instagram + Facebook: \"Piggly Wiggly's Founder Tried to Beat Wall Street\" queued, Zapier posts it within ~15 min."
         }
       ],
-      "progress_count": 11,
+      "progress_count": 13,
       "decided_via": "dashboard",
       "decided_at": "2026-11-12T17:55:46Z",
       "run": "43201368550",
@@ -343,7 +351,11 @@
       "yt_scheduled_for": "2026-11-14T00:00:00Z",
       "yt_queued_at": "2026-11-12T17:56:10Z",
       "yt_video_id": "rLOX2z_OqaQ",
-      "thumb_queued_at": "2026-11-12T18:50:00Z"
+      "thumb_queued_at": "2026-11-12T18:50:00Z",
+      "yt_live_at": "2026-11-14T00:55:07Z",
+      "ig_at": "2026-11-14T00:55:07Z",
+      "fb_at": "2026-11-14T00:55:07Z",
+      "reels_at": "2026-11-14T00:55:07Z"
     },
     "090-demo-blockbuster-netflix": {
       "status": "video_sent",

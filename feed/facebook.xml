@@ -6,6 +6,19 @@
 <description>Approved videos for the Sneaky Deals Facebook Page. Zap "Sneaky Deals -> Facebook" (RSS by Zapier -> Facebook Pages Create Page Video) reads this feed. n8n adds one item per publish day, right after feed/youtube.xml.</description>
 <!--ITEMS-->
 <item>
+<title>Piggly Wiggly's Founder Bet $10 Million Against Wall Street</title>
+<description><![CDATA[In 1916 Clarence Saunders invented self-service grocery shopping. Years later he borrowed about $10 million to beat the traders betting against his stock. The price hit $124 by noon, then the stock exchange stopped trading and he went bankrupt.
+
+Robbed, or pushed too far? 👇
+
+#pigglywiggly #businesshistory]]></description>
+<link>https://raw.githubusercontent.com/Ghazanaqeel7/sneakydeals-pipeline/main/jobs/004-piggly-wiggly-wall-street/thumbnail.jpg</link>
+<guid isPermaLink="false">004-piggly-wiggly-wall-street</guid>
+<pubDate>Sat, 14 Nov 2026 00:55:07 GMT</pubDate>
+<enclosure url="https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/004-piggly-wiggly-wall-street.mp4" type="video/mp4" length="0"/>
+</item>
+
+<item>
 <title>This Man Turned $3,000 of Pudding Into 1.2 Million Airline Miles</title>
 <description><![CDATA[In 1999, David Phillips noticed a Healthy Choice promo paid airline miles for barcodes, and pudding cost about 25 cents a cup. He bought 12,150 cups and earned more than 1.2 million miles.
 
