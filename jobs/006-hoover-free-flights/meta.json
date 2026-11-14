@@ -14,7 +14,14 @@
     "maytag"
   ],
   "pinned_comment": "Would you have bought the vacuum for the flights? 👇",
-  "thumb": {},
+  "thumb": {
+    "frame": 40,
+    "box": "HOOVER",
+    "line1": "BUY A VACUUM",
+    "line2": "FLY FREE?!",
+    "box_color": "#c43d32",
+    "bg_shift": -300
+  },
   "instagram": {
     "caption": "Hoover offered free flights with every vacuum. It cost them millions ✈️\n\nIn 1992 spending £100 on Hoover got you two return flights. The tickets were worth far more than the sale.\n\nHoover expected about 50,000 claims. Hundreds of thousands came.\n\nWould you have bought the vacuum? 👇\nSave this and follow for more true business stories.\n\n⚠️ Dramatised illustration, real facts.",
     "hashtags": [
