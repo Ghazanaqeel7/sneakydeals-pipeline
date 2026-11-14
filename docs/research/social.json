@@ -1,17 +1,41 @@
 {
-  "updated": "2026-11-13T12:06:50Z",
+  "updated": "2026-11-14T06:20:00Z",
   "source": "Composio (Instagram + Facebook Graph API), refreshed by Claude's production run every 6 h",
   "instagram": {
     "account": "sneakydealstv",
-    "followers": null,
+    "followers": 0,
     "posts": [
+      {
+        "id": "17958570777266173",
+        "job": "004-piggly-wiggly-wall-street",
+        "t": "2026-11-14T01:10:30Z",
+        "url": "https://www.instagram.com/reel/Dfs_SXbPgNR/",
+        "views": 137,
+        "reach": 108,
+        "likes": 2,
+        "comments": 0,
+        "shares": 0,
+        "saved": 0
+      },
+      {
+        "id": "18098697707145068",
+        "job": "003-pudding-guy-free-flights",
+        "t": "2026-11-13T15:09:52Z",
+        "url": "https://www.instagram.com/reel/Dfr6kJ4gnlY/",
+        "views": 159,
+        "reach": 116,
+        "likes": 2,
+        "comments": 0,
+        "shares": 1,
+        "saved": 0
+      },
       {
         "id": "18152545258555305",
         "job": "002-disney-secret-swamp",
         "t": "2026-11-12T00:50:16Z",
         "url": "https://www.instagram.com/reel/DfnzYMsiziT/",
-        "views": 156,
-        "reach": 114,
+        "views": 157,
+        "reach": 115,
         "likes": 0,
         "comments": 0,
         "shares": 0,
@@ -25,11 +49,31 @@
     "followers": 0,
     "posts": [
       {
+        "id": "1392110527326521_122110268457537552",
+        "job": "004-piggly-wiggly-wall-street",
+        "t": "2026-11-14T00:58:22Z",
+        "url": "https://www.facebook.com/reel/1603896534375577/",
+        "views": 230,
+        "reactions": 0,
+        "comments": 0,
+        "shares": 0
+      },
+      {
+        "id": "1392110527326521_122110022349537552",
+        "job": "003-pudding-guy-free-flights",
+        "t": "2026-11-13T15:01:48Z",
+        "url": "https://www.facebook.com/reel/1667491624769580/",
+        "views": 116,
+        "reactions": 0,
+        "comments": 0,
+        "shares": 0
+      },
+      {
         "id": "1392110527326521_122108479443537552",
         "job": "002-disney-secret-swamp",
         "t": "2026-11-12T00:57:26Z",
         "url": "https://www.facebook.com/reel/1132990566292006/",
-        "views": 189,
+        "views": 191,
         "reactions": 0,
         "comments": 0,
         "shares": 0
