@@ -70,6 +70,12 @@ install anything, or research. If another job is already `building`, do not star
    push the script, set that item's `status` to `"scripted"` and `"job": "<id>"`, commit + push. If the item is
    `format: "long"` and long-form is enabled, make it as a long job (docs/longform_guide.md); if long-form is off, make it as a Short and keep its long idea in
    `long_later`. Only if the calendar has no planned item, pick your own story.
+   **Token-saving draft:** before writing from scratch, check `docs/research/gemini_draft.json`. If its
+   `item_day`/`title` matches the item you picked, it holds an UNVERIFIED first-draft script and a `claims`
+   list from Gemini (runs free on GitHub Actions, not your session). Use it only as a starting point: verify
+   every entry in `claims` yourself exactly as you would any fact, rewrite the wording to match the channel
+   voice, and drop anything you cannot confirm. If it is missing, stale, or doesn't match, write the script
+   yourself exactly as before — this file never blocks you.
 5a. **Instagram + Facebook numbers** — once a day, in the story-hour run only, when `docs/research/social.json` `updated` is older than 20 hours. With the Composio tools (accounts `sneakydealstv` and the "Sneaky Deals" page, id 1392110527326521):
    `INSTAGRAM_GET_IG_USER_MEDIA` ig_user_id `me`, fields `id,caption,permalink,timestamp,like_count,comments_count,insights.metric(views,reach,saved,shares)`;
    `FACEBOOK_GET_PAGE_POSTS` page_id above, fields `id,message,created_time,permalink_url,status_type,reactions.summary(true),comments.summary(true),shares`

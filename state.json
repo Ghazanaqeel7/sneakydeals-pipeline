@@ -538,6 +538,14 @@
       "how": "Nothing to click: just never do it. Mark done once read.",
       "link": "https://support.google.com/youtube/answer/1311392",
       "done": false
+    },
+    {
+      "id": "gemini_key",
+      "title": "Add GEMINI_API_KEY as a repo secret (for the new gemini-draft bot)",
+      "why": "Lets a free GitHub Actions bot pre-draft Short scripts and long-form outlines using your Google AI Pro Gemini credits, so Claude only has to fact-check and polish instead of writing from scratch -- cuts your Claude token usage.",
+      "how": "Get a key at aistudio.google.com/apikey (uses your Google AI Pro account/credits), then GitHub repo -> Settings -> Secrets and variables -> Actions -> New repository secret -> name GEMINI_API_KEY, paste the key.",
+      "link": "https://aistudio.google.com/apikey",
+      "done": false
     }
   ]
 }

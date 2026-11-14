@@ -52,7 +52,12 @@ Use real photos for people/places/objects of history; charts/maps/stats for numb
 
 ## Run steps
 1. Script stage (story hour 11:00-11:59 PKT, or when a `[LONG]` idea exists): `python3 pipeline/scripts/pop_idea.py --long`; else pick the best hook from
-   `docs/research/news_hooks.json` whose brand has a real backstory. Max ONE long job in the pipeline at a time. Write the files above,
+   `docs/research/news_hooks.json` whose brand has a real backstory. Max ONE long job in the pipeline at a time.
+   **Token-saving draft:** check `docs/research/gemini_draft.json` first — if `format` is `long` and the topic matches,
+   it has an UNVERIFIED outline + a `claims` list from Gemini (free GitHub Actions run, not your session). Treat it as
+   a rough starting skeleton only: verify every claim with your own 2-source rule before it goes in `factmap.md`,
+   rewrite everything in the channel voice, and drop anything unconfirmed. Missing/stale/mismatched → write from
+   scratch as before. Write the files above,
    run `python3 pipeline/longform/validate_long.py jobs/<id>` until it has no ERROR, commit, push, then `set_status <id> script_ready type=long`.
 2. `script_approved` (long): `set_status <id> building`; fix any scene problems with `bash pipeline/longform/stills_long.sh jobs/<id>` (needs sample timing: run
    locally only if `timing.json` was generated; otherwise skip), then commit/push and `set_status <id> render_queued`. **Do not render locally** — `render_long.yml` does voice, images, music, render, thumbnail and sets `video_ready`.
