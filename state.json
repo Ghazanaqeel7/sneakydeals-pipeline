@@ -487,9 +487,13 @@
           "t": "2026-11-14T17:20:40Z",
           "msg": "🖼 Thumbnail tayyar — ab GitHub par render shuru hoga (~40 min)",
           "image": "jobs/006-hoover-free-flights/thumbnail.jpg"
+        },
+        {
+          "t": "2026-11-14T17:21:29Z",
+          "msg": "🎞 Render shuru (GitHub). Andaza: ~30-50 min."
         }
       ],
-      "progress_count": 5,
+      "progress_count": 6,
       "decided_via": "dashboard",
       "decided_at": "2026-11-14T12:28:34Z",
       "run": "43620596837"
