@@ -477,9 +477,14 @@
         {
           "t": "2026-11-14T17:09:44Z",
           "msg": "🎙 Voice ban rahi hai… (~3 min baqi, phir scenes ~45 min, render ~40 min)"
+        },
+        {
+          "t": "2026-11-14T17:20:37Z",
+          "msg": "🔍 Check frames: shop, travel hall, accounts, boardroom aur factory scenes theek lag rahe hain (chhoti fixes laga di) (render ~40 min)",
+          "image": "jobs/006-hoover-free-flights/review/round1.jpg"
         }
       ],
-      "progress_count": 3,
+      "progress_count": 4,
       "decided_via": "dashboard",
       "decided_at": "2026-11-14T12:28:34Z"
     }
