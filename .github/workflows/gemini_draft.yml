@@ -1,0 +1,39 @@
+name: gemini-draft
+# Gemini draft-assist (free Actions compute + owner's existing Gemini credits, NOT Claude).
+# Writes docs/research/gemini_draft.json: an UNVERIFIED first-draft script (Short) or
+# outline+claims (Long) for the next planned calendar item / [LONG] idea. Claude reads this
+# in its own run, fact-checks and rewrites it, instead of writing the first draft itself --
+# this is purely to cut Claude's token usage, never a source of truth on its own.
+# Needs repo secret GEMINI_API_KEY. Never touches jobs, feeds, publishing or state.json.
+on:
+  schedule:
+    - cron: '30 5 * * *'   # 05:30 UTC = 10:30 PKT, 30 min before the 11:00 story-hour run
+  workflow_dispatch: {}
+
+concurrency:
+  group: gemini-draft
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 1 }
+
+      - name: Run Gemini draft
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python3 pipeline/scripts/gemini_draft.py
+
+      - name: Commit draft if changed
+        run: |
+          git config user.name "gemini-draft-bot"
+          git config user.email "gemini-draft-bot@users.noreply.github.com"
+          git add docs/research/gemini_draft.json
+          git diff --cached --quiet || git commit -m "gemini-draft: refresh unverified draft"
+          git push || true
