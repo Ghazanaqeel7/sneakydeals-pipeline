@@ -482,9 +482,14 @@
           "t": "2026-11-14T17:20:37Z",
           "msg": "🔍 Check frames: shop, travel hall, accounts, boardroom aur factory scenes theek lag rahe hain (chhoti fixes laga di) (render ~40 min)",
           "image": "jobs/006-hoover-free-flights/review/round1.jpg"
+        },
+        {
+          "t": "2026-11-14T17:20:40Z",
+          "msg": "🖼 Thumbnail tayyar — ab GitHub par render shuru hoga (~40 min)",
+          "image": "jobs/006-hoover-free-flights/thumbnail.jpg"
         }
       ],
-      "progress_count": 4,
+      "progress_count": 5,
       "decided_via": "dashboard",
       "decided_at": "2026-11-14T12:28:34Z"
     }
