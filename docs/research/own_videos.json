@@ -115,6 +115,12 @@
      "views": 759,
      "likes": 14,
      "comments": 0
+    },
+    {
+     "t": "2026-11-14T07:39:05Z",
+     "views": 759,
+     "likes": 14,
+     "comments": 0
     }
    ],
    "title": "Pepsi Got Paid in 17 Soviet Submarines 🤯",
@@ -217,6 +223,12 @@
      "views": 1373,
      "likes": 43,
      "comments": 0
+    },
+    {
+     "t": "2026-11-14T07:39:05Z",
+     "views": 1373,
+     "likes": 43,
+     "comments": 0
     }
    ],
    "title": "Disney Secretly Bought a Swamp Using Fake Names",
@@ -289,6 +301,12 @@
      "views": 310,
      "likes": 19,
      "comments": 0
+    },
+    {
+     "t": "2026-11-14T07:39:05Z",
+     "views": 320,
+     "likes": 19,
+     "comments": 0
     }
    ],
    "title": "This Man Bought $3,000 of Pudding for Free Flights",
@@ -296,15 +314,15 @@
    "seconds": 57,
    "thumb": "https://i.ytimg.com/vi/e9HCNu75-2U/mqdefault.jpg",
    "short": true,
-   "views_24h": 177,
+   "views_24h": 187,
    "likes": 19,
    "comments": 0,
    "age_days": 1.3,
    "views_1d": null,
    "views_3d": null,
    "views_7d": null,
-   "views": 310,
-   "like_rate": 0.061
+   "views": 320,
+   "like_rate": 0.059
   },
   "rLOX2z_OqaQ": {
    "snaps": [
@@ -325,6 +343,12 @@
      "views": 269,
      "likes": 14,
      "comments": 0
+    },
+    {
+     "t": "2026-11-14T07:39:05Z",
+     "views": 271,
+     "likes": 14,
+     "comments": 0
     }
    ],
    "title": "Piggly Wiggly's Founder Tried to Beat Wall Street",
@@ -332,18 +356,18 @@
    "seconds": 55,
    "thumb": "https://i.ytimg.com/vi/rLOX2z_OqaQ/mqdefault.jpg",
    "short": true,
-   "views_24h": 269,
+   "views_24h": 271,
    "likes": 14,
    "comments": 0,
    "age_days": 0.5,
    "views_1d": null,
    "views_3d": null,
    "views_7d": null,
-   "views": 269,
+   "views": 271,
    "like_rate": 0.052
   }
  },
- "updated": "2026-11-14T07:08:39Z",
+ "updated": "2026-11-14T07:39:05Z",
  "channel": {
   "snaps": [
    {
@@ -433,6 +457,11 @@
    },
    {
     "t": "2026-11-14T07:08:39Z",
+    "subs": 7,
+    "views": 2405
+   },
+   {
+    "t": "2026-11-14T07:39:05Z",
     "subs": 7,
     "views": 2405
    }
