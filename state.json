@@ -458,6 +458,11 @@
       "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/005-pepsi-harrier-jet.mp4",
       "yt_scheduled_for": "2026-11-15T00:00:00Z",
       "yt_queued_at": "2026-11-13T12:09:46Z"
+    },
+    "006-hoover-free-flights": {
+      "status": "script_ready",
+      "updated": "2026-11-14T06:18:06Z",
+      "title": "Hoover Gave Away Free Flights. It Cost Them Millions."
     }
   },
   "ideas": [
