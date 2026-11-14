@@ -499,9 +499,13 @@
         {
           "t": "2026-11-14T17:56:33Z",
           "msg": "⏳ Render 50% (716/1431 frames). Baqi waqt: 2h 18m 24s"
+        },
+        {
+          "t": "2026-11-14T18:13:35Z",
+          "msg": "⏳ Render 75% (1085/1431 frames). Baqi waqt: 1h 6m 1s"
         }
       ],
-      "progress_count": 8,
+      "progress_count": 9,
       "decided_via": "dashboard",
       "decided_at": "2026-11-14T12:28:34Z",
       "run": "43620596837"
