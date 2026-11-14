@@ -457,7 +457,7 @@ function systemsInfo(){
   const live=S.feed[0];
   const nextBuild=Object.values(st.jobs).some(j=>['script_approved','render_failed','script_rejected','video_rejected'].includes(j.status));
   return [
-    ['Claude',cl?'ok':'warn',cl?'Last work '+ago(cl.commit.author.date):'No commits yet',nextBuild?'Has work queued — checks hourly':'Checks hourly · new story 11:00'],
+    ['Claude',cl?'ok':'warn',cl?'Last work '+ago(cl.commit.author.date):'No commits yet',nextBuild?'Has work queued — next run 11:08, 16:08 or 22:08 PKT':'Runs 11:08, 16:08, 22:08 PKT · new story 11:08'],
     ['n8n → Slack',n8?'ok':'warn',n8?'Last write '+ago(n8.commit.author.date):'No writes yet','Polls every 1–2 min (laptop on)'],
     ['GitHub render',runState[0],run?`${runState[1]} · ${ago(run.updated_at)}`:'No runs',run?`<a href="${run.html_url}" target="_blank">open run ↗</a>`:''],
     ['Zapier → YouTube',live?'ok':'',live?esc(live.title).slice(0,30)+'…':'Nothing sent yet',live?'Handed over '+ago(live.date):`Next slot ${nextSlotText(st)}`]];
@@ -568,7 +568,7 @@ function actionBar(id,j,lastP){
     btns=`<button class="btn"${lock} onclick="unapprove('${id}')">Pull back to review</button>`}
   else if(s==='published'&&j.live_at&&new Date(j.live_at)>new Date()){msg=`<b>On YouTube, scheduled for ${pt2(j.live_at)}.</b><span>It is uploaded and set to go public by itself. Pin this comment once it is live: <i id="pinned"></i></span>`;btns=`<a class="btn" href="https://studio.youtube.com" target="_blank">Open YouTube Studio ↗</a>`}
   else if(s==='published'){msg=`<b>Handed to YouTube.</b><span>Pin this comment once it is live: ${esc('')}<i id="pinned"></i></span>`;btns=`<a class="btn" href="https://studio.youtube.com" target="_blank">Open YouTube Studio ↗</a>`}
-  else if(s==='render_failed'){msg=`<b>Render failed.</b><span>Claude retries in its next hourly run. ${j.render_error?esc(j.render_error):''}</span>`;btns=j.run?`<a class="btn" target="_blank" href="https://github.com/${OWNER}/${REPO}/actions/runs/${j.run}">See the log ↗</a>`:''}
+  else if(s==='render_failed'){msg=`<b>Render failed.</b><span>Claude retries in its next run (11:08, 16:08 or 22:08 PKT). ${j.render_error?esc(j.render_error):''}</span>`;btns=j.run?`<a class="btn" target="_blank" href="https://github.com/${OWNER}/${REPO}/actions/runs/${j.run}">See the log ↗</a>`:''}
   else if(s==='dropped'){msg=`<b>Dropped.</b><span>This story will not be made.</span>`}
   else{msg=`<b>${esc(info(j)[1])}…</b><span>${lastP?esc(lastP.msg)+' · '+ago(lastP.t):'Nothing to do — this updates live.'}</span>`}
   return `<div class="actionbar"><div class="msg">${msg}</div>${btns}</div>`;
@@ -689,7 +689,7 @@ async function renderToday(){
   const needCard=([id,j])=>{const s=j.status,script=s.startsWith('script'),fail=s==='render_failed';
     const media=script?`<div class="ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#8A5A00" stroke-width="1.6" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg></div>`:`<img class="th" alt="" src="${th(id,j)}" onerror="this.onerror=null;this.src='logo.png'">`;
     const tag=fail?'<span class="chip c-bad">Render failed</span>':script?'<span class="chip c-wait">Script · read &amp; approve</span>':'<span class="chip c-wait">Video · watch &amp; approve</span>';
-    const ds=fail?'Claude retries in its next hourly run — nothing for you to do unless it fails again.':script?'Read the voice-over, then approve or tell Claude what to change. Same as ✅ / ❌ in Slack.':'Watch it, check the thumbnail, then approve. It goes to YouTube, Instagram and Facebook on the next free morning.';
+    const ds=fail?'Claude retries in its next run (11:08, 16:08 or 22:08 PKT) — nothing for you to do unless it fails again.':script?'Read the voice-over, then approve or tell Claude what to change. Same as ✅ / ❌ in Slack.':'Watch it, check the thumbnail, then approve. It goes to YouTube, Instagram and Facebook on the next free morning.';
     const ac=fail?`<button class="btn" onclick="pick('${id}')">See details</button>`:`<button class="btn go" onclick="pick('${id}')">${script?'Read &amp; approve':'Watch &amp; approve'}</button><button class="btn" onclick="pick('${id}','${script?'script':'media'}')">${script?'Full script':'Video &amp; thumbnail'}</button>`;
     return `<div class="card need ${fail?'':'urgent'}">${media}<div class="bd"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">${tag}<span class="note" style="margin:0">${esc(id)} · ${ago(j.updated)}</span></div><div class="tt">${esc(j.title||titleFromId(id))}</div><div class="ds">${ds}</div><div class="ac">${ac}</div></div></div>`};
   // next post
@@ -736,7 +736,7 @@ function pipelineBoard(entries){
     if(s==='video_ready'||s==='video_sent')return['wait','Waiting on you'];
     if(s==='render_failed')return['bad','Render failed — retrying'];
     if(s==='video_rejected')return['work','Fixing your notes'];
-    if(s==='script_approved')return['work','Starts within the hour'];
+    if(s==='script_approved')return['work','Starts at the next run (11:08, 16:08 or 22:08 PKT)'];
     if(['building','render_queued','rendering'].includes(s)){const lp=(j.progress||[]).slice(-1)[0];return['work',info(j)[1]+(lp?' · '+ago(lp.t):'')]}
     if(slots[id])return['','Goes '+pkt(slots[id])];
     if(j.live_at)return['',(new Date(j.live_at)>new Date()?'Goes ':'Live ')+pkt(j.live_at)];

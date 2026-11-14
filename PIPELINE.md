@@ -38,9 +38,12 @@ your files. Never hand-edit state.json and never force-push (n8n writes to it th
 
 ## Every run, in this order (do at most ONE build per run)
 
-The task runs **every hour**, so an approved script starts building within an hour of the owner's ✅.
+The task runs **3 times a day** (11:08, 16:08 and 22:08 Asia/Karachi) to save the owner's Claude limit, so an approved script
+starts building at the next of those runs. Publishing, scheduling, Slack, stats and live checks run on GitHub Actions and never wait for Claude.
+**Claude-limit rules:** never render video inside a Claude session (stills only, at most 3 frames per check; every full or preview render goes to
+GitHub Actions); read only the files a step needs; finish every pending fix/build this run can do in order, but still at most ONE build.
 **Quick exit first:** read `state.json`. If no job is `script_approved`, `render_failed`, or `*_rejected` with
-`feedback`, AND it is not the story hour (step 5), AND `docs/research/social.json` is less than 6 h old (step 5a), AND there is no long-form work (step 5b: long-form on, no open long job, and a `[LONG]` idea queued), stop right away with a one-line summary — do not load the skill,
+`feedback`, AND it is not the story hour (step 5), AND (step 5a happens only in the story-hour run), AND there is no long-form work (step 5b: long-form on, no open long job, and a `[LONG]` idea queued), stop right away with a one-line summary — do not load the skill,
 install anything, or research. If another job is already `building`, do not start a second build.
 
 0. Setup: `git config user.name "claude-pipeline"`, `git config user.email "claude-pipeline@users.noreply.github.com"`.
@@ -67,8 +70,7 @@ install anything, or research. If another job is already `building`, do not star
    push the script, set that item's `status` to `"scripted"` and `"job": "<id>"`, commit + push. If the item is
    `format: "long"` and long-form is enabled, make it as a long job (docs/longform_guide.md); if long-form is off, make it as a Short and keep its long idea in
    `long_later`. Only if the calendar has no planned item, pick your own story.
-5a. **Instagram + Facebook numbers** — when `docs/research/social.json` `updated` is older than 6 hours (this is an exception to the
-   quick exit). With the Composio tools (accounts `sneakydealstv` and the "Sneaky Deals" page, id 1392110527326521):
+5a. **Instagram + Facebook numbers** — once a day, in the story-hour run only, when `docs/research/social.json` `updated` is older than 20 hours. With the Composio tools (accounts `sneakydealstv` and the "Sneaky Deals" page, id 1392110527326521):
    `INSTAGRAM_GET_IG_USER_MEDIA` ig_user_id `me`, fields `id,caption,permalink,timestamp,like_count,comments_count,insights.metric(views,reach,saved,shares)`;
    `FACEBOOK_GET_PAGE_POSTS` page_id above, fields `id,message,created_time,permalink_url,status_type,reactions.summary(true),comments.summary(true),shares`
    (keep only `added_video`), plus `FACEBOOK_GET_POST_INSIGHTS` per video for `post_media_view` = views; page `followers_count` from
