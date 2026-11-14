@@ -1,0 +1,18 @@
+{
+  "generated_at": "2026-11-14T12:13:18.585120+00:00",
+  "format": "short",
+  "item_day": "Sun 15 Nov",
+  "topic": "Blockbuster laughed at the chance to buy Netflix for $50 million",
+  "title": "Blockbuster Laughed at Netflix for $50 Million",
+  "unverified": true,
+  "note": "Gemini first draft, NOT fact-checked. Claude must verify every claim with its own 2-source rule before using any of it in a real job file.",
+  "draft_script": "This is a story about a massive business blunder. It involves Blockbuster and Netflix. In the year 2000, Netflix was struggling. They offered to sell their entire company. The buyer? Blockbuster. The price? A mere $50 million. Blockbuster executives met with Netflix founder Reed Hastings. They reportedly laughed him out of the room. Blockbuster saw no future in online DVD rentals. They dominated the physical video rental market. They believed Netflix was a tiny niche player. Blockbuster had thousands of stores. They had billions in revenue. Netflix had a small subscriber base. Fast forward a few years. Netflix pivoted to streaming. They grew exponentially. Blockbuster failed to adapt. Their business model crumbled. Blockbuster filed for bankruptcy in 2010. Today, Netflix is a global entertainment giant. Its market capitalization is over $200 billion. One Blockbuster store remains open. A $50 million investment could have changed everything. This wasn't just a bad deal. It was a monumental misjudgment of the future.",
+  "claims": [
+    "Netflix offered to sell to Blockbuster in the year 2000.",
+    "The offer price was $50 million.",
+    "Blockbuster executives reportedly laughed Reed Hastings out of the room.",
+    "Blockbuster filed for bankruptcy in 2010.",
+    "Netflix's market capitalization is over $200 billion.",
+    "Only one Blockbuster store remains open."
+  ]
+}
