@@ -460,8 +460,8 @@
       "yt_queued_at": "2026-11-13T12:09:46Z"
     },
     "006-hoover-free-flights": {
-      "status": "video_ready",
-      "updated": "2026-11-14T18:30:44Z",
+      "status": "video_approved",
+      "updated": "2026-11-14T19:23:01Z",
       "title": "Hoover Gave Away Free Flights. It Cost Them Millions.",
       "vote_msg": "1794637103.737299",
       "vote_kind": "script",
@@ -503,11 +503,15 @@
         {
           "t": "2026-11-14T18:13:35Z",
           "msg": "⏳ Render 75% (1085/1431 frames). Baqi waqt: 1h 6m 1s"
+        },
+        {
+          "t": "2026-11-14T19:23:01Z",
+          "msg": "✅ You approved the video + thumbnail on the dashboard. It goes to YouTube at the next publish slot."
         }
       ],
-      "progress_count": 9,
+      "progress_count": 10,
       "decided_via": "dashboard",
-      "decided_at": "2026-11-14T12:28:34Z",
+      "decided_at": "2026-11-14T19:23:01Z",
       "run": "43620596837",
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-006-hoover-free-flights/final.mp4",
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-006-hoover-free-flights/preview.mp4",
