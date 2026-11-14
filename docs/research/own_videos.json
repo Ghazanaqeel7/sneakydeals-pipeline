@@ -109,6 +109,12 @@
      "views": 759,
      "likes": 14,
      "comments": 0
+    },
+    {
+     "t": "2026-11-14T07:08:39Z",
+     "views": 759,
+     "likes": 14,
+     "comments": 0
     }
    ],
    "title": "Pepsi Got Paid in 17 Soviet Submarines 🤯",
@@ -205,6 +211,12 @@
      "views": 1373,
      "likes": 43,
      "comments": 0
+    },
+    {
+     "t": "2026-11-14T07:08:39Z",
+     "views": 1373,
+     "likes": 43,
+     "comments": 0
     }
    ],
    "title": "Disney Secretly Bought a Swamp Using Fake Names",
@@ -212,7 +224,7 @@
    "seconds": 56,
    "thumb": "https://i.ytimg.com/vi/mm0ShpBg_4Y/mqdefault.jpg",
    "short": true,
-   "views_24h": 8,
+   "views_24h": 3,
    "likes": 43,
    "comments": 0,
    "age_days": 2.2,
@@ -271,6 +283,12 @@
      "views": 310,
      "likes": 19,
      "comments": 0
+    },
+    {
+     "t": "2026-11-14T07:08:39Z",
+     "views": 310,
+     "likes": 19,
+     "comments": 0
     }
    ],
    "title": "This Man Bought $3,000 of Pudding for Free Flights",
@@ -278,7 +296,7 @@
    "seconds": 57,
    "thumb": "https://i.ytimg.com/vi/e9HCNu75-2U/mqdefault.jpg",
    "short": true,
-   "views_24h": 166,
+   "views_24h": 177,
    "likes": 19,
    "comments": 0,
    "age_days": 1.3,
@@ -301,6 +319,12 @@
      "views": 269,
      "likes": 14,
      "comments": 0
+    },
+    {
+     "t": "2026-11-14T07:08:39Z",
+     "views": 269,
+     "likes": 14,
+     "comments": 0
     }
    ],
    "title": "Piggly Wiggly's Founder Tried to Beat Wall Street",
@@ -319,7 +343,7 @@
    "like_rate": 0.052
   }
  },
- "updated": "2026-11-14T06:04:12Z",
+ "updated": "2026-11-14T07:08:39Z",
  "channel": {
   "snaps": [
    {
@@ -404,6 +428,11 @@
    },
    {
     "t": "2026-11-14T06:04:12Z",
+    "subs": 7,
+    "views": 2405
+   },
+   {
+    "t": "2026-11-14T07:08:39Z",
     "subs": 7,
     "views": 2405
    }

@@ -1,17 +1,201 @@
 {
- "updated": "2026-11-13T07:27:32Z",
+ "updated": "2026-11-14T07:08:55Z",
  "hooks": [
   {
-   "title": "Meta closes Russell Brand’s Facebook and Instagram accounts",
-   "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPMTFfQjM5dTlzR1RJZ29WMmVmZVhKNXN1LUN4WWYtMXk4UHhncjc4VHJxTTJPUG1LVUhtMkYyRXd4a3c0WkxTaWJNelY5eTBLMVFJejJVNV82MnM4NXN1QXhsUFJDYXNuTWNuYTBnb2VSTjloV193UVNfRDVQTTFwRHNuSGZWZWJjSDhPRW9DMnNDYTZDdGE0cHBHdXFuWjRwUEE1T2dVY0w3UVJ5emRvNnVB?oc=5",
-   "source": "The Times",
-   "region": "UK",
-   "date": "2026-11-12T14:17:51Z",
-   "score": 14,
+   "title": "Oregon high-capacity battery company files for bankruptcy and shuts down, laying off everyone",
+   "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxPT2tZRlltOHNGVU5YNDhkNHljZ056Si1NUHhTYTFySzI4WjZsTXNySENzbnB2d0c2RDc3Y3lHX2dNWGxZdEJqbXYtV3l3YV85ZkYyX29GZEFGWHRFVHRacTFuY0tIZjQzdGplLUZHVjJ1eHRtZVh5aWphNzRSR2VlYy1mVzE5QnFMLWJTZjlRSkZObVc2bUVOQnhhQ1pKRVZvTERsU3J1VzVYYUFQN2pTODdvQkhBTWZCUDBOSGNyR3ByY2ZCVHZPNkl5TEJTTkQ4d0hRRUd2QTTSAewBQVVfeXFMT0t6TXZlYWxlMVdkbGJNWWszMVBubFBaQ1I1SE9yQ3FGa0hvU19OVDlOaVNqQnhrTU1WaU1Eb1VuUDJ0Sk1MMmF2Z1doT1N2OWd1dllBNm9QaV8zbGhNZ0FDdDJJOUl5X0d2WUNqTThBUmpuT0xkMDlrMXAzZ2RKbTctUWlVSGdiSGZaaWNxMGdmaktOMDZwOEtIUW5wRXc5RzNNSHhRd0x1eGxHSjBmcVQ4aGtyTWs4X1ZTSUg2MmxfR1l6N0NOY3k4d2NrbVUydG1wUG9zd3lUVVN5clVhdmRnNkhxa2NvX0hmVi0?oc=5",
+   "source": "OregonLive.com",
+   "region": "US",
+   "date": "2026-11-14T01:19:00Z",
+   "score": 16,
    "why": [
-    "closes",
-    "brand",
-    "loses"
+    "bankruptcy",
+    "shuts",
+    "bank"
+   ]
+  },
+  {
+   "title": "The Children's Place closing stores after filing Chapter 11 bankruptcy",
+   "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQUm0xZlRkWXhCeEVkQ3FmanpKMl9fRE1zR18ySDNDdXlCMGRMb2RlQndsNmZTS2JyYTJObFlmVUF1MXp1aUtHT2xLZ0NDUFVmWUlWX0lpQngtX2QweTc3X1ZTVHNCWmhyd05ncGVmRkZwZnYwU0Izcno5bjU0Z0VDVGY2TTdGVjRSb2xBNmdDQlNfRDRBaVdnaUdtdmp3LW1PSG4xNQ?oc=5",
+   "source": "Yahoo Finance",
+   "region": "US",
+   "date": "2026-11-12T20:37:00Z",
+   "score": 16,
+   "why": [
+    "bankruptcy",
+    "closing",
+    "stores",
+    "bank"
+   ]
+  },
+  {
+   "title": "Exemplar Luxury Group CEO Says Company Is Stronger After Saks Emerged From Bankruptcy",
+   "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxPWnkxT3pBaGpSYzF4a29pelBrSTRjRlJ4MzUwLU1pMWE4UmFGMHBhbjBxNE8tRjRzLTBRWm9jcWMzaDR2MWVFcWUzYmR1MmNlQ0dTM2MxY002NERaeUQweFZRaUtzRWhwX0lNRUlqR2VCVkRlVzRZaS1TOV80UTJUN1JNUjZKMVJ0QV9kNTBSQ2Vxc1diQUw0bDJLbXBTb0VHQ1dhaTRtOTlFUjZyZ0M3U1hrUGRYcnNCQWhZY09ncVg3SWJPM3M4SnJWVkV3R0N3a0M3WHZBWWJtcEc1MGl4X25R?oc=5",
+   "source": "TradingView",
+   "region": "US",
+   "date": "2026-11-13T23:07:23Z",
+   "score": 15,
+   "why": [
+    "bankruptcy",
+    "ceo",
+    "bank"
+   ]
+  },
+  {
+   "title": "Papa John’s franchisee announces bankruptcy and becomes latest chain operator to face financial troubles",
+   "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOSlVmVVZPV3ZGZmQ5UnB1MUpYVThXR0xEc2xRTklJbFFNYnJrdW1DQnVhVm0wcE0za3lDbG9lbjFlcnBaT2I3LTZmaERjLVA0cVZ5MVBmSGhZN0YwLUFLdm9VT1dybVVKTTdsUXJqcnROZ2dmXzhZeXc2Wi1YalRjcUFXblczRmJlMUh3TldR?oc=5",
+   "source": "The Independent",
+   "region": "UK",
+   "date": "2026-11-13T22:47:00Z",
+   "score": 15,
+   "why": [
+    "bankruptcy",
+    "chain",
+    "bank"
+   ]
+  },
+  {
+   "title": "Salmon processor files for bankruptcy, 300 jobs at risk",
+   "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNMVB1ektidmhyVHo4b3U0cEVnbUlyLTVYWV9ibUZrMFJwUUxTbjQxdnQxYktiRFB1bkxOWUVNbFdqb3hUejRybS01a19KNVFGM0E1S3paTEtKdm1VbnFFdmVxWXpObkQ0UWlHVTcwdGJNQTdFZHNSa2JIT2NVeDJvQk9qcVo2SlFIVkxzMm5LbXItX2dza3dDVUVhSkJGSzFad2tBMHdB?oc=5",
+   "source": "IntraFish",
+   "region": "US",
+   "date": "2026-11-13T10:09:33Z",
+   "score": 12,
+   "why": [
+    "bankruptcy",
+    "bank"
+   ]
+  },
+  {
+   "title": "Danish biogas firm Combigas files for bankruptcy after China bet fails",
+   "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1HRkRDMVQxNllSVlo4SnZhRXpxbUJMNDVhUDk3b2I2aHZWeWZ3dWU4bmp1Uk1ELWd4ZE51ZXRlbEQwbV9QQlJ6RERZQVpiLUQwbktqYXlYYmgtUk1qeHBlSXp2dXJ4cGxzZFE3R3ExLW10Zw?oc=5",
+   "source": "EnergyWatch",
+   "region": "US",
+   "date": "2026-11-13T10:56:03Z",
+   "score": 12,
+   "why": [
+    "bankruptcy",
+    "bank"
+   ]
+  },
+  {
+   "title": "Great Outdoors Comedy Festival vendors face payment uncertainty after Trixstar bankruptcy",
+   "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQZGJiT1RCaHhmZGc1ZFFKM0FhYUxzc1l1NkJfYnM5MWdDRGNxYmlOTnd1ZW85RU5pdHFtZHVGNlRuSkN1MktxZW5JSjZsRmZLUWlTb2JWUGhCTTl2eHVyTGhjQkRNSVdkUmxJSzdhWGp3RUdVb2hpdFV4Smxra3ZJUzltOVJ5TkZaNDhiWkgtQThQSmQ1OXYyZmJwM3MxVUhJUmxIdUdiekRJYkxUY2Jyb25TZnE3RGFoVEs5NVZESV9hLXRQVVFB?oc=5",
+   "source": "PNI Atlantic News",
+   "region": "US",
+   "date": "2026-11-13T20:50:19Z",
+   "score": 12,
+   "why": [
+    "bankruptcy",
+    "bank"
+   ]
+  },
+  {
+   "title": "Edmonton company behind Great Outdoors Comedy Festival files for bankruptcy",
+   "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNODBlUWxVSlg0UW9keFpaMkhyRmZaYzRuU29tRUlTVXczWjU3RGNYM3EwX2RrWEppT04zcERVSV9KeGhaSDgxV3hkSEpSeXNJUnZJTmpOZHFCQWpVV0Q2cHM5eXJBeW1lQWpUeExxTlFOU0FwVmx3UlJnM3JUejZLOG42Z3NYZw?oc=5",
+   "source": "Yahoo News Canada",
+   "region": "US",
+   "date": "2026-11-13T21:36:13Z",
+   "score": 12,
+   "why": [
+    "bankruptcy",
+    "bank"
+   ]
+  },
+  {
+   "title": "Great Outdoors Comedy Festival organizer announces bankruptcy",
+   "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNS1BtWGx2b0hIMDZQaXR6cE1MQU1Wb3lFQzdId1hZTnZvd3dzT1BIT2g0M3pfQWFieU1VS0Joa0xlQnFOVF9mUHRuNXdZcHkxUlh5VkF4bGl2Z3dJVGs5Wmdvb2tBM1o0eHBHMDF5bjBtUS1ST3E3QlRscVRPMFBXSEZRYUM0TEYtdERsSnB2YWkzT2VYV3pPNHFR?oc=5",
+   "source": "CBC",
+   "region": "US",
+   "date": "2026-11-13T20:38:10Z",
+   "score": 12,
+   "why": [
+    "bankruptcy",
+    "bank"
+   ]
+  },
+  {
+   "title": "Great Outdoors Comedy Festival organizer enters bankruptcy",
+   "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPMmgtRWpidzVTZm83UHBqbFk3RnVHYTRINHlNd1lvRmlNM2ptWHA3QjlHRWh1RnZ1bTA2MVh2empTSk5uMmN3UDVlMUNtYmp2YWE0Sy1oZktZcFJrUm5EVk1xUmlDQi1IUDNUd0hRNmVCQmlzZE9GZnVZZVd0RzV4cTFnXzlockdEcl9maEstTmhrLS10VlV6bHFHU0dSMEVOZjF6dUdOUWRrMm0yN1VoQUtlVUVjV1dXU3hFeQ?oc=5",
+   "source": "BNN Bloomberg",
+   "region": "US",
+   "date": "2026-11-13T18:25:08Z",
+   "score": 12,
+   "why": [
+    "bankruptcy",
+    "bank"
+   ]
+  },
+  {
+   "title": "Company behind Great Outdoors Comedy Festival files for bankruptcy",
+   "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNSHVtcnRXaVI5VUJtSEphdHZRdXNsbDRqLVRNWmpNWFctSlk4b3g3bXp0dzlmOUZNMnJVY0puZ1hpQXBLU2ViajRmb0lJWDdaNWZic0QzNm4zRzBQU3VobTJnQ2ZWb0JvSWdaVzlIeUdmZHYtcktnQjM0XzNIaE9LMWVzeWhFOEN5NFVxSVlfRmJNanVXRmpNTThHaWQ?oc=5",
+   "source": "Your Sunset Country",
+   "region": "US",
+   "date": "2026-11-13T17:15:50Z",
+   "score": 12,
+   "why": [
+    "bankruptcy",
+    "bank"
+   ]
+  },
+  {
+   "title": "ESS Tech Ceases Operations and Files for Chapter 7 Bankruptcy",
+   "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxONHg1ak0zTXZGVlcwNm9UZVJrNXNmWUlDU3Nfd21nV29kSkhwVndkM1JNU01HRzVsd0F3c25aRWN0LW5QNUlQdlI1NnZmSGU5dFpaNkctQkItbVF6elREOFlmRDRsLTBIQUR6Q0M0RWZBaE1Cekg0eDhtVkU3NGhZWG55SXBGMVQwSXVoWWMzcTBad2RjVzRQSGx3YU5UMnh2b1RzRUx3dUJhelVCcXA5X3lZUQ?oc=5",
+   "source": "TipRanks",
+   "region": "US",
+   "date": "2026-11-13T21:41:26Z",
+   "score": 12,
+   "why": [
+    "bankruptcy",
+    "bank"
+   ]
+  },
+  {
+   "title": "Canal bank breached and homes flooded after pipe collapse",
+   "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5waFZ6VksyUWN1bUxMZ3dtalByenZ2S2VuTy1vZnBlZzJHZTVQTURYV05TQldqUFZ2VXZGby10S2xPNGM1LXkyVHRIeUNvZzl0ZjJjZlFqaUluUC1VaUE?oc=5",
+   "source": "BBC",
+   "region": "UK",
+   "date": "2026-11-13T10:12:39Z",
+   "score": 12,
+   "why": [
+    "collapse",
+    "bank"
+   ]
+  },
+  {
+   "title": "Jo Whiley recalls disturbing message from Russell Brand that made her ‘shudder’",
+   "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPY0NrX3VXQldTcXVXbDc1am9nd2dfRTJfM3BwZGRGLV9vVUw4ZW00QUJid3pHajFDQmpzdXZPTVhGSHVJWDRxNHlSWlczQms2MVRkY2JhSjFpZXZuMGx4Q3kxZzR5NllDSFZEUlJiWkVCU2p1VW9TN1Z2c011MnVPRWYxZkNzZ0xvS0F5YlVXdFJveEZKSnJzNVFvLS1rTW50aWg1WUlMOFJWREh6SUtsMDZhSlhFVWlpNFRTRlJqVmt6ek9S?oc=5",
+   "source": "London Evening Standard",
+   "region": "UK",
+   "date": "2026-11-13T21:55:04Z",
+   "score": 12,
+   "why": [
+    "recall",
+    "brand"
+   ]
+  },
+  {
+   "title": "Paraguay looks to restore confidence to financial system following bank collapse",
+   "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPTzdkTE53cVc2TzFTNmpqSWlMNU1adE1OdWgtbk1TRVdWRkFlcmdaVlRWeGVFVHgtWFNYZl9RM0hqbWNQRFpvalEwNjJ6SHRjSmlRYU9YdGR4UGRTTEUwclFlRmRHU19sNlAyeTNwMGY4TnY1YUJqVzVmWi1nT1lqbkEzRkduazl2V01fNVYtQQ?oc=5",
+   "source": "CNN",
+   "region": "UK",
+   "date": "2026-11-13T22:21:14Z",
+   "score": 12,
+   "why": [
+    "collapse",
+    "bank"
+   ]
+  },
+  {
+   "title": "OW Collection Founder Sonja Davidsen On Building a Fashion Brand From the Faroe Islands to Los Angeles",
+   "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQTDhkRUJ3VEhEdU5mekFtR19HeVVHSnBENU5yU21SbVoyY1VfTXA1TmJUNVBHZHF0cEUxNHo0RDlLTFJIM0NUOWFXMnB1TGk5NWthbDNEa1JaNGhsSU5HYTVLMzB0QThBb3Y4SEg5TG0zN2w5M05VdjkyR3JtRExoYzhjbVByN192RWZuVURMcy1lR0pFYkNaQk84aWpaOERZQTNrYVNzcllKYmRaaDloRWhUZ2dwbmp1NnZpWnhCbGEyMV9wMnhUaFl3?oc=5",
+   "source": "CSP Times",
+   "region": "UK",
+   "date": "2026-11-14T02:20:44Z",
+   "score": 11,
+   "why": [
+    "founder",
+    "brand"
    ]
   },
   {
@@ -20,34 +204,34 @@
    "source": "NPR Business",
    "region": "US",
    "date": "2026-11-12T14:17:20Z",
-   "score": 12,
+   "score": 10,
    "why": [
     "ceo",
     "scandal"
    ]
   },
   {
-   "title": "Dairy brand recalls all cheddar cheese over listeria concerns",
-   "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNVmw1NzBTMktfNEJIRXdlbXR6eG9pUTM0SjN6NzZoM2RXZjFQM2ZBNW1BYXpzSFdXQmtLa1BJM0Z1SVNMckJLamdtNktyT2VyM2VXZzdIYXcxejdaOEMxWGRFMnJ5SUpIRXd2emtMaFFNbGNreWQ5aEM3bHlsa29HZjFNUHlxWjNjODhfbG1hdWdENWJYdE9uZ1diQmE4ZS1uVDE3c0liUUl2cFVOTV9FckJ1cHVLbnV6Vzd1RlJHMllwanlmM3V6MmhOTy1vWU4x?oc=5",
-   "source": "cbs8.com",
+   "title": "Oasis Dates Launches Consumer Brand, Targets Growth in Medjool Date Category",
+   "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPM0lHbHNRU1BQa1Rwc2tGbmJORDlsVUZOaUg4V2tnMVQ1UVhEaDRlU2I4RTFtYXN4MW13cmVFM205Yll3STVTc0xyRkJzTjl2ZUZqN0RSVHJVS2NpakFzdFotUnRaWTh1YS1ScHM2N3F4YzIwYWx3ek9nODdOTmJuOWRoZEVwY2psZVZCU2hBNWllNmJMS0FCSjNVMHdCUldVc1JOallub25VMjNFWWg4cFpUWQ?oc=5",
+   "source": "The Packer",
    "region": "US",
-   "date": "2026-11-13T00:48:00Z",
-   "score": 12,
+   "date": "2026-11-13T16:00:00Z",
+   "score": 10,
    "why": [
-    "recall",
-    "brand"
+    "brand",
+    "launch"
    ]
   },
   {
-   "title": "Major toilet paper and lumber supplier files for Chapter 11 bankruptcy",
-   "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQMG9oQUlBM19vSDNtM3kycjVmMW0zUzV6RGRxczdKdm0ydHZRckR0dlUxNXlCTzk5ZWhONklrblpMR2pzNnNxd1NVa1pKbUx4R3V5ZmhreU1meTBNNXFwWnpicld0aml4MmZmS1Z2ajJmamZwV2REVEFGWEFnSVcxLUVYaXVNVjZQUThsQTBRX09sY0hFOGRKQk5RX0N3cW9MRkR4Y1lDQ0dPczjSAb8BQVVfeXFMUFQ4cnI5RVYtRklFQTRHeFdIeFRlQUxhRVRIS2lSUHdPdFlIekFWS01MZTk5TmEtZFplQzNKN0Q0aTFuSTV5QnBKd1ZkaUdMTHJMMGJZclZsM2xteDl0MmxJT0Ztbk4tdDNGM0JhNEdLTjBBTkozaGktZVcyYk41WVJ4eGh5a0c4Wm9FUl9YWlFuanJzUkFqU21kYVVFQlFNbktrNElvbllMNDY1Y2ZGQ2I0OTFOYU5rX012RWlJTHM?oc=5",
-   "source": "AL.com",
+   "title": "European company launches DTC brand in U.S., debuts vacuum-packed sofa bed",
+   "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNbFZnWU9qOTJNTTlxNnhGRHE0NzJHZ0JSR1JhY25DZ0ZtWjFTbHdwQjBmMmJIMGlCRXJOSzhjYnpVa1JmZnV6THM4MkI3RFUyUlo5OVpYWlVWMUc3SlZtUndtWHZLQ3J1ZUNSVEJOd1haRG0zc0hGOUN2YkpqcHhRVHRGNzZFTW8zajJrNVhVOXZOT1RHTFJKcEdUOVJQMUlSV0JObUVoSmxtQmpiSjJKZER6V29NMzZpU2YtckVhNFVsc0Zq?oc=5",
+   "source": "Furniture Today",
    "region": "US",
-   "date": "2026-11-12T23:38:00Z",
-   "score": 12,
+   "date": "2026-11-13T18:26:54Z",
+   "score": 10,
    "why": [
-    "bankruptcy",
-    "bank"
+    "brand",
+    "launch"
    ]
   },
   {
@@ -56,22 +240,34 @@
    "source": "People.com",
    "region": "US",
    "date": "2026-11-12T22:23:34Z",
-   "score": 12,
+   "score": 10,
    "why": [
     "shuts",
     "layoffs"
    ]
   },
   {
-   "title": "PA. AG urges affected veterans to file claims after Florida-based company files for bankruptcy",
-   "url": "https://news.google.com/rss/articles/CBMilgJBVV95cUxNMTV4R2toN0ZrbEVyejJuRkQ5RVJ1dmlIakZfUTNYYVBJVnpoaDBKUjlKNkJyMm52NWd4ZzcwMEUxNV9BVEtJWE9MQ2Njbks1cUlYdWhuTklPWHFiWF9QbkY1cEZsQ1VpYTFPQ0pVUUQxY095NGZJNU1wTXBqYXp0SGpfeDlDNWppeHV0bHcxZmNzRzlYNk9tRFgxbm1oYnZMWG1HZlZsbDdOMVVONzl5QXVLN1RkOUFuWlBaOE5zS2FTSHdaMnlKa1NGWkQydEtDVXdaakdUZ2RJUFJLbWNWZUM0dEhIbnkyVExOQ2Q0TDZPdTdGTXZhM2R6RFlqS2R1ajNuV3NzUzZNOWdLZGZYSkxPUU94QQ?oc=5",
-   "source": "WFMZ.com",
+   "title": "Major toilet paper and lumber supplier files for Chapter 11 bankruptcy",
+   "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQMG9oQUlBM19vSDNtM3kycjVmMW0zUzV6RGRxczdKdm0ydHZRckR0dlUxNXlCTzk5ZWhONklrblpMR2pzNnNxd1NVa1pKbUx4R3V5ZmhreU1meTBNNXFwWnpicld0aml4MmZmS1Z2ajJmamZwV2REVEFGWEFnSVcxLUVYaXVNVjZQUThsQTBRX09sY0hFOGRKQk5RX0N3cW9MRkR4Y1lDQ0dPczjSAb8BQVVfeXFMUFQ4cnI5RVYtRklFQTRHeFdIeFRlQUxhRVRIS2lSUHdPdFlIekFWS01MZTk5TmEtZFplQzNKN0Q0aTFuSTV5QnBKd1ZkaUdMTHJMMGJZclZsM2xteDl0MmxJT0Ztbk4tdDNGM0JhNEdLTjBBTkozaGktZVcyYk41WVJ4eGh5a0c4Wm9FUl9YWlFuanJzUkFqU21kYVVFQlFNbktrNElvbllMNDY1Y2ZGQ2I0OTFOYU5rX012RWlJTHM?oc=5",
+   "source": "AL.com",
    "region": "US",
-   "date": "2026-11-12T16:32:00Z",
-   "score": 12,
+   "date": "2026-11-12T23:38:00Z",
+   "score": 10,
    "why": [
     "bankruptcy",
     "bank"
+   ]
+  },
+  {
+   "title": "Dairy brand recalls all cheddar cheese over listeria concerns",
+   "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxONlQ5c2o3dUMxVG5hbnBsVDhhTnFZVHFjSWVsUGhqaHRvVnMxREZMOEE5MVhrNk9jZkFQYTRYcERNT211RWpKSnFWaFBZbkVfVlVac2o4U2I2eENxNjQ1RlJuTkJ6VmVMckp2OEN4LUJaMXJyNVo3b2w5a0sydUZNSU9RMWprTnJLMjNEcVJKSDhqNVBoVjNFMWxFUnB5REFKTkJ5X2lSc0YwMDVHYlktVmQwUXowdjBtTU1scktlczg0TENqdmM4NUx4Zlpta3RN?oc=5",
+   "source": "WFAA",
+   "region": "US",
+   "date": "2026-11-13T00:52:02Z",
+   "score": 10,
+   "why": [
+    "recall",
+    "brand"
    ]
   },
   {
@@ -80,54 +276,18 @@
    "source": "WPXI",
    "region": "US",
    "date": "2026-11-12T16:03:17Z",
-   "score": 12,
+   "score": 10,
    "why": [
     "bankruptcy",
     "bank"
    ]
   },
   {
-   "title": "The strategic missteps that led Gymboree owner to file for bankruptcy",
-   "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQY1hDZTBneTJoc2c0eTBod2FETjBkYzZ5U2ZUZUN3N0VsRDJ5OE11aTNJcUk3WFk5eE9Ocm9BUy1qNG1UYndORDdwRnIzenZ2SUVaa2VWTGdFZDhidGduSTdVeG02SUQ5MEVsOUFIZ01rdkNVbVZrUWhTWW44bHhuM1g4cTdsM3E5VUJjSDRUY1J5a29QZXRCaWl5ajc3TUdndk9aQnNLazg3Ym43WlVWNHRmWk9wQQ?oc=5",
-   "source": "Inside Retail Asia",
-   "region": "UK",
-   "date": "2026-11-13T03:04:47Z",
-   "score": 12,
-   "why": [
-    "bankruptcy",
-    "bank"
-   ]
-  },
-  {
-   "title": "Dame Dash Bankruptcy: Trustee Is Going After Warhol and Mr. Brainwash Artwork",
-   "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPZWp2MUV3M3o2VjBjT05JUjV1alJGUV9wei11RUhrQ3loRGFlZlRCeHJyMVB5THB0U2NrWWdmdkc0em1fZVRLQU01b3VJencydl92aklZa2puT3hZUW1PQm0tY2pHYmdiUmhYakVTQ3d5OVBaQ1FZcV9aVmM4QVhmNk1sdmFhMnBESGZ4ZVktMGJZcC1HSlBwVw?oc=5",
-   "source": "Complex",
-   "region": "UK",
-   "date": "2026-11-12T23:43:24Z",
-   "score": 12,
-   "why": [
-    "bankruptcy",
-    "bank"
-   ]
-  },
-  {
-   "title": "Ladders sold for 11 years at Costco, other stores, recalled after injuries",
-   "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPMFpTcVNtZVo1bV9pMFVfbkNZXzBTUXl2bnRwaFg2dkplYnNDWF9nX09FdzFNLURjVWM3RnFHbmpZU0JiQUIxSVFGbFdobEwyaGh2eDFQTWVRaGNPdnJid1c4Ul9JdURXMlFwYldYNEJkQUdNOWwyS2tsbEItVkliWXlYUTlkYjBpNUlSa2dZYWlNYWpwYmFZWjVsX3ZIUXhNUXpxTGFUcmhIMVk?oc=5",
-   "source": "Cincinnati Enquirer",
+   "title": "Sports Illustrated Resorts Opens in Nashville, Launching a National Sports Hospitality Brand",
+   "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxPZDNfMGF0TlZyZWo2VXVRQ0ZpYUVPZXVrcUxTM1lxUVBBMzk5Mjh2ejYtZFA4emZCcXkwSHRVX2lFVWZNRmpieXNydFlTR2ljVERNZ1QzUWo4SkdjUU5GSG9RZ2lqLUNFdTl6NlBCWlNQVEF5aUNVR3F2VkZaY0xVd2JrMXo2NzBNTEpBd2VmaWd1cXpRRnd4SEFfM1NWclpLeWtSbEpzYnMzZDctLWNDZnlhWjBKUGtXbzl4LW9rTDRfRTh3TVpUbEtDVHlwSl85STlYWUdSblF1WDAtMEs2SHB3?oc=5",
+   "source": "Business Wire",
    "region": "US",
-   "date": "2026-11-12T10:20:00Z",
-   "score": 11,
-   "why": [
-    "recall",
-    "stores"
-   ]
-  },
-  {
-   "title": "Exclusive: Southern Living launches its own sweet tea brand",
-   "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE93RVhuUEN3S2ZjT09sS09ZSmFhTWRzWkRBSlRONGNSdHdXMWVqYTNWUTFhMTZITmhrVFFudGhMY2VpQVY3emFKR3VvdkRuLVhJaHZDUDI2VkJBNkZOTWtGTFdiQjYtSDFSQU5reE4xZEExZ2tQWU9KcA?oc=5",
-   "source": "Axios",
-   "region": "US",
-   "date": "2026-11-12T15:32:52Z",
+   "date": "2026-11-13T22:00:00Z",
    "score": 10,
    "why": [
     "brand",
@@ -135,162 +295,15 @@
    ]
   },
   {
-   "title": "Rashee Rice Attacked Over Bankruptcy by Head of Lamborghini Rental Company",
-   "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQUkdPVGl5M0tINkN5WTRsd3BBRHF0eXptZF9vZHdQSmJWSDRLN1BtZjVSeF9aclBhZFExeWF2a2Ric3pwcE12OVVBbmFRMVpZZXRjUm5QRjJtSVdGSUloYUZYLVg3RV83YXZpYmgyWVI4VjJ1YWtSM3prVlhxZERPZE9xTW9NeUlrUUFDeTl3?oc=5",
-   "source": "Yahoo Sports",
+   "title": "PA. AG urges affected veterans to file claims after Florida-based company files for bankruptcy",
+   "url": "https://news.google.com/rss/articles/CBMilgJBVV95cUxNMTV4R2toN0ZrbEVyejJuRkQ5RVJ1dmlIakZfUTNYYVBJVnpoaDBKUjlKNkJyMm52NWd4ZzcwMEUxNV9BVEtJWE9MQ2Njbks1cUlYdWhuTklPWHFiWF9QbkY1cEZsQ1VpYTFPQ0pVUUQxY095NGZJNU1wTXBqYXp0SGpfeDlDNWppeHV0bHcxZmNzRzlYNk9tRFgxbm1oYnZMWG1HZlZsbDdOMVVONzl5QXVLN1RkOUFuWlBaOE5zS2FTSHdaMnlKa1NGWkQydEtDVXdaakdUZ2RJUFJLbWNWZUM0dEhIbnkyVExOQ2Q0TDZPdTdGTXZhM2R6RFlqS2R1ajNuV3NzUzZNOWdLZGZYSkxPUU94QQ?oc=5",
+   "source": "WFMZ.com",
    "region": "US",
-   "date": "2026-11-11T21:55:47Z",
+   "date": "2026-11-12T16:32:00Z",
    "score": 10,
    "why": [
     "bankruptcy",
     "bank"
-   ]
-  },
-  {
-   "title": "Stratford Mayor Chess says his company’s bankruptcy filing will not affect his job",
-   "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNNUxGZUJmb1dlX05KYWlHLVRMQzhZSm45RTViY1V2MVdtLWhVd1ZJdWZiVkJzXzVoTmRCWnFnVmJLdkhKOVU0T0JJenl3bGR3Tmd6Snlyck1NSTJ1Sk5UbHZMSWxONFo0UjVyVTNLM1d4VHU1RmxFLWFxWTl0ZlducWxjZnJQTk53R3U1ZXYyQ1JrNDdrRTlPdVFrRVlfQTl0QkNKbnBROVhfV1Zib2diS0JKWll2WG14SGNXNDFB?oc=5",
-   "source": "Westfair Communications",
-   "region": "US",
-   "date": "2026-11-11T14:42:24Z",
-   "score": 10,
-   "why": [
-    "bankruptcy",
-    "bank"
-   ]
-  },
-  {
-   "title": "Terumo Q2 FY2026 slides: adjusted profit hits record despite recall",
-   "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQS2FaczlKSnZ4VFFpQm5ES05BeHVjTV9meEhydVVJMEtyUTBKUmFyamZDblFYaDF4bUkzQ3cwNUd0bHlxb0dEUFdvc19oVm5yQmFyYk4xTXNJT0xVdkVrZm9fblAtYmJjSDlDNHJQRzdzeHEwNzlHN0E5V3dXX2NWLTdEelhjVjBqY2t5X3Z3UjZuUnJjMUxGMGhHb0lvaHNBUFZ4clBTSmFqeDdJM1FWa0dYQXlfUHktbE91bk9QQXU?oc=5",
-   "source": "Investing.com",
-   "region": "US",
-   "date": "2026-11-12T15:24:26Z",
-   "score": 10,
-   "why": [
-    "recall",
-    "profit"
-   ]
-  },
-  {
-   "title": "Trajector Medical bankruptcy: What Maine veterans need to know",
-   "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQVDQ0Y0FPQk9Eek5CMF9iZnkzaHpKVThBc2FCRGp0dEtlZEpZOXNIeWNVdHRkTVFtV05LU282TnM4MkJJajFiX2pqTEd2M3FuZ1JKODJtM0E2amVQSXhBMnlFREN5dmJXdF9rYWVjSVRDQ0cwZmw3c1VyWk52OG9VQTNJTmdnX2NuMXBYUXRUWVRYa1J6ZGp2dVpOaUp5Nlk5eVNz?oc=5",
-   "source": "fox23maine.com",
-   "region": "US",
-   "date": "2026-11-12T04:53:06Z",
-   "score": 10,
-   "why": [
-    "bankruptcy",
-    "bank"
-   ]
-  },
-  {
-   "title": "The Pure Essentials Officially Launches Non-Toxic Candle and Fragrance Oil Brand",
-   "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPY0FsSmhQUm9VQjB3WjFtS0I1ZnE1WDdmRmN0ZVRkWXFkZGxnT3pIU2RWZl83Q0p1V191MWhFdV9iWlp2Q0Raa3BOVEhaUC1IeldvUkVGMVZvQXhneWlBa3hkZzhyRzZ6M19KLWJ0bVFmS3lJeEtULXg1cDBRc2dEd1dOSlNlbFkxZGI1NXQtMHlCY0w3X2VUWTd2di1YdG54aV9MRmdNckdubU9sd1E?oc=5",
-   "source": "Newswire",
-   "region": "US",
-   "date": "2026-11-12T17:20:00Z",
-   "score": 10,
-   "why": [
-    "brand",
-    "launch"
-   ]
-  },
-  {
-   "title": "What we know about Brooklyn building collapse that killed eight people",
-   "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBlb29KS0pFMWJxLW9XSzlhNjNxcGVMSDY1TUdPb0VodElRZDBNdm1mc1FqYlMxTGhVbXljbDlBTmhrS2dZQkJiRTdzVkNNRTVtWUFqS1liR0RuX05RRWc?oc=5",
-   "source": "BBC",
-   "region": "UK",
-   "date": "2026-11-12T19:09:25Z",
-   "score": 10,
-   "why": [
-    "collapse"
-   ]
-  },
-  {
-   "title": "Eight killed in Brooklyn building collapse - with unknown number missing",
-   "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQOVlnRkZzRHVKaFB0UjJYSWV6MGYwaG1GeHNJbXhmc2RTbC1tYVRHT3g1YjNUTy1qQ2N1TzhtbWQtd29sb2oyZUswdWMxV2xvQzNLTFVKSl9EcTJvMVZVSmlBUWpwTFB0cGtaRWg2Y2ltZTI3QW1xVnk2bG9OQjY1RXNBSUk3Vk5vX3dGOEpXTnBBb2liQUR3Ql93?oc=5",
-   "source": "Sky News",
-   "region": "UK",
-   "date": "2026-11-12T14:38:37Z",
-   "score": 10,
-   "why": [
-    "collapse"
-   ]
-  },
-  {
-   "title": "'How does a building just fall?' Neighbours grieve after deadly Brooklyn building collapse",
-   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE4xaHRLVnQ0dWduYkkxY1NhTnVUelhRaDR6NkJ3U1BVR0llZDhpNFljZVZ0bGpFWnM3Ym1hRUtPR0pNVmVUbGVVZlBLSkgtYm1kencxUExZaXBFTms?oc=5",
-   "source": "BBC",
-   "region": "UK",
-   "date": "2026-11-13T02:45:20Z",
-   "score": 10,
-   "why": [
-    "collapse"
-   ]
-  },
-  {
-   "title": "Watch: What we know about the New York building collapse",
-   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE8tWUFqSGx0WW11RmRfMXpoT3Fnd2o0Y25wdnJaZkpCSmJjMThaUWVDTTNYQzBwYlJLc3R1WWVTMTRRRVQ1TFJ6T0JhdmUweDIzZG1iY1FfTlFEMmc?oc=5",
-   "source": "BBC",
-   "region": "UK",
-   "date": "2026-11-12T21:22:59Z",
-   "score": 10,
-   "why": [
-    "collapse"
-   ]
-  },
-  {
-   "title": "‘Who will be held accountable?’: fatal Brooklyn building collapse devastates community",
-   "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOZzRPNHNTVTFqMTJPREd1aVNXNVZXZl9lSUNOZUFwLWFlZWdjZElSWWlXY2h6dG13dHktbTMxZFNFcjJFdWRCc19MeUlINW9jTlJLN21OWmI3c0tqcnIyUUNnbTVmQkIwcXFPT0ZOOTBsQ3BJa0FWcDVpOVNDcmVtdUNUd2o?oc=5",
-   "source": "The Guardian",
-   "region": "UK",
-   "date": "2026-11-12T19:51:28Z",
-   "score": 10,
-   "why": [
-    "collapse"
-   ]
-  },
-  {
-   "title": "Two Elysee guards collapse next to Macron",
-   "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNS3dXZTRpVWhMLTBYOXVfdDE5RTJ3MzNqNjZCampRUkNhRXp1MU5GRXlOWjQyRXdpaWNpY2taMlNDSE00QVRWTGwtZ3JTLUttX2ZrNTA0RjJ2UzZNczFGbTV4VmpWTHZSY3IxcnQ1dVU5WnJyc1kxaXlqUTR4eHN6Q1NmN3FJRHZIYnI5MUY1YzdIMExWVkRpTzBUQjF1SjBZbVE?oc=5",
-   "source": "The Telegraph",
-   "region": "UK",
-   "date": "2026-11-12T15:50:00Z",
-   "score": 10,
-   "why": [
-    "collapse"
-   ]
-  },
-  {
-   "title": "Live Updates: At Least 8 Dead in Brooklyn Building Collapse, as Crews Scour Rubble",
-   "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQaWdsbjQ4bnJQMWRkNkpfVDd2aVlQTG05bC0yUk1nVDBTaGNiT2FySzdjQ2plZDg3cFNDZHNoaHBoOWJLUW1JeDVMTjdWQUw2ckk5cUNXRlM0WjJoRWZwWGZ6NXhIUkkwVjNEcmc2S0xySUI3RUp0Y2llZnhIOVJGSFNmX2M3dw?oc=5",
-   "source": "The New York Times",
-   "region": "UK",
-   "date": "2026-11-13T01:23:00Z",
-   "score": 10,
-   "why": [
-    "collapse"
-   ]
-  },
-  {
-   "title": "Brooklyn building collapse kills at least two children and six adults, injuring 18",
-   "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPWHdQbEdLX1VNT2I1bFA1NkR2eENlR1NaQUZLakdRMW1TWTRMVG5JeWhSWS1pOG5oU1ZueWJ2czJmNXdlWF85aEdCZXlPd2N1YXVtTzhmQzVGR0wxQW5LcWp2UDl2a0lzbTlJNUNMSEVWQUR4UHFXRmhrdXQxTXVkaHBOeVU?oc=5",
-   "source": "The Guardian",
-   "region": "UK",
-   "date": "2026-11-12T13:08:00Z",
-   "score": 10,
-   "why": [
-    "collapse"
-   ]
-  },
-  {
-   "title": "Why did a Brooklyn building collapse so suddenly? Experts weigh in",
-   "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOSVp3elBqWUtuOThSWmxHWUpEdHlIUE9LMm9aNDgzRzc3UnRTUmdQNXE0S0ZVTGhCMTNtbkpIN0ozd0o4MElYbE9LMDhnZHc5MEthOUpuTUlLdGd3Z0E1aFZ5UFJBUlY0aWR4YTN3dkk0Z1RFYUhCOXViSUQ3WEpyRUdrTER4MW50ak9WUkNDOEdRcVU4VGx2VXdWTW92cTdOc1YxcFNhcnVHMW1pQVE?oc=5",
-   "source": "Scientific American",
-   "region": "UK",
-   "date": "2026-11-12T20:00:00Z",
-   "score": 10,
-   "why": [
-    "collapse"
    ]
   }
  ],
