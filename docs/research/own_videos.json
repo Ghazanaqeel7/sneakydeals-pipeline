@@ -127,6 +127,12 @@
      "views": 759,
      "likes": 14,
      "comments": 0
+    },
+    {
+     "t": "2026-11-14T19:57:43Z",
+     "views": 759,
+     "likes": 14,
+     "comments": 0
     }
    ],
    "title": "Pepsi Got Paid in 17 Soviet Submarines 🤯",
@@ -134,13 +140,13 @@
    "seconds": 56,
    "thumb": "https://i.ytimg.com/vi/B9Xec5izJlw/mqdefault.jpg",
    "short": true,
-   "age_days": 3.6,
+   "age_days": 3.8,
    "views_1d": 222,
    "views_3d": 762,
    "views_7d": null,
    "views": 759,
    "like_rate": 0.018,
-   "views_24h": -1,
+   "views_24h": -3,
    "likes": 14,
    "comments": 0
   },
@@ -241,6 +247,12 @@
      "views": 1387,
      "likes": 43,
      "comments": 0
+    },
+    {
+     "t": "2026-11-14T19:57:43Z",
+     "views": 1387,
+     "likes": 43,
+     "comments": 0
     }
    ],
    "title": "Disney Secretly Bought a Swamp Using Fake Names",
@@ -251,7 +263,7 @@
    "views_24h": 16,
    "likes": 43,
    "comments": 0,
-   "age_days": 2.6,
+   "age_days": 2.8,
    "views_1d": 1363,
    "views_3d": null,
    "views_7d": null,
@@ -325,6 +337,12 @@
      "views": 350,
      "likes": 19,
      "comments": 0
+    },
+    {
+     "t": "2026-11-14T19:57:43Z",
+     "views": 365,
+     "likes": 20,
+     "comments": 0
     }
    ],
    "title": "This Man Bought $3,000 of Pudding for Free Flights",
@@ -332,15 +350,15 @@
    "seconds": 57,
    "thumb": "https://i.ytimg.com/vi/e9HCNu75-2U/mqdefault.jpg",
    "short": true,
-   "views_24h": 162,
-   "likes": 19,
+   "views_24h": 124,
+   "likes": 20,
    "comments": 0,
-   "age_days": 1.6,
+   "age_days": 1.8,
    "views_1d": 275,
    "views_3d": null,
    "views_7d": null,
-   "views": 350,
-   "like_rate": 0.054
+   "views": 365,
+   "like_rate": 0.055
   },
   "rLOX2z_OqaQ": {
    "snaps": [
@@ -373,6 +391,12 @@
      "views": 365,
      "likes": 15,
      "comments": 0
+    },
+    {
+     "t": "2026-11-14T19:57:43Z",
+     "views": 429,
+     "likes": 15,
+     "comments": 0
     }
    ],
    "title": "Piggly Wiggly's Founder Tried to Beat Wall Street",
@@ -380,18 +404,18 @@
    "seconds": 55,
    "thumb": "https://i.ytimg.com/vi/rLOX2z_OqaQ/mqdefault.jpg",
    "short": true,
-   "views_24h": 365,
+   "views_24h": 429,
    "likes": 15,
    "comments": 0,
-   "age_days": 0.6,
+   "age_days": 0.8,
    "views_1d": null,
    "views_3d": null,
    "views_7d": null,
-   "views": 365,
-   "like_rate": 0.041
+   "views": 429,
+   "like_rate": 0.035
   }
  },
- "updated": "2026-11-14T15:10:01Z",
+ "updated": "2026-11-14T19:57:43Z",
  "channel": {
   "snaps": [
    {
@@ -493,6 +517,11 @@
     "t": "2026-11-14T15:10:01Z",
     "subs": 7,
     "views": 2405
+   },
+   {
+    "t": "2026-11-14T19:57:43Z",
+    "subs": 7,
+    "views": 2844
    }
   ],
   "id": "UCyNCq5TQLEzCU87Qb7XMfEA",
@@ -500,9 +529,9 @@
   "handle": "@sneakydeals",
   "thumb": "https://yt3.ggpht.com/9fbUie-ZsQunwNafR-Rws3mpCZoqr1FNGNHeG2LMEwv_8sJouZn0ff14UgZMIuekW_ThWUX32is=s88-c-k-c0x00ffffff-no-rj",
   "subs": 7,
-  "views": 2405,
+  "views": 2844,
   "videos": 4,
   "subs_24h": 0,
-  "views_24h": 298
+  "views_24h": 525
  }
 }
