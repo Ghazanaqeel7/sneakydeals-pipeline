@@ -1,0 +1,41 @@
+name: thumbnail-sync
+# Sets the custom YouTube thumbnail on every queued job, WITHOUT using any Claude session or tokens.
+# Calls Composio's REST API directly with COMPOSIO_API_KEY. Replaces the "YouTube" half of PIPELINE.md's
+# old step 4b, so Claude's scheduled run no longer has to check this every time (saves tokens, and the
+# owner no longer has to wait for the next Claude run or ask for it to be set manually).
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch: {}
+
+concurrency:
+  group: thumbnail-sync
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - name: Set thumbnails
+        env:
+          COMPOSIO_API_KEY: ${{ secrets.COMPOSIO_API_KEY }}
+          YT_CONNECTED_ACCOUNT_ID: youtube_wiggen-toy
+        run: python3 pipeline/scripts/thumbnail_sync.py
+      - name: Save
+        run: |
+          git config user.name "thumbnail-bot"; git config user.email "thumbnail-bot@users.noreply.github.com"
+          git add state.json
+          git diff --cached --quiet && { echo "no changes"; exit 0; }
+          for i in 1 2 3 4 5; do
+            git commit -q -m "thumbnail-sync: set YouTube thumbnail(s)" || true
+            git pull --rebase -q origin main && git push -q origin HEAD:main && exit 0
+            sleep $((i * 5))
+          done
+          exit 1

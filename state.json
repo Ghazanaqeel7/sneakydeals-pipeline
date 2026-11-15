@@ -660,6 +660,14 @@
       "how": "Get a key at aistudio.google.com/apikey (uses your Google AI Pro account/credits), then GitHub repo -> Settings -> Secrets and variables -> Actions -> New repository secret -> name GEMINI_API_KEY, paste the key.",
       "link": "https://aistudio.google.com/apikey",
       "done": false
+    },
+    {
+      "id": "composio_key",
+      "title": "Add COMPOSIO_API_KEY as a repo secret (for the new YouTube thumbnail bot)",
+      "why": "Lets a free GitHub Actions bot (thumbnail_sync.yml, every 15 min) set the custom YouTube thumbnail itself, so scheduled videos always get their thumbnail without waiting for a Claude run or you asking -- and it costs zero Claude tokens.",
+      "how": "Get a key at dashboard.composio.dev -> Settings -> API Keys, then GitHub repo -> Settings -> Secrets and variables -> Actions -> New repository secret -> name COMPOSIO_API_KEY, paste the key.",
+      "link": "https://dashboard.composio.dev",
+      "done": false
     }
   ],
   "last_story_date": "2026-11-15"

@@ -80,11 +80,10 @@ install anything, or research. If another job is already `building`, do not star
    voice, and drop anything you cannot confirm. If it is missing, stale, or doesn't match, write the script
    yourself exactly as before — this file never blocks you.
 4b. **Thumbnails (every run; an exception to the quick exit when a job below exists)** — the owner must never see a scheduled video without its thumbnail.
-   Use the Composio tools (YouTube account is connected; never Zapier for this):
-   - **YouTube:** for every job with `yt_queued_at` but no `yt_thumb_set`, queued more than 20 minutes ago: `YOUTUBE_LIST_PLAYLIST_ITEMS`
-     playlistId `UUyNCq5TQLEzCU87Qb7XMfEA`, part `snippet,status`, maxResults 20 (the owner's uploads list includes private, scheduled videos); match the job by its
-     `meta.json` title; then `YOUTUBE_UPDATE_THUMBNAIL` videoId + thumbnailUrl `https://raw.githubusercontent.com/Ghazanaqeel7/sneakydeals-pipeline/main/jobs/<id>/thumbnail.jpg`.
-     On success write `yt_video_id` and `yt_thumb_set` (UTC time) on the job in `state.json`. Not in the list yet = Zapier has not uploaded it; try again next run.
+   The **YouTube** half is now fully automated outside Claude: `.github/workflows/thumbnail_sync.yml` runs every 15 minutes on GitHub Actions and
+   calls Composio's REST API directly (no MCP, no Claude tokens) via `pipeline/scripts/thumbnail_sync.py` — do NOT do the YouTube thumbnail step
+   yourself anymore; it's handled. (Needs the owner's `COMPOSIO_API_KEY` repo secret — see `owner_todos` in `state.json` if it's still pending.)
+   Use the Composio tools yourself only for:
    - **Facebook:** for every job with `reels_at` but no `fb_thumb_set`: `FACEBOOK_GET_PAGE_VIDEOS` page_id `1392110527326521` (fields `id,created_time,description`), match by the
      caption's first words, then in `COMPOSIO_REMOTE_WORKBENCH` download the job's `thumbnail.jpg`, `upload_local_file` it and call `FACEBOOK_SET_VIDEO_THUMBNAIL`
      (`page_id`, `video_id`, `is_preferred: true`, `source: {name, mimetype: "image/jpeg", s3key}`). On success write `fb_thumb_set`.
