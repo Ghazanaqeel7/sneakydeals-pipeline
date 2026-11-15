@@ -551,9 +551,14 @@
         {
           "t": "2026-11-15T17:13:44Z",
           "msg": "🎙 Voice tayyar (44 s). 🎬 Scenes: 5 locations — street, soap shop, gum shop, phone-book warehouse, home (~35 min baqi, phir render ~40 min)"
+        },
+        {
+          "t": "2026-11-15T17:17:57Z",
+          "msg": "✅ Check frames theek hain (2 rounds: van aur gum pack ki jagah, warehouse bhara, globe saaf). (~2 min baqi, phir render ~40 min)",
+          "image": "jobs/007-wrigley-free-gum/review/round2.jpg"
         }
       ],
-      "progress_count": 2
+      "progress_count": 3
     }
   },
   "ideas": [
