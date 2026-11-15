@@ -1,0 +1,22 @@
+{
+  "generated_at": "2026-11-15T12:55:16.618126+00:00",
+  "format": "short",
+  "item_day": "Sun 15 Nov",
+  "topic": "Blockbuster laughed at the chance to buy Netflix for $50 million",
+  "title": "Blockbuster Laughed at Netflix for $50 Million",
+  "unverified": true,
+  "note": "Gemini first draft, NOT fact-checked. Claude must verify every claim with its own 2-source rule before using any of it in a real job file.",
+  "draft_script": "Imagine turning down a deal that could have made your company hundreds of billions. This is a true story. In 2000, Blockbuster was the king of video rentals. Every town had one. Meanwhile, a small startup named Netflix was struggling. They rented DVDs by mail. They were losing money. Netflix founders Reed Hastings and Marc Randolph made a desperate move. They approached Blockbuster. They offered to sell their entire company. The price: $50 million. Not for a partnership. For the whole thing. Netflix even proposed Blockbuster integrate their online service. Blockbuster CEO John Antioco and his executive team met the Netflix founders. The room filled with laughter. They openly mocked the idea. $50 million for a tiny, unprofitable online DVD company? Blockbuster's leaders saw no future in it. They believed their thousands of physical stores were unbeatable. They dismissed the offer completely. Blockbuster rejected the deal. Netflix did not give up. It continued to innovate. It shifted from DVDs to streaming. It became a global powerhouse. Blockbuster, meanwhile, couldn't adapt. It filed for bankruptcy in 2010. Today, Netflix's market capitalization has soared past $300 billion. That $50 million investment Blockbuster laughed at? It became one of the most expensive laughs in business history. Blockbuster laughed. Netflix built an empire.",
+  "claims": [
+    "In 2000, Blockbuster was the leading video rental company.",
+    "Netflix was a DVD-by-mail service in 2000.",
+    "Netflix was losing money in 2000.",
+    "Netflix founders Reed Hastings and Marc Randolph approached Blockbuster in 2000.",
+    "Netflix offered to sell the company to Blockbuster.",
+    "The proposed sale price for Netflix was $50 million.",
+    "Blockbuster CEO John Antioco met with Netflix founders.",
+    "Blockbuster rejected the $50 million offer from Netflix.",
+    "Blockbuster filed for bankruptcy in 2010.",
+    "Netflix's market capitalization has exceeded $300 billion."
+  ]
+}
