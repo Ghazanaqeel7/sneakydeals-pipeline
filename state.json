@@ -538,9 +538,11 @@
       "yt_thumb_set": "2026-11-14T20:20:00Z"
     },
     "007-wrigley-free-gum": {
-      "status": "script_ready",
-      "updated": "2026-11-15T10:58:24Z",
-      "title": "Wrigley Mailed Free Gum to a Million Strangers"
+      "status": "script_sent",
+      "updated": "2026-11-15T10:58:37Z",
+      "title": "Wrigley Mailed Free Gum to a Million Strangers",
+      "vote_msg": "",
+      "vote_kind": ""
     }
   },
   "ideas": [
