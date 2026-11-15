@@ -42,6 +42,9 @@ The task runs **3 times a day** (11:08, 16:08 and 22:08 Asia/Karachi) to save th
 starts building at the next of those runs. Publishing, scheduling, Slack, stats and live checks run on GitHub Actions and never wait for Claude.
 **Claude-limit rules:** never render video inside a Claude session (stills only, at most 3 frames per check; every full or preview render goes to
 GitHub Actions); read only the files a step needs; finish every pending fix/build this run can do in order, but still at most ONE build.
+**Safety net:** a GitHub Actions watchdog (`.github/workflows/watchdog.yml`, 23:05 and 00:05 PKT, no Claude session) checks `last_story_date`
+and, if today's script is still missing, writes `docs/alerts.json` (shown on the dashboard) and pings Slack directly — so a day where every
+scheduled run fails before reaching the repo is never silent. It clears itself once a script is written; nothing to do here unless asked.
 **Quick exit first:** read `state.json`. If no job is `script_approved`, `render_failed`, or `*_rejected` with
 `feedback`, AND no job needs a thumbnail (step 4b), AND no new story is due (step 5: `last_story_date` is today, Asia/Karachi), AND (step 5a happens only in the story-hour run), AND there is no long-form work (step 5b: long-form on, no open long job, and a `[LONG]` idea queued), stop right away with a one-line summary — do not load the skill,
 install anything, or research. If another job is already `building`, do not start a second build.
