@@ -43,7 +43,7 @@ starts building at the next of those runs. Publishing, scheduling, Slack, stats 
 **Claude-limit rules:** never render video inside a Claude session (stills only, at most 3 frames per check; every full or preview render goes to
 GitHub Actions); read only the files a step needs; finish every pending fix/build this run can do in order, but still at most ONE build.
 **Quick exit first:** read `state.json`. If no job is `script_approved`, `render_failed`, or `*_rejected` with
-`feedback`, AND no job needs a thumbnail (step 4b), AND it is not the story hour (step 5), AND (step 5a happens only in the story-hour run), AND there is no long-form work (step 5b: long-form on, no open long job, and a `[LONG]` idea queued), stop right away with a one-line summary — do not load the skill,
+`feedback`, AND no job needs a thumbnail (step 4b), AND no new story is due (step 5: `last_story_date` is today, Asia/Karachi), AND (step 5a happens only in the story-hour run), AND there is no long-form work (step 5b: long-form on, no open long job, and a `[LONG]` idea queued), stop right away with a one-line summary — do not load the skill,
 install anything, or research. If another job is already `building`, do not start a second build.
 
 0. Setup: `git config user.name "claude-pipeline"`, `git config user.email "claude-pipeline@users.noreply.github.com"`.
@@ -60,9 +60,9 @@ install anything, or research. If another job is already `building`, do not star
 3. **`script_rejected` with feedback**: rewrite `script.md`, `SHOTS.txt`, `telegram.md`, `meta.json` per the
    feedback, push, `set_status <id> script_ready feedback=`. No feedback yet → leave it.
 4. **`script_approved`** (oldest first, one per run): `set_status <id> building`, then BUILD (below).
-5. **New story** — only in the run that starts between 11:00 and 11:59 Asia/Karachi time: count jobs (ids that start
+5. **New story** — in ANY run (11:08 is the usual one; the 16:08 and 22:08 runs are the backup, so a failed morning run never costs a day), when no script was written yet today (Asia/Karachi date; `state.json` `last_story_date`): count jobs (ids that start
    with a number; `research` / `weekly-review` are not jobs; `type: "long"` jobs do not count) whose status is not `published`/`dropped`. If it is below `config.pipeline_buffer`, research and write ONE new script (below)
-   and `set_status <id> script_ready`. **Owner ideas first:** run `python3 pipeline/scripts/pop_idea.py`; if it
+   and `set_status <id> script_ready`, then set `last_story_date` (top level of `state.json`) to today's Asia/Karachi date. Wherever this file says "the story-hour run", it means this run (the first run of the day that reaches step 5). If the buffer is full, also set `last_story_date` so later runs exit quickly. **Owner ideas first:** run `python3 pipeline/scripts/pop_idea.py`; if it
    prints an idea (queued by the owner on the dashboard), that is the story — research it, and if it is not true or
    not usable, say so in the script message and pick your own instead.
    **Then the content calendar:** if no owner idea, open `docs/calendar.json` and take the first item (top to bottom)
