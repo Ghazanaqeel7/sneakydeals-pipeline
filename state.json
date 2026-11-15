@@ -35,72 +35,72 @@
       "progress": [
         {
           "t": "2026-11-10T12:31:37Z",
-          "msg": "🔍 Check frames round 1: lawyer office mein camera ek aadmi ke chehre mein ghus raha tha, ranch par jhaariyan cowboy ko chhupa rahi thin, aakhri shot bohot dark tha aur castle ko zyada generic bana raha hoon — sab fix kar raha hoon (~25 min baqi, phir render ~40 min)",
+          "msg": "\ud83d\udd0d Check frames round 1: lawyer office mein camera ek aadmi ke chehre mein ghus raha tha, ranch par jhaariyan cowboy ko chhupa rahi thin, aakhri shot bohot dark tha aur castle ko zyada generic bana raha hoon \u2014 sab fix kar raha hoon (~25 min baqi, phir render ~40 min)",
           "image": "jobs/002-disney-secret-swamp/review/round1.jpg"
         },
         {
           "t": "2026-11-10T12:35:57Z",
-          "msg": "🔍 Check frames round 2: zyada tar saaf. Chhoti fixes: Orlando banner kat raha tha, 1966 sign kinare pe, Manhattan ka doosra tukra der se gir raha tha (~15 min baqi, phir render ~40 min)",
+          "msg": "\ud83d\udd0d Check frames round 2: zyada tar saaf. Chhoti fixes: Orlando banner kat raha tha, 1966 sign kinare pe, Manhattan ka doosra tukra der se gir raha tha (~15 min baqi, phir render ~40 min)",
           "image": "jobs/002-disney-secret-swamp/review/round2.jpg"
         },
         {
           "t": "2026-11-10T12:38:00Z",
-          "msg": "✅ Check frames clean (round 3) (~5 min baqi, phir render ~40 min)",
+          "msg": "\u2705 Check frames clean (round 3) (~5 min baqi, phir render ~40 min)",
           "image": "jobs/002-disney-secret-swamp/review/round3.jpg"
         },
         {
           "t": "2026-11-10T12:38:02Z",
-          "msg": "🖼 Thumbnail tayyar — ab GitHub par render shuru hoga (~40 min)",
+          "msg": "\ud83d\uddbc Thumbnail tayyar \u2014 ab GitHub par render shuru hoga (~40 min)",
           "image": "jobs/002-disney-secret-swamp/thumbnail.jpg"
         },
         {
           "t": "2026-11-10T12:38:49Z",
-          "msg": "🎞 Render shuru (GitHub). Andaza: ~30-50 min."
+          "msg": "\ud83c\udf9e Render shuru (GitHub). Andaza: ~30-50 min."
         },
         {
           "t": "2026-11-10T13:04:53Z",
-          "msg": "⏳ Render 25% (421/1663 frames). Baqi waqt: 5h 1m 59s"
+          "msg": "\u23f3 Render 25% (421/1663 frames). Baqi waqt: 5h 1m 59s"
         },
         {
           "t": "2026-11-10T13:28:56Z",
-          "msg": "⏳ Render 50% (836/1663 frames). Baqi waqt: 3h 16m 22s"
+          "msg": "\u23f3 Render 50% (836/1663 frames). Baqi waqt: 3h 16m 22s"
         },
         {
           "t": "2026-11-10T13:52:01Z",
-          "msg": "🧪 Test message: agar ye Slack par dikh raha hai to naya n8n workflow theek chal raha hai."
+          "msg": "\ud83e\uddea Test message: agar ye Slack par dikh raha hai to naya n8n workflow theek chal raha hai."
         },
         {
           "t": "2026-11-10T13:53:59Z",
-          "msg": "⏳ Render 75% (1250/1663 frames). Baqi waqt: 1h 38m 54s"
+          "msg": "\u23f3 Render 75% (1250/1663 frames). Baqi waqt: 1h 38m 54s"
         },
         {
           "t": "2026-11-10T14:07:20Z",
-          "msg": "🧪 Test 2: naya n8n code check — ye message Slack par aaye to sab theek hai."
+          "msg": "\ud83e\uddea Test 2: naya n8n code check \u2014 ye message Slack par aaye to sab theek hai."
         },
         {
           "t": "2026-11-10T15:02:54Z",
-          "msg": "🛠 Changes note ho gaye (dashboard): \"in thumbnail Land for sale ka jo board h thora bara or visible kardo ta k woh bhi attention seek kare logon ki\" — Claude agle run mein (by 20:08 PKT) inhe lagana shuru karega."
+          "msg": "\ud83d\udee0 Changes note ho gaye (dashboard): \"in thumbnail Land for sale ka jo board h thora bara or visible kardo ta k woh bhi attention seek kare logon ki\" \u2014 Claude agle run mein (by 20:08 PKT) inhe lagana shuru karega."
         },
         {
           "t": "2026-11-10T15:02:57Z",
-          "msg": "🛠 Changes note ho gaye (dashboard): \"in thumbnail Land for sale ka jo board h thora bara or visible kardo ta k woh bhi attention seek kare logon ki\" — Claude agle run mein (by 20:08 PKT) inhe lagana shuru karega."
+          "msg": "\ud83d\udee0 Changes note ho gaye (dashboard): \"in thumbnail Land for sale ka jo board h thora bara or visible kardo ta k woh bhi attention seek kare logon ki\" \u2014 Claude agle run mein (by 20:08 PKT) inhe lagana shuru karega."
         },
         {
           "t": "2026-11-10T15:13:59Z",
-          "msg": "🛠 Aapke changes laga raha hoon: thumbnail mein LAND FOR SALE board bara aur saaf kar raha hoon, video wahi rahegi (~15 min)"
+          "msg": "\ud83d\udee0 Aapke changes laga raha hoon: thumbnail mein LAND FOR SALE board bara aur saaf kar raha hoon, video wahi rahegi (~15 min)"
         },
         {
           "t": "2026-11-10T16:11:19Z",
-          "msg": "✅ Naya thumbnail tayyar: LAND FOR SALE board ab bara aur saaf hai (video wahi hai). Review ke liye abhi bhej raha hoon.",
+          "msg": "\u2705 Naya thumbnail tayyar: LAND FOR SALE board ab bara aur saaf hai (video wahi hai). Review ke liye abhi bhej raha hoon.",
           "image": "jobs/002-disney-secret-swamp/thumbnail.jpg"
         },
         {
           "t": "2026-11-10T17:19:48Z",
-          "msg": "✅ Aap ne dashboard se video + thumbnail approve kiya. Agle publish slot par YouTube par jayegi."
+          "msg": "\u2705 Aap ne dashboard se video + thumbnail approve kiya. Agle publish slot par YouTube par jayegi."
         },
         {
           "t": "2026-11-12T04:05:40Z",
-          "msg": "✅ YouTube par LIVE: \"Disney Secretly Bought a Swamp Using Fake Names\" https://youtu.be/mm0ShpBg_4Y"
+          "msg": "\u2705 YouTube par LIVE: \"Disney Secretly Bought a Swamp Using Fake Names\" https://youtu.be/mm0ShpBg_4Y"
         }
       ],
       "progress_count": 20,
@@ -127,51 +127,51 @@
       "progress": [
         {
           "t": "2026-11-10T21:42:09Z",
-          "msg": "🔎 Research hafta tayyar (dashboard → Research)"
+          "msg": "\ud83d\udd0e Research hafta tayyar (dashboard \u2192 Research)"
         },
         {
           "t": "2026-11-10T21:42:10Z",
-          "msg": "🔥 Top Short: \"Brocode beer story How business formed best wine in india\" — 4.0M views, 231.2x apne channel se zyada"
+          "msg": "\ud83d\udd25 Top Short: \"Brocode beer story How business formed best wine in india\" \u2014 4.0M views, 231.2x apne channel se zyada"
         },
         {
           "t": "2026-11-10T21:42:12Z",
-          "msg": "🎬 Top lambi video: \"The Thinking Game | Full documentary | Tribeca Film Festival official \" — 442.9M views, 250.3x"
+          "msg": "\ud83c\udfac Top lambi video: \"The Thinking Game | Full documentary | Tribeca Film Festival official \" \u2014 442.9M views, 250.3x"
         },
         {
           "t": "2026-11-10T21:42:13Z",
-          "msg": "🏷 Garam words: pepsi, coca-cola, coke, marketing, crore, code, exposed, evolution"
+          "msg": "\ud83c\udff7 Garam words: pepsi, coca-cola, coke, marketing, crore, code, exposed, evolution"
         },
         {
           "t": "2026-11-10T21:42:14Z",
-          "msg": "👀 RankZilla: \"DON'T CHECK THE SOUND 😭😭\" 18.5x chali"
+          "msg": "\ud83d\udc40 RankZilla: \"DON'T CHECK THE SOUND \ud83d\ude2d\ud83d\ude2d\" 18.5x chali"
         },
         {
           "t": "2026-11-10T21:42:16Z",
-          "msg": "📈 Sneaky Deals: 0 subs"
+          "msg": "\ud83d\udcc8 Sneaky Deals: 0 subs"
         },
         {
           "t": "2026-11-10T22:12:45Z",
-          "msg": "🔎 Research update tayyar (dashboard → Research)"
+          "msg": "\ud83d\udd0e Research update tayyar (dashboard \u2192 Research)"
         },
         {
           "t": "2026-11-10T22:12:46Z",
-          "msg": "🔥 Top Short: \"Engineer vs. Mathematician Which solution is better? #Math #Engineerin\" — 8.3M views, 59.0x apne channel se zyada"
+          "msg": "\ud83d\udd25 Top Short: \"Engineer vs. Mathematician Which solution is better? #Math #Engineerin\" \u2014 8.3M views, 59.0x apne channel se zyada"
         },
         {
           "t": "2026-11-10T22:12:48Z",
-          "msg": "🎬 Top lambi video: \"The North Korean Operatives Hiding Inside U.S. Companies | WSJ Documen\" — 10.4M views, 112.9x"
+          "msg": "\ud83c\udfac Top lambi video: \"The North Korean Operatives Hiding Inside U.S. Companies | WSJ Documen\" \u2014 10.4M views, 112.9x"
         },
         {
           "t": "2026-11-10T22:12:49Z",
-          "msg": "🏷 Garam words: products, billions, doing, trick, viral, became, storytime, everyone"
+          "msg": "\ud83c\udff7 Garam words: products, billions, doing, trick, viral, became, storytime, everyone"
         },
         {
           "t": "2026-11-10T22:12:50Z",
-          "msg": "👀 RankZilla: \"DON'T CHECK THE SOUND 😭😭\" 18.5x chali"
+          "msg": "\ud83d\udc40 RankZilla: \"DON'T CHECK THE SOUND \ud83d\ude2d\ud83d\ude2d\" 18.5x chali"
         },
         {
           "t": "2026-11-10T22:12:51Z",
-          "msg": "📈 Sneaky Deals: 0 subs (+0 pichle scan se)"
+          "msg": "\ud83d\udcc8 Sneaky Deals: 0 subs (+0 pichle scan se)"
         }
       ],
       "progress_count": 12
@@ -185,80 +185,80 @@
       "progress": [
         {
           "t": "2026-11-11T08:28:04Z",
-          "msg": "🔍 Check frames round 1: hook mein shelf ki khaali pusht nazar aa rahi hai, aisle mein spotlight bohot tez, sarak wala shot door hai, film set mein ek aadmi camera ke bohot qareeb aur thora dark — sab fix kar raha hoon (~25 min baqi, phir render ~40 min)",
+          "msg": "\ud83d\udd0d Check frames round 1: hook mein shelf ki khaali pusht nazar aa rahi hai, aisle mein spotlight bohot tez, sarak wala shot door hai, film set mein ek aadmi camera ke bohot qareeb aur thora dark \u2014 sab fix kar raha hoon (~25 min baqi, phir render ~40 min)",
           "image": "jobs/003-pudding-guy-free-flights/review/round1.jpg"
         },
         {
           "t": "2026-11-11T08:35:18Z",
-          "msg": "✅ Check frames clean (round 2): pudding ka shelf ab saaf dikh raha hai, camera ab dabbon ke pahar se nahi guzarta, sarak aur film set theek (~5 min baqi, phir render ~40 min)",
+          "msg": "\u2705 Check frames clean (round 2): pudding ka shelf ab saaf dikh raha hai, camera ab dabbon ke pahar se nahi guzarta, sarak aur film set theek (~5 min baqi, phir render ~40 min)",
           "image": "jobs/003-pudding-guy-free-flights/review/round2.jpg"
         },
         {
           "t": "2026-11-11T08:35:52Z",
-          "msg": "🖼 Thumbnail tayyar — ab GitHub par render shuru hoga (~40 min)",
+          "msg": "\ud83d\uddbc Thumbnail tayyar \u2014 ab GitHub par render shuru hoga (~40 min)",
           "image": "jobs/003-pudding-guy-free-flights/thumbnail.jpg"
         },
         {
           "t": "2026-11-11T08:36:45Z",
-          "msg": "🎞 Render shuru (GitHub). Andaza: ~30-50 min."
+          "msg": "\ud83c\udf9e Render shuru (GitHub). Andaza: ~30-50 min."
         },
         {
           "t": "2026-11-11T09:07:48Z",
-          "msg": "⏳ Render 25% (422/1687 frames). Baqi waqt: 6h 8m 29s"
+          "msg": "\u23f3 Render 25% (422/1687 frames). Baqi waqt: 6h 8m 29s"
         },
         {
           "t": "2026-11-11T09:38:51Z",
-          "msg": "⏳ Render 50% (852/1687 frames). Baqi waqt: 4h 2m 15s"
+          "msg": "\u23f3 Render 50% (852/1687 frames). Baqi waqt: 4h 2m 15s"
         },
         {
           "t": "2026-11-11T10:04:55Z",
-          "msg": "⏳ Render 75% (1270/1687 frames). Baqi waqt: 1h 55m 25s"
+          "msg": "\u23f3 Render 75% (1270/1687 frames). Baqi waqt: 1h 55m 25s"
         },
         {
           "t": "2026-11-11T10:55:10Z",
-          "msg": "🛠 Changes note ho gaye (dashboard): \"thumbnail: Use more stronger hook for the thumnail eye cataching and attention grabber\" — Claude agle run mein (by 16:08 PKT) inhe lagana shuru karega."
+          "msg": "\ud83d\udee0 Changes note ho gaye (dashboard): \"thumbnail: Use more stronger hook for the thumnail eye cataching and attention grabber\" \u2014 Claude agle run mein (by 16:08 PKT) inhe lagana shuru karega."
         },
         {
           "t": "2026-11-11T11:18:14Z",
-          "msg": "🛠 Aapke changes laga raha hoon: thumbnail ka hook zyada tez aur nazar-khench bana raha hoon, video wahi rahegi (~20 min)"
+          "msg": "\ud83d\udee0 Aapke changes laga raha hoon: thumbnail ka hook zyada tez aur nazar-khench bana raha hoon, video wahi rahegi (~20 min)"
         },
         {
           "t": "2026-11-11T11:22:08Z",
-          "msg": "✅ Naya thumbnail tayyar: bara hara '$3,000 OF PUDDING → FREE FLIGHTS?!' hook aur '12,150 CUPS!' ka board (video wahi hai). Review ke liye abhi bhej raha hoon.",
+          "msg": "\u2705 Naya thumbnail tayyar: bara hara '$3,000 OF PUDDING \u2192 FREE FLIGHTS?!' hook aur '12,150 CUPS!' ka board (video wahi hai). Review ke liye abhi bhej raha hoon.",
           "image": "jobs/003-pudding-guy-free-flights/thumbnail.jpg"
         },
         {
           "t": "2026-11-11T11:47:13Z",
-          "msg": "🛠 Changes note ho gaye (dashboard): \"thumbnail: Can we use cups image too with 12150 cups ta k audience ki attnetion cup se bhi grab ho or acha hook lagay curiosity paida ho\" — Claude agle run mein (by 17:08 PKT) inhe lagana shuru karega."
+          "msg": "\ud83d\udee0 Changes note ho gaye (dashboard): \"thumbnail: Can we use cups image too with 12150 cups ta k audience ki attnetion cup se bhi grab ho or acha hook lagay curiosity paida ho\" \u2014 Claude agle run mein (by 17:08 PKT) inhe lagana shuru karega."
         },
         {
           "t": "2026-11-11T11:47:29Z",
-          "msg": "🛠 Changes note ho gaye (dashboard): \"thumbnail: Can we use cups image too with 12150 cups ta k audience ki attnetion cup se bhi grab ho or acha hook lagay curiosity paida ho\" — Claude agle run mein (by 17:08 PKT) inhe lagana shuru karega."
+          "msg": "\ud83d\udee0 Changes note ho gaye (dashboard): \"thumbnail: Can we use cups image too with 12150 cups ta k audience ki attnetion cup se bhi grab ho or acha hook lagay curiosity paida ho\" \u2014 Claude agle run mein (by 17:08 PKT) inhe lagana shuru karega."
         },
         {
           "t": "2026-11-11T12:13:49Z",
-          "msg": "🛠 Aapke changes laga raha hoon: thumbnail mein pudding cups ka bara dher aur '12,150 CUPS!' board saath, video wahi rahegi (~25 min)"
+          "msg": "\ud83d\udee0 Aapke changes laga raha hoon: thumbnail mein pudding cups ka bara dher aur '12,150 CUPS!' board saath, video wahi rahegi (~25 min)"
         },
         {
           "t": "2026-11-11T12:15:52Z",
-          "msg": "✅ Naya thumbnail tayyar: neeche pudding cups ka bara dher (barcode ke saath) aur saath '12,150 CUPS!' board (video wahi hai). Review ke liye abhi bhej raha hoon.",
+          "msg": "\u2705 Naya thumbnail tayyar: neeche pudding cups ka bara dher (barcode ke saath) aur saath '12,150 CUPS!' board (video wahi hai). Review ke liye abhi bhej raha hoon.",
           "image": "jobs/003-pudding-guy-free-flights/thumbnail.jpg"
         },
         {
           "t": "2026-11-11T13:26:59Z",
-          "msg": "✅ Aap ne dashboard se video + thumbnail approve kiya. Agle publish slot par YouTube par jayegi."
+          "msg": "\u2705 Aap ne dashboard se video + thumbnail approve kiya. Agle publish slot par YouTube par jayegi."
         },
         {
           "t": "2026-11-12T05:06:00Z",
-          "msg": "🧪 Test: Slack ab GitHub se chal raha hai, laptop band ho tab bhi updates aayengi. Kal 5:00 PKT (Thu 7 PM US ET) Pudding Guy YouTube par khud live hogi."
+          "msg": "\ud83e\uddea Test: Slack ab GitHub se chal raha hai, laptop band ho tab bhi updates aayengi. Kal 5:00 PKT (Thu 7 PM US ET) Pudding Guy YouTube par khud live hogi."
         },
         {
           "t": "2026-11-13T03:27:35Z",
-          "msg": "✅ LIVE on YouTube: \"This Man Bought $3,000 of Pudding for Free Flights\" https://youtu.be/e9HCNu75-2U"
+          "msg": "\u2705 LIVE on YouTube: \"This Man Bought $3,000 of Pudding for Free Flights\" https://youtu.be/e9HCNu75-2U"
         },
         {
           "t": "2026-11-13T14:59:07Z",
-          "msg": "📱 Instagram + Facebook: \"This Man Bought $3,000 of Pudding for Free Flights\" queued, Zapier posts it within ~15 min."
+          "msg": "\ud83d\udcf1 Instagram + Facebook: \"This Man Bought $3,000 of Pudding for Free Flights\" queued, Zapier posts it within ~15 min."
         }
       ],
       "progress_count": 23,
@@ -289,58 +289,58 @@
       "progress": [
         {
           "t": "2026-11-12T09:12:13Z",
-          "msg": "✅ Aap ne dashboard se script approve kiya. Claude agle run mein video banana shuru karega."
+          "msg": "\u2705 Aap ne dashboard se script approve kiya. Claude agle run mein video banana shuru karega."
         },
         {
           "t": "2026-11-12T10:10:34Z",
-          "msg": "🎙 Voice ban rahi hai… (~70 min baqi, phir render ~40 min)"
+          "msg": "\ud83c\udf99 Voice ban rahi hai\u2026 (~70 min baqi, phir render ~40 min)"
         },
         {
           "t": "2026-11-12T10:12:46Z",
-          "msg": "🎙 Voice tayyar (55 s). 🎬 Scenes: 10 locations plan — Wall Street, Memphis 1916 street, purani dukaan, Piggly Wiggly store, patent office, trading floor, bank, stock exchange, office, aaj ka supermarket (~60 min baqi, phir render ~40 min)"
+          "msg": "\ud83c\udf99 Voice tayyar (55 s). \ud83c\udfac Scenes: 10 locations plan \u2014 Wall Street, Memphis 1916 street, purani dukaan, Piggly Wiggly store, patent office, trading floor, bank, stock exchange, office, aaj ka supermarket (~60 min baqi, phir render ~40 min)"
         },
         {
           "t": "2026-11-12T10:27:55Z",
-          "msg": "🔍 Check frames round 1: 10 scenes bani. Fix kar raha hoon: sadak par lamp post aur darakht camera ke saamne, bank mein camera ek aadmi mein ghus raha tha, traders wale shot mein hero shares ke dher ke peeche chhup gaya (~25 min baqi, phir render ~40 min)",
+          "msg": "\ud83d\udd0d Check frames round 1: 10 scenes bani. Fix kar raha hoon: sadak par lamp post aur darakht camera ke saamne, bank mein camera ek aadmi mein ghus raha tha, traders wale shot mein hero shares ke dher ke peeche chhup gaya (~25 min baqi, phir render ~40 min)",
           "image": "jobs/004-piggly-wiggly-wall-street/review/round1.jpg"
         },
         {
           "t": "2026-11-12T10:32:57Z",
-          "msg": "✅ Check frames clean (round 2): lamp post/darakht hata diye, bank aur traders wale shot theek, $124 board saaf (~5 min baqi, phir render ~40 min)",
+          "msg": "\u2705 Check frames clean (round 2): lamp post/darakht hata diye, bank aur traders wale shot theek, $124 board saaf (~5 min baqi, phir render ~40 min)",
           "image": "jobs/004-piggly-wiggly-wall-street/review/round2.jpg"
         },
         {
           "t": "2026-11-12T10:33:04Z",
-          "msg": "🖼 Thumbnail tayyar: GROCER · BET $10 MILLION · VS WALL STREET?! (render ab GitHub par ~40 min)",
+          "msg": "\ud83d\uddbc Thumbnail tayyar: GROCER \u00b7 BET $10 MILLION \u00b7 VS WALL STREET?! (render ab GitHub par ~40 min)",
           "image": "jobs/004-piggly-wiggly-wall-street/thumbnail.jpg"
         },
         {
           "t": "2026-11-12T10:34:04Z",
-          "msg": "🎞 Render shuru (GitHub). Andaza: ~30-50 min."
+          "msg": "\ud83c\udf9e Render shuru (GitHub). Andaza: ~30-50 min."
         },
         {
           "t": "2026-11-12T11:04:07Z",
-          "msg": "⏳ Render 25% (411/1641 frames). Baqi waqt: 5h 56m 43s"
+          "msg": "\u23f3 Render 25% (411/1641 frames). Baqi waqt: 5h 56m 43s"
         },
         {
           "t": "2026-11-12T11:31:10Z",
-          "msg": "⏳ Render 50% (821/1641 frames). Baqi waqt: 3h 46m 35s"
+          "msg": "\u23f3 Render 50% (821/1641 frames). Baqi waqt: 3h 46m 35s"
         },
         {
           "t": "2026-11-12T11:55:14Z",
-          "msg": "⏳ Render 75% (1231/1641 frames). Baqi waqt: 1h 47m 42s"
+          "msg": "\u23f3 Render 75% (1231/1641 frames). Baqi waqt: 1h 47m 42s"
         },
         {
           "t": "2026-11-12T17:55:46Z",
-          "msg": "✅ Aap ne dashboard se video + thumbnail approve kiya. Agle publish slot par YouTube par jayegi."
+          "msg": "\u2705 Aap ne dashboard se video + thumbnail approve kiya. Agle publish slot par YouTube par jayegi."
         },
         {
           "t": "2026-11-14T00:55:07Z",
-          "msg": "✅ LIVE on YouTube: \"Piggly Wiggly's Founder Tried to Beat Wall Street\" https://youtu.be/rLOX2z_OqaQ"
+          "msg": "\u2705 LIVE on YouTube: \"Piggly Wiggly's Founder Tried to Beat Wall Street\" https://youtu.be/rLOX2z_OqaQ"
         },
         {
           "t": "2026-11-14T00:55:07Z",
-          "msg": "📱 Instagram + Facebook: \"Piggly Wiggly's Founder Tried to Beat Wall Street\" queued, Zapier posts it within ~15 min."
+          "msg": "\ud83d\udcf1 Instagram + Facebook: \"Piggly Wiggly's Founder Tried to Beat Wall Street\" queued, Zapier posts it within ~15 min."
         }
       ],
       "progress_count": 13,
@@ -371,11 +371,11 @@
       "progress": [
         {
           "t": "2026-11-12T21:51:46Z",
-          "msg": "🎞 Long video prepare: images, voice aur music ban rahe hain (~10-20 min)"
+          "msg": "\ud83c\udf9e Long video prepare: images, voice aur music ban rahe hain (~10-20 min)"
         },
         {
           "t": "2026-11-12T21:54:18Z",
-          "msg": "🎞 Long video prepare: images, voice aur music ban rahe hain (~10-20 min)"
+          "msg": "\ud83c\udf9e Long video prepare: images, voice aur music ban rahe hain (~10-20 min)"
         }
       ],
       "progress_count": 2,
@@ -394,62 +394,62 @@
       "progress": [
         {
           "t": "2026-11-13T06:27:41Z",
-          "msg": "✅ You approved the script on the dashboard. Claude starts the video in the next run."
+          "msg": "\u2705 You approved the script on the dashboard. Claude starts the video in the next run."
         },
         {
           "t": "2026-11-13T07:11:57Z",
-          "msg": "🎙 Making the voice now… (~60-80 min left, then render ~40 min)"
+          "msg": "\ud83c\udf99 Making the voice now\u2026 (~60-80 min left, then render ~40 min)"
         },
         {
           "t": "2026-11-13T07:13:30Z",
-          "msg": "🎙 Voice ready (49 s). Now planning the scenes (~55 min left, then render ~40 min)"
+          "msg": "\ud83c\udf99 Voice ready (49 s). Now planning the scenes (~55 min left, then render ~40 min)"
         },
         {
           "t": "2026-11-13T07:26:52Z",
-          "msg": "🎬 Scenes: 8 places built — 90s TV room, prize shop, high school, dorm room, airfield, investors' office, post office, courtroom (~30 min left, then render ~40 min)"
+          "msg": "\ud83c\udfac Scenes: 8 places built \u2014 90s TV room, prize shop, high school, dorm room, airfield, investors' office, post office, courtroom (~30 min left, then render ~40 min)"
         },
         {
           "t": "2026-11-13T07:26:54Z",
-          "msg": "🔍 Check frames round 1: looks good overall. Fixing: can label faces away, prize shop start too empty, $20M sign cut off, mailbox blocks the camera, judge too small in court (~25 min left, then render ~40 min)",
+          "msg": "\ud83d\udd0d Check frames round 1: looks good overall. Fixing: can label faces away, prize shop start too empty, $20M sign cut off, mailbox blocks the camera, judge too small in court (~25 min left, then render ~40 min)",
           "image": "jobs/005-pepsi-harrier-jet/review/round1.jpg"
         },
         {
           "t": "2026-11-13T07:31:48Z",
-          "msg": "✅ Check frames clean: can label, shop, airfield sign, post office and courtroom fixed (~5 min left, then render ~40 min)",
+          "msg": "\u2705 Check frames clean: can label, shop, airfield sign, post office and courtroom fixed (~5 min left, then render ~40 min)",
           "image": "jobs/005-pepsi-harrier-jet/review/round2.jpg"
         },
         {
           "t": "2026-11-13T07:31:50Z",
-          "msg": "🖼 Thumbnail ready: PEPSI · FIGHTER JET FOR POINTS?! (render starts now, ~40 min)",
+          "msg": "\ud83d\uddbc Thumbnail ready: PEPSI \u00b7 FIGHTER JET FOR POINTS?! (render starts now, ~40 min)",
           "image": "jobs/005-pepsi-harrier-jet/thumbnail.jpg"
         },
         {
           "t": "2026-11-13T07:32:50Z",
-          "msg": "🎞 Render shuru (GitHub). Andaza: ~30-50 min."
+          "msg": "\ud83c\udf9e Render shuru (GitHub). Andaza: ~30-50 min."
         },
         {
           "t": "2026-11-13T07:54:37Z",
-          "msg": "🛠 Render failed: GitHub's first frames took too long (time limit hit). Fixed: lighter scene + longer time limit. Rendering again (~40 min)"
+          "msg": "\ud83d\udee0 Render failed: GitHub's first frames took too long (time limit hit). Fixed: lighter scene + longer time limit. Rendering again (~40 min)"
         },
         {
           "t": "2026-11-13T07:55:28Z",
-          "msg": "🎞 Render shuru (GitHub). Andaza: ~30-50 min."
+          "msg": "\ud83c\udf9e Render shuru (GitHub). Andaza: ~30-50 min."
         },
         {
           "t": "2026-11-13T08:16:30Z",
-          "msg": "⏳ Render 25% (372/1466 frames). Baqi waqt: 4h 3m 48s"
+          "msg": "\u23f3 Render 25% (372/1466 frames). Baqi waqt: 4h 3m 48s"
         },
         {
           "t": "2026-11-13T08:35:32Z",
-          "msg": "⏳ Render 50% (737/1466 frames). Baqi waqt: 2h 37m 30s"
+          "msg": "\u23f3 Render 50% (737/1466 frames). Baqi waqt: 2h 37m 30s"
         },
         {
           "t": "2026-11-13T08:54:35Z",
-          "msg": "⏳ Render 75% (1106/1466 frames). Baqi waqt: 1h 16m 36s"
+          "msg": "\u23f3 Render 75% (1106/1466 frames). Baqi waqt: 1h 16m 36s"
         },
         {
           "t": "2026-11-13T12:09:21Z",
-          "msg": "✅ You approved the video + thumbnail on the dashboard. It goes to YouTube at the next publish slot."
+          "msg": "\u2705 You approved the video + thumbnail on the dashboard. It goes to YouTube at the next publish slot."
         }
       ],
       "progress_count": 14,
@@ -466,7 +466,8 @@
       "published_at": "2026-11-15T03:04:14Z",
       "ig_at": "2026-11-15T03:04:17Z",
       "fb_at": "2026-11-15T03:04:17Z",
-      "reels_at": "2026-11-15T03:04:17Z"
+      "reels_at": "2026-11-15T03:04:17Z",
+      "fb_thumb_set": "2026-11-15T06:10:12Z"
     },
     "006-hoover-free-flights": {
       "status": "video_approved",
@@ -477,45 +478,45 @@
       "progress": [
         {
           "t": "2026-11-14T06:18:29Z",
-          "msg": "📝 Hoover free-flights script tayyar hai, approval ke liye bhej raha hoon."
+          "msg": "\ud83d\udcdd Hoover free-flights script tayyar hai, approval ke liye bhej raha hoon."
         },
         {
           "t": "2026-11-14T12:28:34Z",
-          "msg": "✅ You approved the script on the dashboard. Claude starts the video in the next run."
+          "msg": "\u2705 You approved the script on the dashboard. Claude starts the video in the next run."
         },
         {
           "t": "2026-11-14T17:09:44Z",
-          "msg": "🎙 Voice ban rahi hai… (~3 min baqi, phir scenes ~45 min, render ~40 min)"
+          "msg": "\ud83c\udf99 Voice ban rahi hai\u2026 (~3 min baqi, phir scenes ~45 min, render ~40 min)"
         },
         {
           "t": "2026-11-14T17:20:37Z",
-          "msg": "🔍 Check frames: shop, travel hall, accounts, boardroom aur factory scenes theek lag rahe hain (chhoti fixes laga di) (render ~40 min)",
+          "msg": "\ud83d\udd0d Check frames: shop, travel hall, accounts, boardroom aur factory scenes theek lag rahe hain (chhoti fixes laga di) (render ~40 min)",
           "image": "jobs/006-hoover-free-flights/review/round1.jpg"
         },
         {
           "t": "2026-11-14T17:20:40Z",
-          "msg": "🖼 Thumbnail tayyar — ab GitHub par render shuru hoga (~40 min)",
+          "msg": "\ud83d\uddbc Thumbnail tayyar \u2014 ab GitHub par render shuru hoga (~40 min)",
           "image": "jobs/006-hoover-free-flights/thumbnail.jpg"
         },
         {
           "t": "2026-11-14T17:21:29Z",
-          "msg": "🎞 Render shuru (GitHub). Andaza: ~30-50 min."
+          "msg": "\ud83c\udf9e Render shuru (GitHub). Andaza: ~30-50 min."
         },
         {
           "t": "2026-11-14T17:39:31Z",
-          "msg": "⏳ Render 25% (358/1431 frames). Baqi waqt: 3h 31m 54s"
+          "msg": "\u23f3 Render 25% (358/1431 frames). Baqi waqt: 3h 31m 54s"
         },
         {
           "t": "2026-11-14T17:56:33Z",
-          "msg": "⏳ Render 50% (716/1431 frames). Baqi waqt: 2h 18m 24s"
+          "msg": "\u23f3 Render 50% (716/1431 frames). Baqi waqt: 2h 18m 24s"
         },
         {
           "t": "2026-11-14T18:13:35Z",
-          "msg": "⏳ Render 75% (1085/1431 frames). Baqi waqt: 1h 6m 1s"
+          "msg": "\u23f3 Render 75% (1085/1431 frames). Baqi waqt: 1h 6m 1s"
         },
         {
           "t": "2026-11-14T19:23:01Z",
-          "msg": "✅ You approved the video + thumbnail on the dashboard. It goes to YouTube at the next publish slot."
+          "msg": "\u2705 You approved the video + thumbnail on the dashboard. It goes to YouTube at the next publish slot."
         }
       ],
       "progress_count": 10,

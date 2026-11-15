@@ -1,17 +1,29 @@
 {
-  "updated": "2026-11-14T06:20:00Z",
+  "updated": "2026-11-15T06:10:12Z",
   "source": "Composio (Instagram + Facebook Graph API), refreshed by Claude's production run every 6 h",
   "instagram": {
     "account": "sneakydealstv",
     "followers": 0,
     "posts": [
       {
+        "id": "18156397963590857",
+        "job": "005-pepsi-harrier-jet",
+        "t": "2026-11-15T03:10:31Z",
+        "url": "https://www.instagram.com/reel/Dfvx0dvCW7f/",
+        "views": 147,
+        "reach": 109,
+        "likes": 0,
+        "comments": 0,
+        "shares": 0,
+        "saved": 0
+      },
+      {
         "id": "17958570777266173",
         "job": "004-piggly-wiggly-wall-street",
         "t": "2026-11-14T01:10:30Z",
         "url": "https://www.instagram.com/reel/Dfs_SXbPgNR/",
-        "views": 137,
-        "reach": 108,
+        "views": 138,
+        "reach": 109,
         "likes": 2,
         "comments": 0,
         "shares": 0,
@@ -49,11 +61,21 @@
     "followers": 0,
     "posts": [
       {
+        "id": "1392110527326521_122111218047537552",
+        "job": "005-pepsi-harrier-jet",
+        "t": "2026-11-15T03:07:33Z",
+        "url": "https://www.facebook.com/reel/1596177925862193/",
+        "views": 37,
+        "reactions": 0,
+        "comments": 0,
+        "shares": 0
+      },
+      {
         "id": "1392110527326521_122110268457537552",
         "job": "004-piggly-wiggly-wall-street",
         "t": "2026-11-14T00:58:22Z",
         "url": "https://www.facebook.com/reel/1603896534375577/",
-        "views": 230,
+        "views": 234,
         "reactions": 0,
         "comments": 0,
         "shares": 0
@@ -63,7 +85,7 @@
         "job": "003-pudding-guy-free-flights",
         "t": "2026-11-13T15:01:48Z",
         "url": "https://www.facebook.com/reel/1667491624769580/",
-        "views": 116,
+        "views": 117,
         "reactions": 0,
         "comments": 0,
         "shares": 0
