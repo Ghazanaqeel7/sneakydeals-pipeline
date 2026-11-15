@@ -561,9 +561,13 @@
           "t": "2026-11-15T17:17:59Z",
           "msg": "🖼 Thumbnail tayyar — ab GitHub par render shuru hoga (~40 min)",
           "image": "jobs/007-wrigley-free-gum/thumbnail.jpg"
+        },
+        {
+          "t": "2026-11-15T17:19:00Z",
+          "msg": "🎞 Render shuru (GitHub). Andaza: ~30-50 min."
         }
       ],
-      "progress_count": 4,
+      "progress_count": 5,
       "run": "43740322238"
     }
   },
