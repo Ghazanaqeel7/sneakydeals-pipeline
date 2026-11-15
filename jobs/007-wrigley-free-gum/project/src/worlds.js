@@ -2,9 +2,10 @@ import * as THREE from 'three';
 import {INK, rng, toon, box, cyl, sign, signTex, facade, tower, lampPost, crate, ground, sidewalk, arrow, cloud, paintTex, ink} from './kit.js';
 import {character} from './char.js';
 import {wordT} from './camera.js';
-import {dressStreet, dressPlaza, dressOffice, dressYard, dressJoint, dressWeather} from './dress.js';
+import {dressStreet, dressPlaza} from './dress.js';
+import * as P from './props.js';
 
-export const LOC = {night: 0, day: 300, office: 600, yard: 700, joint: 800, weather: 900};
+export const LOC = {day: 300, shop: 600, gum: 700, books: 800, home: 900};
 
 // smooth 0..1 between a and b (seconds)
 export const ease = (t, a, b) => { const x = Math.min(1, Math.max(0, (t - a) / (b - a))); return x * x * (3 - 2 * x); };
@@ -84,227 +85,189 @@ function room(ox, {w = 14, h = 5, d = 10, wall = '#efe0c4', floor = '#a7764e', s
   return g;
 }
 
+
+const F = 'bold 80px Arial, sans-serif';
+export function gumPack(color = '#2e9e5c', s = 1) {
+  const g = new THREE.Group();
+  g.add(box(0.36, 0.62, 0.07, color, {thick: 0.015}));
+  const f = sign('GUM', 0.3, 0.46, {bg: color, fg: '#ffffff', w: 150, h: 230, font: 'bold 70px Arial, sans-serif', border: false}); f.position.z = 0.05; g.add(f);
+  g.scale.setScalar(s); return g;
+}
+function can(label, color = '#d9382e') {
+  const g = new THREE.Group();
+  g.add(cyl(0.24, 0.24, 0.55, color, {y: 0.28, seg: 14, thick: 0.015}));
+  const f = sign(label, 0.34, 0.26, {bg: '#f7f0de', w: 200, h: 150, font: 'bold 38px Arial, sans-serif', border: false}); f.position.set(0, 0.28, 0.25); g.add(f);
+  return g;
+}
+function soapBar(c = '#f2a7b8') { return box(0.5, 0.2, 0.3, c, {thick: 0.012}); }
+function van() {
+  const g = new THREE.Group();
+  g.add(box(5, 2.1, 2.2, '#2f5d9e', {y: 1.45}), box(1.6, 1.3, 2.1, '#2f5d9e', {x: 3.2, y: 1.05}), box(1.1, 0.7, 2.15, '#bfe3f5', {x: 3.45, y: 1.5, edges: false}));
+  const sg = sign('WRIGLEY GUM', 3.6, 0.9, {bg: '#f2e6cc', w: 720, h: 180, font: 'bold 80px Arial, sans-serif'}); sg.position.set(-0.3, 1.6, 1.13); g.add(sg);
+  for (const x of [-1.6, 3.0]) { const w = cyl(0.5, 0.5, 2.3, '#2b2b2e', {x, y: 0.5, seg: 14}); w.rotation.x = Math.PI / 2; g.add(w); }
+  return g;
+}
+function bookStack(n, seed) {
+  const g = new THREE.Group(); const cs = ['#c9a227', '#b3261e', '#2f5d9e', '#d9a441'];
+  for (let i = 0; i < n; i++) g.add(box(0.75, 0.16, 0.95, cs[(i + seed) % 4], {y: 0.1 + i * 0.17, ry: ((i * 7 + seed) % 5 - 2) * 0.04, thick: 0.012}));
+  return g;
+}
+function globeTex() {
+  const c = document.createElement('canvas'); c.width = 1024; c.height = 512; const g = c.getContext('2d');
+  g.fillStyle = '#3d8fe0'; g.fillRect(0, 0, 1024, 512); g.fillStyle = '#5aa84f'; g.strokeStyle = INK; g.lineWidth = 5;
+  const r = rng(5);
+  for (let i = 0; i < 16; i++) { const x = r() * 1024, y = 70 + r() * 370, rw = 50 + r() * 90, rh = 35 + r() * 60; g.beginPath(); g.ellipse(x, y, rw, rh, r() * 3, 0, 7); g.fill(); g.stroke(); g.beginPath(); g.ellipse(x - 1024, y, rw, rh, 0, 0, 7); }
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.wrapS = THREE.RepeatWrapping; return t;
+}
+function dressRoom(W, X, chars, {seed = 1, w = 16, d = 11, post = ['SALE', 'FRESH']} = {}) {
+  const hd = d / 2;
+  W.add(P.at(P.rug(6, 3.4, '#a8433a', '#e0b04a'), X, 0.05, 1.0));
+  W.add(P.at(P.bookshelf(seed, 2.6, 2.8), X - 5.5, 0.05, -hd + 0.35), P.at(P.bookshelf(seed + 1, 2.6, 2.8), X + 5.2, 0.05, -hd + 0.35));
+  W.add(P.at(P.wallClock(), X + 0.2, 4.6, -hd + 0.1));
+  const p1 = P.poster(post[0], 1.1, 1.5, '#e6d39a'); P.at(p1, X + 3.2, 3.3, -hd + 0.07); W.add(p1);
+  const p2 = P.poster(post[1], 1.1, 1.5, '#cfe3f0'); P.at(p2, X - 0.2, 3.3, -hd + 0.07); W.add(p2);
+  W.add(P.at(P.filingCabinet('#8f7d6a'), X - 7.2, 0.05, -2.8), P.at(P.chair(), X + 6.8, 0.05, 2.0, 2.5));
+  for (const x of [X - 3, X + 3]) { W.add(cyl(0.02, 0.02, 0.8, '#2b2b2e', {x, y: 5.1, z: -1})); W.add(cyl(0.15, 0.45, 0.35, '#2f5d62', {x, y: 4.6, z: -1, seg: 14})); const b = new THREE.Mesh(new THREE.SphereGeometry(0.14, 10, 8), new THREE.MeshBasicMaterial({color: '#fff1c0'})); b.position.set(x, 4.45, -1); W.add(b); }
+  const win = sign('', 2.2, 1.8, {bg: '#bfe3f5', border: true}); win.position.set(X - 7.9, 3.1, 1.5); win.rotation.y = Math.PI / 2; W.add(win);
+}
+function counter(W, X, chars) {
+  W.add(box(7.2, 1.1, 1.3, '#8a5a3b', {x: X, y: 0.6, z: -1.8}), box(7.5, 0.12, 1.5, '#c9a074', {x: X, y: 1.2, z: -1.8}));
+  const reg = box(0.7, 0.45, 0.5, '#5a5f66', {x: X + 2.8, y: 1.5, z: -1.9}); W.add(reg);
+}
+
 export function buildWorld() {
   const W = new THREE.Group();
-  const up = []; // per-frame updaters (t, cam)
   const chars = [];
+  const S = LOC.day;
 
-  // ======== NIGHT CITY ========
-  W.add(street(LOC.night, {lit: true, seed: 11}));
-  const towerN = tower({lit: true}); towerN.position.set(LOC.night, 0, -40); W.add(towerN);
-  const moon = new THREE.Mesh(new THREE.CircleGeometry(6, 32), new THREE.MeshBasicMaterial({color: '#f6ecc8', fog: false}));
-  moon.position.set(LOC.night - 60, 120, -150); W.add(moon);
-  const trafficN = dressStreet(W, LOC.night, {lit: true, seed: 11, chars, avoid: [LOC.night - 3]});
-  const welder1 = character({palette: 'welder', hat: 'cap', seed: 31}); welder1.position.set(LOC.night - 3, 0.25, 6.2); W.add(welder1); chars.push(welder1);
-  const spN = sparks(5, 160); W.add(spN);
-  // spark origins on the front face of the tower (z = -40 + 11)
-  const sparkOrigins = [[LOC.night - 5, 62, -28.6], [LOC.night + 6, 48, -28.6], [LOC.night - 2, 36, -28.6], [LOC.night + 4, 74, -28.6], [LOC.night + 11.2, 55, -36]];
-  for (let i = 0; i < 6; i++) { const c = cloud(LOC.night - 70 + i * 30, 95 + (i % 2) * 12, -120, 6, '#3d3f6b'); W.add(c); }
+  // ======== STREET (day) ========
+  W.add(street(S, {seed: 23}));
+  const traffic = dressStreet(W, S, {seed: 23, chars, avoid: [S - 12, S - 4, S + 2, S + 12]});
+  dressPlaza(W, S, chars);
+  W.add(ground(40, 30, '#d8cdb8', {x: S, z: -22, seed: 5, repeat: 5}));
+  for (let i = 0; i < 7; i++) W.add(cloud(S - 80 + i * 28, 100 + (i % 3) * 10, -130, 7));
+  const mk = (txt) => { const b = sign(txt, 9, 2.4, {bg: '#c43d32', fg: '#fff4dc', font: 'bold 104px Arial, sans-serif', w: 900, h: 240}); b.position.set(S, 6.2, -6); W.add(b); return b; };
+  const ban1 = mk('1,500,000 HOMES'), ban2 = mk('7,000,000 HOMES');
+  W.add(cyl(0.12, 0.14, 7.4, '#3a3a3a', {x: S - 4.9, y: 3.7, z: -6}), cyl(0.12, 0.14, 7.4, '#3a3a3a', {x: S + 4.9, y: 3.7, z: -6}));
+  const vn = van(); vn.position.set(S + 2, 0, 9.0); W.add(vn);
+  // mailboxes along the sidewalk + hero mailbox
+  const MB = [];
+  for (let i = 0; i < 9; i++) { const m = P.mailbox(); const x = S - 17 + i * 4.2; m.position.set(x, 0.25, 6.3); W.add(m); MB.push(x); }
+  const big = P.mailbox(); big.scale.setScalar(1.9); big.position.set(S - 5.2, 0.25, 7.4); W.add(big);
+  for (const [x, pal] of [[S - 8, 'navy'], [S + 6, 'teal'], [S + 11, 'red']]) { const c = character({palette: pal, hat: 'cap', seed: Math.round(x)}); c.position.set(x, 0.25, 5.2); W.add(c); chars.push(c); }
+  const flyers = []; const NF = 46;
+  for (let i = 0; i < NF; i++) { const p = gumPack(['#2e9e5c', '#e0533d', '#f2c12e'][i % 3], 1.15); W.add(p); flyers.push(p); }
+  // globe
+  const gl = new THREE.Group(); gl.position.set(S - 0.5, 0, -14);
+  const gt = globeTex();
+  const globe = new THREE.Mesh(new THREE.SphereGeometry(2.4, 32, 24), toon('#ffffff', gt)); ink(globe, 0.03, false); globe.position.y = 3.9; gl.add(globe);
+  gl.add(cyl(0.5, 0.8, 1.4, '#6b4430', {y: 0.7}), cyl(0.2, 0.2, 1.3, '#6b4430', {y: 1.6}));
+  const orbit = new THREE.Group(); orbit.position.y = 3.9; gl.add(orbit);
+  for (let i = 0; i < 10; i++) { const p = gumPack(['#2e9e5c', '#e0533d', '#f2c12e'][i % 3], 1.4); p.userData.a = i / 10 * Math.PI * 2; orbit.add(p); }
+  W.add(gl);
 
-  // ======== DAY CITY ========
-  W.add(street(LOC.day, {seed: 23}));
-  const towerD = tower(); towerD.position.set(LOC.day, 0, -40); W.add(towerD);
-  const trafficD = dressStreet(W, LOC.day, {seed: 23, chars, avoid: [LOC.day - 35, LOC.day + 20.5, LOC.day + 18.3]});
-  dressPlaza(W, LOC.day, chars);
-  // plaza + NOW OPEN banner on two poles
-  W.add(ground(40, 30, '#d8cdb8', {x: LOC.day, z: -22, seed: 5, repeat: 5}));
-  const banner = sign('NOW OPEN', 9, 2.4, {bg: '#c43d32', fg: '#fff4dc', font: 'bold 120px Arial, sans-serif', w: 768, h: 200});
-  banner.position.set(LOC.day, 6.2, -6); W.add(banner);
-  W.add(cyl(0.12, 0.14, 7.4, '#3a3a3a', {x: LOC.day - 4.7, y: 3.7, z: -6}), cyl(0.12, 0.14, 7.4, '#3a3a3a', {x: LOC.day + 4.7, y: 3.7, z: -6}));
-  for (let i = 0; i < 7; i++) W.add(cloud(LOC.day - 80 + i * 28, 100 + (i % 3) * 10, -130, 7));
-  // CTA billboard by the street (in-world label)
-  const bill = sign('LIKE  +  SUBSCRIBE', 7.5, 2.6, {bg: '#f2e6cc', w: 900, h: 300, font: 'bold 104px Arial, sans-serif'});
-  bill.position.set(LOC.day - 35.5, 4.2, 4.2); W.add(bill);
-  W.add(cyl(0.1, 0.1, 3, '#3a3a3a', {x: LOC.day - 38.5, y: 1.5, z: 4.2}), cyl(0.1, 0.1, 3, '#3a3a3a', {x: LOC.day - 32.5, y: 1.5, z: 4.2}));
-  const host = character({palette: 'clerk', hat: 'bowler', seed: 41}); host.position.set(LOC.day - 35.0, 0.25, 6.4); W.add(host); chars.push(host);
-  // storm: rain + dark clouds (only during the storm shot)
-  const rainGeo = new THREE.BufferGeometry(); const RN = 900; const rp = new Float32Array(RN * 6); rainGeo.setAttribute('position', new THREE.BufferAttribute(rp, 3));
-  const rain = new THREE.LineSegments(rainGeo, new THREE.LineBasicMaterial({color: '#d7e3ef', transparent: true, opacity: 0.55}));
-  const rr = rng(77); const rs = Array.from({length: RN}, () => [rr(), rr(), rr()]);
-  W.add(rain);
-  const stormClouds = new THREE.Group(); for (let i = 0; i < 9; i++) stormClouds.add(cloud(LOC.day - 70 + i * 18, 60 + (i % 3) * 10, -70 + (i % 2) * 10, 8, '#59606e')); W.add(stormClouds);
-  // newsstand for the closing shot (morning)
-  const stand = new THREE.Group();
-  stand.add(box(4, 2.4, 1.6, '#2f5d62', {y: 1.2}));
-  stand.add(box(4.6, 0.2, 2.2, '#c43d32', {y: 2.5}));
-  const mag = sign('1995', 1.3, 1.7, {bg: '#f4ead4', w: 260, h: 340, font: 'bold 92px Arial, sans-serif', sub: 'THE SECRET FIX'});
-  mag.position.set(-0.8, 1.4, 0.86); stand.add(mag);
-  const mag2 = sign('NEWS', 1.1, 1.5, {bg: '#e6d39a', w: 220, h: 300, font: 'bold 70px Arial, sans-serif'}); mag2.position.set(0.9, 1.3, 0.86); stand.add(mag2);
-  stand.position.set(LOC.day + 20.5, 0.25, 5.8); W.add(stand);
-  const reader = character({palette: 'official', hat: 'none', glasses: true, seed: 51}); reader.position.set(LOC.day + 18.3, 0.25, 7.2); W.add(reader); chars.push(reader);
+  // ======== SOAP SHOP ========
+  const O = LOC.shop;
+  W.add(room(O, {w: 16, h: 5.5, d: 11, wall: '#d9ecdf', seed: 8}));
+  dressRoom(W, O, chars, {seed: 3, post: ['SOAP', 'FRESH']});
+  counter(W, O, chars);
+  const hero = character({palette: 'navy', hat: 'bowler', seed: 301}); hero.position.set(O, 0.05, -3.2); W.add(hero); chars.push(hero);
+  const soapCrates = new THREE.Group(); for (let i = 0; i < 6; i++) soapCrates.add(crate('SOAP', {x: O - 5.8 + (i % 3) * 1.25, y: 0.65 + Math.floor(i / 3) * 1.25, z: -3.6, color: '#f2a7b8', s: 1.2}));
+  W.add(soapCrates);
+  const soaps = new THREE.Group(); for (let i = 0; i < 6; i++) { const b = soapBar(i % 2 ? '#f2a7b8' : '#f4e3a0'); b.position.set(O - 2.6 + (i % 3) * 0.6, 1.36 + Math.floor(i / 3) * 0.21, -1.8); soaps.add(b); } W.add(soaps);
+  const cans1 = new THREE.Group(); for (let i = 0; i < 9; i++) { const c = can('POWDER'); c.position.set(O + 0.4 + (i % 3) * 0.6 + (Math.floor(i / 3) % 2) * 0.1, 1.26 + Math.floor(i / 3) * 0.56, -1.8 + (Math.floor(i / 3) % 2) * 0.1); cans1.add(c); } W.add(cans1);
+  const soapSign = sign('SOAP', 4.2, 1.5, {bg: '#f2a7b8', w: 640, h: 230, font: 'bold 130px Arial, sans-serif'}); soapSign.position.set(O - 2.8, 3.8, -5.38); W.add(soapSign);
+  const bpSign = sign('BAKING POWDER', 5.6, 1.5, {bg: '#e0533d', fg: '#fff4dc', w: 800, h: 220, font: 'bold 84px Arial, sans-serif'}); bpSign.position.set(O - 2.8, 3.8, -5.38); W.add(bpSign);
+  const freeCard = sign('FREE POWDER WITH EVERY BAR', 3.0, 0.8, {bg: '#f2c12e', w: 640, h: 170, font: 'bold 46px Arial, sans-serif'}); freeCard.position.set(O - 1.0, 2.4, -1.4); W.add(freeCard);
+  const cust1 = []; 
+  for (const [dx, dz, pal, hat] of [[-2.4, 0.3, 'red', 'none'], [-0.2, 0.9, 'teal', 'cap'], [2.2, 0.2, 'pink', 'none'], [3.8, 1.2, 'mustard', 'bowler'], [-4.3, 1.4, 'student', 'cap']]) { const c = character({palette: pal, hat, seed: 310 + dx * 7}); c.position.set(O + dx, 0.05, dz); W.add(c); chars.push(c); cust1.push(c); }
+  W.add(P.at(P.tree(0.7, 4), O + 7.0, 0.05, 3.8));
 
-  // ======== OFFICE (rules + student) ========
-  const O = LOC.office;
-  W.add(room(O, {w: 16, h: 5.5, d: 11, wall: '#bfe0db', seed: 8}));
-  const desk = new THREE.Group();
-  desk.add(box(4.2, 0.18, 2, '#8a5a3b', {y: 1.05}));
-  for (const [x, z] of [[-1.9, -0.8], [1.9, -0.8], [-1.9, 0.8], [1.9, 0.8]]) desk.add(box(0.15, 1.0, 0.15, '#6b4430', {x, y: 0.5, z}));
-  desk.position.set(O - 2.5, 0, 0.5); W.add(desk);
-  // open rule book: page drawing shows a square with arrows at its flat sides
-  const bookTex = (() => {
-    const c = document.createElement('canvas'); c.width = 512; c.height = 320; const g = c.getContext('2d');
-    g.fillStyle = '#f7f0de'; g.fillRect(0, 0, 512, 320); g.strokeStyle = INK; g.lineWidth = 6; g.beginPath(); g.moveTo(256, 0); g.lineTo(256, 320); g.stroke();
-    g.fillStyle = INK; g.font = 'bold 34px Arial, sans-serif'; g.textAlign = 'center'; g.fillText('BUILDING', 128, 52); g.fillText('CODE', 128, 92);
-    g.font = 'bold 24px Arial'; g.fillText('WIND: FLAT SIDES', 384, 44);
-    g.strokeRect(344, 120, 80, 80); g.fillStyle = '#e0533d';
-    const ar = (x, y, rot) => { g.save(); g.translate(x, y); g.rotate(rot); g.beginPath(); g.moveTo(-30, -7); g.lineTo(10, -7); g.lineTo(10, -16); g.lineTo(30, 0); g.lineTo(10, 16); g.lineTo(10, 7); g.lineTo(-30, 7); g.fill(); g.restore(); };
-    ar(310, 160, 0); ar(458, 160, Math.PI); ar(384, 90, Math.PI / 2); ar(384, 230, -Math.PI / 2);
-    for (let i = 0; i < 6; i++) { g.fillStyle = '#bcae92'; g.fillRect(30, 130 + i * 26, 190, 8); }
-    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; return t;
-  })();
-  const book = new THREE.Mesh(new THREE.BoxGeometry(1.6, 0.06, 1.0), [toon('#7a3b33'), toon('#7a3b33'), toon('#ffffff', bookTex), toon('#7a3b33'), toon('#7a3b33'), toon('#7a3b33')]);
-  ink(book, 0.01, true); book.position.set(O - 3.4, 1.18, 0.7); book.rotation.y = 0.15; W.add(book);
-  // model tower on the desk
-  const MX = O - 1.6, MY = 1.14, MZ = 0.4;
-  const model = tower(); model.scale.setScalar(0.008); model.position.set(MX, MY, MZ); W.add(model);
-  const AY = MY + 0.55;
-  const sideArrows = new THREE.Group();
-  for (const [x, z] of [[-0.62, 0], [0.62, 0], [0, 0.62], [0, -0.62]]) {
-    const a = arrow('#4f86b8', 0.4); a.position.set(MX + x, AY, MZ + z);
-    a.lookAt(new THREE.Vector3(MX, AY, MZ)); a.rotateY(-Math.PI / 2);
-    sideArrows.add(a);
-  }
-  W.add(sideArrows);
-  const cornerArrow = arrow('#e0533d', 0.55); cornerArrow.position.set(MX + 0.62, AY, MZ + 0.62); cornerArrow.lookAt(new THREE.Vector3(MX, AY, MZ)); cornerArrow.rotateY(-Math.PI / 2); W.add(cornerArrow);
-  // chalkboard with +40%
-  const chalk = document.createElement('canvas'); chalk.width = 640; chalk.height = 360; const cg = chalk.getContext('2d');
-  const chalkTex = new THREE.CanvasTexture(chalk); chalkTex.colorSpace = THREE.SRGBColorSpace;
-  const drawChalk = (p) => {
-    cg.fillStyle = '#2f4a3a'; cg.fillRect(0, 0, 640, 360); cg.strokeStyle = '#8a5a3b'; cg.lineWidth = 22; cg.strokeRect(0, 0, 640, 360);
-    cg.fillStyle = '#f2ead6'; cg.font = 'bold 40px Arial, sans-serif'; cg.textAlign = 'center'; cg.fillText('CORNER WINDS', 320, 80);
-    cg.save(); cg.globalAlpha = p; cg.font = 'bold 150px Arial, sans-serif'; cg.fillStyle = '#ffd66b'; cg.fillText('+40%', 320, 250); cg.restore();
-    chalkTex.needsUpdate = true;
-  };
-  drawChalk(0);
-  const board = box(4.4, 2.5, 0.12, '#ffffff', {thick: 0.02});
-  board.material = [toon('#5a3a26'), toon('#5a3a26'), toon('#5a3a26'), toon('#5a3a26'), new THREE.MeshBasicMaterial({map: chalkTex}), toon('#5a3a26')];
-  board.position.set(O + 3.2, 2.9, -5.35); W.add(board);
-  dressOffice(W, O, chars);
-  const student = character({palette: 'student', hat: 'cap', glasses: true, seed: 61}); student.position.set(O + 1.2, 0.05, -3.2); W.add(student); chars.push(student);
-  // window + plant (foreground blur object)
-  const win = sign('', 2.4, 2.0, {bg: '#bfe3f5', border: true}); win.position.set(O - 5, 3.1, -5.4); W.add(win);
-  const plant = new THREE.Group(); plant.add(cyl(0.35, 0.28, 0.7, '#b35a3a', {y: 0.35})); for (let i = 0; i < 6; i++) { const l = new THREE.Mesh(new THREE.SphereGeometry(0.35, 10, 8), toon('#4f8a4a')); l.position.set(Math.cos(i) * 0.3, 0.9 + (i % 3) * 0.25, Math.sin(i) * 0.3); ink(l, 0.02, false); plant.add(l); }
-  plant.position.set(O - 5.6, 0.05, 3.2); W.add(plant);
+  // ======== GUM SHOP ========
+  const G = LOC.gum;
+  W.add(room(G, {w: 16, h: 5.5, d: 11, wall: '#fbe2b4', seed: 18}));
+  dressRoom(W, G, chars, {seed: 9, post: ['MINT', 'FRUIT']});
+  counter(W, G, chars);
+  const hero2 = character({palette: 'navy', hat: 'bowler', seed: 301}); hero2.position.set(G, 0.05, -3.2); W.add(hero2); chars.push(hero2);
+  const cans2 = new THREE.Group(); for (let i = 0; i < 9; i++) { const c = can('POWDER'); c.position.set(G - 2.4 + (i % 3) * 0.6, 1.26 + Math.floor(i / 3) * 0.56, -1.8); cans2.add(c); } W.add(cans2);
+  const packs2 = new THREE.Group(); for (let i = 0; i < 8; i++) { const p = gumPack(['#2e9e5c', '#e0533d', '#f2c12e'][i % 3], 1.2); p.position.set(G + 0.5 + (i % 4) * 0.55, 1.55, -1.8 + Math.floor(i / 4) * 0.25); packs2.add(p); } W.add(packs2);
+  const bpSign2 = sign('BAKING POWDER', 5.6, 1.5, {bg: '#e0533d', fg: '#fff4dc', w: 800, h: 220, font: 'bold 84px Arial, sans-serif'}); bpSign2.position.set(G - 2.8, 3.8, -5.38); W.add(bpSign2);
+  const gumSign = sign('GUM', 4.2, 1.5, {bg: '#2e9e5c', fg: '#ffffff', w: 640, h: 230, font: 'bold 140px Arial, sans-serif'}); gumSign.position.set(G - 2.8, 3.8, -5.38); W.add(gumSign);
+  const freeGum = sign('FREE GUM WITH EVERY ORDER', 3.0, 0.8, {bg: '#2e9e5c', fg: '#ffffff', w: 640, h: 170, font: 'bold 46px Arial, sans-serif'}); freeGum.position.set(G + 1.4, 2.4, -1.4); W.add(freeGum);
+  const gumStack = new THREE.Group(); for (let i = 0; i < 6; i++) gumStack.add(crate('GUM', {x: G + 5.0 + (i % 3) * 1.25, y: 0.65 + Math.floor(i / 3) * 1.25, z: -3.6, color: '#7fd08f', s: 1.2})); W.add(gumStack);
+  const cust2 = [];
+  for (const [dx, dz, pal, hat] of [[-2.4, 0.3, 'red', 'none'], [-0.2, 0.9, 'teal', 'cap'], [2.2, 0.2, 'pink', 'none'], [3.8, 1.2, 'mustard', 'bowler'], [-4.3, 1.4, 'student', 'cap']]) { const c = character({palette: pal, hat, seed: 330 + dx * 7}); c.position.set(G + dx, 0.05, dz); W.add(c); chars.push(c); cust2.push(c); }
+  W.add(P.at(P.tree(0.7, 6), G - 7.0, 0.05, 3.8));
 
-  // ======== YARD (bolts instead of welds) ========
-  const Y = LOC.yard;
-  W.add(ground(60, 50, '#b39a72', {x: Y, z: -5, seed: 14, repeat: 8}));
-  W.add(facade({w: 20, h: 9, color: '#a86f5c', cols: 4, rows: 2, door: true, seed: 71}).translateX(Y).translateZ(-8));
-  W.add(box(20, 9, 10, '#8f6c5e', {x: Y, y: 4.5, z: -13.2, thick: 0.04}));
-  for (let i = 0; i < 3; i++) for (let j = 0; j < 2 + (i % 2); j++) W.add(crate('BOLTS', {x: Y + 1.4 + i * 1.3, y: 0.6 + j * 1.2, z: -2.2 + (i % 2) * 0.2, ry: (i - 1) * 0.08}));
-  W.add(crate('WELDS', {x: Y - 2.6, y: 0.6, z: -1.6, ry: 0.25, color: '#9a8a7a', stamp: 'SWAPPED'}));
-  const costSign = sign('BOLTS COST LESS', 3.8, 1.0, {bg: '#e6d39a', w: 760, h: 200, font: 'bold 78px Arial, sans-serif'}); costSign.position.set(Y + 2.7, 4.6, -2.0); W.add(costSign);
-  W.add(cyl(0.07, 0.07, 4.1, '#3a3a3a', {x: Y + 1.0, y: 2.05, z: -2.05}), cyl(0.07, 0.07, 4.1, '#3a3a3a', {x: Y + 4.4, y: 2.05, z: -2.05}));
-  dressYard(W, Y, chars);
-  const engineer = character({palette: 'engineer', hat: 'bowler', glasses: true, seed: 71}); engineer.position.set(Y + 0.0, 0.05, 0.6); W.add(engineer); chars.push(engineer);
-  const clip = box(0.35, 0.45, 0.03, '#d8c9a8', {thick: 0.01}); clip.position.set(0.18, -0.4, 0.06); engineer.userData.armR.add(clip);
+  // ======== PHONE BOOK WAREHOUSE ========
+  const B = LOC.books;
+  W.add(room(B, {w: 24, h: 8, d: 12, wall: '#c9d3dc', floor: '#8a7a66', seed: 29}));
+  for (let i = 0; i < 12; i++) { const st = bookStack(4 + (i * 3) % 7, i); st.position.set(B - 10 + i * 1.9 + (i % 2) * 0.3, 0.05, -4.6 + (i % 3) * 0.7); W.add(st); }
+  for (let i = 0; i < 4; i++) { const st = bookStack(10 - i, i + 5); st.position.set(B + 5.6 + i * 1.1, 0.05, -1.2 - (i % 2) * 0.8); W.add(st); }
+  for (let i = 0; i < 3; i++) W.add(P.at(P.pallet(), B - 7 + i * 3.2, 0.05, -2.2));
+  const pbSign = sign('PHONE BOOKS', 6, 1.4, {bg: '#f2c12e', w: 840, h: 200, font: 'bold 100px Arial, sans-serif'}); pbSign.position.set(B - 2, 5.4, -5.9); W.add(pbSign);
+  const yrSign = sign('1915', 3, 1.4, {bg: '#f2e6cc', w: 420, h: 200, font: 'bold 120px Arial, sans-serif'}); yrSign.position.set(B + 5, 5.4, -5.9); W.add(yrSign);
+  for (const x of [B - 3, B + 3, B + 8]) { W.add(cyl(0.02, 0.02, 1.4, '#2b2b2e', {x, y: 7.2, z: -1})); const b = new THREE.Mesh(new THREE.SphereGeometry(0.3, 10, 8), new THREE.MeshBasicMaterial({color: '#ffe2a6'})); b.position.set(x, 6.4, -1); W.add(b); }
+  W.add(P.at(P.ladder(3.4), B - 11.4, 0.05, -4.5), P.at(P.barrel('#2f6db3'), B + 10, 0.05, -4), P.at(P.barrel('#c43d32'), B + 10.9, 0.05, -4.6));
+  const hero3 = character({palette: 'navy', hat: 'bowler', seed: 301}); hero3.position.set(B + 0.5, 0.05, -1.6); W.add(hero3); chars.push(hero3);
+  const carry = bookStack(5, 2); carry.scale.setScalar(0.8); carry.position.set(0.1, -0.7, 0.45); hero3.userData.armR.add(carry); carry.rotation.z = -1.2;
+  for (const [x, z, pal, s] of [[B - 4.5, -0.4, 'mustard', 341], [B + 4, 1.0, 'teal', 342], [B - 1.8, 1.2, 'red', 343]]) { const c = character({palette: pal, hat: 'cap', seed: s}); c.position.set(x, 0.05, z); W.add(c); chars.push(c); }
 
-  // ======== JOINT close-up ========
-  const J = LOC.joint;
-  W.add(room(J, {w: 22, h: 8, d: 12, wall: '#8a8fa3', floor: '#6a6570', seed: 19}));
-  const joint = (x, welded) => {
-    const g = new THREE.Group();
-    g.add(box(0.9, 7, 0.9, '#8d9199', {y: 3.5, thick: 0.03}));            // column
-    const b1 = box(0.7, 4.6, 0.7, '#9aa0a8', {thick: 0.03}); b1.position.set(-1.35, 2.2, 0); b1.rotation.z = -0.62; g.add(b1);
-    const b2 = box(0.7, 4.6, 0.7, '#9aa0a8', {thick: 0.03}); b2.position.set(1.35, 2.2, 0); b2.rotation.z = 0.62; g.add(b2);
-    g.add(box(2.6, 1.8, 0.14, '#b3b8bf', {y: 4.2, z: 0.5, thick: 0.02}));  // gusset plate
-    const bolts = [];
-    if (welded) {
-      const beadMat = new THREE.MeshBasicMaterial({color: '#e8902e'});
-      const bead = new THREE.Group();
-      for (const [bw, bh, bx, by] of [[2.7, 0.1, 0, 0.92], [2.7, 0.1, 0, -0.92], [0.1, 1.9, 1.32, 0], [0.1, 1.9, -1.32, 0], [0.1, 1.2, -0.45, -0.3], [0.1, 1.2, 0.45, -0.3]]) {
-        const m = new THREE.Mesh(new THREE.BoxGeometry(bw, bh, 0.08), beadMat); m.position.set(bx, by, 0); bead.add(m);
-      }
-      bead.position.set(0, 4.2, 0.6); g.add(bead); bead.material = beadMat; g.userData.bead = bead;
-    } else {
-      for (let i = 0; i < 4; i++) for (let j = 0; j < 3; j++) { const b = cyl(0.11, 0.11, 0.14, '#4b4e55', {x: -0.9 + i * 0.6, y: 3.6 + j * 0.55, z: 0.62, seg: 6, thick: 0.012}); b.rotation.x = Math.PI / 2; g.add(b); bolts.push(b); }
-    }
-    g.userData.bolts = bolts;
-    g.position.set(x, 0, -3); return g;
-  };
-  dressJoint(W, J, chars);
-  const jW = joint(J - 3.2, true), jB = joint(J + 3.2, false); W.add(jW, jB);
-  const sW = sign('WELDED', 2.6, 0.8, {bg: '#e6d39a', w: 600, h: 180, font: 'bold 96px Arial, sans-serif'}); sW.position.set(J - 3.2, 6.6, -2.4); W.add(sW);
-  const sB = sign('BOLTED', 2.6, 0.8, {bg: '#e6d39a', w: 600, h: 180, font: 'bold 96px Arial, sans-serif'}); sB.position.set(J + 3.2, 6.6, -2.4); W.add(sB);
-  const lampJ = new THREE.Mesh(new THREE.SphereGeometry(0.35, 12, 8), new THREE.MeshBasicMaterial({color: '#ffe2a6'})); lampJ.position.set(J, 7.0, -1); W.add(lampJ); W.add(cyl(0.03, 0.03, 1.2, '#2a2a2a', {x: J, y: 7.6, z: -1}));
+  // ======== HOME ========
+  const H = LOC.home;
+  W.add(room(H, {w: 14, h: 5.5, d: 10, wall: '#e8c9a8', floor: '#9a6a46', seed: 38}));
+  dressRoom(W, H, chars, {seed: 14, w: 14, d: 10, post: ['HOME', 'SWEET']});
+  const tbl = P.desk(2.6, '#7a4f33'); tbl.position.set(H, 0.05, -1.6); W.add(tbl);
+  const ph = P.phone(); ph.scale.setScalar(2); ph.position.set(H - 0.6, 1.08, -1.6); W.add(ph);
+  const hg = gumPack('#2e9e5c', 2.0); hg.position.set(H + 0.55, 1.5, -1.4); W.add(hg);
+  const mum = character({palette: 'red', hat: 'none', seed: 351}); mum.position.set(H - 2.2, 0.05, -3.0); W.add(mum); chars.push(mum);
+  const dad = character({palette: 'teal', hat: 'none', glasses: true, seed: 352}); dad.position.set(H + 2.2, 0.05, -2.9); W.add(dad); chars.push(dad);
+  W.add(P.at(P.deskLamp(), H + 1.0, 1.08, -1.9), P.at(P.mug('#2f6db3'), H + 0.1, 1.08, -1.3), P.at(P.papers(4, 5), H - 0.2, 1.08, -1.9));
 
-  // ======== WEATHER ROOM ========
-  const R = LOC.weather;
-  W.add(room(R, {w: 16, h: 5.5, d: 11, wall: '#c9dbef', floor: '#8a6a4e', seed: 27}));
-  const mapC = document.createElement('canvas'); mapC.width = 800; mapC.height = 520; const mg = mapC.getContext('2d');
-  const mapTex = new THREE.CanvasTexture(mapC); mapTex.colorSpace = THREE.SRGBColorSpace; mapTex.anisotropy = 8;
-  const drawMap = (pIn, pTurn, t) => {
-    mg.fillStyle = '#7fb3cf'; mg.fillRect(0, 0, 800, 520);
-    mg.fillStyle = '#e8dcb8'; mg.strokeStyle = INK; mg.lineWidth = 5;
-    mg.beginPath(); mg.moveTo(0, 0); mg.lineTo(420, 0); mg.lineTo(400, 70); mg.lineTo(360, 130); mg.lineTo(330, 160); mg.lineTo(300, 230); mg.lineTo(250, 300); mg.lineTo(230, 380); mg.lineTo(170, 470); mg.lineTo(120, 520); mg.lineTo(0, 520); mg.closePath(); mg.fill(); mg.stroke();
-    mg.fillStyle = '#c43d32'; mg.beginPath(); mg.arc(335, 150, 12, 0, 7); mg.fill(); mg.stroke();
-    mg.fillStyle = INK; mg.font = 'bold 30px Arial, sans-serif'; mg.textAlign = 'right'; mg.fillText('NEW YORK', 318, 150);
-    mg.textAlign = 'center'; mg.font = 'bold 40px Arial, sans-serif'; mg.fillText('FORECAST', 620, 52);
-    // storm path: from south-east toward New York, then bending east (away)
-    const start = [600, 480], mid = [430, 230], away = [720, 90];
-    const sx = start[0] + (mid[0] - start[0]) * pIn + (away[0] - mid[0]) * pTurn;
-    const sy = start[1] + (mid[1] - start[1]) * pIn + (away[1] - mid[1]) * pTurn;
-    mg.strokeStyle = '#c43d32'; mg.lineWidth = 6; mg.setLineDash([16, 12]); mg.beginPath(); mg.moveTo(start[0], start[1]); mg.lineTo(start[0] + (mid[0] - start[0]) * pIn, start[1] + (mid[1] - start[1]) * pIn);
-    if (pTurn > 0) mg.lineTo(sx, sy); mg.stroke(); mg.setLineDash([]);
-    mg.save(); mg.translate(sx, sy); mg.rotate(-t * 3);
-    mg.fillStyle = '#ffffff'; mg.strokeStyle = INK; mg.lineWidth = 4;
-    for (let k = 0; k < 3; k++) { mg.rotate(2.09); mg.beginPath(); mg.arc(14, 0, 26, Math.PI * 0.9, Math.PI * 1.9); mg.lineWidth = 12; mg.strokeStyle = '#ffffff'; mg.stroke(); }
-    mg.beginPath(); mg.arc(0, 0, 12, 0, 7); mg.fillStyle = '#ffffff'; mg.fill(); mg.lineWidth = 4; mg.strokeStyle = INK; mg.stroke(); mg.restore();
-    mg.fillStyle = INK; mg.font = 'bold 26px Arial, sans-serif'; mg.textAlign = 'left'; mg.fillText('HURRICANE ELLA', sx + 34, sy + 10);
-    mapTex.needsUpdate = true;
-  };
-  drawMap(0, 0, 0);
-  const mapBoard = box(6.2, 4.0, 0.12, '#ffffff', {thick: 0.03});
-  mapBoard.material = [toon('#4a3a2e'), toon('#4a3a2e'), toon('#4a3a2e'), toon('#4a3a2e'), new THREE.MeshBasicMaterial({map: mapTex}), toon('#4a3a2e')];
-  mapBoard.position.set(R - 1.0, 2.9, -5.35); W.add(mapBoard);
-  const evac = sign('EVACUATION', 2.0, 1.4, {bg: '#f4ead4', w: 480, h: 336, font: 'bold 62px Arial, sans-serif', sub: 'PLAN'});
-  evac.position.set(R + 4.6, 1.75, -2.4); evac.rotation.y = -0.35; W.add(evac);
-  // easel legs
-  const legs = new THREE.Group(); legs.add(cyl(0.05, 0.05, 1.1, '#6b4430', {x: R + 4.15, y: 0.55, z: -2.55}), cyl(0.05, 0.05, 1.1, '#6b4430', {x: R + 5.05, y: 0.55, z: -2.85})); W.add(legs);
-  dressWeather(W, R, chars);
-  const off1 = character({palette: 'official', hat: 'top', seed: 81}); off1.position.set(R - 2.4, 0.05, 0.0); W.add(off1); chars.push(off1);
-  const eng2 = character({palette: 'engineer', hat: 'bowler', glasses: true, seed: 72}); eng2.position.set(R + 1.2, 0.05, 0.4); W.add(eng2); chars.push(eng2);
-  const plant2 = plant.clone(); plant2.position.set(R + 6.2, 0.05, 3.4); W.add(plant2);
-
-  // ======== per-frame update ========
   const update = (t, cam, shot) => {
     for (const c of chars) c.userData.update(t, cam.position);
-    trafficN(t, cam); trafficD(t, cam);
-    // hook: sparks on tower; night shot: sparks after "welders"
-    const sparkOn = shot === 'hook' ? 1 : shot === 'night' ? ease(t, wordT('night', 6), wordT('night', 6) + 0.5) : 0;
-    spN.visible = sparkOn > 0.01; spN.userData.update(t, sparkOrigins, sparkOn);
-    // office windows go dark after "offices emptied"
-    towerN.userData.sideMat.emissiveIntensity = shot === 'night' ? 0.55 - 0.45 * ease(t, wordT('night', 5), wordT('night', 5) + 0.8) : 0.55;
-    // rules: only side arrows; but: corner arrow + +40%
-    cornerArrow.visible = t > wordT('but', 5);
-    cornerArrow.scale.setScalar(Math.max(0.001, ease(t, wordT('but', 5), wordT('but', 5) + 0.5)));
-    drawChalkIf(t);
-    // storm
-    const storm = shot === 'storm';
-    rain.visible = storm; stormClouds.visible = storm;
-    if (storm) {
-      for (let i = 0; i < RN; i++) {
-        const [a, b, c] = rs[i];
-        const x = cam.position.x + (a - 0.5) * 40, z = cam.position.z - 2 - b * 30;
-        const y = ((c * 40 - t * 22) % 40 + 40) % 40;
-        rp[i * 6] = x; rp[i * 6 + 1] = y; rp[i * 6 + 2] = z; rp[i * 6 + 3] = x - 0.15; rp[i * 6 + 4] = y + 0.9; rp[i * 6 + 5] = z;
-      }
-      rainGeo.attributes.position.needsUpdate = true;
-      towerD.rotation.z = Math.sin(t * 2.3) * 0.004;
-    } else towerD.rotation.z = 0;
-    // joint: weld glow pulses; bolts tremble on "only as strong as the bolts"
-    jW.userData.bead.material.color.setHSL(0.075, 0.85, 0.5 + Math.sin(t * 6) * 0.05);
-    const shake = ease(t, wordT('yousee', 11), wordT('yousee', 11) + 0.4) * (1 - ease(t, wordT('yousee', 19) - 0.4, wordT('yousee', 19)));
-    jB.userData.bolts.forEach((b, i) => { b.position.z = 0.62 + Math.sin(t * 40 + i) * 0.03 * shake; });
-    // weather map
-    if (shot === 'ella' || shot === 'so') drawMap(ease(t, wordT('ella', 3), wordT('ella', 8)), ease(t, wordT('so', 6), wordT('so', 10)), t);
-    evac.visible = t > wordT('ella', 10); legs.visible = evac.visible; evac.scale.setScalar(Math.max(0.001, ease(t, wordT('ella', 10), wordT('ella', 10) + 0.5)));
-    // host waves during CTA
-    host.userData.armR.rotation.z = shot === 'cta' ? 2.4 + Math.sin(t * 8) * 0.35 : 0;
-    student.userData.armR.rotation.z = (shot === 'but') ? 1.9 : 0;
+    traffic(t, cam);
+    // street
+    const nfly = shot === 'hook' ? 20 : shot === 's09' ? 30 : shot === 's10' ? 34 : shot === 's12' ? 46 : 0;
+    flyers.forEach((p, i) => {
+      p.visible = i < nfly; if (!p.visible) return;
+      const per = 1.5 + (i % 5) * 0.12, u = (((t + i * 0.37) % per) / per);
+      const tx = MB[i % 9], x0 = S + 1 + ((i * 7) % 5 - 2) * 0.9;
+      p.position.set(x0 + (tx - x0) * u, 2.9 + Math.sin(u * Math.PI) * 3.2 - u * 1.3, 9 + (6.5 - 9) * u);
+      p.rotation.set(u * 9, u * 7, u * 5);
+    });
+    ban1.visible = shot === 's10'; ban2.visible = shot === 's12';
+    const bA = shot === 's10' ? ease(t, wordT('s10', 0), wordT('s10', 0) + 0.4) : ease(t, wordT('s12', 8), wordT('s12', 8) + 0.4);
+    ban1.scale.setScalar(Math.max(0.001, bA)); ban2.scale.setScalar(Math.max(0.001, bA));
+    big.scale.setScalar(1.9 + (shot === 'hook' ? Math.max(0, Math.sin(t * 9)) * 0.06 : 0));
+    gl.rotation.y = 0; globe.rotation.y = t * 0.6; orbit.rotation.y = t * 0.9;
+    orbit.children.forEach((p) => { p.position.set(Math.cos(p.userData.a) * 3.6, Math.sin(p.userData.a * 2) * 0.8, Math.sin(p.userData.a) * 3.6); });
+    // soap shop
+    cust1.forEach((c, i) => { c.userData.armR.rotation.z = shot === 's03' && wordT('s03', 3) < t ? 2.3 + Math.sin(t * 7 + i) * 0.3 : 0; });
+    freeCard.visible = shot === 's02' || shot === 's03';
+    const dropS = wordT('s04', 3), showBP = wordT('s04', 6);
+    const sSoap = t < dropS ? 1 : 1 - ease(t, dropS, dropS + 0.4); // before s04 soap sign = 1
+    soapSign.visible = !(shot === 's04' && t > dropS + 0.4); soapSign.scale.setScalar(Math.max(0.001, shot === 's04' ? sSoap : 1));
+    bpSign.visible = shot === 's04' && t > showBP - 0.1; bpSign.scale.setScalar(Math.max(0.001, ease(t, showBP, showBP + 0.4)));
+    soapCrates.position.x = shot === 's04' ? -ease(t, dropS, dropS + 0.6) * 9 : 0; soapCrates.visible = shot !== 's04' || t < dropS + 0.7;
+    soaps.visible = soapCrates.visible;
+    // gum shop
+    const dropB = wordT('s07', 3), gumAt = wordT('s07', 9), g5 = wordT('s05', 5);
+    freeGum.visible = (shot === 's05' && t > g5) || shot === 's06' || shot === 's07'; freeGum.scale.setScalar(shot === 's05' ? Math.max(0.001, ease(t, g5, g5 + 0.4)) : 1);
+    packs2.visible = (shot === 's05' && t > g5) || shot === 's06' || shot === 's07';
+    cust2.forEach((c, i) => { c.userData.armR.rotation.z = shot === 's06' && wordT('s06', 3) < t ? 2.3 + Math.sin(t * 7 + i) * 0.3 : 0; });
+    const cansOut = shot === 's07' ? ease(t, dropB, dropB + 0.6) : 0;
+    cans2.position.x = -cansOut * 9; cans2.visible = shot !== 's07' || cansOut < 0.99;
+    bpSign2.visible = shot !== 's07' || t < dropB + 0.4; bpSign2.scale.setScalar(Math.max(0.001, shot === 's07' ? 1 - ease(t, dropB, dropB + 0.4) : 1));
+    gumSign.visible = shot === 's07' && t > gumAt - 0.1; gumSign.scale.setScalar(Math.max(0.001, ease(t, gumAt, gumAt + 0.4)));
+    gumStack.visible = shot === 's07'; gumStack.children.forEach((c, i) => c.scale.setScalar(Math.max(0.001, ease(t, gumAt - 0.3 + i * 0.12, gumAt + 0.2 + i * 0.12))));
+    // phone books
+    hero3.userData.armR.rotation.z = shot === 's08' ? 1.2 + Math.sin(t * 5) * 0.1 : 0;
+    // home: phone rings, gum pops
+    const ring = shot === 's11' ? ease(t, wordT('s11', 6), wordT('s11', 6) + 0.1) * (1 - ease(t, wordT('s11', 9), wordT('s11', 9) + 0.2)) : 0;
+    ph.position.x = H - 0.6 + Math.sin(t * 50) * 0.02 * ring; ph.position.y = 1.08 + Math.abs(Math.sin(t * 25)) * 0.04 * ring;
+    hg.scale.setScalar(2.0 + (shot === 's11' ? ease(t, wordT('s11', 11), wordT('s11', 11) + 0.25) * 0.5 : 0));
+    hg.rotation.z = shot === 's11' ? Math.sin(ease(t, wordT('s11', 11), wordT('s11', 11) + 0.6) * 12) * 0.15 : 0;
   };
-  let lastChalk = -1;
-  function drawChalkIf(t) { const p = ease(t, wordT('but', 12), wordT('but', 12) + 0.5); if (Math.abs(p - lastChalk) > 0.02) { drawChalk(p); lastChalk = p; } }
-
   return {group: W, update};
 }
