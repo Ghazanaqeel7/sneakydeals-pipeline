@@ -151,6 +151,12 @@
      "views": 758,
      "likes": 14,
      "comments": 0
+    },
+    {
+     "t": "2026-11-15T07:19:44Z",
+     "views": 758,
+     "likes": 14,
+     "comments": 0
     }
    ],
    "title": "Pepsi Got Paid in 17 Soviet Submarines 🤯",
@@ -289,6 +295,12 @@
      "views": 1387,
      "likes": 43,
      "comments": 0
+    },
+    {
+     "t": "2026-11-15T07:19:44Z",
+     "views": 1387,
+     "likes": 43,
+     "comments": 0
     }
    ],
    "title": "Disney Secretly Bought a Swamp Using Fake Names",
@@ -397,6 +409,12 @@
      "views": 387,
      "likes": 20,
      "comments": 0
+    },
+    {
+     "t": "2026-11-15T07:19:44Z",
+     "views": 387,
+     "likes": 20,
+     "comments": 0
     }
    ],
    "title": "This Man Bought $3,000 of Pudding for Free Flights",
@@ -404,7 +422,7 @@
    "seconds": 57,
    "thumb": "https://i.ytimg.com/vi/e9HCNu75-2U/mqdefault.jpg",
    "short": true,
-   "views_24h": 77,
+   "views_24h": 67,
    "likes": 20,
    "comments": 0,
    "age_days": 2.3,
@@ -469,6 +487,12 @@
      "views": 607,
      "likes": 19,
      "comments": 1
+    },
+    {
+     "t": "2026-11-15T07:19:44Z",
+     "views": 603,
+     "likes": 19,
+     "comments": 1
     }
    ],
    "title": "Piggly Wiggly's Founder Tried to Beat Wall Street",
@@ -476,15 +500,15 @@
    "seconds": 55,
    "thumb": "https://i.ytimg.com/vi/rLOX2z_OqaQ/mqdefault.jpg",
    "short": true,
-   "views_24h": 338,
+   "views_24h": 332,
    "likes": 19,
    "comments": 1,
    "age_days": 1.3,
    "views_1d": null,
    "views_3d": null,
    "views_7d": null,
-   "views": 607,
-   "like_rate": 0.031
+   "views": 603,
+   "like_rate": 0.032
   },
   "tkpgrD2xtcg": {
    "snaps": [
@@ -499,6 +523,12 @@
      "views": 344,
      "likes": 9,
      "comments": 0
+    },
+    {
+     "t": "2026-11-15T07:19:44Z",
+     "views": 342,
+     "likes": 9,
+     "comments": 0
     }
    ],
    "title": "Pepsi's Ad Showed a Fighter Jet. He Sent $700,000.",
@@ -506,18 +536,18 @@
    "seconds": 49,
    "thumb": "https://i.ytimg.com/vi/tkpgrD2xtcg/mqdefault.jpg",
    "short": true,
-   "views_24h": 344,
+   "views_24h": 342,
    "likes": 9,
    "comments": 0,
    "age_days": 0.5,
    "views_1d": null,
    "views_3d": null,
    "views_7d": null,
-   "views": 344,
+   "views": 342,
    "like_rate": 0.026
   }
  },
- "updated": "2026-11-15T06:43:58Z",
+ "updated": "2026-11-15T07:19:44Z",
  "channel": {
   "snaps": [
    {
@@ -637,6 +667,11 @@
    },
    {
     "t": "2026-11-15T06:43:58Z",
+    "subs": 7,
+    "views": 3062
+   },
+   {
+    "t": "2026-11-15T07:19:44Z",
     "subs": 7,
     "views": 3062
    }
