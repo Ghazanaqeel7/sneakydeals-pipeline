@@ -149,7 +149,7 @@ export function buildWorld() {
   const mk = (txt) => { const b = sign(txt, 9, 2.4, {bg: '#c43d32', fg: '#fff4dc', font: 'bold 104px Arial, sans-serif', w: 900, h: 240}); b.position.set(S, 6.2, -6); W.add(b); return b; };
   const ban1 = mk('1,500,000 HOMES'), ban2 = mk('7,000,000 HOMES');
   W.add(cyl(0.12, 0.14, 7.4, '#3a3a3a', {x: S - 4.9, y: 3.7, z: -6}), cyl(0.12, 0.14, 7.4, '#3a3a3a', {x: S + 4.9, y: 3.7, z: -6}));
-  const vn = van(); vn.position.set(S + 2, 0, 9.0); W.add(vn);
+  const vn = van(); vn.position.set(S + 12, 0, 9.0); W.add(vn);
   // mailboxes along the sidewalk + hero mailbox
   const MB = [];
   for (let i = 0; i < 9; i++) { const m = P.mailbox(); const x = S - 17 + i * 4.2; m.position.set(x, 0.25, 6.3); W.add(m); MB.push(x); }
@@ -164,7 +164,7 @@ export function buildWorld() {
   gl.add(cyl(0.5, 0.8, 1.4, '#6b4430', {y: 0.7}), cyl(0.2, 0.2, 1.3, '#6b4430', {y: 1.6}));
   const orbit = new THREE.Group(); orbit.position.y = 3.9; gl.add(orbit);
   for (let i = 0; i < 10; i++) { const p = gumPack(['#2e9e5c', '#e0533d', '#f2c12e'][i % 3], 1.4); p.userData.a = i / 10 * Math.PI * 2; orbit.add(p); }
-  W.add(gl);
+  gl.visible = false; W.add(gl);
 
   // ======== SOAP SHOP ========
   const O = LOC.shop;
@@ -205,6 +205,7 @@ export function buildWorld() {
   for (let i = 0; i < 12; i++) { const st = bookStack(4 + (i * 3) % 7, i); st.position.set(B - 10 + i * 1.9 + (i % 2) * 0.3, 0.05, -4.6 + (i % 3) * 0.7); W.add(st); }
   for (let i = 0; i < 4; i++) { const st = bookStack(10 - i, i + 5); st.position.set(B + 5.6 + i * 1.1, 0.05, -1.2 - (i % 2) * 0.8); W.add(st); }
   for (let i = 0; i < 3; i++) W.add(P.at(P.pallet(), B - 7 + i * 3.2, 0.05, -2.2));
+  for (let i = 0; i < 6; i++) { const st = bookStack(3 + i % 4, i + 20); st.position.set(B - 7 + i * 2.6, 0.05, 1.8 + (i % 2) * 0.5); W.add(st); }
   const pbSign = sign('PHONE BOOKS', 6, 1.4, {bg: '#f2c12e', w: 840, h: 200, font: 'bold 100px Arial, sans-serif'}); pbSign.position.set(B - 2, 5.4, -5.9); W.add(pbSign);
   const yrSign = sign('1915', 3, 1.4, {bg: '#f2e6cc', w: 420, h: 200, font: 'bold 120px Arial, sans-serif'}); yrSign.position.set(B + 5, 5.4, -5.9); W.add(yrSign);
   for (const x of [B - 3, B + 3, B + 8]) { W.add(cyl(0.02, 0.02, 1.4, '#2b2b2e', {x, y: 7.2, z: -1})); const b = new THREE.Mesh(new THREE.SphereGeometry(0.3, 10, 8), new THREE.MeshBasicMaterial({color: '#ffe2a6'})); b.position.set(x, 6.4, -1); W.add(b); }
@@ -219,7 +220,7 @@ export function buildWorld() {
   dressRoom(W, H, chars, {seed: 14, w: 14, d: 10, post: ['HOME', 'SWEET']});
   const tbl = P.desk(2.6, '#7a4f33'); tbl.position.set(H, 0.05, -1.6); W.add(tbl);
   const ph = P.phone(); ph.scale.setScalar(2); ph.position.set(H - 0.6, 1.08, -1.6); W.add(ph);
-  const hg = gumPack('#2e9e5c', 2.0); hg.position.set(H + 0.55, 1.5, -1.4); W.add(hg);
+  const hg = gumPack('#2e9e5c', 1.4); hg.position.set(H + 0.7, 1.4, -1.4); W.add(hg);
   const mum = character({palette: 'red', hat: 'none', seed: 351}); mum.position.set(H - 2.2, 0.05, -3.0); W.add(mum); chars.push(mum);
   const dad = character({palette: 'teal', hat: 'none', glasses: true, seed: 352}); dad.position.set(H + 2.2, 0.05, -2.9); W.add(dad); chars.push(dad);
   W.add(P.at(P.deskLamp(), H + 1.0, 1.08, -1.9), P.at(P.mug('#2f6db3'), H + 0.1, 1.08, -1.3), P.at(P.papers(4, 5), H - 0.2, 1.08, -1.9));
@@ -240,7 +241,7 @@ export function buildWorld() {
     const bA = shot === 's10' ? ease(t, wordT('s10', 0), wordT('s10', 0) + 0.4) : ease(t, wordT('s12', 8), wordT('s12', 8) + 0.4);
     ban1.scale.setScalar(Math.max(0.001, bA)); ban2.scale.setScalar(Math.max(0.001, bA));
     big.scale.setScalar(1.9 + (shot === 'hook' ? Math.max(0, Math.sin(t * 9)) * 0.06 : 0));
-    gl.rotation.y = 0; globe.rotation.y = t * 0.6; orbit.rotation.y = t * 0.9;
+    gl.visible = shot === 's13'; gl.rotation.y = 0; globe.rotation.y = t * 0.6; orbit.rotation.y = t * 0.9;
     orbit.children.forEach((p) => { p.position.set(Math.cos(p.userData.a) * 3.6, Math.sin(p.userData.a * 2) * 0.8, Math.sin(p.userData.a) * 3.6); });
     // soap shop
     cust1.forEach((c, i) => { c.userData.armR.rotation.z = shot === 's03' && wordT('s03', 3) < t ? 2.3 + Math.sin(t * 7 + i) * 0.3 : 0; });
@@ -266,7 +267,7 @@ export function buildWorld() {
     // home: phone rings, gum pops
     const ring = shot === 's11' ? ease(t, wordT('s11', 6), wordT('s11', 6) + 0.1) * (1 - ease(t, wordT('s11', 9), wordT('s11', 9) + 0.2)) : 0;
     ph.position.x = H - 0.6 + Math.sin(t * 50) * 0.02 * ring; ph.position.y = 1.08 + Math.abs(Math.sin(t * 25)) * 0.04 * ring;
-    hg.scale.setScalar(2.0 + (shot === 's11' ? ease(t, wordT('s11', 11), wordT('s11', 11) + 0.25) * 0.5 : 0));
+    hg.scale.setScalar(1.4 + (shot === 's11' ? ease(t, wordT('s11', 11), wordT('s11', 11) + 0.25) * 0.3 : 0));
     hg.rotation.z = shot === 's11' ? Math.sin(ease(t, wordT('s11', 11), wordT('s11', 11) + 0.6) * 12) * 0.15 : 0;
   };
   return {group: W, update};
