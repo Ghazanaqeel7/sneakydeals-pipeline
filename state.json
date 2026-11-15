@@ -542,7 +542,14 @@
       "updated": "2026-11-15T17:09:40Z",
       "title": "Wrigley Mailed Free Gum to a Million Strangers",
       "vote_msg": "1794740319.250489",
-      "vote_kind": "script"
+      "vote_kind": "script",
+      "progress": [
+        {
+          "t": "2026-11-15T17:09:43Z",
+          "msg": "🎙 Voice ban rahi hai… (~5 min baqi, phir scenes ~45 min, render ~40 min)"
+        }
+      ],
+      "progress_count": 1
     }
   },
   "ideas": [
