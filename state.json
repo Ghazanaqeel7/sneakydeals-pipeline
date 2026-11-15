@@ -556,9 +556,14 @@
           "t": "2026-11-15T17:17:57Z",
           "msg": "✅ Check frames theek hain (2 rounds: van aur gum pack ki jagah, warehouse bhara, globe saaf). (~2 min baqi, phir render ~40 min)",
           "image": "jobs/007-wrigley-free-gum/review/round2.jpg"
+        },
+        {
+          "t": "2026-11-15T17:17:59Z",
+          "msg": "🖼 Thumbnail tayyar — ab GitHub par render shuru hoga (~40 min)",
+          "image": "jobs/007-wrigley-free-gum/thumbnail.jpg"
         }
       ],
-      "progress_count": 3
+      "progress_count": 4
     }
   },
   "ideas": [
