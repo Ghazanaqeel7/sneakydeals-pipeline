@@ -6,6 +6,19 @@
 <description>Approved videos for the Sneaky Deals Facebook Page. Zap "Sneaky Deals -> Facebook" (RSS by Zapier -> Facebook Pages Create Page Video) reads this feed. n8n adds one item per publish day, right after feed/youtube.xml.</description>
 <!--ITEMS-->
 <item>
+<title>Pepsi's Ad Showed a Fighter Jet, So a Student Sent a $700,000 Check</title>
+<description><![CDATA[In 1996 a Pepsi ad showed a Harrier jet for 7,000,000 Pepsi Points. Points cost 10 cents each, so a student raised $700,000 and mailed Pepsi a check. Pepsi said it was a joke, and in 1999 a judge agreed.
+
+Should Pepsi have handed over the jet? 👇
+
+#pepsi #businesshistory]]></description>
+<link>https://raw.githubusercontent.com/Ghazanaqeel7/sneakydeals-pipeline/main/jobs/005-pepsi-harrier-jet/thumbnail.jpg</link>
+<guid isPermaLink="false">005-pepsi-harrier-jet</guid>
+<pubDate>Sun, 15 Nov 2026 03:04:16 GMT</pubDate>
+<enclosure url="https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/005-pepsi-harrier-jet.mp4" type="video/mp4" length="0"/>
+</item>
+
+<item>
 <title>Piggly Wiggly's Founder Bet $10 Million Against Wall Street</title>
 <description><![CDATA[In 1916 Clarence Saunders invented self-service grocery shopping. Years later he borrowed about $10 million to beat the traders betting against his stock. The price hit $124 by noon, then the stock exchange stopped trading and he went bankrupt.
 
