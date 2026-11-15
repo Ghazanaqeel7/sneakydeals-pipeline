@@ -1,0 +1,31 @@
+name: watchdog
+# Checks whether today's Short got written, WITHOUT using any Claude session or tokens — so it still
+# catches the day even if every Claude scheduled run that day errors out or hits a usage limit.
+# Writes docs/alerts.json (shown on the dashboard) and pings Slack directly if that day's script is
+# still missing after the last scheduled Claude run (22:08 PKT) should have finished.
+on:
+  schedule:
+    - cron: '5 18 * * *'   # 23:05 PKT — just after the 22:08 PKT run should be done
+    - cron: '5 19 * * *'   # 00:05 PKT — one retry in case the 23:05 run landed mid-write
+  workflow_dispatch: {}
+
+concurrency:
+  group: watchdog
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  watchdog:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - name: Check today's script
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
+        run: python3 pipeline/scripts/watchdog.py

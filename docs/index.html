@@ -424,6 +424,7 @@ async function load(){
     const [runs,commits,feed,own]=await Promise.allSettled([heavy?api('/actions/runs?per_page=6'):Promise.reject(0),heavy?api('/commits?per_page=40'):Promise.reject(0),readText('feed/youtube.xml'),readText('docs/research/own_videos.json')]);
     if(own.status==='fulfilled'){try{S.own=JSON.parse(own.value)}catch(e){}}
     try{S.social=JSON.parse(await readText('docs/research/social.json'))}catch(e){}
+    try{S.alerts=JSON.parse(await readText('docs/alerts.json'))}catch(e){S.alerts=[]}
     if(runs.status==='fulfilled')S.runs=runs.value.workflow_runs||[];
     if(commits.status==='fulfilled')S.commits=commits.value||[];
     if(feed.status==='fulfilled')S.feed=parseFeed(feed.value);
@@ -456,8 +457,10 @@ function systemsInfo(){
   const runState=run?(run.status!=='completed'?['run','Running']:run.conclusion==='success'?['ok','Passed']:['bad',run.conclusion]):['','—'];
   const live=S.feed[0];
   const nextBuild=Object.values(st.jobs).some(j=>['script_approved','render_failed','script_rejected','video_rejected'].includes(j.status));
+  const stuck=(S.alerts||[]).find(a=>a.id==='script_missing');
   return [
-    ['Claude',cl?'ok':'warn',cl?'Last work '+ago(cl.commit.author.date):'No commits yet',nextBuild?'Has work queued — next run 11:08, 16:08 or 22:08 PKT':'Runs 11:08, 16:08, 22:08 PKT · new story 11:08'],
+    stuck?['Claude','bad',stuck.message,'Since '+ago(stuck.since)]
+      :['Claude',cl?'ok':'warn',cl?'Last work '+ago(cl.commit.author.date):'No commits yet',nextBuild?'Has work queued — next run 11:08, 16:08 or 22:08 PKT':'Runs 11:08, 16:08, 22:08 PKT · new story 11:08'],
     ['n8n → Slack',n8?'ok':'warn',n8?'Last write '+ago(n8.commit.author.date):'No writes yet','Polls every 1–2 min (laptop on)'],
     ['GitHub render',runState[0],run?`${runState[1]} · ${ago(run.updated_at)}`:'No runs',run?`<a href="${run.html_url}" target="_blank">open run ↗</a>`:''],
     ['Zapier → YouTube',live?'ok':'',live?esc(live.title).slice(0,30)+'…':'Nothing sent yet',live?'Handed over '+ago(live.date):`Next slot ${nextSlotText(st)}`]];
