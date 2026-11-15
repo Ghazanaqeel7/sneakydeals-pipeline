@@ -547,9 +547,13 @@
         {
           "t": "2026-11-15T17:09:43Z",
           "msg": "🎙 Voice ban rahi hai… (~5 min baqi, phir scenes ~45 min, render ~40 min)"
+        },
+        {
+          "t": "2026-11-15T17:13:44Z",
+          "msg": "🎙 Voice tayyar (44 s). 🎬 Scenes: 5 locations — street, soap shop, gum shop, phone-book warehouse, home (~35 min baqi, phir render ~40 min)"
         }
       ],
-      "progress_count": 1
+      "progress_count": 2
     }
   },
   "ideas": [
