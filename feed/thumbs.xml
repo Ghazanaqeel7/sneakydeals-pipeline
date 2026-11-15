@@ -6,6 +6,15 @@
 <description>One item per uploaded video: title = YouTube video ID, enclosure = its thumbnail. A Zap sets it (YouTube: Update Video Thumbnail) after YouTube has processed the Short.</description>
 <!--ITEMS-->
 <item>
+<title>tkpgrD2xtcg</title>
+<description>005-pepsi-harrier-jet</description>
+<link>https://raw.githubusercontent.com/Ghazanaqeel7/sneakydeals-pipeline/main/jobs/005-pepsi-harrier-jet/thumbnail.jpg</link>
+<guid isPermaLink="false">thumb-005-pepsi-harrier-jet</guid>
+<pubDate>Sun, 15 Nov 2026 06:10:21 GMT</pubDate>
+<enclosure url="https://raw.githubusercontent.com/Ghazanaqeel7/sneakydeals-pipeline/main/jobs/005-pepsi-harrier-jet/thumbnail.jpg" type="image/jpeg" length="0"/>
+</item>
+
+<item>
 <title>rLOX2z_OqaQ</title>
 <description>004-piggly-wiggly-wall-street</description>
 <link>https://raw.githubusercontent.com/Ghazanaqeel7/sneakydeals-pipeline/main/jobs/004-piggly-wiggly-wall-street/thumbnail.jpg?r=2</link>
