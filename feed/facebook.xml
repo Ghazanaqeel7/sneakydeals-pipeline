@@ -6,6 +6,19 @@
 <description>Approved videos for the Sneaky Deals Facebook Page. Zap "Sneaky Deals -> Facebook" (RSS by Zapier -> Facebook Pages Create Page Video) reads this feed. n8n adds one item per publish day, right after feed/youtube.xml.</description>
 <!--ITEMS-->
 <item>
+<title>Hoover Offered Free Flights With Vacuums and It Cost Millions</title>
+<description><![CDATA[In 1992 Hoover's British branch offered two free return flights for spending £100. It expected about 50,000 claims; hundreds of thousands came, and Maytag later sold the European business.
+
+Would you have bought the vacuum? 👇
+
+#hoover #businesshistory]]></description>
+<link>https://raw.githubusercontent.com/Ghazanaqeel7/sneakydeals-pipeline/main/jobs/006-hoover-free-flights/thumbnail.jpg</link>
+<guid isPermaLink="false">006-hoover-free-flights</guid>
+<pubDate>Mon, 16 Nov 2026 01:06:37 GMT</pubDate>
+<enclosure url="https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/006-hoover-free-flights.mp4" type="video/mp4" length="0"/>
+</item>
+
+<item>
 <title>Pepsi's Ad Showed a Fighter Jet, So a Student Sent a $700,000 Check</title>
 <description><![CDATA[In 1996 a Pepsi ad showed a Harrier jet for 7,000,000 Pepsi Points. Points cost 10 cents each, so a student raised $700,000 and mailed Pepsi a check. Pepsi said it was a joke, and in 1999 a judge agreed.
 

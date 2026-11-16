@@ -523,9 +523,17 @@
         {
           "t": "2026-11-14T19:23:01Z",
           "msg": "✅ You approved the video + thumbnail on the dashboard. It goes to YouTube at the next publish slot."
+        },
+        {
+          "t": "2026-11-16T01:06:37Z",
+          "msg": "✅ LIVE on YouTube: \"Hoover Gave Away Free Flights. It Cost Them Millions.\" https://youtu.be/IMRw_kI682M"
+        },
+        {
+          "t": "2026-11-16T01:06:37Z",
+          "msg": "📱 Instagram + Facebook: \"Hoover Gave Away Free Flights. It Cost Them Millions.\" queued, Zapier posts it within ~15 min."
         }
       ],
-      "progress_count": 10,
+      "progress_count": 12,
       "decided_via": "dashboard",
       "decided_at": "2026-11-14T19:23:01Z",
       "run": "43620596837",
@@ -535,7 +543,12 @@
       "yt_scheduled_for": "2026-11-16T00:00:00Z",
       "yt_queued_at": "2026-11-14T19:23:32Z",
       "yt_video_id": "IMRw_kI682M",
-      "yt_thumb_set": "2026-11-14T20:20:00Z"
+      "yt_thumb_set": "2026-11-14T20:20:00Z",
+      "yt_live_at": "2026-11-16T01:06:37Z",
+      "thumb_queued_at": "2026-11-16T01:06:37Z",
+      "ig_at": "2026-11-16T01:06:37Z",
+      "fb_at": "2026-11-16T01:06:37Z",
+      "reels_at": "2026-11-16T01:06:37Z"
     },
     "007-wrigley-free-gum": {
       "status": "video_approved",
