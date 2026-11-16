@@ -126,10 +126,6 @@
     "research": {
       "progress": [
         {
-          "t": "2026-11-10T21:42:12Z",
-          "msg": "🎬 Top lambi video: \"The Thinking Game | Full documentary | Tribeca Film Festival official \" — 442.9M views, 250.3x"
-        },
-        {
           "t": "2026-11-10T21:42:13Z",
           "msg": "🏷 Garam words: pepsi, coca-cola, coke, marketing, crore, code, exposed, evolution"
         },
@@ -184,9 +180,13 @@
         {
           "t": "2026-11-16T07:27:27Z",
           "msg": "👀 RankZilla: \"DON'T CHECK THE SOUND 😭😭\" 13.8x chali"
+        },
+        {
+          "t": "2026-11-16T07:27:29Z",
+          "msg": "📈 Sneaky Deals: 7 subs (+0 pichle scan se)"
         }
       ],
-      "progress_count": 17
+      "progress_count": 18
     },
     "003-pudding-guy-free-flights": {
       "status": "published",
