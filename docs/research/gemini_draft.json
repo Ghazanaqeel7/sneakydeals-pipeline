@@ -1,22 +1,19 @@
 {
-  "generated_at": "2026-11-15T12:55:16.618126+00:00",
+  "generated_at": "2026-11-16T13:55:45.521025+00:00",
   "format": "short",
-  "item_day": "Sun 15 Nov",
-  "topic": "Blockbuster laughed at the chance to buy Netflix for $50 million",
-  "title": "Blockbuster Laughed at Netflix for $50 Million",
+  "item_day": "Mon 16 Nov",
+  "topic": "Popeyes founder Al Copeland lost the chain in bankruptcy, then used the bankruptcy process itself to force the banks to pay him for the name",
+  "title": "Popeyes Founder Lost Everything. Then He Made the Banks Pay Him.",
   "unverified": true,
   "note": "Gemini first draft, NOT fact-checked. Claude must verify every claim with its own 2-source rule before using any of it in a real job file.",
-  "draft_script": "Imagine turning down a deal that could have made your company hundreds of billions. This is a true story. In 2000, Blockbuster was the king of video rentals. Every town had one. Meanwhile, a small startup named Netflix was struggling. They rented DVDs by mail. They were losing money. Netflix founders Reed Hastings and Marc Randolph made a desperate move. They approached Blockbuster. They offered to sell their entire company. The price: $50 million. Not for a partnership. For the whole thing. Netflix even proposed Blockbuster integrate their online service. Blockbuster CEO John Antioco and his executive team met the Netflix founders. The room filled with laughter. They openly mocked the idea. $50 million for a tiny, unprofitable online DVD company? Blockbuster's leaders saw no future in it. They believed their thousands of physical stores were unbeatable. They dismissed the offer completely. Blockbuster rejected the deal. Netflix did not give up. It continued to innovate. It shifted from DVDs to streaming. It became a global powerhouse. Blockbuster, meanwhile, couldn't adapt. It filed for bankruptcy in 2010. Today, Netflix's market capitalization has soared past $300 billion. That $50 million investment Blockbuster laughed at? It became one of the most expensive laughs in business history. Blockbuster laughed. Netflix built an empire.",
+  "draft_script": "Al Copeland built Popeyes Chicken. He started with one restaurant in New Orleans in 1972. It grew fast. Too fast. By 1990, Copeland\u2019s empire was in deep trouble. His company, A. Copeland Enterprises, declared bankruptcy.\n\nThe banks took over Popeyes. They controlled the restaurants. They controlled the recipes. But they missed one crucial detail. Al Copeland personally owned the Popeyes brand name. He held the trademarks. The banks had the chicken, but not the name.\n\nThe banks needed that name to operate. They couldn't run Popeyes restaurants without the Popeyes name. Copeland had them. He turned their victory into his leverage. He made them pay him. To use the Popeyes name, the banks had to cut him a check.\n\nHe lost his company. But he made his creditors pay him for the very name they needed to succeed. Al Copeland turned a bankruptcy rule into a weapon. He lost everything, then he made the banks pay him for it.",
   "claims": [
-    "In 2000, Blockbuster was the leading video rental company.",
-    "Netflix was a DVD-by-mail service in 2000.",
-    "Netflix was losing money in 2000.",
-    "Netflix founders Reed Hastings and Marc Randolph approached Blockbuster in 2000.",
-    "Netflix offered to sell the company to Blockbuster.",
-    "The proposed sale price for Netflix was $50 million.",
-    "Blockbuster CEO John Antioco met with Netflix founders.",
-    "Blockbuster rejected the $50 million offer from Netflix.",
-    "Blockbuster filed for bankruptcy in 2010.",
-    "Netflix's market capitalization has exceeded $300 billion."
+    "Al Copeland founded Popeyes Chicken.",
+    "Popeyes started with one restaurant in New Orleans.",
+    "Popeyes founded in 1972.",
+    "By 1990, Copeland's company A. Copeland Enterprises declared bankruptcy.",
+    "Al Copeland personally owned the Popeyes brand name and trademarks.",
+    "Banks took over Popeyes operations.",
+    "Banks paid Al Copeland to use the Popeyes name."
   ]
 }
