@@ -126,10 +126,6 @@
     "research": {
       "progress": [
         {
-          "t": "2026-11-10T21:42:09Z",
-          "msg": "🔎 Research hafta tayyar (dashboard → Research)"
-        },
-        {
           "t": "2026-11-10T21:42:10Z",
           "msg": "🔥 Top Short: \"Brocode beer story How business formed best wine in india\" — 4.0M views, 231.2x apne channel se zyada"
         },
@@ -184,9 +180,13 @@
         {
           "t": "2026-11-16T07:27:23Z",
           "msg": "🎬 Top lambi video: \"The Rise and Fall of Black Rifle Coffee\" — 2.0M views, 222.2x"
+        },
+        {
+          "t": "2026-11-16T07:27:25Z",
+          "msg": "🏷 Garam words: everyone, marketing, trick, viral, entrepreneurship, but, success, genius"
         }
       ],
-      "progress_count": 15
+      "progress_count": 16
     },
     "003-pudding-guy-free-flights": {
       "status": "published",
