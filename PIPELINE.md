@@ -46,7 +46,7 @@ GitHub Actions); read only the files a step needs; finish every pending fix/buil
 and, if today's script is still missing, writes `docs/alerts.json` (shown on the dashboard) and pings Slack directly — so a day where every
 scheduled run fails before reaching the repo is never silent. It clears itself once a script is written; nothing to do here unless asked.
 **Quick exit first:** read `state.json`. If no job is `script_approved`, `render_failed`, or `*_rejected` with
-`feedback`, AND no job needs a thumbnail (step 4b), AND no new story is due (step 5: `last_story_date` is today, Asia/Karachi), AND (step 5a happens only in the story-hour run), AND there is no long-form work (step 5b: long-form on, no open long job, and a `[LONG]` idea queued), stop right away with a one-line summary — do not load the skill,
+`feedback`, AND no job needs a thumbnail (step 4b), AND no new story is due (step 5: `last_story_date` is today, Asia/Karachi), AND (step 5a happens only in the story-hour run), AND there is no long-form work (step 5b: long-form on, no open long job, and a `[LONG]` idea queued), AND **it is not a Monday story-hour run (11:00-11:59 PKT) whose `docs/calendar.json` `week` is not already this Monday's date** (step 6 — this is an exception to the quick exit exactly like step 4b, so the weekly calendar/learning step can never be silently skipped by a full buffer again, which is what happened on 16 Nov), stop right away with a one-line summary — do not load the skill,
 install anything, or research. If another job is already `building`, do not start a second build.
 
 0. Setup: `git config user.name "claude-pipeline"`, `git config user.email "claude-pipeline@users.noreply.github.com"`.
