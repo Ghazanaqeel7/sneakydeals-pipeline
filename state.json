@@ -172,9 +172,13 @@
         {
           "t": "2026-11-10T22:12:51Z",
           "msg": "📈 Sneaky Deals: 0 subs (+0 pichle scan se)"
+        },
+        {
+          "t": "2026-11-16T07:27:18Z",
+          "msg": "🔎 Research update tayyar (dashboard → Research)"
         }
       ],
-      "progress_count": 12
+      "progress_count": 13
     },
     "003-pudding-guy-free-flights": {
       "status": "published",
