@@ -549,7 +549,8 @@
       "ig_at": "2026-11-16T03:06:32Z",
       "fb_at": "2026-11-16T03:06:32Z",
       "reels_at": "2026-11-16T03:06:32Z",
-      "published_at": "2026-11-16T03:06:30Z"
+      "published_at": "2026-11-16T03:06:30Z",
+      "fb_thumb_set": "2026-11-16T06:11:20Z"
     },
     "007-wrigley-free-gum": {
       "status": "video_approved",
@@ -684,5 +685,5 @@
       "done": false
     }
   ],
-  "last_story_date": "2026-11-15"
+  "last_story_date": "2026-11-16"
 }
