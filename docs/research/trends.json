@@ -228,6 +228,44 @@
     "wendy": 1,
     "nike": 1
    }
+  },
+  {
+   "date": "2026-11-16",
+   "words": {
+    "rise": 20,
+    "fall": 19,
+    "documentary": 17,
+    "full": 10,
+    "worst": 10,
+    "ceo": 5,
+    "family": 4,
+    "everyone": 3,
+    "marketing": 3,
+    "entire": 3,
+    "trick": 3,
+    "viral": 3,
+    "you're": 3,
+    "empire": 3,
+    "work": 3,
+    "animal": 3,
+    "entrepreneurship": 2,
+    "but": 2,
+    "success": 2,
+    "everything": 2,
+    "lost": 2,
+    "coca-cola": 2,
+    "greatest": 2,
+    "genius": 2,
+    "deal": 2
+   },
+   "brands": {
+    "popeyes": 1,
+    "coca-cola": 2,
+    "mars": 1,
+    "heinz": 1,
+    "wendy": 1,
+    "nike": 1
+   }
   }
  ],
  "rising": {
@@ -235,51 +273,57 @@
    "rising": [
     {
      "name": "documentary",
-     "now": 122,
+     "now": 139,
      "before": 0,
-     "change": 122
+     "change": 139
     },
     {
      "name": "rise",
-     "now": 104,
+     "now": 124,
      "before": 0,
-     "change": 104
+     "change": 124
     },
     {
      "name": "fall",
-     "now": 99,
+     "now": 118,
      "before": 0,
-     "change": 99
+     "change": 118
     },
     {
      "name": "full",
+     "now": 75,
+     "before": 0,
+     "change": 75
+    },
+    {
+     "name": "worst",
      "now": 65,
      "before": 0,
      "change": 65
     },
     {
-     "name": "worst",
-     "now": 55,
-     "before": 0,
-     "change": 55
-    },
-    {
      "name": "ceo",
-     "now": 26,
+     "now": 31,
      "before": 0,
-     "change": 26
+     "change": 31
     },
     {
      "name": "family",
-     "now": 25,
+     "now": 29,
      "before": 0,
-     "change": 25
+     "change": 29
     },
     {
      "name": "trick",
-     "now": 21,
+     "now": 24,
      "before": 0,
-     "change": 21
+     "change": 24
+    },
+    {
+     "name": "entire",
+     "now": 22,
+     "before": 0,
+     "change": 22
     },
     {
      "name": "billions",
@@ -288,16 +332,10 @@
      "change": 20
     },
     {
-     "name": "entire",
+     "name": "viral",
      "now": 19,
      "before": 0,
      "change": 19
-    },
-    {
-     "name": "viral",
-     "now": 16,
-     "before": 0,
-     "change": 16
     },
     {
      "name": "doing",
@@ -310,51 +348,57 @@
    "steady": [
     {
      "name": "documentary",
-     "now": 122,
+     "now": 139,
      "before": 0,
-     "change": 122
+     "change": 139
     },
     {
      "name": "rise",
-     "now": 104,
+     "now": 124,
      "before": 0,
-     "change": 104
+     "change": 124
     },
     {
      "name": "fall",
-     "now": 99,
+     "now": 118,
      "before": 0,
-     "change": 99
+     "change": 118
     },
     {
      "name": "full",
+     "now": 75,
+     "before": 0,
+     "change": 75
+    },
+    {
+     "name": "worst",
      "now": 65,
      "before": 0,
      "change": 65
     },
     {
-     "name": "worst",
-     "now": 55,
-     "before": 0,
-     "change": 55
-    },
-    {
      "name": "ceo",
-     "now": 26,
+     "now": 31,
      "before": 0,
-     "change": 26
+     "change": 31
     },
     {
      "name": "family",
-     "now": 25,
+     "now": 29,
      "before": 0,
-     "change": 25
+     "change": 29
     },
     {
      "name": "trick",
-     "now": 21,
+     "now": 24,
      "before": 0,
-     "change": 21
+     "change": 24
+    },
+    {
+     "name": "entire",
+     "now": 22,
+     "before": 0,
+     "change": 22
     },
     {
      "name": "billions",
@@ -363,16 +407,10 @@
      "change": 20
     },
     {
-     "name": "entire",
+     "name": "viral",
      "now": 19,
      "before": 0,
      "change": 19
-    },
-    {
-     "name": "viral",
-     "now": 16,
-     "before": 0,
-     "change": 16
     },
     {
      "name": "doing",
@@ -386,39 +424,39 @@
    "rising": [
     {
      "name": "coca-cola",
-     "now": 12,
+     "now": 14,
      "before": 0,
-     "change": 12
-    },
-    {
-     "name": "nike",
-     "now": 6,
-     "before": 0,
-     "change": 6
-    },
-    {
-     "name": "wendy",
-     "now": 6,
-     "before": 0,
-     "change": 6
+     "change": 14
     },
     {
      "name": "heinz",
-     "now": 6,
+     "now": 7,
      "before": 0,
-     "change": 6
+     "change": 7
+    },
+    {
+     "name": "wendy",
+     "now": 7,
+     "before": 0,
+     "change": 7
+    },
+    {
+     "name": "nike",
+     "now": 7,
+     "before": 0,
+     "change": 7
     },
     {
      "name": "popeyes",
-     "now": 4,
+     "now": 5,
      "before": 0,
-     "change": 4
+     "change": 5
     },
     {
      "name": "mars",
-     "now": 4,
+     "now": 5,
      "before": 0,
-     "change": 4
+     "change": 5
     },
     {
      "name": "starbucks",
@@ -427,13 +465,13 @@
      "change": 2
     },
     {
-     "name": "sears",
+     "name": "nokia",
      "now": 1,
      "before": 0,
      "change": 1
     },
     {
-     "name": "nokia",
+     "name": "sears",
      "now": 1,
      "before": 0,
      "change": 1
@@ -449,39 +487,39 @@
    "steady": [
     {
      "name": "coca-cola",
-     "now": 12,
+     "now": 14,
      "before": 0,
-     "change": 12
-    },
-    {
-     "name": "nike",
-     "now": 6,
-     "before": 0,
-     "change": 6
-    },
-    {
-     "name": "wendy",
-     "now": 6,
-     "before": 0,
-     "change": 6
+     "change": 14
     },
     {
      "name": "heinz",
-     "now": 6,
+     "now": 7,
      "before": 0,
-     "change": 6
+     "change": 7
+    },
+    {
+     "name": "wendy",
+     "now": 7,
+     "before": 0,
+     "change": 7
+    },
+    {
+     "name": "nike",
+     "now": 7,
+     "before": 0,
+     "change": 7
     },
     {
      "name": "popeyes",
-     "now": 4,
+     "now": 5,
      "before": 0,
-     "change": 4
+     "change": 5
     },
     {
      "name": "mars",
-     "now": 4,
+     "now": 5,
      "before": 0,
-     "change": 4
+     "change": 5
     },
     {
      "name": "starbucks",
@@ -495,29 +533,29 @@
  "patterns": {
   "shorts": {
    "count": 25,
-   "question": 0.04,
-   "why_how": 0.16,
-   "number": 0.24,
-   "money": 0.32,
-   "caps_word": 0.48,
-   "emoji": 0.32,
+   "question": 0.12,
+   "why_how": 0.08,
+   "number": 0.16,
+   "money": 0.16,
+   "caps_word": 0.4,
+   "emoji": 0.4,
    "brand": 0.08,
-   "median_seconds": 91,
-   "median_words": 10
+   "median_seconds": 67,
+   "median_words": 11
   },
   "long": {
    "count": 60,
-   "question": 0.08,
-   "why_how": 0.05,
-   "number": 0.23,
-   "money": 0.05,
-   "caps_word": 0.2,
+   "question": 0.13,
+   "why_how": 0.03,
+   "number": 0.28,
+   "money": 0.08,
+   "caps_word": 0.22,
    "emoji": 0.02,
    "brand": 0.08,
    "median_seconds": 1814,
    "median_words": 9
   }
  },
- "days_of_memory": 6,
- "updated": "2026-11-15T07:19:44Z"
+ "days_of_memory": 7,
+ "updated": "2026-11-16T07:26:54Z"
 }
