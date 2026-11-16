@@ -476,7 +476,7 @@
       "thumb_queued_at": "2026-11-15T06:10:21Z"
     },
     "006-hoover-free-flights": {
-      "status": "video_approved",
+      "status": "published",
       "updated": "2026-11-14T19:23:01Z",
       "title": "Hoover Gave Away Free Flights. It Cost Them Millions.",
       "vote_msg": "1794637103.737299",
@@ -548,7 +548,8 @@
       "thumb_queued_at": "2026-11-16T01:06:37Z",
       "ig_at": "2026-11-16T01:06:37Z",
       "fb_at": "2026-11-16T01:06:37Z",
-      "reels_at": "2026-11-16T01:06:37Z"
+      "reels_at": "2026-11-16T01:06:37Z",
+      "published_at": "2026-11-16T03:06:30Z"
     },
     "007-wrigley-free-gum": {
       "status": "video_approved",
