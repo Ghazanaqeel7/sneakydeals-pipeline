@@ -630,9 +630,11 @@
       "published_at": "2026-11-17T05:14:39Z"
     },
     "008-mcdonalds-monopoly-rigged": {
-      "status": "script_ready",
-      "updated": "2026-11-17T06:31:56Z",
-      "title": "McDonald's Monopoly Was Rigged by Its Own Security Chief"
+      "status": "script_sent",
+      "updated": "2026-11-17T06:32:12Z",
+      "title": "McDonald's Monopoly Was Rigged by Its Own Security Chief",
+      "vote_msg": "",
+      "vote_kind": ""
     }
   },
   "ideas": [
