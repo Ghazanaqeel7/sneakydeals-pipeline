@@ -565,7 +565,7 @@
       "fb_thumb_set": "2026-11-16T06:11:20Z"
     },
     "007-wrigley-free-gum": {
-      "status": "video_approved",
+      "status": "published",
       "updated": "2026-11-15T22:17:04Z",
       "title": "Wrigley Mailed Free Gum to a Million Strangers",
       "vote_msg": "1794777923.764519",
@@ -626,7 +626,8 @@
       "thumb_queued_at": "2026-11-17T02:30:33Z",
       "ig_at": "2026-11-17T02:30:33Z",
       "fb_at": "2026-11-17T02:30:33Z",
-      "reels_at": "2026-11-17T02:30:33Z"
+      "reels_at": "2026-11-17T02:30:33Z",
+      "published_at": "2026-11-17T05:14:39Z"
     }
   },
   "ideas": [
