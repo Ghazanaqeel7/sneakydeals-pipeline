@@ -604,15 +604,29 @@
         {
           "t": "2026-11-15T18:21:10Z",
           "msg": "⏳ Render 76% (1012/1330 frames). Baqi waqt: 1h 17m 38s"
+        },
+        {
+          "t": "2026-11-17T02:30:33Z",
+          "msg": "✅ LIVE on YouTube: \"Wrigley Mailed Free Gum to a Million Strangers\" https://youtu.be/GDgClZtqH_o"
+        },
+        {
+          "t": "2026-11-17T02:30:33Z",
+          "msg": "📱 Instagram + Facebook: \"Wrigley Mailed Free Gum to a Million Strangers\" queued, Zapier posts it within ~15 min."
         }
       ],
-      "progress_count": 8,
+      "progress_count": 10,
       "run": "43740322238",
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-007-wrigley-free-gum/final.mp4",
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-007-wrigley-free-gum/preview.mp4",
       "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/007-wrigley-free-gum.mp4",
       "yt_scheduled_for": "2026-11-17T00:00:00Z",
-      "yt_queued_at": "2026-11-15T22:17:29Z"
+      "yt_queued_at": "2026-11-15T22:17:29Z",
+      "yt_video_id": "GDgClZtqH_o",
+      "yt_live_at": "2026-11-17T02:30:33Z",
+      "thumb_queued_at": "2026-11-17T02:30:33Z",
+      "ig_at": "2026-11-17T02:30:33Z",
+      "fb_at": "2026-11-17T02:30:33Z",
+      "reels_at": "2026-11-17T02:30:33Z"
     }
   },
   "ideas": [

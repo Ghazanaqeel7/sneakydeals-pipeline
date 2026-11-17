@@ -6,6 +6,19 @@
 <description>Approved videos for the Sneaky Deals Facebook Page. Zap "Sneaky Deals -> Facebook" (RSS by Zapier -> Facebook Pages Create Page Video) reads this feed. n8n adds one item per publish day, right after feed/youtube.xml.</description>
 <!--ITEMS-->
 <item>
+<title>Wrigley Mailed Free Gum to a Million Strangers in 1915</title>
+<description><![CDATA[Before gum, Wrigley sold soap, then baking powder — each time giving away the next product free until it outsold the last. In 1915 he mailed free gum to about 1.5 million US homes from the phone book.
+
+Genius or wasteful? 👇
+
+#wrigley #businesshistory]]></description>
+<link>https://raw.githubusercontent.com/Ghazanaqeel7/sneakydeals-pipeline/main/jobs/007-wrigley-free-gum/thumbnail.jpg</link>
+<guid isPermaLink="false">007-wrigley-free-gum</guid>
+<pubDate>Tue, 17 Nov 2026 02:30:33 GMT</pubDate>
+<enclosure url="https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/007-wrigley-free-gum.mp4" type="video/mp4" length="0"/>
+</item>
+
+<item>
 <title>Hoover Offered Free Flights With Vacuums and It Cost Millions</title>
 <description><![CDATA[In 1992 Hoover's British branch offered two free return flights for spending £100. It expected about 50,000 claims; hundreds of thousands came, and Maytag later sold the European business.
 
