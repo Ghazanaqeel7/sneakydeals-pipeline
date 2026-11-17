@@ -15,10 +15,10 @@
     {
       "day": "Tue 17 Nov",
       "format": "long",
-      "topic": "Blockbuster turned down a $50 million deal to buy Netflix, laughed it off, then watched Netflix beat it",
-      "angle": "Rise and fall: arrogance at the top missing the obvious threat",
-      "title": "Blockbuster Laughed at the $50 Million Netflix Deal",
-      "why": "'Worst Business Decision' 6.1x, 'Rise and fall' docs 5-216x this week; already queued as a [LONG] idea.",
+      "topic": "Kodak invented the digital camera in 1975 and buried it to protect film sales, then went bankrupt when digital took over anyway",
+      "angle": "The company that saw the future and chose not to take it",
+      "title": "Kodak Invented the Future, Then Hid It",
+      "why": "Swapped in for Blockbuster (17 Nov run could not verify the $50M figure with two independent sources) -- this one is well-documented (Steven Sasson/Kodak, 1975).",
       "status": "planned"
     },
     {
@@ -33,11 +33,11 @@
     {
       "day": "Thu 19 Nov",
       "format": "long",
-      "topic": "Kodak invented the digital camera in 1975 and buried it to protect film sales, then went bankrupt when digital took over anyway",
-      "angle": "The company that saw the future and chose not to take it",
-      "title": "Kodak Invented the Future, Then Hid It",
-      "why": "'Rise and fall' business docs 5-216x this week; already queued as a [LONG] idea.",
-      "status": "planned"
+      "topic": "Blockbuster turned down a deal to buy Netflix, laughed it off, then watched Netflix beat it",
+      "angle": "Rise and fall: arrogance at the top missing the obvious threat",
+      "title": "Blockbuster Laughed at the $50 Million Netflix Deal",
+      "why": "Moved from Tue -- needs the exact deal figure verified against two independent sources before scripting (the widely-repeated $50M number is not reliably sourced); write only the parts that check out.",
+      "status": "planned_needs_verification"
     },
     {
       "day": "Fri 20 Nov",

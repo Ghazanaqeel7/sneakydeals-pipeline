@@ -73,6 +73,11 @@ install anything, or research. If another job is already `building`, do not star
    push the script, set that item's `status` to `"scripted"` and `"job": "<id>"`, commit + push. If the item is
    `format: "long"` and long-form is enabled, make it as a long job (docs/longform_guide.md); if long-form is off, make it as a Short and keep its long idea in
    `long_later`. Only if the calendar has no planned item, pick your own story.
+   **If a calendar item's core claim fails fact-check** (cannot be confirmed against two independent sources): do NOT stop the
+   run empty-handed. Set that item's `status` to `"needs_verification"` (leave `job` unset, add a one-line note of what didn't
+   check out), commit, then try the next `"planned"` item of the same `format` — same-day swap if one exists later in the
+   week, otherwise pull the next queued idea or pick your own story of the same format. The owner should always get a script
+   today; a sourcing problem on one topic is a reason to swap topics, never a reason to do nothing.
    **Token-saving draft:** before writing from scratch, check `docs/research/gemini_draft.json`. If its
    `item_day`/`title` matches the item you picked, it holds an UNVERIFIED first-draft script and a `claims`
    list from Gemini (runs free on GitHub Actions, not your session). Use it only as a starting point: verify
