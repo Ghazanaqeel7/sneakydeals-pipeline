@@ -1,90 +1,101 @@
 {
  "fps": 30,
- "duration": 63.23,
+ "duration": 54.18,
  "shots": [
   {
    "key": "hook",
    "start": 0.15,
-   "end": 5.582,
-   "words": 15,
-   "text": "In nineteen seventy-eight, welders secretly patched a brand new New York skyscraper, every single night."
+   "end": 3.302,
+   "words": 9,
+   "text": "McDonald's Monopoly was rigged by its own security chief."
   },
   {
-   "key": "cta",
-   "start": 5.974,
-   "end": 11.538,
-   "words": 23,
-   "text": "Before we go deep into today's story, take a second to like this video and subscribe if you haven't. Let's get into it."
+   "key": "s02",
+   "start": 3.722,
+   "end": 7.474,
+   "words": 12,
+   "text": "Peel-off game pieces on fries and cups could win a million dollars."
   },
   {
-   "key": "tower",
-   "start": 11.93,
-   "end": 16.684,
-   "words": 13,
-   "text": "It stood fifty-nine stories high on giant stilts, and it had just opened."
-  },
-  {
-   "key": "rules",
-   "start": 17.077,
-   "end": 20.643,
-   "words": 11,
-   "text": "The building rules only asked about wind hitting the flat sides."
-  },
-  {
-   "key": "but",
-   "start": 21.036,
-   "end": 26.334,
-   "words": 16,
-   "text": "But a student asked about corner winds, and the numbers showed about forty percent more force."
-  },
-  {
-   "key": "then",
-   "start": 26.726,
-   "end": 31.59,
-   "words": 16,
-   "text": "Then the engineer learned the builders had swapped his welded joints for bolts to save money."
-  },
-  {
-   "key": "storm",
-   "start": 31.983,
-   "end": 35.961,
+   "key": "s03",
+   "start": 7.894,
+   "end": 13.166,
    "words": 14,
-   "text": "A big enough storm could snap those bolts, right in the middle of Manhattan."
+   "text": "Simon Marketing ran the game, and an ex-cop named Jerome Jacobson ran its security."
   },
   {
-   "key": "yousee",
-   "start": 36.353,
-   "end": 42.624,
-   "words": 19,
-   "text": "You see, a weld turns a joint into one solid piece. Bolts are only as strong as the bolts."
-  },
-  {
-   "key": "night",
-   "start": 43.017,
-   "end": 48.297,
-   "words": 14,
-   "text": "Every night after the offices emptied, welders covered the bolted joints with steel plates."
-  },
-  {
-   "key": "ella",
-   "start": 48.69,
-   "end": 53.756,
-   "words": 15,
-   "text": "During the repair, Hurricane Ella headed for New York, and evacuation plans were drawn up."
-  },
-  {
-   "key": "so",
-   "start": 54.148,
-   "end": 58.165,
+   "key": "s04",
+   "start": 13.586,
+   "end": 17.113,
    "words": 10,
-   "text": "So everyone watched the forecasts, until the storm turned away."
+   "text": "Winning pieces were sealed in envelopes, to stop exactly this."
   },
   {
-   "key": "close",
-   "start": 58.558,
-   "end": 62.476,
+   "key": "s05",
+   "start": 17.5,
+   "end": 19.586,
+   "words": 8,
+   "text": "But Jacobson was the man who handled them."
+  },
+  {
+   "key": "s06",
+   "start": 20.006,
+   "end": 24.043,
    "words": 13,
-   "text": "The repair worked, and the public didn't hear about it until nineteen ninety-five."
+   "text": "In nineteen eighty-nine, he gave a twenty-five thousand dollar piece to his stepbrother."
+  },
+  {
+   "key": "s07",
+   "start": 24.463,
+   "end": 27.508,
+   "words": 11,
+   "text": "By the mid nineteen nineties, he was selling winners on purpose."
+  },
+  {
+   "key": "s08",
+   "start": 27.928,
+   "end": 32.642,
+   "words": 14,
+   "text": "He swapped pieces in airport bathroom stalls, then passed them to friends and family."
+  },
+  {
+   "key": "s09",
+   "start": 33.062,
+   "end": 35.458,
+   "words": 10,
+   "text": "They posed as lucky winners, and paid him a cut."
+  },
+  {
+   "key": "s10",
+   "start": 35.878,
+   "end": 40.21,
+   "words": 13,
+   "text": "Then the FBI began tapping his phone. They called it Operation Final Answer."
+  },
+  {
+   "key": "s11",
+   "start": 40.63,
+   "end": 45.754,
+   "words": 15,
+   "text": "In two thousand one, dozens were charged. Over twenty million dollars in prizes were gone."
+  },
+  {
+   "key": "s12",
+   "start": 46.125,
+   "end": 50.136,
+   "words": 13,
+   "text": "His trial began on September tenth. The next day, the news moved on."
+  },
+  {
+   "key": "s13",
+   "start": 50.556,
+   "end": 53.427,
+   "words": 11,
+   "text": "The rarest winners in the game were never customers at all."
   }
+ ],
+ "hookTitle": [
+  "MONOPOLY",
+  "WAS RIGGED?!"
  ]
 }
