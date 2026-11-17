@@ -645,9 +645,13 @@
           "t": "2026-11-17T11:17:28Z",
           "msg": "✅ Check frames theek hain, thumbnail tayyar, render queue kar raha hoon (render ~40 min)",
           "image": "jobs/008-mcdonalds-monopoly-rigged/review/round1.jpg"
+        },
+        {
+          "t": "2026-11-17T11:18:28Z",
+          "msg": "🎞 Render shuru (GitHub). Andaza: ~30-50 min."
         }
       ],
-      "progress_count": 2,
+      "progress_count": 3,
       "run": "44072681499"
     }
   },
