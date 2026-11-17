@@ -6,39 +6,39 @@
     {
       "day": "Mon 16 Nov",
       "format": "short",
-      "topic": "Popeyes founder Al Copeland lost the chain in bankruptcy, then used the bankruptcy process itself to force the banks to pay him for the name",
-      "angle": "Ordinary rules turned into a weapon against the people who beat him",
-      "title": "Popeyes Founder Lost Everything. Then He Made the Banks Pay Him.",
-      "why": "Signal 4.6x this week; same 'beat the system' pattern as Pudding Guy/Hoover, our best performers so far.",
+      "topic": "Coca-Cola mailed millions of Americans a coupon for one free glass of Coke in the 1890s-1900s to build the habit nationwide",
+      "angle": "A free giveaway engineered to create lifelong customers, not goodwill",
+      "title": "Coca-Cola Mailed Free Coke Coupons to Millions of Strangers",
+      "why": "Swapped in for Popeyes (bankruptcy-forced-banks-to-pay story could not be pinned to two independent sources) -- today is a Short day, so the swap stays a Short too.",
       "status": "planned",
       "note": "Skipped 17 Nov: \"banks paid him for the name\" claim not supported by sources."
     },
     {
       "day": "Tue 17 Nov",
       "format": "long",
-      "topic": "Kodak invented the digital camera in 1975 and buried it to protect film sales, then went bankrupt when digital took over anyway",
-      "angle": "The company that saw the future and chose not to take it",
-      "title": "Kodak Invented the Future, Then Hid It",
-      "why": "Swapped in for Blockbuster (17 Nov run could not verify the $50M figure with two independent sources) -- this one is well-documented (Steven Sasson/Kodak, 1975).",
+      "topic": "Blockbuster turned down a deal to buy Netflix, laughed it off, then watched Netflix beat it",
+      "angle": "Rise and fall: arrogance at the top missing the obvious threat",
+      "title": "Blockbuster Laughed at the $50 Million Netflix Deal",
+      "why": "'Worst Business Decision' 6.1x, 'Rise and fall' docs 5-216x this week; already queued as a [LONG] idea.",
       "status": "planned"
     },
     {
       "day": "Wed 18 Nov",
       "format": "short",
-      "topic": "Coca-Cola mailed millions of Americans a coupon for one free glass of Coke in the 1890s-1900s to build the habit nationwide",
-      "angle": "A free giveaway engineered to create lifelong customers, not goodwill",
-      "title": "Coca-Cola Mailed Free Coke Coupons to Millions of Strangers",
-      "why": "Coca-Cola is a rising, unused brand this week and pairs with our existing Pepsi videos; coupon-giveaway fits our strongest hook type (secret/hidden brand move).",
-      "status": "planned"
+      "topic": "Popeyes founder Al Copeland lost the chain in bankruptcy, then used the bankruptcy process itself to force the banks to pay him for the name",
+      "angle": "Ordinary rules turned into a weapon against the people who beat him",
+      "title": "Popeyes Founder Lost Everything. Then He Made the Banks Pay Him.",
+      "why": "Moved from Mon -- needs the bankruptcy-forced-payout claim verified against two independent sources before scripting.",
+      "status": "planned_needs_verification"
     },
     {
       "day": "Thu 19 Nov",
       "format": "long",
-      "topic": "Blockbuster turned down a deal to buy Netflix, laughed it off, then watched Netflix beat it",
-      "angle": "Rise and fall: arrogance at the top missing the obvious threat",
-      "title": "Blockbuster Laughed at the $50 Million Netflix Deal",
-      "why": "Moved from Tue -- needs the exact deal figure verified against two independent sources before scripting (the widely-repeated $50M number is not reliably sourced); write only the parts that check out.",
-      "status": "planned_needs_verification"
+      "topic": "Kodak invented the digital camera in 1975 and buried it to protect film sales, then went bankrupt when digital took over anyway",
+      "angle": "The company that saw the future and chose not to take it",
+      "title": "Kodak Invented the Future, Then Hid It",
+      "why": "'Rise and fall' business docs 5-216x this week; already queued as a [LONG] idea.",
+      "status": "planned"
     },
     {
       "day": "Fri 20 Nov",
