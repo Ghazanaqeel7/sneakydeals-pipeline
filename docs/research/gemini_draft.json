@@ -1,19 +1,17 @@
 {
-  "generated_at": "2026-11-16T13:55:45.521025+00:00",
+  "generated_at": "2026-11-17T14:48:26.941695+00:00",
   "format": "short",
   "item_day": "Mon 16 Nov",
-  "topic": "Popeyes founder Al Copeland lost the chain in bankruptcy, then used the bankruptcy process itself to force the banks to pay him for the name",
-  "title": "Popeyes Founder Lost Everything. Then He Made the Banks Pay Him.",
+  "topic": "Coca-Cola mailed millions of Americans a coupon for one free glass of Coke in the 1890s-1900s to build the habit nationwide",
+  "title": "Coca-Cola Mailed Free Coke Coupons to Millions of Strangers",
   "unverified": true,
   "note": "Gemini first draft, NOT fact-checked. Claude must verify every claim with its own 2-source rule before using any of it in a real job file.",
-  "draft_script": "Al Copeland built Popeyes Chicken. He started with one restaurant in New Orleans in 1972. It grew fast. Too fast. By 1990, Copeland\u2019s empire was in deep trouble. His company, A. Copeland Enterprises, declared bankruptcy.\n\nThe banks took over Popeyes. They controlled the restaurants. They controlled the recipes. But they missed one crucial detail. Al Copeland personally owned the Popeyes brand name. He held the trademarks. The banks had the chicken, but not the name.\n\nThe banks needed that name to operate. They couldn't run Popeyes restaurants without the Popeyes name. Copeland had them. He turned their victory into his leverage. He made them pay him. To use the Popeyes name, the banks had to cut him a check.\n\nHe lost his company. But he made his creditors pay him for the very name they needed to succeed. Al Copeland turned a bankruptcy rule into a weapon. He lost everything, then he made the banks pay him for it.",
+  "draft_script": "This is a true business trick. Coca-Cola pulled it off over a century ago. They didn't aim for goodwill. They aimed for habit. In the 1890s and early 1900s, Coca-Cola mailed millions of Americans a simple coupon. This wasn't a small promotion. They flooded the nation. Each coupon offered one free glass of Coke. They sent these directly to total strangers, to homes across the country. The strategy was brilliant in its simplicity. Get people to try the product. Experience the unique taste. Form a new daily habit. This wasn't about a single free drink. It was about planting a seed. A seed for lifelong customer loyalty. This massive free giveaway built a national craving. It engineered a vast, dependable customer base. Coca-Cola didn't just sell a drink; they sold a habit. This is how you create an empire, one free coupon at a time. They taught America to love Coke. A truly sneaky deal that paid off for decades.",
   "claims": [
-    "Al Copeland founded Popeyes Chicken.",
-    "Popeyes started with one restaurant in New Orleans.",
-    "Popeyes founded in 1972.",
-    "By 1990, Copeland's company A. Copeland Enterprises declared bankruptcy.",
-    "Al Copeland personally owned the Popeyes brand name and trademarks.",
-    "Banks took over Popeyes operations.",
-    "Banks paid Al Copeland to use the Popeyes name."
+    "Coca-Cola mailed millions of Americans a coupon for one free glass of Coke.",
+    "This occurred in the 1890s and early 1900s.",
+    "The coupons were sent to strangers.",
+    "The strategy aimed to build a habit.",
+    "The strategy aimed to create lifelong customers."
   ]
 }
