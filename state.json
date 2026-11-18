@@ -675,7 +675,14 @@
       "status": "script_ready",
       "updated": "2026-11-18T06:14:08Z",
       "type": "long",
-      "title": "Blockbuster Turned Down a $50 Million Deal. Then Netflix Won"
+      "title": "Blockbuster Turned Down a $50 Million Deal. Then Netflix Won",
+      "progress": [
+        {
+          "t": "2026-11-18T06:14:10Z",
+          "msg": "📝 Long script tayyar (Blockbuster/Netflix, ~8 min, har claim do sources se). Note: 'hansi' Netflix ka apna bayaan hai, meeting 'early 2000' likhi hai (demo mein September galat tha). Approval ka intezar."
+        }
+      ],
+      "progress_count": 1
     }
   },
   "ideas": [
