@@ -5,7 +5,7 @@ name: thumbnail-sync
 # owner no longer has to wait for the next Claude run or ask for it to be set manually).
 on:
   schedule:
-    - cron: '*/15 * * * *'
+    - cron: '7 * * * *'   # hourly (was every 15 min -- that + stats.yml's hourly calls was burning the daily YouTube API quota)
   workflow_dispatch: {}
 
 concurrency:
