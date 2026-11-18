@@ -688,9 +688,13 @@
         {
           "t": "2026-11-18T17:10:11Z",
           "msg": "🎬 Script check pass ho gaya (49 scenes, ~8 min). Render GitHub par queue kar raha hoon (~40 min baqi)"
+        },
+        {
+          "t": "2026-11-18T17:11:06Z",
+          "msg": "🎞 Long video prepare: images, voice aur music ban rahe hain (~10-20 min)"
         }
       ],
-      "progress_count": 3,
+      "progress_count": 4,
       "vote_msg": "1794982469.326359",
       "vote_kind": "script",
       "decided_via": "dashboard",
