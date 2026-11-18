@@ -672,8 +672,8 @@
       "yt_queued_at": "2026-11-17T21:33:19Z"
     },
     "009-blockbuster-netflix-long": {
-      "status": "script_ready",
-      "updated": "2026-11-18T06:14:08Z",
+      "status": "script_sent",
+      "updated": "2026-11-18T06:14:27Z",
       "type": "long",
       "title": "Blockbuster Turned Down a $50 Million Deal. Then Netflix Won",
       "progress": [
@@ -682,7 +682,9 @@
           "msg": "📝 Long script tayyar (Blockbuster/Netflix, ~8 min, har claim do sources se). Note: 'hansi' Netflix ka apna bayaan hai, meeting 'early 2000' likhi hai (demo mein September galat tha). Approval ka intezar."
         }
       ],
-      "progress_count": 1
+      "progress_count": 1,
+      "vote_msg": "",
+      "vote_kind": ""
     }
   },
   "ideas": [
