@@ -438,7 +438,7 @@ function whoOf(c){const m=c.commit.message,a=c.commit.author.name;
   if(a==='research-bot')return['render','Research'];if(/^Merge pull request/.test(m)||a===OWNER)return['you','You'];if(a==='render-bot'||/github-actions/.test(a))return['render','Render'];if(a==='claude-pipeline'||/claude/i.test(a))return['claude','Claude'];return['you',a]}
 
 // ---------- render ----------
-function sigOf(){const j=S.state&&S.state.jobs[S.sel];return JSON.stringify([S.view,S.detail,S.own&&S.own.updated,S.view==='today'&&S.state&&Object.entries(S.state.jobs).map(([k,v])=>k+v.status+(v.progress_count||0)+(v.updated||'')+(v.ig_at||'')).join(),S.view==='settings'&&S.commits.length&&S.commits[0].sha,S.sel,S.tab,!!TOKEN,j&&j.status,j&&j.updated,j&&j.progress_count,S.view==='settings'&&S.state&&[S.state.config,S.state.ideas],S.view==='calendar'&&Object.values(S.state.jobs).map(j=>j.status).join(),S.view==='long'&&[(S.state.config||{}).longform_enabled,(S.state.ideas||[]).length,Object.entries(S.state.jobs).filter(([k,v])=>v.type==='long').map(([k,v])=>k+v.status+(v.progress_count||0)).join()],S.view==='research'&&[S.rtab,S.rsort,(S.state.jobs.research||{}).progress_count,(S.state.ideas||[]).length],S.view==='myidea'&&JSON.stringify(S.state.ideas||[])])}
+function sigOf(){const j=S.state&&S.state.jobs[S.sel];return JSON.stringify([S.view,S.detail,S.own&&S.own.updated,S.view==='today'&&S.state&&Object.entries(S.state.jobs).map(([k,v])=>k+v.status+(v.progress_count||0)+(v.updated||'')+(v.ig_at||'')).join(),S.view==='settings'&&S.commits.length&&S.commits[0].sha,S.sel,S.tab,!!TOKEN,j&&j.status,j&&j.updated,j&&j.progress_count,S.view==='settings'&&S.state&&[S.state.config,S.state.ideas],S.view==='calendar'&&Object.values(S.state.jobs).map(j=>j.status).join(),S.view==='long'&&[(S.state.config||{}).longform_enabled,(S.state.ideas||[]).length,Object.entries(S.state.jobs).filter(([k,v])=>v.type==='long').map(([k,v])=>k+v.status+(v.progress_count||0)).join()],S.view==='research'&&[S.rtab,S.rsort,(S.state.jobs.research||{}).progress_count,(S.state.ideas||[]).length],S.view==='myidea'&&JSON.stringify([S.state.ideas||[],S.state.inbox||[]])])}
 function render(force){renderChrome();if(S.editing)return;const sg=sigOf();if(!force&&sg===S.sig)return;S.sig=sg;renderMain()}
 const ICONS={
   today:'<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
@@ -1126,8 +1126,33 @@ function renderMyIdea(){
   </div>
   <div class="sect"><span>Your drafts in the queue · ${drafts.length}</span></div>
   ${drafts.length?drafts.map(({x,i})=>`<div class="card lf-card"><div class="lf-row"><div style="flex:1;min-width:200px"><div class="eyebrow">${x.format==='long'?'LONG':'SHORT'} · queued ${ago(x.submitted_at)}</div><div style="font-weight:600;margin:4px 0">${esc(x.title||'(untitled)')}</div><div class="note">${esc((x.story||'').slice(0,160))}${(x.story||'').length>160?'…':''}</div></div>${TOKEN?`<button class="btn sm" onclick="dropIdea(${i})">remove</button>`:''}</div></div>`).join(''):'<div class="card lf-card"><div class="empty">Nothing queued yet — write your story above.</div></div>'}
-  <div class="note" style="margin-top:14px">Your drafts are taken before Claude's own picks (next: the content calendar, then Claude's research). Picked up on the next scheduled run (11:08, 16:08 or 22:08 PKT).</div>`;
+  <div class="note" style="margin-top:14px">Your drafts are taken before Claude's own picks (next: the content calendar, then Claude's research). Picked up on the next scheduled run (11:08, 16:08 or 22:08 PKT).</div>
+  <div class="card lf-card" style="margin-top:22px">
+    <div class="lbl">Or paste a whole document / chat — mixed short + long ideas, and instructions for the system</div>
+    <div class="note" style="margin:4px 0 10px">Paste anything: notes, a chat log, a list of ideas (some short, some long), and instructions like "always do X" / "never do Y" / "focus on this audience". Claude reads it on its next run, sorts the short ideas from the long ideas, saves the instructions as rules it follows from now on (shown in the playbook), and tells you here what it did with it.</div>
+    <textarea id="inbox_text" rows="10" oninput="dirty()" placeholder="Paste here — as messy as you like, Claude will sort it out..." ${TOKEN?'':'disabled'}></textarea>
+    <div style="margin-top:8px"><button class="btn pri"${lock} onclick="submitInbox()">Send to Claude</button></div>
+  </div>
+  <div class="sect"><span>Inbox · ${(S.state.inbox||[]).length}</span></div>
+  ${(S.state.inbox||[]).length?[...(S.state.inbox||[])].map((x,i)=>i).reverse().map(i=>{const x=S.state.inbox[i];const pending=x.status!=='processed';
+    return `<div class="card lf-card"><div class="lf-row"><div style="flex:1;min-width:200px">
+      <div class="eyebrow">${pending?'⏳ waiting for next run':'✅ processed '+ago(x.processed_at)} · sent ${ago(x.submitted_at)}</div>
+      <div class="note" style="margin:4px 0">${esc((x.text||'').slice(0,220))}${(x.text||'').length>220?'…':''}</div>
+      ${x.result?`<div style="margin-top:4px">${esc(x.result)}</div>`:''}
+      </div>${pending&&TOKEN?`<button class="btn sm" onclick="dropInboxItem(${i})">remove</button>`:''}</div></div>`}).join(''):'<div class="card lf-card"><div class="empty">Nothing pasted yet.</div></div>'}
+  <div class="note" style="margin-top:14px">Inbox items are read one at a time, oldest first, on the next scheduled run.</div>`;
 }
+async function submitInbox(){
+  if(!TOKEN)return askToken();
+  const text=$('#inbox_text').value.trim();
+  if(!text)return toast('Paste something first.',true);
+  try{
+    await updateState(st=>{st.inbox=st.inbox||[];st.inbox.push({text,submitted_at:nowIso(),status:'pending'})},'dashboard: inbox document/chat pasted');
+    S.editing=false;toast('Sent — Claude will sort the ideas and instructions on its next run.');
+    load();renderMyIdea();
+  }catch(e){toast(e.message,true)}
+}
+async function dropInboxItem(i){try{await updateState(st=>{(st.inbox||[]).splice(i,1)},'dashboard: remove inbox item');load();renderMyIdea()}catch(e){toast(e.message,true)}}
 async function submitMyIdea(){
   if(!TOKEN)return askToken();
   const format=$('#mi_format').value;
