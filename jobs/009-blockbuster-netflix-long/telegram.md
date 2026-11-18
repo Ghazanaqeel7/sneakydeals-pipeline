@@ -1,0 +1,1 @@
+Long video: Blockbuster turned down a $50M Netflix deal. Early 2000 pitch in Dallas, late fees ($800M), $1B debt, boardroom fight, bankruptcy 2010, one store left. Note: "laughed" is the Netflix side account (marked as such); meeting date is early 2000, not September.

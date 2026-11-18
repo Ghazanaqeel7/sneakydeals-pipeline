@@ -1,0 +1,87 @@
+{
+ "duration": 96.0,
+ "scenes": [
+  {
+   "id": "s01",
+   "start": 0.0,
+   "end": 8.0,
+   "text": "This week, The Children's Place filed for bankruptcy. But it is not the first kids' store to fall."
+  },
+  {
+   "id": "s02",
+   "start": 8.0,
+   "end": 16.0,
+   "text": "Here is how America's mall stores keep dying."
+  },
+  {
+   "id": "s03",
+   "start": 16.0,
+   "end": 24.0,
+   "text": "It starts in eighteen ninety-three."
+  },
+  {
+   "id": "s04",
+   "start": 24.0,
+   "end": 32.0,
+   "text": "A mail-order catalog reached millions of farm families."
+  },
+  {
+   "id": "s05",
+   "start": 32.0,
+   "end": 40.0,
+   "text": "Sales climbed for decades, then the line bent."
+  },
+  {
+   "id": "s06",
+   "start": 40.0,
+   "end": 48.0,
+   "text": "One decision decided everything."
+  },
+  {
+   "id": "s07",
+   "start": 48.0,
+   "end": 56.0,
+   "text": "Stores spread across the country."
+  },
+  {
+   "id": "s08",
+   "start": 56.0,
+   "end": 64.0,
+   "text": "Compare that with the newcomer."
+  },
+  {
+   "id": "s09",
+   "start": 64.0,
+   "end": 72.0,
+   "text": "Three mistakes sank them."
+  },
+  {
+   "id": "s10",
+   "start": 72.0,
+   "end": 80.0,
+   "text": "Everything was built on a promise."
+  },
+  {
+   "id": "s11",
+   "start": 80.0,
+   "end": 88.0,
+   "text": "One executive said it plainly."
+  },
+  {
+   "id": "s12",
+   "start": 88.0,
+   "end": 96.0,
+   "text": "Subscribe for the next story."
+  }
+ ],
+ "chapters": [
+  {
+   "title": "Intro",
+   "start": 0
+  },
+  {
+   "title": "The rise",
+   "start": 16
+  }
+ ]
+}
