@@ -1,13 +1,52 @@
 {
- "updated": "2026-11-17T08:39:34Z",
+ "updated": "2026-11-18T08:02:16Z",
  "hooks": [
+  {
+   "title": "Heavy Seas Beer founder plans retirement as brewery reorganizes through bankruptcy",
+   "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNTTBNY3Bod3ZKUXpvc2RIcFZubHZndWM4NEp4VGUzNDF2MUtzQTVCYjhLNUJtRV8tRFhfbXBhRDhvWUVoTGFsN0kwSWVRNm8zS21fTVFJeldWMkhYVlBjQTRVeXI2SWZ2dmoxS1Y0NFc0eHM3V2toQVRxeUlndmRzU1U0a19lVldXMV9DSkl2NDRpeXVRSmQ0cjZsbEYtWTllLU1zNUJ2MEtrc1pSUS1ObVdLbnc?oc=5",
+   "source": "CBS News",
+   "region": "US",
+   "date": "2026-11-17T22:42:00Z",
+   "score": 15,
+   "why": [
+    "bankruptcy",
+    "founder",
+    "bank"
+   ]
+  },
+  {
+   "title": "Former WH Smith chain TG Jones put up for sale after closing 130 stores",
+   "url": "https://www.theguardian.com/business/2026/nov/17/wh-smith-tg-jones-sale-stores-modella-capita",
+   "source": "Guardian Business",
+   "region": "UK",
+   "date": "2026-11-17T10:33:01Z",
+   "score": 14,
+   "why": [
+    "closing",
+    "stores",
+    "chain"
+   ]
+  },
+  {
+   "title": "The Children’s Place to close several stores after filing for bankruptcy",
+   "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNRWppNndYNnJnWlhPZlJ0QjBWeHk4WEFSMXVhR0hOTGllUE12eVY3RzItZk1RbVBmRFM2QXhPQXZ6MlphaDJEQk53VHZ3OXZwSnZOMlpwRGY4V1VMYktJOWQtSUNjOFpSZnk1Q0JMc3dyaGZWNjkydG1jenktMmhqNTdXU1FWTG5QQ0lJRVg3czNUVHB6clNz?oc=5",
+   "source": "LiveNOW from FOX",
+   "region": "US",
+   "date": "2026-11-17T16:19:11Z",
+   "score": 14,
+   "why": [
+    "bankruptcy",
+    "stores",
+    "bank"
+   ]
+  },
   {
    "title": "Oregon High-Capacity Battery Company Files for Bankruptcy and Shuts Down, Laying Off Everyone",
    "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOc1c3bFd4bk5TOXlUUjNMbVZBZXl5dFZqdG5Qem1XaVhVMmhMeTlKaGxQQjdKY1N3WmgyVk0wY0w2UjBGZlZKQ0RJTW5PaEJHUHJhNkZfbHR2dHhnYlRPeXBMYVFuTUtfVkJYY2hpTUd0WF8tUXFiOUlrblVkT3cwNzRuaEQ3NXl4UG5aOUhn?oc=5",
    "source": "Yahoo",
    "region": "US",
    "date": "2026-11-16T18:04:11Z",
-   "score": 16,
+   "score": 14,
    "why": [
     "bankruptcy",
     "shuts",
@@ -15,29 +54,112 @@
    ]
   },
   {
-   "title": "QVC and HSN lines could blur along post-bankruptcy path, interim CEO says",
-   "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxONGRsODN4ZFpZeElwbXk1OU12ZVdqWDJUTl9wLXM3Z2FvWEc3NUhrdXp0eXJsT0kxTE1DNFVhVGp3dlNxZVYzRmtsNFJCWWZaalB5cjVrakR2WFNOc2NQbTFBeS1ZTW9xVElYN0VrMEJCOHVib1JORWZpNXZDamxZSlJVcERTZFEtczlXNGdtQjVZV2J6R1F2dTFHekQzX3N5QThxOTBXbm5mU25SclE?oc=5",
-   "source": "The Business Journals",
+   "title": "After product recall, Once Upon a Farm hit with new false advertising lawsuit",
+   "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQMnNRSDhWeVZEZGhaMGRQT2hlYmM1ZG5ya3dWLUt3aWZkSG5FY0JwZW9aSUpxOFFzQmMzNnhHRTZDSDhzeVQwQ2tGbldLY3hyX285aVFPNWFFaWJLeFp2V2RRNzl6SnQyX05sMFplWWQyOG9xNHhSU01JX25XYm9BUTVBLXotY3QzUHE4UlltVklLRTdQZVJ6djBlMDVMUGJ2WjNQQ19MR2hyMW1fVGtDeS1R?oc=5",
+   "source": "Courthouse News Service",
    "region": "US",
-   "date": "2026-11-16T20:10:00Z",
-   "score": 15,
+   "date": "2026-11-18T07:01:48Z",
+   "score": 12,
+   "why": [
+    "recall",
+    "lawsuit"
+   ]
+  },
+  {
+   "title": "Popular tire brand recalls tires over hidden defect that could cause a sudden crash while driving",
+   "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNRFBjX19uUG1oTWhPYi1UQXBzcV9oN0lET0pUT1pRS0s5V1JyZVBzbDBmZUVjUTVQdUhud1E4NVJrUDkzR0ROU1M5bkNjTkxzSDd5SnkxM3FVdHZBUHhjemJVMHhqR1AxLVFBOU4ySERNNVhDRmsyMlEwVXNyTWJmbXFnbFZyRHJhcnlyNzBtaXo0UThSRWU3Q0drdHczeGEtMXJKOC1Ydnljd2hDYlEwdzJlSUNWQmtGVFMwNWQyNE14ZzZuOG5v0gHMAUFVX3lxTE1acjBhdHdXOHd5anlBbGhLSXFIbG5PMUt6Z2JYdmZKd0R1SkNBLW5YdlRIZ05oRkM0cXVLR1I0V1locmx0TjNWdEJPUVQ3cnE0ZlVaODVWT2RvOEdSbnk2bFFVakxOa0Jqb05LeFkwNXpzZ2FuLWFHeXppV2hnVUtkSEJDaE84VHAwU0pKejJPdDhjUExxemJjMEhzemdONEJzWUlva2ZuRmwwQnNoeTNVRS14aUQ4d1BNdVlmU1ZPYXM4Ri1sRWo3VEgxYg?oc=5",
+   "source": "Fox Business",
+   "region": "US",
+   "date": "2026-11-18T02:41:02Z",
+   "score": 12,
+   "why": [
+    "recall",
+    "brand"
+   ]
+  },
+  {
+   "title": "Greenburgh HVAC business seeks bankruptcy protection",
+   "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOYnY1YmJWcHZRT0hjeFJNMmxpTGlVUVNYNmhxNXVsZnpKTEhFM2hUWEYyQUQ3cDI1ZXpnZUd6OVU5ZzdVSmlaZWJxZzZMU1NXdmx3bXpoeDkwU1M3UmdTWGlDVkZQNUpxX0NIejJCb2pYVkNCX1RPNDBSS1ZmZDMxSlIweGdPRzJwRkpGOGpBRVc?oc=5",
+   "source": "Westfair Communications",
+   "region": "US",
+   "date": "2026-11-17T16:39:17Z",
+   "score": 12,
    "why": [
     "bankruptcy",
-    "ceo",
     "bank"
    ]
   },
   {
-   "title": "A Popular Vodka Brand Vanished After an $84-Million Bankruptcy. Now, It's Coming Back With 5 More Brands",
-   "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPNlpXajBPTUs4eUhyRzNDYXRQMGpSNFNkOFd0V3NVNWtxenVjbjNMa2xpVUp6d050VEgwS1p0Qm9kVEJZQzRBMFRDR3pSLTBrR29fYXlqN2dhbEJVMjdFWXA1VmxneWRDYzdJbGxDeVVUVnc0M1pGODJFSUZzZkdVbGViOTB4bXdwQWs3dzAzQWtUQXJLTDFtUHNuX2F5MFYzbUVWc3FKVUx3bllZZW4xUUJqeEpDdWx1Y0F2eTFDX2E?oc=5",
-   "source": "Inc.com",
+   "title": "Romania's state-owned rail freight operator CFR Marfa enters bankruptcy",
+   "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPQ3QxU3k5U1pqYWhmTlN3c3dsT2JNc19zYVVDWWpuMThaN0c2VGZGZnZtazk5elBrYzdURFZYc3lkWDlDeVktUFIzQk84aGxNTEZkdVl3cllWaENfZEpXUlhyWWtpalo3OUY3cjA2YWQ2TnJYTlNSUXdlZ1hQZXBJblFJbVkzY0JsN21KRnI5Vzh6aTFpR3U2Q3lXNmxGajAzdGJnaC1R?oc=5",
+   "source": "SeeNews",
    "region": "US",
-   "date": "2026-11-15T19:22:29Z",
-   "score": 13,
+   "date": "2026-11-17T14:58:25Z",
+   "score": 12,
    "why": [
     "bankruptcy",
-    "brand",
     "bank"
+   ]
+  },
+  {
+   "title": "Mercer International Faces Nasdaq Delisting After Bankruptcy Filing",
+   "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOLTBwY0ZxTGtCbG1QSHdyQUdNRzdmcUVYNVVrZ2hzMDVPcXNzNEdxZHBEQ2JDdU0wNmQzTUVnQ0Q2MUN3UjZpOW9acTJrQ2NpOXptQWY3X2YzdkVXb0hfYUN5MFJsalNuUWxJNWZON1JQNklnckRjVEswWXJuNlZsNE90QllNQmhRV253U3hCVTBLcUJxX2s1RXdjQjZNOXRtLVlrbEN1M1NiV0haUkp4SnZCcDA2RkQ1YUJJ?oc=5",
+   "source": "TipRanks",
+   "region": "US",
+   "date": "2026-11-17T22:10:53Z",
+   "score": 12,
+   "why": [
+    "bankruptcy",
+    "bank"
+   ]
+  },
+  {
+   "title": "Disney’s Profits Surge, but More Layoffs Could Be Coming as Company Targets $3 Billion in Savings",
+   "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5YWnh1aHhDNFk1RDMzalZUc3lfczhoeWYxdmIxcHp1MWFETDYxRGlWM18tQzdUY1VrYnl3NG9mSm04SVNqNzFicDdEZ2I2QkhmaEtkTUY3dVJjS1Yzc1ZDVkdkMzRHTVk?oc=5",
+   "source": "IMDb",
+   "region": "US",
+   "date": "2026-11-17T13:58:51Z",
+   "score": 11,
+   "why": [
+    "layoffs",
+    "billion",
+    "profit"
+   ]
+  },
+  {
+   "title": "Bart & Associates Becomes Accora Federal, Uniting Acquired Companies Under One Brand",
+   "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOMjgwMVVuZnk2elJ5S05OQVR1M3V4eEstODN4LXhUV25ac2pTdTF5TW4wMXpwSXEyY3dkX2Y0S3BjRWlpek0zNThkREZjSjhqMWtBTUMxc1FfR1ZVZHdXT2VoV3dsZzhMVi1Fd21BODBQT1hjSnJpNUY0VUhaOVJkbHBYeEczOTlhbkFzb3hIb3gtaGFPRGhmbzNNVnN2UlJ6U29GT1N6ckRiVktyWFg5YVhuZEFEeE9mUWNaYw?oc=5",
+   "source": "citybiz",
+   "region": "US",
+   "date": "2026-11-17T12:14:17Z",
+   "score": 11,
+   "why": [
+    "acquire",
+    "brand"
+   ]
+  },
+  {
+   "title": "UK crisp brand set for supermarket return after 54-year-old company collapses",
+   "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOMURTNS0tMUFkdWY1bDNVMmY5T2dLYTNmMW5YOWJpSF9qSDRxbzZhTF8wVG0wN3RHSlcxTFhIR1NMem5uUU82YzlPXzA3RWd4cmJMc21ESUtHd1N6andERjR2VE9pZnFsMDRPeDR1TTBFQi1yVTZzeEpBUVJodmhqak81MlgzcnljNmNkajlkWmxGd2ZUSUxiakpyUGNESGlhQ0RSc1BSZnZyZ3VuZ2s5T3VXdmk?oc=5",
+   "source": "Newham Recorder",
+   "region": "US",
+   "date": "2026-11-17T10:00:00Z",
+   "score": 11,
+   "why": [
+    "collapse",
+    "brand"
+   ]
+  },
+  {
+   "title": "More Disney layoffs coming as company targets $3 billion in savings",
+   "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxPWm45Skoxa2lkSGJIa200NGgwMjNhM196emNLLVRrZ0NoOGt5Y1QyZEw1ZWFURE9Oa3ZkbzAxZDZYYXNCbDdycDBrNWRha3UzTFQ5Y0JTZmFTZE9ZSVcxSDdUQ0tyaEszS2RJWWJNNExfaFRpMTIzYWdwTkVfS05YYmJxWEhaSFdCY1pCN1FzYmpqTlI2V0J4TUNGUFJmclVCb1BZSlRuN3g5M0RBWGdJVHFWVGpaTXl6XzVaSER5TG9tQUp6OWtNMWtROEY?oc=5",
+   "source": "Human Resources Director",
+   "region": "US",
+   "date": "2026-11-17T18:03:24Z",
+   "score": 10,
+   "why": [
+    "layoffs",
+    "billion"
    ]
   },
   {
@@ -46,256 +168,138 @@
    "source": "KGW",
    "region": "US",
    "date": "2026-11-16T18:03:00Z",
-   "score": 12,
+   "score": 10,
    "why": [
     "bankruptcy",
     "bank"
    ]
   },
   {
-   "title": "Comedy festival company bankruptcy puts Edmontonians at a loss",
+   "title": "Comedy festival company bankruptcy puts Edmonton at a loss",
    "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNbkZzaGxLeWVaNUFYVENGMHhWNlkzUW1hZTRtU2hOTnpfaE9YRmpRVm5YSS1WdXN1cW9uSEVpaVg2T2JzWnhCa29KWFRqTURvVlNzMUUzM0dvTEtkUjVNVy1CemlnajNKbFV3dUJNdFlPM1p5Q1NaVi1MVXQ2NjZVQTBIYWtGbV9ucE9ka3hySU1reUVT?oc=5",
    "source": "CityNews Edmonton",
    "region": "US",
    "date": "2026-11-16T23:01:02Z",
-   "score": 12,
+   "score": 10,
    "why": [
     "bankruptcy",
     "bank"
    ]
   },
   {
-   "title": "How Craveworthy Brands' acquisition of a pizza chain will help expand its chicken wings brand",
-   "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOcnlLM2NLUExMZjM4ck1LTFNUZl9mc1FSQmJxVkhfc2k3SnRxNWx3b2RFNEhDRGdJX0RmOW55WktobVlHLWg3Wkk0WmJyMmlEZXdsakFGWkpVcmNvNGlIb01Hc0Z6d2w1aGZNLXFkT2YwRW5OLWJleUFvUzhSMUwtWlFUdXVJYmFQUTNnRTlZSDdwZGloSXd3MnhGU2FyUmM?oc=5",
-   "source": "The Business Journals",
+   "title": "Children’s Place files for bankruptcy protection, seeks buyer",
+   "url": "https://www.cnbc.com/2026/11/09/childrens-place-chapter-11-sale.html",
+   "source": "CNBC Business",
    "region": "US",
-   "date": "2026-11-16T13:00:00Z",
-   "score": 12,
+   "date": "2026-11-09T20:57:46Z",
+   "score": 9,
    "why": [
-    "acquisition",
-    "brand",
-    "chain"
+    "bankruptcy",
+    "bank"
    ]
   },
   {
-   "title": "Watch JetBlue Rushes to Calm Workers Spooked by Bankruptcy Fears",
-   "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQdWotdWtnSUc5OUN5cXEzWFJseEtNZ3lLenJ0bW9tZENSanBmWWFWRXNqQkNldlJDbUdWbWY2OEF3SHdlSzEtTVdYNGFsQ3A5enFJV0pybXdxckpucS1sTXJ6V05jQVVkVHhMVEdCNVVJamR0NHZlSVo1Z1JHa3lyYURhV3prM2p6YVhmdDJKSlBFVGo2VUNfN0RKTTNheEVmMk5uVWpWQXBOb1U?oc=5",
-   "source": "Bloomberg.com",
+   "title": "Blood pressure medication recalled nationwide. See affected drug",
+   "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxNZUFhZVhKcFJNVDk4cnBPVGlZYzBGNHAtRFN1NlFqSk9leUxhV3VoSHJmZVFlZk5mcFlxUG1jSWdaVGsxZ29iMGJVMUQ2SWN2R0pPVHZGbU8xUF9nUk5rUUtkV3ZUaDY0VlNvVzVHcy1PUS1POWFQYUQzRnRpeGdaaGRpdS1NQk13X0hOTEROMEJMblg0a05teTNfV0NMVU1nRWoxRzZoMDR2azJnN3VPOTQzdElfejJrRU9KMEw4OVRVTWJPdU9mZkFKb3JPY2VNTXlINC1TanZtUXczUFhQTVRtQkUxYVRfZXpB?oc=5",
+   "source": "USA Today",
+   "region": "US",
+   "date": "2026-11-17T17:39:00Z",
+   "score": 9,
+   "why": [
+    "recall"
+   ]
+  },
+  {
+   "title": "Medication used to treat blood pressure recalled over possible metal contamination, company says",
+   "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNb3FwVTBzWnFBZVhKczl1a3VWNXRvbUJKR2ZONzYzck15OVgzQlBJM2hTTFZQWGhfY013Rm10UGhhNHBjamZHaExBNlJ0V3BIeVh1UU9MNVFQVTFPSkhuMHFPU0RWRHd4RVl4TzJjeExyNV9zZklqZTA2UWt3aGdIOHNWa1RYeml4bVVGNEdQRzBHUWxOWWVz?oc=5",
+   "source": "KMBC",
+   "region": "US",
+   "date": "2026-11-17T13:15:00Z",
+   "score": 9,
+   "why": [
+    "recall"
+   ]
+  },
+  {
+   "title": "Check your propranolol bottle: Breckenridge recalls 60 mg capsules over possible metal fragments",
+   "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOZDgybDUzWTVxRkVQRjRONkhCTkJoNnlIeERGNjBLRG1OcW9yR0lwVHBuck8wWXFhaC1wTXE5UWZWSkFzZ3dSUkczdGt1VHNPYzJZbWtzY0taZHBnT2lqM0tvVDZ4aDBwLXBfRmZfdWlYYmxEaE0wM0JTOU5RZlVPZzM4T1ROWWVPbVpNVWpRSUk?oc=5",
+   "source": "Medical Daily",
+   "region": "US",
+   "date": "2026-11-17T08:36:41Z",
+   "score": 9,
+   "why": [
+    "recall"
+   ]
+  },
+  {
+   "title": "Recalled Blood Pressure Medicine May Contain Metal, Company Warns: What To Know",
+   "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOT1kybXpQODhyd0s5ZmZKeHVPOHZPUWR4UzVRRlRLQmt2R3VDUXBCaW5ESnRacUFLMTgzXzcyMzJpdVlsY1IzbENwNDZGZUY5MTFYWG5aeHBqT2dvb0lzb2t2eTNxaWdoNExWenpkdzNLQjktanM3cy1MNURmc3pwYU53UmNZVUJZM2lCajV5MUxaOVBUSThuMU1DN25TSHpfSnhIbXVNZnJhUVdVS1E?oc=5",
+   "source": "DailyVoice.com",
+   "region": "US",
+   "date": "2026-11-17T19:51:05Z",
+   "score": 9,
+   "why": [
+    "recall"
+   ]
+  },
+  {
+   "title": "Urgent recall for two kitchen appliances sold at Costco, Harvey Norman, JB Hi-Fi, Bing Lee",
+   "url": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxNTjF4UW9RSl8tUTU1Wl82Z185V21hck8wek5zZHdZRndfNnpPQnJTM2llWkc4VmVadmxNUWhyLTk4UVRxM0hpc09NVlFNaDhtc2tiWk5RTDhlRzhoN0lDY1dRclhLYWtOQWw5WlFyajdnRkxQSnJrR0ktcGJ5V0RVMHdjZzBEZkpwVGVNTUdBQ1loNjBtX2M3Qjdtcy11N292dWFTRlMwSnRTYXBoWlp4eDZ6WGZqc2FJeGxwZ0ZjYjd0ajllYktxX2hFZmVvRXNoZzRFd3FUeUoxV3BhcWVNbjBBdVd1Q2Jfb3RFTHR1cG4?oc=5",
+   "source": "Yahoo Lifestyle Australia",
+   "region": "US",
+   "date": "2026-11-18T01:19:00Z",
+   "score": 9,
+   "why": [
+    "recall"
+   ]
+  },
+  {
+   "title": "Anthropic IPO: how can I buy shares, and is it worth it?",
+   "url": "https://www.theguardian.com/technology/2026/nov/17/anthropic-ipo-flotation-buy-shares-stock-market-claude-ai",
+   "source": "Guardian Business",
    "region": "UK",
-   "date": "2026-11-16T22:02:31Z",
-   "score": 12,
+   "date": "2026-11-17T13:00:48Z",
+   "score": 8,
    "why": [
-    "bankruptcy",
-    "bank"
+    "ipo"
    ]
   },
   {
-   "title": "When a Merger Changes the Business, Should It Change the Brand?",
-   "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBxVTlWUTNaUFdGbjdHSzVHT3lzaUVxT0ZFaGV1bm9CbFB2OTAtZXVkbGV1cV9pUzF2bDNpU3hDNFQza283ckw3cHFGZ3p3SDlnZElhVG5YRjdRYlMxUTJhREZZMFZ6Z0R2cXpXWldtNnUtTGJ1RVNWaA?oc=5",
-   "source": "DesignRush",
-   "region": "US",
-   "date": "2026-11-16T11:20:02Z",
-   "score": 11,
+   "title": "Tobacco group Imperial Brands to axe up to 4,600 jobs as it uses more AI",
+   "url": "https://www.theguardian.com/business/2026/nov/17/uk-tobacco-imperial-brands-cut-jobs-cigarettes-ai",
+   "source": "Guardian Business",
+   "region": "UK",
+   "date": "2026-11-17T09:01:25Z",
+   "score": 8,
    "why": [
-    "merger",
     "brand"
    ]
   },
   {
-   "title": "Yesway to convert 24 Texas convenience stores to Allsup's brand",
-   "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPSXJnWkp3aWVFaTBiUnpWRnFTQkpmWndsZUZHcHk0MWVqc2VPVUItMFBNanFHQmJ1SV9EVE9pQmVtU3I1MFBtVmIxeHNSajFickhpQ0g0NjNpQ0hpMXRvc1NtNFMyY1VmajdzUDlfa2NaWHBlYUFxZGluVnozLTlwd3N3NXNZamxveFFiVUVZSDNxRVoydE9XZjJB?oc=5",
-   "source": "CSP Daily News",
+   "title": "Home Depot names Richard McPhail as new CEO, beats earnings expectations",
+   "url": "https://www.cnbc.com/2026/11/17/home-depot-hd-q3-earnings-2026.html",
+   "source": "CNBC Business",
    "region": "US",
-   "date": "2026-11-16T19:12:35Z",
-   "score": 10,
+   "date": "2026-11-17T20:01:12Z",
+   "score": 8,
    "why": [
-    "brand",
-    "stores"
+    "ceo"
    ]
   },
   {
-   "title": "Black Rifle Coffee Company closing stores as sales plummet",
-   "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNT3ZocUtBQWNsVWFoeWRXQXkwZ3NxcExvY2hyREotUC1iTnJjQzdzVnBJMDhnSlJySDBwY3NjT1k3YlV2bElqNE1XZnJ3Rnl6dkVqTTNfelpCcjdYU21tX2Z2LV9lZl9PbUJqM2RJOEYtSXhKNDUwMVRYLThUbHdObGxaN1ZkMUVQNVdfbUEtc29Vc2piOHdDdURGTE1HS1k?oc=5",
-   "source": "Yahoo Finance",
+   "title": "Rivian CEO says new R2 SUV, autonomy make 2027 an ‘inflection year’ as EV maker marks five years since IPO",
+   "url": "https://www.cnbc.com/2026/11/10/rivian-r2-autonomy-2027-rj-scaringe.html",
+   "source": "CNBC Business",
    "region": "US",
-   "date": "2026-11-15T18:47:00Z",
-   "score": 10,
+   "date": "2026-11-10T15:11:48Z",
+   "score": 8,
    "why": [
-    "closing",
-    "stores",
-    "sales"
-   ]
-  },
-  {
-   "title": "Bombay Shaving Company parent launches recovery brand rE with 14 products",
-   "url": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxOckNtWnJCQ01IaFBqRkZ5a28ySmNlVVRET3REaVBmM3ZzVkhHZ1laQ0IzRXFjM3AzWjFSTnN2SGhKakhJWFZyT0NaOTVtUERfMW9aRUpQTHNvb1NZYmo5ZmVDMTM5Vm85S3ZRbnhmU2FZTXZvSnhMUWV0NGdUMkhtUy1GU0lManF6N1ZXZHJrSGR3TnpkM0hQcmU2UFBad1VRS044aGFYS3BZanJ1dXlSZTdsZHQwcE93T0pZWkhxV1NyNzFYNmNHLWd6dmlnXzRqTFREZGNUeDRURXItbW1Cc3FHelDSAegBQVVfeXFMTThCRU5EcHctdXNzeml5d18xcWpKWXhGQWRwYjJjeFdmX0Y1X3pTMzVPR3NKMXVsUFhqZmpEU0xzdFYzcDFJQ1hVLWZ5MFROSmJXMm5JdXBLSmxpTkFIWHJvb2JQRmVXanJzTER2UzlsSDg3M2RKLTdhS2dMMlpyUXdqSmZVdFNlTGpERVozVWUtTHd5cUhUWTlhOHFBTjBGQnB2ckp2aUJoVTdvV3RaMUJ5bkRwanByMmVzVi1BM196YnkxaHhxXzNPZVE2TWdLRU0wSVhCUHBLVzd3UXdsbVFvampISjJVdg?oc=5",
-   "source": "ET Retail",
-   "region": "US",
-   "date": "2026-11-16T22:37:00Z",
-   "score": 10,
-   "why": [
-    "brand",
-    "launch"
-   ]
-  },
-  {
-   "title": "Yesway to Convert 24 Texas Stores to Allsup's Brand – Company Announcement",
-   "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPckNNc0ZlWFZxSVVPaVE4Q2RiLUxWWVlLb1BON3p1VWNPaUhaSjBnZzF6QmFuLTF2V1dQOWVXMjBhM1lTdG54X2ZVaE1YY0RVZHdCUnpvRklES1ZNNFI4YXdRMDYwMTFMcGRjTUxjQ2JWVUdUWUQ1VWxoQTZTX2FPUC1NNmNtcFRrUk1ISWEtQXNnNGQxMTFQQQ?oc=5",
-   "source": "Financial Times",
-   "region": "US",
-   "date": "2026-11-16T14:07:00Z",
-   "score": 10,
-   "why": [
-    "brand",
-    "stores"
-   ]
-  },
-  {
-   "title": "SFO charges eight over London Capital & Finance collapse",
-   "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNRDF0ZGNkTThkMy1hR2d2SWJMQXBFc3o5eVFhbVhheVV4NTZqWWdad2FXcnBjaV82YThES2ExN1VzUGxjNkQ5SXcwQVkwN3U4TlFFUHB4MWx2cXdWb1ZRSDRTTy1BeEZHTnBBeHd3WGs3ekExWlZjc2lkTDN2c0RGN2RfeUNoRVpPN0k2VjJWTnM1dTA?oc=5",
-   "source": "GOV.UK",
-   "region": "UK",
-   "date": "2026-11-16T14:15:40Z",
-   "score": 10,
-   "why": [
-    "collapse"
-   ]
-  },
-  {
-   "title": "Eight charged over £251m London Capital & Finance collapse",
-   "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPOFNxdkwyLWMta2xyRGFIblVxRlJXUXpLUDljVnl5d01jTFZSUU9CamtsS2xqc0hNdXUxWUF1dDgwSTRFNjlKTnI5dW9HOVBVR0NmS204V3l2Uk1vQXNMei1NLXRrZGNBTnMtSlRyN1VmelBYWTZ4eWJYd3ZhTVhZeFFCQlZrRDNBRnNzb2tuMG5Sd1NfREQxMUFB?oc=5",
-   "source": "Money Marketing",
-   "region": "UK",
-   "date": "2026-11-17T08:15:37Z",
-   "score": 10,
-   "why": [
-    "collapse"
-   ]
-  },
-  {
-   "title": "Town 'held to ransom' over building site collapse",
-   "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBteHZmeVpXZE5GS3dxeHZ0eG5QTTdVRUJMbkJFUkJZdkVzdDkwU2RRZ1ZPUlFFMWcwUWpXY0VPQXZNbDkxc0xvbllIcEZDV2FlZGQ3YVBLR0hnYmU1Z29jOGVxbkxlTlhsMk1aRE9tUk1KZjJDU1I1Ulc3SQ?oc=5",
-   "source": "Yahoo News New Zealand",
-   "region": "UK",
-   "date": "2026-11-17T06:11:00Z",
-   "score": 10,
-   "why": [
-    "collapse"
-   ]
-  },
-  {
-   "title": "Eight charged by SFO after collapse of Tunbridge Wells company",
-   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE4xN1kwWFpDOEE4V1F2QkxHWGlOYU5jSEg5WXROWXJNSEJqR003dEx0QmZGU2NURkJZa2xRT1ktY2ZLVWRNdE1rbFZJZ09VT1BVT2ozNzZpeVZtZWc?oc=5",
-   "source": "BBC",
-   "region": "UK",
-   "date": "2026-11-16T19:27:02Z",
-   "score": 10,
-   "why": [
-    "collapse"
-   ]
-  },
-  {
-   "title": "Lessons from \"The Man from Earth\" for an age of collapse",
-   "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOa2kxazBNcDBTRzFqYm9QSkItbzRQVk1nb19USHp0RGhKZ1o3bHFVa2RiM2ExSDJPeU5YZ0V5aUFJTllKOGUycXQtTjZLaXhzRXdLMDVZQjFWSlNfWklDM0Nla2Q1NEwtREItUnV2M3VXNU1vVXBnaExmYlVCTlJKMVpSUnZDR1J4RWxzRHBnNUpma2c2QzBuTmdMQXBSV0t5ZVNB?oc=5",
-   "source": "www.resilience.org",
-   "region": "UK",
-   "date": "2026-11-17T08:06:56Z",
-   "score": 10,
-   "why": [
-    "collapse"
-   ]
-  },
-  {
-   "title": "Shein partners with artist Chase to launch new streetwear brand - FashionNetwork",
-   "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQNlhHRjEwM1o1VEN6TUZrakdscFpWeVMwRWUtV3ZlMWMxS0d0cWxORl9ZOXR6MUc4YWJaSlg2XzV5QXZiTW02UXpWZGVBMnVab241Q0VLWVRFd2kyRVYwTUprY0s1ZWZ5UUYyeXRwMW9CZVU1eDMweTJxYlBzUDdtS2pLTmZvYXBMWWZlQ2VsdkkydklYekoxMDg5eWtHaUJrYnRIUGMybjdPbGFUeWxNaA?oc=5",
-   "source": "The World's Fashion Business News",
-   "region": "UK",
-   "date": "2026-11-17T02:56:33Z",
-   "score": 10,
-   "why": [
-    "brand",
-    "launch"
-   ]
-  },
-  {
-   "title": "Higher-priced markets and brand shifts reshaping premium bottled water",
-   "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQU2hKeXBPSTVncEhnR3hRdjlXa1NoNldBRFkwb0d1TW56ZUt3Y2xsamZLUmlJcTJLR1djcDhOVzNCaDNzaWphTlVpRkpfc0N2VmlIMGswMVc4RkFxZzZnOHg1NkZPUlh0T29EbWtJVGU1WDlzRW9aT2JYUm9LNHdJZDAyQXd2elhOUUNtcVltWGNjWHdfcDVlNzk3WnFackczZEpTNktNSUFZdnc3NGJTM2lJZVZxSnJtb3pNemV3?oc=5",
-   "source": "Food and Drink Technology",
-   "region": "UK",
-   "date": "2026-11-17T05:42:40Z",
-   "score": 10,
-   "why": [
-    "brand",
-    "price"
-   ]
-  },
-  {
-   "title": "Collapse of a road span of the Crimean Bridge reported in occupied Crimea",
-   "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNeEdMWFNmQS1qanRFVzFlT0E3eUVBckZSUnl4VjRaak5McDFPN183SGZudkliOG1KUDVuZjlCUjRBMXk1SjFtS2ZJQjA1ZWtBUmVzSWZ1Vi0zMWVkMW85LXQ4Q0trV21XQTZBSFlUcENITjdHRWI4bVE0SF9tdmIwOFYtc3Y4dXpFbXZZMFFId1dfTEdrYVRVb0VRNUtka2FSaUFzX3VRVER6Tk1ZR0HSAawBQVVfeXFMTjdicHAtUmhDQ1BKa1NoVTY3eUwweWxKRDNpS3g5bTlLSnJaMUFGNkFDRWxReHV2OUJ0MTc2M25xblpGZTNNOFVQTlh2YVA1QjFfUEpXT1ZkWjQwaFEyd3RTaThkSG4tMXJNR1dXR1l4THlYZ194MGt0ZXYxSVF5NnNjTkg2REdRVXNPWXdlX0VsZjdsOW5jMmtPNFJVV1R6M1RlN1JmUHZtdVVIQQ?oc=5",
-   "source": "Українські Національні Новини (УНН)",
-   "region": "UK",
-   "date": "2026-11-17T06:09:18Z",
-   "score": 10,
-   "why": [
-    "collapse"
-   ]
-  },
-  {
-   "title": "Zariah, 13, and Her Cat Are Reunited After Building Collapse",
-   "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxONG5oVjJUQlltTUVjQTVOcy04Z3RROTdQWko4Y3lkeTQydHV5ZmNNb1dicFlrRDZXOS1xRUxIellxYlEwSjhNN3VMU1FPUUV1M1Fac0tMU1BSUnBaMlVlS0oxb2o2b29wT1NLMHZiSkJQMEhVanZSUlROSEFiSWRSQlhFZw?oc=5",
-   "source": "The New York Times",
-   "region": "UK",
-   "date": "2026-11-16T14:15:00Z",
-   "score": 10,
-   "why": [
-    "collapse"
-   ]
-  },
-  {
-   "title": "Takashi Murakami Launches Watch Brand at IAMWatch",
-   "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPTDlVM0NfajRHbzI0OTNWaDRUcTRnZkNaZVIyQUM0cFppZkhBbUU4YVpUbkQ1TkpZYm9TWWRMTkdiai1pZktjS2NJSDZxLTFFc0pVX3MzVlMtZ0dSMmdqQnBaZWJpbUFacmU1c3lrYTctZEFWX1kxMktHTngxcDRydnFpd0c?oc=5",
-   "source": "Revolution Watch",
-   "region": "UK",
-   "date": "2026-11-17T08:33:15Z",
-   "score": 10,
-   "why": [
-    "brand",
-    "launch"
-   ]
-  },
-  {
-   "title": "Brooklyn building collapse highlights real estate’s industries deadly grip in New York",
-   "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5tZEgtdTlETm5SWGxhMGdmYXloZTE1SjhVempqOEYtZlVBZkZYcXRMUXdUaVliM2tYODllY1phLU5GX0JrbGxza0RwM1N1TWUxR1R6VEUtU3NIc1dIeUNaZ2czRWlTSHAt?oc=5",
-   "source": "World Socialist Web Site",
-   "region": "UK",
-   "date": "2026-11-17T04:04:39Z",
-   "score": 10,
-   "why": [
-    "collapse"
-   ]
-  },
-  {
-   "title": "David Jones Collapse Leaves A$459 Million Creditor Hole",
-   "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPQXZQYXA3cDhWc2lvNkl0Z0VqV0R4cHBJd1FEN1p2dENIX0M4bDhzQjI4WUtwZ3VDN3N2MkU3c0VELVhRcWpPQzhOcm1KM0ZVSFdyV3lHLTAyQjdDSmlVVG50cWh6MHBjUmVGaW9TYVVKVFplV2hqLThxbUpTVktFWndOTmlBdHVvODQw?oc=5",
-   "source": "Finimize",
-   "region": "UK",
-   "date": "2026-11-16T23:59:29Z",
-   "score": 10,
-   "why": [
-    "collapse"
-   ]
-  },
-  {
-   "title": "What the Crimean Bridge looks like after the collapse of the arch span: 3D reconstruction video",
-   "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNNkowdVFGc0NRN21EUXpKSzdnRU1FRUlsaTVJNks2RFN4bUJKRVo1bzZrSnlMaWg3SXdPQlpMcF91SFlQdC15aENNZlVETDhMSzZnWEFCZlZWTXA1R0RiMl9ndmY3dWUzLVVrN20wQVlmR1F2VElsZV9aWlcxdmk4LWtFdnVXdktZMGhSMTlocGFzWGJDM2FyYVg0blN1blNLVVBMb3J2X0RaY3MyRDc2TENjWnRVMTJna3Jn0gG6AUFVX3lxTE1vZ3NpSzFHdmFUYlZEd2dROTR0SUVIWm5ucHQwa0lHLUd3aUgzb0NmMk5wOGlidTIwcFh3WU1WOXdURUs4T0ZyY0RyMFF1dk51dUpvOUNtUE9KTGxHSG5YSFAtSW5MUjRaZkpQNFlHZ2JuRkd4cldjYVBSWVQ3OXZxczgxbW9pdm00dFo0cmp6ZzU3UjhWdjhuUXBIekJDSDZrQ1JrSm9LMWJMNzVfZVpHb3lZVHVpOGFxUQ?oc=5",
-   "source": "Українські Національні Новини (УНН)",
-   "region": "UK",
-   "date": "2026-11-17T08:32:03Z",
-   "score": 10,
-   "why": [
-    "collapse"
+    "ceo",
+    "ipo"
    ]
   }
  ],
- "errors": []
+ "errors": [
+  "Google News UK: HTTP Error 429: Too Many Requests"
+ ]
 }
