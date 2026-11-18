@@ -1,17 +1,19 @@
 {
-  "generated_at": "2026-11-17T14:48:26.941695+00:00",
+  "generated_at": "2026-11-18T14:28:56.041293+00:00",
   "format": "short",
   "item_day": "Mon 16 Nov",
   "topic": "Coca-Cola mailed millions of Americans a coupon for one free glass of Coke in the 1890s-1900s to build the habit nationwide",
   "title": "Coca-Cola Mailed Free Coke Coupons to Millions of Strangers",
   "unverified": true,
   "note": "Gemini first draft, NOT fact-checked. Claude must verify every claim with its own 2-source rule before using any of it in a real job file.",
-  "draft_script": "This is a true business trick. Coca-Cola pulled it off over a century ago. They didn't aim for goodwill. They aimed for habit. In the 1890s and early 1900s, Coca-Cola mailed millions of Americans a simple coupon. This wasn't a small promotion. They flooded the nation. Each coupon offered one free glass of Coke. They sent these directly to total strangers, to homes across the country. The strategy was brilliant in its simplicity. Get people to try the product. Experience the unique taste. Form a new daily habit. This wasn't about a single free drink. It was about planting a seed. A seed for lifelong customer loyalty. This massive free giveaway built a national craving. It engineered a vast, dependable customer base. Coca-Cola didn't just sell a drink; they sold a habit. This is how you create an empire, one free coupon at a time. They taught America to love Coke. A truly sneaky deal that paid off for decades.",
+  "draft_script": "Coca-Cola's biggest trick wasn't its secret formula. It was a free drink. From the 1890s into the early 1900s, Coca-Cola mailed millions of Americans a coupon. Not for a discount. For one free glass of Coke. No strings attached. This wasn't about goodwill. It was a cold, calculated business move. The goal was simple: create a habit, nationwide. Get people to try it. Get them hooked. Permanently. Between 1894 and 1913, Coca-Cola issued 8.5 million of these free coupons. Imagine that scale. An estimated one in ten Americans received one. The redemption rate was incredibly high, around 85 percent. That's over 7 million free Cokes given away. Each free glass was an investment. Not in a single sale, but in a lifelong customer. This simple, massive giveaway built Coca-Cola's early customer base. It engineered demand. Free today, pay tomorrow. For decades. This is how Coca-Cola dominated the American market. A truly sneaky deal, perfectly executed to create an empire.",
   "claims": [
     "Coca-Cola mailed millions of Americans a coupon for one free glass of Coke.",
-    "This occurred in the 1890s and early 1900s.",
-    "The coupons were sent to strangers.",
-    "The strategy aimed to build a habit.",
-    "The strategy aimed to create lifelong customers."
+    "This occurred from the 1890s into the early 1900s.",
+    "The strategy aimed to create a habit and lifelong customers.",
+    "Between 1894 and 1913, Coca-Cola issued 8.5 million free coupons.",
+    "An estimated one in ten Americans received a coupon.",
+    "The redemption rate for these coupons was around 85 percent.",
+    "Over 7 million free Cokes were given away through this program."
   ]
 }
