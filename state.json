@@ -684,9 +684,13 @@
         {
           "t": "2026-11-18T15:43:22Z",
           "msg": "✅ You approved the script on the dashboard. Claude starts the video in the next run."
+        },
+        {
+          "t": "2026-11-18T17:10:11Z",
+          "msg": "🎬 Script check pass ho gaya (49 scenes, ~8 min). Render GitHub par queue kar raha hoon (~40 min baqi)"
         }
       ],
-      "progress_count": 2,
+      "progress_count": 3,
       "vote_msg": "1794982469.326359",
       "vote_kind": "script",
       "decided_via": "dashboard",
