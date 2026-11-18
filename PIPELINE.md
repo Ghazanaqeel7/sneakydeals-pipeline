@@ -15,8 +15,9 @@ for story rules, look and build technique; this file overrides it where they dif
 The owner also has a web dashboard (`docs/index.html`, GitHub Pages). From it they can approve/reject exactly like
 the Slack buttons (the job gets `decided_via: dashboard`), edit `script.md` before approval (`script_edited` is set —
 build from the edited file), edit `meta.json` title/description/tags/pinned comment (never overwrite those edits
-later), change `config.publish_days`, and queue story ideas in `state.json["ideas"]`. Treat all of these as the
-owner's instructions.
+later), change `config.publish_days`, and queue story ideas in `state.json["ideas"]` — either a quick one-liner
+(Settings → Story ideas) or a full pitch with a scene-by-scene sketch (the "My Story" tab, stored as a draft
+object). Treat all of these as the owner's instructions.
 
 ## State machine (`state.json` → `jobs.<id>.status`)
 
@@ -68,6 +69,15 @@ install anything, or research. If another job is already `building`, do not star
    and `set_status <id> script_ready`, then set `last_story_date` (top level of `state.json`) to today's Asia/Karachi date. Wherever this file says "the story-hour run", it means this run (the first run of the day that reaches step 5). If the buffer is full, also set `last_story_date` so later runs exit quickly. **Owner ideas first:** run `python3 pipeline/scripts/pop_idea.py`; if it
    prints an idea (queued by the owner on the dashboard), that is the story — research it, and if it is not true or
    not usable, say so in the script message and pick your own instead.
+   **Full draft from the "My Story" tab:** the owner can also queue a whole draft with the pitch and a scene-by-scene
+   sketch (dashboard → My Story); `pop_idea.py` prints it as a labelled "OWNER DRAFT" block instead of one line. Treat
+   it exactly like any other owner idea, just with a head start: fact-check every claim in it the normal way (two
+   independent sources), keep what already works, and improve it — fill in any missing scene, fix pacing/hook per
+   the playbook, add a scene if the story needs one, drop anything that doesn't check out. In `telegram.md`, add a
+   short "What I changed from your draft" note (2-4 lines: added/fixed/removed) before the usual shot-by-shot so the
+   owner sees what you contributed versus what they wrote. If a central claim in the draft fails fact-check, say so
+   plainly and either fix the claim with a sourced correction or tell the owner why that story can't run as told —
+   never publish an unverified claim just because the owner wrote it.
    **Then the content calendar:** if no owner idea, open `docs/calendar.json` and take the first item (top to bottom)
    with `status: "planned"` — its topic/angle/title are the brief (still fact-check; the title is a draft). After you
    push the script, set that item's `status` to `"scripted"` and `"job": "<id>"`, commit + push. If the item is
