@@ -670,6 +670,12 @@
       "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/008-mcdonalds-monopoly-rigged.mp4",
       "yt_scheduled_for": "2026-11-19T00:00:00Z",
       "yt_queued_at": "2026-11-17T21:33:19Z"
+    },
+    "009-blockbuster-netflix-long": {
+      "status": "script_ready",
+      "updated": "2026-11-18T06:14:08Z",
+      "type": "long",
+      "title": "Blockbuster Turned Down a $50 Million Deal. Then Netflix Won"
     }
   },
   "ideas": [
