@@ -672,8 +672,8 @@
       "yt_queued_at": "2026-11-17T21:33:19Z"
     },
     "009-blockbuster-netflix-long": {
-      "status": "video_ready",
-      "updated": "2026-11-18T18:45:31Z",
+      "status": "video_rejected",
+      "updated": "2026-11-18T22:05:26Z",
       "type": "long",
       "title": "Blockbuster Turned Down a $50 Million Deal. Then Netflix Won",
       "progress": [
@@ -692,17 +692,22 @@
         {
           "t": "2026-11-18T17:11:06Z",
           "msg": "🎞 Long video prepare: images, voice aur music ban rahe hain (~10-20 min)"
+        },
+        {
+          "t": "2026-11-18T22:05:26Z",
+          "msg": "🛠 Changes noted (dashboard): \"video giant newspaper slide is too much long atleast 12 to 13 section between that and something more relevent visual starting is too long how my audience stays too long it will go\" — Claude agle run mein (by 03:08 PKT) inhe lagana shuru karega."
         }
       ],
-      "progress_count": 4,
+      "progress_count": 5,
       "vote_msg": "1794982469.326359",
       "vote_kind": "script",
       "decided_via": "dashboard",
-      "decided_at": "2026-11-18T15:43:22Z",
+      "decided_at": "2026-11-18T22:05:26Z",
       "run": "44355608122",
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-009-blockbuster-netflix-long/final.mp4",
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-009-blockbuster-netflix-long/preview.mp4",
-      "upload_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-009-blockbuster-netflix-long/upload.mp4"
+      "upload_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-009-blockbuster-netflix-long/upload.mp4",
+      "feedback": "[2026-11-18T22:05:26Z] video giant newspaper slide is too much long atleast 12 to 13 section between that and something more relevent visual starting is too long how my audience stays too long it will go long video is good but nothing is gaining audience attention it is simple looking like lecture slide make it more attractive with more visuals and har scene pe itna lamba rukta h visual element bhi boht simple lag rhy hain attention seek kar  rakhni h \n\nand thumbnail bhi boht bikar banaya h acha ni lag rha thumbnail acha attractive bana kar do popup kare banda parhte he click kare video dekhne ka shoq ho  usko"
     }
   },
   "ideas": [
