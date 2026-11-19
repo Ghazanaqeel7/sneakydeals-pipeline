@@ -631,7 +631,7 @@
       "fb_thumb_set": "2026-11-17T06:37:43Z"
     },
     "008-mcdonalds-monopoly-rigged": {
-      "status": "video_approved",
+      "status": "published",
       "updated": "2026-11-17T21:32:54Z",
       "title": "McDonald's Monopoly Was Rigged by Its Own Security Chief",
       "vote_msg": "1794940714.479529",
@@ -683,7 +683,8 @@
       "thumb_queued_at": "2026-11-19T02:38:03Z",
       "ig_at": "2026-11-19T02:38:03Z",
       "fb_at": "2026-11-19T02:38:03Z",
-      "reels_at": "2026-11-19T02:38:03Z"
+      "reels_at": "2026-11-19T02:38:03Z",
+      "published_at": "2026-11-19T04:30:45Z"
     },
     "009-blockbuster-netflix-long": {
       "status": "video_rejected",
