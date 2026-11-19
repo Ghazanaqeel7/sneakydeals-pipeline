@@ -716,9 +716,13 @@
           "t": "2026-11-19T06:13:27Z",
           "msg": "🛠 Aapke changes lag gaye: hook ka lamba newspaper slide chhota, har scene mein 2-3 naye visuals (cartoon characters, numbers) taake screen har ~4 sec mein badle, aur naya thumbnail (do characters + bada $50 MILLION). Render queue ho raha hai (~40 min)",
           "image": "jobs/009-blockbuster-netflix-long/thumbnail.jpg"
+        },
+        {
+          "t": "2026-11-19T06:15:55Z",
+          "msg": "🎞 Long video prepare: images, voice aur music ban rahe hain (~10-20 min)"
         }
       ],
-      "progress_count": 6,
+      "progress_count": 7,
       "vote_msg": "1794982469.326359",
       "vote_kind": "script",
       "decided_via": "dashboard",
