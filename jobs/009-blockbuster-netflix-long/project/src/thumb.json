@@ -1,1 +1,31 @@
-{"image":{"q":"VHS tapes video rental store"},"icon":"store","line1":"$50 MILLION","line2":"THEY SAID NO","box":"BLOCKBUSTER","box_color":"#1f4ea8"}
+{
+ "image": {
+  "q": "VHS tapes video rental store"
+ },
+ "icon": "store",
+ "line1": "$50 MILLION",
+ "line2": "THEY LAUGHED",
+ "box": "BLOCKBUSTER",
+ "box_color": "#1f4ea8",
+ "line_color": "#ff2d2d",
+ "cast": [
+  {
+   "side": "left",
+   "mood": "laugh",
+   "suit": "#1f4ea8",
+   "tie": "#f2c230",
+   "label": "Blockbuster",
+   "delay": -90,
+   "size": 400
+  },
+  {
+   "side": "right",
+   "mood": "shock",
+   "outfit": "hoodie",
+   "suit": "#c43d32",
+   "label": "Netflix",
+   "delay": -90,
+   "size": 400
+  }
+ ]
+}

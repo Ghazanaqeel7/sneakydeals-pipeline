@@ -4,46 +4,103 @@
   {
    "id": "s01",
    "text": "Early in the year two thousand, two men flew to Dallas to sell their small company to the biggest name in video rental. The boss said no. Ten years later, that giant was bankrupt.",
-   "visual": {
-    "type": "headline",
-    "kicker": "DALLAS · 2000",
-    "text": "Video giant turns down $50 million internet start-up",
-    "stamp": "Deal rejected",
-    "art": {
-     "mood": "laugh",
-     "suit": "#1f4ea8",
-     "tie": "#f2c230"
+   "visual": [
+    {
+     "type": "title",
+     "text": "They offered Blockbuster $50 million",
+     "accent": [
+      "$50 million"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "suit": "#1f4ea8",
+       "tie": "#f2c230",
+       "label": "Blockbuster",
+       "mood": "laugh"
+      },
+      {
+       "side": "right",
+       "outfit": "hoodie",
+       "suit": "#c43d32",
+       "label": "Netflix",
+       "mood": "talk"
+      }
+     ],
+     "at": 0
     },
-    "caption": "A video-rental boss, illustration"
-   },
+    {
+     "type": "headline",
+     "kicker": "DALLAS · 2000",
+     "text": "Boss says no to $50 million start-up",
+     "stamp": "Deal rejected",
+     "art": {
+      "mood": "laugh",
+      "suit": "#1f4ea8",
+      "tie": "#f2c230"
+     },
+     "caption": "A video-rental boss, illustration",
+     "at": 0.4
+    },
+    {
+     "type": "stat",
+     "from": 0,
+     "to": 10,
+     "suffix": " years later",
+     "label": "Blockbuster: bankrupt",
+     "icon": "store",
+     "color": "red",
+     "at": 0.75
+    }
+   ],
    "tone": "dark"
   },
   {
    "id": "s02",
    "text": "This is the story of the fifty million dollar deal Blockbuster turned down, and of the money it made by annoying its own customers.",
-   "visual": {
-    "type": "title",
-    "text": "The $50 million deal Blockbuster turned down",
-    "accent": [
-     "turned down"
-    ],
-    "cast": [
-     {
-      "side": "left",
-      "mood": "laugh",
-      "suit": "#1f4ea8",
-      "tie": "#f2c230",
-      "label": "Blockbuster"
-     },
-     {
-      "side": "right",
-      "mood": "worried",
-      "outfit": "hoodie",
-      "suit": "#c43d32",
-      "label": "Netflix"
-     }
-    ]
-   },
+   "visual": [
+    {
+     "type": "title",
+     "text": "The $50 million deal Blockbuster turned down",
+     "accent": [
+      "turned down"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "mood": "laugh",
+       "suit": "#1f4ea8",
+       "tie": "#f2c230",
+       "label": "Blockbuster"
+      },
+      {
+       "side": "right",
+       "mood": "worried",
+       "outfit": "hoodie",
+       "suit": "#c43d32",
+       "label": "Netflix"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "title",
+     "text": "Annoying customers = money",
+     "accent": [
+      "money"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "suit": "#1f4ea8",
+       "tie": "#f2c230",
+       "label": "Blockbuster",
+       "mood": "smug"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
    "tone": "dark"
   },
   {
@@ -60,173 +117,334 @@
   {
    "id": "s04",
    "text": "The first Blockbuster opened in Dallas, Texas, in nineteen eighty-five. A blue and yellow sign, a wall of tapes, and one simple promise: the movie you want, tonight.",
-   "visual": {
-    "type": "photo",
-    "image": {
-     "q": "Blockbuster Video store exterior"
+   "visual": [
+    {
+     "type": "photo",
+     "image": {
+      "q": "Blockbuster Video store exterior"
+     },
+     "move": "in",
+     "fallback": {
+      "icon": "store",
+      "label": "The first store, Dallas 1985"
+     },
+     "caption": "Dallas, 1985",
+     "at": 0.0
     },
-    "move": "in",
-    "fallback": {
-     "icon": "store",
-     "label": "The first store, Dallas 1985"
-    },
-    "caption": "Dallas, 1985"
-   },
+    {
+     "type": "title",
+     "text": "The movie you want. Tonight.",
+     "accent": [
+      "Tonight"
+     ],
+     "cast": [
+      {
+       "side": "center",
+       "suit": "#1f4ea8",
+       "tie": "#f2c230",
+       "label": "Blockbuster",
+       "mood": "happy"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
    "tone": "blue"
   },
   {
    "id": "s05",
    "text": "By the early two thousands it had almost nine thousand stores around the world, and about six billion dollars in yearly revenue.",
-   "visual": {
-    "type": "stat",
-    "from": 0,
-    "to": 9000,
-    "suffix": " stores",
-    "label": "Blockbuster at its peak",
-    "sub": "around the world",
-    "icon": "store",
-    "brand": {
-     "a": "#1f4ea8",
-     "b": "#f2c230"
+   "visual": [
+    {
+     "type": "stat",
+     "from": 0,
+     "to": 9000,
+     "suffix": " stores",
+     "label": "Blockbuster at its peak",
+     "sub": "around the world",
+     "icon": "store",
+     "brand": {
+      "a": "#1f4ea8",
+      "b": "#f2c230"
+     },
+     "per": "each shop = about 100 stores",
+     "at": 0.0
     },
-    "per": "each shop = about 100 stores"
-   },
+    {
+     "type": "title",
+     "text": "Six billion dollars a year",
+     "accent": [
+      "Six billion"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "suit": "#1f4ea8",
+       "tie": "#f2c230",
+       "label": "Blockbuster",
+       "mood": "smug"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
    "tone": "blue"
   },
   {
    "id": "s06",
    "text": "On a Friday night, almost every town in America had one. For a whole generation, renting a movie meant walking into a Blockbuster.",
-   "visual": {
-    "type": "map",
-    "region": "us",
-    "pins": [
-     {
-      "lon": -96.8,
-      "lat": 32.8,
-      "label": "Dallas HQ"
-     },
-     {
-      "lon": -87.6,
-      "lat": 41.9,
-      "label": "Chicago"
-     },
-     {
-      "lon": -118.2,
-      "lat": 34.05,
-      "label": "Los Angeles"
-     },
-     {
-      "lon": -74,
-      "lat": 40.7,
-      "label": "New York"
-     }
-    ],
-    "title": "A store in almost every town"
-   },
+   "visual": [
+    {
+     "type": "map",
+     "region": "us",
+     "pins": [
+      {
+       "lon": -96.8,
+       "lat": 32.8,
+       "label": "Dallas HQ"
+      },
+      {
+       "lon": -87.6,
+       "lat": 41.9,
+       "label": "Chicago"
+      },
+      {
+       "lon": -118.2,
+       "lat": 34.05,
+       "label": "Los Angeles"
+      },
+      {
+       "lon": -74,
+       "lat": 40.7,
+       "label": "New York"
+      }
+     ],
+     "title": "A store in almost every town",
+     "at": 0.0
+    },
+    {
+     "type": "title",
+     "text": "Friday night = Blockbuster night",
+     "accent": [
+      "Friday"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "suit": "#1f4ea8",
+       "tie": "#f2c230",
+       "label": "Blockbuster",
+       "mood": "happy"
+      },
+      {
+       "side": "right",
+       "outfit": "hoodie",
+       "suit": "#c43d32",
+       "label": "Netflix",
+       "mood": "worried"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
    "tone": "blue"
   },
   {
    "id": "s07",
    "text": "The model was simple. Rent a tape, take it home, bring it back on time. And if you did not bring it back on time, you paid.",
-   "visual": {
-    "type": "illustration",
-    "title": "Return it late, pay a fee",
-    "icons": [
-     {
-      "name": "clock",
-      "label": "Late"
-     },
-     {
-      "name": "dollar",
-      "label": "Fee"
-     },
-     {
-      "name": "warning",
-      "label": "Angry customers"
-     }
-    ]
-   },
+   "visual": [
+    {
+     "type": "illustration",
+     "title": "Return it late, pay a fee",
+     "icons": [
+      {
+       "name": "clock",
+       "label": "Late"
+      },
+      {
+       "name": "dollar",
+       "label": "Fee"
+      },
+      {
+       "name": "warning",
+       "label": "Angry customers"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "title",
+     "text": "Late? Pay up.",
+     "accent": [
+      "Pay up."
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "suit": "#1f4ea8",
+       "tie": "#f2c230",
+       "label": "Blockbuster",
+       "mood": "angry"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
    "tone": "blue"
   },
   {
    "id": "s08",
    "text": "In two thousand alone, Blockbuster collected about eight hundred million dollars in late fees. Around sixteen percent of everything it earned came from customers who returned a movie late.",
-   "visual": {
-    "type": "stat",
-    "from": 0,
-    "to": 800,
-    "prefix": "$",
-    "suffix": "M",
-    "label": "Late fees in 2000",
-    "sub": "about 16% of revenue",
-    "icon": "dollar",
-    "color": "red"
-   },
+   "visual": [
+    {
+     "type": "stat",
+     "from": 0,
+     "to": 800,
+     "prefix": "$",
+     "suffix": "M",
+     "label": "Late fees in 2000",
+     "sub": "about 16% of revenue",
+     "icon": "dollar",
+     "color": "red",
+     "at": 0.0
+    },
+    {
+     "type": "title",
+     "text": "Customers hated it",
+     "accent": [
+      "hated"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "suit": "#1f4ea8",
+       "tie": "#f2c230",
+       "label": "Blockbuster",
+       "mood": "smug"
+      },
+      {
+       "side": "right",
+       "outfit": "hoodie",
+       "suit": "#c43d32",
+       "label": "Netflix",
+       "mood": "laugh"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
    "tone": "red"
   },
   {
    "id": "s09",
    "text": "Think about what that means. A big slice of the profit came from a feeling customers hated. Every late fee was a small reason to wish for something better.",
-   "visual": {
-    "type": "title",
-    "text": "Profit built on a feeling customers hated",
-    "accent": [
-     "hated"
-    ],
-    "cast": [
-     {
-      "side": "left",
-      "mood": "smug",
-      "suit": "#1f4ea8",
-      "tie": "#f2c230",
-      "label": "Blockbuster"
-     }
-    ]
-   },
+   "visual": [
+    {
+     "type": "title",
+     "text": "Profit built on a feeling customers hated",
+     "accent": [
+      "hated"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "mood": "smug",
+       "suit": "#1f4ea8",
+       "tie": "#f2c230",
+       "label": "Blockbuster"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "stat",
+     "from": 0,
+     "to": 16,
+     "prefix": "",
+     "suffix": "%",
+     "label": "of revenue was late fees",
+     "icon": "dollar",
+     "color": "red",
+     "at": 0.5
+    }
+   ],
    "tone": "dark"
   },
   {
    "id": "s10",
    "text": "Here is the trap that every big company faces. Its old business pays the bills today, so the new idea always looks small, risky and a little silly next to it.",
-   "visual": {
-    "type": "illustration",
-    "title": "The giant's dilemma",
-    "icons": [
-     {
-      "name": "store",
-      "label": "Pays the bills today"
-     },
-     {
-      "name": "question",
-      "label": "The new idea"
-     },
-     {
-      "name": "warning",
-      "label": "Looks risky"
-     }
-    ]
-   },
+   "visual": [
+    {
+     "type": "illustration",
+     "title": "The giant's dilemma",
+     "icons": [
+      {
+       "name": "store",
+       "label": "Pays the bills today"
+      },
+      {
+       "name": "question",
+       "label": "The new idea"
+      },
+      {
+       "name": "warning",
+       "label": "Looks risky"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "title",
+     "text": "New ideas look silly next to old cash",
+     "accent": [
+      "silly"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "suit": "#1f4ea8",
+       "tie": "#f2c230",
+       "label": "Blockbuster",
+       "mood": "laugh"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
    "tone": "dark"
   },
   {
    "id": "s11",
    "text": "Blockbuster's managers could see the numbers. Stores meant rent, staff and tapes, but they also meant steady cash, every single week. Nobody gets promoted for putting that cash at risk.",
-   "visual": {
-    "type": "title",
-    "text": "Steady cash is hard to give up",
-    "accent": [
-     "cash"
-    ],
-    "cast": [
-     {
-      "side": "left",
-      "mood": "smug",
-      "suit": "#1f4ea8",
-      "tie": "#f2c230",
-      "label": "Blockbuster"
-     }
-    ]
-   },
+   "visual": [
+    {
+     "type": "title",
+     "text": "Steady cash is hard to give up",
+     "accent": [
+      "cash"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "mood": "smug",
+       "suit": "#1f4ea8",
+       "tie": "#f2c230",
+       "label": "Blockbuster"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "stat",
+     "from": 0,
+     "to": 9000,
+     "prefix": "",
+     "suffix": "",
+     "label": "stores = steady weekly cash",
+     "icon": "store",
+     "at": 0.5
+    }
+   ],
    "tone": "blue"
   },
   {
@@ -243,134 +461,234 @@
   {
    "id": "s13",
    "text": "Netflix was founded in nineteen ninety-seven by Reed Hastings and Marc Randolph. The idea: pick your movies on a website, get the disc in the mail, and keep it as long as you like.",
-   "visual": {
-    "type": "illustration",
-    "title": "Rent online, get it by mail",
-    "icons": [
-     {
-      "name": "screen",
-      "label": "Pick online"
-     },
-     {
-      "name": "mail",
-      "label": "Disc by mail"
-     },
-     {
-      "name": "check",
-      "label": "No late fees"
-     }
-    ]
-   },
+   "visual": [
+    {
+     "type": "illustration",
+     "title": "Rent online, get it by mail",
+     "icons": [
+      {
+       "name": "screen",
+       "label": "Pick online"
+      },
+      {
+       "name": "mail",
+       "label": "Disc by mail"
+      },
+      {
+       "name": "check",
+       "label": "No late fees"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "title",
+     "text": "Pick online. Get it by mail.",
+     "accent": [
+      "mail"
+     ],
+     "cast": [
+      {
+       "side": "center",
+       "outfit": "hoodie",
+       "suit": "#c43d32",
+       "label": "Netflix",
+       "mood": "happy"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
    "tone": "paper"
   },
   {
    "id": "s14",
    "text": "Side by side, the two companies could hardly have looked more different. One had thousands of stores. The other had none, and no late fees at all.",
-   "visual": {
-    "type": "compare",
-    "title": "Two ways to rent a movie",
-    "a": {
-     "name": "Blockbuster",
-     "color": "#1f4ea8",
-     "icon": "store"
+   "visual": [
+    {
+     "type": "compare",
+     "title": "Two ways to rent a movie",
+     "a": {
+      "name": "Blockbuster",
+      "color": "#1f4ea8",
+      "icon": "store"
+     },
+     "b": {
+      "name": "Netflix",
+      "color": "#c43d32",
+      "icon": "mail"
+     },
+     "rows": [
+      {
+       "label": "Where",
+       "a": "In a store",
+       "b": "In your mailbox"
+      },
+      {
+       "label": "Late fees",
+       "a": "Yes",
+       "b": "None",
+       "win": "b"
+      },
+      {
+       "label": "Stores",
+       "a": 9000,
+       "b": 0
+      },
+      {
+       "label": "Size",
+       "a": "A giant",
+       "b": "A tiny start-up"
+      }
+     ],
+     "at": 0.0
     },
-    "b": {
-     "name": "Netflix",
-     "color": "#c43d32",
-     "icon": "mail"
-    },
-    "rows": [
-     {
-      "label": "Where",
-      "a": "In a store",
-      "b": "In your mailbox"
-     },
-     {
-      "label": "Late fees",
-      "a": "Yes",
-      "b": "None",
-      "win": "b"
-     },
-     {
-      "label": "Stores",
-      "a": 9000,
-      "b": 0
-     },
-     {
-      "label": "Size",
-      "a": "A giant",
-      "b": "A tiny start-up"
-     }
-    ]
-   },
+    {
+     "type": "stat",
+     "from": 0,
+     "to": 0,
+     "prefix": "",
+     "suffix": "",
+     "label": "Netflix stores",
+     "icon": "store",
+     "at": 0.5
+    }
+   ],
    "tone": "paper"
   },
   {
    "id": "s15",
    "text": "But a small company with a clever idea has a problem. It needs customers and it needs money, and in two thousand a start-up selling discs by mail had a lot to prove.",
-   "visual": {
-    "type": "title",
-    "text": "A clever idea is not a business yet",
-    "accent": [
-     "clever"
-    ],
-    "cast": [
-     {
-      "side": "right",
-      "mood": "worried",
-      "outfit": "hoodie",
-      "suit": "#c43d32",
-      "label": "Netflix"
-     }
-    ]
-   },
+   "visual": [
+    {
+     "type": "title",
+     "text": "A clever idea is not a business yet",
+     "accent": [
+      "clever"
+     ],
+     "cast": [
+      {
+       "side": "right",
+       "mood": "worried",
+       "outfit": "hoodie",
+       "suit": "#c43d32",
+       "label": "Netflix"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "title",
+     "text": "Needs customers. Needs money.",
+     "accent": [
+      "money"
+     ],
+     "cast": [
+      {
+       "side": "right",
+       "outfit": "hoodie",
+       "suit": "#c43d32",
+       "label": "Netflix",
+       "mood": "worried"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
    "tone": "blue"
   },
   {
    "id": "s16",
    "text": "Remember the time. In two thousand, the internet was exciting and scary. Plenty of online companies were promising the world, and plenty of them would soon disappear.",
-   "visual": {
-    "type": "timeline",
-    "title": "The dot-com years",
-    "events": [
-     {
-      "year": "1997",
-      "label": "Netflix is founded"
-     },
-     {
-      "year": "2000",
-      "label": "Dot-com hype at its height"
-     }
-    ]
-   },
+   "visual": [
+    {
+     "type": "timeline",
+     "title": "The dot-com years",
+     "events": [
+      {
+       "year": "1997",
+       "label": "Netflix is founded"
+      },
+      {
+       "year": "2000",
+       "label": "Dot-com hype at its height"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "title",
+     "text": "Dot-com: hype or disaster?",
+     "accent": [
+      "disaster"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "suit": "#1f4ea8",
+       "tie": "#f2c230",
+       "label": "Blockbuster",
+       "mood": "talk"
+      },
+      {
+       "side": "right",
+       "outfit": "hoodie",
+       "suit": "#c43d32",
+       "label": "Netflix",
+       "mood": "worried"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
    "tone": "paper"
   },
   {
    "id": "s17",
    "text": "To an executive running nine thousand stores, a website that mailed discs probably sounded like one more internet gamble. That context matters, because it explains the answer without excusing it.",
-   "visual": {
-    "type": "title",
-    "text": "Another internet gamble?",
-    "accent": [
-     "gamble"
-    ],
-    "cast": [
-     {
-      "side": "left",
-      "mood": "talk",
-      "suit": "#1f4ea8",
-      "tie": "#f2c230",
-      "label": "Blockbuster"
-     },
-     {
-      "side": "right",
-      "mood": "worried",
-      "outfit": "hoodie",
-      "suit": "#c43d32",
-      "label": "Netflix"
-     }
-    ]
-   },
+   "visual": [
+    {
+     "type": "title",
+     "text": "Another internet gamble?",
+     "accent": [
+      "gamble"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "mood": "talk",
+       "suit": "#1f4ea8",
+       "tie": "#f2c230",
+       "label": "Blockbuster"
+      },
+      {
+       "side": "right",
+       "mood": "worried",
+       "outfit": "hoodie",
+       "suit": "#c43d32",
+       "label": "Netflix"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "title",
+     "text": "Just one more internet gamble",
+     "accent": [
+      "gamble"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "suit": "#1f4ea8",
+       "tie": "#f2c230",
+       "label": "Blockbuster",
+       "mood": "laugh"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
    "tone": "dark"
   },
   {
@@ -387,141 +705,285 @@
   {
    "id": "s19",
    "text": "They flew to Dallas, where Blockbuster had its headquarters, and asked for a meeting with its chief executive, John Antioco.",
-   "visual": {
-    "type": "map",
-    "region": "us",
-    "pins": [
-     {
-      "lon": -96.8,
-      "lat": 32.8,
-      "label": "Blockbuster HQ, Dallas"
-     }
-    ],
-    "title": "Fly to Dallas"
-   },
+   "visual": [
+    {
+     "type": "map",
+     "region": "us",
+     "pins": [
+      {
+       "lon": -96.8,
+       "lat": 32.8,
+       "label": "Blockbuster HQ, Dallas"
+      }
+     ],
+     "title": "Fly to Dallas",
+     "at": 0.0
+    },
+    {
+     "type": "title",
+     "text": "Two founders. One big ask.",
+     "accent": [
+      "big ask"
+     ],
+     "cast": [
+      {
+       "side": "center",
+       "outfit": "hoodie",
+       "suit": "#c43d32",
+       "label": "Netflix",
+       "mood": "talk"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
    "tone": "dark"
   },
   {
    "id": "s20",
    "text": "Their pitch was this. Blockbuster would buy Netflix for fifty million dollars. Netflix would run Blockbuster's website as its online arm, and Blockbuster would keep the stores.",
-   "visual": {
-    "type": "list",
-    "title": "The pitch",
-    "items": [
-     {
-      "title": "Blockbuster buys Netflix",
-      "sub": "$50 million",
-      "icon": "dollar"
-     },
-     {
-      "title": "Netflix runs Blockbuster.com",
-      "sub": "The online arm",
-      "icon": "screen"
-     },
-     {
-      "title": "Blockbuster keeps its stores",
-      "sub": "Nothing else changes",
-      "icon": "store"
-     }
-    ]
-   },
+   "visual": [
+    {
+     "type": "list",
+     "title": "The pitch",
+     "items": [
+      {
+       "title": "Blockbuster buys Netflix",
+       "sub": "$50 million",
+       "icon": "dollar"
+      },
+      {
+       "title": "Netflix runs Blockbuster.com",
+       "sub": "The online arm",
+       "icon": "screen"
+      },
+      {
+       "title": "Blockbuster keeps its stores",
+       "sub": "Nothing else changes",
+       "icon": "store"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "stat",
+     "from": 0,
+     "to": 50,
+     "prefix": "$",
+     "suffix": "M",
+     "label": "The asking price",
+     "icon": "dollar",
+     "at": 0.5
+    }
+   ],
    "tone": "paper"
   },
   {
    "id": "s21",
    "text": "According to Reed Hastings, Antioco asked how much it would cost. When he heard fifty million dollars, he flatly said no.",
-   "visual": {
-    "type": "title",
-    "text": "$50 million? No.",
-    "accent": [
-     "No."
-    ],
-    "cast": [
-     {
-      "side": "left",
-      "mood": "smug",
-      "suit": "#1f4ea8",
-      "tie": "#f2c230",
-      "label": "Blockbuster"
-     },
-     {
-      "side": "right",
-      "mood": "worried",
-      "outfit": "hoodie",
-      "suit": "#c43d32",
-      "label": "Netflix"
-     }
-    ]
-   },
+   "visual": [
+    {
+     "type": "title",
+     "text": "$50 million? No.",
+     "accent": [
+      "No."
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "mood": "smug",
+       "suit": "#1f4ea8",
+       "tie": "#f2c230",
+       "label": "Blockbuster"
+      },
+      {
+       "side": "right",
+       "mood": "worried",
+       "outfit": "hoodie",
+       "suit": "#c43d32",
+       "label": "Netflix"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "title",
+     "text": "Antioco: flatly no.",
+     "accent": [
+      "no."
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "suit": "#1f4ea8",
+       "tie": "#f2c230",
+       "label": "Blockbuster",
+       "mood": "laugh"
+      },
+      {
+       "side": "right",
+       "outfit": "hoodie",
+       "suit": "#c43d32",
+       "label": "Netflix",
+       "mood": "shock"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
    "tone": "red"
   },
   {
    "id": "s22",
    "text": "Years later, Netflix's chief financial officer Barry McCarthy said Blockbuster laughed them out of the office. Marc Randolph has told it the same way. That is their account, and it is the one that stuck.",
-   "visual": {
-    "type": "headline",
-    "kicker": "THEIR ACCOUNT",
-    "text": "Netflix founders say Blockbuster laughed at the offer",
-    "stamp": "Deal rejected",
-    "art": {
-     "mood": "laugh",
-     "suit": "#1f4ea8",
-     "tie": "#f2c230"
+   "visual": [
+    {
+     "type": "headline",
+     "kicker": "THEIR ACCOUNT",
+     "text": "Netflix founders say Blockbuster laughed at the offer",
+     "stamp": "Deal rejected",
+     "art": {
+      "mood": "laugh",
+      "suit": "#1f4ea8",
+      "tie": "#f2c230"
+     },
+     "source": "As told by Randolph and McCarthy",
+     "at": 0.0
     },
-    "source": "As told by Randolph and McCarthy"
-   },
+    {
+     "type": "title",
+     "text": "Laughed out of the office",
+     "accent": [
+      "Laughed"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "suit": "#1f4ea8",
+       "tie": "#f2c230",
+       "label": "Blockbuster",
+       "mood": "laugh"
+      },
+      {
+       "side": "right",
+       "outfit": "hoodie",
+       "suit": "#c43d32",
+       "label": "Netflix",
+       "mood": "worried"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
    "tone": "paper"
   },
   {
    "id": "s23",
    "text": "Why say no? Randolph wrote that Antioco saw the dot-com craze as overblown, and Netflix as a small niche business. And from where Blockbuster stood, that was not crazy. Nine thousand stores bring in a lot of cash.",
-   "visual": {
-    "type": "title",
-    "text": "Why say no to a tiny start-up?",
-    "accent": [
-     "no"
-    ],
-    "cast": [
-     {
-      "side": "left",
-      "mood": "talk",
-      "suit": "#1f4ea8",
-      "tie": "#f2c230",
-      "label": "Blockbuster"
-     }
-    ]
-   },
+   "visual": [
+    {
+     "type": "title",
+     "text": "Why say no to a tiny start-up?",
+     "accent": [
+      "no"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "mood": "talk",
+       "suit": "#1f4ea8",
+       "tie": "#f2c230",
+       "label": "Blockbuster"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "title",
+     "text": "Dot-com craze: overblown?",
+     "accent": [
+      "overblown"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "suit": "#1f4ea8",
+       "tie": "#f2c230",
+       "label": "Blockbuster",
+       "mood": "talk"
+      }
+     ],
+     "at": 0.33
+    },
+    {
+     "type": "stat",
+     "from": 0,
+     "to": 9000,
+     "prefix": "",
+     "suffix": "",
+     "label": "stores = a lot of cash",
+     "icon": "store",
+     "at": 0.67
+    }
+   ],
    "tone": "dark"
   },
   {
    "id": "s24",
    "text": "Think about what a yes could have meant. Netflix inside Blockbuster, running its online arm, with the stores behind it. Nobody can know how that would have turned out, but it would have been a very different story.",
-   "visual": {
-    "type": "compare",
-    "title": "Two possible futures",
-    "a": {
-     "name": "Said no",
-     "color": "#1f4ea8",
-     "icon": "store"
-    },
-    "b": {
-     "name": "Said yes",
-     "color": "#c43d32",
-     "icon": "screen"
-    },
-    "rows": [
-     {
-      "label": "Netflix",
-      "a": "A rival",
-      "b": "Part of Blockbuster"
+   "visual": [
+    {
+     "type": "compare",
+     "title": "Two possible futures",
+     "a": {
+      "name": "Said no",
+      "color": "#1f4ea8",
+      "icon": "store"
      },
-     {
-      "label": "Online plan",
-      "a": "Starts later",
-      "b": "Starts in 2000"
-     }
-    ]
-   },
+     "b": {
+      "name": "Said yes",
+      "color": "#c43d32",
+      "icon": "screen"
+     },
+     "rows": [
+      {
+       "label": "Netflix",
+       "a": "A rival",
+       "b": "Part of Blockbuster"
+      },
+      {
+       "label": "Online plan",
+       "a": "Starts later",
+       "b": "Starts in 2000"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "title",
+     "text": "Nobody can know",
+     "accent": [
+      "know"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "suit": "#1f4ea8",
+       "tie": "#f2c230",
+       "label": "Blockbuster",
+       "mood": "worried"
+      },
+      {
+       "side": "right",
+       "outfit": "hoodie",
+       "suit": "#c43d32",
+       "label": "Netflix",
+       "mood": "happy"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
    "tone": "paper"
   },
   {
@@ -538,71 +1000,131 @@
   {
    "id": "s26",
    "text": "Hastings later said that in two thousand Blockbuster held all the cards. Netflix could not win by copying it. It had to be different, so it kept the flat price, kept the mail, and kept the promise of no late fees.",
-   "visual": {
-    "type": "title",
-    "text": "No late fees. No stores. No excuses.",
-    "accent": [
-     "No late fees."
-    ],
-    "cast": [
-     {
-      "side": "right",
-      "mood": "happy",
-      "outfit": "hoodie",
-      "suit": "#c43d32",
-      "label": "Netflix"
-     }
-    ]
-   },
+   "visual": [
+    {
+     "type": "title",
+     "text": "No late fees. No stores. No excuses.",
+     "accent": [
+      "No late fees."
+     ],
+     "cast": [
+      {
+       "side": "right",
+       "mood": "happy",
+       "outfit": "hoodie",
+       "suit": "#c43d32",
+       "label": "Netflix"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "title",
+     "text": "Be different. Not a copy.",
+     "accent": [
+      "different"
+     ],
+     "cast": [
+      {
+       "side": "right",
+       "outfit": "hoodie",
+       "suit": "#c43d32",
+       "label": "Netflix",
+       "mood": "happy"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
    "tone": "red"
   },
   {
    "id": "s27",
    "text": "And slowly, it grew. Customers who had once paid late fees for forgotten tapes found a service that simply asked them to keep the movie a little longer.",
-   "visual": {
-    "type": "illustration",
-    "title": "Customers noticed",
-    "icons": [
-     {
-      "name": "person",
-      "label": "One customer"
-     },
-     {
-      "name": "people",
-      "label": "Then many"
-     },
-     {
-      "name": "mail",
-      "label": "Red envelopes"
-     }
-    ]
-   },
+   "visual": [
+    {
+     "type": "illustration",
+     "title": "Customers noticed",
+     "icons": [
+      {
+       "name": "person",
+       "label": "One customer"
+      },
+      {
+       "name": "people",
+       "label": "Then many"
+      },
+      {
+       "name": "mail",
+       "label": "Red envelopes"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "title",
+     "text": "Keep it a bit longer",
+     "accent": [
+      "longer"
+     ],
+     "cast": [
+      {
+       "side": "center",
+       "outfit": "hoodie",
+       "suit": "#c43d32",
+       "label": "Netflix",
+       "mood": "happy"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
    "tone": "paper"
   },
   {
    "id": "s28",
    "text": "A flat price, a website, and no one standing over your shoulder about a return date. That was the whole pitch. It sounds ordinary today only because Netflix made it ordinary.",
-   "visual": {
-    "type": "list",
-    "title": "The Netflix pitch",
-    "items": [
-     {
-      "title": "Pick online",
-      "sub": "No trip to the store",
-      "icon": "screen"
-     },
-     {
-      "title": "Get it by mail",
-      "sub": "Red envelope at home",
-      "icon": "mail"
-     },
-     {
-      "title": "No late fees",
-      "sub": "Keep it a bit longer",
-      "icon": "check"
-     }
-    ]
-   },
+   "visual": [
+    {
+     "type": "list",
+     "title": "The Netflix pitch",
+     "items": [
+      {
+       "title": "Pick online",
+       "sub": "No trip to the store",
+       "icon": "screen"
+      },
+      {
+       "title": "Get it by mail",
+       "sub": "Red envelope at home",
+       "icon": "mail"
+      },
+      {
+       "title": "No late fees",
+       "sub": "Keep it a bit longer",
+       "icon": "check"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "title",
+     "text": "Ordinary today. Because of Netflix.",
+     "accent": [
+      "Netflix"
+     ],
+     "cast": [
+      {
+       "side": "right",
+       "outfit": "hoodie",
+       "suit": "#c43d32",
+       "label": "Netflix",
+       "mood": "laugh"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
    "tone": "paper"
   },
   {
@@ -619,56 +1141,103 @@
   {
    "id": "s30",
    "text": "In two thousand four it launched Blockbuster Online, its own DVD-by-mail subscription. Later it added a plan called Total Access, which let online customers swap their discs at a store.",
-   "visual": {
-    "type": "timeline",
-    "title": "Blockbuster fights back",
-    "events": [
-     {
-      "year": "2000",
-      "label": "Says no to Netflix"
-     },
-     {
-      "year": "2004",
-      "label": "Blockbuster Online"
-     },
-     {
-      "year": "2007",
-      "label": "Antioco leaves"
-     }
-    ]
-   },
+   "visual": [
+    {
+     "type": "timeline",
+     "title": "Blockbuster fights back",
+     "events": [
+      {
+       "year": "2000",
+       "label": "Says no to Netflix"
+      },
+      {
+       "year": "2004",
+       "label": "Blockbuster Online"
+      },
+      {
+       "year": "2007",
+       "label": "Antioco leaves"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "title",
+     "text": "Blockbuster Online, 2004",
+     "accent": [
+      "2004"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "suit": "#1f4ea8",
+       "tie": "#f2c230",
+       "label": "Blockbuster",
+       "mood": "talk"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
    "tone": "blue"
   },
   {
    "id": "s31",
    "text": "It was a smart idea: the convenience of online, plus the stores that Netflix could never match. For a while, it looked like the giant had found its answer.",
-   "visual": {
-    "type": "compare",
-    "title": "Total Access: the best of both",
-    "a": {
-     "name": "Blockbuster",
-     "color": "#1f4ea8",
-     "icon": "store"
-    },
-    "b": {
-     "name": "Netflix",
-     "color": "#c43d32",
-     "icon": "mail"
-    },
-    "rows": [
-     {
-      "label": "Online DVDs",
-      "a": "Yes",
-      "b": "Yes"
+   "visual": [
+    {
+     "type": "compare",
+     "title": "Total Access: the best of both",
+     "a": {
+      "name": "Blockbuster",
+      "color": "#1f4ea8",
+      "icon": "store"
      },
-     {
-      "label": "Swap in a store",
-      "a": "Yes",
-      "b": "No",
-      "win": "a"
-     }
-    ]
-   },
+     "b": {
+      "name": "Netflix",
+      "color": "#c43d32",
+      "icon": "mail"
+     },
+     "rows": [
+      {
+       "label": "Online DVDs",
+       "a": "Yes",
+       "b": "Yes"
+      },
+      {
+       "label": "Swap in a store",
+       "a": "Yes",
+       "b": "No",
+       "win": "a"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "title",
+     "text": "Online + stores. Smart.",
+     "accent": [
+      "Smart."
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "suit": "#1f4ea8",
+       "tie": "#f2c230",
+       "label": "Blockbuster",
+       "mood": "happy"
+      },
+      {
+       "side": "right",
+       "outfit": "hoodie",
+       "suit": "#c43d32",
+       "label": "Netflix",
+       "mood": "worried"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
    "tone": "blue"
   },
   {
@@ -685,109 +1254,209 @@
   {
    "id": "s33",
    "text": "Blockbuster carried about a billion dollars in debt. Every dollar spent on the fight with Netflix was a dollar that the company could not easily afford to lose.",
-   "visual": {
-    "type": "stat",
-    "from": 0,
-    "to": 1,
-    "prefix": "$",
-    "suffix": " billion",
-    "label": "Debt",
-    "sub": "still on the books at bankruptcy",
-    "icon": "bank",
-    "color": "red",
-    "decimals": 0,
-    "cast": [
-     {
-      "side": "left",
-      "mood": "worried",
-      "suit": "#1f4ea8",
-      "tie": "#f2c230",
-      "label": "Blockbuster"
-     }
-    ]
-   },
+   "visual": [
+    {
+     "type": "stat",
+     "from": 0,
+     "to": 1,
+     "prefix": "$",
+     "suffix": " billion",
+     "label": "Debt",
+     "sub": "still on the books at bankruptcy",
+     "icon": "bank",
+     "color": "red",
+     "decimals": 0,
+     "cast": [
+      {
+       "side": "left",
+       "mood": "worried",
+       "suit": "#1f4ea8",
+       "tie": "#f2c230",
+       "label": "Blockbuster"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "title",
+     "text": "Every dollar was risky",
+     "accent": [
+      "risky"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "suit": "#1f4ea8",
+       "tie": "#f2c230",
+       "label": "Blockbuster",
+       "mood": "worried"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
    "tone": "red"
   },
   {
    "id": "s34",
    "text": "Then came investor Carl Icahn, who took a large stake and won seats on the board. He and Antioco clashed over many things, including how much Antioco should be paid.",
-   "visual": {
-    "type": "title",
-    "text": "A fight at the top",
-    "accent": [
-     "fight"
-    ],
-    "cast": [
-     {
-      "side": "left",
-      "mood": "angry",
-      "suit": "#1f4ea8",
-      "tie": "#f2c230",
-      "label": "Blockbuster"
-     }
-    ]
-   },
+   "visual": [
+    {
+     "type": "title",
+     "text": "A fight at the top",
+     "accent": [
+      "fight"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "mood": "angry",
+       "suit": "#1f4ea8",
+       "tie": "#f2c230",
+       "label": "Blockbuster"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "title",
+     "text": "Icahn vs Antioco",
+     "accent": [
+      "vs"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "suit": "#1f4ea8",
+       "tie": "#f2c230",
+       "label": "Blockbuster",
+       "mood": "angry"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
    "tone": "dark"
   },
   {
    "id": "s35",
    "text": "In two thousand seven, Antioco left. James Keyes, a former 7-Eleven boss, took over. Antioco later argued that the online plan had been abandoned, and that Blockbuster Online could have reached ten million subscribers.",
-   "visual": {
-    "type": "headline",
-    "kicker": "2007",
-    "text": "Blockbuster chief executive steps down",
-    "stamp": "New boss",
-    "art": {
-     "mood": "worried",
-     "suit": "#1f4ea8",
-     "tie": "#f2c230"
+   "visual": [
+    {
+     "type": "headline",
+     "kicker": "2007",
+     "text": "Blockbuster chief executive steps down",
+     "stamp": "New boss",
+     "art": {
+      "mood": "worried",
+      "suit": "#1f4ea8",
+      "tie": "#f2c230"
+     },
+     "source": "Reported by CNBC and Home Media Magazine",
+     "at": 0.0
     },
-    "source": "Reported by CNBC and Home Media Magazine"
-   },
+    {
+     "type": "title",
+     "text": "New boss, 2007",
+     "accent": [
+      "2007"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "suit": "#1f4ea8",
+       "tie": "#f2c230",
+       "label": "Blockbuster",
+       "mood": "worried"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
    "tone": "paper"
   },
   {
    "id": "s36",
    "text": "Even a good plan needs time and money to work. A company with spare cash can wait for a new business to grow. A company with heavy debt has to hit its numbers now.",
-   "visual": {
-    "type": "illustration",
-    "title": "Debt shortens your patience",
-    "icons": [
-     {
-      "name": "bank",
-      "label": "Debt"
-     },
-     {
-      "name": "clock",
-      "label": "Less time"
-     },
-     {
-      "name": "cross",
-      "label": "Fewer bets"
-     }
-    ]
-   },
+   "visual": [
+    {
+     "type": "illustration",
+     "title": "Debt shortens your patience",
+     "icons": [
+      {
+       "name": "bank",
+       "label": "Debt"
+      },
+      {
+       "name": "clock",
+       "label": "Less time"
+      },
+      {
+       "name": "cross",
+       "label": "Fewer bets"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "title",
+     "text": "Debt can't wait",
+     "accent": [
+      "wait"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "suit": "#1f4ea8",
+       "tie": "#f2c230",
+       "label": "Blockbuster",
+       "mood": "worried"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
    "tone": "dark"
   },
   {
    "id": "s37",
    "text": "Antioco and Icahn disagreed about almost everything, but each later said something similar: the online plan might have helped. It simply did not get the time to prove itself.",
-   "visual": {
-    "type": "title",
-    "text": "The plan that never got its time",
-    "accent": [
-     "time"
-    ],
-    "cast": [
-     {
-      "side": "left",
-      "mood": "worried",
-      "suit": "#1f4ea8",
-      "tie": "#f2c230",
-      "label": "Blockbuster"
-     }
-    ]
-   },
+   "visual": [
+    {
+     "type": "title",
+     "text": "The plan that never got its time",
+     "accent": [
+      "time"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "mood": "worried",
+       "suit": "#1f4ea8",
+       "tie": "#f2c230",
+       "label": "Blockbuster"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "title",
+     "text": "It never got the time",
+     "accent": [
+      "time"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "suit": "#1f4ea8",
+       "tie": "#f2c230",
+       "label": "Blockbuster",
+       "mood": "worried"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
    "tone": "red"
   },
   {
@@ -804,32 +1473,66 @@
   {
    "id": "s39",
    "text": "In September two thousand ten, carrying about a billion dollars of debt, Blockbuster filed for bankruptcy.",
-   "visual": {
-    "type": "headline",
-    "kicker": "SEPTEMBER 2010",
-    "text": "Blockbuster files for bankruptcy",
-    "stamp": "Bankrupt",
-    "art": {
-     "mood": "worried",
-     "suit": "#1f4ea8",
-     "tie": "#f2c230"
+   "visual": [
+    {
+     "type": "headline",
+     "kicker": "SEPTEMBER 2010",
+     "text": "Blockbuster files for bankruptcy",
+     "stamp": "Bankrupt",
+     "art": {
+      "mood": "worried",
+      "suit": "#1f4ea8",
+      "tie": "#f2c230"
+     },
+     "at": 0.0
+    },
+    {
+     "type": "stat",
+     "from": 0,
+     "to": 1,
+     "prefix": "$",
+     "suffix": " billion",
+     "label": "billion in debt",
+     "icon": "bank",
+     "color": "red",
+     "at": 0.5
     }
-   },
+   ],
    "tone": "red"
   },
   {
    "id": "s40",
    "text": "The next year, Dish Network bought what was left for three hundred twenty million dollars.",
-   "visual": {
-    "type": "stat",
-    "from": 0,
-    "to": 320,
-    "prefix": "$",
-    "suffix": "M",
-    "label": "What Dish paid, 2011",
-    "sub": "for the remains of Blockbuster",
-    "icon": "dollar"
-   },
+   "visual": [
+    {
+     "type": "stat",
+     "from": 0,
+     "to": 320,
+     "prefix": "$",
+     "suffix": "M",
+     "label": "What Dish paid, 2011",
+     "sub": "for the remains of Blockbuster",
+     "icon": "dollar",
+     "at": 0.0
+    },
+    {
+     "type": "title",
+     "text": "What was left: $320M",
+     "accent": [
+      "left"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "suit": "#1f4ea8",
+       "tie": "#f2c230",
+       "label": "Blockbuster",
+       "mood": "worried"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
    "tone": "dark"
   },
   {
@@ -852,33 +1555,46 @@
   {
    "id": "s42",
    "text": "Netflix, the company that once asked for fifty million dollars, now has well over one hundred sixty million subscribers.",
-   "visual": {
-    "type": "compare",
-    "title": "Then and now",
-    "a": {
-     "name": "Blockbuster",
-     "color": "#1f4ea8",
-     "icon": "store"
-    },
-    "b": {
-     "name": "Netflix",
-     "color": "#c43d32",
-     "icon": "screen"
-    },
-    "rows": [
-     {
-      "label": "2000",
-      "a": "A giant",
-      "b": "A tiny start-up"
+   "visual": [
+    {
+     "type": "compare",
+     "title": "Then and now",
+     "a": {
+      "name": "Blockbuster",
+      "color": "#1f4ea8",
+      "icon": "store"
      },
-     {
-      "label": "Today",
-      "a": "1 store",
-      "b": "160M+ subscribers",
-      "win": "b"
-     }
-    ]
-   },
+     "b": {
+      "name": "Netflix",
+      "color": "#c43d32",
+      "icon": "screen"
+     },
+     "rows": [
+      {
+       "label": "2000",
+       "a": "A giant",
+       "b": "A tiny start-up"
+      },
+      {
+       "label": "Today",
+       "a": "1 store",
+       "b": "160M+ subscribers",
+       "win": "b"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "stat",
+     "from": 0,
+     "to": 160,
+     "prefix": "",
+     "suffix": "M+",
+     "label": "Netflix subscribers",
+     "icon": "people",
+     "at": 0.5
+    }
+   ],
    "tone": "dark"
   },
   {
@@ -895,104 +1611,191 @@
   {
    "id": "s44",
    "text": "First, the famous moment is not the whole story. Blockbuster was not killed by one answer in one meeting. Debt left no room to experiment, and a fight at the top slowed the one plan that might have worked.",
-   "visual": {
-    "type": "list",
-    "title": "What really went wrong",
-    "items": [
-     {
-      "title": "Late fees",
-      "sub": "Profit customers resented",
-      "icon": "warning"
-     },
-     {
-      "title": "Debt",
-      "sub": "About $1 billion",
-      "icon": "bank"
-     },
-     {
-      "title": "Slow answer",
-      "sub": "Online plan came late",
-      "icon": "clock"
-     }
-    ]
-   },
+   "visual": [
+    {
+     "type": "list",
+     "title": "What really went wrong",
+     "items": [
+      {
+       "title": "Late fees",
+       "sub": "Profit customers resented",
+       "icon": "warning"
+      },
+      {
+       "title": "Debt",
+       "sub": "About $1 billion",
+       "icon": "bank"
+      },
+      {
+       "title": "Slow answer",
+       "sub": "Online plan came late",
+       "icon": "clock"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "title",
+     "text": "One answer didn't kill it",
+     "accent": [
+      "kill"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "suit": "#1f4ea8",
+       "tie": "#f2c230",
+       "label": "Blockbuster",
+       "mood": "worried"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
    "tone": "paper"
   },
   {
    "id": "s45",
    "text": "Second, if your profit comes from annoying your customers, someone will build a business around not annoying them.",
-   "visual": {
-    "type": "title",
-    "text": "Annoy customers, and a rival will sell the cure",
-    "accent": [
-     "rival"
-    ],
-    "cast": [
-     {
-      "side": "left",
-      "mood": "smug",
-      "suit": "#1f4ea8",
-      "tie": "#f2c230",
-      "label": "Blockbuster"
-     },
-     {
-      "side": "right",
-      "mood": "laugh",
-      "outfit": "hoodie",
-      "suit": "#c43d32",
-      "label": "Netflix"
-     }
-    ]
-   },
+   "visual": [
+    {
+     "type": "title",
+     "text": "Annoy customers, and a rival will sell the cure",
+     "accent": [
+      "rival"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "mood": "smug",
+       "suit": "#1f4ea8",
+       "tie": "#f2c230",
+       "label": "Blockbuster"
+      },
+      {
+       "side": "right",
+       "mood": "laugh",
+       "outfit": "hoodie",
+       "suit": "#c43d32",
+       "label": "Netflix"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "title",
+     "text": "Rival sells the cure",
+     "accent": [
+      "cure"
+     ],
+     "cast": [
+      {
+       "side": "right",
+       "outfit": "hoodie",
+       "suit": "#c43d32",
+       "label": "Netflix",
+       "mood": "laugh"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
    "tone": "red"
   },
   {
    "id": "s46",
    "text": "And third, listen to the small competitor with the odd idea, even when it sounds like a joke. You do not have to say yes. But you should know exactly why you are saying no.",
-   "visual": {
-    "type": "title",
-    "text": "Know exactly why you say no",
-    "accent": [
-     "no"
-    ],
-    "cast": [
-     {
-      "side": "left",
-      "mood": "talk",
-      "suit": "#1f4ea8",
-      "tie": "#f2c230",
-      "label": "Blockbuster"
-     },
-     {
-      "side": "right",
-      "mood": "happy",
-      "outfit": "hoodie",
-      "suit": "#c43d32",
-      "label": "Netflix"
-     }
-    ]
-   },
+   "visual": [
+    {
+     "type": "title",
+     "text": "Know exactly why you say no",
+     "accent": [
+      "no"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "mood": "talk",
+       "suit": "#1f4ea8",
+       "tie": "#f2c230",
+       "label": "Blockbuster"
+      },
+      {
+       "side": "right",
+       "mood": "happy",
+       "outfit": "hoodie",
+       "suit": "#c43d32",
+       "label": "Netflix"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "title",
+     "text": "Not a joke. A warning.",
+     "accent": [
+      "warning"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "suit": "#1f4ea8",
+       "tie": "#f2c230",
+       "label": "Blockbuster",
+       "mood": "talk"
+      },
+      {
+       "side": "right",
+       "outfit": "hoodie",
+       "suit": "#c43d32",
+       "label": "Netflix",
+       "mood": "happy"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
    "tone": "blue"
   },
   {
    "id": "s47",
    "text": "There is one more thing worth remembering. Netflix was also tiny, and it also made choices that could have failed. The difference is that it chose a customer problem to solve, and kept solving it.",
-   "visual": {
-    "type": "title",
-    "text": "Solve a problem customers actually have",
-    "accent": [
-     "problem"
-    ],
-    "cast": [
-     {
-      "side": "right",
-      "mood": "happy",
-      "outfit": "hoodie",
-      "suit": "#c43d32",
-      "label": "Netflix"
-     }
-    ]
-   },
+   "visual": [
+    {
+     "type": "title",
+     "text": "Solve a problem customers actually have",
+     "accent": [
+      "problem"
+     ],
+     "cast": [
+      {
+       "side": "right",
+       "mood": "happy",
+       "outfit": "hoodie",
+       "suit": "#c43d32",
+       "label": "Netflix"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "title",
+     "text": "Netflix kept solving it",
+     "accent": [
+      "solving"
+     ],
+     "cast": [
+      {
+       "side": "center",
+       "outfit": "hoodie",
+       "suit": "#c43d32",
+       "label": "Netflix",
+       "mood": "happy"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
    "tone": "blue"
   },
   {
