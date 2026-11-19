@@ -740,14 +740,14 @@
       "yt_queued_at": "2026-11-19T08:55:57Z"
     },
     "010-coca-cola-free-coupons": {
-      "status": "script_rejected",
-      "updated": "2026-11-19T08:57:48Z",
+      "status": "script_ready",
+      "updated": "2026-11-19T11:10:30Z",
       "title": "Coca-Cola Gave Away Millions of Free Drinks on Purpose",
       "vote_msg": "1795068669.371139",
       "vote_kind": "script",
       "decided_via": "dashboard",
       "decided_at": "2026-11-19T08:57:48Z",
-      "feedback": "[2026-11-19T08:57:48Z] please rewrite the script here is no script",
+      "feedback": "",
       "progress": [
         {
           "t": "2026-11-19T08:57:48Z",
