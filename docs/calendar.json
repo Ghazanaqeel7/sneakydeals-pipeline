@@ -10,8 +10,9 @@
       "angle": "A free giveaway engineered to create lifelong customers, not goodwill",
       "title": "Coca-Cola Mailed Free Coke Coupons to Millions of Strangers",
       "why": "Swapped in for Popeyes (bankruptcy-forced-banks-to-pay story could not be pinned to two independent sources) -- today is a Short day, so the swap stays a Short too.",
-      "status": "planned",
-      "note": "Skipped 17 Nov: \"banks paid him for the name\" claim not supported by sources."
+      "status": "scripted",
+      "note": "Skipped 17 Nov: \"banks paid him for the name\" claim not supported by sources.",
+      "job": "010-coca-cola-free-coupons"
     },
     {
       "day": "Tue 17 Nov",
