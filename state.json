@@ -711,9 +711,14 @@
         {
           "t": "2026-11-18T22:05:26Z",
           "msg": "🛠 Changes noted (dashboard): \"video giant newspaper slide is too much long atleast 12 to 13 section between that and something more relevent visual starting is too long how my audience stays too long it will go\" — Claude agle run mein (by 03:08 PKT) inhe lagana shuru karega."
+        },
+        {
+          "t": "2026-11-19T06:13:27Z",
+          "msg": "🛠 Aapke changes lag gaye: hook ka lamba newspaper slide chhota, har scene mein 2-3 naye visuals (cartoon characters, numbers) taake screen har ~4 sec mein badle, aur naya thumbnail (do characters + bada $50 MILLION). Render queue ho raha hai (~40 min)",
+          "image": "jobs/009-blockbuster-netflix-long/thumbnail.jpg"
         }
       ],
-      "progress_count": 5,
+      "progress_count": 6,
       "vote_msg": "1794982469.326359",
       "vote_kind": "script",
       "decided_via": "dashboard",
