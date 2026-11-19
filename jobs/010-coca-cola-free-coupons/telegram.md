@@ -1,8 +1,8 @@
 **010 — Coca-Cola Gave Away Millions of Free Drinks on Purpose**
 
-Note: This was an earlier idea that was skipped for sourcing. It now has 2+ sources for every claim. Dropped from the AI draft: "1 in 10 Americans", "85% redeemed", "1894" (not confirmed). Mashed credits the ticket idea to Pemberton's bookkeeper; 3 other sources credit Candler, so I credit Candler.
+Hook: "Coca-Cola gave away millions of free drinks. On purpose."
 
-Narration:
+**Full narration (12 shots, ~45s):**
 1. Coca-Cola gave away millions of free drinks. On purpose.
 2. In eighteen eighty-seven, Coke was a drink almost nobody had tried.
 3. Its owner, Asa Candler, had a risky idea. Don't sell it. Give it away.
@@ -16,6 +16,15 @@ Narration:
 11. And Coca-Cola is widely considered the first company to ever offer coupons.
 12. The first coupon in history was a free Coke.
 
-Key facts (2 sources each): free-drink tickets from 1887 by Candler (History.com, PYMNTS, Stacker); spread by magazines and mail (History.com, PYMNTS); about 8.5 million free drinks (Stacker, PYMNTS); in every state by 1895 (History.com, Stacker); widely considered the first coupon (History.com, Mashed/Wired).
+**Key facts (2 sources each):**
+- Free-drink tickets from 1887, Candler's idea. (History.com, PYMNTS, Stacker)
+- Spread by magazines and mail. (History.com, PYMNTS)
+- About 8.5 million free drinks. (Stacker, PYMNTS)
+- Served in every state by 1895. (History.com, Stacker)
+- Widely considered the first coupon. (History.com, Mashed/Wired)
 
-Left out: 1894, 1-in-10, 85% redemption, pharmacist syrup-for-addresses deal (single source), a year for the 8.5 million (sources disagree).
+**Left out:** 1894, "1 in 10 Americans", "85% redeemed" (unconfirmed); pharmacist syrup deal (one source); a year for the 8.5M (sources disagree). One source credits Pemberton's bookkeeper for the ticket idea; three credit Candler, so I credit Candler.
+
+**Thumbnail:** "COCA-COLA" badge, "FREE COKE / ON PURPOSE?!"
+
+Reply **approve** to send to Slack, or tell me what to change.
