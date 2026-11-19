@@ -14,6 +14,11 @@ _Last updated: 11 Nov 2026 (first version, before any of our videos had data)._
 - [signal] For long videos: "rise and fall" / "whatever happened to" nostalgia brands (Sears, Toys "R" Us, Blockbuster) win for small channels.
 - [start] Brand rivalries (Pepsi vs Coca-Cola) pull extra comments.
 
+## Owner instructions
+_Pasted by the owner via the dashboard Inbox. Claude follows these from now on and never removes or rewrites them in the weekly rewrite; only the owner can edit/delete a line here._
+- [owner 19 Nov 2026] Long-video pacing: change what is on screen every 3 to 5 seconds (clippings, kinetic typography, motion graphics, new visuals) to keep watch time up.
+- [owner 19 Nov 2026] Voiceover pace for long videos: about 130 to 145 words per minute, crisp and energetic, not rushed; background music pulled well below the voice (about -22 to -26 dB under voice, voice near -14 to -16 LUFS).
+
 ## Titles
 - [start] Brand + shocking action, no year, ≤ 60 characters (e.g. "Pepsi's Ad Showed a Fighter Jet. He Sent $700,000.").
 - [signal] Hit titles are short. "Why…" / "How…" openers and one CAPS word (SECRET, GENIUS) show up often. (Exact shares: dashboard → Research → Trends.)
