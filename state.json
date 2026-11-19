@@ -661,15 +661,29 @@
         {
           "t": "2026-11-17T12:33:37Z",
           "msg": "⏳ Render 75% (1222/1625 frames). Baqi waqt: 1h 38m 23s"
+        },
+        {
+          "t": "2026-11-19T02:38:03Z",
+          "msg": "✅ LIVE on YouTube: \"McDonald's Monopoly Was Rigged by Its Own Security Chief\" https://youtu.be/1ekkQR-hS0w"
+        },
+        {
+          "t": "2026-11-19T02:38:03Z",
+          "msg": "📱 Instagram + Facebook: \"McDonald's Monopoly Was Rigged by Its Own Security Chief\" queued, Zapier posts it within ~15 min."
         }
       ],
-      "progress_count": 6,
+      "progress_count": 8,
       "run": "44072681499",
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-008-mcdonalds-monopoly-rigged/final.mp4",
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-008-mcdonalds-monopoly-rigged/preview.mp4",
       "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/008-mcdonalds-monopoly-rigged.mp4",
       "yt_scheduled_for": "2026-11-19T00:00:00Z",
-      "yt_queued_at": "2026-11-17T21:33:19Z"
+      "yt_queued_at": "2026-11-17T21:33:19Z",
+      "yt_video_id": "1ekkQR-hS0w",
+      "yt_live_at": "2026-11-19T02:38:03Z",
+      "thumb_queued_at": "2026-11-19T02:38:03Z",
+      "ig_at": "2026-11-19T02:38:03Z",
+      "fb_at": "2026-11-19T02:38:03Z",
+      "reels_at": "2026-11-19T02:38:03Z"
     },
     "009-blockbuster-netflix-long": {
       "status": "video_rejected",

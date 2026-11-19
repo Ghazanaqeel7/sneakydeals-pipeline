@@ -6,6 +6,19 @@
 <description>Approved videos for the Sneaky Deals Facebook Page. Zap "Sneaky Deals -> Facebook" (RSS by Zapier -> Facebook Pages Create Page Video) reads this feed. n8n adds one item per publish day, right after feed/youtube.xml.</description>
 <!--ITEMS-->
 <item>
+<title>McDonald's Monopoly Was Rigged by Its Own Security Chief</title>
+<description><![CDATA[The man guarding the game's winning pieces secretly gave them to friends and family, who posed as winners and paid him a cut. The FBI's Operation Final Answer ended it in 2001.
+
+Did you ever play? 👇
+
+#mcdonalds #businesshistory]]></description>
+<link>https://raw.githubusercontent.com/Ghazanaqeel7/sneakydeals-pipeline/main/jobs/008-mcdonalds-monopoly-rigged/thumbnail.jpg</link>
+<guid isPermaLink="false">008-mcdonalds-monopoly-rigged</guid>
+<pubDate>Thu, 19 Nov 2026 02:38:03 GMT</pubDate>
+<enclosure url="https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/008-mcdonalds-monopoly-rigged.mp4" type="video/mp4" length="0"/>
+</item>
+
+<item>
 <title>Wrigley Mailed Free Gum to a Million Strangers in 1915</title>
 <description><![CDATA[Before gum, Wrigley sold soap, then baking powder — each time giving away the next product free until it outsold the last. In 1915 he mailed free gum to about 1.5 million US homes from the phone book.
 
