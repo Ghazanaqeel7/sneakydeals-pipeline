@@ -687,8 +687,8 @@
       "published_at": "2026-11-19T04:30:45Z"
     },
     "009-blockbuster-netflix-long": {
-      "status": "rendering",
-      "updated": "2026-11-19T06:15:54Z",
+      "status": "video_ready",
+      "updated": "2026-11-19T08:16:30Z",
       "type": "long",
       "title": "Blockbuster Turned Down a $50 Million Deal. Then Netflix Won",
       "progress": [
