@@ -687,8 +687,8 @@
       "published_at": "2026-11-19T04:30:45Z"
     },
     "009-blockbuster-netflix-long": {
-      "status": "render_queued",
-      "updated": "2026-11-19T06:13:32Z",
+      "status": "rendering",
+      "updated": "2026-11-19T06:15:54Z",
       "type": "long",
       "title": "Blockbuster Turned Down a $50 Million Deal. Then Netflix Won",
       "progress": [
@@ -723,7 +723,7 @@
       "vote_kind": "script",
       "decided_via": "dashboard",
       "decided_at": "2026-11-18T22:05:26Z",
-      "run": "44355608122",
+      "run": "44470610324",
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-009-blockbuster-netflix-long/final.mp4",
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-009-blockbuster-netflix-long/preview.mp4",
       "upload_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-009-blockbuster-netflix-long/upload.mp4",
