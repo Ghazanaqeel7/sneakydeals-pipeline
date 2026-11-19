@@ -735,7 +735,9 @@
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-009-blockbuster-netflix-long/final.mp4",
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-009-blockbuster-netflix-long/preview.mp4",
       "upload_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-009-blockbuster-netflix-long/upload.mp4",
-      "feedback": ""
+      "feedback": "",
+      "yt_scheduled_for": "2026-11-19T14:00:00Z",
+      "yt_queued_at": "2026-11-19T08:55:57Z"
     },
     "010-coca-cola-free-coupons": {
       "status": "script_sent",
