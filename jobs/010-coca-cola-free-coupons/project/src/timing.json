@@ -1,90 +1,94 @@
 {
  "fps": 30,
- "duration": 63.23,
+ "duration": 45.17,
  "shots": [
   {
    "key": "hook",
    "start": 0.15,
-   "end": 5.582,
-   "words": 15,
-   "text": "In nineteen seventy-eight, welders secretly patched a brand new New York skyscraper, every single night."
+   "end": 3.31,
+   "words": 9,
+   "text": "Coca-Cola gave away millions of free drinks. On purpose."
   },
   {
-   "key": "cta",
-   "start": 5.974,
-   "end": 11.538,
-   "words": 23,
-   "text": "Before we go deep into today's story, take a second to like this video and subscribe if you haven't. Let's get into it."
-  },
-  {
-   "key": "tower",
-   "start": 11.93,
-   "end": 16.684,
-   "words": 13,
-   "text": "It stood fifty-nine stories high on giant stilts, and it had just opened."
-  },
-  {
-   "key": "rules",
-   "start": 17.077,
-   "end": 20.643,
+   "key": "s02",
+   "start": 3.73,
+   "end": 7.04,
    "words": 11,
-   "text": "The building rules only asked about wind hitting the flat sides."
+   "text": "In eighteen eighty-seven, Coke was a drink almost nobody had tried."
   },
   {
-   "key": "but",
-   "start": 21.036,
-   "end": 26.334,
-   "words": 16,
-   "text": "But a student asked about corner winds, and the numbers showed about forty percent more force."
-  },
-  {
-   "key": "then",
-   "start": 26.726,
-   "end": 31.59,
-   "words": 16,
-   "text": "Then the engineer learned the builders had swapped his welded joints for bolts to save money."
-  },
-  {
-   "key": "storm",
-   "start": 31.983,
-   "end": 35.961,
+   "key": "s03",
+   "start": 7.449,
+   "end": 11.2,
    "words": 14,
-   "text": "A big enough storm could snap those bolts, right in the middle of Manhattan."
+   "text": "Its owner, Asa Candler, had a risky idea. Don't sell it. Give it away."
   },
   {
-   "key": "yousee",
-   "start": 36.353,
-   "end": 42.624,
-   "words": 19,
-   "text": "You see, a weld turns a joint into one solid piece. Bolts are only as strong as the bolts."
+   "key": "s04",
+   "start": 11.62,
+   "end": 14.736,
+   "words": 11,
+   "text": "He handed out handwritten tickets, each good for one free glass."
   },
   {
-   "key": "night",
-   "start": 43.017,
-   "end": 48.297,
-   "words": 14,
-   "text": "Every night after the offices emptied, welders covered the bolted joints with steel plates."
-  },
-  {
-   "key": "ella",
-   "start": 48.69,
-   "end": 53.756,
-   "words": 15,
-   "text": "During the repair, Hurricane Ella headed for New York, and evacuation plans were drawn up."
-  },
-  {
-   "key": "so",
-   "start": 54.148,
-   "end": 58.165,
+   "key": "s05",
+   "start": 15.066,
+   "end": 18.312,
    "words": 10,
-   "text": "So everyone watched the forecasts, until the storm turned away."
+   "text": "Soon the tickets traveled further, through magazines and the mail."
   },
   {
-   "key": "close",
-   "start": 58.558,
-   "end": 62.476,
+   "key": "s06",
+   "start": 18.732,
+   "end": 22.203,
+   "words": 14,
+   "text": "Anyone could walk into a soda fountain with one, and drink Coke for free."
+  },
+  {
+   "key": "s07",
+   "start": 22.623,
+   "end": 26.26,
+   "words": 15,
+   "text": "The bet was simple. One free taste, and some people would come back and pay."
+  },
+  {
+   "key": "s08",
+   "start": 26.68,
+   "end": 29.669,
    "words": 13,
-   "text": "The repair worked, and the public didn't hear about it until nineteen ninety-five."
+   "text": "Roughly eight and a half million free drinks were given away this way."
+  },
+  {
+   "key": "s09",
+   "start": 30.089,
+   "end": 33.161,
+   "words": 10,
+   "text": "By eighteen ninety-five, Coke was being served in every state."
+  },
+  {
+   "key": "s10",
+   "start": 33.581,
+   "end": 37.018,
+   "words": 13,
+   "text": "The free glass was never a gift. It was advertising you could taste."
+  },
+  {
+   "key": "s11",
+   "start": 37.429,
+   "end": 41.546,
+   "words": 12,
+   "text": "And Coca-Cola is widely considered the first company to ever offer coupons."
+  },
+  {
+   "key": "s12",
+   "start": 41.966,
+   "end": 44.424,
+   "words": 9,
+   "text": "The first coupon in history was a free Coke."
   }
+ ],
+ "hookTitle": [
+  "FREE COKE",
+  "ON PURPOSE?!"
  ]
 }
