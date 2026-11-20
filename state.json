@@ -783,9 +783,13 @@
         {
           "t": "2026-11-20T17:22:15Z",
           "msg": "🎞 Render shuru (GitHub). Andaza: ~30-50 min."
+        },
+        {
+          "t": "2026-11-20T17:36:17Z",
+          "msg": "⏳ Render 25% (342/1355 frames). Baqi waqt: 2h 43m 19s"
         }
       ],
-      "progress_count": 5,
+      "progress_count": 6,
       "run": "44782389254"
     },
     "011-taco-tuesday-trademark": {
