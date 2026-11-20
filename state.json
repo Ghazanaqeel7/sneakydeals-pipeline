@@ -779,9 +779,13 @@
           "t": "2026-11-20T17:20:37Z",
           "msg": "🖼 Thumbnail tayyar, scenes check ho gaye — ab GitHub par render shuru hoga (~40 min)",
           "image": "jobs/010-coca-cola-free-coupons/thumbnail.jpg"
+        },
+        {
+          "t": "2026-11-20T17:22:15Z",
+          "msg": "🎞 Render shuru (GitHub). Andaza: ~30-50 min."
         }
       ],
-      "progress_count": 4,
+      "progress_count": 5,
       "run": "44782389254"
     },
     "011-taco-tuesday-trademark": {
