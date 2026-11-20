@@ -805,7 +805,9 @@
       "run": "44782389254",
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-010-coca-cola-free-coupons/final.mp4",
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-010-coca-cola-free-coupons/preview.mp4",
-      "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/010-coca-cola-free-coupons.mp4"
+      "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/010-coca-cola-free-coupons.mp4",
+      "yt_scheduled_for": "2026-11-21T00:00:00Z",
+      "yt_queued_at": "2026-11-20T20:22:22Z"
     },
     "011-taco-tuesday-trademark": {
       "status": "script_approved",
