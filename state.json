@@ -754,8 +754,8 @@
       "published_at": "2026-11-20T02:23:31Z"
     },
     "010-coca-cola-free-coupons": {
-      "status": "building",
-      "updated": "2026-11-20T17:10:40Z",
+      "status": "render_queued",
+      "updated": "2026-11-20T17:20:40Z",
       "title": "Coca-Cola Gave Away Millions of Free Drinks on Purpose",
       "vote_msg": "1795086653.462249",
       "vote_kind": "script",
