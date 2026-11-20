@@ -775,11 +775,12 @@
       "progress_count": 2
     },
     "011-taco-tuesday-trademark": {
-      "status": "script_sent",
-      "updated": "2026-11-20T06:11:57Z",
+      "status": "script_approved",
+      "updated": "2026-11-20T11:56:58Z",
       "title": "Taco John's Owned 'Taco Tuesday' Until Taco Bell Stepped In",
       "vote_msg": "1795155119.280489",
-      "vote_kind": "script"
+      "vote_kind": "script",
+      "decided_via": "slack"
     }
   },
   "ideas": [
