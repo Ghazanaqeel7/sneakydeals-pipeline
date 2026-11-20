@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-19T14:38:52.461352+00:00",
+  "generated_at": "2026-11-20T14:17:54.727275+00:00",
   "format": "long",
   "item_day": "Tue 17 Nov",
   "topic": "Blockbuster turned down a deal to buy Netflix, laughed it off, then watched Netflix beat it",
@@ -7,30 +7,27 @@
   "unverified": true,
   "note": "Gemini first draft, NOT fact-checked. Claude must verify every claim with its own 2-source rule before using any of it in a real job file.",
   "draft_outline": [
-    "In the late 1990s, Blockbuster dominated video rentals with nearly 9,000 stores and a valuation approaching $6 billion. At the same time, a small startup named Netflix, operating out of Los Gatos, California, was losing money. In 2000, Netflix offered to sell itself to Blockbuster for $50 million. Blockbuster declined. By 2010, Blockbuster filed for bankruptcy. Today, Netflix holds a market capitalization exceeding $200 billion.",
-    "Blockbuster, founded in 1985, became a cultural institution. By 1999, it had 6,000 stores across the globe. Its business model relied on late fees, which generated significant revenue. Netflix, founded in 1997 by Reed Hastings and Marc Randolph, started as a DVD-by-mail service. Its core innovation was a subscription model with no late fees. Despite its novel approach, Netflix was struggling financially in its early years, seeking capital and a buyer.",
-    "The pivotal moment occurred in early 2000. Netflix founders Reed Hastings and Marc Randolph flew to Blockbuster's Dallas headquarters. They met with Blockbuster CEO John Antioco and CFO Ed Stead. Their proposal was straightforward: Netflix would manage Blockbuster's online presence, and Blockbuster would promote Netflix in its stores, all for an acquisition price of $50 million. Blockbuster's leadership reportedly laughed at the offer, dismissing the internet and Netflix's business model as niche.",
-    "Following the rejection, Netflix continued to refine its subscription service. In 2007, Netflix launched its streaming service, a strategic pivot that leveraged broadband internet growth. Blockbuster, meanwhile, attempted its own online venture, Blockbuster Online, in 2004, but it failed to integrate effectively with its physical stores. Its leadership remained focused on the brick-and-mortar model, even as DVD sales declined and internet adoption surged.",
-    "By 2010, Blockbuster filed for Chapter 11 bankruptcy, closing thousands of stores. Its final corporate-owned store closed in 2014, leaving only one independently owned Blockbuster in Bend, Oregon, still operating today. In contrast, by 2010, Netflix had grown to 20 million subscribers. By 2023, its global subscriber count surpassed 230 million, solidifying its position as a dominant force in entertainment and a company with a market valuation over $200 billion.",
-    "The Blockbuster-Netflix story serves as a stark lesson in market disruption and adaptability. Companies, regardless of their current market dominance, must anticipate and embrace technological shifts. Failure to innovate or recognize emerging threats, even from seemingly small competitors, can lead to rapid decline. The value of foresight and strategic agility often outweighs the comfort of established, but ultimately vulnerable, business models."
+    "By 2010, Blockbuster filed for bankruptcy. Netflix market cap reached $2.5 billion.",
+    "In 2000, Blockbuster operated 9,000 stores. Netflix reported 300,000 subscribers and $5 million annual loss.",
+    "In September 2000, Netflix offered Blockbuster a 49% stake for $50 million. Blockbuster declined.",
+    "Netflix pivoted to online streaming in 2007. Blockbuster attempted Blockbuster Total Access in 2004, then Blockbuster On Demand in 2007.",
+    "By 2010, Netflix had 16 million subscribers. Blockbuster had 1,700 remaining stores. By 2011, Netflix market cap exceeded $11 billion. Blockbuster liquidated assets.",
+    "Market leadership is temporary. Ignoring disruptive innovation carries high cost."
   ],
   "claims": [
-    "9,000 stores",
-    "$6 billion valuation",
-    "2000 (year of meeting)",
-    "1997 (Netflix founded)",
-    "1985 (Blockbuster founded)",
-    "6,000 stores (Blockbuster by 1999)",
-    "$50 million (Netflix asking price)",
-    "2007 (Netflix launched streaming)",
-    "Blockbuster Online 2004",
-    "2010 (Blockbuster filed for bankruptcy)",
-    "2014 (Blockbuster final corporate-owned store closure)",
-    "one independently owned Blockbuster (Bend, Oregon)",
-    "2010 (Netflix subscriber count)",
-    "20 million subscribers",
-    "2023 (Netflix subscriber count)",
-    "230 million subscribers",
-    "$200 billion market capitalization"
+    "By 2010, Blockbuster filed for bankruptcy.",
+    "Netflix market cap reached $2.5 billion.",
+    "In 2000, Blockbuster operated 9,000 stores.",
+    "Netflix reported 300,000 subscribers.",
+    "Netflix reported $5 million annual loss.",
+    "In September 2000, Netflix offered Blockbuster a 49% stake for $50 million.",
+    "Blockbuster declined the offer.",
+    "Netflix pivoted to online streaming in 2007.",
+    "Blockbuster attempted Blockbuster Total Access in 2004.",
+    "Blockbuster attempted Blockbuster On Demand in 2007.",
+    "By 2010, Netflix had 16 million subscribers.",
+    "Blockbuster had 1,700 remaining stores.",
+    "By 2011, Netflix market cap exceeded $11 billion.",
+    "Blockbuster liquidated assets."
   ]
 }
