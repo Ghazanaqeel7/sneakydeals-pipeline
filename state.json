@@ -688,7 +688,7 @@
       "fb_thumb_set": "2026-11-19T17:10:48Z"
     },
     "009-blockbuster-netflix-long": {
-      "status": "video_approved",
+      "status": "published",
       "updated": "2026-11-19T08:55:34Z",
       "type": "long",
       "title": "Blockbuster Turned Down a $50 Million Deal. Then Netflix Won",
@@ -729,9 +729,13 @@
         {
           "t": "2026-11-19T20:44:44Z",
           "msg": "⚠️ \"Blockbuster Turned Down a $50 Million Deal. Then Netflix Won\" is still not public on YouTube 1 hour after its slot. Check Zapier > Zap history (YouTube)."
+        },
+        {
+          "t": "2026-11-20T02:23:31Z",
+          "msg": "✅ LIVE on YouTube: \"Blockbuster Turned Down a $50 Million Deal. Then Netflix Won\" https://youtu.be/39QhMX4LQRs"
         }
       ],
-      "progress_count": 9,
+      "progress_count": 10,
       "vote_msg": "1794982469.326359",
       "vote_kind": "script",
       "decided_via": "dashboard",
@@ -743,7 +747,11 @@
       "feedback": "",
       "yt_scheduled_for": "2026-11-19T14:00:00Z",
       "yt_queued_at": "2026-11-19T08:55:57Z",
-      "yt_alert": "2026-11-19T20:44:44Z"
+      "yt_alert": "2026-11-19T20:44:44Z",
+      "yt_video_id": "39QhMX4LQRs",
+      "yt_live_at": "2026-11-20T02:23:31Z",
+      "thumb_queued_at": "2026-11-20T02:23:31Z",
+      "published_at": "2026-11-20T02:23:31Z"
     },
     "010-coca-cola-free-coupons": {
       "status": "script_sent",
