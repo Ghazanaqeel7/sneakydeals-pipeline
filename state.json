@@ -754,8 +754,8 @@
       "published_at": "2026-11-20T02:23:31Z"
     },
     "010-coca-cola-free-coupons": {
-      "status": "rendering",
-      "updated": "2026-11-20T17:22:13Z",
+      "status": "video_ready",
+      "updated": "2026-11-20T18:17:33Z",
       "title": "Coca-Cola Gave Away Millions of Free Drinks on Purpose",
       "vote_msg": "1795086653.462249",
       "vote_kind": "script",
@@ -798,7 +798,10 @@
         }
       ],
       "progress_count": 8,
-      "run": "44782389254"
+      "run": "44782389254",
+      "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-010-coca-cola-free-coupons/final.mp4",
+      "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-010-coca-cola-free-coupons/preview.mp4",
+      "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/010-coca-cola-free-coupons.mp4"
     },
     "011-taco-tuesday-trademark": {
       "status": "script_approved",
