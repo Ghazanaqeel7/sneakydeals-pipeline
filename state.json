@@ -754,13 +754,13 @@
       "published_at": "2026-11-20T02:23:31Z"
     },
     "010-coca-cola-free-coupons": {
-      "status": "video_sent",
-      "updated": "2026-11-20T18:42:18Z",
+      "status": "video_approved",
+      "updated": "2026-11-20T20:22:02Z",
       "title": "Coca-Cola Gave Away Millions of Free Drinks on Purpose",
       "vote_msg": "1795200141.803509",
       "vote_kind": "video",
-      "decided_via": "slack",
-      "decided_at": "2026-11-19T08:57:48Z",
+      "decided_via": "dashboard",
+      "decided_at": "2026-11-20T20:22:02Z",
       "feedback": "",
       "progress": [
         {
@@ -795,9 +795,13 @@
         {
           "t": "2026-11-20T18:03:22Z",
           "msg": "⏳ Render 75% (1018/1355 frames). Baqi waqt: 54m 0s"
+        },
+        {
+          "t": "2026-11-20T20:22:02Z",
+          "msg": "✅ You approved the video + thumbnail on the dashboard. It goes to YouTube at the next publish slot."
         }
       ],
-      "progress_count": 8,
+      "progress_count": 9,
       "run": "44782389254",
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-010-coca-cola-free-coupons/final.mp4",
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-010-coca-cola-free-coupons/preview.mp4",
