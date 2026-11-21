@@ -1,0 +1,31 @@
+{
+ "image": {
+  "q": "Kodak film yellow box"
+ },
+ "icon": "factory",
+ "line1": "THEY INVENTED IT",
+ "line2": "THEN SHELVED IT",
+ "box": "KODAK",
+ "box_color": "#c4281c",
+ "line_color": "#f2b800",
+ "cast": [
+  {
+   "side": "left",
+   "mood": "smug",
+   "suit": "#f2b800",
+   "tie": "#c4281c",
+   "label": "Kodak",
+   "delay": -90,
+   "size": 400
+  },
+  {
+   "side": "right",
+   "mood": "happy",
+   "outfit": "hoodie",
+   "suit": "#3a6ea5",
+   "label": "The engineer",
+   "delay": -90,
+   "size": 400
+  }
+ ]
+}

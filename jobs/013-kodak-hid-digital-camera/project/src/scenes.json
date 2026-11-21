@@ -1,0 +1,1291 @@
+{
+ "title": "Kodak Invented the Digital Camera, Then Shelved It",
+ "scenes": [
+  {
+   "id": "s01",
+   "text": "In nineteen seventy-five, an engineer at Kodak built the first digital camera. His company did not celebrate. It shelved the idea, to protect the business that made it rich. Thirty-six years later, Kodak was bankrupt.",
+   "visual": [
+    {
+     "type": "title",
+     "text": "Kodak built the first digital camera",
+     "accent": [
+      "first digital camera"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "mood": "smug",
+       "suit": "#f2b800",
+       "tie": "#c4281c",
+       "label": "Kodak"
+      },
+      {
+       "side": "right",
+       "mood": "happy",
+       "outfit": "hoodie",
+       "suit": "#3a6ea5",
+       "label": "The engineer"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "headline",
+     "kicker": "ROCHESTER · 2012",
+     "text": "Kodak files for bankruptcy",
+     "stamp": "Bankrupt",
+     "art": {
+      "mood": "worried",
+      "suit": "#f2b800",
+      "tie": "#c4281c"
+     },
+     "caption": "Illustration",
+     "at": 0.33
+    },
+    {
+     "type": "stat",
+     "from": 1975,
+     "to": 2012,
+     "label": "From invention to bankruptcy",
+     "color": "red",
+     "icon": "factory",
+     "at": 0.67
+    }
+   ],
+   "tone": "dark"
+  },
+  {
+   "id": "s02",
+   "text": "This is the story of a company that invented the future, and then protected the past. And the strange part is that it did not miss the technology. It saw it first.",
+   "visual": [
+    {
+     "type": "title",
+     "text": "It did not miss the future",
+     "accent": [
+      "did not miss"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "mood": "worried",
+       "suit": "#f2b800",
+       "tie": "#c4281c",
+       "label": "Kodak"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "title",
+     "text": "It saw it first",
+     "accent": [
+      "first"
+     ],
+     "cast": [
+      {
+       "side": "right",
+       "mood": "smug",
+       "outfit": "hoodie",
+       "suit": "#3a6ea5",
+       "label": "The engineer"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
+   "tone": "dark"
+  },
+  {
+   "id": "s03",
+   "text": "To see why that happened, start with how powerful Kodak was.",
+   "visual": {
+    "type": "chapter",
+    "number": 1,
+    "title": "The giant"
+   },
+   "tone": "dark",
+   "chapter": "The giant"
+  },
+  {
+   "id": "s04",
+   "text": "Kodak was founded by George Eastman in Rochester, New York. His simple idea was to make photography easy for everyone. You press the button, and the company does the rest.",
+   "visual": [
+    {
+     "type": "photo",
+     "image": {
+      "q": "George Eastman Kodak Rochester"
+     },
+     "move": "in",
+     "fallback": {
+      "icon": "factory",
+      "label": "Rochester, New York"
+     },
+     "caption": "Rochester, New York",
+     "at": 0.0
+    },
+    {
+     "type": "title",
+     "text": "You press the button. We do the rest.",
+     "accent": [
+      "We do the rest"
+     ],
+     "cast": [
+      {
+       "side": "center",
+       "mood": "happy",
+       "suit": "#f2b800",
+       "tie": "#c4281c",
+       "label": "Kodak"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
+   "tone": "blue"
+  },
+  {
+   "id": "s05",
+   "text": "Kodak made the cameras, and it made the film that went inside them. The camera was almost a gift. The money was in the film, and every roll you shot meant you needed another one.",
+   "visual": {
+    "type": "illustration",
+    "title": "The Kodak money machine",
+    "icons": [
+     {
+      "name": "box",
+      "label": "Cheap camera"
+     },
+     {
+      "name": "dollar",
+      "label": "Film, again and again"
+     },
+     {
+      "name": "factory",
+      "label": "Kodak profits"
+     }
+    ]
+   },
+   "tone": "blue"
+  },
+  {
+   "id": "s06",
+   "text": "By the nineteen eighties it dominated photography in the United States. In nineteen eighty-eight, Kodak employed about one hundred forty-five thousand people. That was its peak.",
+   "visual": [
+    {
+     "type": "stat",
+     "from": 0,
+     "to": 145300,
+     "label": "Kodak employees, 1988",
+     "icon": "people",
+     "color": "yellow",
+     "per": "each icon = about 5,000 people",
+     "at": 0.0
+    },
+    {
+     "type": "title",
+     "text": "The undisputed king of film",
+     "accent": [
+      "king"
+     ],
+     "cast": [
+      {
+       "side": "center",
+       "mood": "smug",
+       "suit": "#f2b800",
+       "tie": "#c4281c",
+       "label": "Kodak"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
+   "tone": "blue"
+  },
+  {
+   "id": "s07",
+   "text": "Think about what that meant. Every family birthday, every wedding, every holiday trip ran through a yellow box. When people said they wanted to remember something, they reached for Kodak. The brand was almost a word for photography itself.",
+   "visual": [
+    {
+     "type": "title",
+     "text": "Kodak moments everywhere",
+     "accent": [
+      "Kodak"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "mood": "happy",
+       "suit": "#f2b800",
+       "tie": "#c4281c",
+       "label": "Kodak"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "illustration",
+     "title": "Where Kodak film went",
+     "icons": [
+      {
+       "name": "people",
+       "label": "Weddings"
+      },
+      {
+       "name": "plane",
+       "label": "Holidays"
+      },
+      {
+       "name": "bulb",
+       "label": "Birthdays"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
+   "tone": "blue"
+  },
+  {
+   "id": "s08",
+   "text": "A company that strong has a quiet danger. When one product pays for everything, every new idea gets judged by one question: will this hurt the thing that pays us? Remember that question. It comes back.",
+   "visual": [
+    {
+     "type": "title",
+     "text": "One question decides everything",
+     "accent": [
+      "one question"
+     ],
+     "cast": [
+      {
+       "side": "center",
+       "mood": "smug",
+       "suit": "#f2b800",
+       "tie": "#c4281c",
+       "label": "Kodak"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "illustration",
+     "title": "The test every idea faced",
+     "icons": [
+      {
+       "name": "question",
+       "label": "Will it hurt film?"
+      },
+      {
+       "name": "warning",
+       "label": "If yes"
+      },
+      {
+       "name": "cross",
+       "label": "Shelve it"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
+   "tone": "dark"
+  },
+  {
+   "id": "s09",
+   "text": "Then, in the middle of all that success, a young engineer was handed a strange little project.",
+   "visual": {
+    "type": "chapter",
+    "number": 2,
+    "title": "The toaster"
+   },
+   "tone": "dark",
+   "chapter": "The toaster"
+  },
+  {
+   "id": "s10",
+   "text": "His name was Steven Sasson. In nineteen seventy-five, he was asked to see what could be done with a new kind of chip that captured light as electrical signals.",
+   "visual": [
+    {
+     "type": "title",
+     "text": "Steven Sasson, Kodak engineer",
+     "accent": [
+      "Sasson"
+     ],
+     "cast": [
+      {
+       "side": "center",
+       "mood": "talk",
+       "outfit": "hoodie",
+       "suit": "#3a6ea5",
+       "label": "The engineer"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "illustration",
+     "title": "A chip that sees light",
+     "icons": [
+      {
+       "name": "bulb",
+       "label": "Light"
+      },
+      {
+       "name": "screen",
+       "label": "Electrical signals"
+      },
+      {
+       "name": "check",
+       "label": "A picture"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
+   "tone": "dark"
+  },
+  {
+   "id": "s11",
+   "text": "What he built was a camera the size of a toaster. It weighed about eight pounds. It took black and white pictures that were only one hundred pixels wide and one hundred pixels tall. That is about one hundredth of a megapixel.",
+   "visual": [
+    {
+     "type": "stat",
+     "from": 0,
+     "to": 8,
+     "suffix": " lb",
+     "label": "The first digital camera",
+     "icon": "box",
+     "color": "yellow",
+     "at": 0.0
+    },
+    {
+     "type": "stat",
+     "from": 0,
+     "to": 10000,
+     "label": "Pixels in one photo",
+     "sub": "100 x 100, black and white",
+     "icon": "screen",
+     "color": "blue",
+     "at": 0.5
+    }
+   ],
+   "tone": "dark"
+  },
+  {
+   "id": "s12",
+   "text": "Each picture was saved on a cassette tape. It took twenty-three seconds to record. To see it, you had to carry the tape to a separate machine and watch the picture appear on a television.",
+   "visual": {
+    "type": "list",
+    "title": "How the first digital photo worked",
+    "items": [
+     {
+      "title": "Point and shoot",
+      "sub": "Black and white, 100 x 100",
+      "icon": "screen"
+     },
+     {
+      "title": "Record to tape",
+      "sub": "23 seconds",
+      "icon": "clock"
+     },
+     {
+      "title": "Watch on a TV",
+      "sub": "Not on paper",
+      "icon": "tv"
+     }
+    ],
+    "numbered": true
+   },
+   "tone": "dark"
+  },
+  {
+   "id": "s13",
+   "text": "He knew it was rough. But he also knew where it was going. Chips would get better. Tapes would be replaced. Screens would get cheaper. The question was never whether pictures could be stored as numbers. The question was how fast.",
+   "visual": [
+    {
+     "type": "title",
+     "text": "Better chips. Cheaper screens.",
+     "accent": [
+      "Cheaper"
+     ],
+     "cast": [
+      {
+       "side": "center",
+       "mood": "happy",
+       "outfit": "hoodie",
+       "suit": "#3a6ea5",
+       "label": "The engineer"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "timeline",
+     "title": "Where digital was heading",
+     "events": [
+      {
+       "year": "1975",
+       "label": "100 x 100 pixels"
+      },
+      {
+       "year": "Later",
+       "label": "More pixels, smaller cameras"
+      },
+      {
+       "year": "Later still",
+       "label": "Photos shared on screens"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
+   "tone": "dark"
+  },
+  {
+   "id": "s14",
+   "text": "Sasson showed it to Kodak executives. And they asked the obvious question: who would want to look at their photos on a television? To them, it looked like a clever toy.",
+   "visual": [
+    {
+     "type": "title",
+     "text": "Who wants photos on a TV?",
+     "accent": [
+      "TV"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "mood": "laugh",
+       "suit": "#f2b800",
+       "tie": "#c4281c",
+       "label": "Kodak"
+      },
+      {
+       "side": "right",
+       "mood": "worried",
+       "outfit": "hoodie",
+       "suit": "#3a6ea5",
+       "label": "The engineer"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "quote",
+     "text": "No one would ever want to look at their pictures on a television set.",
+     "who": "The executives' view, as described in PetaPixel",
+     "source": "PetaPixel",
+     "at": 0.5
+    }
+   ],
+   "tone": "dark"
+  },
+  {
+   "id": "s15",
+   "text": "But there was a deeper worry, and it was not about the picture quality. A camera with no film meant no film sales. The better the digital camera got, the more it threatened the thing that paid for everything.",
+   "visual": {
+    "type": "compare",
+    "title": "The Kodak dilemma",
+    "a": {
+     "name": "Film",
+     "color": "#f2b800",
+     "icon": "box"
+    },
+    "b": {
+     "name": "Digital",
+     "color": "#3a6ea5",
+     "icon": "screen"
+    },
+    "rows": [
+     {
+      "label": "Sells more film",
+      "a": "Yes",
+      "b": "No",
+      "win": "a"
+     },
+     {
+      "label": "The future",
+      "a": "Fading",
+      "b": "Rising",
+      "win": "b"
+     }
+    ]
+   },
+   "tone": "dark"
+  },
+  {
+   "id": "s16",
+   "text": "So Kodak did what a lot of successful companies do. It protected what was working today. The project was not killed outright, but the company did not push it to the world.",
+   "visual": [
+    {
+     "type": "title",
+     "text": "Protect the film business",
+     "accent": [
+      "film"
+     ],
+     "cast": [
+      {
+       "side": "center",
+       "mood": "smug",
+       "suit": "#f2b800",
+       "tie": "#c4281c",
+       "label": "Kodak"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "illustration",
+     "title": "The giant's dilemma",
+     "icons": [
+      {
+       "name": "factory",
+       "label": "Pays the bills today"
+      },
+      {
+       "name": "question",
+       "label": "The new idea"
+      },
+      {
+       "name": "warning",
+       "label": "Looks like a threat"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
+   "tone": "dark"
+  },
+  {
+   "id": "s17",
+   "text": "And this is the part that is easy to forget. Nobody at Kodak was stupid. Film was the most profitable thing the company had ever done. Choosing to protect it looked like good management, in every single meeting.",
+   "visual": [
+    {
+     "type": "title",
+     "text": "It looked like good management",
+     "accent": [
+      "good management"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "mood": "talk",
+       "suit": "#f2b800",
+       "tie": "#c4281c",
+       "label": "Kodak"
+      },
+      {
+       "side": "right",
+       "mood": "worried",
+       "outfit": "hoodie",
+       "suit": "#3a6ea5",
+       "label": "The engineer"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "illustration",
+     "title": "Every meeting, the same answer",
+     "icons": [
+      {
+       "name": "document",
+       "label": "Film profit report"
+      },
+      {
+       "name": "check",
+       "label": "Looks great"
+      },
+      {
+       "name": "clock",
+       "label": "Digital can wait"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
+   "tone": "dark"
+  },
+  {
+   "id": "s18",
+   "text": "Meanwhile, a rival was coming for the film business anyway.",
+   "visual": {
+    "type": "chapter",
+    "number": 3,
+    "title": "The rival"
+   },
+   "tone": "dark",
+   "chapter": "The rival"
+  },
+  {
+   "id": "s19",
+   "text": "In the nineteen eighties, the Japanese company Fujifilm pushed into the American market. It sold film to big retailers at a lower price than Kodak, and the two fought for shelf space.",
+   "visual": [
+    {
+     "type": "title",
+     "text": "Fuji arrives",
+     "accent": [
+      "Fuji"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "mood": "smug",
+       "suit": "#1f8a4c",
+       "tie": "#ffffff",
+       "label": "Fuji"
+      },
+      {
+       "side": "right",
+       "mood": "worried",
+       "suit": "#f2b800",
+       "tie": "#c4281c",
+       "label": "Kodak"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "map",
+     "region": "world",
+     "highlight": [
+      "US",
+      "JP"
+     ],
+     "pins": [
+      {
+       "lon": -77.6,
+       "lat": 43.2,
+       "label": "Kodak, Rochester"
+      },
+      {
+       "lon": 139.7,
+       "lat": 35.7,
+       "label": "Fujifilm, Tokyo"
+      }
+     ],
+     "arcs": [],
+     "title": "The film war",
+     "at": 0.5
+    }
+   ],
+   "tone": "dark"
+  },
+  {
+   "id": "s20",
+   "text": "Fuji made the same kind of film, and it was happy to sell it for less. For ordinary shoppers, a roll of film was a roll of film. Kodak now had a price problem on top of a technology problem.",
+   "visual": {
+    "type": "compare",
+    "title": "Two rolls of film",
+    "a": {
+     "name": "Kodak",
+     "color": "#f2b800",
+     "icon": "box"
+    },
+    "b": {
+     "name": "Fuji",
+     "color": "#1f8a4c",
+     "icon": "box"
+    },
+    "rows": [
+     {
+      "label": "Price at big retailers",
+      "a": "Higher",
+      "b": "Lower",
+      "win": "b"
+     },
+     {
+      "label": "Brand trust",
+      "a": "Huge",
+      "b": "Growing"
+     }
+    ]
+   },
+   "tone": "dark"
+  },
+  {
+   "id": "s21",
+   "text": "Kodak's fat profits began to shrink. And yet the company still had a trump card: it had the most digital imaging patents in the business. More than a thousand of them.",
+   "visual": [
+    {
+     "type": "stat",
+     "from": 0,
+     "to": 1100,
+     "suffix": "+",
+     "label": "Kodak digital imaging patents",
+     "icon": "document",
+     "color": "yellow",
+     "at": 0.0
+    },
+    {
+     "type": "title",
+     "text": "Still holding the cards",
+     "accent": [
+      "cards"
+     ],
+     "cast": [
+      {
+       "side": "center",
+       "mood": "talk",
+       "suit": "#f2b800",
+       "tie": "#c4281c",
+       "label": "Kodak"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
+   "tone": "dark"
+  },
+  {
+   "id": "s22",
+   "text": "Kodak did start selling digital cameras. In the nineteen nineties it launched pocket-sized models, and by two thousand one it had its EasyShare system. For a while, it even led the market.",
+   "visual": {
+    "type": "timeline",
+    "title": "Kodak goes digital, slowly",
+    "events": [
+     {
+      "year": "1975",
+      "label": "First digital camera built"
+     },
+     {
+      "year": "1996",
+      "label": "First pocket digital cameras"
+     },
+     {
+      "year": "2001",
+      "label": "EasyShare, mass-market digital"
+     },
+     {
+      "year": "2005",
+      "label": "Top US digital camera seller"
+     }
+    ]
+   },
+   "tone": "dark"
+  },
+  {
+   "id": "s23",
+   "text": "Think about how people used to take pictures. You shot a roll, you took it to a shop, you waited, and you paid for prints. Kodak earned money at almost every step. A digital camera skipped nearly all of them.",
+   "visual": {
+    "type": "list",
+    "title": "Where Kodak used to earn money",
+    "items": [
+     {
+      "title": "Buy the film",
+      "sub": "Every roll",
+      "icon": "box"
+     },
+     {
+      "title": "Develop it",
+      "sub": "At the shop",
+      "icon": "store"
+     },
+     {
+      "title": "Print the photos",
+      "sub": "On Kodak paper",
+      "icon": "document"
+     }
+    ],
+    "numbered": true
+   },
+   "tone": "dark"
+  },
+  {
+   "id": "s24",
+   "text": "But here is the catch. Digital cameras meant people stopped printing and stopped buying film. Kodak was now winning a race that shrank its own profits.",
+   "visual": [
+    {
+     "type": "illustration",
+     "title": "Winning, and losing",
+     "icons": [
+      {
+       "name": "screen",
+       "label": "Digital cameras sell"
+      },
+      {
+       "name": "box",
+       "label": "Film sales fall"
+      },
+      {
+       "name": "dollar",
+       "label": "Profits shrink"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "title",
+     "text": "Winning shrank the profits",
+     "accent": [
+      "shrank"
+     ],
+     "cast": [
+      {
+       "side": "center",
+       "mood": "worried",
+       "suit": "#f2b800",
+       "tie": "#c4281c",
+       "label": "Kodak"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
+   "tone": "dark"
+  },
+  {
+   "id": "s25",
+   "text": "And the lead did not last. Other camera makers, with no film business to protect, moved faster. Kodak slipped down the rankings year after year.",
+   "visual": [
+    {
+     "type": "title",
+     "text": "The lead did not last",
+     "accent": [
+      "not last"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "mood": "worried",
+       "suit": "#f2b800",
+       "tie": "#c4281c",
+       "label": "Kodak"
+      },
+      {
+       "side": "right",
+       "mood": "smug",
+       "suit": "#1f8a4c",
+       "tie": "#ffffff",
+       "label": "Fuji"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "stat",
+     "from": 1,
+     "to": 0,
+     "label": "Time at the top",
+     "sub": "Kodak slid down the rankings",
+     "icon": "factory",
+     "color": "red",
+     "at": 0.5
+    }
+   ],
+   "tone": "dark"
+  },
+  {
+   "id": "s26",
+   "text": "There was a bigger shift too. Photos stopped being things you held, and started being things you looked at on a screen and shared. The prints, the albums, the shoeboxes: that whole habit was fading.",
+   "visual": [
+    {
+     "type": "title",
+     "text": "From prints to screens",
+     "accent": [
+      "screens"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "mood": "worried",
+       "suit": "#f2b800",
+       "tie": "#c4281c",
+       "label": "Kodak"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "illustration",
+     "title": "How photos changed",
+     "icons": [
+      {
+       "name": "document",
+       "label": "Prints"
+      },
+      {
+       "name": "screen",
+       "label": "Screens"
+      },
+      {
+       "name": "globe",
+       "label": "Shared everywhere"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
+   "tone": "dark"
+  },
+  {
+   "id": "s27",
+   "text": "Then came the final chapter.",
+   "visual": {
+    "type": "chapter",
+    "number": 4,
+    "title": "The fall"
+   },
+   "tone": "dark",
+   "chapter": "The fall"
+  },
+  {
+   "id": "s28",
+   "text": "On the nineteenth of January, two thousand twelve, Eastman Kodak filed for Chapter 11 bankruptcy protection. Its stock was trading for less than one dollar a share.",
+   "visual": [
+    {
+     "type": "headline",
+     "kicker": "ROCHESTER · JAN 19, 2012",
+     "text": "Kodak files for Chapter 11",
+     "stamp": "Bankrupt",
+     "art": {
+      "mood": "worried",
+      "suit": "#f2b800",
+      "tie": "#c4281c"
+     },
+     "caption": "Illustration",
+     "at": 0.0
+    },
+    {
+     "type": "stat",
+     "from": 0,
+     "to": 19,
+     "prefix": "Jan ",
+     "suffix": "",
+     "label": "Chapter 11 filing, 2012",
+     "icon": "document",
+     "color": "red",
+     "at": 0.5
+    }
+   ],
+   "tone": "dark"
+  },
+  {
+   "id": "s29",
+   "text": "It arranged close to a billion dollars in financing to keep the lights on while it restructured. And then it started selling the things it owned.",
+   "visual": [
+    {
+     "type": "stat",
+     "from": 0,
+     "to": 950,
+     "prefix": "$",
+     "suffix": " million",
+     "label": "Bankruptcy financing, about",
+     "icon": "bank",
+     "color": "red",
+     "at": 0.0
+    }
+   ],
+   "tone": "dark"
+  },
+  {
+   "id": "s30",
+   "text": "The company had hoped its digital patents might fetch two billion dollars or more. Instead, in December two thousand twelve, a group of tech companies bought about eleven hundred of them for five hundred and twenty-five million.",
+   "visual": {
+    "type": "compare",
+    "title": "Patent hopes vs. the sale",
+    "a": {
+     "name": "Hoped for",
+     "color": "#f2b800",
+     "icon": "dollar"
+    },
+    "b": {
+     "name": "Actual sale",
+     "color": "#c43d32",
+     "icon": "gavel"
+    },
+    "rows": [
+     {
+      "label": "Price",
+      "a": "$2 billion+",
+      "b": "$525 million",
+      "win": "a"
+     },
+     {
+      "label": "Digital patents",
+      "a": "1,100",
+      "b": "1,100"
+     }
+    ]
+   },
+   "tone": "dark"
+  },
+  {
+   "id": "s31",
+   "text": "Kodak came out of bankruptcy in twenty thirteen, a much smaller company. The film that built an empire was now a small part of the business.",
+   "visual": [
+    {
+     "type": "stat",
+     "from": 2012,
+     "to": 2013,
+     "label": "Kodak emerges from bankruptcy, much smaller",
+     "icon": "factory",
+     "color": "yellow",
+     "at": 0.0
+    },
+    {
+     "type": "title",
+     "text": "A far smaller Kodak",
+     "accent": [
+      "smaller"
+     ],
+     "cast": [
+      {
+       "side": "center",
+       "mood": "worried",
+       "suit": "#f2b800",
+       "tie": "#c4281c",
+       "label": "Kodak"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
+   "tone": "dark"
+  },
+  {
+   "id": "s32",
+   "text": "There is a cruel twist in all of this. Those digital patents were worth real money, so in the end Kodak sold part of its past to people building the future. The invention was valuable. The company just never managed to turn it into its own future.",
+   "visual": [
+    {
+     "type": "title",
+     "text": "Sold to the future",
+     "accent": [
+      "future"
+     ],
+     "cast": [
+      {
+       "side": "center",
+       "mood": "worried",
+       "suit": "#f2b800",
+       "tie": "#c4281c",
+       "label": "Kodak"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "illustration",
+     "title": "The patents",
+     "icons": [
+      {
+       "name": "document",
+       "label": "Kodak's inventions"
+      },
+      {
+       "name": "dollar",
+       "label": "Sold for $525M"
+      },
+      {
+       "name": "globe",
+       "label": "Used by others"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
+   "tone": "dark"
+  },
+  {
+   "id": "s33",
+   "text": "So what is the lesson? It is easy to say Kodak missed digital. It did not. Its own engineer invented it, and its own company built cameras.",
+   "visual": {
+    "type": "title",
+    "text": "Kodak did not miss digital",
+    "accent": [
+     "did not miss"
+    ],
+    "cast": [
+     {
+      "side": "left",
+      "mood": "talk",
+      "suit": "#f2b800",
+      "tie": "#c4281c",
+      "label": "Kodak"
+     },
+     {
+      "side": "right",
+      "mood": "talk",
+      "outfit": "hoodie",
+      "suit": "#3a6ea5",
+      "label": "The engineer"
+     }
+    ]
+   },
+   "tone": "dark"
+  },
+  {
+   "id": "s34",
+   "text": "The real mistake was choosing, again and again, the safe profit of today over the uncomfortable bet on tomorrow. The business that paid the bills became the business that blocked the future.",
+   "visual": [
+    {
+     "type": "list",
+     "title": "What really went wrong",
+     "items": [
+      {
+       "title": "Fear of cannibalising film",
+       "sub": "Protecting today's profit",
+       "icon": "warning"
+      },
+      {
+       "title": "A slow, half-hearted shift",
+       "sub": "Digital, but late",
+       "icon": "clock"
+      },
+      {
+       "title": "A tough new rival",
+       "sub": "Fuji undercut the price",
+       "icon": "tag"
+      }
+     ],
+     "at": 0.0
+    }
+   ],
+   "tone": "dark"
+  },
+  {
+   "id": "s35",
+   "text": "We have seen the same pattern before on this channel. Blockbuster protected its late fees and its stores. Kodak protected its film. Different industries, same trap: the thing that made you rich tells you not to change.",
+   "visual": [
+    {
+     "type": "title",
+     "text": "Same trap, different industry",
+     "accent": [
+      "trap"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "mood": "worried",
+       "suit": "#f2b800",
+       "tie": "#c4281c",
+       "label": "Kodak"
+      },
+      {
+       "side": "right",
+       "mood": "worried",
+       "suit": "#1f4ea8",
+       "tie": "#f2c230",
+       "label": "Blockbuster"
+      }
+     ],
+     "at": 0.0
+    },
+    {
+     "type": "list",
+     "title": "The trap",
+     "items": [
+      {
+       "title": "One product pays for everything",
+       "sub": "So it feels untouchable",
+       "icon": "dollar"
+      },
+      {
+       "title": "The new idea looks small",
+       "sub": "So it can wait",
+       "icon": "clock"
+      },
+      {
+       "title": "A rival has nothing to protect",
+       "sub": "So it moves first",
+       "icon": "key"
+      }
+     ],
+     "at": 0.5
+    }
+   ],
+   "tone": "dark"
+  },
+  {
+   "id": "s36",
+   "text": "Let us put the whole story on one line. Nineteen seventy-five: Kodak invents the digital camera. The nineteen eighties: Fuji attacks its film. The nineteen nineties and two thousands: Kodak moves into digital, but slowly. Two thousand twelve: bankruptcy. Two thousand thirteen: a much smaller Kodak comes out the other side.",
+   "visual": {
+    "type": "timeline",
+    "title": "Kodak in five dates",
+    "events": [
+     {
+      "year": "1975",
+      "label": "Digital camera invented"
+     },
+     {
+      "year": "1980s",
+      "label": "Fuji attacks film"
+     },
+     {
+      "year": "2001",
+      "label": "Mass-market digital"
+     },
+     {
+      "year": "2012",
+      "label": "Chapter 11"
+     },
+     {
+      "year": "2013",
+      "label": "Emerges, much smaller"
+     }
+    ]
+   },
+   "tone": "dark"
+  },
+  {
+   "id": "s37",
+   "text": "If you run a business, or work in one, the lesson is uncomfortable. The most dangerous idea in your building might be the one your best engineer just showed you. Your job is to ask what happens if someone else builds it, before someone else does.",
+   "visual": [
+    {
+     "type": "title",
+     "text": "The danger might be in your building",
+     "accent": [
+      "your building"
+     ],
+     "cast": [
+      {
+       "side": "left",
+       "mood": "worried",
+       "outfit": "hoodie",
+       "suit": "#3a6ea5",
+       "label": "The engineer"
+      },
+      {
+       "side": "right",
+       "mood": "smug",
+       "suit": "#f2b800",
+       "tie": "#c4281c",
+       "label": "Kodak"
+      }
+     ],
+     "at": 0.0
+    }
+   ],
+   "tone": "dark"
+  },
+  {
+   "id": "s38",
+   "text": "When a company sees its own replacement, the question is not whether it can build it. The question is whether it is willing to let it win.",
+   "visual": [
+    {
+     "type": "title",
+     "text": "Can you build your own replacement?",
+     "accent": [
+      "replacement"
+     ],
+     "cast": [
+      {
+       "side": "center",
+       "mood": "talk",
+       "suit": "#f2b800",
+       "tie": "#c4281c",
+       "label": "Kodak"
+      }
+     ],
+     "at": 0.0
+    }
+   ],
+   "tone": "dark"
+  },
+  {
+   "id": "s39",
+   "text": "Would you have shipped the toaster? Tell us in the comments, and join us for the next true business story.",
+   "visual": {
+    "type": "endcard",
+    "title": "Sneaky Deals",
+    "sub": "True business stories, told like a movie"
+   },
+   "tone": "dark"
+  }
+ ]
+}

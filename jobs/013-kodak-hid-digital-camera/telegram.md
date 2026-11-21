@@ -1,0 +1,3 @@
+🎬 *Long video: Kodak Invented the Digital Camera, Then Shelved It* (~8 min)
+1975 Steven Sasson builds a toaster-sized digital camera; Kodak fears hurting film sales; Fuji attacks film; bankruptcy 19 Jan 2012; patents sold for $525M. Lesson: protecting today's profit blocks tomorrow.
+Note: script says 'shelved', not 'hid' (Kodak did sell digital cameras later). The famous "cute, but don't tell anyone" quote was dropped (one source). Kodak/Fuji are shown as cartoon characters, no logos. Please approve or send feedback.
