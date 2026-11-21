@@ -825,8 +825,8 @@
       "published_at": "2026-11-21T04:16:24Z"
     },
     "011-taco-tuesday-trademark": {
-      "status": "render_queued",
-      "updated": "2026-11-21T06:26:28Z",
+      "status": "rendering",
+      "updated": "2026-11-21T06:27:30Z",
       "title": "Taco John's Owned 'Taco Tuesday' Until Taco Bell Stepped In",
       "vote_msg": "1795155119.280489",
       "vote_kind": "script",
@@ -855,7 +855,8 @@
           "image": "jobs/011-taco-tuesday-trademark/thumbnail.jpg"
         }
       ],
-      "progress_count": 5
+      "progress_count": 5,
+      "run": "44875557000"
     },
     "012-costco-hot-dog": {
       "status": "script_sent",
