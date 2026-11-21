@@ -857,9 +857,13 @@
         {
           "t": "2026-11-21T06:27:32Z",
           "msg": "🎞 Render shuru (GitHub). Andaza: ~30-50 min."
+        },
+        {
+          "t": "2026-11-21T06:50:34Z",
+          "msg": "⏳ Render 25% (436/1686 frames). Baqi waqt: 4h 21m 5s"
         }
       ],
-      "progress_count": 6,
+      "progress_count": 7,
       "run": "44875557000"
     },
     "012-costco-hot-dog": {
