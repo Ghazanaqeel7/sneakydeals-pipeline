@@ -881,7 +881,9 @@
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-011-taco-tuesday-trademark/final.mp4",
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-011-taco-tuesday-trademark/preview.mp4",
       "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/011-taco-tuesday-trademark.mp4",
-      "decided_at": "2026-11-21T18:50:04Z"
+      "decided_at": "2026-11-21T18:50:04Z",
+      "yt_scheduled_for": "2026-11-22T00:00:00Z",
+      "yt_queued_at": "2026-11-21T18:50:35Z"
     },
     "012-costco-hot-dog": {
       "status": "script_sent",
