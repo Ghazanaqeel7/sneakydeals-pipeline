@@ -835,9 +835,13 @@
         {
           "t": "2026-11-21T06:15:52Z",
           "msg": "🎙 Voice ban rahi hai… (~60 min baqi, phir render ~40 min)"
+        },
+        {
+          "t": "2026-11-21T06:17:04Z",
+          "msg": "🎙 Voice tayyar (58 s). Ab scenes ban rahe hain (~50 min baqi, phir render ~40 min)"
         }
       ],
-      "progress_count": 1
+      "progress_count": 2
     },
     "012-costco-hot-dog": {
       "status": "script_sent",
