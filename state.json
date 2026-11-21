@@ -843,9 +843,14 @@
         {
           "t": "2026-11-21T06:19:42Z",
           "msg": "🎬 Scenes: 4 locations plan — Taco John's street, Wyoming, trademark office, boss ka room. Code ban gaya, ab frames check kar raha hoon (~35 min baqi, phir render ~40 min)"
+        },
+        {
+          "t": "2026-11-21T06:26:23Z",
+          "msg": "✅ Check frames saaf: Taco John's street, Wyoming, office, boss room — camera aur signs theek kar diye (~5 min baqi, phir render ~40 min)",
+          "image": "jobs/011-taco-tuesday-trademark/review/round1.jpg"
         }
       ],
-      "progress_count": 3
+      "progress_count": 4
     },
     "012-costco-hot-dog": {
       "status": "script_sent",
