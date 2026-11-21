@@ -1,0 +1,12 @@
+hook | Costco has sold the same hot dog for one dollar fifty since nineteen eighty-five.
+s02 | That's a hot dog and a big soda. The price never moved.
+s03 | Gas went up. Rent went up. Everything else got more expensive.
+s04 | Costco's own CEO has said the hot dog was losing money.
+s05 | So the boss asked if he could raise the price. The answer, as he tells it, was no. Figure it out.
+s06 | He did. Costco built its own hot dog factories.
+s07 | Making them in-house cut the cost, and the price stayed the same.
+s08 | Today it sells hundreds of millions of these combos in a single year.
+s09 | In twenty twenty-three, it was nearly two hundred million.
+s10 | Adjusted for inflation, that hot dog would cost over four dollars today.
+s11 | But you don't come to Costco for a hot dog. You come for the membership and the cart full of stuff.
+s12 | The hot dog was never the product. It was the reason to trust the store.
