@@ -754,7 +754,7 @@
       "published_at": "2026-11-20T02:23:31Z"
     },
     "010-coca-cola-free-coupons": {
-      "status": "video_approved",
+      "status": "published",
       "updated": "2026-11-20T20:22:02Z",
       "title": "Coca-Cola Gave Away Millions of Free Drinks on Purpose",
       "vote_msg": "1795200141.803509",
@@ -821,7 +821,8 @@
       "thumb_queued_at": "2026-11-21T02:25:44Z",
       "ig_at": "2026-11-21T02:25:44Z",
       "fb_at": "2026-11-21T02:25:44Z",
-      "reels_at": "2026-11-21T02:25:44Z"
+      "reels_at": "2026-11-21T02:25:44Z",
+      "published_at": "2026-11-21T04:16:24Z"
     },
     "011-taco-tuesday-trademark": {
       "status": "script_approved",
