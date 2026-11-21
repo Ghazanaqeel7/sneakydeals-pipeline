@@ -891,11 +891,20 @@
       "vote_kind": "script"
     },
     "013-kodak-hid-digital-camera": {
-      "status": "script_sent",
-      "updated": "2026-11-21T11:18:03Z",
+      "status": "script_approved",
+      "updated": "2026-11-21T18:50:30Z",
       "type": "long",
       "vote_msg": "1795259885.262489",
-      "vote_kind": "script"
+      "vote_kind": "script",
+      "progress": [
+        {
+          "t": "2026-11-21T18:50:30Z",
+          "msg": "✅ You approved the script on the dashboard. Claude starts the video in the next run."
+        }
+      ],
+      "progress_count": 1,
+      "decided_via": "dashboard",
+      "decided_at": "2026-11-21T18:50:30Z"
     }
   },
   "ideas": [
