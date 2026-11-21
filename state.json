@@ -830,7 +830,14 @@
       "title": "Taco John's Owned 'Taco Tuesday' Until Taco Bell Stepped In",
       "vote_msg": "1795155119.280489",
       "vote_kind": "script",
-      "decided_via": "slack"
+      "decided_via": "slack",
+      "progress": [
+        {
+          "t": "2026-11-21T06:15:52Z",
+          "msg": "🎙 Voice ban rahi hai… (~60 min baqi, phir render ~40 min)"
+        }
+      ],
+      "progress_count": 1
     },
     "012-costco-hot-dog": {
       "status": "script_ready",
