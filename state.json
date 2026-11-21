@@ -840,9 +840,11 @@
       "progress_count": 1
     },
     "012-costco-hot-dog": {
-      "status": "script_ready",
-      "updated": "2026-11-21T06:15:39Z",
-      "title": "Costco's $1.50 Hot Dog Hasn't Changed Price Since 1985"
+      "status": "script_sent",
+      "updated": "2026-11-21T06:15:55Z",
+      "title": "Costco's $1.50 Hot Dog Hasn't Changed Price Since 1985",
+      "vote_msg": "",
+      "vote_kind": ""
     }
   },
   "ideas": [
