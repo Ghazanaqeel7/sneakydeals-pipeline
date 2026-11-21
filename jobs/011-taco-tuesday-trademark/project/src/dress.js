@@ -85,8 +85,8 @@ export function dressOffice(W, O, chars) {
   W.add(P.at(P.bookshelf(4), O - 6.0, 0.05, -5.15), P.at(P.bookshelf(5), O - 0.4, 0.05, -5.15));
   W.add(P.at(P.filingCabinet(), O + 6.4, 0.05, -5.0), P.at(P.filingCabinet('#8f7d6a'), O + 7.2, 0.05, -5.0));
   W.add(P.at(P.bookshelf(6, 2.0, 2.4), O - 7.75, 0.05, -1.5, Math.PI / 2));
-  const p1 = P.poster('WIND', 1.1, 1.5, '#e6d39a'); P.at(p1, O + 0.9, 3.4, -5.45); W.add(p1);
-  const p2 = P.poster('STEEL', 1.1, 1.5, '#cfe3f0'); P.at(p2, O + 5.9, 3.3, -5.45); W.add(p2);
+  const p1 = P.poster('FORM', 1.1, 1.5, '#e6d39a'); P.at(p1, O + 0.9, 3.4, -5.45); W.add(p1);
+  const p2 = P.poster('FILE', 1.1, 1.5, '#cfe3f0'); P.at(p2, O + 5.9, 3.3, -5.45); W.add(p2);
   W.add(P.at(P.wallClock(), O + 3.2, 4.75, -5.4));
   // second desk with a classmate
   const d2 = P.desk(2.0, '#7a4f33'); d2.position.set(O + 5.6, 0.05, -2.2); W.add(d2);
