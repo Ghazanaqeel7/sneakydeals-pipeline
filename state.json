@@ -861,9 +861,13 @@
         {
           "t": "2026-11-21T06:50:34Z",
           "msg": "⏳ Render 25% (436/1686 frames). Baqi waqt: 4h 21m 5s"
+        },
+        {
+          "t": "2026-11-21T07:11:37Z",
+          "msg": "⏳ Render 51% (860/1686 frames). Baqi waqt: 2h 48m 29s"
         }
       ],
-      "progress_count": 7,
+      "progress_count": 8,
       "run": "44875557000"
     },
     "012-costco-hot-dog": {
