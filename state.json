@@ -886,11 +886,20 @@
       "yt_queued_at": "2026-11-21T18:50:35Z"
     },
     "012-costco-hot-dog": {
-      "status": "script_sent",
-      "updated": "2026-11-21T06:15:55Z",
+      "status": "script_approved",
+      "updated": "2026-11-21T18:50:42Z",
       "title": "Costco's $1.50 Hot Dog Hasn't Changed Price Since 1985",
       "vote_msg": "1795241757.437539",
-      "vote_kind": "script"
+      "vote_kind": "script",
+      "progress": [
+        {
+          "t": "2026-11-21T18:50:42Z",
+          "msg": "✅ You approved the script on the dashboard. Claude starts the video in the next run."
+        }
+      ],
+      "progress_count": 1,
+      "decided_via": "dashboard",
+      "decided_at": "2026-11-21T18:50:42Z"
     },
     "013-kodak-hid-digital-camera": {
       "status": "script_approved",
