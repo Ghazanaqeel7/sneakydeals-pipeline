@@ -884,6 +884,11 @@
       "title": "Costco's $1.50 Hot Dog Hasn't Changed Price Since 1985",
       "vote_msg": "1795241757.437539",
       "vote_kind": "script"
+    },
+    "013-kodak-hid-digital-camera": {
+      "status": "script_ready",
+      "updated": "2026-11-21T11:17:41Z",
+      "type": "long"
     }
   },
   "ideas": [
