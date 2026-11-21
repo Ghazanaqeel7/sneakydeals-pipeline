@@ -6,6 +6,19 @@
 <description>Approved videos for the Sneaky Deals Facebook Page. Zap "Sneaky Deals -> Facebook" (RSS by Zapier -> Facebook Pages Create Page Video) reads this feed. n8n adds one item per publish day, right after feed/youtube.xml.</description>
 <!--ITEMS-->
 <item>
+<title>Coca-Cola Gave Away Millions of Free Drinks on Purpose</title>
+<description><![CDATA[In 1887 Asa Candler gave out handwritten tickets for one free glass of Coke. Roughly 8.5 million free drinks later, it was served in every state, and Coca-Cola is widely considered the first company to offer coupons.
+
+Would you have taken the ticket? 👇
+
+#cocacola #businesshistory]]></description>
+<link>https://raw.githubusercontent.com/Ghazanaqeel7/sneakydeals-pipeline/main/jobs/010-coca-cola-free-coupons/thumbnail.jpg</link>
+<guid isPermaLink="false">010-coca-cola-free-coupons</guid>
+<pubDate>Sat, 21 Nov 2026 02:25:44 GMT</pubDate>
+<enclosure url="https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/010-coca-cola-free-coupons.mp4" type="video/mp4" length="0"/>
+</item>
+
+<item>
 <title>McDonald's Monopoly Was Rigged by Its Own Security Chief</title>
 <description><![CDATA[The man guarding the game's winning pieces secretly gave them to friends and family, who posed as winners and paid him a cut. The FBI's Operation Final Answer ended it in 2001.
 

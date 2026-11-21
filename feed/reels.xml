@@ -6,6 +6,24 @@
 <description>Approved videos for Instagram Reels + Facebook Reels. Two Zaps (RSS by Zapier → Instagram for Business / Facebook Pages) read this feed. n8n adds one item on each publish day, right after feed/youtube.xml.</description>
 <!--ITEMS-->
 <item>
+<title>Coca-Cola Gave Away Millions of Free Drinks on Purpose</title>
+<description><![CDATA[Coca-Cola gave away millions of free drinks. On purpose 🥤
+
+In 1887 Asa Candler handed out tickets for one free glass of Coke. It may be the first coupon ever.
+
+Would you have taken one? 👇
+Follow for a new true business story every day.
+
+⚠️ Dramatised illustration, real facts.
+
+#cocacola #coke #businesshistory #truestory #sneakydeals]]></description>
+<link>https://raw.githubusercontent.com/Ghazanaqeel7/sneakydeals-pipeline/main/jobs/010-coca-cola-free-coupons/thumbnail.jpg</link>
+<guid isPermaLink="false">010-coca-cola-free-coupons</guid>
+<pubDate>Sat, 21 Nov 2026 02:25:44 GMT</pubDate>
+<enclosure url="https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/010-coca-cola-free-coupons.mp4" type="video/mp4" length="0"/>
+</item>
+
+<item>
 <title>McDonald's Monopoly Was Rigged by Its Own Security Chief</title>
 <description><![CDATA[McDonald's Monopoly was rigged by its own security chief 🍟
 

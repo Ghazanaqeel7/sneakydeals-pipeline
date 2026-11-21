@@ -799,15 +799,29 @@
         {
           "t": "2026-11-20T20:22:02Z",
           "msg": "✅ You approved the video + thumbnail on the dashboard. It goes to YouTube at the next publish slot."
+        },
+        {
+          "t": "2026-11-21T02:25:44Z",
+          "msg": "✅ LIVE on YouTube: \"Coca-Cola Gave Away Millions of Free Drinks on Purpose\" https://youtu.be/7FZK3QoKGTE"
+        },
+        {
+          "t": "2026-11-21T02:25:44Z",
+          "msg": "📱 Instagram + Facebook: \"Coca-Cola Gave Away Millions of Free Drinks on Purpose\" queued, Zapier posts it within ~15 min."
         }
       ],
-      "progress_count": 9,
+      "progress_count": 11,
       "run": "44782389254",
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-010-coca-cola-free-coupons/final.mp4",
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-010-coca-cola-free-coupons/preview.mp4",
       "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/010-coca-cola-free-coupons.mp4",
       "yt_scheduled_for": "2026-11-21T00:00:00Z",
-      "yt_queued_at": "2026-11-20T20:22:22Z"
+      "yt_queued_at": "2026-11-20T20:22:22Z",
+      "yt_video_id": "7FZK3QoKGTE",
+      "yt_live_at": "2026-11-21T02:25:44Z",
+      "thumb_queued_at": "2026-11-21T02:25:44Z",
+      "ig_at": "2026-11-21T02:25:44Z",
+      "fb_at": "2026-11-21T02:25:44Z",
+      "reels_at": "2026-11-21T02:25:44Z"
     },
     "011-taco-tuesday-trademark": {
       "status": "script_approved",
