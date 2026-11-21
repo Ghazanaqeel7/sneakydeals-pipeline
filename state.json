@@ -826,12 +826,12 @@
       "fb_thumb_set": "2026-11-21T11:12:00Z"
     },
     "011-taco-tuesday-trademark": {
-      "status": "video_sent",
-      "updated": "2026-11-21T11:10:09Z",
+      "status": "video_approved",
+      "updated": "2026-11-21T18:50:04Z",
       "title": "Taco John's Owned 'Taco Tuesday' Until Taco Bell Stepped In",
       "vote_msg": "1795259414.134499",
       "vote_kind": "video",
-      "decided_via": "slack",
+      "decided_via": "dashboard",
       "progress": [
         {
           "t": "2026-11-21T06:15:52Z",
@@ -870,13 +870,18 @@
         {
           "t": "2026-11-21T07:33:41Z",
           "msg": "⏳ Render 75% (1277/1686 frames). Baqi waqt: 1h 24m 23s"
+        },
+        {
+          "t": "2026-11-21T18:50:04Z",
+          "msg": "✅ You approved the video + thumbnail on the dashboard. It goes to YouTube at the next publish slot."
         }
       ],
-      "progress_count": 9,
+      "progress_count": 10,
       "run": "44875557000",
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-011-taco-tuesday-trademark/final.mp4",
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-011-taco-tuesday-trademark/preview.mp4",
-      "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/011-taco-tuesday-trademark.mp4"
+      "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/011-taco-tuesday-trademark.mp4",
+      "decided_at": "2026-11-21T18:50:04Z"
     },
     "012-costco-hot-dog": {
       "status": "script_sent",
