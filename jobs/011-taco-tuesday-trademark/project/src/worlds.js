@@ -94,9 +94,9 @@ function eatery(ox, z, {name, wall, roof, signBg, signFg = '#ffffff', w = 10, h 
   const front = z + 4.05;
   g.add(box(w * 0.62, 2.2, 0.1, '#9fd0e6', {x: ox - w * 0.12, y: 1.9, z: front, thick: 0.02}));
   g.add(box(1.5, 2.8, 0.12, '#5a3a26', {x: ox + w * 0.33, y: 1.5, z: front, thick: 0.02}));
-  const awn = box(w, 0.2, 1.8, roof, {x: ox, y: 3.35, z: front + 0.8, thick: 0.02}); awn.rotation.x = 0.28; g.add(awn);
-  const sg = sign(name, w * 0.85, 1.5, {bg: signBg, fg: signFg, w: 900, h: 190, font: 'bold 120px Arial, sans-serif', border: false});
-  sg.position.set(ox, h - 0.2, front + 0.1); g.add(sg);
+  const awn = box(w, 0.2, 1.8, roof, {x: ox, y: 3.0, z: front + 0.8, thick: 0.02}); awn.rotation.x = 0.28; g.add(awn);
+  const sg = sign(name, w * 0.7, w * 0.15, {bg: signBg, fg: signFg, w: 900, h: 190, font: 'bold 120px Arial, sans-serif', border: false});
+  sg.position.set(ox, h - 0.85, front + 0.12); g.add(sg);
   const r = rng(seed);
   for (let i = 0; i < 5; i++) g.add(box(0.5, 0.35 + r() * 0.2, 0.3, ['#e0533d', '#f2c12e', '#6aa84f'][i % 3], {x: ox - w * 0.3 + i * 0.7, y: 1.1, z: front - 0.5, thick: 0.01}));
   return g;
@@ -114,8 +114,8 @@ export function buildWorld() {
   W.add(eatery(TJ, -9, {name: "TACO JOHN'S", wall: '#e8b04a', roof: '#c8102e', signBg: '#c8102e', seed: 3}));
   W.add(eatery(TB, -9, {name: 'TACO BELL', wall: '#d9c6ee', roof: '#6b2d8f', signBg: '#6b2d8f', seed: 5}));
   const banner = sign('TACO TUESDAY', 8.2, 1.7, {bg: '#ffd23f', w: 900, h: 190, font: 'bold 120px Arial, sans-serif'});
-  banner.position.set(TJ, 6.6, -3.2); W.add(banner);
-  W.add(cyl(0.12, 0.14, 7.4, '#3a3a3a', {x: TJ - 4.4, y: 3.7, z: -3.2}), cyl(0.12, 0.14, 7.4, '#3a3a3a', {x: TJ + 4.4, y: 3.7, z: -3.2}));
+  banner.position.set(TJ, 8.6, -3.2); W.add(banner);
+  W.add(cyl(0.12, 0.14, 9.4, '#3a3a3a', {x: TJ - 4.4, y: 4.7, z: -3.2}), cyl(0.12, 0.14, 9.4, '#3a3a3a', {x: TJ + 4.4, y: 4.7, z: -3.2}));
   for (let i = 0; i < 6; i++) W.add(cloud(D - 80 + i * 30, 100 + (i % 3) * 10, -130, 7));
   for (const s of [-1, 1]) { W.add(P.at(P.tree(1.4, 70 + s), D + s * 14, 0.05, -10)); W.add(P.at(P.bench(), D + s * 2.2 + 1, 0.05, -2.0, 0)); }
   W.add(P.at(P.flag('#c8102e'), TJ - 5.6, 0.05, -4.6), P.at(P.flag('#6b2d8f'), TB + 5.6, 0.05, -4.6));
@@ -139,7 +139,7 @@ export function buildWorld() {
   W.add(ground(220, 120, '#a9b873', {x: Y, z: -20, seed: 15, repeat: 14}));
   const road = new THREE.Mesh(new THREE.BoxGeometry(220, 0.05, 6), toon('#6e6670')); road.position.set(Y, 0.03, 8); W.add(road);
   for (let i = -10; i < 10; i++) W.add(box(2.4, 0.06, 0.3, '#e8d28a', {x: Y + i * 8, y: 0.07, z: 8, edges: false, thick: 0.001}));
-  W.add(eatery(Y, -6, {name: "TACO JOHN'S", wall: '#e8b04a', roof: '#c8102e', signBg: '#c8102e', w: 9, h: 4.4, seed: 7}));
+  W.add(eatery(Y, -6, {name: "TACO JOHN'S", wall: '#e8b04a', roof: '#c8102e', signBg: '#c8102e', w: 9, h: 5.2, seed: 7}));
   for (let i = 0; i < 9; i++) { const m = new THREE.Mesh(new THREE.ConeGeometry(14 + (i % 3) * 5, 22 + (i % 4) * 8, 5), toon(i % 2 ? '#8c9bb0' : '#7b8aa3')); m.position.set(Y - 90 + i * 24, 11 + (i % 4) * 3, -85 - (i % 3) * 14); ink(m, 0.2, true); W.add(m); }
   for (let i = 0; i < 6; i++) W.add(cloud(Y - 60 + i * 26, 70 + (i % 3) * 8, -110, 6));
   const wy = sign('WYOMING', 3.8, 1.0, {bg: '#3e5a7a', fg: '#ffffff', w: 760, h: 200, font: 'bold 96px Arial, sans-serif'}); wy.position.set(Y - 6.6, 3.4, 5.2); W.add(wy);
@@ -147,8 +147,8 @@ export function buildWorld() {
   const cnt = sign('400', 3.0, 1.5, {bg: '#f2e6cc', w: 600, h: 300, font: 'bold 190px Arial, sans-serif', sub: 'RESTAURANTS'}); cnt.position.set(Y + 7.0, 3.6, 3.4); W.add(cnt);
   W.add(cyl(0.08, 0.08, 3.6, '#3a3a3a', {x: Y + 5.7, y: 1.8, z: 3.4}), cyl(0.08, 0.08, 3.6, '#3a3a3a', {x: Y + 8.3, y: 1.8, z: 3.4}));
   for (let i = 0; i < 8; i++) { const mini = eatery(Y - 30 + i * 8, -26 - (i % 2) * 6, {name: "TACO JOHN'S", wall: '#e8b04a', roof: '#c8102e', signBg: '#c8102e', w: 6, h: 3.4, seed: 20 + i}); W.add(mini); }
-  const wcar = P.car('#2f6db3'); wcar.position.set(Y + 2, 0, 4); wcar.rotation.y = 0.5; W.add(wcar);
-  W.add(P.at(P.car('#c43d32'), Y - 3.5, 0, 3.4, -0.3));
+  const wcar = P.car('#2f6db3'); wcar.position.set(Y + 16, 0, 8); wcar.rotation.y = 0.5; W.add(wcar);
+  W.add(P.at(P.car('#c43d32'), Y - 18, 0, 8, 0));
   for (let i = 0; i < 6; i++) W.add(P.at(P.tree(1.1, 800 + i), Y - 16 + i * 7, 0.05, -14 + (i % 2) * 3));
   [[-1.4, 'red', 'cap'], [1.2, 'teal', 'none'], [3.4, 'mustard', 'bowler']].forEach(([dx, pal, hat], i) => {
     const c = character({palette: pal, hat, seed: 460 + i}); c.position.set(Y + dx, 0.05, -0.3 + (i % 2)); W.add(c); chars.push(c);
@@ -177,7 +177,7 @@ export function buildWorld() {
   const form = new THREE.Mesh(new THREE.BoxGeometry(1.6, 0.06, 1.0), [toon('#d8c9a8'), toon('#d8c9a8'), toon('#ffffff', formTex), toon('#d8c9a8'), toon('#d8c9a8'), toon('#d8c9a8')]);
   ink(form, 0.01, true); form.position.set(O - 3.4, 1.18, 0.7); form.rotation.y = 0.15; W.add(form);
   const stampG = new THREE.Group(); stampG.add(cyl(0.22, 0.22, 0.12, '#5a3a26', {y: 0.06}), cyl(0.07, 0.07, 0.4, '#8a5a3b', {y: 0.32}), cyl(0.12, 0.1, 0.1, '#5a3a26', {y: 0.55}));
-  stampG.position.set(O - 2.3, 1.14, 1.2); W.add(stampG);
+  stampG.position.set(O - 1.9, 1.14, 1.15); W.add(stampG);
   // wall board (status text)
   const bc = document.createElement('canvas'); bc.width = 640; bc.height = 360; const bg = bc.getContext('2d');
   const boardTex = new THREE.CanvasTexture(bc); boardTex.colorSpace = THREE.SRGBColorSpace; let boardKey = '#';
@@ -200,27 +200,30 @@ export function buildWorld() {
   plant.position.set(O - 5.6, 0.05, 3.2); W.add(plant);
 
   // ======== BOSS ROOM ========
-  W.add(room(J, {w: 18, h: 6, d: 12, wall: '#f0d9b5', floor: '#8a5a3b', seed: 33}));
+  W.add(room(J, {w: 18, h: 4.8, d: 12, wall: '#f0d9b5', floor: '#8a5a3b', seed: 33}));
   W.add(P.at(P.rug(7, 4, '#a8433a', '#e0b04a'), J, 0, -0.2));
   const bd = P.desk(3.0, '#6b4430'); bd.position.set(J, 0.05, -3.6); W.add(bd);
   W.add(P.at(P.papers(8, 44), J - 0.8, 1.0, -3.6), P.at(P.deskLamp(), J + 1.2, 1.0, -3.9), P.at(P.phone(), J + 0.5, 1.0, -3.4), P.at(P.mug('#2f6db3'), J - 1.4, 1.0, -3.3));
   W.add(P.at(P.bookshelf(7), J - 6.2, 0.05, -5.3), P.at(P.bookshelf(8), J + 6.2, 0.05, -5.3), P.at(P.filingCabinet(), J + 8.2, 0.05, -4.6), P.at(P.wallClock(), J + 3.6, 4.7, -5.4));
   W.add(P.at(P.chair('#7a2f2f'), J, 0.05, -4.6, 0));
-  const cal = sign('JULY 18', 2.8, 2.2, {bg: '#f7f0de', fg: '#c8102e', w: 560, h: 440, font: 'bold 120px Arial, sans-serif', sub: 'TRADEMARK RELEASED'}); cal.position.set(J, 3.4, -5.45); W.add(cal);
-  const logoWall = sign("TACO JOHN'S", 3.4, 0.9, {bg: '#c8102e', fg: '#ffffff', w: 680, h: 180, font: 'bold 84px Arial, sans-serif', border: false}); logoWall.position.set(J - 3.6, 4.2, -5.45); W.add(logoWall);
-  const sFight = sign('FIGHT', 1.5, 0.7, {bg: '#e0533d', fg: '#ffffff', w: 400, h: 190, font: 'bold 96px Arial, sans-serif'}); sFight.position.set(J - 2.7, 1.9, -1.4); W.add(sFight);
-  const sWalk = sign('WALK AWAY', 2.0, 0.7, {bg: '#4f8a4a', fg: '#ffffff', w: 540, h: 190, font: 'bold 76px Arial, sans-serif'}); sWalk.position.set(J + 2.7, 1.9, -1.4); W.add(sWalk);
-  W.add(cyl(0.05, 0.05, 1.6, '#3a3a3a', {x: J - 2.7, y: 0.8, z: -1.45}), cyl(0.05, 0.05, 1.6, '#3a3a3a', {x: J + 2.7, y: 0.8, z: -1.45}));
+  const cal = sign('JULY 18', 2.8, 2.2, {bg: '#f7f0de', fg: '#c8102e', w: 560, h: 440, font: 'bold 120px Arial, sans-serif', sub: 'TRADEMARK RELEASED'}); cal.position.set(J, 3.1, -5.45); W.add(cal);
+  const logoWall = sign("TACO JOHN'S", 3.4, 0.9, {bg: '#c8102e', fg: '#ffffff', w: 680, h: 180, font: 'bold 84px Arial, sans-serif', border: false}); logoWall.position.set(J - 3.6, 3.9, -5.45); W.add(logoWall);
+  const sFight = sign('FIGHT', 1.2, 0.6, {bg: '#e0533d', fg: '#ffffff', w: 400, h: 190, font: 'bold 96px Arial, sans-serif'}); sFight.position.set(J - 1.5, 1.9, -1.4); W.add(sFight);
+  const sWalk = sign('WALK AWAY', 1.6, 0.6, {bg: '#4f8a4a', fg: '#ffffff', w: 540, h: 190, font: 'bold 76px Arial, sans-serif'}); sWalk.position.set(J + 1.6, 1.9, -1.4); W.add(sWalk);
+  W.add(cyl(0.05, 0.05, 1.6, '#3a3a3a', {x: J - 1.5, y: 0.8, z: -1.45}), cyl(0.05, 0.05, 1.6, '#3a3a3a', {x: J + 1.6, y: 0.8, z: -1.45}));
   const check = sign('$40,000', 2.6, 1.2, {bg: '#e9f3dc', fg: '#245a2a', w: 640, h: 300, font: 'bold 130px Arial, sans-serif', sub: 'TO CHARITY'}); check.position.set(J + 1.6, 2.6, -2.2); W.add(check);
   const boss = character({palette: 'red', hat: 'none', glasses: false, seed: 71}); boss.position.set(J - 0.2, 0.05, -1.7); W.add(boss); chars.push(boss);
-  const aide = character({palette: 'teal', hat: 'none', glasses: true, seed: 72}); aide.position.set(J + 4.8, 0.05, -2.2); W.add(aide); chars.push(aide);
+  const aide = character({palette: 'teal', hat: 'none', glasses: true, seed: 72}); aide.position.set(J + 3.8, 0.05, -1.0); W.add(aide); chars.push(aide);
+  W.add(P.at(P.bookshelf(11, 2.2, 2.4), J - 3.9, 0.05, -5.3), P.at(P.bookshelf(12, 2.2, 2.4), J + 3.9, 0.05, -5.3));
+  const trophy = P.poster('BEST TACO', 1.0, 1.3, '#f2c12e'); P.at(trophy, J + 6.0, 2.6, -5.45); W.add(trophy);
+  const win2 = sign('', 2.0, 1.6, {bg: '#bfe3f5', border: true}); win2.position.set(J - 6.6, 2.7, -5.45); W.add(win2);
   W.add(P.at(plant.clone(), J + 7.2, 0.05, 3.4), P.at(plant.clone(), J - 7.2, 0.05, 3.2));
 
   // ======== per-frame update ========
   const stampT = (a, b) => ease(t_, a, b); let t_ = 0;
   const update = (t, cam, shot) => {
     t_ = t;
-    for (const c of chars) c.userData.update(t, cam.position);
+    for (const c of chars) { c.userData.update(t, cam.position); c.visible = c.position.distanceTo(cam.position) > 3.8; }
     trafficD(t, cam);
     // office form + stamp
     if (shot === 's03') { drawForm('TRADEMARK APPLICATION', t > wordT('s03', 1.5) ? 'REGISTERED' : '', '#2a8a3a'); }
@@ -228,7 +231,7 @@ export function buildWorld() {
     const slam = (a) => Math.max(0, 1 - Math.abs(t - a) / 0.25);
     const sh = shot === 's03' ? slam(wordT('s03', 1.5)) : (shot === 's04' || shot === 's05') ? slam(wordT('s04', 10)) : 0;
     stampG.position.y = 1.14 + 0.5 * (1 - sh) * (shot === 's03' || shot === 's04' ? 1 : 0.4);
-    stampG.position.x = O - 3.3; stampG.position.z = 0.75;
+    
     // wall board
     if (shot === 's03') drawBoard('REGISTERED', '1989', '#9be28a');
     else if (shot === 's04') drawBoard('SECOND TRY', 'NO', '#ff8a7a');

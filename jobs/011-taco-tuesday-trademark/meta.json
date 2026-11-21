@@ -14,11 +14,11 @@
   "pinned_comment": "What is your Taco Tuesday order? 👇",
   "thumb": {
     "frame": 40,
-    "box": "TACO TUESDAY",
-    "line1": "WAS OWNED?!",
-    "line2": "",
+    "box": "TACO JOHN'S",
+    "line1": "TACO TUESDAY",
+    "line2": "WAS OWNED?!",
     "box_color": "#c8102e",
-    "bg_shift": 0
+    "bg_shift": -480
   },
   "hookTitle": [
     "TACO TUESDAY",

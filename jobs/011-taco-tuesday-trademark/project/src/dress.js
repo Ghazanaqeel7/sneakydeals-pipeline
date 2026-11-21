@@ -82,7 +82,7 @@ export function dressOffice(W, O, chars) {
   W.add(P.at(P.chair(), O - 2.5, 0.05, -0.75, 0));
   W.add(P.at(P.deskLamp(), O - 4.2, 1.14, 0.1), P.at(P.mug(), O - 1.0, 1.14, 1.0), P.at(P.papers(7, 3), O - 2.9, 1.14, 0.0));
   const roll = cyl(0.06, 0.06, 0.9, '#cfe3f0', {seg: 10, thick: 0.006}); roll.rotation.z = Math.PI / 2; roll.position.set(O - 2.0, 1.2, 0.95); W.add(roll);
-  W.add(P.at(P.bookshelf(4), O - 6.0, 0.05, -5.15), P.at(P.bookshelf(5), O - 0.4, 0.05, -5.15));
+  W.add(P.at(P.bookshelf(4), O - 6.0, 0.05, -5.15));
   W.add(P.at(P.filingCabinet(), O + 6.4, 0.05, -5.0), P.at(P.filingCabinet('#8f7d6a'), O + 7.2, 0.05, -5.0));
   W.add(P.at(P.bookshelf(6, 2.0, 2.4), O - 7.75, 0.05, -1.5, Math.PI / 2));
   const p1 = P.poster('FORM', 1.1, 1.5, '#e6d39a'); P.at(p1, O + 0.9, 3.4, -5.45); W.add(p1);
