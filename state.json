@@ -839,9 +839,13 @@
         {
           "t": "2026-11-21T06:17:04Z",
           "msg": "🎙 Voice tayyar (58 s). Ab scenes ban rahe hain (~50 min baqi, phir render ~40 min)"
+        },
+        {
+          "t": "2026-11-21T06:19:42Z",
+          "msg": "🎬 Scenes: 4 locations plan — Taco John's street, Wyoming, trademark office, boss ka room. Code ban gaya, ab frames check kar raha hoon (~35 min baqi, phir render ~40 min)"
         }
       ],
-      "progress_count": 2
+      "progress_count": 3
     },
     "012-costco-hot-dog": {
       "status": "script_sent",
