@@ -906,8 +906,8 @@
       "decided_at": "2026-11-21T18:50:42Z"
     },
     "013-kodak-hid-digital-camera": {
-      "status": "render_queued",
-      "updated": "2026-11-22T06:09:26Z",
+      "status": "rendering",
+      "updated": "2026-11-22T06:10:39Z",
       "type": "long",
       "vote_msg": "1795259885.262489",
       "vote_kind": "script",
@@ -923,7 +923,8 @@
       ],
       "progress_count": 2,
       "decided_via": "dashboard",
-      "decided_at": "2026-11-21T18:50:30Z"
+      "decided_at": "2026-11-21T18:50:30Z",
+      "run": "44992464004"
     }
   },
   "ideas": [
