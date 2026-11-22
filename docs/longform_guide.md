@@ -58,35 +58,45 @@ Icons: store factory dollar person people building truck cart box plane car phon
 - No real logos or brand marks are drawn; a brand is its name in its colour plus an icon.
 - Fonts are bundled (Anton, Playfair Display, Inter, Space Mono); every scene already gets punch-in transitions, shakes on impacts and film grain.
 
-## 3D engine integration (started 22 Nov 2026 — NOT finished, read before starting a build)
+## 3D engine integration (wired 22 Nov 2026 — NOT yet render-tested, read before using it)
 Owner wants long-form built with the same engine as the Shorts (`3d-story-shorts` skill / `pipeline/template/`), not the
-old flat 2D cast-card look. Status so far:
-- **Done:** `pipeline/template-long/src/engine3d/` now holds a copy of the Shorts engine (`kit.js`, `char.js`, `props.js`,
-  `dress.js`, `worlds.js`, `camera.js`, `extra-props.js`, `Full.jsx`). `worlds.js`/`camera.js` in there are still the Shorts
-  example story ("Skyscraper Fixed in Secret") — they are reference/starting material only, exactly like a Short's
-  `template/`, NOT wired up yet. `package.json` has the `three` / `@react-three/fiber` / `@remotion/three` deps added.
-  `Full.jsx` is already resolution-agnostic (reads `width`/`height` from `useVideoConfig`), so it does not need changing
-  for 16:9 — only per-shot camera distances/FOV need to suit a wider frame than the Shorts' 9:16.
-- **Not done — the actual wiring, do this when building the next long job:**
-  1. In `Doc.jsx`, add a new scene `visual.type: "scene3d"`. For the duration of that scene, render the ported `Full.jsx`-style
-     3D shot instead of a 2D card (likely as a `<Sequence>` wrapping a small `Shot3D` component you extract from
-     `engine3d/Full.jsx` — that file currently renders a whole project keyed by a global `camera.js` `PLAN`/`worlds.js` `LOC`
-     per shot key; it needs factoring into something one scene can call with its own small world/camera/dress data instead
-     of a hardcoded per-project file).
-  2. Decide scene3d authoring shape in `scenes.json` (propose: `visual:{type:'scene3d', location, cast:[...], camera:{p0,l0,p1,l1,beats}, props:[...]}` —
-     i.e. the same ideas as a Short's `worlds.js`/`camera.js`/`dress.js`, just expressed as per-scene data instead of a whole
-     project file, because a long video has 40-80+ scenes vs a Short's 10-13 shots).
-  3. `render_long.yml` / `render_chunk.sh` render composition id `"Doc"` and don't need to change IF the 3D scenes render
-     inside `Doc` via the `<Sequence>` approach above — confirm this before assuming it, since it was not tested end to end.
-  4. **Cost/risk to flag to the owner before relying on this for the regular calendar:** 3D frames are much heavier to render
-     than the current 2D cards (headless Chrome + software GL/`swangle`, no GPU on GitHub Actions runners) — a 12-15 min video
-     is roughly 12-15x a Short's frame count, so render time per chunk will be noticeably longer and the existing chunk size
-     (2700 frames) / concurrency (4) in `render_chunk.sh` may need retuning once real numbers are seen. The repo is public so
-     GitHub Actions minutes are free, but a render could still take much longer wall-clock, and this path is UNTESTED — budget
-     the next long job as the real test (equivalent to the Shorts "60-90s sample" step already in the Build order), not as a
-     guaranteed-working calendar slot.
-  5. No GitHub Actions run, Remotion render, or `npm install` has actually been executed to validate any of this — it is code
-     written and pushed, not yet proven to render. Say so plainly if asked "is it working yet".
+old flat 2D cast-card look.
+
+**Status: code written and wired, zero real renders yet.** No `npm install`, no `remotion render`, no GitHub Actions run
+has executed any of this. Treat the first long job built with it as the test, exactly like the Shorts' "60-90 s sample"
+step — not a guaranteed calendar slot.
+
+- `pipeline/template-long/src/engine3d/` holds a copy of the Shorts engine files (`kit.js`, `char.js`, `props.js`,
+  `dress.js`, `worlds.js`, `camera.js`, `extra-props.js`, `Full.jsx`). `worlds.js`, `camera.js` and `Full.jsx` are left
+  UNUSED on purpose — they import the Shorts' own `timing.json` (shot-keyed) which does not exist in a long-form project
+  and would crash the build. Only `kit.js`, `char.js`, `dress.js`, `props.js` (no `timing.json` dependency) are actually used.
+- `pipeline/template-long/src/scenes/Scene3D.jsx` is the new renderer, registered in `Doc.jsx`'s `REGISTRY` as `scene3d`.
+  It is a deliberately SIMPLER first version than the Shorts' `Full.jsx` (plain lights + fog, no bloom/sky-dome/bokeh/colour
+  grade yet) so the first real render has the best chance of just working; add the extra cinematic passes back in once a
+  `scene3d` scene has actually rendered once.
+- **`visual.type: "scene3d"` schema for `scenes.json`** (use this now, it's implemented):
+  ```json
+  {"type": "scene3d",
+   "location": "street | night_street | office | yard | workshop | newsroom",
+   "light": "day | night | office | yard | joint | weather | morning",
+   "cast": [{"palette": "engineer|student|welder|clerk|official|red|teal|mustard|pink|navy", "hat": "none|cap|bowler|top", "glasses": false, "x": -1.0, "z": 3.2, "ry": 0}],
+   "camFrom": [0, 2, 10], "camTo": [2, 1.6, 6],
+   "lookFrom": [0, 1, 0], "lookTo": [0, 1, 0]}
+  ```
+  One scene = one dressed location (ambient crowd/traffic/props come free from the location's `dress*` preset) + up to a
+  few named `cast` characters placed where you want them + a camera that eases from `camFrom`/`lookFrom` to `camTo`/`lookTo`
+  over the scene's duration. Mix with the usual 2D types (`title`, `compare`, etc.) in the same `scenes.json` — `scene3d`
+  does not have to be every scene, just the primary one per the "Format"/"Attention rules" above.
+- `validate_long.py` now accepts `scene3d` in `TYPES` and checks `location` is one of the six presets.
+- `render_long.yml` / `render_chunk.sh` still render composition id `"Doc"` and needed NO changes — `scene3d` scenes render
+  inside the existing `Doc` composition via the normal `<Sequence>`/`REGISTRY` mechanism, same as every other type.
+- **Cost/risk to flag to the owner before relying on this for the regular calendar:** 3D frames are much heavier to render
+  than the old 2D cards (headless Chrome + software GL/`swangle`, no GPU on GitHub Actions runners) — a 12-15 min video is
+  roughly 12-15x a Short's frame count, so render time per chunk will likely be noticeably longer, and the chunk size (2700
+  frames) / concurrency (4) in `render_chunk.sh` may need retuning once real numbers come back from a first run.
+- **Known gaps for a v2** (not blocking a first test, but real limits): only 6 location presets exist (reuse/re-dress them
+  across scenes like the Shorts reuse locations); no moving/animated cast poses yet (characters stand still, Shorts-style
+  idle sway not ported); no bloom/grade/vignette/film grain yet (flagged above).
 
 ## Images
 `image.q` = a Wikimedia Commons search phrase (specific: "Sears Tower Chicago 1980s", "mail order catalog 1897").

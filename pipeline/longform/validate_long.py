@@ -2,7 +2,7 @@
 """Validate a long-form job before it is queued. usage: validate_long.py jobs/<id>
 Checks scenes.json, thumb.json, meta.json, script length, visual variety. Exit 1 on errors."""
 import json, os, sys, re
-TYPES = {'title','chapter','photo','stat','chart','timeline','map','headline','compare','list','quote','illustration','endcard'}
+TYPES = {'title','chapter','photo','stat','chart','timeline','map','headline','compare','list','quote','illustration','endcard','scene3d'}
 def main():
     job = sys.argv[1].rstrip('/'); errs = []; warns = []
     P = os.path.join(job, 'project', 'src')
@@ -37,6 +37,10 @@ def main():
                 if not (b.get('image') or {}).get('q') and not (b.get('image') or {}).get('file'): errs.append(f'{sid}: photo without image.q')
                 if not b.get('fallback'): warns.append(f'{sid}: photo without fallback icon')
             if b['type'] == 'chart' and not b.get('data'): errs.append(f'{sid}: chart without data')
+            if b['type'] == 'scene3d':
+                if b.get('location') not in ('street','night_street','office','yard','workshop','newsroom'):
+                    errs.append(f'{sid}: scene3d needs a valid location (street/night_street/office/yard/workshop/newsroom)')
+                if not b.get('camFrom'): warns.append(f'{sid}: scene3d without camFrom (camera will default/not move)')
         if len(beats) > 1 and len(t.split()) < 8: warns.append(f'{sid}: several beats on a very short scene')
         if len(t.split()) > 75: warns.append(f'{sid}: scene is {len(t.split())} words (>~30 s on one visual)')
     if sc and types[-1:] != ['endcard']: warns.append('last scene is not an endcard')
