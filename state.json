@@ -1002,9 +1002,13 @@
         {
           "t": "2026-11-22T17:10:01Z",
           "msg": "🎞 Long video prepare: images, voice aur music ban rahe hain (~10-20 min)"
+        },
+        {
+          "t": "2026-11-22T17:33:04Z",
+          "msg": "🎞 Long video prepare: images, voice aur music ban rahe hain (~10-20 min)"
         }
       ],
-      "progress_count": 9,
+      "progress_count": 10,
       "decided_via": "dashboard",
       "decided_at": "2026-11-22T12:58:17Z",
       "run": "45049955284",
