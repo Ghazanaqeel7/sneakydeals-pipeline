@@ -917,11 +917,11 @@
       "decided_at": "2026-11-21T18:50:42Z"
     },
     "013-kodak-hid-digital-camera": {
-      "status": "video_ready",
-      "updated": "2026-11-22T08:06:18Z",
+      "status": "video_sent",
+      "updated": "2026-11-22T11:09:31Z",
       "type": "long",
-      "vote_msg": "1795259885.262489",
-      "vote_kind": "script",
+      "vote_msg": "",
+      "vote_kind": "",
       "progress": [
         {
           "t": "2026-11-21T18:50:30Z",
