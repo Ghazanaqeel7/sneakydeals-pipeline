@@ -1,0 +1,9 @@
+{
+  "ok": true,
+  "errors": [],
+  "warnings": [
+    "script.md has no fact map table (claim | sources)"
+  ],
+  "checked_at": "2026-11-22T06:10:35Z",
+  "policy": "docs/ypp_policy.md"
+}

@@ -1,0 +1,12 @@
+hook | Nike paid thirty-five dollars for its logo.
+s02 | Yes, the Swoosh. The one on every shoe.
+s03 | It was nineteen seventy-one. Phil Knight ran a small Oregon shoe company, and he needed a logo.
+s04 | He turned to Carolyn Davidson, a design student at Portland State.
+s05 | She sent him an invoice. Thirty-five dollars.
+s06 | He looked at her design and said, I don't love it, but it will grow on me.
+s07 | He paid. And the Swoosh went onto shoes that same year.
+s08 | The little company became Nike, a global giant.
+s09 | Twelve years later, in nineteen eighty-three, Nike thanked her.
+s10 | A gold Swoosh ring with a diamond. And Nike stock.
+s11 | One sketch, thirty-five dollars at first, then a ring and shares.
+s12 | A great idea can look cheap on day one.
