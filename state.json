@@ -897,8 +897,8 @@
       "thumb_queued_at": "2026-11-22T06:29:59Z"
     },
     "012-costco-hot-dog": {
-      "status": "video_ready",
-      "updated": "2026-11-22T12:15:17Z",
+      "status": "video_approved",
+      "updated": "2026-11-22T12:48:07Z",
       "title": "Costco's $1.50 Hot Dog Hasn't Changed Price Since 1985",
       "vote_msg": "1795241757.437539",
       "vote_kind": "script",
@@ -944,11 +944,15 @@
         {
           "t": "2026-11-22T12:01:09Z",
           "msg": "⏳ Render 75% (1079/1424 frames). Baqi waqt: 53m 28s"
+        },
+        {
+          "t": "2026-11-22T12:48:07Z",
+          "msg": "✅ You approved the video + thumbnail on the dashboard. It goes to YouTube at the next publish slot."
         }
       ],
-      "progress_count": 10,
+      "progress_count": 11,
       "decided_via": "dashboard",
-      "decided_at": "2026-11-21T18:50:42Z",
+      "decided_at": "2026-11-22T12:48:07Z",
       "run": "45016618865",
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-012-costco-hot-dog/final.mp4",
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-012-costco-hot-dog/preview.mp4",
