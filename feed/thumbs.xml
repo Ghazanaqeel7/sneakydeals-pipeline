@@ -6,6 +6,15 @@
 <description>One item per uploaded video: title = YouTube video ID, enclosure = its thumbnail. A Zap sets it (YouTube: Update Video Thumbnail) after YouTube has processed the Short.</description>
 <!--ITEMS-->
 <item>
+<title>ovpRvBi_sjA</title>
+<description>011-taco-tuesday-trademark</description>
+<link>https://raw.githubusercontent.com/Ghazanaqeel7/sneakydeals-pipeline/main/jobs/011-taco-tuesday-trademark/thumbnail.jpg</link>
+<guid isPermaLink="false">thumb-011-taco-tuesday-trademark</guid>
+<pubDate>Sun, 22 Nov 2026 06:29:59 GMT</pubDate>
+<enclosure url="https://raw.githubusercontent.com/Ghazanaqeel7/sneakydeals-pipeline/main/jobs/011-taco-tuesday-trademark/thumbnail.jpg" type="image/jpeg" length="0"/>
+</item>
+
+<item>
 <title>7FZK3QoKGTE</title>
 <description>010-coca-cola-free-coupons</description>
 <link>https://raw.githubusercontent.com/Ghazanaqeel7/sneakydeals-pipeline/main/jobs/010-coca-cola-free-coupons/thumbnail.jpg</link>
