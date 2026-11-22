@@ -14,7 +14,14 @@
     "sneaky deals"
   ],
   "pinned_comment": "Would you have charged more than $35 for the Swoosh? 👇",
-  "thumb": {},
+  "thumb": {
+    "frame": 60,
+    "box": "NIKE",
+    "line1": "PAID $35",
+    "line2": "FOR THE LOGO?!",
+    "box_color": "#c43d32",
+    "bg_shift": 0
+  },
   "instagram": {
     "caption": "Nike paid just $35 for the Swoosh logo 👟\n\nIn 1971 a design student sent Phil Knight an invoice. He said he didn't love it, but it would grow on him.\n\nWould you have charged more? 👇\nFollow for a new true business story every day.\n\n⚠️ Dramatised illustration, real facts.",
     "hashtags": [
