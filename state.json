@@ -994,9 +994,13 @@
         {
           "t": "2026-11-22T13:46:16Z",
           "msg": "🎞 Long video prepare: images, voice aur music ban rahe hain (~10-20 min)"
+        },
+        {
+          "t": "2026-11-22T17:09:24Z",
+          "msg": "🛠 Render timeout fix kiya (frame limit 180s, 16 chhote parallel hisse). Dobara render queue ho raha hai (~2-3 ghante)"
         }
       ],
-      "progress_count": 7,
+      "progress_count": 8,
       "decided_via": "dashboard",
       "decided_at": "2026-11-22T12:58:17Z",
       "run": "45029153269",
