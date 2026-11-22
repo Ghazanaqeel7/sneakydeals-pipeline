@@ -964,8 +964,8 @@
       "status": "video_sent",
       "updated": "2026-11-22T19:32:50Z",
       "type": "long",
-      "vote_msg": "",
-      "vote_kind": "",
+      "vote_msg": "1795375974.455429",
+      "vote_kind": "video",
       "progress": [
         {
           "t": "2026-11-21T18:50:30Z",
