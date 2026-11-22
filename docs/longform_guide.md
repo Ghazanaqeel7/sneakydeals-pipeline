@@ -4,7 +4,12 @@ Only when `state.json config.longform_enabled` is true. Long jobs are numeric-id
 `set_status <id> script_ready type=long`). Shorts rules in PIPELINE.md do not change; this file adds the long-form path.
 
 ## Format (non-negotiable)
-- 12-15 min (1,800-2,250 words at ~150 wpm; never under 1,200). 16:9, motion-graphics documentary, NOT the 3D cartoon look.
+- 12-15 min (1,800-2,250 words at ~150 wpm; never under 1,200). 16:9.
+- **REVISED 22 Nov 2026 (owner rejected job 013 as "bikar" / boring, too numbers-heavy, wants Shorts-level attention):**
+  cast/character scenes are now the PRIMARY visual, not an accent. Every scene should default to a `title`/`headline`-with-`cast`
+  or a `compare` with both sides' `cast`/`char` acting out the moment — charts/stat/map/timeline are now the EXCEPTION, used only
+  for one or two moments that truly need a number (never two chart-type scenes back to back). If a draft scene list has more than
+  ~20% chart/stat/map/timeline scenes, rewrite it before building. See "Attention rules" below.
 - **News hook + evergreen backstory**: cold open = a real headline of this week (from `docs/research/news_hooks.json` or the
   owner's `[LONG]` idea), then "but how did we get here?" and the full story. Business/money/consumer brands only; skip politics, tragedies, wars.
 - Structure: cold open with the outcome (no "welcome back") -> setup -> ONE decision -> consequences (cause -> effect) ->
@@ -32,12 +37,17 @@ list{title,items:[{title,sub,icon}],numbered} · quote{text,who,source} (only ex
 illustration{title,icons:[{name,label}],arrows} · endcard{title,sub} (last scene). `tone`: dark|blue|red|paper.
 Icons: store factory dollar person people building truck cart box plane car phone tv bank barcode bulb warning lock document gavel globe clock fire tag key megaphone mail screen cross check question.
 
-### Attention rules (owner feedback 13 Nov 2026: "simple type mat dikhao")
-- **Cast.** Our own cartoon characters (never a real person's likeness) carry the story: `cast:[{side:'left'|'right'|'center', mood, outfit, suit, tie, label}]`.
-  mood: laugh smug shock worried talk happy angry · outfit: suit hoodie · `label` = the company or role ("Blockbuster", "The founder"), never a real name on a face.
-  Put a cast on the hook `title` and on at least 3 more scenes; match the mood to the beat (the side that loses looks worried, the winner smug).
-- **Make numbers visible.** A count of things (stores, planes, users) gets `stat.icon` (`store` draws cartoon shops in `brand` colours) plus `per`
-  ("each shop = about 100 stores"). A plain number with nothing behind it is a last resort.
+### Attention rules (owner feedback 13 Nov 2026: "simple type mat dikhao"; tightened 22 Nov 2026 after job 013 rejection)
+- **Cast carries almost every scene, not just the hook.** Our own cartoon characters (never a real person's likeness):
+  `cast:[{side:'left'|'right'|'center', mood, outfit, suit, tie, label}]`. mood: laugh smug shock worried talk happy angry ·
+  outfit: suit hoodie · `label` = the company or role ("Blockbuster", "The founder"), never a real name on a face.
+  **Default every scene to having a cast** (on the `title`, `headline`, and `compare` types especially); match the mood to
+  the beat (the side that loses looks worried, the winner smug). A scene with no cast and no photo of a real person/place
+  needs a specific reason (it's a pure data moment) — it should be rare, not routine.
+- **Numbers are a rare accent, not a running device.** Use `stat`/`chart`/`timeline`/`map` for at most 1-2 scenes in the
+  whole video — only where a number is genuinely the point (e.g. the one big dollar figure in the story). Never stack two
+  of these scene types back to back, and never let them replace a cast/character scene that could tell the same beat with
+  people reacting to it instead. When a count needs to land, prefer `stat.icon`/`per` over a bare chart.
 - **Headlines** get a `stamp` (2-3 words: "DEAL REJECTED", "BANKRUPT") and `art` (Character props shown as the front-page photo).
   `source` = a real attribution only ("Reported by Reuters"); never "reconstruction" or our own name. Omit it if there is none.
 - **Compare** values may be short text ("In a store") or numbers; mark the better side with `win`. Give each side an `icon` (or `char`).
