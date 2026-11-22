@@ -931,8 +931,8 @@
       "run": "44992464004"
     },
     "014-nike-swoosh-35-dollars": {
-      "status": "script_ready",
-      "updated": "2026-11-22T06:10:46Z",
+      "status": "script_sent",
+      "updated": "2026-11-22T06:11:14Z",
       "title": "Nike Paid $35 for Its Swoosh Logo",
       "progress": [
         {
@@ -940,7 +940,9 @@
           "msg": "✍️ Aaj ka naya script tayyar: Nike ka $35 wala Swoosh logo — Slack/dashboard par approve karein"
         }
       ],
-      "progress_count": 1
+      "progress_count": 1,
+      "vote_msg": "",
+      "vote_kind": ""
     }
   },
   "ideas": [
