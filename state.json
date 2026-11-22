@@ -897,8 +897,8 @@
       "thumb_queued_at": "2026-11-22T06:29:59Z"
     },
     "012-costco-hot-dog": {
-      "status": "rendering",
-      "updated": "2026-11-22T11:19:02Z",
+      "status": "video_ready",
+      "updated": "2026-11-22T12:15:17Z",
       "title": "Costco's $1.50 Hot Dog Hasn't Changed Price Since 1985",
       "vote_msg": "1795241757.437539",
       "vote_kind": "script",
@@ -949,7 +949,10 @@
       "progress_count": 10,
       "decided_via": "dashboard",
       "decided_at": "2026-11-21T18:50:42Z",
-      "run": "45016618865"
+      "run": "45016618865",
+      "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-012-costco-hot-dog/final.mp4",
+      "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-012-costco-hot-dog/preview.mp4",
+      "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/012-costco-hot-dog.mp4"
     },
     "013-kodak-hid-digital-camera": {
       "status": "video_sent",
