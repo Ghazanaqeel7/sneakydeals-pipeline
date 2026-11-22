@@ -16,8 +16,9 @@ import {Quote} from './scenes/Quote.jsx';
 import {Illustration} from './scenes/Illustration.jsx';
 import {EndCard} from './scenes/EndCard.jsx';
 import {Grain} from './scenes/common.jsx';
+import {Scene3D} from './scenes/Scene3D.jsx';
 
-export const REGISTRY = {title: Title, chapter: Chapter, photo: Photo, stat: Stat, chart: Chart, timeline: Timeline, map: MapScene, headline: Headline, compare: Compare, list: ListScene, quote: Quote, illustration: Illustration, endcard: EndCard};
+export const REGISTRY = {title: Title, chapter: Chapter, photo: Photo, stat: Stat, chart: Chart, timeline: Timeline, map: MapScene, headline: Headline, compare: Compare, list: ListScene, quote: Quote, illustration: Illustration, endcard: EndCard, scene3d: Scene3D};
 const OVERLAP = 9;   // frames: a beat keeps showing this long after its end so the next one cross-fades in
 
 const Fade = ({children, first, last}) => {
