@@ -961,8 +961,8 @@
       "yt_queued_at": "2026-11-22T12:48:32Z"
     },
     "013-kodak-hid-digital-camera": {
-      "status": "video_sent",
-      "updated": "2026-11-22T12:58:25Z",
+      "status": "render_queued",
+      "updated": "2026-11-22T13:45:23Z",
       "type": "long",
       "vote_msg": "1795352310.056029",
       "vote_kind": "video",
@@ -998,7 +998,8 @@
       "run": "44992464004",
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-013-kodak-hid-digital-camera/final.mp4",
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-013-kodak-hid-digital-camera/preview.mp4",
-      "upload_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-013-kodak-hid-digital-camera/upload.mp4"
+      "upload_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-013-kodak-hid-digital-camera/upload.mp4",
+      "feedback": ""
     },
     "014-nike-swoosh-35-dollars": {
       "status": "script_approved",
