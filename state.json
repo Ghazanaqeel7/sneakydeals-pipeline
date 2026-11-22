@@ -1033,9 +1033,14 @@
         {
           "t": "2026-11-22T17:10:52Z",
           "msg": "🎙 Voice tayyar (40 s). Ab scenes ban rahe hain (~45 min baqi, phir render ~40 min)"
+        },
+        {
+          "t": "2026-11-22T17:14:08Z",
+          "msg": "🔍 Check frames: store, invoice desk aur ring scene theek hain; camera ghar-ke-paas kar diya (~5 min baqi, phir render ~40 min)",
+          "image": "jobs/014-nike-swoosh-35-dollars/review/round1.jpg"
         }
       ],
-      "progress_count": 4,
+      "progress_count": 5,
       "vote_msg": "1795327876.849829",
       "vote_kind": "script",
       "decided_via": "dashboard",
