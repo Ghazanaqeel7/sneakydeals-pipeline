@@ -961,8 +961,8 @@
       "yt_queued_at": "2026-11-22T12:48:32Z"
     },
     "013-kodak-hid-digital-camera": {
-      "status": "render_failed",
-      "updated": "2026-11-22T17:32:07Z",
+      "status": "rendering",
+      "updated": "2026-11-22T17:33:02Z",
       "type": "long",
       "vote_msg": "1795352310.056029",
       "vote_kind": "video",
@@ -1007,7 +1007,7 @@
       "progress_count": 9,
       "decided_via": "dashboard",
       "decided_at": "2026-11-22T12:58:17Z",
-      "run": "45047833455",
+      "run": "45049955284",
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-013-kodak-hid-digital-camera/final.mp4",
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-013-kodak-hid-digital-camera/preview.mp4",
       "upload_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-013-kodak-hid-digital-camera/upload.mp4",
