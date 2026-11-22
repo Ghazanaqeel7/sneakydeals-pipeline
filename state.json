@@ -956,7 +956,9 @@
       "run": "45016618865",
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-012-costco-hot-dog/final.mp4",
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-012-costco-hot-dog/preview.mp4",
-      "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/012-costco-hot-dog.mp4"
+      "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/012-costco-hot-dog.mp4",
+      "yt_scheduled_for": "2026-11-23T00:00:00Z",
+      "yt_queued_at": "2026-11-22T12:48:32Z"
     },
     "013-kodak-hid-digital-camera": {
       "status": "video_sent",
