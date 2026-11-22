@@ -914,9 +914,13 @@
         {
           "t": "2026-11-22T11:10:27Z",
           "msg": "🎙 Voice tayyar (48 s). Ab scenes plan kar raha hoon (~50 min baqi, phir render ~40 min)"
+        },
+        {
+          "t": "2026-11-22T11:14:15Z",
+          "msg": "🎬 Scenes: 6 locations plan — food court, street, CEO office, hot dog factory, warehouse aisle, parking lot. Pehla build ready, ab check frames (~35 min baqi, phir render ~40 min)"
         }
       ],
-      "progress_count": 3,
+      "progress_count": 4,
       "decided_via": "dashboard",
       "decided_at": "2026-11-21T18:50:42Z"
     },
