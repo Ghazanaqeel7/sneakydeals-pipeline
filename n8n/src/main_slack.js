@@ -304,25 +304,52 @@ async function scheduleAhead() {
     .sort((a, b) => (a[1].updated || '').localeCompare(b[1].updated || ''));
   if (!todo.length) return;
   const days = C.publish_days || ['Mon', 'Wed', 'Fri', 'Sun'];
-  const [hh, mm] = String(C.publish_time_pkt || '05:00').split(':').map(Number);
+  // Shorts: 1+ slots per day. config.publish_times_pkt = ["05:00","17:00"] gives 2 US-spread uploads/day
+  // (05:00 PKT ~= 7 PM US Eastern the evening before, 17:00 PKT ~= 7 AM US Eastern the same day).
+  // Falls back to the single legacy publish_time_pkt if the array isn't set.
+  const normT = (s) => { const [H, M] = String(s).split(':').map(Number); return `${String(H).padStart(2, '0')}:${String(M).padStart(2, '0')}`; };
+  const shortTimes = (Array.isArray(C.publish_times_pkt) && C.publish_times_pkt.length ? C.publish_times_pkt : [C.publish_time_pkt || '05:00'])
+    .map(normT).sort((a, b) => a.localeCompare(b));
   const dayKey = (t) => new Date(t).toLocaleDateString('en-CA', { timeZone: 'Asia/Karachi' });
-  const used = new Set(), usedLong = new Set();
-  for (const j of Object.values(st.jobs)) for (const t of [j.yt_scheduled_for, j.published_at, j.live_at]) if (t) (j.type === 'long' ? usedLong : used).add(dayKey(t));
-  // long videos: their own slot (default Tue/Thu/Sat 19:00 PKT = 9 AM US Eastern), separate from the daily Short
+  const pktHHMM = (t) => { const m = (((Math.floor(new Date(t).getTime() / 60000)) + 300) % 1440 + 1440) % 1440; return `${String(Math.floor(m / 60)).padStart(2, '0')}:${String(m % 60).padStart(2, '0')}`; };
+  const usedShort = new Set(), usedLong = new Set();
+  for (const j of Object.values(st.jobs)) for (const t of [j.yt_scheduled_for, j.published_at, j.live_at]) {
+    if (!t) continue;
+    if (j.type === 'long') usedLong.add(dayKey(t));
+    else usedShort.add(`${dayKey(t)}|${pktHHMM(t)}`);
+  }
+  // long videos: their own slot (default Tue/Thu/Sat 19:00 PKT = 9 AM US Eastern), separate from the Shorts
   const longDays = C.long_days || ['Tue', 'Thu', 'Sat'];
   const [lh, lm] = String(C.long_publish_time_pkt || '19:00').split(':').map(Number);
   const esc = (x) => String(x).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   const RAW = `https://raw.githubusercontent.com/${cfg.github_owner}/${cfg.github_repo}/main`;
   for (const [id, j] of todo) {
-    const isLong = j.type === 'long', U = isLong ? usedLong : used, D = isLong ? longDays : days, H = isLong ? lh : hh, M = isLong ? lm : mm;
-    let slot = null;
-    for (let d = 0; d < 60 && !slot; d++) {
-      const key = dayKey(Date.now() + d * 86400000);
-      const wd = new Date(Date.parse(key + 'T12:00:00Z')).toLocaleDateString('en-US', { weekday: 'short', timeZone: 'UTC' });
-      if (!D.includes(wd) || U.has(key)) continue;
-      const t = Date.parse(key + 'T00:00:00Z') + ((H - 5) * 60 + M) * 60000;   // PKT = UTC+5
-      if (t - Date.now() < 3 * 3600e3) continue;
-      slot = new Date(t).toISOString().replace(/\.\d+Z$/, 'Z');
+    const isLong = j.type === 'long';
+    let slot = null, slotKey = null;
+    if (isLong) {
+      for (let d = 0; d < 60 && !slot; d++) {
+        const key = dayKey(Date.now() + d * 86400000);
+        const wd = new Date(Date.parse(key + 'T12:00:00Z')).toLocaleDateString('en-US', { weekday: 'short', timeZone: 'UTC' });
+        if (!longDays.includes(wd) || usedLong.has(key)) continue;
+        const t = Date.parse(key + 'T00:00:00Z') + ((lh - 5) * 60 + lm) * 60000;   // PKT = UTC+5
+        if (t - Date.now() < 3 * 3600e3) continue;
+        slot = new Date(t).toISOString().replace(/\.\d+Z$/, 'Z'); slotKey = key;
+      }
+    } else {
+      for (let d = 0; d < 60 && !slot; d++) {
+        const key = dayKey(Date.now() + d * 86400000);
+        const wd = new Date(Date.parse(key + 'T12:00:00Z')).toLocaleDateString('en-US', { weekday: 'short', timeZone: 'UTC' });
+        if (!days.includes(wd)) continue;
+        for (const ts of shortTimes) {
+          const sk = `${key}|${ts}`;
+          if (usedShort.has(sk)) continue;
+          const [H, M] = ts.split(':').map(Number);
+          const t = Date.parse(key + 'T00:00:00Z') + ((H - 5) * 60 + M) * 60000;   // PKT = UTC+5
+          if (t - Date.now() < 3 * 3600e3) continue;
+          slot = new Date(t).toISOString().replace(/\.\d+Z$/, 'Z'); slotKey = sk;
+          break;
+        }
+      }
     }
     if (!slot) { log.push(`no free slot for ${id}`); continue; }
     const meta = JSON.parse((await ghGet(`jobs/${id}/meta.json`)).text);
@@ -337,7 +364,7 @@ async function scheduleAhead() {
       catch (e) { if (i === 2) throw e; await sleep(1500); }
     }
     if (!added) continue;
-    U.add(dayKey(slot));
+    if (isLong) usedLong.add(slotKey); else usedShort.add(slotKey);
     await updateState((s2) => { const J = s2.jobs[id]; if (!J) return false; J.yt_scheduled_for = slot; J.yt_queued_at = now(); return true; }, `n8n: ${id} scheduled on YouTube for ${slot}`);
     const when = new Date(slot).toLocaleString('en-GB', { timeZone: 'Asia/Karachi', weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
     await dPost(isLong
