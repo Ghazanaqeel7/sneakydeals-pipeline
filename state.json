@@ -1018,8 +1018,8 @@
       "feedback": ""
     },
     "014-nike-swoosh-35-dollars": {
-      "status": "video_ready",
-      "updated": "2026-11-22T18:13:00Z",
+      "status": "video_approved",
+      "updated": "2026-11-22T19:32:31Z",
       "title": "Nike Paid $35 for Its Swoosh Logo",
       "progress": [
         {
@@ -1063,13 +1063,17 @@
         {
           "t": "2026-11-22T18:02:51Z",
           "msg": "⏳ Render 76% (914/1198 frames). Baqi waqt: 37m 9s"
+        },
+        {
+          "t": "2026-11-22T19:32:31Z",
+          "msg": "✅ You approved the video + thumbnail on the dashboard. It goes to YouTube at the next publish slot."
         }
       ],
-      "progress_count": 10,
+      "progress_count": 11,
       "vote_msg": "1795327876.849829",
       "vote_kind": "script",
       "decided_via": "dashboard",
-      "decided_at": "2026-11-22T13:00:19Z",
+      "decided_at": "2026-11-22T19:32:31Z",
       "run": "45049955275",
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-014-nike-swoosh-35-dollars/final.mp4",
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-014-nike-swoosh-35-dollars/preview.mp4",
