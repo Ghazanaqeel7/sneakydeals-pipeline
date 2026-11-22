@@ -16,9 +16,9 @@ import {Quote} from './scenes/Quote.jsx';
 import {Illustration} from './scenes/Illustration.jsx';
 import {EndCard} from './scenes/EndCard.jsx';
 import {Grain} from './scenes/common.jsx';
-import {Scene3D} from './scenes/Scene3D.jsx';
+import {Scene3DTrack} from './scenes/Scene3D.jsx';
 
-export const REGISTRY = {title: Title, chapter: Chapter, photo: Photo, stat: Stat, chart: Chart, timeline: Timeline, map: MapScene, headline: Headline, compare: Compare, list: ListScene, quote: Quote, illustration: Illustration, endcard: EndCard, scene3d: Scene3D};
+export const REGISTRY = {title: Title, chapter: Chapter, photo: Photo, stat: Stat, chart: Chart, timeline: Timeline, map: MapScene, headline: Headline, compare: Compare, list: ListScene, quote: Quote, illustration: Illustration, endcard: EndCard};
 const OVERLAP = 9;   // frames: a beat keeps showing this long after its end so the next one cross-fades in
 
 const Fade = ({children, first, last}) => {
@@ -50,11 +50,19 @@ export const buildBeats = () => {
 
 export const Doc = () => {
   const beats = React.useMemo(buildBeats, []);
+  // scene3d beats render through a single persistent <Scene3DTrack> (one shared WebGL context for
+  // the whole video, see scenes/Scene3D.jsx) instead of per-beat <Sequence> mount/unmount - the first
+  // real render of this engine (22 Nov 2026, job 013) timed out partway through because each scene3d
+  // beat was mounting its own <ThreeCanvas>, churning WebGL contexts.
+  const beats3d = React.useMemo(() => beats.filter((b) => b.visual.type === 'scene3d').map((b) => ({from: b.from, dur: b.dur, ...b.visual})), [beats]);
+  const flatBeats = beats.filter((b) => b.visual.type !== 'scene3d');
   const lastIdx = beats.length - 1;
   return (
     <AbsoluteFill style={{backgroundColor: '#000'}}>
-      {beats.map((b, i) => {
+      <Scene3DTrack beats={beats3d} />
+      {flatBeats.map((b) => {
         const Comp = REGISTRY[b.visual.type] || Title;
+        const i = beats.indexOf(b);
         const isLast = i === lastIdx;
         return (
           <Sequence key={b.key} from={b.from} durationInFrames={b.dur + (isLast ? 0 : OVERLAP)}>
