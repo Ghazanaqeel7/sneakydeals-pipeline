@@ -75,7 +75,7 @@ jobs:
           J=${{ steps.pick.outputs.job }}
           python3 - <<PY >> $GITHUB_OUTPUT
           import json,math
-          d=json.load(open('jobs/$J/project/src/timing.json'))['duration']; n=int(round(d*30)); per=2700
+          d=json.load(open('jobs/$J/project/src/timing.json'))['duration']; n=int(round(d*30)); per=500
           k=max(1,math.ceil(n/per)); sz=math.ceil(n/k)
           ch=[{'i':i,'a':i*sz,'b':min(n-1,(i+1)*sz-1)} for i in range(k)]
           print('chunks='+json.dumps(ch))

@@ -1,90 +1,90 @@
 {
  "fps": 30,
- "duration": 63.23,
+ "duration": 39.92,
  "shots": [
   {
    "key": "hook",
    "start": 0.15,
-   "end": 5.582,
-   "words": 15,
-   "text": "In nineteen seventy-eight, welders secretly patched a brand new New York skyscraper, every single night."
+   "end": 2.542,
+   "words": 7,
+   "text": "Nike paid thirty-five dollars for its logo."
   },
   {
-   "key": "cta",
-   "start": 5.974,
-   "end": 11.538,
-   "words": 23,
-   "text": "Before we go deep into today's story, take a second to like this video and subscribe if you haven't. Let's get into it."
+   "key": "s02",
+   "start": 2.935,
+   "end": 3.914,
+   "words": 8,
+   "text": "Yes, the Swoosh. The one on every shoe."
   },
   {
-   "key": "tower",
-   "start": 11.93,
-   "end": 16.684,
-   "words": 13,
-   "text": "It stood fifty-nine stories high on giant stilts, and it had just opened."
+   "key": "s03",
+   "start": 4.156,
+   "end": 10.26,
+   "words": 17,
+   "text": "It was nineteen seventy-one. Phil Knight ran a small Oregon shoe company, and he needed a logo."
   },
   {
-   "key": "rules",
-   "start": 17.077,
-   "end": 20.643,
+   "key": "s04",
+   "start": 10.68,
+   "end": 13.984,
    "words": 11,
-   "text": "The building rules only asked about wind hitting the flat sides."
+   "text": "He turned to Carolyn Davidson, a design student at Portland State."
   },
   {
-   "key": "but",
-   "start": 21.036,
-   "end": 26.334,
-   "words": 16,
-   "text": "But a student asked about corner winds, and the numbers showed about forty percent more force."
+   "key": "s05",
+   "start": 14.404,
+   "end": 16.881,
+   "words": 7,
+   "text": "She sent him an invoice. Thirty-five dollars."
   },
   {
-   "key": "then",
-   "start": 26.726,
-   "end": 31.59,
-   "words": 16,
-   "text": "Then the engineer learned the builders had swapped his welded joints for bolts to save money."
+   "key": "s06",
+   "start": 17.301,
+   "end": 20.421,
+   "words": 17,
+   "text": "He looked at her design and said, I don't love it, but it will grow on me."
   },
   {
-   "key": "storm",
-   "start": 31.983,
-   "end": 35.961,
-   "words": 14,
-   "text": "A big enough storm could snap those bolts, right in the middle of Manhattan."
+   "key": "s07",
+   "start": 20.841,
+   "end": 23.478,
+   "words": 11,
+   "text": "He paid. And the Swoosh went onto shoes that same year."
   },
   {
-   "key": "yousee",
-   "start": 36.353,
-   "end": 42.624,
-   "words": 19,
-   "text": "You see, a weld turns a joint into one solid piece. Bolts are only as strong as the bolts."
+   "key": "s08",
+   "start": 23.88,
+   "end": 26.299,
+   "words": 8,
+   "text": "The little company became Nike, a global giant."
   },
   {
-   "key": "night",
-   "start": 43.017,
-   "end": 48.297,
-   "words": 14,
-   "text": "Every night after the offices emptied, welders covered the bolted joints with steel plates."
+   "key": "s09",
+   "start": 26.719,
+   "end": 29.283,
+   "words": 9,
+   "text": "Twelve years later, in nineteen eighty-three, Nike thanked her."
   },
   {
-   "key": "ella",
-   "start": 48.69,
-   "end": 53.756,
-   "words": 15,
-   "text": "During the repair, Hurricane Ella headed for New York, and evacuation plans were drawn up."
-  },
-  {
-   "key": "so",
-   "start": 54.148,
-   "end": 58.165,
+   "key": "s10",
+   "start": 29.703,
+   "end": 32.649,
    "words": 10,
-   "text": "So everyone watched the forecasts, until the storm turned away."
+   "text": "A gold Swoosh ring with a diamond. And Nike stock."
   },
   {
-   "key": "close",
-   "start": 58.558,
-   "end": 62.476,
-   "words": 13,
-   "text": "The repair worked, and the public didn't hear about it until nineteen ninety-five."
+   "key": "s11",
+   "start": 32.965,
+   "end": 36.57,
+   "words": 11,
+   "text": "One sketch, thirty-five dollars at first, then a ring and shares."
+  },
+  {
+   "key": "s12",
+   "start": 36.977,
+   "end": 39.175,
+   "words": 9,
+   "text": "A great idea can look cheap on day one."
   }
  ]
 }

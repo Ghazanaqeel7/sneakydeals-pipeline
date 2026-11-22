@@ -961,8 +961,8 @@
       "yt_queued_at": "2026-11-22T12:48:32Z"
     },
     "013-kodak-hid-digital-camera": {
-      "status": "render_queued",
-      "updated": "2026-11-22T13:45:23Z",
+      "status": "rendering",
+      "updated": "2026-11-22T17:10:00Z",
       "type": "long",
       "vote_msg": "1795352310.056029",
       "vote_kind": "video",
@@ -990,20 +990,32 @@
         {
           "t": "2026-11-22T13:45:20Z",
           "msg": "🛠 Aapke feedback (characters/scenes chahiye, numbers nahi) ke mutabiq pura video naye 3D engine (Shorts wala) se rebuild kar diya — 29/39 scenes ab real 3D characters + dressed locations use karte hain. Render GitHub par queue kar raha hoon (~1-2 ghante, pehli baar hai is engine ke saath isliye norm"
+        },
+        {
+          "t": "2026-11-22T13:46:16Z",
+          "msg": "🎞 Long video prepare: images, voice aur music ban rahe hain (~10-20 min)"
+        },
+        {
+          "t": "2026-11-22T17:09:24Z",
+          "msg": "🛠 Render timeout fix kiya (frame limit 180s, 16 chhote parallel hisse). Dobara render queue ho raha hai (~2-3 ghante)"
+        },
+        {
+          "t": "2026-11-22T17:10:01Z",
+          "msg": "🎞 Long video prepare: images, voice aur music ban rahe hain (~10-20 min)"
         }
       ],
-      "progress_count": 6,
+      "progress_count": 9,
       "decided_via": "dashboard",
       "decided_at": "2026-11-22T12:58:17Z",
-      "run": "44992464004",
+      "run": "45047833455",
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-013-kodak-hid-digital-camera/final.mp4",
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-013-kodak-hid-digital-camera/preview.mp4",
       "upload_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-013-kodak-hid-digital-camera/upload.mp4",
       "feedback": ""
     },
     "014-nike-swoosh-35-dollars": {
-      "status": "script_approved",
-      "updated": "2026-11-22T13:00:19Z",
+      "status": "render_queued",
+      "updated": "2026-11-22T17:14:12Z",
       "title": "Nike Paid $35 for Its Swoosh Logo",
       "progress": [
         {
@@ -1013,9 +1025,27 @@
         {
           "t": "2026-11-22T13:00:19Z",
           "msg": "✅ You approved the script on the dashboard. Claude starts the video in the next run."
+        },
+        {
+          "t": "2026-11-22T17:09:36Z",
+          "msg": "🎙 Voice ban rahi hai… (~5 min baqi, phir scenes ~45 min, render ~40 min)"
+        },
+        {
+          "t": "2026-11-22T17:10:52Z",
+          "msg": "🎙 Voice tayyar (40 s). Ab scenes ban rahe hain (~45 min baqi, phir render ~40 min)"
+        },
+        {
+          "t": "2026-11-22T17:14:08Z",
+          "msg": "🔍 Check frames: store, invoice desk aur ring scene theek hain; camera ghar-ke-paas kar diya (~5 min baqi, phir render ~40 min)",
+          "image": "jobs/014-nike-swoosh-35-dollars/review/round1.jpg"
+        },
+        {
+          "t": "2026-11-22T17:14:10Z",
+          "msg": "🖼 Thumbnail tayyar — ab GitHub par render shuru hoga (~40 min)",
+          "image": "jobs/014-nike-swoosh-35-dollars/thumbnail.jpg"
         }
       ],
-      "progress_count": 2,
+      "progress_count": 6,
       "vote_msg": "1795327876.849829",
       "vote_kind": "script",
       "decided_via": "dashboard",
