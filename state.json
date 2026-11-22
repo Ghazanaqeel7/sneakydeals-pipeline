@@ -906,8 +906,8 @@
       "decided_at": "2026-11-21T18:50:42Z"
     },
     "013-kodak-hid-digital-camera": {
-      "status": "building",
-      "updated": "2026-11-22T06:09:21Z",
+      "status": "render_queued",
+      "updated": "2026-11-22T06:09:26Z",
       "type": "long",
       "vote_msg": "1795259885.262489",
       "vote_kind": "script",
