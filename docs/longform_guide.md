@@ -10,6 +10,10 @@ Only when `state.json config.longform_enabled` is true. Long jobs are numeric-id
   or a `compare` with both sides' `cast`/`char` acting out the moment — charts/stat/map/timeline are now the EXCEPTION, used only
   for one or two moments that truly need a number (never two chart-type scenes back to back). If a draft scene list has more than
   ~20% chart/stat/map/timeline scenes, rewrite it before building. See "Attention rules" below.
+- **ENGINE CHANGE requested 22 Nov 2026 (owner: "shorts wala he kardo long video mai")** — owner wants long-form to use the
+  SAME 3D engine as the Shorts (`pipeline/template/`: three.js + `@react-three/fiber`, flat 2D cartoon cast inside a bright
+  3D world, moving camera), not the current flat 2D "cast card" look. See "3D engine integration" below — this is a real,
+  not-yet-finished build, tracked here so it survives a context reset.
 - **News hook + evergreen backstory**: cold open = a real headline of this week (from `docs/research/news_hooks.json` or the
   owner's `[LONG]` idea), then "but how did we get here?" and the full story. Business/money/consumer brands only; skip politics, tragedies, wars.
 - Structure: cold open with the outcome (no "welcome back") -> setup -> ONE decision -> consequences (cause -> effect) ->
@@ -53,6 +57,36 @@ Icons: store factory dollar person people building truck cart box plane car phon
 - **Compare** values may be short text ("In a store") or numbers; mark the better side with `win`. Give each side an `icon` (or `char`).
 - No real logos or brand marks are drawn; a brand is its name in its colour plus an icon.
 - Fonts are bundled (Anton, Playfair Display, Inter, Space Mono); every scene already gets punch-in transitions, shakes on impacts and film grain.
+
+## 3D engine integration (started 22 Nov 2026 — NOT finished, read before starting a build)
+Owner wants long-form built with the same engine as the Shorts (`3d-story-shorts` skill / `pipeline/template/`), not the
+old flat 2D cast-card look. Status so far:
+- **Done:** `pipeline/template-long/src/engine3d/` now holds a copy of the Shorts engine (`kit.js`, `char.js`, `props.js`,
+  `dress.js`, `worlds.js`, `camera.js`, `extra-props.js`, `Full.jsx`). `worlds.js`/`camera.js` in there are still the Shorts
+  example story ("Skyscraper Fixed in Secret") — they are reference/starting material only, exactly like a Short's
+  `template/`, NOT wired up yet. `package.json` has the `three` / `@react-three/fiber` / `@remotion/three` deps added.
+  `Full.jsx` is already resolution-agnostic (reads `width`/`height` from `useVideoConfig`), so it does not need changing
+  for 16:9 — only per-shot camera distances/FOV need to suit a wider frame than the Shorts' 9:16.
+- **Not done — the actual wiring, do this when building the next long job:**
+  1. In `Doc.jsx`, add a new scene `visual.type: "scene3d"`. For the duration of that scene, render the ported `Full.jsx`-style
+     3D shot instead of a 2D card (likely as a `<Sequence>` wrapping a small `Shot3D` component you extract from
+     `engine3d/Full.jsx` — that file currently renders a whole project keyed by a global `camera.js` `PLAN`/`worlds.js` `LOC`
+     per shot key; it needs factoring into something one scene can call with its own small world/camera/dress data instead
+     of a hardcoded per-project file).
+  2. Decide scene3d authoring shape in `scenes.json` (propose: `visual:{type:'scene3d', location, cast:[...], camera:{p0,l0,p1,l1,beats}, props:[...]}` —
+     i.e. the same ideas as a Short's `worlds.js`/`camera.js`/`dress.js`, just expressed as per-scene data instead of a whole
+     project file, because a long video has 40-80+ scenes vs a Short's 10-13 shots).
+  3. `render_long.yml` / `render_chunk.sh` render composition id `"Doc"` and don't need to change IF the 3D scenes render
+     inside `Doc` via the `<Sequence>` approach above — confirm this before assuming it, since it was not tested end to end.
+  4. **Cost/risk to flag to the owner before relying on this for the regular calendar:** 3D frames are much heavier to render
+     than the current 2D cards (headless Chrome + software GL/`swangle`, no GPU on GitHub Actions runners) — a 12-15 min video
+     is roughly 12-15x a Short's frame count, so render time per chunk will be noticeably longer and the existing chunk size
+     (2700 frames) / concurrency (4) in `render_chunk.sh` may need retuning once real numbers are seen. The repo is public so
+     GitHub Actions minutes are free, but a render could still take much longer wall-clock, and this path is UNTESTED — budget
+     the next long job as the real test (equivalent to the Shorts "60-90s sample" step already in the Build order), not as a
+     guaranteed-working calendar slot.
+  5. No GitHub Actions run, Remotion render, or `npm install` has actually been executed to validate any of this — it is code
+     written and pushed, not yet proven to render. Say so plainly if asked "is it working yet".
 
 ## Images
 `image.q` = a Wikimedia Commons search phrase (specific: "Sears Tower Chicago 1980s", "mail order catalog 1897").
