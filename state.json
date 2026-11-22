@@ -919,9 +919,13 @@
         {
           "t": "2026-11-22T06:09:23Z",
           "msg": "🛠 Kodak long video: scenes check ho gaye (39 scenes), ab GitHub render queue kar raha hoon (~1-2 ghante)"
+        },
+        {
+          "t": "2026-11-22T06:10:40Z",
+          "msg": "🎞 Long video prepare: images, voice aur music ban rahe hain (~10-20 min)"
         }
       ],
-      "progress_count": 2,
+      "progress_count": 3,
       "decided_via": "dashboard",
       "decided_at": "2026-11-21T18:50:30Z",
       "run": "44992464004"
