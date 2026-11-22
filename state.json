@@ -929,6 +929,11 @@
       "decided_via": "dashboard",
       "decided_at": "2026-11-21T18:50:30Z",
       "run": "44992464004"
+    },
+    "014-nike-swoosh-35-dollars": {
+      "status": "script_ready",
+      "updated": "2026-11-22T06:10:46Z",
+      "title": "Nike Paid $35 for Its Swoosh Logo"
     }
   },
   "ideas": [
