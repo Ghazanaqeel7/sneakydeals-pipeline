@@ -961,8 +961,8 @@
       "yt_queued_at": "2026-11-22T12:48:32Z"
     },
     "013-kodak-hid-digital-camera": {
-      "status": "render_failed",
-      "updated": "2026-11-22T17:32:07Z",
+      "status": "rendering",
+      "updated": "2026-11-22T17:33:02Z",
       "type": "long",
       "vote_msg": "1795352310.056029",
       "vote_kind": "video",
@@ -1002,20 +1002,24 @@
         {
           "t": "2026-11-22T17:10:01Z",
           "msg": "🎞 Long video prepare: images, voice aur music ban rahe hain (~10-20 min)"
+        },
+        {
+          "t": "2026-11-22T17:33:04Z",
+          "msg": "🎞 Long video prepare: images, voice aur music ban rahe hain (~10-20 min)"
         }
       ],
-      "progress_count": 9,
+      "progress_count": 10,
       "decided_via": "dashboard",
       "decided_at": "2026-11-22T12:58:17Z",
-      "run": "45047833455",
+      "run": "45049955284",
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-013-kodak-hid-digital-camera/final.mp4",
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-013-kodak-hid-digital-camera/preview.mp4",
       "upload_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-013-kodak-hid-digital-camera/upload.mp4",
       "feedback": ""
     },
     "014-nike-swoosh-35-dollars": {
-      "status": "render_queued",
-      "updated": "2026-11-22T17:14:12Z",
+      "status": "rendering",
+      "updated": "2026-11-22T17:32:44Z",
       "title": "Nike Paid $35 for Its Swoosh Logo",
       "progress": [
         {
@@ -1043,13 +1047,18 @@
           "t": "2026-11-22T17:14:10Z",
           "msg": "🖼 Thumbnail tayyar — ab GitHub par render shuru hoga (~40 min)",
           "image": "jobs/014-nike-swoosh-35-dollars/thumbnail.jpg"
+        },
+        {
+          "t": "2026-11-22T17:32:46Z",
+          "msg": "🎞 Render shuru (GitHub). Andaza: ~30-50 min."
         }
       ],
-      "progress_count": 6,
+      "progress_count": 7,
       "vote_msg": "1795327876.849829",
       "vote_kind": "script",
       "decided_via": "dashboard",
-      "decided_at": "2026-11-22T13:00:19Z"
+      "decided_at": "2026-11-22T13:00:19Z",
+      "run": "45049955275"
     }
   },
   "ideas": [
