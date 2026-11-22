@@ -961,8 +961,8 @@
       "yt_queued_at": "2026-11-22T12:48:32Z"
     },
     "013-kodak-hid-digital-camera": {
-      "status": "video_sent",
-      "updated": "2026-11-22T11:09:31Z",
+      "status": "video_approved",
+      "updated": "2026-11-22T12:58:04Z",
       "type": "long",
       "vote_msg": "1795345774.358709",
       "vote_kind": "video",
@@ -978,11 +978,15 @@
         {
           "t": "2026-11-22T06:10:40Z",
           "msg": "🎞 Long video prepare: images, voice aur music ban rahe hain (~10-20 min)"
+        },
+        {
+          "t": "2026-11-22T12:58:04Z",
+          "msg": "✅ You approved the video + thumbnail on the dashboard. It goes to YouTube at the next publish slot."
         }
       ],
-      "progress_count": 3,
+      "progress_count": 4,
       "decided_via": "dashboard",
-      "decided_at": "2026-11-21T18:50:30Z",
+      "decided_at": "2026-11-22T12:58:04Z",
       "run": "44992464004",
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-013-kodak-hid-digital-camera/final.mp4",
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-013-kodak-hid-digital-camera/preview.mp4",
