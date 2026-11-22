@@ -18,6 +18,7 @@ _Last updated: 11 Nov 2026 (first version, before any of our videos had data)._
 _Pasted by the owner via the dashboard Inbox. Claude follows these from now on and never removes or rewrites them in the weekly rewrite; only the owner can edit/delete a line here._
 - [owner 19 Nov 2026] Long-video pacing: change what is on screen every 3 to 5 seconds (clippings, kinetic typography, motion graphics, new visuals) to keep watch time up.
 - [owner 19 Nov 2026] Voiceover pace for long videos: about 130 to 145 words per minute, crisp and energetic, not rushed; background music pulled well below the voice (about -22 to -26 dB under voice, voice near -14 to -16 LUFS).
+- [owner 22 Nov 2026] Rejected job 013 (Kodak) as boring/"bikar" — too many number/chart-style scenes, not enough character/scene storytelling. Long videos must lead with cast/character scenes like the Shorts (same cartoon cast, acting out the story); charts/stats/maps/timelines are now a rare 1-2 scene accent only, never the main visual language. See `docs/longform_guide.md` "Format"/"Attention rules" (revised 22 Nov 2026).
 
 ## Titles
 - [start] Brand + shocking action, no year, ≤ 60 characters (e.g. "Pepsi's Ad Showed a Fighter Jet. He Sent $700,000.").
