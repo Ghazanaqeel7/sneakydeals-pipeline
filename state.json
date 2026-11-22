@@ -923,9 +923,14 @@
           "t": "2026-11-22T11:17:47Z",
           "msg": "✅ Check frames theek hain (food court, street, office, factory, aisle, lot). Office ka set aur camera thora ठीक kiya. Ab thumbnail bhi tayyar, render GitHub par jaa raha hai (~40 min)",
           "image": "jobs/012-costco-hot-dog/review/round1.jpg"
+        },
+        {
+          "t": "2026-11-22T11:17:50Z",
+          "msg": "🖼 Thumbnail tayyar",
+          "image": "jobs/012-costco-hot-dog/thumbnail.jpg"
         }
       ],
-      "progress_count": 5,
+      "progress_count": 6,
       "decided_via": "dashboard",
       "decided_at": "2026-11-21T18:50:42Z"
     },
