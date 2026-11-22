@@ -146,6 +146,7 @@ export function buildWorld() {
   board.position.set(C + 6.3, 4.6, -7.88); W.add(board);
   const queue = P.crowd(8, C - 6, C + 6, -3.8, 31, chars); queue.position.y = -0.2; W.add(queue);
   const queue2 = P.crowd(7, C - 5, C + 5, -2.0, 32, chars); queue2.position.y = -0.2; W.add(queue2);
+  const queues = [queue, queue2];
 
   // ======== STREET (s03) ========
   const S = LOC.street;
@@ -153,11 +154,11 @@ export function buildWorld() {
   const trafficD = dressStreet(W, S, {seed: 23, chars, avoid: [S - 6, S, S + 6]});
   for (let i = 0; i < 6; i++) W.add(cloud(S - 80 + i * 30, 100 + (i % 3) * 10, -130, 7));
   const streetSigns = [];
-  for (const [x, txt, sub, w, h, bg, font] of [[-6, 'GAS', 'PRICE', 2.6, 3.0, '#2f6db3', 'bold 130px Arial, sans-serif'], [0, 'RENT', 'PRICE', 3.0, 3.0, '#e6d39a', 'bold 120px Arial, sans-serif'], [6, 'FOOD', 'PRICE', 2.8, 3.0, '#6aa84f', 'bold 120px Arial, sans-serif']]) {
+  for (const [x, txt, sub, w, h, bg, font] of [[-6, 'GAS', 'PRICE', 2.0, 2.3, '#2f6db3', 'bold 130px Arial, sans-serif'], [0, 'RENT', 'PRICE', 2.2, 2.3, '#e6d39a', 'bold 120px Arial, sans-serif'], [6, 'FOOD', 'PRICE', 2.2, 2.3, '#6aa84f', 'bold 120px Arial, sans-serif']]) {
     const g2 = new THREE.Group();
-    const sg = sign(txt, w, h, {bg, fg: bg === '#2f6db3' || bg === '#6aa84f' ? '#ffffff' : INK, w: 300, h: 340, font, sub}); sg.position.y = 2.6; g2.add(sg);
+    const sg = sign(txt, w, h, {bg, fg: bg === '#2f6db3' || bg === '#6aa84f' ? '#ffffff' : INK, w: 300, h: 340, font, sub}); sg.position.y = 2.2; g2.add(sg);
     g2.add(cyl(0.07, 0.07, 1.4, '#3a3a3a', {x: -w / 2 + 0.3, y: 0.7}), cyl(0.07, 0.07, 1.4, '#3a3a3a', {x: w / 2 - 0.3, y: 0.7}));
-    const a = arrow('#e0533d', 1.8); a.rotation.z = Math.PI / 2; a.position.set(0, 4.5, 0); g2.add(a); g2.userData.arrow = a;
+    const a = arrow('#e0533d', 1.8); a.rotation.z = Math.PI / 2; a.position.set(0, 4.0, 0); g2.add(a); g2.userData.arrow = a;
     g2.position.set(S + x, 0.25, 6.0); streetSigns.push(g2); W.add(g2);
   }
 
@@ -172,7 +173,7 @@ export function buildWorld() {
   const plate = hotdog(1.7); P.at(plate, O - 2.2, 1.17, 0.5); W.add(plate);
   const boss = character({palette: 'official', hat: 'none', glasses: true, seed: 41}); boss.position.set(O - 2, 0.05, -1.3); W.add(boss); chars.push(boss);
   W.add(P.at(P.chair('#3e5a7a'), O - 2, 0.05, -2.2, 0));
-  W.add(P.at(P.bookshelf(4), O - 6.0, 0.05, -5.15), P.at(P.bookshelf(5), O + 0.4, 0.05, -5.15), P.at(P.filingCabinet(), O + 6.4, 0.05, -5.0), P.at(P.filingCabinet('#8f7d6a'), O + 7.2, 0.05, -5.0), P.at(P.wallClock(), O + 3.4, 4.75, -5.4));
+  W.add(P.at(P.filingCabinet('#7d8a8f'), O - 6.0, 0.05, -5.0), P.at(P.filingCabinet(), O + 6.4, 0.05, -5.0), P.at(P.filingCabinet('#8f7d6a'), O + 7.2, 0.05, -5.0), P.at(P.wallClock(), O + 3.4, 4.75, -5.4));
   const p1 = P.poster('PRICES', 1.1, 1.5, '#e6d39a'); P.at(p1, O - 3.9, 3.7, -5.45); W.add(p1);
   const plant = new THREE.Group(); plant.add(cyl(0.35, 0.28, 0.7, '#b35a3a', {y: 0.35})); for (let i = 0; i < 6; i++) { const l = new THREE.Mesh(new THREE.SphereGeometry(0.35, 10, 8), toon('#4f8a4a')); l.position.set(Math.cos(i) * 0.3, 0.9 + (i % 3) * 0.25, Math.sin(i) * 0.3); ink(l, 0.02, false); plant.add(l); }
   plant.position.set(O - 5.6, 0.05, 3.2); W.add(plant);
@@ -183,7 +184,7 @@ export function buildWorld() {
     g2.strokeStyle = '#c43d32'; g2.lineWidth = 10; g2.beginPath(); g2.moveTo(70, 130); g2.lineTo(70 + (cw - 140) * p, 130 + 150 * p); g2.stroke();
     if (p > 0.9) { g2.fillStyle = '#c43d32'; g2.font = 'bold 62px Arial, sans-serif'; g2.fillText('LOSING MONEY', cw / 2, 330); }
   });
-  chart.position.set(O + 3.6, 2.9, -5.35); W.add(chart);
+  chart.position.set(O + 2.4, 2.9, -5.35); W.add(chart);
   const noSign = sign('NO.', 1.9, 1.1, {bg: '#c43d32', fg: '#fff4dc', w: 380, h: 220, font: 'bold 150px Arial, sans-serif'}); noSign.position.set(O - 2, 2.55, 0.9); W.add(noSign);
   const cm = character({palette: 'teal', hat: 'none', seed: 43}); cm.position.set(O + 2.2, 0.05, 2.0); W.add(cm); chars.push(cm);
 
@@ -192,12 +193,12 @@ export function buildWorld() {
   hall(F, 28, 14, 8, '#dfe6e3', '#98a2a6', 12);
   W.add(box(20, 0.9, 1.3, '#4a4f55', {x: F, y: 0.5, z: -1.6}), box(20.4, 0.1, 1.5, '#8a9096', {x: F, y: 1.0, z: -1.6}));
   W.add(box(20, 0.9, 1.3, '#4a4f55', {x: F, y: 0.5, z: -4.4}), box(20.4, 0.1, 1.5, '#8a9096', {x: F, y: 1.0, z: -4.4}));
-  const dogs = []; for (let i = 0; i < 22; i++) { const h = hotdog(1.1); W.add(h); dogs.push({h, x0: i * 0.95, z: -1.6, y: 1.06}); }
-  const buns = []; for (let i = 0; i < 22; i++) { const b = box(0.64, 0.13, 0.21, '#e8b96d', {thick: 0.01}); W.add(b); buns.push({h: b, x0: i * 0.95, z: -4.4, y: 1.12}); }
+  const dogs = []; for (let i = 0; i < 22; i++) { const h = hotdog(1.7); W.add(h); dogs.push({h, x0: i * 1.3, z: -1.6, y: 1.06}); }
+  const buns = []; for (let i = 0; i < 22; i++) { const b = box(1.0, 0.2, 0.33, '#e8b96d', {thick: 0.01}); W.add(b); buns.push({h: b, x0: i * 1.3, z: -4.4, y: 1.12}); }
   for (const [x, w, h] of [[-9.5, 4.6, 4.2], [-4.5, 3.4, 3.4]]) { W.add(box(w, h, 2.6, '#b8c0c8', {x: F + x, y: h / 2, z: -6.0})); W.add(cyl(0.5, 0.5, 1.6, '#8a9096', {x: F + x, y: h + 0.8, z: -6.0})); }
   for (const x of [6, 9.5]) { W.add(cyl(1.1, 1.1, 4.6, '#c9d0d6', {x: F + x, y: 2.3, z: -5.8, seg: 20})); W.add(cyl(1.14, 1.14, 0.2, '#6f7a7d', {x: F + x, y: 3.2, z: -5.8, seg: 20})); }
   const facSign = sign('HOT DOG FACTORY', 7.6, 1.3, {bg: '#f2e6cc', w: 880, h: 150, font: 'bold 84px Arial, sans-serif'}); facSign.position.set(F, 6.3, -6.9); W.add(facSign);
-  for (const [x, z, pal, s] of [[-6.2, -2.8, 'teal', 51], [-1.0, -3.0, 'mustard', 52], [4.4, -2.8, 'pink', 53], [8.2, -2.9, 'red', 54]]) { const w = character({palette: pal, hat: 'cap', seed: s}); w.position.set(F + x, 0.05, z); W.add(w); chars.push(w); }
+  for (const [x, z, pal, s] of [[-6.2, -2.7, 'teal', 51], [-1.0, -2.8, 'mustard', 52], [4.4, -2.7, 'pink', 53], [8.2, -2.8, 'red', 54]]) { const w = character({palette: pal, hat: 'cap', seed: s}); w.position.set(F + x, 0.05, z); W.add(w); chars.push(w); }
   for (let i = 0; i < 3; i++) { W.add(P.at(P.pallet(), F - 9 + i * 1.5, 0.05, 3.6)); for (let j = 0; j < 3; j++) W.add(box(1.0, 0.5, 1.0, '#c9a066', {x: F - 9 + i * 1.5, y: 0.45 + j * 0.5, z: 3.6, thick: 0.015})); }
   W.add(P.at(P.barrel('#2f6db3'), F + 10, 0.05, 3.4), P.at(P.barrel('#c43d32'), F + 11, 0.05, 3.6));
   const costTag = sign('LESS COST', 2.8, 1.3, {bg: '#6aa84f', fg: '#ffffff', w: 560, h: 260, font: 'bold 96px Arial, sans-serif'}); costTag.position.set(F + 1.8, 3.4, -6.85); W.add(costTag);
@@ -235,6 +236,7 @@ export function buildWorld() {
     for (const c of chars) c.userData.update(t, cam.position);
     trafficD(t, cam);
     // court: hero hot dog gently turns; s02 menu pulse on "never"; counter board; tags
+    queues.forEach((q) => { q.visible = shot === 's08' || shot === 's09' || shot === 's10'; });
     hero.rotation.y = 0.5 * Math.sin(t * 1.2); heroCup.rotation.y = t * 0.6;
     menu2.scale.setScalar(1 + 0.08 * ease(t, wordT('s02', 10), wordT('s02', 10) + 0.3) * (1 - ease(t, wordT('s02', 11) + 0.2, wordT('s02', 11) + 0.6)));
     if (shot === 's08') board.userData.redraw(0, ease(t, wordT('s08', 0), wordT('s08', 11)) * 1.9 + 0.0 + Math.sin(t * 20) * 0.01);
@@ -243,14 +245,14 @@ export function buildWorld() {
     tagA.scale.setScalar(Math.max(0.001, ease(t, wordT('s10', 3), wordT('s10', 3) + 0.4)));
     pop(tagB, t, wordT('s10', 8)); if (shot !== 's10') { tagA.visible = false; tagB.visible = false; }
     // street signs pop on gas / rent / everything
-    streetSigns.forEach((g2, i) => { pop(g2, t, wordT('s03', [0, 3, 6][i])); g2.userData.arrow.position.y = 4.5 + 0.2 * Math.sin(t * 6 + i); });
+    streetSigns.forEach((g2, i) => { pop(g2, t, wordT('s03', [0, 3, 6][i])); g2.userData.arrow.position.y = 4.0 + 0.2 * Math.sin(t * 6 + i); });
     // office
     boss.userData.armR.rotation.z = shot === 's05' ? 0.4 * Math.sin(t * 5) : 0;
     chart.userData.redraw(Math.round(ease(t, wordT('s04', 5), wordT('s04', 10)) * 20) / 20);
     pop(noSign, t, wordT('s05', 17), 0.3);
     // factory belt
-    for (const d of dogs) d.h.position.set(F - 10 + ((d.x0 + t * 2.4) % 20.9), d.y, d.z);
-    for (const b of buns) b.h.position.set(F - 10 + ((b.x0 + t * 2.4) % 20.9), b.y, b.z);
+    for (const d of dogs) d.h.position.set(F - 14 + ((d.x0 + t * 2.4) % 28.6), d.y, d.z);
+    for (const b of buns) b.h.position.set(F - 14 + ((b.x0 + t * 2.4) % 28.6), b.y, b.z);
     pop(costTag, t, wordT('s07', 3)); pop(priceTag, t, wordT('s07', 8));
     // aisle: carts fill + membership sign
     pop(memSign, t, wordT('s11', 14)); pop(card, t, wordT('s11', 14) + 0.15);
