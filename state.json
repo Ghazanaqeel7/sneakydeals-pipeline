@@ -986,9 +986,13 @@
         {
           "t": "2026-11-22T12:58:17Z",
           "msg": "↩️ You pulled the video back into review on the dashboard — it will not publish. A new review message is coming."
+        },
+        {
+          "t": "2026-11-22T13:45:20Z",
+          "msg": "🛠 Aapke feedback (characters/scenes chahiye, numbers nahi) ke mutabiq pura video naye 3D engine (Shorts wala) se rebuild kar diya — 29/39 scenes ab real 3D characters + dressed locations use karte hain. Render GitHub par queue kar raha hoon (~1-2 ghante, pehli baar hai is engine ke saath isliye norm"
         }
       ],
-      "progress_count": 5,
+      "progress_count": 6,
       "decided_via": "dashboard",
       "decided_at": "2026-11-22T12:58:17Z",
       "run": "44992464004",
