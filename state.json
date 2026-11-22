@@ -1038,9 +1038,14 @@
           "t": "2026-11-22T17:14:08Z",
           "msg": "🔍 Check frames: store, invoice desk aur ring scene theek hain; camera ghar-ke-paas kar diya (~5 min baqi, phir render ~40 min)",
           "image": "jobs/014-nike-swoosh-35-dollars/review/round1.jpg"
+        },
+        {
+          "t": "2026-11-22T17:14:10Z",
+          "msg": "🖼 Thumbnail tayyar — ab GitHub par render shuru hoga (~40 min)",
+          "image": "jobs/014-nike-swoosh-35-dollars/thumbnail.jpg"
         }
       ],
-      "progress_count": 5,
+      "progress_count": 6,
       "vote_msg": "1795327876.849829",
       "vote_kind": "script",
       "decided_via": "dashboard",
