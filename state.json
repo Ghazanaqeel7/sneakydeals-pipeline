@@ -130,10 +130,6 @@
     "research": {
       "progress": [
         {
-          "t": "2026-11-10T22:12:46Z",
-          "msg": "🔥 Top Short: \"Engineer vs. Mathematician Which solution is better? #Math #Engineerin\" — 8.3M views, 59.0x apne channel se zyada"
-        },
-        {
           "t": "2026-11-10T22:12:48Z",
           "msg": "🎬 Top lambi video: \"The North Korean Operatives Hiding Inside U.S. Companies | WSJ Documen\" — 10.4M views, 112.9x"
         },
@@ -188,9 +184,13 @@
         {
           "t": "2026-11-23T08:24:02Z",
           "msg": "🏷 Garam words: ceo, family, nvidia, jensen, exposed, empire, viral, trick"
+        },
+        {
+          "t": "2026-11-23T08:24:03Z",
+          "msg": "👀 RankZilla: \"DON'T CHECK THE SOUND 😭😭\" 15.0x chali"
         }
       ],
-      "progress_count": 22
+      "progress_count": 23
     },
     "003-pudding-guy-free-flights": {
       "status": "published",
