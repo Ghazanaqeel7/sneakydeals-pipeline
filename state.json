@@ -130,10 +130,6 @@
     "research": {
       "progress": [
         {
-          "t": "2026-11-10T21:42:14Z",
-          "msg": "👀 RankZilla: \"DON'T CHECK THE SOUND 😭😭\" 18.5x chali"
-        },
-        {
           "t": "2026-11-10T21:42:16Z",
           "msg": "📈 Sneaky Deals: 0 subs"
         },
@@ -188,9 +184,13 @@
         {
           "t": "2026-11-23T08:23:58Z",
           "msg": "🔎 Research update tayyar (dashboard → Research)"
+        },
+        {
+          "t": "2026-11-23T08:23:59Z",
+          "msg": "🔥 Top Short: \"What if your home had a secret nuclear bunker underneath? ☢️🏡\" — 6.4M views, 20.8x apne channel se zyada"
         }
       ],
-      "progress_count": 19
+      "progress_count": 20
     },
     "003-pudding-guy-free-flights": {
       "status": "published",
