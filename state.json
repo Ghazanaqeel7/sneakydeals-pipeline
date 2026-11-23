@@ -1153,9 +1153,13 @@
           "t": "2026-11-23T17:20:19Z",
           "msg": "🖼 Thumbnail tayyar. Render GitHub par queue ho raha hai (~40 min)",
           "image": "jobs/015-ikea-flat-pack/thumbnail.jpg"
+        },
+        {
+          "t": "2026-11-23T17:21:26Z",
+          "msg": "🎞 Render shuru (GitHub). Andaza: ~30-50 min."
         }
       ],
-      "progress_count": 5,
+      "progress_count": 6,
       "decided_via": "dashboard",
       "decided_at": "2026-11-23T13:06:39Z",
       "run": "45226585748"
