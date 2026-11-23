@@ -136,14 +136,14 @@ export function buildWorld() {
   const S = LOC.shop;
   W.add(room(S, {w: 18, h: 6, d: 12, wall: '#e8d2a8', floor: '#9b6a44', seed: 5}));
   const bench = P.desk(3.4, '#8a5a3b'); at(bench, S, 0.05, -1.5); W.add(bench);
-  const hookTable = table(0.05); hookTable.userData.legs.forEach((l) => (l.m.visible = false)); hookTable.scale.set(0.8, 0.8, 0.8); at(hookTable, S - 0.3, 1.0, -1.5, 0.2); W.add(hookTable);
-  const hookLegs = new THREE.Group(); for (let i = 0; i < 4; i++) { const l = box(0.14, 0.9, 0.14, WOOD2, {}); l.rotation.z = Math.PI / 2; l.position.set(S + 1.6 + (i % 2) * 0.1, 1.1 + i * 0.14, -1.3 + (i % 2) * 0.15); l.rotation.y = i * 0.5; hookLegs.add(l); } W.add(hookLegs);
-  const hookSaw = saw(); at(hookSaw, S + 0.7, 1.45, -1.0, 0.4); W.add(hookSaw);
+  const hookTable = table(0.05); hookTable.userData.legs.forEach((l) => (l.m.visible = false)); hookTable.scale.set(1.3, 1.3, 1.3); at(hookTable, S - 0.5, 1.0, -1.5, 0.15); W.add(hookTable);
+  const hookLegs = new THREE.Group(); for (let i = 0; i < 4; i++) { const l = box(0.14, 0.9, 0.14, WOOD2, {}); l.rotation.z = Math.PI / 2; l.position.set(S + 2.4 + (i % 2) * 0.1, 1.1 + i * 0.14, -1.3 + (i % 2) * 0.15); l.rotation.y = i * 0.5; hookLegs.add(l); } W.add(hookLegs);
+  const hookSaw = saw(); at(hookSaw, S + 0.7, 1.5, -0.6, 0.4); W.add(hookSaw);
   const dustS = dust(7); W.add(dustS);
   W.add(at(P.toolRack(1), S - 6, 0, -5.9), at(P.toolRack(2), S + 6, 0, -5.9), at(P.ladder(3.4), S - 8, 0.05, -5.2), at(P.beamStack(4, 5), S + 7.5, 0.05, -3), at(P.barrel('#d9a441'), S - 7, 0.05, -3.4), at(P.toolbox(), S + 3.2, 0.05, 0.6, 0.3));
   for (let i = 0; i < 6; i++) W.add(box(0.12, 1.2 + (i % 3) * 0.3, 0.12, WOOD2, {x: S - 5 + i * 0.25, y: 0.7, z: -4.2, rz: 0})); 
   W.add(at(P.poster('SKETCH', 1.1, 1.5, '#e6d39a'), S - 2.5, 3.3, -5.9), at(P.wallClock(), S + 3, 4.6, -5.9)); lamp(W, S - 3, -1); lamp(W, S + 3, -1);
-  person(W, chars, 'mustard', S + 3.2, 0.05, -3.4, -0.3, {hat: 'cap', seed: 11});
+  person(W, chars, 'mustard', S + 5.2, 0.05, -4.2, -0.3, {hat: 'cap', seed: 11});
   person(W, chars, 'navy', S - 3.6, 0.05, -2.0, 0.5, {seed: 12});
 
   // ======== DESK: designer at his drawing table (s02) ========
@@ -172,7 +172,7 @@ export function buildWorld() {
   const dustL = dust(9); W.add(dustL);
   const gil2 = person(W, chars, 'engineer', L - 3.2, 0.25, 6.6, 0.4, {glasses: true, seed: 22});
   const passer = person(W, chars, 'red', L + 5.5, 0.25, 5.4, -0.5, {hat: 'cap', seed: 31});
-  const sw = sign('FURNITURE', 6, 1.4, {bg: '#f4ead4', w: 640, h: 150, font: 'bold 84px Arial'}); at(sw, L, 6.2, 3.55); W.add(sw);
+  const sw = sign('FURNITURE', 6, 1.4, {bg: '#f4ead4', w: 640, h: 150, font: 'bold 84px Arial'}); at(sw, L + 12, 6.2, 3.55); W.add(sw);
 
   // ======== WAREHOUSE (s06, s07) ========
   const A = LOC.ware;
@@ -248,7 +248,7 @@ export function buildWorld() {
     lotSaw.visible = shot === 's04';
     lotSaw.position.set(bx - 1.25 + Math.sin(t * 16) * 0.12, 0.9, 7.1); lotSaw.rotation.set(0, 0.3, 0.0);
     dustL.userData.update(t, [bx - 1.2, 0.5, 7.0], shot === 's04' ? ease(t, tSaw - 0.2, tSaw) * (1 - ease(t, tLegs, tLegs + 0.4)) : 0);
-    gil2.position.set((t < tFit0 ? bx : 296.2) - 2.0, 0.25, 6.6);
+    gil2.position.set((t < tFit0 ? bx : 296.2) + 2.1, 0.25, 6.6);
     gil2.userData.armR.rotation.z = shot === 's04' ? 1.2 + Math.sin(t * 16) * 0.5 : shot === 's05' ? 2.4 + Math.sin(t * 6) * 0.3 : 0;
     // wagon rolls away in the closing shot
     const drive = shot === 's12' ? ease(t, wordT('s12', 9), wordT('s12', 15)) : 0;
