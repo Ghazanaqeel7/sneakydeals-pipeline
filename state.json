@@ -1143,9 +1143,14 @@
         {
           "t": "2026-11-23T17:15:02Z",
           "msg": "🎙 Voice tayyar (43 s). 🎬 Scenes: 6 locations — workshop, designer desk, parking lot, warehouse, ghar, showroom (~35 min baqi, phir render ~40 min)"
+        },
+        {
+          "t": "2026-11-23T17:20:17Z",
+          "msg": "🔍 Check frames: saare scenes (workshop, desk, parking, warehouse, ghar, showroom) theek lag rahe hain; camera aur wagon ki chhoti fixes lagayin (~render ~40 min)",
+          "image": "jobs/015-ikea-flat-pack/review/round1.jpg"
         }
       ],
-      "progress_count": 3,
+      "progress_count": 4,
       "decided_via": "dashboard",
       "decided_at": "2026-11-23T13:06:39Z"
     }
