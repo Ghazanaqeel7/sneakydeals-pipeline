@@ -1,90 +1,95 @@
 {
  "fps": 30,
- "duration": 63.23,
+ "duration": 42.71,
  "shots": [
   {
    "key": "hook",
    "start": 0.15,
-   "end": 5.582,
-   "words": 15,
-   "text": "In nineteen seventy-eight, welders secretly patched a brand new New York skyscraper, every single night."
+   "end": 3.196,
+   "words": 9,
+   "text": "IKEA's famous flat pack started with a sawed-off table."
   },
   {
-   "key": "cta",
-   "start": 5.974,
-   "end": 11.538,
-   "words": 23,
-   "text": "Before we go deep into today's story, take a second to like this video and subscribe if you haven't. Let's get into it."
+   "key": "s02",
+   "start": 3.616,
+   "end": 6.5,
+   "words": 9,
+   "text": "Gillis Lundgren was a designer at IKEA in Sweden."
   },
   {
-   "key": "tower",
-   "start": 11.93,
-   "end": 16.684,
+   "key": "s03",
+   "start": 6.92,
+   "end": 9.571,
+   "words": 17,
+   "text": "As the story goes, he tried to fit a table in his car. It was too big."
+  },
+  {
+   "key": "s04",
+   "start": 9.945,
+   "end": 12.083,
+   "words": 6,
+   "text": "So he sawed the legs off."
+  },
+  {
+   "key": "s05",
+   "start": 12.503,
+   "end": 16.83,
    "words": 13,
-   "text": "It stood fifty-nine stories high on giant stilts, and it had just opened."
+   "text": "The table fit. And that small moment made IKEA rethink how furniture travels."
   },
   {
-   "key": "rules",
-   "start": 17.077,
-   "end": 20.643,
-   "words": 11,
-   "text": "The building rules only asked about wind hitting the flat sides."
-  },
-  {
-   "key": "but",
-   "start": 21.036,
-   "end": 26.334,
+   "key": "s06",
+   "start": 17.25,
+   "end": 22.07,
    "words": 16,
-   "text": "But a student asked about corner winds, and the numbers showed about forty percent more force."
+   "text": "Shipping big, fully built furniture was a headache. It took up space, and things got damaged."
   },
   {
-   "key": "then",
-   "start": 26.726,
-   "end": 31.59,
-   "words": 16,
-   "text": "Then the engineer learned the builders had swapped his welded joints for bolts to save money."
+   "key": "s07",
+   "start": 22.49,
+   "end": 24.545,
+   "words": 5,
+   "text": "Flat boxes solved both problems."
   },
   {
-   "key": "storm",
-   "start": 31.983,
-   "end": 35.961,
+   "key": "s08",
+   "start": 24.922,
+   "end": 28.171,
    "words": 14,
-   "text": "A big enough storm could snap those bolts, right in the middle of Manhattan."
+   "text": "The table went on sale as the L\u00f6vet, with its legs in the box."
   },
   {
-   "key": "yousee",
-   "start": 36.353,
-   "end": 42.624,
-   "words": 19,
-   "text": "You see, a weld turns a joint into one solid piece. Bolts are only as strong as the bolts."
+   "key": "s09",
+   "start": 28.554,
+   "end": 31.115,
+   "words": 9,
+   "text": "Customers finished the job at home. It caught on."
   },
   {
-   "key": "night",
-   "start": 43.017,
-   "end": 48.297,
+   "key": "s10",
+   "start": 31.463,
+   "end": 33.261,
+   "words": 6,
+   "text": "Today IKEA is famous for it."
+  },
+  {
+   "key": "s11",
+   "start": 33.577,
+   "end": 37.595,
    "words": 14,
-   "text": "Every night after the offices emptied, welders covered the bolted joints with steel plates."
+   "text": "And that little table is still around. IKEA brought it back as the L\u00f6vbacken."
   },
   {
-   "key": "ella",
-   "start": 48.69,
-   "end": 53.756,
+   "key": "s12",
+   "start": 38.015,
+   "end": 41.958,
    "words": 15,
-   "text": "During the repair, Hurricane Ella headed for New York, and evacuation plans were drawn up."
-  },
-  {
-   "key": "so",
-   "start": 54.148,
-   "end": 58.165,
-   "words": 10,
-   "text": "So everyone watched the forecasts, until the storm turned away."
-  },
-  {
-   "key": "close",
-   "start": 58.558,
-   "end": 62.476,
-   "words": 13,
-   "text": "The repair worked, and the public didn't hear about it until nineteen ninety-five."
+   "text": "A table that wouldn't fit in a car helped change how we all buy furniture."
   }
+ ],
+ "hookTitle": [
+  "IKEA'S FLAT PACK",
+  "FROM A SAWED",
+  "OFF TABLE?!"
  ]
 }
