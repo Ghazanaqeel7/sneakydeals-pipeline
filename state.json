@@ -1135,9 +1135,13 @@
         {
           "t": "2026-11-23T13:06:39Z",
           "msg": "✅ You approved the script on the dashboard. Claude starts the video in the next run."
+        },
+        {
+          "t": "2026-11-23T17:10:10Z",
+          "msg": "🎙 Voice ban rahi hai… (~3 min, phir scenes ~45 min, phir render ~40 min)"
         }
       ],
-      "progress_count": 1,
+      "progress_count": 2,
       "decided_via": "dashboard",
       "decided_at": "2026-11-23T13:06:39Z"
     }
