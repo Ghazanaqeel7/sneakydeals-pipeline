@@ -1126,8 +1126,8 @@
       "progress_count": 5
     },
     "015-ikea-flat-pack": {
-      "status": "rendering",
-      "updated": "2026-11-23T17:21:24Z",
+      "status": "video_ready",
+      "updated": "2026-11-23T18:14:44Z",
       "title": "IKEA's Flat Pack Started With a Sawed-Off Table",
       "vote_msg": "1795414321.015999",
       "vote_kind": "script",
@@ -1174,7 +1174,10 @@
       "progress_count": 9,
       "decided_via": "dashboard",
       "decided_at": "2026-11-23T13:06:39Z",
-      "run": "45226585748"
+      "run": "45226585748",
+      "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-015-ikea-flat-pack/final.mp4",
+      "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-015-ikea-flat-pack/preview.mp4",
+      "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/015-ikea-flat-pack.mp4"
     }
   },
   "ideas": [
