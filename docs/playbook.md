@@ -6,7 +6,7 @@ Monday from the research bot's data (`docs/research/`) and our own videos' numbe
 Confidence labels: **[proven]** = our own videos show it · **[signal]** = the niche shows it (research bot) ·
 **[start]** = starting assumption, not tested yet.
 
-_Last updated: 11 Nov 2026 (first version, before any of our videos had data)._
+_Last updated: 23 Nov 2026 (early signal from 12 Shorts; long-form paused by the owner)._
 
 ## Topics
 - [signal] "Ordinary person beats a big company with a loophole" stories break out hardest (Pudding Guy ~100x, Worst Trade Ever ~1,900x on small channels).
@@ -20,6 +20,9 @@ _Pasted by the owner via the dashboard Inbox. Claude follows these from now on a
 - [owner 19 Nov 2026] Voiceover pace for long videos: about 130 to 145 words per minute, crisp and energetic, not rushed; background music pulled well below the voice (about -22 to -26 dB under voice, voice near -14 to -16 LUFS).
 - [owner 22 Nov 2026] Rejected job 013 (Kodak) as boring/"bikar" — too many number/chart-style scenes, not enough character/scene storytelling. Long videos must lead with cast/character scenes like the Shorts (same cartoon cast, acting out the story); charts/stats/maps/timelines are now a rare 1-2 scene accent only, never the main visual language. See `docs/longform_guide.md` "Format"/"Attention rules" (revised 22 Nov 2026).
 - [owner 23 Nov 2026] Long-form paused until further notice — January target takes priority, focus all effort on Shorts. `config.longform_enabled` set to `false` (calendar items marked `format: "long"` are made as Shorts instead per the existing rule in `PIPELINE.md` step 5, with the long idea kept in `long_later`). Shorts cadence raised to **2 uploads/day** at two US-spread times: `config.publish_times_pkt` = `["05:00", "17:00"]` (05:00 PKT ≈ 7 PM US Eastern the evening before — evening/prime-time US viewers; 17:00 PKT ≈ 7 AM US Eastern same day — US morning/commute viewers). `pipeline_buffer` raised from 2 to 4 to keep enough Shorts ready ahead at double the daily consumption rate. Do not re-enable long-form or revert the publish schedule without the owner saying so.
+
+- [signal 23 Nov] Hook "famous giant + rigged / secret / hidden trick" (McDonald's Monopoly 1.7K, Disney swamp 1.4K) beat obscure names and ordinary-person stories (Pudding 389, Piggly Wiggly 719). Early signal, n=2 each.
+- [signal 23 Nov] Pace vs goal: ~1-2K views/day vs ~222K needed. Biggest lever next week: only the most famous US brands, one hidden-trick hook each, 2 uploads/day.
 
 ## Titles
 - [start] Brand + shocking action, no year, ≤ 60 characters (e.g. "Pepsi's Ad Showed a Fighter Jet. He Sent $700,000.").

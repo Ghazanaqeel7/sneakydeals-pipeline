@@ -1,75 +1,70 @@
 {
-  "week": "2026-11-16",
-  "made": "2026-11-16T11:49:00+05:00",
-  "note": "First week running the owner's 4 Shorts / 3 long-form mix (Mon/Wed/Fri/Sun short, Tue/Thu/Sat long). Long-form topics are the already-queued [LONG] ideas (research score + rise-and-fall signal). Written manually this week because the Monday story-hour run exited early on \"buffer full\" before reaching step 6 -- fixed in PIPELINE.md so this can't happen again.",
+  "week": "2026-11-23",
+  "made": "2026-11-23T11:30:00+05:00",
+  "note": "Long-form paused by owner on 23 Nov: all 7 days are Shorts. Big-brand hidden-trick stories first (see docs/reviews/2026-11-23.md). All titles are drafts; fact-check each.",
   "items": [
     {
-      "day": "Mon 16 Nov",
+      "day": "Mon 23 Nov",
       "format": "short",
-      "topic": "Coca-Cola mailed millions of Americans a coupon for one free glass of Coke in the 1890s-1900s to build the habit nationwide",
-      "angle": "A free giveaway engineered to create lifelong customers, not goodwill",
-      "title": "Coca-Cola Mailed Free Coke Coupons to Millions of Strangers",
-      "why": "Swapped in for Popeyes (bankruptcy-forced-banks-to-pay story could not be pinned to two independent sources) -- today is a Short day, so the swap stays a Short too.",
-      "status": "scripted",
-      "note": "Skipped 17 Nov: \"banks paid him for the name\" claim not supported by sources.",
-      "job": "010-coca-cola-free-coupons"
-    },
-    {
-      "day": "Tue 17 Nov",
-      "format": "long",
-      "topic": "Blockbuster turned down a deal to buy Netflix, laughed it off, then watched Netflix beat it",
-      "angle": "Rise and fall: arrogance at the top missing the obvious threat",
-      "title": "Blockbuster Laughed at the $50 Million Netflix Deal",
-      "why": "'Worst Business Decision' 6.1x, 'Rise and fall' docs 5-216x this week; already queued as a [LONG] idea.",
+      "topic": "IKEA's flat-pack furniture was born when an employee took the legs off a table to fit it in a car (1950s)",
+      "angle": "A famous brand's whole model came from one small packing problem",
+      "title": "IKEA's Flat Pack Idea Started With a Table That Wouldn't Fit",
+      "why": "Famous-brand hidden-trick hook (early signal: McDonald's 1.7K, Disney 1.4K). Verify before scripting.",
       "status": "planned"
     },
     {
-      "day": "Wed 18 Nov",
+      "day": "Tue 24 Nov",
       "format": "short",
-      "topic": "Popeyes founder Al Copeland lost the chain in bankruptcy, then used the bankruptcy process itself to force the banks to pay him for the name",
-      "angle": "Ordinary rules turned into a weapon against the people who beat him",
-      "title": "Popeyes Founder Lost Everything. Then He Made the Banks Pay Him.",
-      "why": "Moved from Mon -- needs the bankruptcy-forced-payout claim verified against two independent sources before scripting.",
-      "status": "planned_needs_verification"
-    },
-    {
-      "day": "Thu 19 Nov",
-      "format": "long",
-      "topic": "Kodak invented the digital camera in 1975 and buried it to protect film sales, then went bankrupt when digital took over anyway",
-      "angle": "The company that saw the future and chose not to take it",
-      "title": "Kodak Invented the Future, Then Hid It",
-      "why": "'Rise and fall' business docs 5-216x this week; already queued as a [LONG] idea.",
+      "topic": "Domino's 30-minutes-or-free guarantee was dropped in 1993 after a huge court verdict over a crash involving a delivery driver",
+      "angle": "A marketing promise that became a legal problem",
+      "title": "Domino's Promised 30 Minutes. A Court Verdict Ended It.",
+      "why": "Famous-brand hidden-trick hook (early signal: McDonald's 1.7K, Disney 1.4K). Verify before scripting.",
       "status": "planned"
     },
     {
-      "day": "Fri 20 Nov",
+      "day": "Wed 25 Nov",
       "format": "short",
-      "topic": "An ex-cop running security for the printing company that made McDonald's Monopoly game pieces rigged it for a decade, stealing nearly all the big prizes",
-      "angle": "The person meant to protect the game pulled off the biggest sneaky deal of all",
-      "title": "He Rigged McDonald's Monopoly Game for 10 Years",
-      "why": "Classic brand-secret/insider-fraud story, matches our top hook type exactly; not covered yet.",
-      "status": "scripted",
-      "job": "008-mcdonalds-monopoly-rigged"
-    },
-    {
-      "day": "Sat 21 Nov",
-      "format": "long",
-      "topic": "WeWork went from a $47 billion valuation to bankruptcy in a few years under Adam Neumann",
-      "angle": "Hype and a founder's ego outrunning the actual business",
-      "title": "WeWork: From $47 Billion to Bankrupt",
-      "why": "'Collapse of Bullsh*t Companies' 8.7x this week; already queued as a [LONG] idea.",
+      "topic": "Pringles inventor Fredric Baur asked for his ashes to be buried in a Pringles can",
+      "angle": "The weirdest ending to a famous product's story",
+      "title": "The Pringles Inventor Was Buried in a Pringles Can",
+      "why": "Famous-brand hidden-trick hook (early signal: McDonald's 1.7K, Disney 1.4K). Verify before scripting.",
       "status": "planned"
     },
     {
-      "day": "Sun 22 Nov",
+      "day": "Thu 26 Nov",
       "format": "short",
-      "topic": "Taco Bell trademarked the phrase \"Taco Tuesday\" for decades through a shell company, then sued a small business over it before finally giving it up for free in 2023",
-      "angle": "A fast-food giant owning two common words, until it got caught",
-      "title": "Taco John's Owned 'Taco Tuesday' Until Taco Bell Stepped In",
-      "why": "Recent (2023), well-documented, strong brand-secret hook, distinct from brands already used.",
-      "status": "scripted",
-      "job": "011-taco-tuesday-trademark",
-      "note": "Fact-check correction: the owner of the Taco Tuesday trademark was Taco John's (Wyoming), not Taco Bell; Taco Bell challenged it in 2023. Script told that way."
+      "topic": "McDonald's first CFO built the company on real estate, not burgers (Franchise Realty Corporation)",
+      "angle": "The hidden business under the biggest brand",
+      "title": "McDonald's Is Secretly a Real Estate Company",
+      "why": "Famous-brand hidden-trick hook (early signal: McDonald's 1.7K, Disney 1.4K). Verify before scripting.",
+      "status": "planned"
+    },
+    {
+      "day": "Fri 27 Nov",
+      "format": "short",
+      "topic": "Heinz redesigned the ketchup bottle to sit upside down so kids could squeeze it",
+      "angle": "A famous brand fixing one annoying thing and selling more",
+      "title": "Heinz Turned Its Bottle Upside Down. Sales Jumped.",
+      "why": "Famous-brand hidden-trick hook (early signal: McDonald's 1.7K, Disney 1.4K). Verify before scripting.",
+      "status": "planned"
+    },
+    {
+      "day": "Sat 28 Nov",
+      "format": "short",
+      "topic": "Red Bull was sued over 'gives you wings' and paid $13 million (2014 settlement)",
+      "angle": "Slogan taken literally by the court of public opinion",
+      "title": "Red Bull Got Sued for Not Giving Wings",
+      "why": "Famous-brand hidden-trick hook (early signal: McDonald's 1.7K, Disney 1.4K). Verify before scripting.",
+      "status": "planned"
+    },
+    {
+      "day": "Sun 29 Nov",
+      "format": "short",
+      "topic": "Starbucks was nearly sold in 1987 to Howard Schultz by its founders, who then kept the Seattle store count tiny",
+      "angle": "From six stores to a global brand",
+      "title": "Starbucks Was Sold for $3.8 Million",
+      "why": "Famous-brand hidden-trick hook (early signal: McDonald's 1.7K, Disney 1.4K). Verify before scripting.",
+      "status": "planned"
     }
   ]
 }

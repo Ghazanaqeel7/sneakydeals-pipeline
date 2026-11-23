@@ -1,0 +1,75 @@
+{
+  "week": "2026-11-16",
+  "made": "2026-11-16T11:49:00+05:00",
+  "note": "First week running the owner's 4 Shorts / 3 long-form mix (Mon/Wed/Fri/Sun short, Tue/Thu/Sat long). Long-form topics are the already-queued [LONG] ideas (research score + rise-and-fall signal). Written manually this week because the Monday story-hour run exited early on \"buffer full\" before reaching step 6 -- fixed in PIPELINE.md so this can't happen again.",
+  "items": [
+    {
+      "day": "Mon 16 Nov",
+      "format": "short",
+      "topic": "Coca-Cola mailed millions of Americans a coupon for one free glass of Coke in the 1890s-1900s to build the habit nationwide",
+      "angle": "A free giveaway engineered to create lifelong customers, not goodwill",
+      "title": "Coca-Cola Mailed Free Coke Coupons to Millions of Strangers",
+      "why": "Swapped in for Popeyes (bankruptcy-forced-banks-to-pay story could not be pinned to two independent sources) -- today is a Short day, so the swap stays a Short too.",
+      "status": "scripted",
+      "note": "Skipped 17 Nov: \"banks paid him for the name\" claim not supported by sources.",
+      "job": "010-coca-cola-free-coupons"
+    },
+    {
+      "day": "Tue 17 Nov",
+      "format": "long",
+      "topic": "Blockbuster turned down a deal to buy Netflix, laughed it off, then watched Netflix beat it",
+      "angle": "Rise and fall: arrogance at the top missing the obvious threat",
+      "title": "Blockbuster Laughed at the $50 Million Netflix Deal",
+      "why": "'Worst Business Decision' 6.1x, 'Rise and fall' docs 5-216x this week; already queued as a [LONG] idea.",
+      "status": "planned"
+    },
+    {
+      "day": "Wed 18 Nov",
+      "format": "short",
+      "topic": "Popeyes founder Al Copeland lost the chain in bankruptcy, then used the bankruptcy process itself to force the banks to pay him for the name",
+      "angle": "Ordinary rules turned into a weapon against the people who beat him",
+      "title": "Popeyes Founder Lost Everything. Then He Made the Banks Pay Him.",
+      "why": "Moved from Mon -- needs the bankruptcy-forced-payout claim verified against two independent sources before scripting.",
+      "status": "planned_needs_verification"
+    },
+    {
+      "day": "Thu 19 Nov",
+      "format": "long",
+      "topic": "Kodak invented the digital camera in 1975 and buried it to protect film sales, then went bankrupt when digital took over anyway",
+      "angle": "The company that saw the future and chose not to take it",
+      "title": "Kodak Invented the Future, Then Hid It",
+      "why": "'Rise and fall' business docs 5-216x this week; already queued as a [LONG] idea.",
+      "status": "planned"
+    },
+    {
+      "day": "Fri 20 Nov",
+      "format": "short",
+      "topic": "An ex-cop running security for the printing company that made McDonald's Monopoly game pieces rigged it for a decade, stealing nearly all the big prizes",
+      "angle": "The person meant to protect the game pulled off the biggest sneaky deal of all",
+      "title": "He Rigged McDonald's Monopoly Game for 10 Years",
+      "why": "Classic brand-secret/insider-fraud story, matches our top hook type exactly; not covered yet.",
+      "status": "scripted",
+      "job": "008-mcdonalds-monopoly-rigged"
+    },
+    {
+      "day": "Sat 21 Nov",
+      "format": "long",
+      "topic": "WeWork went from a $47 billion valuation to bankruptcy in a few years under Adam Neumann",
+      "angle": "Hype and a founder's ego outrunning the actual business",
+      "title": "WeWork: From $47 Billion to Bankrupt",
+      "why": "'Collapse of Bullsh*t Companies' 8.7x this week; already queued as a [LONG] idea.",
+      "status": "planned"
+    },
+    {
+      "day": "Sun 22 Nov",
+      "format": "short",
+      "topic": "Taco Bell trademarked the phrase \"Taco Tuesday\" for decades through a shell company, then sued a small business over it before finally giving it up for free in 2023",
+      "angle": "A fast-food giant owning two common words, until it got caught",
+      "title": "Taco John's Owned 'Taco Tuesday' Until Taco Bell Stepped In",
+      "why": "Recent (2023), well-documented, strong brand-secret hook, distinct from brands already used.",
+      "status": "scripted",
+      "job": "011-taco-tuesday-trademark",
+      "note": "Fact-check correction: the owner of the Taco Tuesday trademark was Taco John's (Wyoming), not Taco Bell; Taco Bell challenged it in 2023. Script told that way."
+    }
+  ]
+}
