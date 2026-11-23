@@ -6,6 +6,17 @@
 <description>Approved videos for the Sneaky Deals Facebook Page. Zap "Sneaky Deals -> Facebook" (RSS by Zapier -> Facebook Pages Create Page Video) reads this feed. n8n adds one item per publish day, right after feed/youtube.xml.</description>
 <!--ITEMS-->
 <item>
+<title>Costco's $1.50 Hot Dog Hasn't Changed Price Since 1985</title>
+<description><![CDATA[Costco's hot dog and soda combo has cost $1.50 since 1985. When it was losing money, Costco built its own hot dog factories rather than raise the price. Would you still shop there at $4? 👇
+
+#costco #businesshistory]]></description>
+<link>https://raw.githubusercontent.com/Ghazanaqeel7/sneakydeals-pipeline/main/jobs/012-costco-hot-dog/thumbnail.jpg</link>
+<guid isPermaLink="false">012-costco-hot-dog</guid>
+<pubDate>Mon, 23 Nov 2026 02:53:19 GMT</pubDate>
+<enclosure url="https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/012-costco-hot-dog.mp4" type="video/mp4" length="0"/>
+</item>
+
+<item>
 <title>Taco John's Owned 'Taco Tuesday' Until Taco Bell Stepped In</title>
 <description><![CDATA[A small Wyoming chain trademarked "Taco Tuesday" in 1989. In 2023 Taco Bell asked the government to cancel it, and Taco John's gave it up.
 
