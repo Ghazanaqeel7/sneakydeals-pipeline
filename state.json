@@ -1126,11 +1126,11 @@
       "progress_count": 5
     },
     "015-ikea-flat-pack": {
-      "status": "video_ready",
-      "updated": "2026-11-23T18:14:44Z",
+      "status": "video_sent",
+      "updated": "2026-11-23T21:43:03Z",
       "title": "IKEA's Flat Pack Started With a Sawed-Off Table",
-      "vote_msg": "1795414321.015999",
-      "vote_kind": "script",
+      "vote_msg": "",
+      "vote_kind": "",
       "progress": [
         {
           "t": "2026-11-23T13:06:39Z",
