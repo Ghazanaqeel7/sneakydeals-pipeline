@@ -1,90 +1,94 @@
 {
  "fps": 30,
- "duration": 63.23,
+ "duration": 53.06,
  "shots": [
   {
    "key": "hook",
    "start": 0.15,
-   "end": 5.582,
-   "words": 15,
-   "text": "In nineteen seventy-eight, welders secretly patched a brand new New York skyscraper, every single night."
+   "end": 2.9,
+   "words": 8,
+   "text": "Domino's promised pizza in thirty minutes or free."
   },
   {
-   "key": "cta",
-   "start": 5.974,
-   "end": 11.538,
-   "words": 23,
-   "text": "Before we go deep into today's story, take a second to like this video and subscribe if you haven't. Let's get into it."
+   "key": "s02",
+   "start": 3.32,
+   "end": 6.373,
+   "words": 9,
+   "text": "Then a courtroom made them pay seventy-eight million dollars."
   },
   {
-   "key": "tower",
-   "start": 11.93,
-   "end": 16.684,
+   "key": "s03",
+   "start": 6.793,
+   "end": 12.227,
+   "words": 18,
+   "text": "Domino's was famous for speed. If your pizza was late, it was free. That promise built the brand."
+  },
+  {
+   "key": "s04",
+   "start": 12.647,
+   "end": 15.76,
    "words": 13,
-   "text": "It stood fifty-nine stories high on giant stilts, and it had just opened."
+   "text": "Every order had a clock ticking on it, and every driver felt it."
   },
   {
-   "key": "rules",
-   "start": 17.077,
-   "end": 20.643,
+   "key": "s05",
+   "start": 16.18,
+   "end": 20.41,
+   "words": 14,
+   "text": "In nineteen eighty-nine, a Domino's car and a woman's car collided in St. Louis."
+  },
+  {
+   "key": "s06",
+   "start": 20.83,
+   "end": 24.361,
    "words": 11,
-   "text": "The building rules only asked about wind hitting the flat sides."
+   "text": "She sued. She said the thirty-minute rush made drivers less safe."
   },
   {
-   "key": "but",
-   "start": 21.036,
-   "end": 26.334,
-   "words": 16,
-   "text": "But a student asked about corner winds, and the numbers showed about forty percent more force."
+   "key": "s07",
+   "start": 24.781,
+   "end": 27.616,
+   "words": 9,
+   "text": "Domino's said its drivers were never told to speed."
   },
   {
-   "key": "then",
-   "start": 26.726,
-   "end": 31.59,
-   "words": 16,
-   "text": "Then the engineer learned the builders had swapped his welded joints for bolts to save money."
-  },
-  {
-   "key": "storm",
-   "start": 31.983,
-   "end": 35.961,
+   "key": "s08",
+   "start": 28.036,
+   "end": 33.094,
    "words": 14,
-   "text": "A big enough storm could snap those bolts, right in the middle of Manhattan."
+   "text": "But in December of nineteen ninety-three, the jury awarded her over seventy-eight million dollars."
   },
   {
-   "key": "yousee",
-   "start": 36.353,
-   "end": 42.624,
-   "words": 19,
-   "text": "You see, a weld turns a joint into one solid piece. Bolts are only as strong as the bolts."
+   "key": "s09",
+   "start": 33.481,
+   "end": 36.268,
+   "words": 8,
+   "text": "Days later, Domino's dropped the guarantee for good."
   },
   {
-   "key": "night",
-   "start": 43.017,
-   "end": 48.297,
-   "words": 14,
-   "text": "Every night after the offices emptied, welders covered the bolted joints with steel plates."
+   "key": "s10",
+   "start": 36.688,
+   "end": 43.698,
+   "words": 24,
+   "text": "The boss said the promise had become a problem. Customers no longer saw it as safe. So it was replaced with a satisfaction guarantee."
   },
   {
-   "key": "ella",
-   "start": 48.69,
-   "end": 53.756,
+   "key": "s11",
+   "start": 44.118,
+   "end": 48.187,
    "words": 15,
-   "text": "During the repair, Hurricane Ella headed for New York, and evacuation plans were drawn up."
+   "text": "The case was later settled for far less, and the amount was never made public."
   },
   {
-   "key": "so",
-   "start": 54.148,
-   "end": 58.165,
-   "words": 10,
-   "text": "So everyone watched the forecasts, until the storm turned away."
-  },
-  {
-   "key": "close",
-   "start": 58.558,
-   "end": 62.476,
+   "key": "s12",
+   "start": 48.607,
+   "end": 52.306,
    "words": 13,
-   "text": "The repair worked, and the public didn't hear about it until nineteen ninety-five."
+   "text": "A marketing promise that built the brand was ended by one court verdict."
   }
+ ],
+ "hookTitle": [
+  "30 MIN OR",
+  "FREE?!"
  ]
 }
