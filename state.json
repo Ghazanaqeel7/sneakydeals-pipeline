@@ -1086,9 +1086,17 @@
         {
           "t": "2026-11-22T19:32:31Z",
           "msg": "✅ You approved the video + thumbnail on the dashboard. It goes to YouTube at the next publish slot."
+        },
+        {
+          "t": "2026-11-24T00:59:36Z",
+          "msg": "✅ LIVE on YouTube: \"Nike Paid $35 for Its Swoosh Logo\" https://youtu.be/WoMJjyemMSM"
+        },
+        {
+          "t": "2026-11-24T00:59:36Z",
+          "msg": "📱 Instagram + Facebook: \"Nike Paid $35 for Its Swoosh Logo\" queued, Zapier posts it within ~15 min."
         }
       ],
-      "progress_count": 11,
+      "progress_count": 13,
       "vote_msg": "1795327876.849829",
       "vote_kind": "script",
       "decided_via": "dashboard",
@@ -1098,7 +1106,13 @@
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-014-nike-swoosh-35-dollars/preview.mp4",
       "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/014-nike-swoosh-35-dollars.mp4",
       "yt_scheduled_for": "2026-11-24T00:00:00Z",
-      "yt_queued_at": "2026-11-22T19:33:03Z"
+      "yt_queued_at": "2026-11-22T19:33:03Z",
+      "yt_video_id": "WoMJjyemMSM",
+      "yt_live_at": "2026-11-24T00:59:36Z",
+      "thumb_queued_at": "2026-11-24T00:59:36Z",
+      "ig_at": "2026-11-24T00:59:36Z",
+      "fb_at": "2026-11-24T00:59:36Z",
+      "reels_at": "2026-11-24T00:59:36Z"
     },
     "weekly-review": {
       "progress": [
