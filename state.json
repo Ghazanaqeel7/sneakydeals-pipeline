@@ -1037,7 +1037,7 @@
       "feedback": ""
     },
     "014-nike-swoosh-35-dollars": {
-      "status": "video_approved",
+      "status": "published",
       "updated": "2026-11-22T19:32:31Z",
       "title": "Nike Paid $35 for Its Swoosh Logo",
       "progress": [
@@ -1112,7 +1112,8 @@
       "thumb_queued_at": "2026-11-24T00:59:36Z",
       "ig_at": "2026-11-24T00:59:36Z",
       "fb_at": "2026-11-24T00:59:36Z",
-      "reels_at": "2026-11-24T00:59:36Z"
+      "reels_at": "2026-11-24T00:59:36Z",
+      "published_at": "2026-11-24T07:06:05Z"
     },
     "weekly-review": {
       "progress": [
