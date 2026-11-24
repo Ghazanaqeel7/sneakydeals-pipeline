@@ -898,7 +898,8 @@
       "reels_at": "2026-11-22T03:29:01Z",
       "yt_video_id": "ovpRvBi_sjA",
       "yt_live_at": "2026-11-22T06:29:59Z",
-      "thumb_queued_at": "2026-11-22T06:29:59Z"
+      "thumb_queued_at": "2026-11-22T06:29:59Z",
+      "fb_thumb_set": "2026-11-24T17:10:41Z"
     },
     "012-costco-hot-dog": {
       "status": "published",
@@ -977,7 +978,8 @@
       "ig_at": "2026-11-23T03:59:46Z",
       "fb_at": "2026-11-23T03:59:46Z",
       "reels_at": "2026-11-23T03:59:46Z",
-      "published_at": "2026-11-23T03:59:44Z"
+      "published_at": "2026-11-23T03:59:44Z",
+      "fb_thumb_set": "2026-11-24T17:10:41Z"
     },
     "013-kodak-hid-digital-camera": {
       "status": "video_sent",
@@ -1113,7 +1115,8 @@
       "ig_at": "2026-11-24T07:06:07Z",
       "fb_at": "2026-11-24T07:06:07Z",
       "reels_at": "2026-11-24T07:06:07Z",
-      "published_at": "2026-11-24T07:06:05Z"
+      "published_at": "2026-11-24T07:06:05Z",
+      "fb_thumb_set": "2026-11-24T17:10:41Z"
     },
     "weekly-review": {
       "progress": [
