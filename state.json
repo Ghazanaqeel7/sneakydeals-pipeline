@@ -1194,9 +1194,11 @@
       "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/015-ikea-flat-pack.mp4"
     },
     "016-dominos-30-minutes": {
-      "status": "script_ready",
-      "updated": "2026-11-24T06:10:52Z",
-      "title": "Domino's Promised 30 Minutes. A Jury Ended It."
+      "status": "script_sent",
+      "updated": "2026-11-24T06:11:13Z",
+      "title": "Domino's Promised 30 Minutes. A Jury Ended It.",
+      "vote_msg": "",
+      "vote_kind": ""
     }
   },
   "ideas": [
