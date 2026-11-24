@@ -1201,11 +1201,11 @@
       "yt_queued_at": "2026-11-24T06:59:29Z"
     },
     "016-dominos-30-minutes": {
-      "status": "video_ready",
-      "updated": "2026-11-24T12:24:57Z",
+      "status": "video_sent",
+      "updated": "2026-11-24T16:15:24Z",
       "title": "Domino's Promised 30 Minutes. A Jury Ended It.",
-      "vote_msg": "1795500675.672119",
-      "vote_kind": "script",
+      "vote_msg": "",
+      "vote_kind": "",
       "progress": [
         {
           "t": "2026-11-24T06:59:13Z",
