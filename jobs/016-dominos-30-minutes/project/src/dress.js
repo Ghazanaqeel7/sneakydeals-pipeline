@@ -78,51 +78,60 @@ export function dressPlaza(W, ox, chars) {
 
 // ---------- office ----------
 export function dressOffice(W, O, chars) {
-  W.add(P.at(P.rug(6, 3.6), O - 2.5, 0, 0.4));
-  W.add(P.at(P.chair(), O - 2.5, 0.05, -0.75, 0));
-  W.add(P.at(P.deskLamp(), O - 4.2, 1.14, 0.1), P.at(P.mug(), O - 1.0, 1.14, 1.0), P.at(P.papers(7, 3), O - 2.9, 1.14, 0.0));
-  const roll = cyl(0.06, 0.06, 0.9, '#cfe3f0', {seg: 10, thick: 0.006}); roll.rotation.z = Math.PI / 2; roll.position.set(O - 2.0, 1.2, 0.95); W.add(roll);
-  W.add(P.at(P.bookshelf(4), O - 6.0, 0.05, -5.15), P.at(P.bookshelf(5), O - 0.4, 0.05, -5.15));
-  W.add(P.at(P.filingCabinet(), O + 6.4, 0.05, -5.0), P.at(P.filingCabinet('#8f7d6a'), O + 7.2, 0.05, -5.0));
-  W.add(P.at(P.bookshelf(6, 2.0, 2.4), O - 7.75, 0.05, -1.5, Math.PI / 2));
-  const p1 = P.poster('WIND', 1.1, 1.5, '#e6d39a'); P.at(p1, O + 0.9, 3.4, -5.45); W.add(p1);
-  const p2 = P.poster('STEEL', 1.1, 1.5, '#cfe3f0'); P.at(p2, O + 5.9, 3.3, -5.45); W.add(p2);
-  W.add(P.at(P.wallClock(), O + 3.2, 4.75, -5.4));
-  // second desk with a classmate
-  const d2 = P.desk(2.0, '#7a4f33'); d2.position.set(O + 5.6, 0.05, -2.2); W.add(d2);
-  W.add(P.at(P.papers(5, 9), O + 5.4, 1.08, -2.2), P.at(P.deskLamp(), O + 6.3, 1.08, -2.5), P.at(P.chair('#3e5a7a'), O + 5.6, 0.05, -1.1, Math.PI));
-  const mate = character({palette: 'teal', hat: 'none', glasses: false, seed: 601}); mate.position.set(O + 4.4, 0.05, -1.4); W.add(mate); chars.push(mate);
-  // hanging ceiling lamps
-  for (const x of [O - 3, O + 3]) { W.add(cyl(0.02, 0.02, 0.8, '#2b2b2e', {x, y: 5.1, z: -1})); const sh = cyl(0.15, 0.45, 0.35, '#2f5d62', {x, y: 4.6, z: -1, seg: 14}); W.add(sh); const b = new THREE.Mesh(new THREE.SphereGeometry(0.14, 10, 8), new THREE.MeshBasicMaterial({color: '#fff1c0'})); b.position.set(x, 4.45, -1); W.add(b); }
+  // courtroom
+  W.add(P.at(P.rug(9, 4, '#7a2f2f', '#d9a441'), O, 0.05, 1.0));
+  // judge platform + bench
+  W.add(box(6.4, 0.6, 2.4, '#5a3a26', {x: O, y: 0.3, z: -4.2}), box(5.4, 1.0, 0.5, '#7a4f33', {x: O, y: 1.1, z: -3.2}), box(5.6, 0.1, 0.8, '#4a2f20', {x: O, y: 1.65, z: -3.2}));
+  const judge = character({palette: 'navy', hat: 'none', glasses: true, seed: 611}); judge.position.set(O, 0.6, -4.3); W.add(judge); chars.push(judge);
+  const cs = sign('COURT', 3.0, 0.75, {bg: '#e6d39a', w: 600, h: 150, font: 'bold 84px Arial'}); cs.position.set(O, 4.0, -5.42); W.add(cs);
+  W.add(P.at(P.flag('#c43d32', 4), O - 3.6, 0.05, -4.8), P.at(P.flag('#2f6db3', 5), O + 3.6, 0.05, -4.8));
+  // jury box on the left wall
+  W.add(box(0.6, 0.9, 6.4, '#7a4f33', {x: O - 5.9, y: 0.45, z: -0.8}));
+  for (let i = 0; i < 6; i++) { const c = character({palette: ['red', 'teal', 'mustard', 'pink', 'engineer', 'clerk'][i], hat: i % 3 === 0 ? 'cap' : 'none', glasses: i % 2 === 1, seed: 620 + i}); c.position.set(O - 6.7, 0.05, -3.4 + i * 1.05); W.add(c); chars.push(c); }
+  // counsel tables
+  for (const [x, pal1, pal2, s1] of [[-2.4, 'pink', 'engineer', 640], [2.4, 'navy', 'red', 650]]) {
+    const d = P.desk(2.6, '#8a5a3b'); d.position.set(O + x, 0.05, 0.4); W.add(d);
+    W.add(P.at(P.papers(6, s1), O + x - 0.5, 1.02, 0.4), P.at(P.mug(), O + x + 0.8, 1.02, 0.5));
+    const a = character({palette: pal1, hat: 'none', seed: s1}); a.position.set(O + x - 0.7, 0.05, -0.7); W.add(a); chars.push(a);
+    const b = character({palette: pal2, hat: 'none', glasses: true, seed: s1 + 1}); b.position.set(O + x + 0.7, 0.05, -0.7); W.add(b); chars.push(b);
+  }
+  // witness stand + gallery benches
+  W.add(box(1.3, 1.1, 1.0, '#7a4f33', {x: O + 6.0, y: 0.55, z: -3.4}));
+  for (let k = 0; k < 2; k++) { W.add(box(6.5, 0.12, 0.7, '#8a5a3b', {x: O + 0.5, y: 0.5, z: 3.3 + k * 1.3}), box(6.5, 0.7, 0.1, '#8a5a3b', {x: O + 0.5, y: 0.95, z: 3.65 + k * 1.3})); }
+  for (let i = 0; i < 4; i++) { const c = character({palette: ['teal', 'mustard', 'red', 'welder'][i], hat: i % 2 ? 'cap' : 'bowler', seed: 660 + i}); c.position.set(O - 1.8 + i * 1.4, 0.05, 3.0); W.add(c); chars.push(c); }
+  W.add(P.at(P.wallClock(), O + 3.2, 4.75, -5.4), P.at(P.bookshelf(6, 2.0, 2.4), O - 7.75, 0.05, 4, Math.PI / 2));
+  const sc = sign('SCALES OF JUSTICE', 2.2, 0.6, {bg: '#cfe3f0', w: 520, h: 140, font: 'bold 44px Arial'}); sc.position.set(O + 7.9, 3.4, 2); sc.rotation.y = -Math.PI / 2; W.add(sc);
+  for (const x of [O - 3, O + 3]) { W.add(cyl(0.02, 0.02, 0.8, '#2b2b2e', {x, y: 5.1, z: -1})); const sh = cyl(0.15, 0.45, 0.35, '#2f5d62', {x, y: 4.6, z: -1, seg: 14}); W.add(sh); const b = new THREE.Mesh(new THREE.SphereGeometry(0.2, 10, 8), new THREE.MeshBasicMaterial({color: '#ffe2a6'})); b.position.set(x, 4.4, -1); W.add(b); }
 }
 
 // ---------- yard ----------
 export function dressYard(W, Y, chars) {
-  for (let i = 0; i < 3; i++) { W.add(P.at(P.pallet(), Y - 7 + i * 1.4, 0.05, -3.4)); W.add(P.at(P.barrel(['#2f6db3', '#c43d32', '#4f8a4a'][i]), Y - 7 + i * 1.4, 0.2, -3.4)); }
-  W.add(P.at(P.barrel('#d9a441'), Y - 5.8, 0.05, -1.8), P.at(P.barrel('#2f6db3'), Y + 7.4, 0.05, -1.2));
-  W.add(P.at(P.beamStack(5, 7), Y + 9.5, 0.05, -3.5), P.at(P.beamStack(3, 5), Y - 9.5, 0.05, 0.2, 0.3));
-  W.add(P.at(P.cone(), Y - 3.6, 0.05, 2.2), P.at(P.cone(), Y + 5.0, 0.05, 1.8), P.at(P.cone(), Y + 6.0, 0.05, 2.6));
-  W.add(P.at(P.fence(16), Y - 14, 0.05, -2, Math.PI / 2), P.at(P.fence(16), Y + 14, 0.05, -2, Math.PI / 2));
-  const truck = P.car('#3e5a7a'); truck.scale.set(1.5, 1.4, 1.3); truck.position.set(Y - 11, 0, 4); truck.rotation.y = 0.4; W.add(truck);
-  const ts = sign('STEEL CO.', 2.6, 0.6, {bg: '#f2e6cc', w: 520, h: 120, font: 'bold 72px Arial'}); ts.position.set(Y - 10.4, 1.2, 5.35); ts.rotation.y = 0.4; W.add(ts);
-  W.add(P.at(P.crane(46), Y + 24, 0, -42));
-  const hh = P.hardhat(); hh.position.set(Y + 1.4, 1.84, -2.0); W.add(hh);
-  for (const [x, z, pal, s] of [[Y + 6.2, -0.8, 'welder', 731], [Y - 4.6, -2.2, 'mustard', 732], [Y + 11, -1, 'red', 733]]) { const w = character({palette: pal, hat: 'cap', seed: s}); w.position.set(x, 0.05, z); W.add(w); chars.push(w); }
   for (let i = 0; i < 4; i++) W.add(P.at(P.tree(1.3, 740 + i), Y - 20 + i * 13, 0.05, -11));
+  for (const x of [-9, -3.6, 3.6, 9]) W.add(cyl(0.7, 0.8, 6.2, '#efe8d8', {x: Y + x, y: 3.1, z: -7.4, seg: 18}), cyl(0.9, 0.9, 0.3, '#d8d0bc', {x: Y + x, y: 6.3, z: -7.4, seg: 18}));
+  for (let k = 0; k < 4; k++) W.add(box(14 - k * 0.8, 0.3, 1.2, '#d8d0bc', {x: Y, y: 0.15 + k * 0.3, z: -3.0 - k * 0.8}));
+  W.add(P.at(P.flag('#c43d32', 6), Y - 8, 0.05, 3.5), P.at(P.flag('#2f6db3', 7), Y + 8, 0.05, 3.5));
+  W.add(P.at(P.bench(), Y - 11, 0.05, 3.5), P.at(P.bench(), Y + 11.5, 0.05, 3.2), P.at(P.trashCan(), Y - 7, 0.05, 5), P.at(P.hydrant(), Y + 6.5, 0.05, 5.4));
+  for (const [x, z, c] of [[-12.5, 6.5, '#2f6db3'], [13.5, 6.8, '#d9a441'], [-15, 8.6, '#4f8a4a']]) { const car = P.car(c); car.position.set(Y + x, 0, z); car.rotation.y = 0.15; W.add(car); }
+  W.add(box(20, 0.4, 0.4, '#bfb8a4', {x: Y, y: 6.9, z: -7.4}));
+  for (const [x, z, pal, s] of [[-4.6, 2.6, 'teal', 731], [5.4, 2.2, 'mustard', 732], [8.2, 3.4, 'red', 733], [-8.0, 2.8, 'navy', 734], [3.6, 4.4, 'clerk', 735], [-6.2, 4.6, 'welder', 736]]) { const w = character({palette: pal, hat: s % 2 ? 'cap' : 'bowler', seed: s}); w.position.set(Y + x, 0.05, z); W.add(w); chars.push(w); }
 }
 
 // ---------- steel workshop ----------
 export function dressJoint(W, J, chars) {
-  W.add(P.at(P.toolRack(1), J - 8, 0, -5.9), P.at(P.toolRack(2), J + 8, 0, -5.9));
-  W.add(P.at(P.ladder(3.4), J - 10, 0.05, -5.2), P.at(P.ladder(3.0), J + 10.2, 0.05, -5.2));
-  W.add(P.at(P.barrel('#c43d32'), J + 9.4, 0.05, -3.6), P.at(P.barrel('#2f6db3'), J + 8.5, 0.05, -4.3), P.at(P.barrel('#d9a441'), J - 9.2, 0.05, -3.2));
-  W.add(P.at(P.beamStack(4, 5), J - 8.0, 0.05, -2.2, 0.15));
-  W.add(P.at(P.toolbox(), J, 0.05, -3.4), P.at(P.toolbox(), J + 5.4, 0.05, -1.4, 0.4));
-  const warn = sign('DANGER: WELDING', 3.6, 0.9, {bg: '#f2c12e', w: 760, h: 190, font: 'bold 78px Arial'}); warn.position.set(J, 3.6, -5.92); W.add(warn);
-  for (const x of [J - 3.2, J + 3.2]) { W.add(cyl(0.02, 0.02, 1.0, '#2b2b2e', {x, y: 7.5, z: -1})); const b = new THREE.Mesh(new THREE.SphereGeometry(0.3, 10, 8), new THREE.MeshBasicMaterial({color: '#ffe2a6'})); b.position.set(x, 6.9, -1); W.add(b); }
-  for (let i = 0; i < 6; i++) W.add(cyl(0.05, 0.05, 2.2, '#6f6f74', {x: J - 1 + i * 0.4, y: 6.8 - (i % 2) * 0.3, z: -4.5, seg: 6, thick: 0.005}));
-  const w = character({palette: 'welder', hat: 'cap', seed: 811}); w.position.set(J - 5.2, 0.05, -1.6); W.add(w); chars.push(w);
-  const w2 = character({palette: 'navy', hat: 'cap', seed: 812}); w2.position.set(J + 5.6, 0.05, -2.0); W.add(w2); chars.push(w2);
+  // pizza kitchen
+  W.add(box(10, 1.0, 1.5, '#c9c3b4', {x: J - 1.5, y: 0.5, z: -4.4}), box(10.2, 0.1, 1.7, '#e8e4d8', {x: J - 1.5, y: 1.05, z: -4.4}));
+  for (let i = 0; i < 5; i++) { const p = cyl(0.55, 0.55, 0.05, '#e0a63e', {x: J - 5 + i * 1.5, y: 1.13, z: -4.4, seg: 20, thick: 0.01}); W.add(p); const sa = cyl(0.45, 0.45, 0.02, '#c43d32', {x: J - 5 + i * 1.5, y: 1.17, z: -4.4, seg: 20, thick: 0.005}); W.add(sa); for (let k = 0; k < 4; k++) W.add(cyl(0.07, 0.07, 0.03, '#f4efe0', {x: J - 5.2 + i * 1.5 + k * 0.18, y: 1.2, z: -4.5 + (k % 2) * 0.2, seg: 8, thick: 0.004})); }
+  for (let i = 0; i < 4; i++) W.add(box(1.0, 0.14, 1.0, '#f4efe0', {x: J - 5 + i * 0.1, y: 1.2 + i * 0.15, z: -3.7, thick: 0.01}));
+  W.add(box(3.2, 2.6, 1.8, '#8c2f2a', {x: J - 8.2, y: 1.3, z: -4.6}), box(2.0, 1.1, 0.1, '#ffb347', {x: J - 8.2, y: 1.2, z: -3.68, edges: false, thick: 0.001}));
+  const hs = sign('HOT OVEN', 1.8, 0.45, {bg: '#f2c12e', w: 420, h: 110, font: 'bold 56px Arial'}); hs.position.set(J - 8.2, 2.8, -3.65); W.add(hs);
+  const wsg = sign('PIZZA IN 30 MIN', 7.4, 1.5, {bg: '#0b5cab', fg: '#ffffff', w: 1100, h: 230, font: 'bold 120px Arial', sub: 'OR IT IS FREE'}); wsg.position.set(J - 1.5, 5.7, -5.9); W.add(wsg);
+  W.add(P.at(P.barrel('#c43d32'), J + 9.4, 0.05, -4.6), P.at(P.barrel('#d9a441'), J + 8.5, 0.05, -5.0), P.at(P.pallet(), J + 6.8, 0.05, -5.0));
+  for (let i = 0; i < 3; i++) for (let k = 0; k < 4 + i; k++) W.add(box(1.0, 0.14, 1.0, '#f4efe0', {x: J + 6.8 + i * 1.3, y: 0.3 + k * 0.15, z: -5.0, thick: 0.01}));
+  W.add(P.at(P.toolRack(2), J + 10, 0, -5.9), P.at(P.bookshelf(9, 2.4, 2.8), J + 3.0, 0.05, -5.6));
+  W.add(P.at(P.rug(8, 3, '#8c2f2a', '#f2c12e'), J - 1, 0.05, 1.0));
+  const t2 = P.desk(2.4); t2.position.set(J - 5.5, 0.05, 1.8); W.add(t2); W.add(P.at(P.phone(), J - 5.5, 1.0, 1.8), P.at(P.papers(6, 51), J - 6.2, 1.0, 1.8));
+  for (const x of [J - 4, J + 4]) { W.add(cyl(0.02, 0.02, 1.4, '#2b2b2e', {x, y: 7.3, z: -1})); const b = new THREE.Mesh(new THREE.SphereGeometry(0.3, 10, 8), new THREE.MeshBasicMaterial({color: '#ffe2a6'})); b.position.set(x, 6.5, -1); W.add(b); }
+  for (const [x, z, pal, hat, s] of [[-3.0, -3.1, 'red', 'cap', 811], [-6.4, -3.1, 'welder', 'cap', 812], [0.6, -3.1, 'mustard', 'cap', 813], [5.0, 0.4, 'navy', 'cap', 814]]) { const w = character({palette: pal, hat, seed: s}); w.position.set(J + x, 0.05, z); W.add(w); chars.push(w); }
 }
 
 // ---------- weather room ----------
@@ -131,16 +140,16 @@ export function dressWeather(W, R, chars) {
   const d1 = P.desk(2.4); d1.position.set(R - 5.4, 0.05, -3.6); W.add(d1);
   W.add(P.at(P.radio(), R - 5.9, 1.0, -3.7), P.at(P.phone(), R - 4.8, 1.0, -3.4), P.at(P.papers(6, 21), R - 5.2, 1.0, -3.3), P.at(P.mug('#2f6db3'), R - 4.4, 1.0, -3.8));
   const d2 = P.desk(2.4, '#7a4f33'); d2.position.set(R + 6.0, 0.05, -4.3); W.add(d2);
-  W.add(P.at(P.tvMonitor('STORM'), R + 5.6, 1.0, -4.4), P.at(P.tvMonitor('WIND'), R + 6.6, 1.0, -4.5, -0.2), P.at(P.phone(), R + 7.0, 1.0, -3.9));
+  W.add(P.at(P.tvMonitor('ORDERS'), R + 5.6, 1.0, -4.4), P.at(P.tvMonitor('SALES'), R + 6.6, 1.0, -4.5, -0.2), P.at(P.phone(), R + 7.0, 1.0, -3.9));
   W.add(P.at(P.filingCabinet(), R - 7.2, 0.05, -4.9), P.at(P.filingCabinet('#8f7d6a'), R - 6.4, 0.05, -4.9));
   W.add(P.at(P.wallClock(), R + 4.6, 4.5, -5.4));
-  const p = P.poster('ALERT', 1.0, 1.3, '#f2c12e'); P.at(p, R - 5.6, 3.3, -5.45); W.add(p);
+  const p = P.poster('RULES', 1.0, 1.3, '#f2c12e'); P.at(p, R - 5.6, 3.3, -5.45); W.add(p);
   for (const x of [R - 3, R + 3]) { W.add(cyl(0.02, 0.02, 0.8, '#2b2b2e', {x, y: 5.1, z: -1})); W.add(cyl(0.15, 0.45, 0.35, '#2f5d62', {x, y: 4.6, z: -1, seg: 14})); const b = new THREE.Mesh(new THREE.SphereGeometry(0.14, 10, 8), new THREE.MeshBasicMaterial({color: '#fff1c0'})); b.position.set(x, 4.45, -1); W.add(b); }
   // foreground desk for depth + storm window + corkboard
   const fd = P.desk(2.2, '#6b4430'); fd.position.set(R - 3.6, 0.05, 2.4); fd.rotation.y = 0.2; W.add(fd);
   W.add(P.at(P.papers(6, 31), R - 3.8, 1.0, 2.4), P.at(P.phone(), R - 3.0, 1.0, 2.2), P.at(P.mug('#c43d32'), R - 4.4, 1.0, 2.6));
   const win = sign('', 2.6, 1.8, {bg: '#4a5568', border: true}); win.position.set(R - 7.95, 3.0, -1.5); win.rotation.y = Math.PI / 2; W.add(win);
-  const cork = sign('NOTICES', 2.2, 1.4, {bg: '#c49a62', w: 440, h: 280, font: 'bold 50px Arial'}); cork.position.set(R + 2.9, 3.2, -5.45); W.add(cork);
+  const cork = sign('MEMOS', 2.2, 1.4, {bg: '#c49a62', w: 440, h: 280, font: 'bold 50px Arial'}); cork.position.set(R + 2.9, 3.2, -5.45); W.add(cork);
   for (let i = 0; i < 5; i++) W.add(box(0.35, 0.45, 0.02, ['#f7f0de', '#fff1b8', '#cfe3f0'][i % 3], {x: R + 2.2 + (i % 3) * 0.6, y: 3.0 + Math.floor(i / 3) * 0.5, z: -5.38, thick: 0.004, edges: false}));
   const caller = character({palette: 'pink', hat: 'none', glasses: true, seed: 921}); caller.position.set(R - 5.0, 0.05, -2.4); W.add(caller); chars.push(caller);
   const m2 = character({palette: 'mustard', hat: 'bowler', seed: 922}); m2.position.set(R + 6.6, 0.05, -2.9); W.add(m2); chars.push(m2);
