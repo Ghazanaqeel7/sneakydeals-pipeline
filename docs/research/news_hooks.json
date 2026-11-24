@@ -1,12 +1,12 @@
 {
- "updated": "2026-11-23T08:23:55Z",
+ "updated": "2026-11-24T10:32:24Z",
  "hooks": [
   {
-   "title": "Pizza franchisee files Chapter 11 bankruptcy, chain cut 381 units",
-   "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOZkFXSHZxOEE1TlN3SWg2V1F0bzNtTjh2UHVWbGVPY2t0NWJIODczU3JQSzJLOG5jaHZoWk1MdXRGQ2tvY2tDMTg2V0dyTThfMUNKWUFVc3Q2ZEl1U01jZktUVmhzdUd3TXlYSVU2SHFnRk00OEhlcWFucGZvVnhsYkZrYTcxTWc?oc=5",
-   "source": "Yahoo",
+   "title": "Popular pizza buffet chain franchisee files for bankruptcy",
+   "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNd1F2WGdkTDF5b3RNMllUZC05T0VCaUJ3WnpULXFDck5uSHl2QU02ZWU5cmwyUmtYYkdYOWQzSll3ZjBWZmhqWFROa1JCaW5uSW1ScTBqX1lvZ3FsdTRBWkF6VDMydF8zMS0yRjJqclNoQTBBS2pSa2wtdndrZW92S0c4R3FqeGVRdVh0aUZZZWdaQ2VoQU9INzdrUmNGQWhQVWJ4b2RUT0lYZkwyWWdv0gGvAUFVX3lxTE13UXZYZ2RMMXlvdE0yWVRkLTlPRUJpQndaelQtcUNyTm5IeXZBTTZlZTlybDJSa1hiR1g5ZDNKWXdmMFZmaGpYVE5rUkJpbm5JbVJxMGpfWW9ncWx1NEFaQXpUMzJ0XzMxLTJGMmpyU2hBMEFLalJrbC12d2tlb3ZLRzhHcWp4ZVF1WHRpRlllZ1pDZWhBT0g3N2tSY0ZBaFBVYnhvZFRPSVhmTDJZZ28?oc=5",
+   "source": "AL.com",
    "region": "US",
-   "date": "2026-11-22T18:17:00Z",
+   "date": "2026-11-23T17:34:00Z",
    "score": 15,
    "why": [
     "bankruptcy",
@@ -15,11 +15,62 @@
    ]
   },
   {
-   "title": "Attorney General Ellison protects kids' privacy in Character.AI bankruptcy",
-   "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNRmd1cU9XYXNneDh0V2UtNHhpVGVxVXBZSUM1blFZZ21kUmFneVpBelFocTJOYlRNSm15US1NN2Y2bUJPQW03V2hON01QRFVLSlRFNmc1LWgxS3NXWE5pOGtWUXd2dW93UURDeWpiN21Ddzk5QUtPa0xVa1pEYi1velEweENOc2FmQTVHVXN4OUdrdFdZYWdfd25HVlBjbWlLc2hzY3A2VDJCdWRHYVItQnNlVnlrN2tlMENoQUdoY1dSdnJJbWFkY3pRWGdacjBHb2xWSnlLUQ?oc=5",
-   "source": "Red Lake Nation News",
+   "title": "UK Retailer Next Discloses Cyber Incident at Online Supplier",
+   "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5wNzVQaFVIa2hnS19xYWpGX1NEN3ZySER6Ym1udmZDdHZPRTJJOGZqTW41azRBdFl4bUNpakxPN0F6UDlXS25LWjNoT2xqVmdaaDczLVNkd0Q0NFQxbl92NmUwTFlTaVI3bE1iSUluVG1DdHhudklJbQ?oc=5",
+   "source": "Hackread",
+   "region": "UK",
+   "date": "2026-11-24T08:56:17Z",
+   "score": 14,
+   "why": [
+    "closes",
+    "retailer",
+    "loses"
+   ]
+  },
+  {
+   "title": "Hailey Bieber Built a $1 Billion Brand on Delusion, but Not the Kind Most Founders Think",
+   "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPZjZLRDZaVFl2QV82Ukh1b2NWZm1yZ3dLX2tkNzBTckpxUGFxWExKMkkwWEVwNzhVZ1gzazdTcGNYUlhHY3BEMGExbjA1VUNaRDNOVTBWYzAzSC12dHlwQmtQbXQ1bFZSaEx0YzN6Z3FnLWtiRWoxNFVlcEFoeDRMSzJ4WVRnZDhHM1pvcVlFUEN5OVdwQ2NnVVE4M084Vjg2UVU4?oc=5",
+   "source": "Inc.com",
    "region": "US",
-   "date": "2026-11-23T06:20:56Z",
+   "date": "2026-11-23T18:40:28Z",
+   "score": 13,
+   "why": [
+    "founder",
+    "brand",
+    "billion"
+   ]
+  },
+  {
+   "title": "Another Texas Hotel Group With Big-Name Brands Files for Bankruptcy",
+   "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPNm1YNkJydkFYVFVwNTJicTFKWmtUVDRxdF9Hc3NSekN4d3FkeHRjRGhTOFNpWmIyOWRYZnpyTUNYU3FpOHJJRUxDZHFUTDZDZTEyTXBTaWYwQVlWekFxaWJHNjZyMEJaSDZrVEdhR1R5aVItYjF2RW1nTkItQ0ZwV1lERXFLeHpwVWhYb0dhdHFuU091aEV0QUZoM2RZX1psOW1PWURSejV5OVdQYnc?oc=5",
+   "source": "Inc.com",
+   "region": "US",
+   "date": "2026-11-23T02:36:20Z",
+   "score": 13,
+   "why": [
+    "bankruptcy",
+    "brand",
+    "bank"
+   ]
+  },
+  {
+   "title": "Jensen Huang returns to Nvidia as CEO after scandal",
+   "url": "https://www.npr.org/2026/11/24/nx-s1-6051532/jensen-huang-returns-to-nvidia-as-ceo-after-scandal",
+   "source": "NPR Business",
+   "region": "US",
+   "date": "2026-11-24T09:52:34Z",
+   "score": 12,
+   "why": [
+    "ceo",
+    "scandal"
+   ]
+  },
+  {
+   "title": "AG Labrador Protects Children’s Privacy in Character.AI Bankruptcy",
+   "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQT2xzVE9fQXNZY0NuR0VGUmZRMElueGttZHBjcFNNVlFXbHpGUjYzSTIxb2k4aUZSU0p2WU5mMEpOa1lzUGUwRG9MckZwZW51V210VGtPOHJiUW1DWURSN2tyRWJXZDdJeUZvc2RWb0htOFBUVWIzd3BtakNPeXpIOTJXQWtNRzA0RVdoUndPcTFITDRLa2M1c3ZuUXotY0tsY2c?oc=5",
+   "source": "Idaho Office of Attorney General (.gov)",
+   "region": "US",
+   "date": "2026-11-23T18:24:04Z",
    "score": 12,
    "why": [
     "bankruptcy",
@@ -27,23 +78,11 @@
    ]
   },
   {
-   "title": "Builder facing bankruptcy will lead environmental review of controversial NJ ICE warehouse",
-   "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQNDFVVURUcXpKNjZLeXRtTUQ1SnhTYkhrNmJsRndRY0ZoTmxKYVlqQWRTTXdHNG9HME5aeXFXYkFYeUNpeDBhc01mQzJLX1ZoLW03VG44NmxPVUMyOXFoN21GT1J6SjlUUlh0LTdHSjA4YzdvdXhjREp0NkZ5c3kzZXZ2N0NZRURIUTlReWE3eXFrTzh5d3l0bzBhSVZ1YjlPTmFVak9XVmxSTkFGN1Z3NVF4YUQxQktt?oc=5",
-   "source": "Gothamist",
-   "region": "US",
-   "date": "2026-11-22T21:43:20Z",
-   "score": 12,
-   "why": [
-    "bankruptcy",
-    "bank"
-   ]
-  },
-  {
-   "title": "Orlando-area developer's related entities file for bankruptcy after $323M judgment",
-   "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPRk5heWRJeEswR3pod2FLOEZEU25JN3RQalpqcmI4QjB1VmdPVlFYcXpEclFseGhNQzdvMC1CWGgxWEJDaTJlY3FMU1FGWUtGLTltZm9PdThveGczT0VmaGhtSHQ5ZHo4NHFock1mb2N1MnpZZWhfSWdaVmlXZEV2cXk5NHUxQk1feW9WTlR4QzRRVjIyVUE?oc=5",
+   "title": "Owner of Spectrum 8, Huck Finn's Playland files for bankruptcy",
+   "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxObnlJbEd0R2tPOEhBQkwycnFXV0hKbWJrS1VrRXVlSWt3SlRmR2YwRXM3MVhWYjBHT0tGRXR1MlZ3Z09aS0FiV0lueEVIbzd3TWhiUXU2VmRrWnNxT3Y2Tk5ULU42NjZ0WHVyeTdpWU5tdkVVYnplMkFyM2xSQlVheU1n?oc=5",
    "source": "The Business Journals",
    "region": "US",
-   "date": "2026-11-22T11:00:00Z",
+   "date": "2026-11-23T23:50:00Z",
    "score": 12,
    "why": [
     "bankruptcy",
@@ -51,35 +90,11 @@
    ]
   },
   {
-   "title": "Russell Brand’s wife breaks silence after prison message scandal",
-   "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNUXkzQXdvd1dLQmNlZ3habXlfRGZVU2owUEszVWlGcmNESWctTHpiZk5XcjRlNlladFpXSnUwRmw5WC1BbTY3U0VhdFFSM0NNbzVDWXBtN1l4eHVPUnlqVV81cUdMYVlJcjVLaHc4X3NzdHpFeDB6RzZNaFI5WUo0Zy03SWw4dGQxZmlYSkV4MW80WlNWekd4U1R6Q0VQSG5BVkczVg?oc=5",
-   "source": "The Independent",
-   "region": "UK",
-   "date": "2026-11-22T20:11:00Z",
-   "score": 12,
-   "why": [
-    "scandal",
-    "brand"
-   ]
-  },
-  {
-   "title": "Russell Brand’s ‘proud’ wife breaks silence on prison scandal with telling admission",
-   "url": "https://news.google.com/rss/articles/CBMihgNBVV95cUxOMWlTUHB0M2ZIT0FZOHprSzc3THVJd1ZpVE0xTXNZNVdjWWxfdzduR0hrSW1fcUZKbDlhdUgyVXFMNkdCYnZsUXgzMy1NMXF5SGV0ZUt2T1dGSk1vQWRRUXBwQl9neWJKR0JfLVVNc3JwZ1RIM29kWTY4VWFLV2p1U3dXTTNIdmkxXzdRalByemE1MHBsRzBXNGtlMmtENzdPbWxTTlltRkt2M3VwRDVHM1FhSjZLajNaenFRRU5QdG5LRm9rV3NhZ1Jhc0JlSGJmR1ZYdExMdFYzY08zOXFQcGpkTmw0eHJtYjNva3JVbVRpOElrdktBLUE4VkRBNGlxcG44SkJVNFk2U0VxMUF2aDl2dzFoUWRCYTNWcEZlTk5vZzlpZjVsMlRZbXVWcWdwb3FDTUVFN0R3MTVFNVl2dW1BOVpRaTVsUkZ3bmJDZmVNaVhBaVNzNldQcUZZUmdZdnZ3cWx2UWUzSmpFY24ybGdRcGtGdFo3TWZfWTFJY0VjX0w3YlHSAYsDQVVfeXFMTXU2b2llUmJtcGhJM1E0TW4xZC11QUVkREJrYXkyT2FJejU3XzlSa3RDaVRKSkRnTVVMbzFDb1ZYbkdVcFc0NXJUMGVxblRiYU9tZ09NNzJ1YW5SQ0JnWUpHeVUtRjFocXhiOTExei1GbW1HSUNKZTFQcm1YYTI2MzcxVUNaMGxuU2U3bzVSMWZCbmh6V1pGMXl3SWlmMTJ3b3pMYnp0WE9tQ3ptX1ZOM0FrTWoyRl9fWmxsamxtZWxRekV3WEdwTUpGWjV3ZGprdGNMWHBHRHEyeDFBcUlNM05UTDU2dVhaSmhrMVZSVmtxamt3dzJvckZYZFNSVHFhcG80ZVV1T0YxVm9acmhPckpzTkd4OFBaUy1XcjBpek9fdFBTdEpPSXgtYWFxWkF3R1YwNkFDdkNRWjdWMnBGQW16dW5zMnlSSGFXT0tZX0Z4dDlmQkhOTXpVV2kzUGxHbjZZdVZLelY5c1V4TkRCNkJVcnQ0UTlBdWJRYXJrT1Jwa1VYVTFaeUpvdk0?oc=5",
-   "source": "News24",
-   "region": "UK",
-   "date": "2026-11-23T02:28:54Z",
-   "score": 12,
-   "why": [
-    "scandal",
-    "brand"
-   ]
-  },
-  {
-   "title": "Daily Briefing: Weil Gotshal Bankruptcy Chief Takes Team to Skadden",
-   "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPOHRQRXg1UFI5N3ZsN2FBLTh3V01zZWZxMHBfaVU5c2tFV19qU1VrNHR6LVBrWFBjekYxdjUyQkstNFlpcHhJQ2tVdUtvQUw1OVVuZHNYb2RZRGdkTmY2QlF1elBtMnJCSkNtckNmTXFWWVVRQzZHMWd3elB4Y3RyUEd5WERnRkNUTWs1LWFrcTFOaGJSemVGUnBhbWpQZjdIZW5YNUdEb0ZKb1VOQzFv?oc=5",
-   "source": "WSJ",
-   "region": "UK",
-   "date": "2026-11-22T22:16:37Z",
+   "title": "Durango restaurants Chimayo, Serafina’s parent company emerges from bankruptcy",
+   "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOeHRFUHh1dmk2Z21GNXNsbUdjU2ZtdU82aHc5U0ZMZDk5cEl1ald0QmJZdVU0eUtXcFRfVmRkV1YtRlY3dmFUS1hHWDJIcTJDY0xha3p4NjB6UEtNV0ZwSzMtNFJDYkptY1BtYVJITGxiY1dpLXNJLVVXWGtjSTVrUzdKWlRNSV82XzJJNVJRSGZMZmprcnV4UEltTnJuRE8zdVdYdWp4UGVNaGRXS3VwUVRuOEZoNUJBYWpjXzZn?oc=5",
+   "source": "Durango Herald",
+   "region": "US",
+   "date": "2026-11-23T12:00:00Z",
    "score": 12,
    "why": [
     "bankruptcy",
@@ -87,11 +102,60 @@
    ]
   },
   {
-   "title": "Russell Brand’s Wife Laura Speaks Out Following Prison Message Scandal, Says ‘I Understand the Rules’",
-   "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNTzFIMm9CdGF3RC1SQ2JfNTd4Z2xuN3pURmlJZVFKSmVSZGktR19hX3A0QTE2MERIRmhlSmpONFJaT1h4dmpJQ05TemVpSGNMLUhwcEJSdU5XRUxlVGlTLXdrcS1CV0g2SWtaT2NIUHhQVE5lZUJKYm5DeTAzbXFfUWp4dE9ZYmh5UjhiamFyLTc3Y1NGUVZneUszX1U?oc=5",
-   "source": "People.com",
+   "title": "Subchapter V Bankruptcy Just Got Supersized",
+   "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQWGhNbTh5ejBQbENXNmRSbUtuQWRRR1RTejU0dmFEUlhXV01aX3hXeXZyMXI5aktKY0d5eEMxUldrZVZ5LVZseTdkV0FJOVk0OE1oT3NTZVgyT2hKdUcyT2Z5VUNaamh4dkdaQVRZMVBaU0t6aE80VEppNGRsbXZZTHF30gGHAUFVX3lxTFAzVmtURDdIdERjMzduSExCSjgzRDZSbWlHTFpZb044ZmhjdXZ1ZjJ6RDVYRWVtNWJIUnJXTkYtZWh3ZFBjQ29QRVkyd1hfMlNVTm02QS13eWpYWElBN245SklfSWlnNFJPbjUtZTlleGtaM1Nhelk3dVpldVM4Y3pmbVdISEtRNA?oc=5",
+   "source": "The National Law Review",
+   "region": "US",
+   "date": "2026-11-23T19:02:41Z",
+   "score": 12,
+   "why": [
+    "bankruptcy",
+    "bank"
+   ]
+  },
+  {
+   "title": "Property management company’s bankruptcy fuels confusion and fear for thousands of renters",
+   "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPa0l5dmZSTWhBY213V3dwWE5HOXQ5MGR3NFRfc0EzbVh4NHNmekUwOGNqYzBhVmI0MzkwOXJ4dkJOdGVBajV4dXU4MnB6N01MOHRvMnktY0txSjhtV05tX0ZvV05IRTMyRWp5MjUteEFfRWdBVWZxajEwMWFMYkNFRkxqeUVyZkFWNXlGWTN3cmVlX1RBbmV1ZTBIb0FSbndXYkdoMWQ2cHA5TTRNdWZQakhKN25NYnFxZXdoZENvR2MwZw?oc=5",
+   "source": "Frequency News",
+   "region": "US",
+   "date": "2026-11-23T19:18:55Z",
+   "score": 12,
+   "why": [
+    "bankruptcy",
+    "bank"
+   ]
+  },
+  {
+   "title": "Swedish Company Badrum & Kakel Stockholm AB Files for Bankruptcy",
+   "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNUFRMZGRaYTJrNjZxT2VPUWtIZUtESTVKU2I0S0JldXlaaE1nYURvUVFXUXhQd3h1RzdWeGxXLTBDd3FxYVM2c3U0THQ5NFo1Um1lRWtObXRzLXlyM0NGa1ZRVDR5eXZMVnpNSEFOM0dsZjFQN3EyMkJjZ1ZYN01kcWNpQUhCQm12U0FXSy1GQlFpOERwTUw1MVI4Y181RWlXdVY5S2g2MVM?oc=5",
+   "source": "https://news.brgbuildingsolutions.com/",
+   "region": "US",
+   "date": "2026-11-23T17:35:11Z",
+   "score": 12,
+   "why": [
+    "bankruptcy",
+    "bank"
+   ]
+  },
+  {
+   "title": "Sachin Tendulkar's brand targets Rs 1 billion revenue a year after launch",
+   "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQYy16Z1JtZzA0eU9ieEJGU0VpYVYwQ3c1WGJuV3BxSVBBbGRfTnVNc1o5Qjd0bmN6N0k4Rl9YMGVLYnZQZVA1dVZwbE1wUGRmWEpocGROamxYQi1RbWp5eGF5Y0NKdDBHM3JKR05HNXFISFlQQXVOZVZscEFjWDY1YTVXQW9TZTVHQnlNVElFenV0bXA2QnlrUS00T25ydTh0bm1iRnlYd3VxdTNLbi1GcHZOTTdmT1hyTWk00gHOAUFVX3lxTE45dHhWckIwYm01bFN6TlhvZGV6bVo3aXN0U0ZJajNhc3FwY3hJcXJoUll4R2c1dUFTUkVRbUVvbVNMeHU0bmJoa0swSTE0R1B6NTAtRExtSllQNVhNenNKTmZUbXBES1haQURuZFdNek1zaFRhWjRKVFVJSW1GY2FwdXM0TTF3MUlTcDAtNi1hUDVLOGNubmdJMFBEeG41QjVhT2tMRGNTR0Z6aC12Rm9meHMwVkh0VXQ3Vzh0QU82aXZXNUtpYTdYd1hURzlB?oc=5",
+   "source": "Gulf News",
+   "region": "US",
+   "date": "2026-11-24T04:26:29Z",
+   "score": 12,
+   "why": [
+    "brand",
+    "launch",
+    "billion"
+   ]
+  },
+  {
+   "title": "UK Stars Sign Open Letter After Russell Brand, David Walliams Scandals",
+   "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOdXVlTXdHeTRUZHFZS0lVNTNPeV9LUWc2SmhCT1o5Q0oxVkt0MGZMZURHRDNNMHpTdEpSX1Q5SzVEUGtCTnM2aHphTTRnM0lwZ3hZYVBSNk1yUksxdXkySHlnZ0RqWkZoaUg0VXhUbTl0bG9iVkxTQ3hXQkxtOUx5THRRUktESDhHYzlPSG1yOXlZSC00VlVj?oc=5",
+   "source": "Deadline",
    "region": "UK",
-   "date": "2026-11-22T19:29:42Z",
+   "date": "2026-11-24T09:01:30Z",
    "score": 12,
    "why": [
     "scandal",
@@ -99,38 +163,75 @@
    ]
   },
   {
-   "title": "Channel 4 bonuses could be linked to ‘values’ in wake of Russell Brand scandal",
-   "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQR2R5dEhEc1JQaFBpRFVrLVZnQ0hvMEF6VW42b1ltNzFfUXZiZ2tGYWx2b3o5RDlWNEpnZXhTakdpMWlFbU5tcU5ZZ3ZwNHBCbmkzdldxakZoM2oxR2xBVThDa0hTcnlNY2hJa1RZXzNFbWwxdHhyUGthSzItUHNUcEVwMDNPUUVtRVBuZlFHdTB5Q0lmOUFxd3l1RjRmQWNSc3ViR284VzRidw?oc=5",
+   "title": "Airline Collapse Explained: What Happens to Passengers and Jets",
+   "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNY1hrb0RQalpWdjUyYUM1eTFvOG9ZQ042UkctRnlJMU1jV3hodXVOLXI4NEZ0TXV6ZVJlZE55YmpZQjZHLS1LSEw0cENxRzAxQkM4REQtMzdmQWhzcTV1LU1lOWtzN0dtWnVydHRLTlFJSjZuQlJwdFBiME1iZnRWNFRVS0FybkZTaUItN1AtTVBJWUVQOERCb015Rm9vdkRrR00xclJjaEZ3S1k?oc=5",
+   "source": "MiGFlug",
+   "region": "UK",
+   "date": "2026-11-24T09:48:15Z",
+   "score": 12,
+   "why": [
+    "collapse",
+    "airline"
+   ]
+  },
+  {
+   "title": "US judge approves Getty Images bankruptcy loan over shareholder objections",
+   "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPS3VPOFg2WEh1M0d3NVJSQUxNUzlXNTB3Y3lTRW5Ga1hqOXZnWXdHeDNoWWRNdEFzaFRDRGpNMGdmSzJDa3RfbkdERk1RNWxUcUM5WjMwQmNtak4tNDNYbVVFTk0wYWNLRlNONHNLNjUxb0tXeldBX21hNENOWXlabk1JY2gweG5PWmZNcWctNjdWQWp5UnlmeHBMV1hoV19FN1d3S05Sd3NYTDY5VHNPdEtISlpTWmV3YTNUNndVWkppQlMxNEE?oc=5",
+   "source": "Reuters",
+   "region": "UK",
+   "date": "2026-11-23T22:50:05Z",
+   "score": 12,
+   "why": [
+    "bankruptcy",
+    "bank"
+   ]
+  },
+  {
+   "title": "Honor CEO Li Jian: Overseas Revenue Now Exceeds 50% of Total, Light Flagship Series Could Spin Off as Sub-Brand",
+   "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5UUTRkQWMyQ2pZWXVHai16ZFd4dDJnSGNaVlo2YkhGLThfcFpQbnlQS1E2TEV2V0paaHA4Tl9xZUNxZi1GcXNGalRESjVNemdrd3dpMDVQWHRHdlRsOXdyWTRvd2E0Y1IxY0ZqdmJKN2VXdm9XYlE?oc=5",
+   "source": "BigGo Finance",
+   "region": "US",
+   "date": "2026-11-23T13:25:00Z",
+   "score": 11,
+   "why": [
+    "ceo",
+    "brand"
+   ]
+  },
+  {
+   "title": "How Can a Cold Chain 3PL Support a Food Brand Selling Through Both Retail and E-Commerce?",
+   "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNSGplMVlRR1dIOHJDbWN2T2ppLUVPeXhwMWtqT2lpYURtYWdvOGdnWUNzUHR6MjlRVTZuUXNBUzdSVjZ5NzBLd1BiazZzdEpKZEJRcW52U2pSd2RDU0J1Rk5wakVyeWxpVkFhY25SRy1admZiR19ramRRWmZIQkV0bU1waXU0VktydWZ6U2prVF9wbnNnOXNpNEFMd3ZfSzJRQ3NEVTNUWDl1b05GemxXbjZONTdGbDNnSHUw?oc=5",
+   "source": "FoodChain Magazine",
+   "region": "UK",
+   "date": "2026-11-24T08:56:34Z",
+   "score": 11,
+   "why": [
+    "brand",
+    "chain"
+   ]
+  },
+  {
+   "title": "Philip Kingsley’s New CEO Is Ready To Reclaim The Brand’s Scalp Health Crown",
+   "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxONHpYaUVhcGF1dklxU2J1VGNiaEtlT0xMSDJZOUZiSkNOdy1MZW1adENzVG1kU2xlWHczZTRQVlY5RXNURUVmS21ueVVQYkdTbXJXTGJ5X3p1Y2ROSl9SMkU1bFI3dXFJSk5PTlJYQ1o2MW5xSUJMRmJvNVQ5UlN6Sjk0TQ?oc=5",
+   "source": "Beauty Independent",
+   "region": "UK",
+   "date": "2026-11-24T05:01:06Z",
+   "score": 11,
+   "why": [
+    "ceo",
+    "brand"
+   ]
+  },
+  {
+   "title": "Housebuilder’s shares collapse as property slowdown crushes profits",
+   "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNSzktLVF5NldxNTI5ODlJS1o2dXdkN1JiaWswNENLTm1yOVQ3cWYteW1MZ2FiMmhjT0kydEh5aHRyczRGSEs0dUZ1Qko0eGl3cXltMXhEN0M5X3hFd3l5LUlsT05FNktiYWlES2piU0dONTBSYVhQWlBLVVVmZExJeW1vYjMzM0NhdTU0UDdBVUp4RFBXU1pmWWlYckNHdnpvSlNqMkhLMndxSUE?oc=5",
    "source": "The Telegraph",
    "region": "UK",
-   "date": "2026-11-22T10:00:00Z",
-   "score": 12,
+   "date": "2026-11-23T11:32:00Z",
+   "score": 11,
    "why": [
-    "scandal",
-    "brand"
-   ]
-  },
-  {
-   "title": "Russell Brand’s wife, Laura, addresses prison message scandal: ‘I understand’ the rules",
-   "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNMVNfYXpCLV9zaUtZMS1FeGtXOWlhaDkxMW44LTkyb3RtYTZQYWVpYlNLLUJlQWUwdEdRZDlBVnBVakZrX0lPcTBLYUtrWGdQWTFzZWJad3JVeU51MVpMV3V6Z0ozVVR5RS1DMWNWRENOVHpxcF9RYkZRMGF5WFZSY2oySVAtOUJ6YlFpME1xelY3TmZLYkIyWV9NOFNMZ1RkdmNaUmp0RUw?oc=5",
-   "source": "Page Six",
-   "region": "UK",
-   "date": "2026-11-22T22:54:00Z",
-   "score": 12,
-   "why": [
-    "scandal",
-    "brand"
-   ]
-  },
-  {
-   "title": "Poundland is facing collapse - what's gone wrong?",
-   "url": "https://www.bbc.co.uk/news/articles/cm4g10p2r0g9o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC Business",
-   "region": "UK",
-   "date": "2026-11-23T08:00:20Z",
-   "score": 10,
-   "why": [
-    "collapse"
+    "collapse",
+    "profit"
    ]
   },
   {
@@ -147,147 +248,63 @@
    ]
   },
   {
-   "title": "COP31 Talks Collapse as EU, UK Walk Over Failure to Address Fossil Fuels",
-   "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNVXIzUzZHNl92V3VfX2FJamVsUDE3N2MwcmZHblZPYWtCakx2Z2gtbTl1SFN2X0FlUnhqN0xJaG1xYnVzYktKWXAtdXJrRDhVNjVtV0ZDVF9ybG9EcEdKOHZVVXl6di1ReXFJSzdOMGlLUlFCSEhoRlU1V01UWFdrSV9NU2lYZUE4T3pPbldNUERnX2F1S2hMRjNzeXdLUQ?oc=5",
-   "source": "ESG Today",
-   "region": "UK",
-   "date": "2026-11-22T23:12:45Z",
-   "score": 10,
-   "why": [
-    "collapse"
-   ]
-  },
-  {
-   "title": "Market Watch: COP31 talks collapse with no deal reached",
-   "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQbS1FUTVKdG1ScnBWcGJtWlF6U3BoTWVTaUVqbWNPTHk2YnNtS0k4Z2c2LTh6Q2dEUTEyY0JwdWtnZmdBUWp4cE5LLXRWMVNKYmdCWUF5cGE2U3ZqbjdneGdSbjk3WjVEZ3ZYSU5IOGNnYzJmNUFfM21kbTJzN1dvYVZfenlnSWRJSXFadDVBRmJkS0RV?oc=5",
-   "source": "Aberdeen & Grampian Chamber of Commerce",
-   "region": "UK",
-   "date": "2026-11-23T08:17:07Z",
-   "score": 10,
-   "why": [
-    "collapse"
-   ]
-  },
-  {
-   "title": "Can climate diplomacy build on the collapse of COP31?",
-   "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQQ1RyOVZKTlV6bndHdTJhb3ZfZkI5R081UGttS1pZMDB4T0s0ekRPNGRQLW5FUERHRGVFLUxLQTFEcnFKSHpwVDBOQThBRGVaZkJfVTlMUzZPOFc3b3dZZllkVUVuRF9Lbnc3d3pzd01KQTE5WFpzR1h4alU4dUF1ZW0yYkpFeHF1RjRvbklfbWJqdDNXV1lkVkFCQnlRZw?oc=5",
-   "source": "Reuters",
-   "region": "UK",
-   "date": "2026-11-22T21:14:00Z",
-   "score": 10,
-   "why": [
-    "collapse"
-   ]
-  },
-  {
-   "title": "Russian cargo ship continues to burn - as people missing after building collapse",
-   "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQblFod1BBeGhYLWV2clpPaGQ5OGY4T2RMSHRTb0l0c3dKNjl2eDBQa1dJY3JOYUhDbVI2OGV6aDhBcDNHb29TdFB0aVNtOHcyajZGR0ZlWGI4M0dFVG5tdTZPMVl3MG9EQkFxcFcwbUJFYWRZMEZYX0lZZmtvYzh5cTc3X0ppaVR5THpWYS11RmNaRWg4LWVmQ0UzYTV3YnhuVUlBYzc4eVhsYnRVbXZibDZGMEQ?oc=5",
-   "source": "Sky News",
-   "region": "UK",
-   "date": "2026-11-22T22:34:31Z",
-   "score": 10,
-   "why": [
-    "collapse"
-   ]
-  },
-  {
-   "title": "Electrification 'distraction' failed: Richard Denniss on COP31 collapse",
-   "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxOVE1CREJxblJIVnZDN2xpTGJWNEM3RW9LYTlOU0lIdThGazZUUkI3RkNtSDNFTThEUl9nOUNHak1DWXY5YS1GM2RySTZ4bG9McklES1RJbkVLWlc3UHVSS2lPSW5iM1FrZFNlUXo1eHJhNE8xTWJ6LVNFbFBoZTZWUjM1WlNwc2tJMGFzQk9kaG1MNU11bGItOVZKWUJMT29jTWlfWDh4REJrSlFtYnNVUWt6WjAyZ3hSQThSVFp1SkFQVXY4U0dv?oc=5",
-   "source": "Politico",
-   "region": "UK",
-   "date": "2026-11-23T03:23:00Z",
-   "score": 10,
-   "why": [
-    "collapse"
-   ]
-  },
-  {
-   "title": "Collapse of Cop31 talks leaves leaders with no agreement to tackle global warming",
-   "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxPT0ZaMlV6emI3ZjlYSFpLc0tvblFidnV3TTFqdXU4dnpiLWhlOW11UzBucm1lclF3RkJvV1JjbW9wVngwMkxfZVl6Z2tKRHVVSElzVGdSOFZnVWZvWkJtMEh4VTluSjJualNZQlVsTEFJeHd4bHZRSXNzd0FyWlFqTWxYemFqZVgtWWpjd1B3dTBfV3VsdS1GWEdheTJ1RFBGTVBJWlBfeVB1ZHNvalpOaGVjeENaQkVOV1VueThSMzZJYnRoNW4xN08xMmdmYm53YnFqREUzNmdXYTc3YjFPQw?oc=5",
-   "source": "The Irish Times",
-   "region": "UK",
-   "date": "2026-11-23T06:06:06Z",
-   "score": 10,
-   "why": [
-    "collapse"
-   ]
-  },
-  {
-   "title": "Cop31 climate talks collapse with no deal after fossil fuels row | ITV News",
-   "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQZ194cUp4bnplOVA2NWRfSjBNY3JmRU1nUkhlVlRXVnZVQXVPbVhsZ1ctcUtqcGl5STlUVVhoTUV5QXp6bEV0cnRPekFsT2pIdXU5S05yLVNZMS0yREVfNElpWmg2VV8xSmZjU2RWVW9zQW0xSFNzRk1hV2pCSnNIWktXb1F3TFp3UElnWWIwb0FvdDlYV05YYmhiUll3X0tibUtn?oc=5",
-   "source": "ITVX",
-   "region": "UK",
-   "date": "2026-11-22T19:19:30Z",
-   "score": 10,
-   "why": [
-    "collapse"
-   ]
-  },
-  {
-   "title": "Cop31 talks collapse after UK and EU reject proposal",
-   "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOZUYyeHlFWDVyOENzM2oyY1RLT21vRENraHpLQVdUdERVdHUwQ2FkOE43NU5CS01nREZfOU9VN29kZk0tSEFHdi1OeDI3akVoNVpDWk85VjQ1Z042VHp6b2FDVF9ZWGNFSHBpZ2I5dkZ5YmM1ZXRaQXpzRTV2WjBhWU05R1I2V05wTG5ET2JqMk1ua1J0?oc=5",
-   "source": "The Times",
-   "region": "UK",
-   "date": "2026-11-22T20:02:55Z",
-   "score": 10,
-   "why": [
-    "collapse"
-   ]
-  },
-  {
-   "title": "Buyers sought for hops supplier’s sites after collapse into administration",
-   "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNQldRSVlyb2tvbGs0X1lHbGo4b05fbXg1eGVOXzloX3h0ZW93S3dvcHo1TWJKVkdmZ2MyMjljZ2JzaWladm5VYVVTbHc5ZjBuUTBJRlNGTzV0dUtGNHYydEtYY0VPeUtKOUluQmd1dG9scmZFTk1DSDkxeE9INTdVT2VXNElrTGZOZW8tME1nZlN5MkVDZWxWRFVHeTdKYmNndl9GRDNVUjJmLWp2REMxV0ZCc252Njg?oc=5",
-   "source": "Insider Media Ltd",
-   "region": "UK",
-   "date": "2026-11-23T06:00:44Z",
-   "score": 10,
-   "why": [
-    "collapse"
-   ]
-  },
-  {
-   "title": "‘Profound Frustration’: Reactions Pour in As COP31 Talks Collapse in Turkey",
-   "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9vdHJQVWlyczh5cWFBTHJjSW9vMWZFTEhKV1hOOFFWNl92d2JkcW1Gc3RHNWxMSGRiM01ZdG51cHdzcjQyRTJSQTBjZUkxNWtTSGRaSHdZY3gtTEJid0xfenh0MjVGMkJTY0hVVnR4aFZfSjVpUUp3REx3?oc=5",
-   "source": "Earth.Org",
-   "region": "UK",
-   "date": "2026-11-23T07:20:39Z",
-   "score": 10,
-   "why": [
-    "collapse"
-   ]
-  },
-  {
-   "title": "CAFOD 'hugely disappointed at collapse of COP31",
-   "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5MR3dpc1R1blFZdk9maDNsT1l6VTItcE5HSG1CcGNGS0Z2RFNRSjRwRnZWVVVCMGhJbXAzbmtFZDJJRUszY2VGdC1CUktZRlE4TGJ3Zw?oc=5",
-   "source": "Independent Catholic News",
-   "region": "UK",
-   "date": "2026-11-22T23:34:16Z",
-   "score": 10,
-   "why": [
-    "collapse"
-   ]
-  },
-  {
-   "title": "Arsenal’s Baum stretchered off after on-pitch collapse",
-   "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOdE1pQkdSbWJsYkg1dWxPVF96NS1hUWppbkRqald6N2hlVTVJZVRqRGFRbmlFZXEzQ3FPZlBWVk1aakxGV242RTBFTnpwWmdFYXJ2LU5TNTRZNEtWZWdEbGFrRVlSdVhZTElOTVFoR1VpcGd6NjFFalhNUzRRV3ZTTXNFRU9ROURsUDBjSjdWNk5wclE?oc=5",
-   "source": "The Independent",
-   "region": "UK",
-   "date": "2026-11-22T17:16:00Z",
-   "score": 10,
-   "why": [
-    "collapse"
-   ]
-  },
-  {
-   "title": "FbF Australia Relaunches Premium Skincare Brand, Otilie — LBB - LBB",
-   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9uRjRiM2VlLXhXQ05CS0pHVVJwcHNPT045eDBhYlV2U2lhS0dNeXhvU0M1NVY4RVh5TVJ3aF9nYjFCbjJ5Y2tEZjdxMXZRYTM5S2NLWlFTTWtCczI4aFZqQzBHekk?oc=5",
-   "source": "Little Black Book",
-   "region": "UK",
-   "date": "2026-11-22T23:17:52Z",
+   "title": "Southern Indiana-based company launches brand aimed at combining pickleball, life's needs",
+   "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQYzVJcG1EVm1EbnNEVDJEb1NtN2ZVNGJ6NURtUWQyTEVId3VQNk5mNTUzSHVCRVhPT0g5T1NNaVFaQzE4bkdPUHpfY2JkcTZfclhUcnYtYUc5eElkaHJ6dldiLTVKbFNPVFNIcHlBX215TE5DR0lsdlBvejNwTlA4Z19WdEFValAyT1Zlbkd5d1NlLWxl?oc=5",
+   "source": "Yahoo",
+   "region": "US",
+   "date": "2026-11-23T23:06:11Z",
    "score": 10,
    "why": [
     "brand",
     "launch"
+   ]
+  },
+  {
+   "title": "TrueFit Covers Launches New Brand Dedicated to Custom-Fit Boat Covers and Marine Protection",
+   "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxQQXFfSEdGZFRrNWEybEFkVFpWM01hSHlwbk8yMW56bVNvbTN4S0Z2bFBDblYtcEFVSWlIOE1BMXVRd3dJYzE2UlBLaTNWelQzRV9wQ1pDMDI5S0VNc2RlVWJJeGFZaC1tY2xXZEl3VGU3dXlrQVBuQnlRYlFOWlpXa19BZGpCZHNvemhRWHM1R3hrSWF4VkRSMkppNEN1U05kZ1RicXdjWnN3UkhPbk1Eb3owd2gyLUpsc2N3NVRsa096LUx6V0VjNkx4NmRqbjcybm1mZG5Zc1FPZWFibDRIOA?oc=5",
+   "source": "The Detroit News",
+   "region": "US",
+   "date": "2026-11-23T21:57:16Z",
+   "score": 10,
+   "why": [
+    "brand",
+    "launch"
+   ]
+  },
+  {
+   "title": "Rick Ross Joins Cuentas as Shareholder and Brand Ambassador for Bitcoin Mobile, Its Secure All-in-One Mobile Service Launching December 9",
+   "url": "https://news.google.com/rss/articles/CBMioAJBVV95cUxPcWVhWm8xRUN2M2V3Z2ctNFFOcXM2OVlHVzNKN3UwOHFMQ1VBMTViaDlDTlluUk16ejl3RGhUN0xsWEhLODdZMEhXdFd1cEFzYWJla01naXR3WlcxV2hhSXJUOUJjM1NzYlZfMWpfTlhIZ0ltUzZTQVhmWkIxVDJXTy1kMU9SRzdZcEg1VkoyaFJGc3hEYjhFM04tOHc0SXlwTWxQVDg2OEFmMW1aekZxekVGZG04VmxZQ25obmpmZ0dYX2RoUUViM0F3N0hpejVoYlZJMnFyMGFjRmJZZlJPLTRKR1N4VlRqbm9EOHg0ZUUzUjltQ2xMcW1qMWlWNlpYWURYUzhjMmFjSjZWZGlzZXhVZmphd19qWkVyZXhiVGg?oc=5",
+   "source": "markets.businessinsider.com",
+   "region": "US",
+   "date": "2026-11-23T13:27:51Z",
+   "score": 10,
+   "why": [
+    "brand",
+    "launch"
+   ]
+  },
+  {
+   "title": "A Papa Johns Franchisee Opened Its 6,000th Restaurant. Now the Business Is in Chapter 11 Bankruptcy",
+   "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNVmpUR01KeGU4SWVCdFpRU0Ryc09UNHZTUUcwd21QLXdnX3c2TVBObXRBcm9DRTVUQkV5TVQxRDFLV0hUNUJUaHgxSzFMR21EWU9KM3VLRW4zS00waVRvaEVOV0FfSVNxSzVocVdrVTQ1WHZ2eDZ0WlRLV1F0VWhQZ3lvNnZldndkTWJFdzNHOGhoanphMnZMYmR1OEhnNDhZZGpHZU8xVHAxVGdiYnh5TTcwYw?oc=5",
+   "source": "Inc.com",
+   "region": "US",
+   "date": "2026-11-22T23:56:54Z",
+   "score": 10,
+   "why": [
+    "bankruptcy",
+    "bank"
+   ]
+  },
+  {
+   "title": "Attorney General Ellison protects kids' privacy in Character.AI bankruptcy",
+   "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNRmd1cU9XYXNneDh0V2UtNHhpVGVxVXBZSUM1blFZZ21kUmFneVpBelFocTJOYlRNSm15US1NN2Y2bUJPQW03V2hON01QRFVLSlRFNmc1LWgxS3NXWE5pOGtWUXd2dW93UURDeWpiN21Ddzk5QUtPa0xVa1pEYi1velEweENOc2FmQTVHVXN4OUdrdFdZYWdfd25HVlBjbWlLc2hzY3A2VDJCdWRHYVItQnNlVnlrN2tlMENoQUdoY1dSdnJJbWFkY3pRWGdacjBHb2xWSnlLUQ?oc=5",
+   "source": "Red Lake Nation News",
+   "region": "US",
+   "date": "2026-11-23T06:20:56Z",
+   "score": 10,
+   "why": [
+    "bankruptcy",
+    "bank"
    ]
   }
  ],

@@ -265,6 +265,12 @@
      "views": 764,
      "likes": 14,
      "comments": 0
+    },
+    {
+     "t": "2026-11-24T10:32:10Z",
+     "views": 764,
+     "likes": 14,
+     "comments": 0
     }
    ],
    "title": "Pepsi Got Paid in 17 Soviet Submarines 🤯",
@@ -541,6 +547,12 @@
      "views": 1408,
      "likes": 43,
      "comments": 0
+    },
+    {
+     "t": "2026-11-24T10:32:10Z",
+     "views": 1408,
+     "likes": 43,
+     "comments": 0
     }
    ],
    "title": "Disney Secretly Bought a Swamp Using Fake Names",
@@ -551,7 +563,7 @@
    "views_24h": 0,
    "likes": 43,
    "comments": 0,
-   "age_days": 12.3,
+   "age_days": 12.4,
    "views_1d": 1371,
    "views_3d": 1390,
    "views_7d": 1399,
@@ -808,6 +820,12 @@
     },
     {
      "t": "2026-11-24T09:41:14Z",
+     "views": 389,
+     "likes": 20,
+     "comments": 0
+    },
+    {
+     "t": "2026-11-24T10:32:10Z",
      "views": 389,
      "likes": 20,
      "comments": 0
@@ -1075,6 +1093,12 @@
      "views": 719,
      "likes": 24,
      "comments": 2
+    },
+    {
+     "t": "2026-11-24T10:32:10Z",
+     "views": 719,
+     "likes": 24,
+     "comments": 2
     }
    ],
    "title": "Piggly Wiggly's Founder Tried to Beat Wall Street",
@@ -1333,6 +1357,12 @@
      "views": 466,
      "likes": 11,
      "comments": 0
+    },
+    {
+     "t": "2026-11-24T10:32:10Z",
+     "views": 466,
+     "likes": 11,
+     "comments": 0
     }
    ],
    "title": "Pepsi's Ad Showed a Fighter Jet. He Sent $700,000.",
@@ -1585,6 +1615,12 @@
      "views": 1369,
      "likes": 33,
      "comments": 0
+    },
+    {
+     "t": "2026-11-24T10:32:10Z",
+     "views": 1369,
+     "likes": 33,
+     "comments": 0
     }
    ],
    "title": "Hoover Gave Away Free Flights. It Cost Them Millions.",
@@ -1825,6 +1861,12 @@
      "views": 1122,
      "likes": 22,
      "comments": 1
+    },
+    {
+     "t": "2026-11-24T10:32:10Z",
+     "views": 1122,
+     "likes": 22,
+     "comments": 1
     }
    ],
    "title": "Wrigley Mailed Free Gum to a Million Strangers",
@@ -2005,6 +2047,12 @@
      "views": 1702,
      "likes": 68,
      "comments": 0
+    },
+    {
+     "t": "2026-11-24T10:32:10Z",
+     "views": 1702,
+     "likes": 68,
+     "comments": 0
     }
    ],
    "title": "McDonald's Monopoly Was Rigged by Its Own Security Chief",
@@ -2155,6 +2203,12 @@
      "views": 1,
      "likes": 0,
      "comments": 0
+    },
+    {
+     "t": "2026-11-24T10:32:10Z",
+     "views": 1,
+     "likes": 0,
+     "comments": 0
     }
    ],
    "title": "Blockbuster Turned Down a $50 Million Deal. Then Netflix Won",
@@ -2165,7 +2219,7 @@
    "views_24h": 0,
    "likes": 0,
    "comments": 0,
-   "age_days": 4.8,
+   "age_days": 4.9,
    "views_1d": 1,
    "views_3d": 1,
    "views_7d": null,
@@ -2275,6 +2329,12 @@
      "views": 1014,
      "likes": 13,
      "comments": 0
+    },
+    {
+     "t": "2026-11-24T10:32:10Z",
+     "views": 1014,
+     "likes": 13,
+     "comments": 0
     }
    ],
    "title": "Coca-Cola Gave Away Millions of Free Drinks on Purpose",
@@ -2359,6 +2419,12 @@
      "views": 1186,
      "likes": 57,
      "comments": 1
+    },
+    {
+     "t": "2026-11-24T10:32:10Z",
+     "views": 1186,
+     "likes": 57,
+     "comments": 1
     }
    ],
    "title": "Taco John's Owned 'Taco Tuesday' Until Taco Bell Stepped In",
@@ -2413,6 +2479,12 @@
      "views": 1113,
      "likes": 53,
      "comments": 0
+    },
+    {
+     "t": "2026-11-24T10:32:10Z",
+     "views": 1113,
+     "likes": 53,
+     "comments": 0
     }
    ],
    "title": "Costco's $1.50 Hot Dog Hasn't Changed Price Since 1985",
@@ -2443,6 +2515,12 @@
      "views": 1143,
      "likes": 26,
      "comments": 0
+    },
+    {
+     "t": "2026-11-24T10:32:10Z",
+     "views": 1143,
+     "likes": 26,
+     "comments": 0
     }
    ],
    "title": "Nike Paid $35 for Its Swoosh Logo",
@@ -2461,7 +2539,7 @@
    "like_rate": 0.023
   }
  },
- "updated": "2026-11-24T09:41:14Z",
+ "updated": "2026-11-24T10:32:10Z",
  "channel": {
   "snaps": [
    {
@@ -2681,6 +2759,11 @@
    },
    {
     "t": "2026-11-24T09:41:14Z",
+    "subs": 15,
+    "views": 11225
+   },
+   {
+    "t": "2026-11-24T10:32:10Z",
     "subs": 15,
     "views": 11225
    }
