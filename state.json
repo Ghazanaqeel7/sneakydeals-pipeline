@@ -1201,8 +1201,8 @@
       "yt_queued_at": "2026-11-24T06:59:29Z"
     },
     "016-dominos-30-minutes": {
-      "status": "rendering",
-      "updated": "2026-11-24T11:20:36Z",
+      "status": "video_ready",
+      "updated": "2026-11-24T12:24:57Z",
       "title": "Domino's Promised 30 Minutes. A Jury Ended It.",
       "vote_msg": "1795500675.672119",
       "vote_kind": "script",
@@ -1249,7 +1249,10 @@
       "progress_count": 9,
       "decided_via": "dashboard",
       "decided_at": "2026-11-24T06:59:13Z",
-      "run": "45383137814"
+      "run": "45383137814",
+      "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-016-dominos-30-minutes/final.mp4",
+      "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-016-dominos-30-minutes/preview.mp4",
+      "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/016-dominos-30-minutes.mp4"
     }
   },
   "ideas": [
