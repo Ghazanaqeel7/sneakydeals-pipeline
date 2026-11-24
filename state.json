@@ -1228,9 +1228,13 @@
           "t": "2026-11-24T11:19:29Z",
           "msg": "🖼 Thumbnail tayyar",
           "image": "jobs/016-dominos-30-minutes/thumbnail.jpg"
+        },
+        {
+          "t": "2026-11-24T11:20:37Z",
+          "msg": "🎞 Render shuru (GitHub). Andaza: ~30-50 min."
         }
       ],
-      "progress_count": 5,
+      "progress_count": 6,
       "decided_via": "dashboard",
       "decided_at": "2026-11-24T06:59:13Z",
       "run": "45383137814"
