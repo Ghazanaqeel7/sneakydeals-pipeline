@@ -1195,7 +1195,9 @@
       "run": "45226585748",
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-015-ikea-flat-pack/final.mp4",
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-015-ikea-flat-pack/preview.mp4",
-      "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/015-ikea-flat-pack.mp4"
+      "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/015-ikea-flat-pack.mp4",
+      "yt_scheduled_for": "2026-11-24T12:00:00Z",
+      "yt_queued_at": "2026-11-24T06:59:29Z"
     },
     "016-dominos-30-minutes": {
       "status": "script_approved",
