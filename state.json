@@ -1259,7 +1259,9 @@
       "run": "45383137814",
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-016-dominos-30-minutes/final.mp4",
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-016-dominos-30-minutes/preview.mp4",
-      "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/016-dominos-30-minutes.mp4"
+      "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/016-dominos-30-minutes.mp4",
+      "yt_scheduled_for": "2026-11-25T00:00:00Z",
+      "yt_queued_at": "2026-11-24T18:05:47Z"
     }
   },
   "ideas": [
