@@ -1218,9 +1218,14 @@
         {
           "t": "2026-11-24T11:11:10Z",
           "msg": "🎙 Voice tayyar (53 s). Ab scenes bana raha hoon (~50 min baqi, phir render ~40 min)"
+        },
+        {
+          "t": "2026-11-24T11:19:27Z",
+          "msg": "✅ Check frames theek hain (court, kitchen, crash, board). Thumbnail tayyar. Ab GitHub par render lag raha hai (~40 min)",
+          "image": "jobs/016-dominos-30-minutes/review/round1.jpg"
         }
       ],
-      "progress_count": 3,
+      "progress_count": 4,
       "decided_via": "dashboard",
       "decided_at": "2026-11-24T06:59:13Z"
     }
