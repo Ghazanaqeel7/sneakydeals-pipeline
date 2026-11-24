@@ -1,0 +1,12 @@
+hook | Domino's promised pizza in thirty minutes or free.
+s02 | Then a courtroom made them pay seventy-eight million dollars.
+s03 | Domino's was famous for speed. If your pizza was late, it was free. That promise built the brand.
+s04 | Every order had a clock ticking on it, and every driver felt it.
+s05 | In nineteen eighty-nine, a Domino's car and a woman's car collided in St. Louis.
+s06 | She sued. She said the thirty-minute rush made drivers less safe.
+s07 | Domino's said its drivers were never told to speed.
+s08 | But in December of nineteen ninety-three, the jury awarded her over seventy-eight million dollars.
+s09 | Days later, Domino's dropped the guarantee for good.
+s10 | The boss said the promise had become a problem. Customers no longer saw it as safe. So it was replaced with a satisfaction guarantee.
+s11 | The case was later settled for far less, and the amount was never made public.
+s12 | A marketing promise that built the brand was ended by one court verdict.
