@@ -6,6 +6,24 @@
 <description>Approved videos for Instagram Reels + Facebook Reels. Two Zaps (RSS by Zapier → Instagram for Business / Facebook Pages) read this feed. n8n adds one item on each publish day, right after feed/youtube.xml.</description>
 <!--ITEMS-->
 <item>
+<title>Domino's Promised 30 Minutes. A Jury Ended It.</title>
+<description><![CDATA[Domino's promised pizza in 30 minutes or free. Then a jury stepped in 🍕
+
+After a 1989 crash, a St. Louis jury awarded over $78 million. Days later Domino's dropped the guarantee.
+
+Would you have wanted the free pizza? 👇
+Follow for a new true business story every day.
+
+⚠️ Dramatised illustration, real facts.
+
+#dominos #pizza #businesshistory #truestory #sneakydeals]]></description>
+<link>https://raw.githubusercontent.com/Ghazanaqeel7/sneakydeals-pipeline/main/jobs/016-dominos-30-minutes/thumbnail.jpg</link>
+<guid isPermaLink="false">016-dominos-30-minutes</guid>
+<pubDate>Wed, 25 Nov 2026 05:40:39 GMT</pubDate>
+<enclosure url="https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/016-dominos-30-minutes.mp4" type="video/mp4" length="0"/>
+</item>
+
+<item>
 <title>Nike Paid $35 for Its Swoosh Logo</title>
 <description><![CDATA[Nike paid just $35 for the Swoosh logo 👟
 
