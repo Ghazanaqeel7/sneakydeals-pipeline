@@ -1278,9 +1278,11 @@
       "reels_at": "2026-11-25T05:40:41Z"
     },
     "017-pringles-baur-can": {
-      "status": "script_ready",
-      "updated": "2026-11-25T06:10:21Z",
-      "title": "The Pringles Can Designer Was Buried in One"
+      "status": "script_sent",
+      "updated": "2026-11-25T06:10:42Z",
+      "title": "The Pringles Can Designer Was Buried in One",
+      "vote_msg": "",
+      "vote_kind": ""
     }
   },
   "ideas": [
