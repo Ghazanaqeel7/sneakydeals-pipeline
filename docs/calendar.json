@@ -30,7 +30,8 @@
       "angle": "The weirdest ending to a famous product's story",
       "title": "The Pringles Inventor Was Buried in a Pringles Can",
       "why": "Famous-brand hidden-trick hook (early signal: McDonald's 1.7K, Disney 1.4K). Verify before scripting.",
-      "status": "planned"
+      "status": "scripted",
+      "job": "017-pringles-baur-can"
     },
     {
       "day": "Thu 26 Nov",
