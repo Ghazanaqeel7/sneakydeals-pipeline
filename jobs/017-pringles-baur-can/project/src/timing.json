@@ -1,90 +1,94 @@
 {
  "fps": 30,
- "duration": 63.23,
+ "duration": 42.71,
  "shots": [
   {
    "key": "hook",
    "start": 0.15,
-   "end": 5.582,
-   "words": 15,
-   "text": "In nineteen seventy-eight, welders secretly patched a brand new New York skyscraper, every single night."
+   "end": 2.383,
+   "words": 8,
+   "text": "The Pringles can designer was buried in one."
   },
   {
-   "key": "cta",
-   "start": 5.974,
-   "end": 11.538,
-   "words": 23,
-   "text": "Before we go deep into today's story, take a second to like this video and subscribe if you haven't. Let's get into it."
-  },
-  {
-   "key": "tower",
-   "start": 11.93,
-   "end": 16.684,
-   "words": 13,
-   "text": "It stood fifty-nine stories high on giant stilts, and it had just opened."
-  },
-  {
-   "key": "rules",
-   "start": 17.077,
-   "end": 20.643,
+   "key": "s02",
+   "start": 2.803,
+   "end": 5.837,
    "words": 11,
-   "text": "The building rules only asked about wind hitting the flat sides."
+   "text": "Fred Baur was a chemist at Procter and Gamble in Ohio."
   },
   {
-   "key": "but",
-   "start": 21.036,
-   "end": 26.334,
-   "words": 16,
-   "text": "But a student asked about corner winds, and the numbers showed about forty percent more force."
-  },
-  {
-   "key": "then",
-   "start": 26.726,
-   "end": 31.59,
-   "words": 16,
-   "text": "Then the engineer learned the builders had swapped his welded joints for bolts to save money."
-  },
-  {
-   "key": "storm",
-   "start": 31.983,
-   "end": 35.961,
-   "words": 14,
-   "text": "A big enough storm could snap those bolts, right in the middle of Manhattan."
-  },
-  {
-   "key": "yousee",
-   "start": 36.353,
-   "end": 42.624,
-   "words": 19,
-   "text": "You see, a weld turns a joint into one solid piece. Bolts are only as strong as the bolts."
-  },
-  {
-   "key": "night",
-   "start": 43.017,
-   "end": 48.297,
-   "words": 14,
-   "text": "Every night after the offices emptied, welders covered the bolted joints with steel plates."
-  },
-  {
-   "key": "ella",
-   "start": 48.69,
-   "end": 53.756,
-   "words": 15,
-   "text": "During the repair, Hurricane Ella headed for New York, and evacuation plans were drawn up."
-  },
-  {
-   "key": "so",
-   "start": 54.148,
-   "end": 58.165,
+   "key": "s03",
+   "start": 6.257,
+   "end": 8.638,
    "words": 10,
-   "text": "So everyone watched the forecasts, until the storm turned away."
+   "text": "He designed the tall tube that Pringles chips come in."
   },
   {
-   "key": "close",
-   "start": 58.558,
-   "end": 62.476,
+   "key": "s04",
+   "start": 8.852,
+   "end": 10.617,
+   "words": 8,
+   "text": "And he was proud of it. Very proud."
+  },
+  {
+   "key": "s05",
+   "start": 10.96,
+   "end": 14.84,
+   "words": 15,
+   "text": "So when he died in two thousand eight, at eighty-nine, he made one last request."
+  },
+  {
+   "key": "s06",
+   "start": 15.26,
+   "end": 16.617,
+   "words": 6,
+   "text": "Bury me in a Pringles can."
+  },
+  {
+   "key": "s07",
+   "start": 16.941,
+   "end": 20.867,
+   "words": 15,
+   "text": "His children said yes. But they had a problem. They needed a can, and fast."
+  },
+  {
+   "key": "s08",
+   "start": 21.287,
+   "end": 25.578,
+   "words": 15,
+   "text": "So hours before the burial, they stopped at a store and bought one. Original flavor."
+  },
+  {
+   "key": "s09",
+   "start": 25.98,
+   "end": 30.731,
+   "words": 19,
+   "text": "They placed part of his ashes inside the can. The rest went in an urn, buried right beside it."
+  },
+  {
+   "key": "s10",
+   "start": 31.151,
+   "end": 34.168,
+   "words": 10,
+   "text": "Then the family laid him to rest near Cincinnati, Ohio."
+  },
+  {
+   "key": "s11",
+   "start": 34.588,
+   "end": 37.773,
    "words": 13,
-   "text": "The repair worked, and the public didn't hear about it until nineteen ninety-five."
+   "text": "A small part of his ashes also went to a grandson, to keep."
+  },
+  {
+   "key": "s12",
+   "start": 38.193,
+   "end": 41.956,
+   "words": 15,
+   "text": "He spent his career on one can. And he chose to spend forever with one."
   }
+ ],
+ "hookTitle": [
+  "BURIED IN A",
+  "PRINGLES CAN?!"
  ]
 }

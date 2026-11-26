@@ -17,7 +17,14 @@
     "BURIED IN A",
     "PRINGLES CAN?!"
   ],
-  "thumb": {},
+  "thumb": {
+    "frame": 40,
+    "box": "PRINGLES",
+    "line1": "BURIED IN A",
+    "line2": "CAN?!",
+    "box_color": "#c9302c",
+    "bg_shift": 0
+  },
   "instagram": {
     "caption": "The man who designed the Pringles can asked to be buried in one 🥫\n\nFred Baur's children honored his request in 2008.\n\nWhat's the weirdest last wish you've heard? 👇\nFollow for a new true business story every day.\n\n⚠️ Dramatised illustration, real facts.",
     "hashtags": [
