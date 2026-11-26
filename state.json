@@ -1294,9 +1294,13 @@
           "t": "2026-11-26T06:14:13Z",
           "msg": "✅ Check frames theek hain, thumbnail tayyar. Render queue kar raha hoon (~40 min)",
           "image": "jobs/017-pringles-baur-can/review/round1.jpg"
+        },
+        {
+          "t": "2026-11-26T06:15:10Z",
+          "msg": "🎞 Render shuru (GitHub). Andaza: ~30-50 min."
         }
       ],
-      "progress_count": 2,
+      "progress_count": 3,
       "run": "45766803333"
     }
   },
