@@ -1289,9 +1289,14 @@
         {
           "t": "2026-11-26T06:09:37Z",
           "msg": "🎙 Voice ban rahi hai… (~5 min baqi, phir scenes ~45 min, phir render ~40 min)"
+        },
+        {
+          "t": "2026-11-26T06:14:13Z",
+          "msg": "✅ Check frames theek hain, thumbnail tayyar. Render queue kar raha hoon (~40 min)",
+          "image": "jobs/017-pringles-baur-can/review/round1.jpg"
         }
       ],
-      "progress_count": 1
+      "progress_count": 2
     }
   },
   "ideas": [
