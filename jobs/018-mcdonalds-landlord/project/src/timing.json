@@ -1,90 +1,94 @@
 {
  "fps": 30,
- "duration": 63.23,
+ "duration": 47.28,
  "shots": [
   {
    "key": "hook",
    "start": 0.15,
-   "end": 5.582,
-   "words": 15,
-   "text": "In nineteen seventy-eight, welders secretly patched a brand new New York skyscraper, every single night."
+   "end": 3.2,
+   "words": 8,
+   "text": "McDonald's secretly collects rent from its own franchisees."
   },
   {
-   "key": "cta",
-   "start": 5.974,
-   "end": 11.538,
-   "words": 23,
-   "text": "Before we go deep into today's story, take a second to like this video and subscribe if you haven't. Let's get into it."
-  },
-  {
-   "key": "tower",
-   "start": 11.93,
-   "end": 16.684,
-   "words": 13,
-   "text": "It stood fifty-nine stories high on giant stilts, and it had just opened."
-  },
-  {
-   "key": "rules",
-   "start": 17.077,
-   "end": 20.643,
-   "words": 11,
-   "text": "The building rules only asked about wind hitting the flat sides."
-  },
-  {
-   "key": "but",
-   "start": 21.036,
-   "end": 26.334,
-   "words": 16,
-   "text": "But a student asked about corner winds, and the numbers showed about forty percent more force."
-  },
-  {
-   "key": "then",
-   "start": 26.726,
-   "end": 31.59,
-   "words": 16,
-   "text": "Then the engineer learned the builders had swapped his welded joints for bolts to save money."
-  },
-  {
-   "key": "storm",
-   "start": 31.983,
-   "end": 35.961,
-   "words": 14,
-   "text": "A big enough storm could snap those bolts, right in the middle of Manhattan."
-  },
-  {
-   "key": "yousee",
-   "start": 36.353,
-   "end": 42.624,
-   "words": 19,
-   "text": "You see, a weld turns a joint into one solid piece. Bolts are only as strong as the bolts."
-  },
-  {
-   "key": "night",
-   "start": 43.017,
-   "end": 48.297,
-   "words": 14,
-   "text": "Every night after the offices emptied, welders covered the bolted joints with steel plates."
-  },
-  {
-   "key": "ella",
-   "start": 48.69,
-   "end": 53.756,
-   "words": 15,
-   "text": "During the repair, Hurricane Ella headed for New York, and evacuation plans were drawn up."
-  },
-  {
-   "key": "so",
-   "start": 54.148,
-   "end": 58.165,
+   "key": "s02",
+   "start": 3.604,
+   "end": 5.958,
    "words": 10,
-   "text": "So everyone watched the forecasts, until the storm turned away."
+   "text": "Today, about a third of its revenue comes from rent."
   },
   {
-   "key": "close",
-   "start": 58.558,
-   "end": 62.476,
+   "key": "s03",
+   "start": 6.378,
+   "end": 10.143,
    "words": 13,
-   "text": "The repair worked, and the public didn't hear about it until nineteen ninety-five."
+   "text": "It started with an executive named Harry Sonneborn, who worked with Ray Kroc."
+  },
+  {
+   "key": "s04",
+   "start": 10.563,
+   "end": 14.708,
+   "words": 14,
+   "text": "His idea was simple. Do not only sell franchises. Own the land under them."
+  },
+  {
+   "key": "s05",
+   "start": 15.122,
+   "end": 20.275,
+   "words": 15,
+   "text": "So McDonald's created a real estate company. It bought or leased land for new restaurants."
+  },
+  {
+   "key": "s06",
+   "start": 20.627,
+   "end": 22.687,
+   "words": 8,
+   "text": "Then it rented that land to the franchisees."
+  },
+  {
+   "key": "s07",
+   "start": 23.093,
+   "end": 27.218,
+   "words": 14,
+   "text": "Franchisees pay McDonald's a royalty on their sales. And they pay rent on top."
+  },
+  {
+   "key": "s08",
+   "start": 27.638,
+   "end": 30.809,
+   "words": 12,
+   "text": "Rent is the bigger part, almost two thirds of what franchisees pay."
+  },
+  {
+   "key": "s09",
+   "start": 31.229,
+   "end": 35.071,
+   "words": 12,
+   "text": "Today, more than nine in ten McDonald's restaurants are run by franchisees."
+  },
+  {
+   "key": "s10",
+   "start": 35.416,
+   "end": 38.572,
+   "words": 12,
+   "text": "And McDonald's owns the land under roughly half of all its restaurants."
+  },
+  {
+   "key": "s11",
+   "start": 38.9,
+   "end": 43.032,
+   "words": 15,
+   "text": "So a franchisee does not just sell burgers. They also pay McDonald's for the ground."
+  },
+  {
+   "key": "s12",
+   "start": 43.452,
+   "end": 46.533,
+   "words": 8,
+   "text": "Franchisees sell the burgers. McDonald's collects the rent."
   }
+ ],
+ "hookTitle": [
+  "MCDONALD'S",
+  "COLLECTS RENT?!"
  ]
 }

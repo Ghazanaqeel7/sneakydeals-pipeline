@@ -17,7 +17,14 @@
     "MCDONALD'S IS",
     "A LANDLORD?!"
   ],
-  "thumb": {},
+  "thumb": {
+    "frame": 45,
+    "box": "McDONALD'S",
+    "line1": "SECRETLY COLLECTS",
+    "line2": "RENT?!",
+    "box_color": "#c43d32",
+    "bg_shift": 0
+  },
   "instagram": {
     "caption": "McDonald's secretly collects rent from its own franchisees 🍔\n\nAbout a third of its revenue comes from rent, not just burgers.\n\nDid you know McDonald's owns land under its restaurants? 👇\nFollow for a new true business story every day.\n\n⚠️ Dramatised illustration, real facts.",
     "hashtags": [
