@@ -1332,9 +1332,14 @@
         {
           "t": "2026-11-26T11:09:12Z",
           "msg": "🎙 Voice ban rahi hai… (~60 min baqi, phir render ~40 min)"
+        },
+        {
+          "t": "2026-11-26T11:14:40Z",
+          "msg": "✅ Check frames theek hain (signs chhote kiye, camera door kiya). 🖼 Thumbnail tayyar. Render queue kar raha hoon (render ~40 min)",
+          "image": "jobs/018-mcdonalds-landlord/review/round1.jpg"
         }
       ],
-      "progress_count": 2,
+      "progress_count": 3,
       "decided_via": "dashboard",
       "decided_at": "2026-11-26T06:47:49Z"
     }
