@@ -1279,11 +1279,11 @@
       "fb_thumb_set": "2026-11-25T17:10:26Z"
     },
     "017-pringles-baur-can": {
-      "status": "video_ready",
-      "updated": "2026-11-26T07:35:28Z",
+      "status": "video_sent",
+      "updated": "2026-11-26T10:57:15Z",
       "title": "The Pringles Can Designer Was Buried in One",
-      "vote_msg": "1795587044.140199",
-      "vote_kind": "script",
+      "vote_msg": "",
+      "vote_kind": "",
       "decided_via": "slack",
       "progress": [
         {
