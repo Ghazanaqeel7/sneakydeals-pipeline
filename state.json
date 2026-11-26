@@ -1284,7 +1284,14 @@
       "title": "The Pringles Can Designer Was Buried in One",
       "vote_msg": "1795587044.140199",
       "vote_kind": "script",
-      "decided_via": "slack"
+      "decided_via": "slack",
+      "progress": [
+        {
+          "t": "2026-11-26T06:09:37Z",
+          "msg": "🎙 Voice ban rahi hai… (~5 min baqi, phir scenes ~45 min, phir render ~40 min)"
+        }
+      ],
+      "progress_count": 1
     }
   },
   "ideas": [
