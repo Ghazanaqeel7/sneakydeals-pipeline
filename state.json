@@ -1298,9 +1298,13 @@
         {
           "t": "2026-11-26T06:15:10Z",
           "msg": "🎞 Render shuru (GitHub). Andaza: ~30-50 min."
+        },
+        {
+          "t": "2026-11-26T06:36:13Z",
+          "msg": "⏳ Render 25% (328/1281 frames). Baqi waqt: 3h 58m 4s"
         }
       ],
-      "progress_count": 3,
+      "progress_count": 4,
       "run": "45766803333"
     },
     "018-mcdonalds-landlord": {
