@@ -1,24 +1,16 @@
 {
-  "generated_at": "2026-11-25T15:57:39.871201+00:00",
+  "generated_at": "2026-11-26T15:39:20.505760+00:00",
   "format": "short",
-  "item_day": "Thu 26 Nov",
-  "topic": "McDonald's first CFO built the company on real estate, not burgers (Franchise Realty Corporation)",
-  "title": "McDonald's Is Secretly a Real Estate Company",
+  "item_day": "Fri 27 Nov",
+  "topic": "Heinz redesigned the ketchup bottle to sit upside down so kids could squeeze it",
+  "title": "Heinz Turned Its Bottle Upside Down. Sales Jumped.",
   "unverified": true,
   "note": "Gemini first draft, NOT fact-checked. Claude must verify every claim with its own 2-source rule before using any of it in a real job file.",
-  "draft_script": "You think McDonald's sells burgers? Think again. McDonald's is secretly a real estate empire. The real money is in the land. Meet Harry J. Sonneborn. He was McDonald's first CFO. Sonneborn saw the true opportunity. It wasn't just about selling food. His plan was simple. But brilliant. McDonald's would buy prime land. Then, it would lease that land to its franchisees. He created the Franchise Realty Corporation. This corporation owned the land. Franchisees paid rent to McDonald's. This rent was a percentage of sales. It also included a fixed base amount. This setup gave McDonald's control. It provided a stable, growing income stream. Much more reliable than burger profits. McDonald's became a landlord first. A burger joint second. This real estate model funded massive expansion. It built the global brand you know. The next time you eat a Big Mac, remember the land beneath your feet. That's the real Sneaky Deal.",
+  "draft_script": "Every meal, the same struggle. Tapping the Heinz ketchup bottle. Shaking it. Waiting for the thick sauce to finally move. It was a universal annoyance. Heinz, a brand known for its classic glass bottles, had a problem. Customer frustration. But instead of a new formula, they chose a physical redesign. They turned the bottle upside down. The cap became the base. Gravity did the work. Ketchup was always at the opening, ready to pour. This wasn't just a convenience upgrade. It was a clever business move. Immediately, sales saw a significant boost. Some reports claimed double-digit growth in specific markets. The simple act of fixing one common, annoying user experience translated directly into increased revenue. It showed that sometimes, the biggest business trick isn't a complex strategy. It's understanding a basic customer pain point and solving it with elegant simplicity. Heinz didn't just sell ketchup. They sold convenience. And customers paid for it. This is a classic example of a sneaky deal: identify friction, eliminate it, and watch your bottom line grow.",
   "claims": [
-    "McDonald's is secretly a real estate empire.",
-    "Harry J. Sonneborn was McDonald's first CFO.",
-    "Sonneborn's plan involved McDonald's buying prime land.",
-    "McDonald's would lease that land to its franchisees.",
-    "Sonneborn created the Franchise Realty Corporation.",
-    "The Franchise Realty Corporation owned the land.",
-    "Franchisees paid rent to McDonald's.",
-    "This rent was a percentage of sales.",
-    "This rent also included a fixed base amount.",
-    "This setup gave McDonald's control.",
-    "This setup provided a stable, growing income stream.",
-    "The real estate model funded massive expansion."
+    "Heinz redesigned its ketchup bottle to sit upside down.",
+    "The redesign made ketchup always ready to pour.",
+    "Sales saw a significant boost after the redesign.",
+    "Some reports claimed double-digit growth in specific markets."
   ]
 }
