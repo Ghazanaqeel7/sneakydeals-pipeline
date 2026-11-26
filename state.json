@@ -1306,9 +1306,13 @@
         {
           "t": "2026-11-26T06:55:16Z",
           "msg": "⏳ Render 50% (643/1281 frames). Baqi waqt: 2h 36m 43s"
+        },
+        {
+          "t": "2026-11-26T07:16:19Z",
+          "msg": "⏳ Render 75% (962/1281 frames). Baqi waqt: 1h 20m 26s"
         }
       ],
-      "progress_count": 5,
+      "progress_count": 6,
       "run": "45766803333"
     },
     "018-mcdonalds-landlord": {
