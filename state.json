@@ -1279,8 +1279,8 @@
       "fb_thumb_set": "2026-11-25T17:10:26Z"
     },
     "017-pringles-baur-can": {
-      "status": "rendering",
-      "updated": "2026-11-26T06:15:09Z",
+      "status": "video_ready",
+      "updated": "2026-11-26T07:35:28Z",
       "title": "The Pringles Can Designer Was Buried in One",
       "vote_msg": "1795587044.140199",
       "vote_kind": "script",
@@ -1313,7 +1313,10 @@
         }
       ],
       "progress_count": 6,
-      "run": "45766803333"
+      "run": "45766803333",
+      "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-017-pringles-baur-can/final.mp4",
+      "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-017-pringles-baur-can/preview.mp4",
+      "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/017-pringles-baur-can.mp4"
     },
     "018-mcdonalds-landlord": {
       "status": "script_approved",
