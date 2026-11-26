@@ -1319,8 +1319,8 @@
       "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/017-pringles-baur-can.mp4"
     },
     "018-mcdonalds-landlord": {
-      "status": "rendering",
-      "updated": "2026-11-26T11:16:10Z",
+      "status": "video_ready",
+      "updated": "2026-11-26T12:12:38Z",
       "title": "McDonald's Secretly Collects Rent From Its Own Owners",
       "vote_msg": "1795673762.930559",
       "vote_kind": "script",
@@ -1358,7 +1358,10 @@
       "progress_count": 7,
       "decided_via": "dashboard",
       "decided_at": "2026-11-26T06:47:49Z",
-      "run": "45808810744"
+      "run": "45808810744",
+      "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-018-mcdonalds-landlord/final.mp4",
+      "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-018-mcdonalds-landlord/preview.mp4",
+      "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/018-mcdonalds-landlord.mp4"
     }
   },
   "ideas": [
