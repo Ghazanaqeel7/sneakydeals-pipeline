@@ -1308,11 +1308,20 @@
       "run": "45766803333"
     },
     "018-mcdonalds-landlord": {
-      "status": "script_sent",
-      "updated": "2026-11-26T06:16:00Z",
+      "status": "script_approved",
+      "updated": "2026-11-26T06:47:49Z",
       "title": "McDonald's Secretly Collects Rent From Its Own Owners",
       "vote_msg": "1795673762.930559",
-      "vote_kind": "script"
+      "vote_kind": "script",
+      "progress": [
+        {
+          "t": "2026-11-26T06:47:49Z",
+          "msg": "✅ You approved the script on the dashboard. Claude starts the video in the next run."
+        }
+      ],
+      "progress_count": 1,
+      "decided_via": "dashboard",
+      "decided_at": "2026-11-26T06:47:49Z"
     }
   },
   "ideas": [
