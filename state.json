@@ -1377,11 +1377,20 @@
       "yt_queued_at": "2026-11-27T21:09:19Z"
     },
     "019-red-bull-wings": {
-      "status": "script_sent",
-      "updated": "2026-11-27T06:12:09Z",
+      "status": "script_approved",
+      "updated": "2026-11-27T21:09:21Z",
       "title": "Red Bull Paid $13 Million Over Its Wings Slogan",
       "vote_msg": "1795759931.914899",
-      "vote_kind": "script"
+      "vote_kind": "script",
+      "progress": [
+        {
+          "t": "2026-11-27T21:09:21Z",
+          "msg": "✅ You approved the script on the dashboard. Claude starts the video in the next run."
+        }
+      ],
+      "progress_count": 1,
+      "decided_via": "dashboard",
+      "decided_at": "2026-11-27T21:09:21Z"
     }
   },
   "ideas": [
