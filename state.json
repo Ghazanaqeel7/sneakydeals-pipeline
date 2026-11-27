@@ -1279,12 +1279,12 @@
       "fb_thumb_set": "2026-11-25T17:10:26Z"
     },
     "017-pringles-baur-can": {
-      "status": "video_sent",
-      "updated": "2026-11-26T10:57:15Z",
+      "status": "video_approved",
+      "updated": "2026-11-27T21:08:55Z",
       "title": "The Pringles Can Designer Was Buried in One",
       "vote_msg": "1795690638.993669",
       "vote_kind": "video",
-      "decided_via": "slack",
+      "decided_via": "dashboard",
       "progress": [
         {
           "t": "2026-11-26T06:09:37Z",
@@ -1310,13 +1310,18 @@
         {
           "t": "2026-11-26T07:16:19Z",
           "msg": "⏳ Render 75% (962/1281 frames). Baqi waqt: 1h 20m 26s"
+        },
+        {
+          "t": "2026-11-27T21:08:55Z",
+          "msg": "✅ You approved the video + thumbnail on the dashboard. It goes to YouTube at the next publish slot."
         }
       ],
-      "progress_count": 6,
+      "progress_count": 7,
       "run": "45766803333",
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-017-pringles-baur-can/final.mp4",
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-017-pringles-baur-can/preview.mp4",
-      "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/017-pringles-baur-can.mp4"
+      "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/017-pringles-baur-can.mp4",
+      "decided_at": "2026-11-27T21:08:55Z"
     },
     "018-mcdonalds-landlord": {
       "status": "video_sent",
