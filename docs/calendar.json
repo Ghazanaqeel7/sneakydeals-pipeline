@@ -50,7 +50,8 @@
       "angle": "A famous brand fixing one annoying thing and selling more",
       "title": "Heinz Turned Its Bottle Upside Down. Sales Jumped.",
       "why": "Famous-brand hidden-trick hook (early signal: McDonald's 1.7K, Disney 1.4K). Verify before scripting.",
-      "status": "planned"
+      "status": "needs_verification",
+      "note": "27 Nov: no source reports post-launch sales for the 2002 upside-down bottle, and the kids reason is tied to EZ Squirt, not that bottle. Needs a real sales source or a reframe (e.g. 1983 squeeze bottle / 2002 valve)."
     },
     {
       "day": "Sat 28 Nov",
@@ -59,7 +60,8 @@
       "angle": "Slogan taken literally by the court of public opinion",
       "title": "Red Bull Got Sued for Not Giving Wings",
       "why": "Famous-brand hidden-trick hook (early signal: McDonald's 1.7K, Disney 1.4K). Verify before scripting.",
-      "status": "planned"
+      "status": "scripted",
+      "job": "019-red-bull-wings"
     },
     {
       "day": "Sun 29 Nov",
