@@ -1324,8 +1324,8 @@
       "decided_at": "2026-11-27T21:08:55Z"
     },
     "018-mcdonalds-landlord": {
-      "status": "video_sent",
-      "updated": "2026-11-26T19:57:32Z",
+      "status": "video_approved",
+      "updated": "2026-11-27T21:09:07Z",
       "title": "McDonald's Secretly Collects Rent From Its Own Owners",
       "vote_msg": "1795723056.937299",
       "vote_kind": "video",
@@ -1358,11 +1358,15 @@
         {
           "t": "2026-11-26T11:58:20Z",
           "msg": "⏳ Render 76% (1081/1418 frames). Baqi waqt: 52m 6s"
+        },
+        {
+          "t": "2026-11-27T21:09:07Z",
+          "msg": "✅ You approved the video + thumbnail on the dashboard. It goes to YouTube at the next publish slot."
         }
       ],
-      "progress_count": 7,
+      "progress_count": 8,
       "decided_via": "dashboard",
-      "decided_at": "2026-11-26T06:47:49Z",
+      "decided_at": "2026-11-27T21:09:07Z",
       "run": "45808810744",
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-018-mcdonalds-landlord/final.mp4",
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-018-mcdonalds-landlord/preview.mp4",
