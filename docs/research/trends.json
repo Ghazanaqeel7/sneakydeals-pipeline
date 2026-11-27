@@ -656,28 +656,68 @@
     "starbucks": 1,
     "monster": 1
    }
+  },
+  {
+   "date": "2026-11-27",
+   "words": {
+    "rise": 17,
+    "documentary": 16,
+    "fall": 16,
+    "full": 8,
+    "worst": 8,
+    "america's": 4,
+    "built": 3,
+    "hiding": 3,
+    "inside": 3,
+    "explained": 3,
+    "family": 3,
+    "entire": 3,
+    "invented": 2,
+    "coca-cola": 2,
+    "trick": 2,
+    "viral": 2,
+    "north": 2,
+    "hid": 2,
+    "bbc": 2,
+    "like": 2,
+    "deals": 2,
+    "you're": 2,
+    "america": 2,
+    "corporate": 2,
+    "dynasty": 2
+   },
+   "brands": {
+    "coca-cola": 2,
+    "apple": 1,
+    "sears": 1,
+    "nokia": 1,
+    "heinz": 1,
+    "wendy": 1,
+    "nike": 1,
+    "toyota": 1
+   }
   }
  ],
  "rising": {
   "words": {
    "rising": [
     {
+     "name": "america's",
+     "now": 16,
+     "before": 3,
+     "change": 13
+    },
+    {
      "name": "built",
-     "now": 17,
+     "now": 18,
      "before": 8,
-     "change": 9
+     "change": 10
     },
     {
-     "name": "biggest",
-     "now": 8,
+     "name": "explained",
+     "now": 9,
      "before": 0,
-     "change": 8
-    },
-    {
-     "name": "invented",
-     "now": 17,
-     "before": 9,
-     "change": 8
+     "change": 9
     },
     {
      "name": "exposed",
@@ -686,19 +726,7 @@
      "change": 8
     },
     {
-     "name": "america's",
-     "now": 12,
-     "before": 6,
-     "change": 6
-    },
-    {
      "name": "loophole",
-     "now": 6,
-     "before": 0,
-     "change": 6
-    },
-    {
-     "name": "ancient",
      "now": 6,
      "before": 0,
      "change": 6
@@ -710,13 +738,25 @@
      "change": 6
     },
     {
-     "name": "explained",
+     "name": "ancient",
      "now": 6,
      "before": 0,
      "change": 6
     },
     {
+     "name": "like",
+     "now": 5,
+     "before": 0,
+     "change": 5
+    },
+    {
      "name": "minutes",
+     "now": 5,
+     "before": 0,
+     "change": 5
+    },
+    {
+     "name": "hid",
      "now": 5,
      "before": 0,
      "change": 5
@@ -728,30 +768,36 @@
      "change": 5
     },
     {
-     "name": "work",
-     "now": 13,
-     "before": 8,
-     "change": 5
+     "name": "invented",
+     "now": 16,
+     "before": 12,
+     "change": 4
     }
    ],
    "falling": [
     {
-     "name": "trick",
-     "now": 8,
-     "before": 20,
-     "change": -12
-    },
-    {
      "name": "billions",
-     "now": 9,
+     "now": 6,
      "before": 19,
-     "change": -10
+     "change": -13
     },
     {
-     "name": "viral",
-     "now": 12,
-     "before": 22,
-     "change": -10
+     "name": "documentary",
+     "now": 122,
+     "before": 133,
+     "change": -11
+    },
+    {
+     "name": "ceo",
+     "now": 28,
+     "before": 37,
+     "change": -9
+    },
+    {
+     "name": "animal",
+     "now": 8,
+     "before": 17,
+     "change": -9
     },
     {
      "name": "products",
@@ -760,117 +806,111 @@
      "change": -9
     },
     {
-     "name": "doing",
-     "now": 0,
-     "before": 6,
-     "change": -6
+     "name": "viral",
+     "now": 12,
+     "before": 20,
+     "change": -8
     },
     {
-     "name": "but",
-     "now": 4,
-     "before": 10,
-     "change": -6
+     "name": "money",
+     "now": 10,
+     "before": 18,
+     "change": -8
     },
     {
      "name": "greatest",
      "now": 4,
      "before": 10,
      "change": -6
-    },
-    {
-     "name": "worst",
-     "now": 61,
-     "before": 66,
-     "change": -5
     }
    ],
    "steady": [
     {
      "name": "rise",
-     "now": 131,
-     "before": 132,
-     "change": -1
-    },
-    {
-     "name": "documentary",
-     "now": 126,
-     "before": 127,
+     "now": 130,
+     "before": 131,
      "change": -1
     },
     {
      "name": "fall",
-     "now": 124,
-     "before": 123,
+     "now": 123,
+     "before": 122,
      "change": 1
     },
     {
+     "name": "documentary",
+     "now": 122,
+     "before": 133,
+     "change": -11
+    },
+    {
      "name": "full",
-     "now": 75,
-     "before": 71,
-     "change": 4
+     "now": 71,
+     "before": 75,
+     "change": -4
     },
     {
      "name": "worst",
-     "now": 61,
-     "before": 66,
+     "now": 60,
+     "before": 65,
      "change": -5
     },
     {
      "name": "ceo",
-     "now": 35,
-     "before": 35,
-     "change": 0
+     "now": 28,
+     "before": 37,
+     "change": -9
     },
     {
      "name": "family",
-     "now": 29,
-     "before": 29,
-     "change": 0
+     "now": 27,
+     "before": 30,
+     "change": -3
     },
     {
      "name": "entire",
      "now": 21,
-     "before": 18,
-     "change": 3
-    },
-    {
-     "name": "built",
-     "now": 17,
-     "before": 8,
-     "change": 9
-    },
-    {
-     "name": "invented",
-     "now": 17,
-     "before": 9,
-     "change": 8
-    },
-    {
-     "name": "empire",
-     "now": 17,
-     "before": 15,
+     "before": 19,
      "change": 2
     },
     {
-     "name": "money",
-     "now": 14,
-     "before": 14,
-     "change": 0
+     "name": "built",
+     "now": 18,
+     "before": 8,
+     "change": 10
+    },
+    {
+     "name": "america's",
+     "now": 16,
+     "before": 3,
+     "change": 13
+    },
+    {
+     "name": "invented",
+     "now": 16,
+     "before": 12,
+     "change": 4
+    },
+    {
+     "name": "empire",
+     "now": 13,
+     "before": 16,
+     "change": -3
     }
    ]
   },
   "brands": {
    "rising": [
     {
-     "name": "coca-cola",
-     "now": 21,
-     "before": 14,
-     "change": 7
+     "name": "toyota",
+     "now": 6,
+     "before": 0,
+     "change": 6
     },
     {
-     "name": "toyota",
-     "now": 5,
-     "before": 0,
+     "name": "coca-cola",
+     "now": 20,
+     "before": 15,
      "change": 5
     },
     {
@@ -886,7 +926,19 @@
      "change": 2
     },
     {
+     "name": "nokia",
+     "now": 2,
+     "before": 0,
+     "change": 2
+    },
+    {
      "name": "sears",
+     "now": 2,
+     "before": 0,
+     "change": 2
+    },
+    {
+     "name": "walmart",
      "now": 1,
      "before": 0,
      "change": 1
@@ -898,13 +950,7 @@
      "change": 1
     },
     {
-     "name": "walmart",
-     "now": 1,
-     "before": 0,
-     "change": 1
-    },
-    {
-     "name": "nokia",
+     "name": "apple",
      "now": 1,
      "before": 0,
      "change": 1
@@ -913,23 +959,23 @@
    "falling": [
     {
      "name": "mars",
-     "now": 2,
+     "now": 1,
+     "before": 7,
+     "change": -6
+    },
+    {
+     "name": "popeyes",
+     "now": 5,
      "before": 6,
-     "change": -4
+     "change": -1
     }
    ],
    "steady": [
     {
      "name": "coca-cola",
-     "now": 21,
-     "before": 14,
-     "change": 7
-    },
-    {
-     "name": "heinz",
-     "now": 7,
-     "before": 7,
-     "change": 0
+     "now": 20,
+     "before": 15,
+     "change": 5
     },
     {
      "name": "wendy",
@@ -944,16 +990,22 @@
      "change": 0
     },
     {
-     "name": "popeyes",
-     "now": 6,
-     "before": 6,
+     "name": "heinz",
+     "now": 7,
+     "before": 7,
      "change": 0
     },
     {
      "name": "toyota",
-     "now": 5,
+     "now": 6,
      "before": 0,
-     "change": 5
+     "change": 6
+    },
+    {
+     "name": "popeyes",
+     "now": 5,
+     "before": 6,
+     "change": -1
     },
     {
      "name": "pepsi",
@@ -968,46 +1020,52 @@
      "change": 2
     },
     {
+     "name": "nokia",
+     "now": 2,
+     "before": 0,
+     "change": 2
+    },
+    {
+     "name": "sears",
+     "now": 2,
+     "before": 0,
+     "change": 2
+    },
+    {
      "name": "starbucks",
      "now": 2,
      "before": 1,
      "change": 1
-    },
-    {
-     "name": "mars",
-     "now": 2,
-     "before": 6,
-     "change": -4
     }
    ]
   }
  },
  "patterns": {
   "shorts": {
-   "count": 25,
-   "question": 0.04,
-   "why_how": 0.08,
-   "number": 0.12,
-   "money": 0.2,
-   "caps_word": 0.56,
-   "emoji": 0.36,
-   "brand": 0.08,
-   "median_seconds": 68,
+   "count": 11,
+   "question": 0.18,
+   "why_how": 0.09,
+   "number": 0.18,
+   "money": 0.36,
+   "caps_word": 0.45,
+   "emoji": 0.45,
+   "brand": 0.18,
+   "median_seconds": 48,
    "median_words": 8
   },
   "long": {
    "count": 60,
-   "question": 0.1,
-   "why_how": 0.03,
-   "number": 0.32,
-   "money": 0.13,
-   "caps_word": 0.18,
-   "emoji": 0.03,
+   "question": 0.08,
+   "why_how": 0.08,
+   "number": 0.22,
+   "money": 0.08,
+   "caps_word": 0.22,
+   "emoji": 0.02,
    "brand": 0.12,
-   "median_seconds": 1814,
-   "median_words": 9
+   "median_seconds": 1837,
+   "median_words": 10
   }
  },
- "days_of_memory": 17,
- "updated": "2026-11-26T08:59:24Z"
+ "days_of_memory": 18,
+ "updated": "2026-11-27T09:13:58Z"
 }
