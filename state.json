@@ -1364,9 +1364,11 @@
       "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/018-mcdonalds-landlord.mp4"
     },
     "019-red-bull-wings": {
-      "status": "script_ready",
-      "updated": "2026-11-27T06:11:53Z",
-      "title": "Red Bull Paid $13 Million Over Its Wings Slogan"
+      "status": "script_sent",
+      "updated": "2026-11-27T06:12:09Z",
+      "title": "Red Bull Paid $13 Million Over Its Wings Slogan",
+      "vote_msg": "",
+      "vote_kind": ""
     }
   },
   "ideas": [
