@@ -1372,7 +1372,9 @@
       "run": "45808810744",
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-018-mcdonalds-landlord/final.mp4",
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-018-mcdonalds-landlord/preview.mp4",
-      "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/018-mcdonalds-landlord.mp4"
+      "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/018-mcdonalds-landlord.mp4",
+      "yt_scheduled_for": "2026-11-29T00:00:00Z",
+      "yt_queued_at": "2026-11-27T21:09:19Z"
     },
     "019-red-bull-wings": {
       "status": "script_sent",
