@@ -1,16 +1,19 @@
 {
-  "generated_at": "2026-11-26T15:39:20.505760+00:00",
+  "generated_at": "2026-11-27T15:29:16.108573+00:00",
   "format": "short",
-  "item_day": "Fri 27 Nov",
-  "topic": "Heinz redesigned the ketchup bottle to sit upside down so kids could squeeze it",
-  "title": "Heinz Turned Its Bottle Upside Down. Sales Jumped.",
+  "item_day": "Sun 29 Nov",
+  "topic": "Starbucks was nearly sold in 1987 to Howard Schultz by its founders, who then kept the Seattle store count tiny",
+  "title": "Starbucks Was Sold for $3.8 Million",
   "unverified": true,
   "note": "Gemini first draft, NOT fact-checked. Claude must verify every claim with its own 2-source rule before using any of it in a real job file.",
-  "draft_script": "Every meal, the same struggle. Tapping the Heinz ketchup bottle. Shaking it. Waiting for the thick sauce to finally move. It was a universal annoyance. Heinz, a brand known for its classic glass bottles, had a problem. Customer frustration. But instead of a new formula, they chose a physical redesign. They turned the bottle upside down. The cap became the base. Gravity did the work. Ketchup was always at the opening, ready to pour. This wasn't just a convenience upgrade. It was a clever business move. Immediately, sales saw a significant boost. Some reports claimed double-digit growth in specific markets. The simple act of fixing one common, annoying user experience translated directly into increased revenue. It showed that sometimes, the biggest business trick isn't a complex strategy. It's understanding a basic customer pain point and solving it with elegant simplicity. Heinz didn't just sell ketchup. They sold convenience. And customers paid for it. This is a classic example of a sneaky deal: identify friction, eliminate it, and watch your bottom line grow.",
+  "draft_script": "Starbucks is a global giant. In 1987, it had six stores. Its founders sold coffee beans. They did not want to sell coffee drinks. Howard Schultz worked there. He saw a different path: cafes. He wanted big expansion. The founders disagreed. They preferred small scale. Schultz made an offer. He bought the Starbucks brand and most stores. The price: $3.8 million. But this was a strange split. The original founders kept a few Seattle locations. They continued their tiny operation. Schultz took the Starbucks name. He built the global empire. A hidden deal that created two companies from one.",
   "claims": [
-    "Heinz redesigned its ketchup bottle to sit upside down.",
-    "The redesign made ketchup always ready to pour.",
-    "Sales saw a significant boost after the redesign.",
-    "Some reports claimed double-digit growth in specific markets."
+    "Starbucks had six stores in 1987.",
+    "Starbucks founders sold coffee beans.",
+    "Starbucks founders did not want to sell coffee drinks.",
+    "Howard Schultz worked for Starbucks.",
+    "Howard Schultz bought the Starbucks brand and most stores.",
+    "The purchase price was $3.8 million.",
+    "The original founders kept a few Seattle locations."
   ]
 }
