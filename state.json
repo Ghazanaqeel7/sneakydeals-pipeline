@@ -1321,7 +1321,9 @@
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-017-pringles-baur-can/final.mp4",
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-017-pringles-baur-can/preview.mp4",
       "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/017-pringles-baur-can.mp4",
-      "decided_at": "2026-11-27T21:08:55Z"
+      "decided_at": "2026-11-27T21:08:55Z",
+      "yt_scheduled_for": "2026-11-28T12:00:00Z",
+      "yt_queued_at": "2026-11-27T21:09:16Z"
     },
     "018-mcdonalds-landlord": {
       "status": "video_approved",
