@@ -146,7 +146,7 @@ export function buildWorld() {
   const bag = new THREE.Group(); bag.add(cashStack(3, 2.2), cashStack(2, 2.2)); bag.children[1].position.set(0.9, 0, 0.3); bag.position.set(S + 3.2, 0.25, 7.2);
   const bagSign = sign('$13,000,000', 3.4, 0.9, {bg: '#f2e6cc', w: 680, h: 180, font: 'bold 90px Arial, sans-serif'}); bagSign.position.set(0, 2.2, 0.4); bag.add(bagSign); W.add(bag);
   const exec = mk('clerk', 'bowler', S - 3.2, 0.25, 7.6, 41, {glasses: true});
-  const wingMan = mk('student', 'cap', S + 1.7, 0.25, 8.4, 51); const wg = wings(); wingMan.add(wg);
+  const wingMan = mk('student', 'cap', S + 6.2, 0.25, 8.6, 51); const wg = wings(); wingMan.add(wg);
   const wingSign = sign('NO WINGS', 1.1, 0.5, {bg: '#f2e6cc', w: 330, h: 150, font: 'bold 62px Arial, sans-serif'}); wingSign.position.set(0, 0.55, 0.3); wingMan.add(wingSign);
   mk('teal', 'none', S - 1.5, 0.25, 9.2, 52); mk('red', 'cap', S + 4.2, 0.25, 9.0, 53);
 
@@ -206,7 +206,7 @@ export function buildWorld() {
 
   // ======== BOARDROOM (s07, s08) ========
   const B = LOC.board;
-  W.add(room(B, {w: 24, h: 6, d: 12, wall: '#2f4a5a', floor: '#6b4a36', seed: 61}));
+  W.add(room(B, {w: 24, h: 6, d: 12, wall: '#7fa6c2', floor: '#8a6a4e', seed: 61}));
   const bt = box(6.4, 0.16, 2.2, '#3a2a22', {x: B, y: 1.0, z: -2.4}); W.add(bt);
   for (const x of [-2.6, 2.6]) W.add(box(0.2, 0.95, 0.2, '#2b2018', {x: B + x, y: 0.5, z: -2.4}));
   for (let i = 0; i < 4; i++) { W.add(P.at(P.chair('#2b3a55'), B - 2.4 + i * 1.6, 0.05, -3.9, 0)); W.add(P.at(P.chair('#2b3a55'), B - 2.4 + i * 1.6, 0.05, -0.9, Math.PI)); }
@@ -235,7 +235,7 @@ export function buildWorld() {
   const paper = sign('SETTLEMENT', 2.2, 0.9, {bg: '#f7f0de', w: 440, h: 180, font: 'bold 62px Arial, sans-serif', sub: 'NO ADMISSION OF WRONGDOING'}); paper.position.set(D - 3.0, 1.28, -0.4); paper.rotation.x = -Math.PI / 2 + 0.6; paper.scale.setScalar(0.7); W.add(paper);
   const stampSign = sign('NO WRONGDOING ADMITTED', 4.4, 0.9, {bg: '#f4ead4', fg: '#a93a30', w: 880, h: 180, font: 'bold 70px Arial, sans-serif'}); stampSign.position.set(D, 3.2, -5.3); stampSign.visible = false; W.add(stampSign);
   mk('clerk', 'none', D - 1.0, 0.05, -3.1, 101, {glasses: true}); mk('mustard', 'cap', D + 2.0, 0.05, -3.1, 102);
-  const q = [[-4.6, 1.0, 'red'], [-2.8, 1.4, 'teal'], [-1.0, 1.1, 'pink'], [0.8, 1.5, 'student'], [2.6, 1.1, 'navy'], [4.4, 1.4, 'welder']];
+  const q = [[-7.0, 1.0, 'red'], [-5.4, 1.4, 'teal'], [-3.8, 1.1, 'pink'], [4.2, 1.5, 'student'], [5.8, 1.1, 'navy'], [7.2, 1.4, 'welder']];
   q.forEach(([x, z, pal], i) => mk(pal, ['none', 'cap', 'bowler'][i % 3], D + x, 0.05, z, 110 + i));
   W.add(P.at(P.wallClock(), D + 6.5, 4.5, -5.4), P.at(P.filingCabinet(), D + 7.6, 0.05, -4.9), P.at(P.filingCabinet('#8f7d6a'), D - 7.6, 0.05, -4.9));
 

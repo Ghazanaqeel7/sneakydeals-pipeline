@@ -17,7 +17,14 @@
     "RED BULL PAID",
     "$13M FOR WINGS?!"
   ],
-  "thumb": {},
+  "thumb": {
+    "frame": 45,
+    "box": "RED BULL",
+    "line1": "PAID $13 MILLION",
+    "line2": "FOR WINGS?!",
+    "box_color": "#2b5ea8",
+    "bg_shift": 0
+  },
   "instagram": {
     "caption": "Red Bull paid $13 million over its \"gives you wings\" slogan 🐂\n\nA customer argued the drink worked no better than coffee. Red Bull settled and denied any wrongdoing.\n\nDid you ever claim your $10? 👇\nFollow for a new true business story every day.\n\n⚠️ Dramatised illustration, real facts.",
     "hashtags": [
