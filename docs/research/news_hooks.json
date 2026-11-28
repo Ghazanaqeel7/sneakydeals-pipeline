@@ -1,91 +1,258 @@
 {
- "updated": "2026-11-27T09:14:14Z",
+ "updated": "2026-11-28T08:33:17Z",
  "hooks": [
   {
-   "title": "Say goodbye: Beloved fashion retailer closing stores, laying off 1.3K+ amid bankruptcy",
-   "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQWUVPcU13Q19yal9GOTA5T0VIX21reGl2Sm9wMVRfS0JZa3JWZVdERWd4NV9vbVZhdG1MXzhWbnFkXzMxQ2JqdklxNXhwUHNmdm5uYUJUVE1pdnFCMFVUOUh4dEhzRmlzSHZ1RThWQkk4WDR2UTNJY0FXazRmYmgxNmFKRjZPUGs0MEl4RFBmY2RTbUNyRlAxUF96S2lBYnEwTlJJYjJ2MXRabVBmN3VfcXh1SjJrTTA3SmktVy1QTzdDYlFvVDNZQw?oc=5",
-   "source": "MassLive",
-   "region": "US",
-   "date": "2026-11-25T21:23:00Z",
+   "title": "All flights cancelled as budget airline collapses and files for bankruptcy",
+   "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPWnRhbU1DalFGR0trSGRRaE9HLW5Gb1piNEl3WmdPTmhLcERpc2RlckZVQk85MjllNGc1WGNsLU5RSzlFMnFkS3FGNV9OWk1sV2NyMHlfb2pZRkt0cjl1bnpCd01KOHVLY0QyaXk4QWVqS3E0M0xNdzE2SzZFTGRFY29semhGdy1xVlpvLW9yMXFwM1F4QlFwbldxYkJndw?oc=5",
+   "source": "Oxford Mail",
+   "region": "UK",
+   "date": "2026-11-27T16:30:00Z",
    "score": 19,
    "why": [
     "bankruptcy",
-    "closing",
-    "stores",
+    "collapse",
+    "airline",
+    "bank"
+   ]
+  },
+  {
+   "title": "Soaring Fuel Prices Threaten to Push More Airlines Into Bankruptcy",
+   "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPMDA5WlYtRU1ITXVjdUt6X0lkN3Q5dmlqd1pfeDRnRGkyZWQ4U2VZNUxPdTZmLW1tMWJjbzJRdHF5VTNwMkVYcmROaWM5LThKc0pDcVRtcVdKUmJiWU8tVGhkX3F0M3pmSF9PWTEwa1R5b2RqTmlKLWFHZzh0RGxhbElVZDNOamlzOVZMT3NQUjNOVC1wQ2Z5YU5MNkNIOGZRcVdYOHhDWUZPcDBwRGw2LWVKVG3SAboBQVVfeXFMTjBYUDN1THFNZ1pya0VxSm5TT1RjZW1JeDVFYkVkWXp2YzhfYWlCdXltWURwTWJYaTZrQ1ZWMG16MVg2dEdna2VjSmF2ZWtIak1oN0kzaFh1RF9yMmFidWI4WnFCSmQ1T3czTVE0aVlhLVliMnNsSzBvb1VxeHljcm5nVl9SX2hyYUlZa2xtY05kcGZnSlNyQmF6OGp5N2xZdzJzTW9Tek84emZtakt1WFZmRXhaZ2wtZl9n?oc=5",
+   "source": "Crude Oil Prices Today | OilPrice.com",
+   "region": "UK",
+   "date": "2026-11-27T17:00:00Z",
+   "score": 16,
+   "why": [
+    "bankruptcy",
+    "price",
+    "airline",
+    "bank"
+   ]
+  },
+  {
+   "title": "Norse Founder’s Lifelong Aviation Dream Crumbles in Bankruptcy",
+   "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQVHQ2dE1PM1ZlUUlGT0RPQkNzWDJWTzVzLWhFQXJGM0FhSTFhNWdKV3NnRmJVOC15SVM0blJfN3lLMzhDVnhtNnNBX2FSZHIzSEFmTjRQQmpKcE5YWnJDTFpUdFpHUmxCMFpBcU4ySjdHLTdVSTB2MzB4ck5iaVA2X2Jzem9iMlBkVkRMOVlCLVliTG8wZy1CZWV5SlVyaGdkR1RFOGV3QjJxaXJlZVFVUFIyVQ?oc=5",
+   "source": "Bloomberg.com",
+   "region": "US",
+   "date": "2026-11-28T07:00:00Z",
+   "score": 15,
+   "why": [
+    "bankruptcy",
+    "founder",
+    "bank"
+   ]
+  },
+  {
+   "title": "Budget airline Norse Atlantic files for bankruptcy in Europe after failing to secure funding",
+   "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE4yUXRhQlczUE5sS1hudHFoMV9iTzRPNFZmSndoMkNwdEtib01aclIzUEhETWZIMkxFZjZwSFQ5UW1JcWl0RjV0RjNOTFY4M1RLOXdqekhoeDF6bkowTVhxR3pHNXI5WkdGVnpCa0RWajBpNG4ySTRkZE5ZRmJHQdIBgwFBVV95cUxOWmdBdnJYZjJqMGlKQXpFeDdCbjZXdXlieXo5NmNJWWZSY1pSVG14cXBPNmtKZjhHdkhkLWNnTVlEMHVmN2x1ZF9zVk1fX3hsTUtzN0JLV2tIeTdYUWtwM252WEJBaXZNcF9ZeGpON0xGRmFyVHozLWNmTlloLTl3b0VZWQ?oc=5",
+   "source": "CNBC",
+   "region": "US",
+   "date": "2026-11-27T13:27:40Z",
+   "score": 14,
+   "why": [
+    "bankruptcy",
+    "airline",
+    "bank"
+   ]
+  },
+  {
+   "title": "Norwegian budget airline Norse Atlantic files for bankruptcy after halting flights - ABC News",
+   "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPekRIbFE5anMtT0E0TUtkaU5YNnBGbnRhTDMwUDgzTjhXRWFDWWhud1A3aGFiN0RSamc0NnF3OVh1X0hrWUQydnlfX3h0di1uczVXdWtscEhKS21YeWgzRWVjLWVqZGlNdG1LMm54NXMtd0tXWHBNdmlJOTZCdVlya1N1ZEowZ2RXaVlSUGctVE1lakVUaUhKM1BMaEFGRWxsT2dXRE45akNQQWFHWk9SbdIBtgFBVV95cUxNZXZad0FrUGx3d01waHZXemx1RmtxVzFoN2U5b2JpZGxNOUNwaXJZSHBGUmp0RW9mRmpVTFpNRkZhT0JmcXllem1mVUJ5NnFlMFE1VXVZenZCWERtVFRyY1lCbGUydEtMMmJhWDNZa0NoV2RXWVlHcU1kU25jT0tuR0FtR2lZcUJ0UWd2bGZWTFFZOE5MdHl6SExiZG9hRUVBQy1pTmZFMU0zNzEzQXVjTWlmZktFQQ?oc=5",
+   "source": "Breaking News, Latest News and Videos",
+   "region": "US",
+   "date": "2026-11-27T19:09:48Z",
+   "score": 14,
+   "why": [
+    "bankruptcy",
+    "airline",
+    "bank"
+   ]
+  },
+  {
+   "title": "The Norwegian subsidiary of Norse Atlantic files for bankruptcy and the airline cancels all its flights",
+   "url": "https://news.google.com/rss/articles/CBMingJBVV95cUxNSlpEOE9NaVJYSG9TVzdsOF9rT2Y0RUpoTEpaSVlpdDU2cTU1MHNNMWJpODNldFJKM1BUSGRvS1B4OEhlMkR4NnJVUEluem1yc210bEZUX3Zub1ZOaU80am1fNDhVaFdVXzRnTDdMblF6bDBRdFdnNGF4RmE4UzNQaVJpeldlcUtobmwyeUE4bFRyX0VsMEI3dmpUb05EWTY5dVotaVpFS3BkQUVFQk5KelAzV1R4TlJaek1YTmZRU3VGdFAwLTNJYmFMdUZOaWVXUWJSVWFTNUtXeFFETkNtVldPSG9jeGZPLXV5djVFRjU2MG01UGVpQ2ZydHRxdWxpSDkwY0xTV2RKTjRfMEFvSE91akZxa0Jua3IwRHJn?oc=5",
+   "source": "Aviacionline",
+   "region": "US",
+   "date": "2026-11-27T13:04:47Z",
+   "score": 14,
+   "why": [
+    "bankruptcy",
+    "airline",
+    "bank"
+   ]
+  },
+  {
+   "title": "Norse Atlantic's operating airline files for bankruptcy, cancels all flights",
+   "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNaWlQMm9JRl9qMmpLblFPYl9YVnVZYXViTmdLQUxSMmwzVHBrM21sRlYxSG10NTd2dTdPLXZWOFZ1YUYxUWhzNmRibl9DSnQ4bWNHY0ZaREtVbkJqakpFY3JuV21fVVdYY3N5eU5qczVrb0g1cTRYYVpRWWVKc29UT0k5cGpfSzNyYnd5bHVnRW5yMTZhM253V3Fadw?oc=5",
+   "source": "MLQ.ai",
+   "region": "US",
+   "date": "2026-11-27T14:00:47Z",
+   "score": 14,
+   "why": [
+    "bankruptcy",
+    "airline",
+    "bank"
+   ]
+  },
+  {
+   "title": "Norse Atlantic enters bankruptcy, loses IndiGo & PIA, 12 787s.",
+   "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxPRFA1eEc2bXFxaEZmVTFPUU1HVzFDUXFkUmh2bF8ycWktcE45TVpCSjBtakNacXJEZlp2VUhXSG4tOGNBWFgydWRnY09md09qYkhiZzJ3bUFJUEdxZ0lYY3p4LVBETDJ6Uk9PSXctck1lVEp6MEhRMWVrM1FsOFpqQ2pXNTJJandLNWg2YXNwYnF4T3JhYk56ZnVpc0lYQ3RaeTRRU18wXzIyTm1ZS1kyWE5TbXpGOXc3bkpKNDMtZWdBTzJabGFwM1VCdFpvRGdlQjNTRg?oc=5",
+   "source": "AeroMorning.com",
+   "region": "UK",
+   "date": "2026-11-27T21:07:14Z",
+   "score": 14,
+   "why": [
+    "bankruptcy",
+    "bank",
+    "loses"
+   ]
+  },
+  {
+   "title": "Airline Norse Atlantic's Norwegian operating unit declares bankruptcy",
+   "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOZjF6SXBzRmpCeHczaU9VZnNGczNjcWtlMXNCMUFrTUxfbUViN3cxUXpPbFU0YVRTQzU0aEY5MGdLY1hnU2I1R21jd2tYNnIyLVVLeEtoSEY2WjZKNTE0QkdLWWFzcmkySGFYUWE4Vmh3OVpzLWJ3V25LX18zSUJ4TS1TcExrVFFoUUVvOS13NmF1dUZJWVo1S2hLRlZaNmMzTWh1dDFsTHpXUzlzN2lWQ01sc1VVR0hOUzlZSTJ3?oc=5",
+   "source": "Reuters",
+   "region": "UK",
+   "date": "2026-11-27T13:37:31Z",
+   "score": 14,
+   "why": [
+    "bankruptcy",
+    "airline",
+    "bank"
+   ]
+  },
+  {
+   "title": "Norse Atlantic fights to save UK airline as Norwegian subsidiary faces bankruptcy",
+   "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPd2hWYTg4NHVvcFpWMXAxdkpsUjB6cS0tWjZxYnVvMTNmQ25nc09QWTNUd2xHSXNiVGNGeVR4Z1k4UnAzcWRtTUJ0LUkyUDZ3ejB4ZHM5MS1VUjJLcndkV1YyLTNyUTVyLWNMTEZnNUowTi1uejVVaVVUTkZBb1lrS0pFbnpEczFtc0JtOTFwS2djazN6ZkpWNDVLSW9CdWRaZGJXajh2RVJDX3Z6?oc=5",
+   "source": "ADS Advance",
+   "region": "UK",
+   "date": "2026-11-27T15:55:16Z",
+   "score": 14,
+   "why": [
+    "bankruptcy",
+    "airline",
+    "bank"
+   ]
+  },
+  {
+   "title": "Airline with UK routes cancels all flights after filing for bankruptcy",
+   "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNXzVnOTJwY2gzNXU5bFJCZHlON2RUekNldEJCQkJUaTczczFOakduZldWVXhCSkNOd1RfbmVOZ2h6NDlMSk1sS2pJb2ZpZXlOT3dwZEpQYVppLWlwRXBGdmJIblBpaHA0elNGM0loY2hwUGZhWFFsTGs3YWxocFR1NUVENS0xQVZMNUdKSFgxRmc4NHJya05ZWEJrOVhJTUEzZkplQTBJWWMwWk0?oc=5",
+   "source": "The Argus",
+   "region": "UK",
+   "date": "2026-11-27T15:47:19Z",
+   "score": 14,
+   "why": [
+    "bankruptcy",
+    "airline",
+    "bank"
+   ]
+  },
+  {
+   "title": "United Fidelity Bank of the U.S. Fails, Largest Bank Collapse in More Than Two Years With $5.9 Billion in Assets",
+   "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBxZW1KcFBrQ3dYc19Rd2RoYXhUZGJBdlQwQ1RyZmxCRjV3Skw3WVlMUUR6aGpEdjhGbEhtUTdrbGI1RlZtYlRoN28yZjNwREhJUzFVRUFZdDBuUlZQemQ2UzJwb1BDOFgwX0U1Ny1YQnNVc2hsNFE?oc=5",
+   "source": "BigGo Finance",
+   "region": "UK",
+   "date": "2026-11-28T05:05:00Z",
+   "score": 14,
+   "why": [
+    "collapse",
+    "bank",
+    "billion"
+   ]
+  },
+  {
+   "title": "Disney’s Tech Chief Hit With Subpoena in AI Startup Bankruptcy",
+   "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQdkRGU2N1RUZ0eS1FWkk5LVlkXzU5emwyWE5kM3dpUUltX0hzMzhCMEZxczI2V1RYRFk1czM3c09GMl9wc2FRWFdjVnB5YzkyYV9EZk1IclRVOGJjSmUzQUR4NmJDZmg5TXZBSWNGOE13YUNNb1QwSjMtMVRtUmtPZTdxZGhxSTdyQ1E1RUQ0LUphM1BnRGctNktwV3Ixc2lXSGE0M3BmOGhNZw?oc=5",
+   "source": "Bloomberg Law News",
+   "region": "UK",
+   "date": "2026-11-27T23:41:00Z",
+   "score": 14,
+   "why": [
+    "bankruptcy",
+    "bank",
+    "startup"
+   ]
+  },
+  {
+   "title": "Norse Atlantic airline files for bankruptcy",
+   "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPNXppU1FWek13blRHYjg0dDNnRUJlSFlxc29HTmVlWUhHcUZxLUdWa1I0bzBnUm83VGY2Q0hXZk1wN21HQ0cya2FSMU9ZTjVBdUpvS0czUVY0VHZJWlhaaUdyQW1hdmYxUlRLVnoyaHJ1M2NKLUljYXdIYmtkMEJUT05laGkxSXR2R3doYzN5SQ?oc=5",
+   "source": "IOL",
+   "region": "UK",
+   "date": "2026-11-28T06:08:52Z",
+   "score": 14,
+   "why": [
+    "bankruptcy",
+    "airline",
+    "bank"
+   ]
+  },
+  {
+   "title": "Popular Italian food brand accused of 'tomato fraud' in new lawsuit company says is meritless - ABC News",
+   "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNaHM1d0ZhcGhtTTZmZ3pSdWhZZ1o4TDZXOHIyQk1DNmMyUU16ZmRMemY3ZHFieDRId3BJWWJWR3FRY3RkQTM0WW8yNDloVW9XREQ3dkx4dTczd05WMWxkRnRWWW5ZV3ZIaWZtZU5JN1RUajdDRjBZSnFCczVVQk9hYmV2OG5CYXNpdjdxc0M1aUtfR0tQWnFiNXE3RGFCSEFZ0gGmAUFVX3lxTE02c3dCN1BqNXRBdjlselNmdExVRm5KUy14emdacXU2dWdrOXdmOWd5T2dKRnpzMmtYaEtlRUkyNXE1cE1wZjgzNEFwbzNrcGZ5eXBkM2ZyTkJQTF9wenYxVl9MSE84OWxNNVBUQ1dfUUtoZWRhWVpSWm45ZWZWaWZmdlI3aVZpMGsyVVNSV3dkN0tGUldOaDdkNk5ZZmFIUUwxYnVqd2c?oc=5",
+   "source": "Breaking News, Latest News and Videos",
+   "region": "US",
+   "date": "2026-11-26T18:27:20Z",
+   "score": 13,
+   "why": [
+    "lawsuit",
+    "fraud",
+    "brand"
+   ]
+  },
+  {
+   "title": "Poundland suppliers owed £65m after retailers collapse",
+   "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQaDYtZk9UQWFjclV4ZkhlX0RwbkxteUxXbEYzd09xU2wwRy1pa1hUc082MW1IWE4wUWxFMEhHYUVZZTUzdnNka1JQbmgtLXN6dU12d21vOEF1VUhhUU5PU3lqS2JkS0l3WVE3MmtqNFJiYjdhRE96TVZPZUptaXRRV1BCeFJXcnpjMmpBcFEtd2xRdmthRFZfVVZqc2NZNkxSLXNfNA?oc=5",
+   "source": "The Telegraph",
+   "region": "UK",
+   "date": "2026-11-28T07:00:00Z",
+   "score": 13,
+   "why": [
+    "collapse",
     "retailer"
    ]
   },
   {
-   "title": "GS E&C Puts $70.7 Million FI-Backed Subsidiary Into Bankruptcy; Genesis PE Says \"No Consent Given,\" Prepares Lawsuit",
-   "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE90N2s5M2xMRS1wdG16TE4wVTFBQWhYa0ZnLUxhZUE2M3c2TTBLUU1iTGEtUW44TlFhYXRYUDNoQ29iZ0hmSjE1UDRuQnpwSDB5d3BjSlAwcEZpMVRfMXZGMTAybTZrbDlNTzhjNm44cDdqYmN1T3c?oc=5",
-   "source": "BigGo Finance",
-   "region": "US",
-   "date": "2026-11-26T23:55:00Z",
-   "score": 15,
+   "title": "Poundland: the collapse of a high street chain can mean major economic fallout",
+   "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPZ1l2bVVHd1NGQVpjb3FjTlZoejF5c3NoaVJRaV9IVDhDb1lNOXg5enVXUVJNU3JoSzc3N2tlbEFLcDVfbWYtS3ZuWkhXRTBkTnZZQ19EQzYwZ04wdDZGNTZ4UnhkZEZmRElGTHoyQ1hKM3NQYzdqQTQtMlR0ZHlpRWdUakFlVGJpR3JrWjlXazJUMUhSTlJsZUZPWDJJRFVKZGl2YTF2WlBTbHY0SER1VjB3?oc=5",
+   "source": "The Conversation",
+   "region": "UK",
+   "date": "2026-11-27T18:02:50Z",
+   "score": 13,
    "why": [
-    "bankruptcy",
-    "lawsuit",
-    "bank"
+    "collapse",
+    "chain"
    ]
   },
   {
-   "title": "Norse Atlantic airlines suspends all flights, on brink of bankruptcy amid rising fuel costs",
-   "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPLVFtZHJYZkZyblpqU2VtNnotcmxiSXduYjBRUl9yeE0zSnFSdVRIWUZlY0VHZDlGQ2JvODliZ1I2QXY5RG40bGRzeWY0VGZwTy1IdzFNdVRGQ3RpNzE1RVFYMFVTZ2NTUWtqdl8wOGlhQzVSNmM3YkR2NVBCdmFVcGJRY1FoWXlPbnFBcFlVSTVKeW5wRUUwS3VtRzVEekF6SHhCT0k2NE8zWWdLUVNXZlZrNUfSAboBQVVfeXFMUDFrX1JEUXRvYkVkU3VHdWt3VDE4Q1N5c29JTU9HTkxlMzRSZW9EQklWaUh5eklFVmJSZGlfVnBXREx6M0RnVVptUFl6Mi1oakhBVGRCTzRKUlBtNFREV0JaLVBiY0hFY0FCVTRfR3I5OEQ1RDN1WmVjZnNZeFBNU2x2UkFndnVUT1Azd0UxbFZvOFFDcFFhQll0MENFZ1BIbnVQaGlUTWFpa3lTY2d2N0Q4SUhFRTV1a3FB?oc=5",
-   "source": "Fox News",
-   "region": "US",
-   "date": "2026-11-26T13:56:57Z",
-   "score": 14,
-   "why": [
-    "bankruptcy",
-    "airline",
-    "bank"
-   ]
-  },
-  {
-   "title": "Airline Norse Atlantic flags bankruptcy risk as flights suspended",
-   "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPYlI3YzUtdW9yRVJzV1FCZUQ1TEU5YkppdTBYbHY2NGpSMF9hNzBFcXEzRlRCRVFubWJtcEdaX2tyOHZxOS11RlkzWW9VMkxaT2JPYTF3RXVfdzVKWUZ0cXJJUlFZM1g4U0M4VHJHWUtNbWFHbzhTbFlvbnROeHE0YldfMU10NWhrRkpWRERKbjB2T0dsLUE5dktvQXlkLWxyQ0tqVGhmUXRIWnZhMHVUM0VkZHExRXJ1M1BrRzhHMWNuS19zX0E?oc=5",
-   "source": "BNN Bloomberg",
-   "region": "US",
-   "date": "2026-11-26T21:43:52Z",
-   "score": 14,
-   "why": [
-    "bankruptcy",
-    "airline",
-    "bank"
-   ]
-  },
-  {
-   "title": "ClearVue Technologies Rebrands as Augenium, Launches AURE Product Brand from 27 November 2026",
-   "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNWDlVVExpOGRTeUs3aHhKRUkyMlVJLXF2dC1MS3I5WUVqMVJ1Q0lkSHdMTlJSUUlwY3o0ZDNKR2F5SlRmTjdYMEk3M0lWb2IwODRPMzJOdW1hOEZjRlJBcnVES29nRkxZYnM0eTJpdWpTRW1BTklTck9FWS00bTE4WWpfV0FobUkyc0dWeGF1NVQ4RDVOWmVSMzJwWmc3alUzbk1PZlB0WWdaS01lSEU4RDlMMXR1YVNOVWFCRVlibHZwbjhKVkZBd2VTV0Jfd1U?oc=5",
-   "source": "Kalkine",
-   "region": "US",
-   "date": "2026-11-27T06:33:30Z",
-   "score": 14,
-   "why": [
-    "brand",
-    "rebrand",
-    "launch"
-   ]
-  },
-  {
-   "title": "Character.ai still faces Kentucky's chatbot lawsuit during bankruptcy",
-   "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPNWV4alNwWHpCUkxiM1pjNTZPdlBONk8xd0tlRmdXQWJ6YXpzV0lRcXh0c1VydDBKSVpKczBBWGNCNzk0RTJjZzVyRUZqR0NXekVhcUNROGM3VTNRQzAzYTlLNm1LQTBaa2dxeDFfeU5SREdOVHF4VDZ3b2xyZkdJS25HU3dYQlRjZzhOb0d6cw?oc=5",
-   "source": "PPC Land",
-   "region": "US",
-   "date": "2026-11-25T20:00:45Z",
+   "title": "Norse Atlantic files for bankruptcy, halts flights and ticket sales",
+   "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNZGV2aDdaZFJaWjVucFQyTnZBWFYzdzh3emdfTGhMa1lSZmNVRExmWXlGYWFVT2pMUzhlV0Z1dU05UXl2Wk43aGZPVmZDakhrejlmeExqQmhGNmd4STN4bXRQbEhHTmh6SlVmYWNSTEtBNlBCajEwNTN3aDFMRGYzSXAxZ0tDRFFCd1lsdEFKUnVManpudjVoa1UtV0ZlQ3lqTlQ4cmtFQXRHd04zTmRHatIBtgFBVV95cUxQNER3M3JZN0J0MnVlS0JFZ3Q4eEFqZFNoS05QS1FFclpvNHhadGxhNS1nWFJ6YUs2UlRwdGdIa0dFYkxMZjJieDJGWGhBcWdMXzI4Y01EbEUyZjdUemtrZzRMUE1abkMzTnNmbDBBSmxOc3VXM0FsdGZ6TVpPZzYyd0hyd050cDR1QVBVbV96ek1pMDU2RFZscXN4VTFNSkNfcUhFN01ZZ2h5RzhHeWhWcGd0dzIxQQ?oc=5",
+   "source": "Al Jazeera",
+   "region": "UK",
+   "date": "2026-11-27T16:51:01Z",
    "score": 13,
    "why": [
     "bankruptcy",
-    "lawsuit",
-    "bank"
+    "bank",
+    "sales"
    ]
   },
   {
-   "title": "Character.AI Bankruptcy Fallout: Private Chats From 21 Million Accounts Put Up for Auction as 42 State Attorneys General Push Back",
-   "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9VcWdqV1RkOXJKb0FVWVZUZ1pHUHpYX3Jnb0VHV3JkUHZRMlhvRlJnLWZZa1VsdkpjR3lHOVNtX0dFQUNxaExwdlJlMm1uZEEwWnIybW0zMTROUjFyVkdDNlBYcHdCejB2dlZIUm5HY2tfRmdxTGc?oc=5",
-   "source": "BigGo Finance",
-   "region": "US",
-   "date": "2026-11-27T06:05:00Z",
+   "title": "Poundland staff and shoppers speak about chain’s collapse: “It’s going to leave a big hole in the community”",
+   "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFA5M0U5UWQ0NGNqelpKWjR2cDlrZC1Ba2tKb0QtOXgyc2tCLU82T0Q4MF81MDR0RzFjOUE1Q0UzMUhOeVRLS0FhMXpMUUdONHNmZTdtMm5DdVRJbFlyREFUUFEwbVREeFBh?oc=5",
+   "source": "World Socialist Web Site",
+   "region": "UK",
+   "date": "2026-11-27T18:59:57Z",
+   "score": 13,
+   "why": [
+    "collapse",
+    "chain"
+   ]
+  },
+  {
+   "title": "Norse Atlantic Airways files for bankruptcy and cancels all future flights",
+   "url": "https://www.theguardian.com/business/2026/nov/27/norse-atlantic-airways-files-for-bankruptcy-cancels-all-future-flights",
+   "source": "Guardian Business",
+   "region": "UK",
+   "date": "2026-11-27T15:40:35Z",
    "score": 12,
    "why": [
     "bankruptcy",
@@ -93,11 +260,11 @@
    ]
   },
   {
-   "title": "France/UAE • Inside the bankruptcy of French cyber group Altrnativ",
-   "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNY3R5MHJXRlppSHlUVmlWY3NSakt3TTkwamhsU2lTaEFSSHVZTllIdkhpT1I0VVZSSW1JS3ZDaXN6cWRuY1o1bXNGWnpPZTk2WmZuZHcxUG5TNDRBS3h1MTZRa1pxUWw1dWNLVkszNFlXYkxvOTc3ZVkzTV9uRnA5dTJLZGNXamdDZlJ1Wm02V21ONThpWVBRTjlEYlZMdW1Fd1VFQ1R5QnRHYkMyZS00TWRXRzMtbzA2SGlnUzg0cWVuVWRNbFE?oc=5",
-   "source": "Intelligence Online",
+   "title": "Tasca’s Strategic Business Partner Says Fly Alliance Is “Insolvent and Will Likely Declare Bankruptcy”",
+   "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQb2YwV3Y2S1NwSWRBcUl5Tk9vckh4TnZQRDI4V1g1eGFqcUlSbjE3Qm5BQ0p2SjFNdUQ3UGhyQmlIQS1Hb0Zac3AwVmUyYlp2WnRSX0g0dVNfMjJTQzJzaW9IeV9qVF9RajE0SjJZckFFd2FBLVdpcHVxUnV4ZWJPdVBuOWVWOXJ3SnRHSThYdjg1OXZKSUdpal9haWhSa09ld210TWNraGN1NVNqeFQxQ2pMeGFhVTZhWEdtZFh6MDlucThKblRjVnY1aGY?oc=5",
+   "source": "Go Local Prov",
    "region": "US",
-   "date": "2026-11-27T05:04:10Z",
+   "date": "2026-11-27T20:30:00Z",
    "score": 12,
    "why": [
     "bankruptcy",
@@ -105,11 +272,11 @@
    ]
   },
   {
-   "title": "Character.AI Bankruptcy Auctions 21M Users' Private Conversations",
-   "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQZ3pPZ2dHUDNlcGJESmNacHpjOGo4bUE0bTE1S0hiSGRQdmJPSDlobnAzU0dTaUQxTVM4X1d1c1o3a2wyVHg2Z0lEd3R2TTVWeU5ZSjNDV2p2TlItT1JqbFNMcTdXWC1qZUhQV3gzX3RoLXUtNGNOU0hHNEpYeU9teVhEbnJtNVNf?oc=5",
-   "source": "조선일보",
+   "title": "Norse Atlantic files for bankruptcy",
+   "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOVUlPeG1FV2NKelVDQnI2Qm83RWpuUjdTQm85UmVKX2hUUkFSVmFpLUZiVFUzcU8tSkNCMXBqM09sMGMxU3dZVXhJZzNiOEI3Uk1TQ1M4Y3JhNlVnU0hnNGRWc1RKT08ydFQ0UUN0TmVkLXVrMlpRcG9WVDFGV2lObThTSWRfZEdiZmc?oc=5",
+   "source": "Air Cargo News",
    "region": "US",
-   "date": "2026-11-27T06:36:51Z",
+   "date": "2026-11-27T15:23:56Z",
    "score": 12,
    "why": [
     "bankruptcy",
@@ -117,47 +284,11 @@
    ]
   },
   {
-   "title": "Norse Atlantic Suspends Flights as Bankruptcy Looms",
-   "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxONGJuQ1ZkVFFFVXNqakw0dnFGU0hZeFhHSklJZ2NVVkIxUG1faEpaQXA4RjloM3VlVDVRcmY1V2lMVTNTaGZaVTdVVzdzTjhHRE9DQmg5dE1JSjlna2s5ZnB6eGdMYW9kMnY4ZXhDMzR6Rkh3YmIxb2k1SGZmT2owaTVKOC16eWpY?oc=5",
-   "source": "Skift",
-   "region": "US",
-   "date": "2026-11-26T15:22:55Z",
-   "score": 12,
-   "why": [
-    "bankruptcy",
-    "bank"
-   ]
-  },
-  {
-   "title": "Argentina's Mundial printing company files for bankruptcy protection with $5mn debt",
-   "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNU1dhNEhzRHA0WWFYbW5jOVRic2pJUDEwaVZ3Z3EtWFU1Zk5CLUNSbFlUOTZ0NkgxblFGWjhCRElJRnpGc0VkMkV1WUk2aTVSZVp5cVVOV05qYzRld2FzSlhlUTRkZDRlTDIweXFMc1dNQ2MybE51bF9zV00taVRpRXE3anB1ZS1OUzdXZ0hWY19WWTBCWnZwMzlZQm5oUEN6VWpXcnREWmFOeEpHV3lJdjNLazQ1Q3hnT2hpN3RQT1h0MDh2Y1FSWnJZQktlYU56MDBGdGZR?oc=5",
-   "source": "TradingView",
-   "region": "US",
-   "date": "2026-11-26T19:09:09Z",
-   "score": 12,
-   "why": [
-    "bankruptcy",
-    "bank"
-   ]
-  },
-  {
-   "title": "Suffolk Leads Eastern New York in Bankruptcy Filings as Business Cases Climb",
-   "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNSHllTENlTVRkYnhNc1dfM0J2Z2JVa1BVM3ZPUUxqZmlRcXNyWWxENk1vaXctdHEwN2EzNnhVUVk2VmZwZ1ZFSDEzSmJXS3ZzWjY2c1Z3WnZLZGw4ODRTQ1FWN3J0MWlCTHMyR3FGNGtxclFxVGhEb0pvRkU1d2NaV0dDZGpHMGxWSzd0Y1JnWm1hVXJxMFdhSEVVYUxxeFpKTW85MjJObE1NT0hoX01kVkJEOTd2NUl6ZVA1NnJlTDE?oc=5",
-   "source": "The South Shore Press",
-   "region": "US",
-   "date": "2026-11-26T15:46:33Z",
-   "score": 12,
-   "why": [
-    "bankruptcy",
-    "bank"
-   ]
-  },
-  {
-   "title": "Norse Suspends Flights, in Talks to Avoid Bankruptcy Filing",
-   "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPemx1TGxxMkIxaGNtS0ZzUWdlblFOMnZpZGhwMTZxOWdwdm93SEtFMVJhdFVrR1FHR3lKb2JXU2x3cFVONUhQcWd2NVEyMWVSUDdneE1EbmZLNnQ2WGJHLUlXLVdLUnJUa0J0LVJPZGFTVkxBREhSVnRxbEtkRWNIRVp2a2oyRFQyN2dYZHdqeGFleVZMalhLOVVTcUFaYmljaEtqTkFxQXBocGpfYkE?oc=5",
+   "title": "Budget Carrier Norse Atlantic Airways Files for Bankruptcy",
+   "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQWDVJSkhEbVhQVXhUT3N2LVBlZ3R1OGdmT0JEWXNMMVdrNWdlR1h1bEd3SzI1WlVVM1FweFYza2ZiMmt4Vkc5Vl96N3VSd3Q0aV9mTUk5QWZwd0NiWXpUNG9xWHh2aHlUUEpONExXUTNyZHM4YjVRUXYyLXBRV3ZWc2xqZk40cnpBLVBUaG0yckxrazBxenJ6bUxUaFRQN2lheTYyZUlKTkJNa2pxeWJPamdsVE0?oc=5",
    "source": "Bloomberg.com",
    "region": "US",
-   "date": "2026-11-26T10:38:54Z",
+   "date": "2026-11-27T13:53:17Z",
    "score": 12,
    "why": [
     "bankruptcy",
@@ -165,11 +296,11 @@
    ]
   },
   {
-   "title": "Norse Atlantic Airways suspends all flights as carrier faces bankruptcy",
-   "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNMU5vWF8zdENpUWc5SnZwUHRDUWtCWWEtSTRZSlc0MDVHSnZweHB4TVBZMUNwQ1FMQUduYUNnTTltRW5YQTFjTW9tNThPUlkwWm5HWlB4UXhTYmJZX0gxU0Y1ZnV6cWhlTk1pcFRzTTZDS0Vqc1B6OXY3STZIU2ZXcFMtNmRjQ3loZmVKRUhuTGt5azJJM2xkdG94cFNpNXVWRDVlSDFmNmxiNUU?oc=5",
-   "source": "Sky News",
+   "title": "Norse Atlantic Airways has declared bankruptcy — flights have been cancelled, leaving passengers stranded",
+   "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNcnFoaHdtR1Z6R0NmbnpvcnM3N29FQ1JpUXhuS2NRRnZYaWp5ZGNDaWpsU1BZZkgxQ0lQOFByOUJuYldTNVNkSjNYMnF6cmdXV0Z3eGpkdm9kZENSdjdYN0l3T1Z5cVo1NDJTdWU4eF9uU0QwZFNtZVYxQzI2OXo1cS1CNEt6VXlrellpcFRPSjRsSEdvLXV2VkVmaXlJS2RNUjJlNUItUDliSG5QMVRyT09pb2tJemp2T3czbDNVdm5oQdIBwAFBVV95cUxPVTJhQVFfb3lDa19rUUtXcFoxOWlPSjBJNDhEeVJwMG9qR0dIUlJ6MU5Bd2hQaXU1Zm1HT0VubW9OMXh1ZWlhRnhMcEhsWmxFYjZLSkttb0c4OEV4NDhwWWlybVZXVkR4X0NOa0taTDdoYUlVVEVKcmNQZWEwaEwtb2V4WFpxVUNqZHJHZUxwd0s2TjRpOGJTajByWEZ2cmpoeEFOOTkxQVRPb2JvSWJESkhCNV9YUkFZS2pocXJfTVM?oc=5",
+   "source": "Українські Національні Новини (УНН)",
    "region": "US",
-   "date": "2026-11-26T18:22:54Z",
+   "date": "2026-11-27T17:30:34Z",
    "score": 12,
    "why": [
     "bankruptcy",
@@ -177,137 +308,15 @@
    ]
   },
   {
-   "title": "Norse Atlantic Cancels All Thursday Flights as Bankruptcy Looms",
-   "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE0xM2xNUkotRHdGc25YblhXcUk4Y0ppczNlSEZLdGliRl9lQ21WbGpBOGhhbGtpLVNaR1F5VW5MQ2FIUGlTa2RWQnVKdlo2MGdkNzRLWm9qUGNkQUxnVnVyVGlkVS1XbGpKVHNBVk1Ka04zQVhOU2c?oc=5",
-   "source": "EU Today",
+   "title": "A \"subsidiary\" of the Norwegian low-cost carrier has filed for bankruptcy. All of the carrier's flights have been canceled.",
+   "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxQeGk3UDNOWkRyb055NnlwTXY2OW01MWFCQ0wwMXhMQlYwY0pOZlNRTzVwbTZQRjduOWFKN05KZG5SYks1VzdIY051ejMwMEE0b3gybEtIempqc2xHbXVFQTNvQzhyNGJnejROVnZKdEoxSGtJQXJZblY2TVk2X05RS1NncGxVZG16S2xxVGQwQWZ0VmZ2Z096aFdkLUNYUUd2czJzRVBGc0trQk85QnhOaWRFcW43MzU2ZFdqQUlfQWczV0kwa2h0V2Frd1RZZFhnS29mRGhheUtSVjQ1NERhSGtzOUo4QQ?oc=5",
+   "source": "Oninvest",
    "region": "US",
-   "date": "2026-11-26T11:26:00Z",
+   "date": "2026-11-27T18:37:30Z",
    "score": 12,
    "why": [
     "bankruptcy",
     "bank"
-   ]
-  },
-  {
-   "title": "Avora Lumina Bankruptcy Puts Luxury Cruise Plans in Doubt",
-   "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPaHNkUDFsSFRwdE1JUzE1UFdLajdHVDA3WFVpQlp3SmhkRGdoVDc5M1J5V0ZuSE9ZTlYtNnlNY0kzTWJHLV9VeTVQMHRuVGgtWkhYdVhSUno0eUYzOFBSZjdHb1lxb3hGREVQU2sycTRTazluRy00T2FWS3RSemppLWN4dzVVdTFESFFFUGx0Q25aRkk?oc=5",
-   "source": "FTN news",
-   "region": "US",
-   "date": "2026-11-26T15:12:02Z",
-   "score": 12,
-   "why": [
-    "bankruptcy",
-    "bank"
-   ]
-  },
-  {
-   "title": "Norway's Norse Atlantic Airways Suspends All Flights, Warns Of Possible Bankruptcy Over Financial Crisis",
-   "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQcDRIR3pTT3J5X21BZjBxNVl2bERvNHUzRGV3bXY0Zjh0SkpBdWJORG5WVXlYNktkcFpHREFQanFXZkVIUC1IV1BodW5VTk9QVEhfa1NGX19tTHlmQ2RHa2lXTUVvZVZkalhKOTFfOUk5dDJRLVFCT2tfSEMzZlVXZDluYUNxZ0tGa0VlQzhvb0ZlU3dsdElGNFN4a21ZTXBOcjJrYjVQREhETVVMVjFBV0RReGdBMm1NQ01Tc1hR?oc=5",
-   "source": "Sahara Reporters",
-   "region": "US",
-   "date": "2026-11-27T07:16:02Z",
-   "score": 12,
-   "why": [
-    "bankruptcy",
-    "bank"
-   ]
-  },
-  {
-   "title": "Norse Atlantic Faces Fleet Lease Termination Amid Bankruptcy Fears",
-   "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPbklOa1RWdE9pb3hzNUw1SXVYUmp6YVR4OUNCa2pzTV9WZGVQMF8zVDdVYUs1aDlETGFUZDU2SXB4T1NNNS1JNW80YmtxdF8xeUlKNjNFcHdlbW1ScC05dGFNRUVtUlBaRkdDN0NqRmlGMWNPSWVLNFpKdlRlMlZZeHNrM3g5b1BfbVg0Q0I5akJBUFJIeXJNTA?oc=5",
-   "source": "Global Banking & Finance Review",
-   "region": "UK",
-   "date": "2026-11-27T07:42:58Z",
-   "score": 12,
-   "why": [
-    "bankruptcy",
-    "bank"
-   ]
-  },
-  {
-   "title": "Barrow beauty brand Clomaná launches in luxury stores across the Middle East",
-   "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOTnNHMnExX3ByVl93Wlc3Umc4c0tWbGFiMzB4ZjdtTFdMd0g4MXZyVzJVU0RUVDJ6NS00V3J1Z3FLNTZFejBFTjgzUTRueUlxSDhRVzlsc0pscU9pWVJTZ3kyeXNYV2Nzb2otTFNkZzctZ0VFdEptUGNvX0U4Ync3NmZxbG1Kell0eXdtWjZOUDE?oc=5",
-   "source": "in-Cumbria",
-   "region": "UK",
-   "date": "2026-11-27T06:01:09Z",
-   "score": 12,
-   "why": [
-    "brand",
-    "stores",
-    "launch"
-   ]
-  },
-  {
-   "title": "Norse Atlantic Suspends Flights, Warns Of Bankruptcy",
-   "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQVEp0bGtZS2xXMlBETVlCbnJLbEs5cVhRTmhhNl9XcEVfbmVVclpTaDNIZks4YUo1QkRkZHhjNGtldHNZYV9ENlF1WDFBMThNZkJRRW4xNUNwdUlXZTBPd0dZU2hBbmhCcEhGZFZVVWxYN3p2MWdCY0JsT09ld09JNVJCUzVMeDhnR3dIVE1MS2lzekRObW83dnFFeTBWM3NXQUt2Qng4aw?oc=5",
-   "source": "Aviation Week",
-   "region": "UK",
-   "date": "2026-11-26T13:50:52Z",
-   "score": 12,
-   "why": [
-    "bankruptcy",
-    "bank"
-   ]
-  },
-  {
-   "title": "BookRetreats buys six Tripaneer sites out of bankruptcy",
-   "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNMEpGZzRVdmpyd2g0aFRtVHlSN3ZNNWFlODJ1WnJRdUZReWhacFVDZHJFd0dOVlhJcGVYRTlCMFVOZGJZbUFsMnZ1MVBQSkFwN0JxVjdWQ2t3VExXa0V4Rkx5ZUkzYU9SZWRkM2dWRkRsa0J6RWFzenNXczJOLXlVa2lJeE5IS1ptb0ZHZHRtRkxKNVk?oc=5",
-   "source": "Dealroom",
-   "region": "UK",
-   "date": "2026-11-26T19:18:21Z",
-   "score": 12,
-   "why": [
-    "bankruptcy",
-    "bank"
-   ]
-  },
-  {
-   "title": "Norse Atlantic suspends all flights and warns of bankruptcy without urgent funding",
-   "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPOHpSc19YUGxNR0xKNkFhODlZbFJnZUV4TlNKU0kzUTFvcE56MVhidl9pR04tV3pxcUo4VGY5YVRxbUR6cTMyeDE1TmVRdlVhT1dLN2lKdEFuRGllcDJSdVZnWkJDalVYYWkyRzdRQUljeTU4RVBRU1U1SzAyX05GMUZ5VkVGV1pQZzI0WkEyRE9GT1Nua04zdWppbFRLa1o4TzFJSWVmNnBtSWU1?oc=5",
-   "source": "avioradar.net",
-   "region": "UK",
-   "date": "2026-11-26T22:55:56Z",
-   "score": 12,
-   "why": [
-    "bankruptcy",
-    "bank"
-   ]
-  },
-  {
-   "title": "AirBaltic offers crew secondment to Papua New Guinea airline amid bankruptcy",
-   "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNdzFQVncxcVVEb0tXZzQ5UHVuN2h2LTljeTVtd1Nadk5NQlljYzJVQV9feWpwRldUdGlYS2k1WXc3TFdZMDNmRHlsckQwTXQtdXBiUmVYTmhnRlBTSE1nc1pHaVF4SVppV2VEcldkcEZWUWJKS19lbGRxRkxNOEN4bWUwcjZlSi1DR0dnRkV6NXNUQkVMaVlDWVdVM1ZMSXVNbm1iNTMtamNhMW1aY0Rkd0dn?oc=5",
-   "source": "The Independent",
-   "region": "UK",
-   "date": "2026-11-26T07:38:00Z",
-   "score": 12,
-   "why": [
-    "bankruptcy",
-    "airline",
-    "bank"
-   ]
-  },
-  {
-   "title": "Flight Attendant Union Chief Blames Norse Atlantic Collapse on 'Wars of Choice' in Iran, Warns Other Airlines",
-   "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxNSi12TWlTRzNPdFJtWTNGcFpSalh0ZEl5MUI2a2RDREVsZWN5LWNCS1pxYmlZLUFYTmRzNkxXSGFZcUFRaWVyTW40WW5rZ1N1VEZvZnlCMUJfdmVBZFU5YzRYTnFLeU8xVjVKbjl3QVA1S1hEbGFXWGt6REtyUW81eDd3eDVJQUdhZFlvdUIxUG81eUdBU2UtQUYtbC04cmkzNG15cjBkY2JxTUthYTlKSTk4WG9Yd3BKN3VzcHYyMGprU1ZFNXFjWVpSSGNpSUQ0dUcxU2p5RHZ6SjNqUlI0Vkx3dzhzYXFQ?oc=5",
-   "source": "PYOK",
-   "region": "UK",
-   "date": "2026-11-26T23:33:00Z",
-   "score": 12,
-   "why": [
-    "collapse",
-    "airline"
-   ]
-  },
-  {
-   "title": "Black Friday sale: AI debt deluge to continue even after prices collapse",
-   "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOcElidVJuQlJ6MExVcXI1QkwxUWsteE5JTG5aVndxVWpXVWkxbWxvVnNHejVicWZyUnNVZVM0TkVhaVlQd1FzNDBRSVhiX29ZaGZxQXZjNDJUMTdLdTZLWW1kZ3N5MTdIclhRR3BDWGlKQ3F0VTZBNUpNdlAtRHB0ZGpENzFrZ0JPeEo3WVpOV0VDNW15T2FnOG5kaWdVbnBoOEJjQ29qNXpudw?oc=5",
-   "source": "International Financing Review",
-   "region": "UK",
-   "date": "2026-11-26T21:14:13Z",
-   "score": 12,
-   "why": [
-    "collapse",
-    "price"
    ]
   }
  ],
