@@ -6,6 +6,17 @@
 <description>Approved videos for the Sneaky Deals Facebook Page. Zap "Sneaky Deals -> Facebook" (RSS by Zapier -> Facebook Pages Create Page Video) reads this feed. n8n adds one item per publish day, right after feed/youtube.xml.</description>
 <!--ITEMS-->
 <item>
+<title>The Pringles Can Designer Was Buried in One</title>
+<description><![CDATA[Fred Baur designed the Pringles tube. When he died in 2008 he asked to be buried in a Pringles can, and his children did it. What's the weirdest last wish you've heard? 👇
+
+#pringles #businesshistory]]></description>
+<link>https://raw.githubusercontent.com/Ghazanaqeel7/sneakydeals-pipeline/main/jobs/017-pringles-baur-can/thumbnail.jpg</link>
+<guid isPermaLink="false">017-pringles-baur-can</guid>
+<pubDate>Sat, 28 Nov 2026 04:57:00 GMT</pubDate>
+<enclosure url="https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/017-pringles-baur-can.mp4" type="video/mp4" length="0"/>
+</item>
+
+<item>
 <title>Domino's 30-Minute Promise Ended by a Jury</title>
 <description><![CDATA[Domino's promised pizza in 30 minutes or free, until a 1993 jury award of over $78 million. Days later the guarantee was gone. Would you have used it? 👇
 
