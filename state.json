@@ -1381,8 +1381,8 @@
       "yt_queued_at": "2026-11-27T21:09:19Z"
     },
     "019-red-bull-wings": {
-      "status": "video_ready",
-      "updated": "2026-11-28T07:37:39Z",
+      "status": "video_approved",
+      "updated": "2026-11-28T08:36:31Z",
       "title": "Red Bull Paid $13 Million Over Its Wings Slogan",
       "vote_msg": "1795759931.914899",
       "vote_kind": "script",
@@ -1424,11 +1424,15 @@
         {
           "t": "2026-11-28T07:17:28Z",
           "msg": "⏳ Render 76% (1100/1447 frames). Baqi waqt: 1h 16m 47s"
+        },
+        {
+          "t": "2026-11-28T08:36:31Z",
+          "msg": "✅ You approved the video + thumbnail on the dashboard. It goes to YouTube at the next publish slot."
         }
       ],
-      "progress_count": 9,
+      "progress_count": 10,
       "decided_via": "dashboard",
-      "decided_at": "2026-11-27T21:09:21Z",
+      "decided_at": "2026-11-28T08:36:31Z",
       "run": "46115763853",
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-019-red-bull-wings/final.mp4",
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-019-red-bull-wings/preview.mp4",
