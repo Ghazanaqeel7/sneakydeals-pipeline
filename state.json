@@ -1394,9 +1394,13 @@
         {
           "t": "2026-11-28T06:09:29Z",
           "msg": "🎙 Voice ban rahi hai… (~3 min baqi, phir scenes ~45 min)"
+        },
+        {
+          "t": "2026-11-28T06:13:00Z",
+          "msg": "🎬 Voice tayyar (48 s). 6 locations: street, store, cafe, court, boardroom, claim desk — scenes bana diye, ab check frames (~25 min baqi, phir render ~40 min)"
         }
       ],
-      "progress_count": 2,
+      "progress_count": 3,
       "decided_via": "dashboard",
       "decided_at": "2026-11-27T21:09:21Z"
     }
