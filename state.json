@@ -1441,9 +1441,11 @@
       "yt_queued_at": "2026-11-28T08:37:00Z"
     },
     "020-starbucks-sold": {
-      "status": "script_ready",
-      "updated": "2026-11-28T11:10:39Z",
-      "title": "Starbucks Was Sold for $3.8 Million (Six Stores)"
+      "status": "script_sent",
+      "updated": "2026-11-28T11:10:58Z",
+      "title": "Starbucks Was Sold for $3.8 Million (Six Stores)",
+      "vote_msg": "",
+      "vote_kind": ""
     }
   },
   "ideas": [
