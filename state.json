@@ -1439,6 +1439,11 @@
       "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/019-red-bull-wings.mp4",
       "yt_scheduled_for": "2026-11-29T12:00:00Z",
       "yt_queued_at": "2026-11-28T08:37:00Z"
+    },
+    "020-starbucks-sold": {
+      "status": "script_ready",
+      "updated": "2026-11-28T11:10:39Z",
+      "title": "Starbucks Was Sold for $3.8 Million (Six Stores)"
     }
   },
   "ideas": [
