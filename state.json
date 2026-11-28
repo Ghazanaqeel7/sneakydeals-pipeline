@@ -1279,7 +1279,7 @@
       "fb_thumb_set": "2026-11-25T17:10:26Z"
     },
     "017-pringles-baur-can": {
-      "status": "video_approved",
+      "status": "published",
       "updated": "2026-11-27T21:08:55Z",
       "title": "The Pringles Can Designer Was Buried in One",
       "vote_msg": "1795690638.993669",
@@ -1323,7 +1323,8 @@
       "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/017-pringles-baur-can.mp4",
       "decided_at": "2026-11-27T21:08:55Z",
       "yt_scheduled_for": "2026-11-28T12:00:00Z",
-      "yt_queued_at": "2026-11-27T21:09:16Z"
+      "yt_queued_at": "2026-11-27T21:09:16Z",
+      "published_at": "2026-11-28T04:56:58Z"
     },
     "018-mcdonalds-landlord": {
       "status": "video_approved",
