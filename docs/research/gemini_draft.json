@@ -1,19 +1,35 @@
 {
-  "generated_at": "2026-11-27T15:29:16.108573+00:00",
-  "format": "short",
-  "item_day": "Sun 29 Nov",
-  "topic": "Starbucks was nearly sold in 1987 to Howard Schultz by its founders, who then kept the Seattle store count tiny",
-  "title": "Starbucks Was Sold for $3.8 Million",
+  "generated_at": "2026-11-28T14:27:32.092799+00:00",
+  "format": "long",
+  "item_day": null,
+  "topic": "Quibi: $1.75 billion and Hollywood's biggest names, shut down in six months",
+  "title": "Quibi: $1.75 billion and Hollywood's biggest names, shut down in six months",
   "unverified": true,
   "note": "Gemini first draft, NOT fact-checked. Claude must verify every claim with its own 2-source rule before using any of it in a real job file.",
-  "draft_script": "Starbucks is a global giant. In 1987, it had six stores. Its founders sold coffee beans. They did not want to sell coffee drinks. Howard Schultz worked there. He saw a different path: cafes. He wanted big expansion. The founders disagreed. They preferred small scale. Schultz made an offer. He bought the Starbucks brand and most stores. The price: $3.8 million. But this was a strange split. The original founders kept a few Seattle locations. They continued their tiny operation. Schultz took the Starbucks name. He built the global empire. A hidden deal that created two companies from one.",
+  "draft_outline": [
+    "Quibi, launched April 6, 2020, shut down October 21, 2020, after 6 months. The company raised $1.75 billion, yet reportedly peaked at 500,000 paid subscribers.",
+    "Founded by Jeffrey Katzenberg and CEO Meg Whitman, Quibi aimed to deliver 'quick bite' video content, 10 minutes or less, for mobile users on the go. Investors like Disney and Alibaba contributed to its $1.75 billion funding.",
+    "Quibi's core strategy focused on high-production, mobile-only content accessed via a subscription model. A key decision was launching without TV casting capabilities and restricting content sharing.",
+    "This strategy met a changed user landscape: the April 2020 launch coincided with global lockdowns. Users were home, not commuting, and preferred watching on larger screens. The inability to share content hindered viral growth, and free short-form alternatives like TikTok already dominated the market.",
+    "By October 2020, Quibi ceased operations, 6 months after launch. Reports indicated subscriber numbers fell significantly short of projections. Much of its $1.75 billion capital was spent. Its content library was later sold to Roku for an estimated $100 million.",
+    "The Quibi case demonstrates that a large budget and established names do not guarantee success when product features and market timing conflict with user behavior."
+  ],
   "claims": [
-    "Starbucks had six stores in 1987.",
-    "Starbucks founders sold coffee beans.",
-    "Starbucks founders did not want to sell coffee drinks.",
-    "Howard Schultz worked for Starbucks.",
-    "Howard Schultz bought the Starbucks brand and most stores.",
-    "The purchase price was $3.8 million.",
-    "The original founders kept a few Seattle locations."
+    "Quibi launched April 6, 2020",
+    "Quibi shut down October 21, 2020",
+    "Quibi operated for 6 months",
+    "Quibi raised $1.75 billion",
+    "Quibi peaked at 500,000 paid subscribers",
+    "Jeffrey Katzenberg founded Quibi",
+    "Meg Whitman was Quibi CEO",
+    "Quibi content was 10 minutes or less",
+    "Disney invested in Quibi",
+    "Alibaba invested in Quibi",
+    "Quibi launched without TV casting capabilities",
+    "Quibi restricted content sharing",
+    "Quibi launched in April 2020",
+    "Quibi ceased operations by October 2020",
+    "Quibi's content library was sold to Roku",
+    "Quibi's content library sold for $100 million"
   ]
 }
