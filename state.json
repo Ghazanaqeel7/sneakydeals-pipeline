@@ -1398,9 +1398,14 @@
         {
           "t": "2026-11-28T06:13:00Z",
           "msg": "🎬 Voice tayyar (48 s). 6 locations: street, store, cafe, court, boardroom, claim desk — scenes bana diye, ab check frames (~25 min baqi, phir render ~40 min)"
+        },
+        {
+          "t": "2026-11-28T06:15:24Z",
+          "msg": "✅ Check frames theek hain (store, court, boardroom, claim desk); boardroom ki deewar halki kar di (~5 min baqi, phir render ~40 min)",
+          "image": "jobs/019-red-bull-wings/review/round1.jpg"
         }
       ],
-      "progress_count": 3,
+      "progress_count": 4,
       "decided_via": "dashboard",
       "decided_at": "2026-11-27T21:09:21Z"
     }
