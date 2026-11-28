@@ -70,7 +70,8 @@
       "angle": "From six stores to a global brand",
       "title": "Starbucks Was Sold for $3.8 Million",
       "why": "Famous-brand hidden-trick hook (early signal: McDonald's 1.7K, Disney 1.4K). Verify before scripting.",
-      "status": "planned"
+      "status": "scripted",
+      "job": "020-starbucks-sold"
     }
   ]
 }
