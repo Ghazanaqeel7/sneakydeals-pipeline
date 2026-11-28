@@ -1,90 +1,94 @@
 {
  "fps": 30,
- "duration": 63.23,
+ "duration": 48.24,
  "shots": [
   {
    "key": "hook",
    "start": 0.15,
-   "end": 5.582,
-   "words": 15,
-   "text": "In nineteen seventy-eight, welders secretly patched a brand new New York skyscraper, every single night."
+   "end": 2.883,
+   "words": 9,
+   "text": "Red Bull paid thirteen million over its wings slogan."
   },
   {
-   "key": "cta",
-   "start": 5.974,
-   "end": 11.538,
-   "words": 23,
-   "text": "Before we go deep into today's story, take a second to like this video and subscribe if you haven't. Let's get into it."
+   "key": "s02",
+   "start": 3.303,
+   "end": 6.1,
+   "words": 9,
+   "text": "Nobody expected real wings. So why did it pay?"
   },
   {
-   "key": "tower",
-   "start": 11.93,
-   "end": 16.684,
-   "words": 13,
-   "text": "It stood fifty-nine stories high on giant stilts, and it had just opened."
+   "key": "s03",
+   "start": 6.47,
+   "end": 9.674,
+   "words": 9,
+   "text": "Its marketing said the drink improves performance and concentration."
   },
   {
-   "key": "rules",
-   "start": 17.077,
-   "end": 20.643,
-   "words": 11,
-   "text": "The building rules only asked about wind hitting the flat sides."
-  },
-  {
-   "key": "but",
-   "start": 21.036,
-   "end": 26.334,
-   "words": 16,
-   "text": "But a student asked about corner winds, and the numbers showed about forty percent more force."
-  },
-  {
-   "key": "then",
-   "start": 26.726,
-   "end": 31.59,
-   "words": 16,
-   "text": "Then the engineer learned the builders had swapped his welded joints for bolts to save money."
-  },
-  {
-   "key": "storm",
-   "start": 31.983,
-   "end": 35.961,
-   "words": 14,
-   "text": "A big enough storm could snap those bolts, right in the middle of Manhattan."
-  },
-  {
-   "key": "yousee",
-   "start": 36.353,
-   "end": 42.624,
+   "key": "s04",
+   "start": 10.094,
+   "end": 15.88,
    "words": 19,
-   "text": "You see, a weld turns a joint into one solid piece. Bolts are only as strong as the bolts."
+   "text": "A customer named Benjamin Careathers sued. He argued the drink worked no better than the same caffeine in coffee."
   },
   {
-   "key": "night",
-   "start": 43.017,
-   "end": 48.297,
-   "words": 14,
-   "text": "Every night after the offices emptied, welders covered the bolted joints with steel plates."
+   "key": "s05",
+   "start": 16.3,
+   "end": 20.567,
+   "words": 12,
+   "text": "His lawyers said this was not harmless puffery. It was deceptive advertising."
   },
   {
-   "key": "ella",
-   "start": 48.69,
-   "end": 53.756,
-   "words": 15,
-   "text": "During the repair, Hurricane Ella headed for New York, and evacuation plans were drawn up."
-  },
-  {
-   "key": "so",
-   "start": 54.148,
-   "end": 58.165,
+   "key": "s06",
+   "start": 20.987,
+   "end": 24.02,
    "words": 10,
-   "text": "So everyone watched the forecasts, until the storm turned away."
+   "text": "Red Bull said its marketing was always truthful and accurate."
   },
   {
-   "key": "close",
-   "start": 58.558,
-   "end": 62.476,
+   "key": "s07",
+   "start": 24.429,
+   "end": 27.833,
+   "words": 15,
+   "text": "But the case could reach everyone who had bought a can since two thousand two."
+  },
+  {
+   "key": "s08",
+   "start": 28.204,
+   "end": 33.238,
+   "words": 19,
+   "text": "Millions of people. So Red Bull chose to settle, to avoid the cost and distraction of a long fight."
+  },
+  {
+   "key": "s09",
+   "start": 33.658,
+   "end": 35.938,
+   "words": 7,
+   "text": "The deal was worth thirteen million dollars."
+  },
+  {
+   "key": "s10",
+   "start": 36.349,
+   "end": 40.241,
    "words": 13,
-   "text": "The repair worked, and the public didn't hear about it until nineteen ninety-five."
+   "text": "Buyers could claim ten dollars in cash, or fifteen dollars in Red Bull."
+  },
+  {
+   "key": "s11",
+   "start": 40.616,
+   "end": 42.888,
+   "words": 8,
+   "text": "And Red Bull never admitted doing anything wrong."
+  },
+  {
+   "key": "s12",
+   "start": 43.308,
+   "end": 47.487,
+   "words": 14,
+   "text": "Nobody grew wings. But Red Bull paid millions to make the case go away."
   }
+ ],
+ "hookTitle": [
+  "RED BULL PAID",
+  "$13M FOR WINGS?!"
  ]
 }
