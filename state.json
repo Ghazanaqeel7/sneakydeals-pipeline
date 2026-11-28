@@ -1436,7 +1436,9 @@
       "run": "46115763853",
       "video_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-019-red-bull-wings/final.mp4",
       "preview_url": "https://github.com/Ghazanaqeel7/sneakydeals-pipeline/releases/download/job-019-red-bull-wings/preview.mp4",
-      "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/019-red-bull-wings.mp4"
+      "video_url_direct": "https://ghazanaqeel7.github.io/sneakydeals-pipeline/media/019-red-bull-wings.mp4",
+      "yt_scheduled_for": "2026-11-29T12:00:00Z",
+      "yt_queued_at": "2026-11-28T08:37:00Z"
     }
   },
   "ideas": [
