@@ -1324,7 +1324,10 @@
       "decided_at": "2026-11-27T21:08:55Z",
       "yt_scheduled_for": "2026-11-28T12:00:00Z",
       "yt_queued_at": "2026-11-27T21:09:16Z",
-      "published_at": "2026-11-28T04:56:58Z"
+      "published_at": "2026-11-28T04:56:58Z",
+      "ig_at": "2026-11-28T04:57:01Z",
+      "fb_at": "2026-11-28T04:57:01Z",
+      "reels_at": "2026-11-28T04:57:01Z"
     },
     "018-mcdonalds-landlord": {
       "status": "video_approved",
