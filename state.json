@@ -1403,9 +1403,14 @@
           "t": "2026-11-28T06:15:24Z",
           "msg": "✅ Check frames theek hain (store, court, boardroom, claim desk); boardroom ki deewar halki kar di (~5 min baqi, phir render ~40 min)",
           "image": "jobs/019-red-bull-wings/review/round1.jpg"
+        },
+        {
+          "t": "2026-11-28T06:15:26Z",
+          "msg": "🖼 Thumbnail tayyar. Render queue kar raha hoon (~40 min)",
+          "image": "jobs/019-red-bull-wings/thumbnail.jpg"
         }
       ],
-      "progress_count": 4,
+      "progress_count": 5,
       "decided_via": "dashboard",
       "decided_at": "2026-11-27T21:09:21Z"
     }
